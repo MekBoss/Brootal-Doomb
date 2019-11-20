@@ -1,0 +1,32 @@
+class dumb_boolet_base : fastprojectile
+{
+protected eventhandler sfx;
+
+void set_sfx(eventhandler e)
+{
+    if(e.getclassname() == "doomb_sfx_main")
+        sfx = e;
+}
+
+}
+
+class doomb_blood : actor
+{
+
+protected void doomb_spawn_blood()
+{
+    for(uint i = 0; i < 2 * bd_bloodamount; i++)
+    {
+        A_SpawnProjectile ("Brutal_FlyingBloodFake", 0, 0, random (0, 360), 2, random (0, 90));
+
+        if( (i % 2) == 0)
+        {
+            A_SpawnProjectile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (40, 60));
+	        A_SpawnProjectile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (20, 40));
+	        A_SpawnProjectile ("BloodmistSmall", 0, 0, random (0, 360), 2, random (10, 40));
+	        A_SpawnProjectile ("BloodHit", 0, 0, random (0, 360), 2, random (0, 90));
+        }
+    }
+}
+
+}

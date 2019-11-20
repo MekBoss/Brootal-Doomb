@@ -1,0 +1,89 @@
+class visual_sfx : actor
+{
+protected bool show_something;
+protected state off_state, reset_cond;
+protected eventhandler sfx_event;
+
+void set_event(eventhandler en)
+{
+	if(en.getclassname() == "doomb_sfx" )
+        sfx_event = en;
+}
+
+override void beginplay()
+{
+	super.beginplay();
+	off_state = findstate("off");
+	reset_cond = findstate("reset_self_condition");
+}
+
+bool check_busyness()
+{
+	return show_something;
+}
+
+
+override int SpecialMissileHit (Actor victim)
+{
+	vel = (0, 0, 0);
+	return 1;
+}
+
+override void tick()
+{
+    if( !(Vel == (0, 0, 0) ) )
+    {
+        setorigin( Vec3Offset(Vel.x, Vel.y, Vel.z, false), true );
+        CheckPortalTransition(true);
+    }
+
+    if(curstate == null)
+    {
+        setstate(off_state);
+        console.printf("some actor have null state");
+        return;
+    }
+
+	if (tics != -1)
+	{
+		if (--tics <= 0)
+		{
+			if (!SetState(curstate.nextstate))
+				return;
+		}
+    }
+
+	if(curstate != off_state || curstate != reset_cond)
+	{
+		show_something = true;
+	}
+    else
+        show_something = false;
+}
+
+
+default
+{+nointeraction; +noclip; +nogravity; +notonautomap; radius 1; height 1;}
+
+states
+{
+	spawn:
+	off:
+		tnt1 a -1;
+	stop;
+
+	reset_self_condition:
+		tnt1 a 0
+		{
+			self.scale = (1, 1);
+			self.vel = (0, 0, 0);
+			setorigin( (double.infinity, double.infinity, double.infinity), false );
+			alpha = 1;
+
+			for(uint i = 0; i < 10; i++)
+				a_stopsound(i);
+		}
+	goto off;
+}
+
+}

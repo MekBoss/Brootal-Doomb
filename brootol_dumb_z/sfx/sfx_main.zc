@@ -1,0 +1,84 @@
+class doomb_sfx_main : eventhandler
+{
+private array<visual_sfx> vis_sfx;
+
+override void worldloaded(worldevent e)
+{
+	for(uint i = 1; i < 100; i++)
+	{
+		vis_sfx.push( (visual_sfx)(actor.spawn("visual_sfx", (double.infinity, double.infinity, double.infinity) ) ) );
+	}
+}
+
+//give pointer to this event to pb actors
+//so they can use functions of that event whenever they want
+override void worldthingspawned(worldevent e)
+{	
+	if(e.thing is "dumb_boolet_base")
+	    dumb_boolet_base(e.thing).set_sfx(self);
+}
+
+
+//find free effect
+private visual_sfx find_free_effect()
+{
+	int dd = self.vis_sfx.size();
+
+	for(uint i = 0; i <= dd; i++)
+	{
+		if(i == dd)
+		{
+			actor ss = actor.spawn("visual_sfx", pos:(0, 0, 0) );
+
+			visual_sfx(ss).set_event(self);
+			vis_sfx.push((visual_sfx)(ss) );
+			return (visual_sfx)(ss); break;
+		}
+
+		if(self.vis_sfx[i])
+		{
+			if(visual_sfx(self.vis_sfx[i]).check_busyness() == false)
+			{
+				return (visual_sfx)(self.vis_sfx[i]); break; 
+	}
+
+}	}
+
+	return null;
+}
+
+//simple function all sense of it check state and say into console if there are no such state
+private void approve_state(actor subject = null, statelabel state_name = null)
+{
+	if(subject == null)
+    {console.printf("there are no actor to change state"); return;}
+	
+    if(state_name == null)
+    {console.printf("there are no state to search"); return;}
+
+	let stt_lnk = subject.findstate(state_name);
+
+	if(stt_lnk == null) {console.printf("actor at %d %d %d dont have state", subject.pos.x, subject.pos.y, subject.pos.z ); return;}
+
+	subject.setstate(stt_lnk);
+}
+
+
+//here actually shows some mikle bay explosions
+actor show_some_effect(actor caller = null, statelabel effect_state = null, vector3 offset = (0,0,0), vector3 speed = (0, 0, 0), double size = 1 )
+{
+	//effect must be "attached" to actor
+	if(caller == null || effect_state == null) {return null;}
+	
+	actor lin = find_free_effect();
+	if(lin == null)
+		return null;
+
+	approve_state(lin, effect_state);
+	lin.setorigin(caller.pos + offset, false);
+	lin.vel = speed;
+	lin.scale = (size, size);
+	return lin;
+}
+
+}

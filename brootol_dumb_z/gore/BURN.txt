@@ -1,0 +1,633 @@
+actor GenericBurningGuy
+{   Radius 1
+    Height 1
+    +NOTELEPORT
+    +MOVEWITHSECTOR
+	+NOICEDEATH
+    Mass 1000
+    Health 100
+States    {
+    Spawn:
+       TNT1 A 0 BRIGHT
+       TNT1 A 0 A_Jump(128, "Spawn2")
+       TNT1 A 0 A_PlaySound("DSFDTHE")
+       BUR2 A 1 BRIGHT
+       BUR2 AABBCCDDEE 3 BRIGHT A_SpawnProjectile ("BurnParticles", 36, 0, random (0, 180), 2, random (0, 180))
+       BURN FFGGHH 3 BRIGHT A_SpawnProjectile ("BurnParticles", 36, 0, random (0, 180), 2, random (0, 180))
+       BURN IIJJKKLL 3 BRIGHT A_SpawnProjectile ("BurnParticles", 28, 0, random (0, 180), 2, random (0, 180))
+       BURN MMN 3 BRIGHT A_SpawnProjectile ("BurnParticles", 32, 0, random (0, 180), 2, random (0, 180))
+       BURN NOOPP 3 BRIGHT A_SpawnProjectile ("BurnParticles", 22, 0, random (0, 180), 2, random (0, 180))
+       BURN QQ 3 BRIGHT A_SpawnProjectile ("BurnParticles", 18, 0, random (0, 180), 2, random (0, 180))
+       TNT1 A 0 A_PlaySound("DSFDTHE")
+       BURN RRSSTTSSRRSSTTSSRRSSTTRRSSTTSSRRSSTTSSRRSSTTSSTT 3 BRIGHT A_SpawnProjectile ("SmallBurnParticles", 12, 0, random (0, 180), 2, random (0, 180))
+       BURN UU 3 BRIGHT A_SpawnProjectile ("BurnParticles", 12, 0, random (0, 180), 2, random (0, 180))
+	   TNT1 A 0 A_SpawnItem("o_100SmallFireFocusSpawnerz")
+       BURN VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 9 A_SpawnProjectile ("PlasmaSmoke", 8, 0, random (0, 360), 2, random (90, 110))
+       BURN V -1
+
+
+    Spawn2:
+       TNT1 A 0 BRIGHT
+       TNT1 A 0 A_PlaySound("DSFDTHG")
+       TNT1 A 0 BRIGHT
+       BUR2 A 1 BRIGHT
+       BUR2 AABBCCDDEE 3 BRIGHT A_SpawnProjectile ("BurnParticles", 36, 0, random (0, 180), 2, random (0, 180))
+       BURN FFGGHH 3 BRIGHT A_SpawnProjectile ("BurnParticles", 36, 0, random (0, 180), 2, random (0, 180))
+       BURN IIJJKKLL 3 BRIGHT A_SpawnProjectile ("BurnParticles", 28, 0, random (0, 180), 2, random (0, 180))
+       BURN MMN 3 BRIGHT A_SpawnProjectile ("BurnParticles", 32, 0, random (0, 180), 2, random (0, 180))
+       BURN NOOPP 3 BRIGHT A_SpawnProjectile ("BurnParticles", 22, 0, random (0, 180), 2, random (0, 180))
+       BURN QQ 3 BRIGHT A_SpawnProjectile ("BurnParticles", 18, 0, random (0, 180), 2, random (0, 180))
+       TNT1 A 0 A_PlaySound("DSFDTHG")
+       BURN RRSSTTSSRRSSTTSSRRSSTTRRSSTTSSRRSSTTSSRRSSTTSSTT 3 BRIGHT A_SpawnProjectile ("SmallBurnParticles", 12, 0, random (0, 180), 2, random (0, 180))
+       BURN UU 3 BRIGHT A_SpawnProjectile ("BurnParticles", 12, 0, random (0, 180), 2, random (0, 180))
+	   TNT1 A 0 A_SpawnItem("o_100SmallFireFocusSpawnerz")
+       BURN VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 9 A_SpawnProjectile ("PlasmaSmoke", 8, 0, random (0, 360), 2, random (90, 110))
+       BURN V -1
+       Stop
+	}
+}
+
+
+ACTOR BurnParticles
+{
+    Radius 8
+    Height 8
+    Speed 5
+	Mass 6
+	BounceFactor 0.5
+	+DOOMBOUNCE
+    Speed 0
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +DONTSPLASH
+    +MOVEWITHSECTOR
+    +NODAMAGETHRUST
+    +NOCLIP
+    DamageType Fire
+	+NOBLOOD
+	+NOBLOODDECALS
+	+BLOODLESSIMPACT
+	-BLOODSPLATTER
+    States
+    {
+	Spawn:
+		TNT1 A 0
+        XDT3 A 0 A_Explode(3,30)
+		TNT1 A 0 A_SpawnItem("RedFlare", 0, 5)
+		TTRB A 0 bright A_SpawnProjectile ("PlasmaSmoke", 20, 0, random (0, 360), 2, random (60, 130))
+		TTRB A 0 bright A_SpawnProjectile ("SmallFireTrail324", 0, 0, random (0, 360), 2, random (0, 130))
+		TNT1 A 3
+		stop
+    }
+}
+
+ACTOR SmallBurnParticles: BurnParticles
+{
+	DamageType Burn
+    States
+    {
+	Spawn:
+		TNT1 A 0
+        XDT3 A 0 A_Explode(2,30)
+		TNT1 A 0 A_SpawnItem("RedFlare", 0, 5)
+		TTRB A 0 bright A_SpawnProjectile ("PlasmaSmoke", 20, 0, random (0, 360), 2, random (60, 130))
+		TTRB A 0 bright A_SpawnProjectile ("SmallFlameTrails", 0, 0, random (0, 360), 2, random (60, 130))
+		stop
+    }
+}
+
+
+ACTOR BurnParticlesNoDamage: BurnParticles
+{
+    States
+    {
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItem("RedFlare", 0, 5)
+		TTRB A 0 bright A_SpawnProjectile ("PlasmaSmoke", 20, 0, random (0, 360), 2, random (60, 130))
+		TTRB A 0 bright A_SpawnProjectile ("FlameTrails", 0, 0, random (0, 360), 2, random (60, 130))
+		stop
+    }
+}
+
+
+
+
+	   
+	   
+	   
+	   
+
+
+
+
+
+
+
+
+
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+	  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACTOR DyingSergeantNoLegInFlames
+{
+    Radius 12
+    Height 30
+    Speed 5
+	Health 20
+	PainSound "grunt/pain"
+	DeathSound "grunt/death"
+	+SHOOTABLE
+    +FLOORCLIP
+	//+NOBLOCKMAP
+    +LOOKALLAROUND
+	+NOICEDEATH
+	+FRIGHTENED
+	-SOLID
+	
+	damagefactor "Burn", 0.0
+	damagefactor "Fire", 0.0
+	damagefactor "Flames", 0.0
+    States
+    {
+
+    Spawn:
+		TNT1 A 0 A_Playsound("BurnZom")
+		SMBM A 5 A_Chase
+		TNT1 A 0 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SMBM A 5 A_Chase
+		TNT1 B 0 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		
+		SMBM B 5 A_Chase
+		TNT1 B 0 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+        SMBM B 5 A_Chase
+		TNT1 B 0 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+
+	    TNT1 A 0 A_GiveInventory("DeathTimer1", 1)
+		TNT1 A 0 A_JumpIfInventory("DeathTimer1", 15, "death")
+		Loop
+		
+	Death:
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Scream
+		BRZ3 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 3 A_SpawnProjectile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_SpawnItem("o_100SmallFireFocusSpawnerz")
+		BRZ3 HHHHHHHHHHHHHHHHHHHHHHHH 10 A_SpawnProjectile("PlasmaSmoke", 15, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		BRZ3 H -1
+    Crush:
+        TNT1 A 0 A_PlaySound("misc/xdeath4")
+        CRS2 A 5
+        CRS2 A -1
+        Stop
+	
+	Death.Stomp:
+	Death.SSG:
+	XDeath:
+	TNT1 AAAAAA 0 bright A_SpawnProjectile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+	TNT1 AAAAAA 0 bright A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180))
+	TNT1 AA 0 bright A_SpawnProjectile ("XDeath2", 55, 0, random (0, 360), 2, random (30, 180))
+	TNT1 AA 0 bright A_SpawnProjectile ("XDeath3", 55, 0, random (0, 360), 2, random (30, 180))
+	TNT1 A 0 A_SpawnItem ("CrushedRemains")
+	TNT1 A 1
+	TNT1 A 0 ACS_Execute(477, 0, 0, 0, 0)
+	TNT1 A 1 A_XScream
+    TNT1 A 1 A_NoBlocking
+	TNT1 A -1
+	Stop
+	}
+}
+
+
+
+
+
+
+
+
+ACTOR BurningShotgunguy
+{
+    Radius 12
+    Height 56
+    Speed 5
+    Scale 0.85
+	Health 100
+	GibHealth 25
+	damagefactor "Burn", 0.0
+	damagefactor "Fire", 0.0
+	damagefactor "Flames", 0.0
+	damagefactor "Flame", 0.0
+	damagefactor "Head", 0.0
+	damagefactor "ExplosiveImpact", 10.0
+	MONSTER
+	-COUNTKILL
+	+NOICEDEATH
+	+FRIENDLY
+    +FLOORCLIP
+	+SHOOTABLE
+	+NOBLOCKMONST
+	+DONTSPLASH
+	
+	Gravity 0.7
+	bloodtype "DeadBlood"
+    Obituary "%o was near someone in flames."
+	MaxDropOffHeight 6000
+   
+	Mass 999999
+
+    States
+    {
+	Spawn:
+        BRZ1 B 0 A_SpawnProjectile("BurnParticles", 40, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_PlaySound("BURNZOM")
+	Suffer:
+        BRZ3 AAA 1 BRIGHT A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BRZ3 BBB 1 BRIGHT A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		BRZ3 CCC 1 BRIGHT A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        BRZ3 BBB 1 BRIGHT A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
+		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 12, "Death")
+		Loop
+	
+	
+Death:
+	    TNT1 A 0 A_Fall
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
+		
+		TNT1 A 0 A_Jump(256, "Death1", "Death2", "Death3")
+		Goto Death1
+		
+	Death1:	
+	    TNT1 A 0 A_PlaySound("BURNZOM")
+		BRZ3 DD 3 A_SpawnProjectile("BurnParticles", 30, 0, random (0, 360), 2, random (50, 130))
+		BRZ3 EE 3 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		
+        BRZ3 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 3 A_SpawnProjectile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_SpawnItem("o_100SmallFireFocusSpawnerz")
+		BRZ3 HHHHHHHHHHHHHHHHHHHHHHHH 10 A_SpawnProjectile("PlasmaSmoke", 15, 0, random (0, 360), 2, random (50, 130))
+		BRZ3 H -1
+        Stop
+	Death2:
+	    TNT1 A 0 A_PlaySound("BURNZOM")
+		BRZ3 DD 3 A_SpawnProjectile("BurnParticles", 30, 0, random (0, 360), 2, random (50, 130))
+		BRZ3 EE 3 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		
+        BRZ3 IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 3 A_SpawnProjectile("BurnParticles", 5, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_SpawnItem("o_100SmallFireFocusSpawnerz")
+		BRZ3 IIIIIIIIIIIIIIIII 10 A_SpawnProjectile("PlasmaSmoke", 15, 0, random (0, 360), 2, random (50, 130))
+		BRZ3 I -1
+        Stop
+		
+	Death3:
+	    TNT1 A 0 A_PlaySound("BURNZOM")
+		BRZ3 DD 3 A_SpawnProjectile("BurnParticles", 30, 0, random (0, 360), 2, random (50, 130))
+		BRZ3 EE 3 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 FF 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Wander
+		BRZ3 GG 3 Bright A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_SpawnItem("DyingSergeantNoLegInFlames")
+        Stop
+        Stop
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+ACTOR BurningImpRunning
+{
+    Radius 12
+    Height 56
+    Speed 5
+    Scale 0.85
+	Health 100
+	GibHealth 25
+	damagefactor "Burn", 0.0
+	damagefactor "Fire", 0.0
+	damagefactor "Flames", 0.0
+	damagefactor "Flame", 0.0
+	damagefactor "Head", 0.0
+	damagefactor "ExplosiveImpact", 10.0
+	MONSTER
+	-COUNTKILL
+	+NOICEDEATH
+	+FRIENDLY
+    +FLOORCLIP
+	+SHOOTABLE
+	+NOBLOCKMONST
+	+DONTSPLASH
+	
+	Gravity 0.7
+	bloodtype "DeadBlood"
+    Obituary "%o was near someone in flames."
+	MaxDropOffHeight 6000
+   
+	Mass 999999
+
+    States
+    {
+	Spawn:
+        TNT1 A 0 A_PlaySound("BURNZOM")
+		Goto Suffer
+	Suffer:
+        TRBR AAA 1 BRIGHT A_Wander
+		TNT1 A 0 A_Recoil(-1)
+		TNT1 A 0 A_PlaySound("imp/pain")
+        BDT1 B 0 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TRBR BBB 1 BRIGHT A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TRBR CCC 1 BRIGHT A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        TRBR DDD 1 BRIGHT A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
+		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 8, "Death")
+		Loop
+	Death:
+	Death.ExplosiveImpact:
+	    TNT1 A 0 A_Fall
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
+		IZD4 CCC 2 A_SpawnProjectile ("BurnParticles", 25, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_PlaySound("imp/pain")
+		IZD4 DDD 2 A_SpawnProjectile ("BurnParticles", 25, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_PlaySound("imp/pain")
+		IZD4 CCC 3 A_SpawnProjectile ("BurnParticles", 25, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_PlaySound("imp/pain")
+		IZD4 DDD 2 A_SpawnProjectile ("BurnParticles", 25, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_PlaySound("imp/pain")
+		IZD4 CCC 3 A_SpawnProjectile ("BurnParticles", 25, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_PlaySound("imp/pain")
+		IZD4 DDD 2 A_SpawnProjectile ("BurnParticles", 25, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_PlaySound("imp/pain")
+		IZD4 CCC 3 A_SpawnProjectile ("BurnParticles", 25, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_PlaySound("imp/pain")
+		IZD4 DDD 3 A_SpawnProjectile ("BurnParticles", 25, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_PlaySound("imp/pain")
+		IZD4 CCC 3 A_SpawnProjectile ("BurnParticles", 25, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_PlaySound("imp/pain")
+		IZD4 DDD 3 A_SpawnProjectile ("BurnParticles", 25, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_PlaySound("imp/pain")
+		IZD4 CCC 3 A_SpawnProjectile ("BurnParticles", 25, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_PlaySound("imp/pain")
+		IZD4 DDD 3 A_SpawnProjectile ("BurnParticles", 25, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_PlaySound("imp/pain")
+		TROO LLLL 2 A_SpawnProjectile ("FlameTrails", 25, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_Playsound("props/redfire")
+		BOSB FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 2 A_SpawnProjectile ("FlameTrails", 15, 0, random (0, 360), 2, random (50, 130))
+        BOSB FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 20 A_SpawnProjectile ("SmallSmoke", 25, 0, random (0, 360), 2, random (70, 110))
+        BOSB F -1
+    Stop    }
+}
+
+
+
+
+
+
+
+ACTOR BurningDemon
+{
+    Radius 12
+    Height 56
+    Speed 5
+    Scale 0.85
+	Health 100
+	GibHealth 25
+	damagefactor "Burn", 0.0
+	damagefactor "Fire", 0.0
+	damagefactor "Flames", 0.0
+	damagefactor "Flame", 0.0
+	damagefactor "Head", 0.0
+	damagefactor "ExplosiveImpact", 10.0
+	MONSTER
+	-COUNTKILL
+	+NOICEDEATH
+	+FRIENDLY
+    +FLOORCLIP
+	+SHOOTABLE
+	+NOBLOCKMONST
+	+DONTSPLASH
+	
+	Gravity 0.7
+	bloodtype "DeadBlood"
+    Obituary "%o was near someone in flames."
+	MaxDropOffHeight 6000
+   
+	Mass 999999
+
+    States
+    {
+	Spawn:
+        TNT1 A 0 A_PlaySound("BURNZOM")
+		Goto Suffer
+	Suffer:
+        SBRG AAA 1 BRIGHT A_Wander
+		TNT1 A 0 A_Recoil(-1)
+		TNT1 A 0 A_playsound ("demon/pain")
+        BDT1 B 0 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SBRG BBB 1 BRIGHT A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		SBRG CCC 1 BRIGHT A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+        SBRG DDD 1 BRIGHT A_Wander
+		TNT1 A 0 A_Recoil(-1)
+        BDT1 B 0 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
+		BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130))
+		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1)
+		TNT1 A 0 A_SpawnItemEx("TinyBurningPiece3", random (-15, 15), random (-15, 15))
+		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 15, "Death")
+		Loop
+	Death:
+        CRB7 Q  2
+		TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_Scream
+		TNT1 A 0 A_playsound ("demon/death")
+        CRB7 QQQQ 2 A_SpawnProjectile ("FlameTrails", 45, 0, random (0, 360), 2, random (50, 130))
+		CRB7 RRRR 2 A_SpawnProjectile ("FlameTrails", 30, 0, random (0, 360), 2, random (50, 130))
+        TNT1 A 0 A_Playsound("props/redfire")
+		CARB JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ 2 A_SpawnProjectile ("FlameTrails", 25, 0, random (0, 360), 2, random (50, 130))
+        CARB JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ 20 A_SpawnProjectile ("SmallSmoke", 35, 0, random (0, 360), 2, random (70, 110))
+        TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		CARB J -1
+	Stop
+		
+	XDeath:
+	Death.SSG:
+	Death.Explosive:
+	Death.ExplosiveImpact:
+	TNT1 A 0 A_NOBlocking
+	TNT1 AAAAAA 0 bright A_SpawnProjectile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+	TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedDemonArm", 32, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedDemonLeg", 32, 0, random (0, 360), 2, random (0, 160))
+    TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 A_SpawnProjectile ("MuchMeatDeath", 35, 0, random (0, 360), 2, random (0, 160))
+	TNT1 AAAAAA 0 A_SpawnProjectile ("BurningFlyingMeatPiece", 64, 0, random (0, 360), 2, random (0, 160))
+	TNT1 A 0 a_spawnitemex ("CrueltyBonus5Health")
+    Stop
+    }
+}

@@ -1,0 +1,57 @@
+version "3.7.2"
+
+#include "brootol_dumb_z/sfx/sfx_main.zc"
+#include "brootol_dumb_z/sfx/sfx_base.zc"
+
+#include "brootol_dumb_z/weapons/weapon_base.zc"
+
+#include "brootol_dumb_z/base_definitions.zc"
+#include "brootol_dumb_z/monsters/monster_base.zc"
+
+
+/*
+check difficlty
+G_SkillPropertyInt(SKILLP_ACSReturn)
+set acsreturn value in sklil definition
+*/
+
+
+
+class debugger : eventhandler
+{
+array <string> destroyed;
+array <int> ammount;
+
+override void worldthingdestroyed(worldevent e)
+{
+    string s = e.thing.getclassname();
+    int i = destroyed.find(s);
+    if( i == destroyed.size() )
+    {
+        destroyed.push(s);
+        ammount.push(1);
+    }
+
+    else
+        ammount[i]++;
+}
+
+uint timer;
+override void worldtick()
+{
+    timer++;
+
+    if(timer == 35)
+    {
+        timer = 0;
+        for(uint i = 0; i < destroyed.size(); i++)
+        {
+            console.printf("");
+            console.printf("%i %s was destroyed in last second", ammount[i], destroyed[i] );
+            ammount.delete(i);
+            destroyed.delete(i);
+        }
+    }
+}
+
+}
