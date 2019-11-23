@@ -542,7 +542,6 @@ ACTOR Marine_BFG: Marine_Rifle
 		TNT1 A 0 A_SpawnItem ("MediumBloodSpot")
         XPL3 F -1
         Stop
-	Death.Massacre:
 	Death.Explosives:
 	XDeath:
 		TNT1 A 0 ThrustThingZ(0,60,0,1)
@@ -563,7 +562,7 @@ ACTOR Marine_BFG: Marine_Rifle
 	 Death.Stomp:
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
-	    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail8", 0, 0, random (0, 360), 2, random (0, 360))
+	    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 AAAAAA 0 bright A_SpawnProjectile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
 		TNT1 AAAAAA 0 bright A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180))
 		TNT1 AA 0 bright A_SpawnProjectile ("XDeath2", 55, 0, random (0, 360), 2, random (30, 180))
@@ -634,9 +633,7 @@ ACTOR Marine_BFG: Marine_Rifle
 	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 doomb_spawn_burned_flesh()
 		EXPL AAAAAA 0 A_SpawnProjectile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360))
         TNT1 A 1
         TNT1 A -1
@@ -654,15 +651,14 @@ ACTOR Marine_BFG: Marine_Rifle
 	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 doomb_spawn_burned_flesh()
 		
 		EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("GreenFlameTrails", 50, 0, random (0, 360), 2, random (0, 360))
 		XBRN AAAA 2 BRIGHT A_SpawnItem("GreenFlare",0,43)
         Stop
 
-    Death.burn:
+    Death.Fire:
+	tnt1 a 0 a_jump(128, "fire_death_1")
 	TNT1 A 0
 	TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
 	 PBUR A 1
@@ -675,10 +671,8 @@ ACTOR Marine_BFG: Marine_Rifle
 		PBUR EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 6 A_SpawnProjectile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
         PBUR E -1
         Stop
-
-    Death.Fire:
-	Death.Flames:
-	Death.Burn:
+		
+	fire_death_1:
 	TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
         TNT1 A 0 A_PlaySound("BIGSCREA")
@@ -693,7 +687,7 @@ ACTOR Marine_BFG: Marine_Rifle
       Stop
 	  
 	  
-	  Death.ExplosiveImpact:
+	  Death.Explosive_Impact:
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
 		tnt1 A 0 ThrustThingZ(0,30,0,1)

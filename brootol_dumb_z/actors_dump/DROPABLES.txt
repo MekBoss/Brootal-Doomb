@@ -11,11 +11,11 @@ Height 0
 	 Goto Spawn1
 
   SPawn1:	
-        TNT1 A 0 A_SpawnProjectile ("DropedRifle", 20, 0, 0, 2, random (30, 50))
+        TNT1 A 0 A_SpawnProjectile ("DropedRifle", 20, 0, 0, 2, - random (30, 50))
         stop
 		
   SPawn2:	
-        TNT1 A 0 A_SpawnProjectile ("DropedRifle2", 20, 0, 180, 2, random (30, 50))
+        TNT1 A 0 A_SpawnProjectile ("DropedRifle2", 20, 0, 180, 2, - random (30, 50))
         stop		
 }
 }
@@ -234,73 +234,3 @@ ACTOR GreenXDeath3: GreenXDeath1
 
 
 
-
-ACTOR XDeathKnightArm
-{
-    Radius 8
-    Height 8
-    Speed 8
-	Mass 6
-	BounceFactor 0.5
-	+DOOMBOUNCE
-    +NOBLOCKMAP
-	+MISSILE
-    +NOTELEPORT
-    +DONTSPLASH
-    +MOVEWITHSECTOR
-    DeathSound "misc/xdeath1"
-	Decal GreenBloodSuper
-    States
-    {
-    Spawn:
-	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-        GORA B 8 A_SpawnProjectile("GreenBloodTrail",0,0,180,2)
-        Loop
-    Death:
-        GORA B -1
-        Stop
-    }
-}
-
-ACTOR XDeathBaronArm: XDeathKnightArm
-{
-    Radius 8
-    Height 8
-    States
-    {
-    Spawn:
-	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-        GORB A 8 A_SpawnProjectile("GreenBloodTrail",0,0,180,2)
-        Loop
-    Death:
-        GORB A -1
-        Stop
-    }
-}
-
-ACTOR XDeathKnightLeg
-{
-    Radius 8
-    Height 8
-    Speed 8
-	Mass 6
-	BounceFactor 0.5
-	+DOOMBOUNCE
-    +NOBLOCKMAP
-	+MISSILE
-    +NOTELEPORT
-    +DONTSPLASH
-    +MOVEWITHSECTOR
-    DeathSound "misc/xdeath1"
-	Decal GreenBloodSuper
-    States
-    {
-    Spawn:
-	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
-        GORA A 8 A_SpawnProjectile("GreenBloodTrail",0,0,180,2)
-        Loop
-    Death:
-        GORA A -1
-        Stop
-    }
-}

@@ -268,7 +268,7 @@ ACTOR GreenExplosionFire
     +NOINTERACTION
 	+NOCLIP
 	RenderStyle Add
-    DamageType Flames
+    DamageType fire
     Scale 2.0
 	Alpha 1
 	Gravity 0

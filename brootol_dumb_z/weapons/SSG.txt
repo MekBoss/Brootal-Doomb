@@ -15,6 +15,9 @@ ACTOR SSGAmmo : Ammo
 // --------------------------------------------------------------------------
 ACTOR SSG : doomb_weapon_base Replaces SuperShotgun
 {
+	Weapon.SlotNumber 3
+	Weapon.SlotPriority 0.5
+
    Weapon.Kickback 50
 	Weapon.SelectionOrder 400
 	Weapon.AmmoGive1 4
@@ -38,6 +41,7 @@ States
 	Goto Ready
 
 	Ready:
+	ready_loop:
 		SHT2 A 1 A_WeaponReady(WRF_ALLOWRELOAD)
 	loop
 		

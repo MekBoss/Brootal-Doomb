@@ -81,7 +81,12 @@ world/lavasizzle		dslvsiz
 world/drip			dsdrip2
 
 world/hotsiz			dshtsiz
+
 weapons/rifle			DSRIFLE
+$limit weapons/rifle 0 0
+
+$rolloff weapons/rifle 100 2200
+
 weapons/sg			sgfire
 weapons/sgpump STGNPUMP
 weapons/empty DRYFIRE
@@ -99,9 +104,6 @@ DSRLAUN DSRLAUN
 
 DSSALUTE DSSALUTE
 $limit FUCK 1
-$limit weapons/rifle 0
-
-$rolloff weapons/rifle 100 2200
 $rolloff weapons/pistol 100 2200
 
 LAUNCH LAUNCH

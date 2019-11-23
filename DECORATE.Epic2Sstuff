@@ -9,7 +9,7 @@ ACTOR Epic2Alien
 	damagefactor "cutless", 0.6
 	damagefactor "saw", 0.8
 	damagefactor "cut", 0.8
-	damagefactor "explosiveimpact", 0.4
+	damagefactor "Explosive_Impact", 0.4
 	Monster
 	+FLOORCLIP
 	SeeSound "wolfss/sight"

@@ -29,10 +29,7 @@ States
 		FZD9 B 2
 		FZD9 A 10
 		FZD9 BABABA 2
-		Goto Death.Burn
 		Death.Fire:
-		Death.Flames:
-		Death.Burn:
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
 	    TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
@@ -66,4 +63,267 @@ States
 	TNT1 A 0 A_SpawnItem("Frozendoomb_fatso")
 	Stop
 	}
+}
+
+
+
+Actor NoGutsFatso: CurbstompedMarine
+{
+    Radius 24
+    Height 46
+    +SHOOTABLE
+    -SOLID
+    +NOTELEPORT
+    +MOVEWITHSECTOR
+    Mass 1000
+    Health 300
+    Scale 1.2
+    damagefactor "Blood", 0.0
+    damagefactor "Trample", 0.0
+States
+    {
+    Spawn:
+		FAT2 P -1
+        Stop
+    Death:
+        TNT1 A 0 A_SpawnProjectile ("MuchMeatDeath", 2, 0, random (0, 360), 2, random (0, 160))
+		Stop
+    Death.Fire:
+    Death.Plasma:
+	Death.Plasma2:
+        TNT1 A 0
+        TNT1 A 0 A_Scream
+        TNT1 A 0 A_NoBlocking
+        TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 AA 0 doomb_spawn_burned_flesh()
+		EXPL AAAAAA 0 A_SpawnProjectile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360))
+        CARB LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL 10 A_SpawnProjectile ("SmallSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        CARB L -1
+  Death.Cut:
+  Death.Saw:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnProjectile ("XDeathdoomb_fatsoArm", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 AAA 0 A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem ("NoGutsFatso_RemovedWeapon", 1)
+        Stop
+	
+	Raise:
+		TNT1 A 2 A_SpawnProjectile ("RealFlameTrailsSmall", 6, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60)
+		TNT1 A 2 A_SpawnProjectile ("RealFlameTrailsSmall", 6, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60)
+		TNT1 A 0 A_SpawnItem("TeleportFog")
+		TNT1 A 0 A_NoBlocking
+        TNT1 A 0 A_SpawnItem ("doomb_fatso")
+		Stop
+    }
+}
+
+
+Actor NoGutsFatso_RemovedWeapon: NoGutsFatso
+{
+Health 200
+States
+{
+Spawn:
+		FAT2 Q -1
+        Stop    
+	Death.Cutless: Death.Cut:
+	Death.Saw:
+	Goto Death
+}
+
+}
+
+Actor DeadFat: CurbstompedMarine
+{
+    Radius 16
+    Height 18
+    Scale 1.2
+    +SHOOTABLE
+    +NOTELEPORT
+    +MOVEWITHSECTOR
+    +CORPSE
+	-SOLID
+	+THRUACTORS
+	damagefactor "Crusher", 50.0
+    Mass 1000
+    Health 200
+    damagefactor "Blood", 0.0
+    damagefactor "Trample", 0.0
+States
+    {
+    Spawn:
+		FATK F -1
+        Stop
+    Death:
+	Death.Explosive_Impact:
+	Death.Shotgun:
+		TNT1 A 0 A_SpawnItem("GutsPile")
+		TNT1 A 0 A_SpawnItemEx("GibsZ", 15, 15)
+		TNT1 A 0 A_SpawnItemEx("GibsZ", 15, -15)
+		TNT1 A 0 A_SpawnItemEx("GibsZ", -15, 15)
+		TNT1 A 0 A_SpawnItemEx("GibsZ", -15, -15)
+		 TNT1 A 0 A_NoBlocking
+		 TNT1 AAA 0 A_SpawnProjectile ("UltraGoreSpawner", 5, 0, random (0, 360), 2, random (30, 60))
+		 TNT1 AAAA 0 A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 AAAA 0 A_SpawnProjectile ("XDeath2b", 25, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 AAAA 0 A_SpawnProjectile ("XDeath3b", 25, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 30, 0, random (0, 360), 2, random (40, 90))
+		 TNT1 AAAAAAA 0 A_SpawnProjectile ("XDeathSkinPiece2", 25, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 AAAA 0 A_SpawnProjectile ("XDeathSkinPiece1", 25, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 AAAAAAAA 0 A_SpawnProjectile ("SmallSuperGore", 30, 0, random (0, 360), 2, random (10, 170))
+		 TNT1 AAAA 0 A_SpawnProjectile ("BloodMistSmall", 35, 0, random (0, 360), 2, random (40, 90))
+		 Stop
+
+    Death.Fire:
+    Death.Plasma: Death.Plasma2:
+        TNT1 A 0
+        TNT1 A 0 A_Scream
+        TNT1 A 0 A_NoBlocking
+        TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 AA 0 doomb_spawn_burned_flesh()
+		EXPL AAAAAA 0 A_SpawnProjectile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360))
+        CARB LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL 10 A_SpawnProjectile ("SmallSmoke", 1, 0, random (0, 360), 2, random (0, 160))
+        CARB L -1
+        Stop
+		Death.Cut:
+		Death.Saw:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnProjectile ("XDeathdoomb_fatsoArm", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 AAA 0 A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem ("DeadFatNoArm", 1)
+		
+		Raise:
+		TNT1 A 2 A_SpawnProjectile ("RealFlameTrailsSmall", 6, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60)
+		TNT1 A 2 A_SpawnProjectile ("RealFlameTrailsSmall", 6, 0, random (0, 360), 2, random (70, 110))
+		TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60)
+		TNT1 A 0 A_SpawnItem("TeleportFog")
+		TNT1 A 0 A_NoBlocking
+        TNT1 A 0 A_SpawnItem ("doomb_fatso")
+		Stop
+		
+		
+}
+
+}		
+		
+Actor DeadFatNoArm: DeadFat
+{
+States
+    {
+    Spawn:
+		FATK G -1
+        Stop
+	
+	Death.Saw:
+	death.Cut:
+	TNT1 A 1
+	Goto Death
+    
+}
+
+}
+
+Actor DeadFatNoHead: DeadFat
+{
+Health 200
+States
+{
+Spawn:
+		FATT T -1
+        Stop    
+       Death.Cutless:
+  	     TNT1 A 0
+		 Goto Death
+		Stop
+ Death.Cut:
+ Death.Saw:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnProjectile ("XDeathdoomb_fatsoArm", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 AAA 0 A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem ("DeadFatNoHead_RemovedWeapon", 1)
+		Stop
+		
+}
+
+}
+Actor DeadFatNoHead_RemovedWeapon: DeadFat
+{
+Health 200
+States
+{
+Spawn:
+		FAT2 R -1
+        Stop    
+       Death.Cutless: Death.Cut:	        Death.Saw:
+  	    TNT1 A 0
+		 Goto Death
+}
+
+}
+Actor XDeadFat: DeadFat
+{
+Health 200
+States
+{
+Spawn:
+		XFBT F -1
+        Stop    
+       Death.Cutless: Death.Cut:	       Death.Saw:
+  	    TNT1 A 0
+		 Goto Death
+}
+
+}
+
+Actor FatalizedFatso: DeadFat
+{Scale 1.0 Health 200
+States
+{
+Spawn:
+		FATF F 1 A_PlaySound("fatso/pain")
+        FATF FFEE 10 A_SpawnProjectile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
+		
+		FATF F 1 A_PlaySound("fatso/pain")
+        FATF FFEE 10 A_SpawnProjectile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
+		
+		FATF F 1 A_PlaySound("fatso/pain")
+        FATF FFEE 10 A_SpawnProjectile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
+		
+		FATF F 1 A_PlaySound("fatso/pain")
+        FATF FF 10 A_SpawnProjectile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
+		
+		FATF E 1 A_PlaySound("fatso/death")
+		FATF EEEEEEEEE 4 A_SpawnProjectile ("Blood", 35, 0, random (0, 360), 2, random (0, 160))
+		FATF E -1
+        Stop 
+	}
+}
+
+
+ACTOR XDeathdoomb_fatsoArm: XDeathArm1
+{
+    +SKYEXPLODE
+	-CLIENTSIDEONLY
+    Scale 1.1
+    Speed 9
+	Gravity 0.4
+	BounceFactor 0.4
+    States
+    {
+    Spawn:
+        TNT1 A 0 A_JumpIf(waterlevel > 1, "Death")
+		MANA ABCDEFG 3
+		Loop
+   	Death:
+        TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
+	    HND8 A 0
+        HND8 A 0 A_SpawnItem("FlameCannon",0,0,0,1)
+        Stop
+    }
 }

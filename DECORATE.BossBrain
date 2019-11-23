@@ -9,8 +9,12 @@ ACTOR BossBrainReplacer Replaces BossBrain
   +OLDRADIUSDMG
   PainSound "brain/pain"
   DeathSound "brain/death"
-  damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0    damagefactor "Avoid", 0.0
-  damagefactor "Shrapnel", 0.0	damagefactor "KillMe", 0.0  damagefactor "TeleportRemover", 0.0
+  damagefactor "Blood", 0.0
+   damagefactor "BlueBlood", 0.0 
+   damagefactor "GreenBlood", 0.0  
+     damagefactor "Avoid", 0.0
+  	damagefactor "KillMe", 0.0 
+     damagefactor "TeleportRemover", 0.0
   States
   {
   BrainExplode:
@@ -64,8 +68,12 @@ ACTOR AltMap01Airplane
   +OLDRADIUSDMG
   PainSound "brain/pain"
   DeathSound "brain/death"
-  damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0    damagefactor "Avoid", 0.0
-  damagefactor "Shrapnel", 0.0	damagefactor "KillMe", 0.0  damagefactor "TeleportRemover", 0.0
+  damagefactor "Blood", 0.0 
+  damagefactor "BlueBlood", 0.0 
+  damagefactor "GreenBlood", 0.0  
+    damagefactor "Avoid", 0.0
+  	damagefactor "KillMe", 0.0
+      damagefactor "TeleportRemover", 0.0
   States
   {
   BrainExplode:

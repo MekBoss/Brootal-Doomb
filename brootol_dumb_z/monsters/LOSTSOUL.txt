@@ -30,7 +30,7 @@ damage 0
 // Lost Soul
 //
 //===========================================================================
-ACTOR TehLostSoul : dumb_monster_base Replaces LostSoul
+ACTOR TehLostSoul : doomb_monster_base Replaces LostSoul
 {
 	
 	Health 100
@@ -46,10 +46,11 @@ ACTOR TehLostSoul : dumb_monster_base Replaces LostSoul
 	damagefactor "Fire", 0
 	Monster
     -NOBLOOD
-damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
+damagefactor "Blood", 0.0 
+damagefactor "BlueBlood", 0.0
+ damagefactor "GreenBlood", 0.0
     damagefactor "Fatality", 5.0
 	damagefactor "TeleportRemover", 0.0
-    damagefactor "Shrapnel", 0.4
 	DamageFactor "CauseObjectsToSplash", 0.0
  RenderStyle Normal
   bloodcolor none
@@ -65,17 +66,8 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 	States
 	{
 	Pain.Avoid: 
-	  TNT1 A 0
-	  TNT1 A 0 A_Jump(255, "AvoidLeft", "AvoidRight")
-	  Goto AvoidLeft
-	  AvoidLeft:
 	    LSOL B 1 A_FaceTarget
-	    TNT1 A 0 ThrustThing(angle*256/360+192, 15, 0, 0)
-        LSOL B 5 A_FaceTarget
-        Goto Missile
-	AvoidRight:
-	    LSOL B 1 A_FaceTarget
-	    TNT1 A 0 ThrustThing(angle*256/360+64, 15, 0, 0)
+	    TNT1 A 0 ThrustThing(angle*256/360+randompick(64, 192), 15, 0, 0)
         LSOL B 5 A_FaceTarget
         Goto Missile
 		
@@ -170,7 +162,7 @@ damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood
 		TNT1 AAAA 0 A_SpawnProjectile ("SmallLSPart3", 0, 0, random (0, 360), 2, random (0, 360))
         TNT1 AAA 0 A_SpawnProjectile ("CoolAndNewFlameTrailsLong", 12, 0, random (0, 360), 2, random (0, 160))
 		LSOL G 0 BRIGHT A_Scream
-	  EXPL AA 0 A_SpawnItem("ExplosionParticleSpawner")
+        TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, random (0, 180))
 	  TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,32,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    EXPL AAAAA 0 A_SpawnProjectile ("FireBallExplosionFlamesMedium", 32, 0, random (0, 360), 2, random (0, 360))
 		TNT1 AAAA 0 A_SpawnProjectile ("PlasmaSmoke", 32, 0, random (0, 360), 2, random (0, 360))
@@ -294,7 +286,7 @@ ACTOR SoulTrails
 	+FORCEXYBILLBOARD
     +CLIENTSIDEONLY
 	RenderStyle Add
-    DamageType Flames
+    DamageType fire
     Scale 0.5
 	Alpha 0.4
 	Gravity 0
@@ -323,7 +315,7 @@ ACTOR FireBlood
 
 
 
-actor LostSoulBlood : Blood
+actor LostSoulBlood
 {
 Decal None
  
@@ -339,7 +331,7 @@ Speed 0
  {
   Spawn:
         TNT1 A 0
-		TNT1 AAAAAA 0 A_SpawnProjectile ("SparkXNoModel", 2, 0, random (0, 360), 2, random (0, 360))
+		TNT1 AAAAAA 0 A_SpawnProjectile ("SparkX", 2, 0, random (0, 360), 2, random (0, 360))
 		TNT1 AA 0 A_SpawnProjectile ("SmallLSPart1", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 AA 0 A_SpawnProjectile ("SmallLSPart3", 0, 0, random (0, 360), 2, random (0, 360))
         stop

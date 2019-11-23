@@ -14,8 +14,9 @@ ACTOR Spectro: BullDemon Replaces Spectre
 	damagefactor "TeleportRemover", 0.0
 	Monster
 	damagefactor "Avoid", 0.0
-damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
-    damagefactor "Shrapnel", 0.3
+	damagefactor "Blood", 0.0 
+	damagefactor "BlueBlood", 0.0
+	damagefactor "GreenBlood", 0.0
 	damagefactor "SSG", 5.0
 	+FLOORCLIP 
 	SeeSound "demon/sight"

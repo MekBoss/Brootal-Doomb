@@ -14,7 +14,7 @@ ACTOR FlameTrails
     +NOINTERACTION
 	+NOCLIP
 	RenderStyle Add
-    DamageType Flames
+    DamageType fire
     Scale 0.5
 	Alpha 1
 	Gravity 0
@@ -202,7 +202,7 @@ ACTOR FastSmallFlameTrails
     +CLIENTSIDEONLY
     +NOINTERACTION
 	RenderStyle Add
-    DamageType Flames
+    DamageType fire
     Scale 0.3
 	Alpha 1
 	Gravity 0
@@ -306,7 +306,7 @@ ACTOR RealFlameTrailsSmall
     +NOINTERACTION
 	+NOCLIP
 	RenderStyle Add
-    DamageType Flames
+    DamageType fire
     Scale 0.8
 	Alpha 1.0
 	Gravity 0
@@ -503,7 +503,7 @@ ACTOR MinimalFlameTrails
 	+NOCLIP
 	+FORCEXYBILLBOARD
 	RenderStyle Add
-    DamageType Flames
+    DamageType fire
     Scale 0.4
 	Alpha 1.0
 	Gravity 0
@@ -689,7 +689,7 @@ ACTOR FlamethrowerFireParticles
     +NOINTERACTION
 	+NOCLIP
 	+FORCEXYBILLBOARD
-	DamageType Flames
+	DamageType fire
 	Renderstyle Add
     Scale 1.5
 	Alpha 1.0

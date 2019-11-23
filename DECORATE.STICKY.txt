@@ -169,8 +169,25 @@ Goto Live1
 }
 
 
-ACTOR XDeath2NoStick: XDeath1
+ACTOR XDeath2NoStick
 {
+    Radius 8
+    Height 8
+    +NOBLOCKMAP
+	+MISSILE
+    +NOTELEPORT
+    +MOVEWITHSECTOR
+    +CLIENTSIDEONLY
+    +RIPPER
+    +BLOODLESSIMPACT 
+	-DONTSPLASH
+	+THRUGHOST
+	+THRUACTORS
+	+FLOORCLIP
+	damagetype Blood
+    SeeSound "misc/xdeath4"
+	Mass 1
+    
     +CLIENTSIDEONLY
 	+DONTSPLASH
     Speed 0
@@ -178,8 +195,6 @@ ACTOR XDeath2NoStick: XDeath1
     DeathSound "misc/xdeath2"
 	Decal BrutalBloodSplat
     Scale 1.1
-	Radius 1
-	Height 0
     States
     {
     Spawn:
@@ -387,7 +402,7 @@ Goto Live1
 }
 
 
-ACTOR XDeath3NoStick: XDeath1
+ACTOR XDeath3NoStick: XDeath2NoStick
 {
     +CLIENTSIDEONLY
 	+DONTSPLASH
@@ -541,7 +556,7 @@ Goto Live1
 }
 
 
-ACTOR XDeath4NoStick: XDeath1
+ACTOR XDeath4NoStick: XDeath2NoStick
 {
     +CLIENTSIDEONLY
 	+DONTSPLASH

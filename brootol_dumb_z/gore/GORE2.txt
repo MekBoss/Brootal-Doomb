@@ -1,67 +1,5 @@
 
 
-ACTOR SargeXDeath
-{
-    Radius 1
-    Height 1
-    Scale 0.8
-	Speed 0
-	Mass 1
-	
-	BounceFactor 0.5
-	+DOOMBOUNCE
-	+MISSILE
-    +NOBLOCKMAP
-    +NOTELEPORT
-    +MOVEWITHSECTOR
-    +NOGRAVITY
-    +NOCLIP
-    +DONTSPLASH
-    States
-    {
-    Spawn:
-	    TNT1 A 0 A_SpawnItem("BloodSplasher3")
-	    TNT1 AAAAAAAAAAAAAAA 0 A_SpawnProjectile ("WallRedBlood", 40, 0, random (0, 360), 2, random (-15, 15))
-         TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130))
-		 TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160))
-		 //TNT1 A 0 A_SpawnProjectile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160))
-		 //TNT1 A 0 A_SpawnProjectile ("XDeath3", 32, 0, random (0, 360), 2, random (0, 160))
-		 //TNT1 AA 0 A_SpawnProjectile ("XDeath4", 32, 0, random (0, 360), 2, random (0, 160))
-		 //TNT1 A 0 A_SpawnProjectile ("XDeath5", 32, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAAA 0 A_SpawnProjectile ("XDeath2b", 15, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAAA 0 A_SpawnProjectile ("XDeath3b", 15, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece2", 15, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile ("XDeathHalfShotgunguyNoArmNoHead", 32, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAAAAAA 0 A_SpawnProjectile ("Instestin", 24, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile ("XDeathSargeLeg2", 32, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile ("GibSargeBoot", 32, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile ("XDeathSergeantHeadOnXDeath", 32, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnItem ("BigBloodSpot")
-		 
-		 TNT1 A 1
-		 TNT1 A 0 ACS_ExecuteAlways(799, 0, 0, 0, 0)//Check Blood density
-		 TNT1 A 2
-		 TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90))
-		 Stop
-		 
-	LowBlood:
-	    TNT1 A 2
-		Stop
-	LotsOfBlood:
-		TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAAAAA 0 A_SpawnProjectile ("SuperGoreSpawner", 64, 0, random (0, 360), 2, random (20, 40))
-		Stop
-	AbsurdBlood:
-		TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile ("SuperGoreMist", 24, 0, random (0, 360), 2, random (30, 90))
-		TNT1 AAAAAAAA 0 A_SpawnProjectile ("SuperGoreSpawner", 64, 0, random (0, 360), 2, random (20, 40))
-		Stop
-    }
-}
 
 
 
@@ -86,8 +24,8 @@ ACTOR ImpXDeath
     States
     {
     Spawn:
-	TNT1 A 0 A_SpawnItem("BloodSplasher3")
-	TNT1 AAAAAAAAAAAAAAA 0 A_SpawnProjectile ("WallRedBlood", 40, 0, random (0, 360), 2, random (-15, 15))
+		tnt1 a 0 A_Explode(3,600, 0, 0, 0, 0, 0, "none", "blood")
+		TNT1 AAAAAAAAAAAAAAA 0 A_SpawnProjectile ("WallRedBlood", 40, 0, random (0, 360), 2, random (-15, 15))
           TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130))
 		 TNT1 A 0 A_SpawnProjectile ("XDeathImpArm", 32, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_SpawnProjectile ("XDeathHalfImpUpperPart32", 32, 0, random (0, 360), 2, random (10, 60))
@@ -106,9 +44,7 @@ ACTOR ImpXDeath
 		 TNT1 A 0 A_SpawnProjectile ("XDeathImpLeg", 32, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_SpawnProjectile ("XDeathImpHeadOnXDeath", 32, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_SpawnItem ("BigBloodSpot")
-		 TNT1 A 1
-		 TNT1 A 0 ACS_ExecuteAlways(799, 0, 0, 0, 0)//Check Blood density
-		 TNT1 A 2
+
 		 TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90))
 		 Stop
 		 
@@ -147,7 +83,7 @@ ACTOR KnightXDeath
     States
     {
     Spawn:
-	     TNT1 A 0 A_SpawnItem("BloodSplasher3")
+		tnt1 a 0 A_Explode(3,600, 0, 0, 0, 0, 0, "none", "blood")
 	     TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightArm", 32, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightTorso", 32, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AA 0 A_SpawnProjectile ("XDeathHellKnightLeg", 32, 0, random (0, 360), 2, random (0, 160))
@@ -185,61 +121,6 @@ ACTOR KnightXDeath
     }
 }
 
-ACTOR BaronXDeath
-{
-    Radius 1
-    Height 1
-    Scale 0.8
-	Speed 0
-	Mass 1
-	
-	BounceFactor 0.5
-	+DOOMBOUNCE
-	+MISSILE
-    +NOBLOCKMAP
-    +NOTELEPORT
-    +MOVEWITHSECTOR
-    +NOGRAVITY
-    +NOCLIP
-    +DONTSPLASH
-    States
-    {
-    Spawn:
-	     TNT1 A 0 A_SpawnItem("BloodSplasher3")
-	     TNT1 A 0 A_SpawnProjectile ("XDeathBaronOfHellTorso", 32, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AA 0 A_SpawnProjectile ("XDeathHellKnightLeg", 32, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile ("XDeath3", 32, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile ("XDeath4", 32, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAAA 0 A_SpawnProjectile ("XDeath2b", 15, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAAA 0 A_SpawnProjectile ("XDeath3b", 15, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece2", 15, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnItem ("BigBloodSpot")
-		
-		 TNT1 A 1
-		 TNT1 A 0 ACS_ExecuteAlways(799, 0, 0, 0, 0)//Check Blood density
-		 TNT1 A 2
-		 TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90))
-		 Stop
-		 
-	LowBlood:
-	    TNT1 A 2
-		Stop
-	LotsOfBlood:
-		TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAAAAA 0 A_SpawnProjectile ("SuperGoreSpawner", 64, 0, random (0, 360), 2, random (20, 40))
-		Stop
-	AbsurdBlood:
-		TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90))
-		TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile ("SuperGoreMist", 24, 0, random (0, 360), 2, random (30, 90))
-		TNT1 AAAAAAAA 0 A_SpawnProjectile ("SuperGoreSpawner", 64, 0, random (0, 360), 2, random (20, 40))
-		Stop
-    }
-}
 
 ACTOR CyberXDeath
 {
@@ -261,7 +142,7 @@ ACTOR CyberXDeath
     States
     {
     Spawn:
-	     TNT1 A 0 A_SpawnItem("BloodSplasher3")
+		tnt1 a 0 A_Explode(3,600, 0, 0, 0, 0, 0, "none", "blood")
 	     TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistXXBig", 30, 0, random (0, 360), 2, random (70, 90))
 		 TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistXXBig", 100, 0, random (0, 360), 2, random (20, 90))
          TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130))
@@ -303,7 +184,7 @@ ACTOR BullXDeath
     States
     {
     Spawn:
-	     TNT1 A 0 A_SpawnItem("BloodSplasher3")
+		tnt1 a 0 A_Explode(3,600, 0, 0, 0, 0, 0, "none", "blood")
 	     TNT1 AAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90))
          TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130))
 		 TNT1 AA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160))
@@ -363,7 +244,7 @@ ACTOR ChainXDeath
     States
     {
     Spawn:
-	     TNT1 A 0 A_SpawnItem("BloodSplasher3")
+		tnt1 a 0 A_Explode(3,600, 0, 0, 0, 0, 0, "none", "blood")
 	     TNT1 AAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 35, 0, random (0, 360), 2, random (0, 160))
 	     TNT1 AAAAAA 0 bright A_SpawnProjectile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
          TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130))
@@ -421,12 +302,11 @@ ACTOR MarineXDeath
     States
     {
     Spawn:
-	     TNT1 A 0 A_SpawnItem("BloodSplasher3")
+		tnt1 a 0 A_Explode(3,600, 0, 0, 0, 0, 0, "none", "blood")
 	     TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 35, 0, random (0, 360), 2, random (0, 160))
 	     TNT1 AAAAAA 0 bright A_SpawnProjectile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
          TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130))
-		 TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile ("XDeathArm2", 32, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 AA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_SpawnProjectile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_SpawnProjectile ("XDeath3", 32, 0, random (0, 360), 2, random (0, 160))
@@ -478,7 +358,7 @@ ACTOR SpiderDeath
     States
     {
     Spawn:
-	     TNT1 A 0 A_SpawnItem("BloodSplasher3")
+		tnt1 a 0 A_Explode(3,600, 0, 0, 0, 0, 0, "none", "blood")
 	     TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 35, 0, random (0, 360), 2, random (0, 160))
          TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130))
 		 TNT1 AAAAAAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
@@ -531,7 +411,7 @@ ACTOR SkeletonXDeath
     States
     {
     Spawn:
-	     TNT1 A 0 A_SpawnItem("BloodSplasher3")
+		tnt1 a 0 A_Explode(3,600, 0, 0, 0, 0, 0, "none", "blood")
 	     TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 35, 0, random (0, 360), 2, random (0, 160))
          TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130))
 		 TNT1 AAAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
@@ -601,11 +481,11 @@ ACTOR HalfManDeath
     States
     {
     Spawn:
-	     TNT1 A 0 A_SpawnItem("BloodSplasher3")
+		tnt1 a 0 A_Explode(3,600, 0, 0, 0, 0, 0, "none", "blood")
 	     TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 35, 0, random (0, 360), 2, random (0, 160))
          TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130))
-		 TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile ("XDeathArm2", 32, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160))
+
 		 TNT1 AA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_SpawnProjectile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_SpawnProjectile ("XDeath3", 32, 0, random (0, 360), 2, random (0, 160))
@@ -728,7 +608,7 @@ ACTOR RipGuts
     {
     Spawn:
  TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAAA 0 A_SpawnProjectile ("Instestin2", 32, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 AAAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160))
 	Death:
@@ -738,37 +618,6 @@ ACTOR RipGuts
 }
 
 
-ACTOR RipSergeant
-{
-    Radius 1
-    Height 1
-    Scale 0.8
-	Speed 0
-	Mass 1
-	
-	BounceFactor 0.5
-	+DOOMBOUNCE
-	+MISSILE
-    +NOBLOCKMAP
-    +NOTELEPORT
-    +MOVEWITHSECTOR
-    +NOGRAVITY
-    +NOCLIP
-    +DONTSPLASH
-    States
-    {
-    Spawn:
-	    TNT1 A 0 A_SpawnItem("BloodSplasher2")
-        TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAAA 0 A_SpawnProjectile ("Instestin2", 32, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile ("XDeathHalfSergeant", 32, 0, random (0, 360), 2, random (0, 160))
-	Death:
-	    TNT1 A 0
-        Stop
-    }
-}
 
 
 
@@ -794,7 +643,7 @@ ACTOR RipImp
     {
     Spawn:
         TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAA 0 A_SpawnProjectile ("Instestin2", 32, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 AAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160))
 		 TNT1 A 0 A_SpawnProjectile ("XDeathHalfImp", 40, 0, random (0, 360), 2, random (0, 160))

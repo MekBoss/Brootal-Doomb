@@ -1,11 +1,11 @@
-ACTOR TheCyberdemon : dumb_monster_base Replaces Cyberdemon
+ACTOR TheCyberdemon : doomb_monster_base Replaces Cyberdemon
 {
-	dumb_monster_base.headshot_multiplier 2
-	dumb_monster_base.head_starting_position 100//so that if someone forgot to define this number monster dont get headshot from every attack
-	dumb_monster_base.legs_height_max -1//same for legs
+	doomb_monster_base.headshot_multiplier 2
+	doomb_monster_base.head_starting_position 100//so that if someone forgot to define this number monster dont get headshot from every attack
+	doomb_monster_base.legs_height_max -1//same for legs
 
     //damagefactor "BFG", 0.5
-	damagefactor "Explosive", 1.1
+	damagefactor "Explosive_Impact", 1.1
     damagefactor "HKFT", 0.05
 	damagefactor "HKFT", 0.05
 	damagefactor "Decaptate", 5.0
@@ -36,7 +36,9 @@ ACTOR TheCyberdemon : dumb_monster_base Replaces Cyberdemon
 	PainChance "Taunt", 255
 	DropItem "DemonStrengthRune" 25
     BloodType "CyberDemon_Blood", "SawBlood", "SawBlood"
-damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
+	damagefactor "Blood", 0.0
+	damagefactor "BlueBlood", 0.0
+	damagefactor "GreenBlood", 0.0
 	States
 	{
 	

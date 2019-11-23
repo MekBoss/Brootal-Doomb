@@ -2,7 +2,7 @@
 ACTOR CyberdemonBoss: Cyberdemon 2546
 {
     //damagefactor "BFG", 0.5
-	damagefactor "Explosive", 1.1
+	damagefactor "Explosive_Impact", 1.1
     damagefactor "HKFT", 0.05
 	damagefactor "HKFT", 0.05
 	damagefactor "Decaptate", 5.0
@@ -210,7 +210,7 @@ ACTOR SuperMastermind 2547
     //damagefactor "BFG", 0.0
     damagefactor "HKFT", 0.05
     //damagefactor "Head", 1.5
-	damagefactor "Explosive", 1.5
+	damagefactor "Explosive_Impact", 1.5
 	damagefactor "Avoid", 0.0
 	damagefactor "Decaptate", 5.0
 	damagefactor "Stomp", 0.0
@@ -230,7 +230,7 @@ ACTOR SuperMastermind 2547
 	Speed 40
 	+NOTARGET
 	PainChance 30
-	PainChance "Explosive", 80
+	PainChance "Explosive_Impact", 80
 	Monster
 	//MinMissileChance 200
 	+BOSS

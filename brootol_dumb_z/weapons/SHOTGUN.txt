@@ -27,6 +27,9 @@ inventory.maxamount 1
 
 ACTOR Shot_Gun : doomb_weapon_base Replaces Shotgun
 {
+	Weapon.SlotNumber 3
+	Weapon.SlotPriority 0
+
 	Weapon.SelectionOrder 1300
 	Weapon.AmmoUse1 0
 	Weapon.AmmoUse2 0
@@ -51,33 +54,26 @@ ACTOR Shot_Gun : doomb_weapon_base Replaces Shotgun
 		TNT1 A 0
 		TNT1 A 0 A_TakeInventory("ImpactMovesSling")
 		TNT1 A 0 A_JumpIfInventory("UseShotgunStrap", 1, 2)
-		Goto OkToFire
+		Goto ready_loop
 		TNT1 A 0
 		SHTI GH 2 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
  
 		SHTI IJK 2 A_WeaponReady
-		TNT1 A 0 A_TakeInventory("ImpactMovesSling")
 		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
  
 		ShakeRight:
 		TNT1 A 0
-		TNT1 A 0 A_TakeInventory("ImpactMovesSling")
 		TNT1 A 0 A_JumpIfInventory("UseShotgunStrap", 1, 2)
-		Goto OkToFire
+		Goto ready_loop
 		TNT1 A 0
 		SHTI ABC 2 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
  
 		TNT1 A 0 A_JumpIfInventory("ImpactMovesSling", 1, "ShakeLeft")
 		SHTI DEF 2 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
- 
 		TNT1 A 0 A_JumpIfInventory("ImpactMovesSling", 1, "ShakeLeft")
 	    SHTI GHK 2 A_WeaponReady
-		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
 	    SHTI ABEF 2 A_WeaponReady
-		Goto Ready+14
+	Goto Ready_loop
 		
 	ShakeAiming:
 		TNT1 A 0
@@ -113,21 +109,15 @@ ACTOR Shot_Gun : doomb_weapon_base Replaces Shotgun
 		
  
 		TNT1 A 0 A_JumpIfInventory("ImpactMovesSling", 1, "ShakeLeft")
-	OkToFire:
+	ready_loop:
 		SHTG A 1 A_WeaponReady(WRF_ALLOWRELOAD)
-		loop
+	loop
 		
 	Ready2:
-        
-        
-        
-		
-		TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute")
- 
 		TNT1 A 0 A_JumpIfInventory("ImpactMovesSling", 1, "ShakeAiming")
 		
 		SHT8 A 1 A_WeaponReady
-		Loop
+	Loop
 	
 	
 	Deselect:
@@ -319,7 +309,7 @@ ACTOR Shot_Gun : doomb_weapon_base Replaces Shotgun
         TNT1 A 0 A_ZoomFactor(1.0)
 		SHTG A 1 A_WeaponReady
 		
-		TNT1 A 0 A_JumpIfInventory("ShotgunAmmo",8,"OkToFire")
+		TNT1 A 0 A_JumpIfInventory("ShotgunAmmo",8,"ready_loop")
 		TNT1 A 0 A_JumpIfInventory("ShotgunAmmo", 1, "ReloadNormally")
 		TNT1 A 0 A_GiveInventory("ShotgunWasEmpty", 1)
 	ReloadNormally:	
@@ -405,7 +395,7 @@ ACTOR Shot_Gun : doomb_weapon_base Replaces Shotgun
 		TNT1 A 0 A_Takeinventory("Zoomed",1)
 		TNT1 A 0 A_GiveInventory("ShotgunWasEmpty", 1)
         TNT1 A 0 A_JumpIfInventory("ShotgunAmmo",1,3)
-        Goto OkToFire
+        Goto ready_loop
         TNT1 AAA 0
 		TNT1 A 0 A_Takeinventory("Zoomed",1)
 		TNT1 A 0 A_GiveInventory ("Pumping", 1)
@@ -434,7 +424,7 @@ ACTOR Shot_Gun : doomb_weapon_base Replaces Shotgun
 	FInishUnload:
 		SHTG EDCBA 1
 		TNT1 A 0 A_Takeinventory("Unloading",1)
-		Goto OkToFire	
+		Goto ready_loop	
 	}
 }
 

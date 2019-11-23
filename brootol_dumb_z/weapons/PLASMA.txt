@@ -20,6 +20,9 @@ inventory.maxamount 1
 
 ACTOR Plasma_Gun : doomb_weapon_base
 {
+	Weapon.SlotNumber 6
+	Weapon.SlotPriority 0
+
 	Weapon.SelectionOrder 100
 	Weapon.AmmoUse1 0
 	Weapon.AmmoGive1 0
@@ -93,7 +96,9 @@ ACTOR Plasma_Gun : doomb_weapon_base
 		TNT1 A 0 A_ReFire
         TNT1 A 0 A_PlaySound("PLSCOOL", 0)
         PLSG BCD 1
-		PLSG EEEEEE 3 A_FireCustomMissile("SmokeSpawner",0,0,10,2)
+		PLSG EEEEEE 3 	A_FireProjectile ("ShotSmoke", 0, 0, random (0, 360), 2, random (0, 180))
+
+
 		PLSG DCB 1
         TNT1 A 0 A_PlaySound("BEPBEP")
 		Goto ready_loop
@@ -187,7 +192,8 @@ AltHold:
         PLSG KLKJ 1
 	TNT1 A 0 A_SetPitch(pitch - 8.0)
         PLSG BCD 1
-		PLSG EEEEEEEEEEEE 3 A_FireCustomMissile("SmokeSpawner",0,0,10,5)
+		PLSG EEEEEEEEEEEE 3 A_fireProjectile ("ShotSmoke",0,0,10,5)
+
 		PLSG DCB 1
         TNT1 A 0 A_JumpIfInventory("PlasmaAmmo",1,2)
         Goto Reload
@@ -314,7 +320,11 @@ ACTOR Plasma_Ball: FastProjectile Replaces PlasmaBall
 	+THRUSPECIES
 	+MTHRUSPECIES
 	Species "Marines"
-	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0 damagefactor "Taunt", 0.0 damagefactor "KillMe", 0.0 damagefactor "Shrapnel", 0.0
+	damagefactor "Blood", 0.0
+	 damagefactor "BlueBlood", 0.0 
+	 damagefactor "GreenBlood", 0.0 
+	 damagefactor "Taunt", 0.0
+	  damagefactor "KillMe", 0.0
 	Health 5
 	Scale 1.0
 	

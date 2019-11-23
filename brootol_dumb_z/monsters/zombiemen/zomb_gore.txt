@@ -12,7 +12,7 @@ ACTOR BurningZombie
 	damagefactor "Flames", 0.0
 	damagefactor "Flame", 0.0
 	damagefactor "Head", 0.0
-	damagefactor "ExplosiveImpact", 10.0
+	damagefactor "Explosive_Impact", 10.0
 	MONSTER
 	-COUNTKILL
 	+NOICEDEATH
@@ -72,13 +72,11 @@ ACTOR BurningZombie
 		TNT1 A 0 A_JumpIf(momz == 0, "fallDeath")
 		Loop
 	
-	Death.ExplosiveImpact:
-	TNT1 A 0
-	TNT1 A 0 ThrustThingZ(0,60,0,1)
-	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
-	TNT1 A 0
-	Goto Looping
-	
+	Death.Explosive_Impact:
+		TNT1 A 0
+		TNT1 A 0 ThrustThingZ(0,60,0,1)
+		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
+		TNT1 A 0
 	Looping:	
 	    BDT3 AAAA 1 Bright A_JumpIf(momz == 0, "fallDeath")
         BDT1 B 0 A_SpawnProjectile("BurnParticles", 20, 0, random (0, 360), 2, random (50, 130))
@@ -92,7 +90,7 @@ ACTOR BurningZombie
 	
 	FallDeath:
 	    TNT1 AAAAAAAAAA 0 A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (20, 150))
-		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile("ExplosionParticleHeavy", 10, 0, random (0, 360), 2, random (20, 150))
+		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile("ExplosionParticle2", 10, 0, random (0, 360), 2, random (20, 150))
 	    TNT1 AAAA 0 A_SpawnProjectile("XDeath1", 10, 0, random (0, 360), 2, random (20, 150))
 		TNT1 A 0 A_PlaySound("misc/xdeath")
 		TNT1 A 0 A_Explode(100, 128)
@@ -119,16 +117,16 @@ ACTOR BurningZombie
         Stop
 	XDEATH:
 	DEATH.SSG:
-	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
-	TNT1 A 0 A_ChangeFlag("SOLID", 0)
-	TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
-	TNT1 A 0 A_PlaySound("misc/xdeath")
-	     TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_SpawnProjectile ("MuchMeatDeath", 35, 0, random (0, 360), 2, random (0, 160))
-	TNT1 AAAAA 0 A_SpawnProjectile ("BurningFlyingMeatPiece", 64, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
+		TNT1 A 0 A_PlaySound("misc/xdeath")
+		TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("MuchMeatDeath", 35, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAA 0 A_SpawnProjectile ("BurningFlyingMeatPiece", 64, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
 	Stop
     }
 }
@@ -156,7 +154,7 @@ ACTOR BurningZombieMan
 	damagefactor "Flame", 0.0
 	damagefactor "Head", 0.0
 	damagefactor "Ice", 0.0
-	damagefactor "ExplosiveImpact", 10.0
+	damagefactor "Explosive_Impact", 10.0
 	MONSTER
 	-COUNTKILL
 	+FRIENDLY
@@ -198,7 +196,7 @@ ACTOR BurningZombieMan
 		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 9, "Death")
 		Loop
 	
-	Death.ExplosiveImpact:
+	Death.Explosive_Impact:
 		TNT1 A 0
 		TNT1 A 0 ThrustThingZ(0,60,0,1)
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
@@ -218,7 +216,7 @@ ACTOR BurningZombieMan
 	
 	FallDeath:
 	    TNT1 AAAAAAAAAA 0 A_SpawnProjectile("BurnParticles", 10, 0, random (0, 360), 2, random (20, 150))
-		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile("ExplosionParticleHeavy", 10, 0, random (0, 360), 2, random (20, 150))
+		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile("ExplosionParticle2", 10, 0, random (0, 360), 2, random (20, 150))
 	    TNT1 AAAA 0 A_SpawnProjectile("XDeath1", 10, 0, random (0, 360), 2, random (20, 150))
 		TNT1 A 0 A_PlaySound("misc/xdeath")
 		TNT1 A 0 A_Explode(100, 128)
@@ -389,16 +387,16 @@ ACTOR BurningZombieMan
 		
 	XDEATH:
 	DEATH.SSG:
-	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
-	TNT1 A 0 A_ChangeFlag("SOLID", 0)
-	TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
-	TNT1 A 0 A_PlaySound("misc/xdeath")
-	     TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_SpawnProjectile ("MuchMeatDeath", 35, 0, random (0, 360), 2, random (0, 160))
-	TNT1 AAAAA 0 A_SpawnProjectile ("BurningFlyingMeatPiece", 64, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 a_spawnitemex ("CrueltyBonus5Health")
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("SOLID", 0)
+		TNT1 A 0 A_ChangeFlag("NOTARGET", 1)
+		TNT1 A 0 A_PlaySound("misc/xdeath")
+		TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("MuchMeatDeath", 35, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAA 0 A_SpawnProjectile ("BurningFlyingMeatPiece", 64, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 a_spawnitemex ("CrueltyBonus5Health")
 	Stop
     }
 }
@@ -439,7 +437,6 @@ ACTOR XDeathZombieLeg
 		LEG1 ABCDEFGH 5 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
 		Loop
 	Death:
-        LEG1 E 1
 		LEG1 E 1 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
 		LEG1 E -1
 	stop
@@ -473,18 +470,19 @@ actor Gib_ZombieLeg2: LimbBase
     States
     {
     Spawn:
-LEG1 A 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
-       Loop
-    Death.plasma:	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))        Stop
+		LEG1 A 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
+	Loop
+    Death.plasma:
+	TNT1 A 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
+	Stop
     Death:    
     TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
     TNT1 A 0 A_SpawnProjectile ("GibZombieBoot", 0, 0, random (0, 180), 2, random (0, 180))
-		LEG1 Z -1
+	LEG1 Z -1
 	stop
 
 	Death.Kick:
-	Death.Melee:
-	Death.SuperPunch:
+	Death.Punch:
 	    LEG1 AA 1 A_FaceTarget
 		TNT1 A 0 A_SpawnProjectile ("XDeathZombieLegKicked", 5, 0, random (170, 190), 2, random (20, 40))
 		Stop
@@ -495,13 +493,12 @@ LEG1 A 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
 	LEG1 ABCDEFGH 2
 	Goto Spawn
 	
-	Death.ExplosiveImpact:
+	Death.Explosive_Impact:
 	TNT1 A 0 A_ChangeFlag("NOBLOCKMAP", 0)
 	TNT1 A 0
 	TNT1 A 0 ThrustThingZ(0,30,0,1)
 	LEG1 A 5
 	LEG1 ABCDEFGHABCDEFGHABCDEFGH 5 A_CheckFloor("Landz")
-	Goto Landz
 	Landz:
 		LEG1 E 1 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
 		LEG1 E -1
@@ -534,12 +531,12 @@ ACTOR XDeathHalfZombieman
     Spawn:
         TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
 		POSX F 12
-		Loop
+	Loop
     Death:
         TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
         POSX F 1 A_SpawnItem("Gib_HalfZombieman",0,0,0,1)
         TNT1 A 0
-        Stop
+	Stop
     }
 }
 
@@ -548,8 +545,8 @@ actor Gib_HalfZombieMan: BigGibBase
     States
     {
     Spawn:
-POSX F 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
-       Loop   
+		POSX F 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
+	Loop   
 	   
 	   Death:
 			TNT1 A 0 A_NoBlocking
@@ -633,20 +630,9 @@ ACTOR XDeathHalfZombiemanDown
 		POSX D 12
 		Loop
     Death:
-        TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
-        POSX E 0 A_SpawnItem("GibHalfZombiemanDown",0,0,0,1)
-        Stop
+		POSX E 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
+	Loop    
     }
-}
-
-actor GibHalfZombiemanDown: BigGibBase
-{
-    States
-    {
-    Spawn:
-	POSX E 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
-       Loop    
-}
 }
 
 
@@ -716,13 +702,28 @@ Actor XDeathZombiemanHeadOnXDeath : XDeathZombieManHead
 {
 States
 {
-Spawn:
-TNT1 A 1
-TNT1 A 0 A_jump(96, "ExplodeOnAir")
-Goto Spawn1
-ExplodeOnAir:
-TNT1 A 0
-TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode")
+	Spawn:
+		TNT1 A 1
+		TNT1 A 0 A_jump(96, "ExplodeOnAir")
+	Goto Spawn1
+	ExplodeOnAir:
+		TNT1 A 0
+
+	    TNT1 A 0
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+	    TNT1 AAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 A 0 A_SpawnProjectile ("Brains2", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains3", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4Green", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4GreenBig", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10))
+		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90))
+
 Stop
 }
 }
@@ -766,7 +767,22 @@ damagefactor "Crush", 50.0
 	
     Death:
         TNT1 A 0
-		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode")
+
+	    TNT1 A 0
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+	    TNT1 AAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 A 0 A_SpawnProjectile ("Brains2", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains3", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4Green", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4GreenBig", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10))
+		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90))
+
         Stop
 	Crush:
         TNT1 AAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (60, 140))
@@ -780,15 +796,13 @@ damagefactor "Crush", 50.0
 		EXPL A 0 A_SpawnProjectile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360))
         TNT1 A 0
         Stop
-	Death.Melee:
-	Death.SuperPunch:
+	Death.Punch:
 	Death.Kick:
 	    XHE2 EE 1 A_FaceTarget
 		TNT1 AAAA 0 A_SpawnItemEx("Blood", 0, 0, 10)
-		TNT1 A 0 A_SpawnProjectile ("XDeathZombieManHeadKicked", 5, 0, random (170, 190), 2, random (20, 30))
 		TNT1 A 0 A_PlaySound("misc/xdeath4", 1)
 		TNT1 A 0 A_PlaySound("player/cyborg/fist", 3)
-		TNT1 A 20
+		TNT1 A 0 A_SpawnProjectile ("XDeathZombieManHeadKicked", 5, 0, random (170, 190), 2, random (20, 30))
 		Stop
 	
 	Pain:
@@ -797,7 +811,7 @@ damagefactor "Crush", 50.0
 	XHE2 ABCDEFGH 2
 	Goto Spawn
 	
-	Death.ExplosiveImpact:
+	Death.Explosive_Impact:
 	TNT1 A 0
 	TNT1 A 0 A_ChangeFlag("NOBLOCKMAP", 0)
 	TNT1 A 0 ThrustThingZ(0,50,0,1)
@@ -840,7 +854,7 @@ ACTOR ZombieXDeath
 	     TNT1 A 0
 		 TNT1 A 0 A_Pain
 		 TNT1 A 0 A_FaceTarget
-	     TNT1 A 0 A_SpawnItem("BloodSplasher3")
+		tnt1 a 0 A_Explode(3,600, 0, 0, 0, 0, 0, "none", "blood")
 		 
 	     TNT1 AAAAAAAAAAAAAAA 0 A_SpawnProjectile ("WallRedBlood", 40, 0, random (0, 360), 2, random (-15, 15))
 	     TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130))
@@ -939,18 +953,20 @@ ACTOR DyingZombiemanLostTeeth: doomb_zombie_Man
 	}
 }
 
-ACTOR DyingZombiemanNoArm
+ACTOR DyingZombiemanNoArm : doomb_body_base
 {
-		Radius 16
+	Radius 16
 	Height 28
 	Health 50
-		PainSound "grunt/pain"
-		PainChance 255
-	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
+	PainSound "grunt/pain"
+	PainChance 255
+	damagefactor "Blood", 0.0
+	 damagefactor "BlueBlood", 0.0 
+	 damagefactor "GreenBlood", 0.0
     damagefactor "Avoid", 0.0
 	damagefactor "Leg", 0.0
     damagefactor "Kick", 6.0	
-		Mass 500
+	Mass 500
 	+SHOOTABLE
 	+FLOORCLIP
 	+DONTSPLASH
@@ -959,10 +975,10 @@ ACTOR DyingZombiemanNoArm
 	-COUNTKILL
 	+GHOST
 	+THRUGHOST
-		-SOLID
+	-SOLID
 
-+FLOORCLIP
-+DONTSPLASH
+	+FLOORCLIP
+	+DONTSPLASH
 	States
 	{
 		Death.Fatality:
@@ -973,7 +989,6 @@ ACTOR DyingZombiemanNoArm
         Stop
 	
 	    Death.fire:
-	Death.Flames:
 	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
         TNT1 A 0 A_Scream
         TNT1 A 0 A_NoBlocking
@@ -989,7 +1004,6 @@ ACTOR DyingZombiemanNoArm
 	ZZD1 A 1 A_Chase
 	Goto Suffer
 	Suffer:
-	    TNT1 A 0
 	    		//headbox height 48
 		TNT1 A 0 A_FaceTarget
 		ZZD2 AAAAAAAA 2 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, 90, 2, random (0, 45))
@@ -1038,27 +1052,42 @@ ACTOR DyingZombiemanNoArm
         TNT1 A 0
 		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
-		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode", 0, 30)
+
+	    TNT1 A 0
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+	    TNT1 AAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 A 0 A_SpawnProjectile ("Brains2", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains3", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4Green", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4GreenBig", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10))
+		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90))
+
 		TNT1 A 0 A_XScream
 		TNT1 AAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_Blood", 37, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
         ZZD3 GGGG 2 A_SpawnProjectile ("Brutal_LiquidBlood", 35, 0, random (0, 360), 2, random (0, 90))
 		ZZD3 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 1 A_SpawnProjectile ("Brutal_LiquidBlood", 10, 0, random (0, 360), 2, random (0, 90))
-        TNT1 A 0 A_SpawnItem("DeadZombieman_NoHeadNoArm")
+        ZZD3 H -1//doomb_final_absolution(12, 12);
 	Stop
 
 
     Death.Decaptate:
         TNT1 A 0 A_PlaySound("misc/xdeath4")
-		TNT1 A 0 A_SpawnItem("BloodSplasher2")
+		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood")
 		TNT1 A 0 A_SpawnProjectile ("XDeathZombiemanHead", 35, 0, random (0, 360), 2, random (30, 110))
 		TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
         ZZD3 GGGG 2 A_SpawnProjectile ("Brutal_LiquidBlood", 35, 0, random (0, 360), 2, random (0, 90))
 		ZZD3 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 1 A_SpawnProjectile ("Brutal_LiquidBlood", 10, 0, random (0, 360), 2, random (0, 90))
-        TNT1 A 0 A_SpawnItem("DeadZombieman_NoHeadNoArm")
+        ZZD3 H -1//doomb_final_absolution(12, 12);
 	Stop
 
 	Death.Plasma: Death.Plasma2:
@@ -1071,9 +1100,7 @@ ACTOR DyingZombiemanNoArm
 	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 doomb_spawn_burned_flesh()
         TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
 		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43)
         TNT1 A 0 A_SpawnProjectile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
@@ -1084,8 +1111,7 @@ ACTOR DyingZombiemanNoArm
         Stop
 
 	Death.Kick:
-	Death.Extremepunches:
-	Death.Melee:
+	Death.Punch:
         TNT1 A 0 A_SpawnProjectile ("MuchBlood2", 35, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_PlaySound ("grunt/death")
 		TNT1 A 0 ThrustThingZ(0,30,0,1)
@@ -1157,10 +1183,7 @@ ACTOR FrozenZombieman
 		FZD1 B 2
 		FZD1 A 10
 		FZD1 BABABA 2
-		Goto Death.Burn
 		Death.Fire:
-		Death.Flames:
-		Death.Burn:
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
 	    TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)
@@ -1233,18 +1256,22 @@ Death.cut:
 		TNT1 A 0 A_XScream
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
   	    TNT1 O 0 A_NoBlocking
-		TNT1 A 0 A_SpawnProjectile ("RipZombieMan", 0, 0, random (0, 360), 2, random (0, 160))
+
+		TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeathHalfZombieMan", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
+
 	    TNT1 AAAA 0 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, random (0, 360), 2, random (0, 40))
 		POSX AABCDE 9 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, random (0, 360), 2, random (0, 40))
-        TNT1 A 0 A_SpawnItem ("DeadZombieman_Half")
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
 		POSX EEEEEEEEEEEEEEEEEEEEEE 1 A_SpawnProjectile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 90))
-		TNT1 A 0 A_SpawnItem("DeadZombieMan_Half")
+        POSX E -1//doomb_final_absolution(12, 12);
 		Stop
 
 		
 	    Death.fire:
-	Death.Flames:
 	TNT1 AA 0 A_SpawnItem ("CrueltyBonus5Health")
         TNT1 A 0 A_Scream
         TNT1 A 0 A_NoBlocking
@@ -1255,79 +1282,44 @@ Death.cut:
     ZZD5 E 1
 	TNT1 A 0 A_PlaySound ("BURNZOM")
 		    TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
-	Goto Suffer
 	Suffer:
-	    TNT1 A 0
-        
-		
-        ZZD5 EEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45))
-		TNT1 A 0 A_SpawnItem ("BloodDying", 0, 20)
+        ZZD5 EEEEEFFFFF 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45))
+		tnt1 a 0 a_jump(190, "suffer")
+	stop
 
-
-        
-        ZZD5 FFFFF 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45))
-		
-		
-        ZZD5 EEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45))
-		
-		
-        ZZD5 FFFFF 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45))
-		
-		
-        ZZD5 EEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45))
-		
-		
-        ZZD5 FFFFF 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45))
-		TNT1 A 0 A_SpawnItem ("BloodDying", 0, 20)
-		
-		
-        ZZD5 EEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45))
-		
-		
-        ZZD5 FFFFF 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45))
-		
-		
-        ZZD5 EEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45))
-		
-		
-        ZZD5 FFFFF 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45))
-		
-				
-        ZZD5 EEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45))
-		
-				
-        ZZD5 FFFFF 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45))
-		
-				
-        ZZD5 EEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45))
-		
-				
-        ZZD5 FFFFF 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45))
-		TNT1 A 0 A_SpawnItem ("BloodDying", 0, 20)
-		
-				
-        ZZD5 EEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45))
-		TNT1 A 0 A_SpawnItem ("BloodDying", 0, 20)
-		stop
-
-Death.Headshot:
+	Death.Headshot:
 	Death.Minorhead:
-	TNT1 A 0
-	TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
+		TNT1 A 0
+		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma")
 		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate")
-	TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode", 0, 30)
+
+	    TNT1 A 0
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+	    TNT1 AAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 A 0 A_SpawnProjectile ("Brains2", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains3", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4Green", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4GreenBig", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10))
+		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90))
+
 		TNT1 A 0 A_XScream
-TNT1 AAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_Blood", 37, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_Blood", 37, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
         ZZD5 HHHHIIII 2 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, random (0, 360), 2, random (0, 90))
         PP2X H 0 A_SpawnItem ("DeadZombieman_NoHeadFront")
-Stop
+	Stop
 
 
-Death.Decaptate:
+	Death.Decaptate:
         TNT1 A 0 A_PlaySound("misc/xdeath4")
-		TNT1 A 0 A_SpawnItem("BloodSplasher2")
+		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood")
 		TNT1 A 0 A_SpawnProjectile ("XDeathZombiemanHead", 35, 0, random (0, 360), 2, random (30, 110))
 		TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
@@ -1338,8 +1330,7 @@ Death.Decaptate:
 
 	Death.Shotgun:
 	Death.Kick:
-	Death.Extremepunches:
-	Death.Melee:
+	Death.Punch:
         TNT1 A 0 A_SpawnProjectile ("MuchBlood2", 35, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_Scream
 		TNT1 A 0 ThrustThingZ(0,30,0,1)
@@ -1356,160 +1347,67 @@ Death.Decaptate:
 
 ACTOR ZombiemanLastStand2
 {
-		Radius 16
+	Radius 16
 	Height 28
 	Health 50
-		PainSound "grunt/pain"
-		PainChance 255
+	PainSound "grunt/pain"
+	PainChance 255
 	damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
     damagefactor "Avoid", 0.0
 	damagefactor "Leg", 0.0
     damagefactor "Kick", 6.0	
-		Mass 500
+	Mass 500
 	+SHOOTABLE
 	+FLOORCLIP
 	+DONTSPLASH
 	MONSTER
-	+FRIENDLY//
+	+FRIENDLY
 	-COUNTKILL
 	+GHOST
 	+THRUGHOST
-		-SOLID
+	-SOLID
 
-+FLOORCLIP
-+DONTSPLASH
-MONSTER
-+MISSILEMORE
-+MISSILEEVENMORE
-+LOOKALLAROUND
-+GHOST
+	+FLOORCLIP
+	+DONTSPLASH
+	MONSTER
+	+MISSILEMORE
+	+MISSILEEVENMORE
+	+LOOKALLAROUND
+	+GHOST
 	+THRUGHOST
 	-SOLID
+
 States
 	{
 	Spawn:
-	ZBLS C 1 A_Look
+		ZBLS C 1 A_Look
 	See:
-	
-	ZBLS CCCCC 1 A_Chase
+		ZBLS CCCCC 1 A_Chase
 	Loop
 	
 	Missile:
-	TNT1 A 0
-	
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-    
-	TNT1 AA 0 A_SpawnProjectile("OrangeLensFlareAlt", 24, 10, 15, 0)
-    TNT1 A 0 A_PlaySound("weapons/rifle")
-	ZBLS D 6 BRIGHT A_SpawnProjectile("MonsterTracer", 28, 0, random(-12, 12), 0)
-    TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 20,0)
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	
-	
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-    
-	TNT1 AA 0 A_SpawnProjectile("OrangeLensFlareAlt", 24, 10, 15, 0)
-    TNT1 A 0 A_PlaySound("weapons/rifle")
-	ZBLS D 6 BRIGHT A_SpawnProjectile("MonsterTracer", 28, 0, random(-12, 12), 0)
-    TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 20,0)
-	
-	
-	
-	ZBLS C 10 A_FaceTarget
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-    
-	TNT1 AA 0 A_SpawnProjectile("OrangeLensFlareAlt", 24, 10, 15, 0)
-    TNT1 A 0 A_PlaySound("weapons/rifle")
-	ZBLS D 6 BRIGHT A_SpawnProjectile("MonsterTracer", 28, 0, random(-12, 12), 0)
-    TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 20,0)
-	
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-    
-	TNT1 AA 0 A_SpawnProjectile("OrangeLensFlareAlt", 24, 10, 15, 0)
-    TNT1 A 0 A_PlaySound("weapons/rifle")
-	ZBLS D 6 BRIGHT A_SpawnProjectile("MonsterTracer", 28, 0, random(-12, 12), 0)
-    TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 20,0)
-	
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-    
-	TNT1 AA 0 A_SpawnProjectile("OrangeLensFlareAlt", 24, 10, 15, 0)
-    TNT1 A 0 A_PlaySound("weapons/rifle")
-	ZBLS D 6 BRIGHT A_SpawnProjectile("MonsterTracer", 28, 0, random(-12, 12), 0)
-    TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 20,0)
-	
-	
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-    
-	TNT1 AA 0 A_SpawnProjectile("OrangeLensFlareAlt", 24, 10, 15, 0)
-    TNT1 A 0 A_PlaySound("weapons/rifle")
-	ZBLS D 6 BRIGHT A_SpawnProjectile("MonsterTracer", 28, 0, random(-12, 12), 0)
-    TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 20,0)
-	
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
-	
-	ZBLS C 10 A_FaceTarget
-	TNT1 A 0 A_CHangeFlag("FRIENDLY", 1)
-	TNT1 A 0 A_CHangeFlag("SHOOTABLE", 0)
+		ZBLS C 10 A_FaceTarget
+		TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
+		
+		ZBLS C 10 A_FaceTarget
+		TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
+		
+		ZBLS C 10 A_FaceTarget
+		TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
+		
+		ZBLS C 10 A_FaceTarget
+		TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
+		
+		TNT1 AA 0 A_SpawnProjectile("OrangeLensFlareAlt", 24, 10, 15, 0)
+		TNT1 A 0 A_PlaySound("weapons/rifle")
+		ZBLS D 6 BRIGHT A_SpawnProjectile("MonsterTracer", 28, 0, random(-12, 12), 0)
+		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 20,0)
+		TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45))
+		tnt1 a 0 a_jump(200, "missile")
+
+		ZBLS C 10 A_FaceTarget
+		TNT1 A 0 A_CHangeFlag("FRIENDLY", 1)
+		TNT1 A 0 A_CHangeFlag("SHOOTABLE", 0)
 	Goto Death
 	
 	
@@ -1586,10 +1484,10 @@ ACTOR ZombiemanGotHisLegBlowed
 		Stop
 	
 	LEaveCrawling:
-	TNT1 A 0 A_NoBlocking
+		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_Scream
-	TNT1 A 0 A_PlaySound ("grunt/death")
-	TNT1 A 0 A_SpawnItem ("DyingZombieMan")
+		TNT1 A 0 A_PlaySound ("grunt/death")
+		TNT1 A 0 A_SpawnItem ("DyingZombieMan")
 	Stop
 	
 	LastStand:
@@ -1601,7 +1499,22 @@ ACTOR ZombiemanGotHisLegBlowed
 
     Death.Headshot:
         TNT1 A 0
-		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode", 0, 30)
+
+	    TNT1 A 0
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+	    TNT1 AAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 A 0 A_SpawnProjectile ("Brains2", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains3", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4Green", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4GreenBig", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10))
+		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90))
+
 		TNT1 A 0 A_Scream
 		TNT1 A 0 A_NoBlocking
 		POS7 GHI 6
@@ -1629,8 +1542,7 @@ ACTOR ZombiemanGotHisLegBlowed
 
 	Death.Shotgun:
 	Death.Kick:
-	Death.Extremepunches:
-	Death.Melee:
+	Death.Punch:
         TNT1 A 0 A_SpawnProjectile ("MuchBlood2", 35, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_Scream
 		TNT1 A 0 ThrustThingZ(0,30,0,1)
@@ -1667,55 +1579,19 @@ States
 	Loop
 	
 	Missile:
-	ZBLS AAAA 10 A_FaceTarget
-    
-	TNT1 AA 0 A_SpawnProjectile("OrangeLensFlareAlt", 24, 10, 15, 0)
-    TNT1 A 0 A_PlaySound("weapons/rifle")
-	ZBLS B 6 BRIGHT A_SpawnProjectile("MonsterTracer", 28, 0, random(-12, 12), 0)
-    TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 20,0)
-	
-	ZBLS AAA 10 A_FaceTarget
-	TNT1 AA 0 A_SpawnProjectile("OrangeLensFlareAlt", 24, 10, 15, 0)
-    TNT1 A 0 A_PlaySound("weapons/rifle")
-	ZBLS B 6 BRIGHT A_SpawnProjectile("MonsterTracer", 28, 0, random(-12, 12), 0)
-    TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 20,0)
-	
-	
-	
-	ZBLS AAA 10 A_FaceTarget
-	
-	TNT1 AA 0 A_SpawnProjectile("OrangeLensFlareAlt", 24, 10, 15, 0)
-    TNT1 A 0 A_PlaySound("weapons/rifle")
-	ZBLS B 6 BRIGHT A_SpawnProjectile("MonsterTracer", 28, 0, random(-12, 12), 0)
-    TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 20,0)
-	
-	
-	ZBLS AA 10 A_FaceTarget
-	
-	TNT1 AA 0 A_SpawnProjectile("OrangeLensFlareAlt", 24, 10, 15, 0)
-    TNT1 A 0 A_PlaySound("weapons/rifle")
-	ZBLS B 6 BRIGHT A_SpawnProjectile("MonsterTracer", 28, 0, random(-12, 12), 0)
-    TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 20,0)
-	
-	
-	ZBLS AAAAA 10 A_FaceTarget
-	
-	TNT1 AA 0 A_SpawnProjectile("OrangeLensFlareAlt", 24, 10, 15, 0)
-    TNT1 A 0 A_PlaySound("weapons/rifle")
-	ZBLS B 6 BRIGHT A_SpawnProjectile("MonsterTracer", 28, 0, random(-12, 12), 0)
-    TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 20,0)
-	
-	
-	
-	ZBLS AAA 10 A_FaceTarget
-	
-	TNT1 AA 0 A_SpawnProjectile("OrangeLensFlareAlt", 24, 10, 15, 0)
-    TNT1 A 0 A_PlaySound("weapons/rifle")
-	ZBLS B 6 BRIGHT A_SpawnProjectile("MonsterTracer", 28, 0, random(-12, 12), 0)
-    TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 20,0)
-	
-	
-	ZBLS AAA 10 A_FaceTarget
+		ZBLS AAAA 10 A_FaceTarget
+		
+		TNT1 AA 0 A_SpawnProjectile("OrangeLensFlareAlt", 24, 10, 15, 0)
+		TNT1 A 0 A_PlaySound("weapons/rifle")
+		ZBLS B 6 BRIGHT A_SpawnProjectile("MonsterTracer", 28, 0, random(-12, 12), 0)
+		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 20,0)
+		
+		ZBLS AAA 10 A_FaceTarget
+		TNT1 AA 0 A_SpawnProjectile("OrangeLensFlareAlt", 24, 10, 15, 0)
+		TNT1 A 0 A_PlaySound("weapons/rifle")
+		ZBLS B 6 BRIGHT A_SpawnProjectile("MonsterTracer", 28, 0, random(-12, 12), 0)
+		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 20,0)
+		tnt1 a 0 a_jump(200, "Missile")
 	
 	ZBLS A 10 A_FaceTarget
 	TNT1 A 0 A_CHangeFlag("FRIENDLY", 1)
@@ -1762,46 +1638,33 @@ Height 48
 	Goto Suffer
 	
 	Suffer:
-	    TNT1 A 0
-	    
-        
 		ZL1E ABC 3
         TNT1 A 0 A_SpawnItem ("BloodDying", 0, 30)
 		ZL1E DDDD 1 A_Chase("", "")
-		
-		
-		ZL1E ABC 3
-        TNT1 A 0 A_SpawnItem ("BloodDying", 0, 30)
-		ZL1E DDDD 1 A_Wander
-		
-		
-		ZL1E ABC 3
-        TNT1 A 0 A_SpawnItem ("BloodDying", 0, 30)
-		ZL1E DDDD 1 A_Wander
-		
-		
-		ZL1E ABC 3
-        TNT1 A 0 A_SpawnItem ("BloodDying", 0, 30)
-		ZL1E DDDD 1 A_Wander
-		
-		
-		ZL1E ABC 3
-        TNT1 A 0 A_SpawnItem ("BloodDying", 0, 30)
-		ZL1E DDDD 1 A_Wander
-		
-		
-		ZL1E ABC 3
-        TNT1 A 0 A_SpawnItem ("BloodDying", 0, 30)
-		ZL1E D 1 A_Wander
-		
-        TNT1 A 0
+		tnt1 a 1 a_jump(200, "suffer")
+
 	    TNT1 A 0 A_PlaySound ("none")
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem ("ZombiemanGotHisLegBlowed")
 		Stop
 	Death.Headshot:
 	    TNT1 A 0
-		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode", 0, 30)
+
+	    TNT1 A 0
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+	    TNT1 AAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 A 0 A_SpawnProjectile ("Brains2", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains3", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4Green", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4GreenBig", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10))
+		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90))
+
 		ZMAD B 0 A_PlaySound("misc/xdeath")
 		ZMAD C 0 A_NoBlocking
 	Goto FallHead
@@ -1820,92 +1683,8 @@ Height 48
 }
 
 
-ACTOR RipZombieMan
-{
-    Radius 1
-    Height 1
-    Scale 0.8
-	Speed 0
-	Mass 1
-	
-	BounceFactor 0.5
-	+DOOMBOUNCE
-	+MISSILE
-    +NOBLOCKMAP
-    +NOTELEPORT
-    +MOVEWITHSECTOR
-    +NOGRAVITY
-    +NOCLIP
-    +DONTSPLASH
-    States
-    {
-    Spawn:
-		TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile ("XDeathHalfZombieMan", 32, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAAAA 0 A_SpawnProjectile ("Instestin2", 32, 0, random (0, 360), 2, random (0, 160))
-	Stop
-    }
-}
 
 
-ACTOR FatalityZombieMan
-{
-    Radius 1
-    Height 1
-    Scale 0.8
-	Speed 0
-	Mass 1
-	
-	BounceFactor 0.5
-	+DOOMBOUNCE
-	+MISSILE
-    +NOBLOCKMAP
-    +NOTELEPORT
-    +MOVEWITHSECTOR
-    +NOGRAVITY
-    +NOCLIP
-    +DONTSPLASH
-    States
-    {
-    Spawn:
-         TNT1 A 0 A_SpawnItem("BloodSplasher2")
-		 TNT1 AA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAA 0 A_SpawnProjectile ("XDeath2", 0, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAA 0 A_SpawnProjectile ("XDeath3", 0, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 A 0 A_SpawnProjectile ("XDeath4", 0, 0, random (0, 360), 2, random (0, 160))
-        TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-        TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-		 TNT1 AAAAAAA 0 A_SpawnProjectile ("Instestin2", 32, 0, random (0, 360), 2, random (0, 160))
-	Stop
-    }
-}
-
-
-
-ACTOR ZombiemanHeadExplode : XDeath_base
-{
-    States
-    {
-    Spawn:
-	    TNT1 A 0
-		TNT1 A 0 A_PlaySound("misc/xdeath4")
-	    TNT1 AAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90))
-		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90))
-		TNT1 A 0 A_SpawnProjectile ("Brains2", 0, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_SpawnProjectile ("Brains3", 0, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_SpawnProjectile ("Brains4Green", 0, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_SpawnProjectile ("Brains4GreenBig", 0, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10))
-		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40))
-		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90))
-	     Stop
-	}
-}
 
 
 
@@ -1929,10 +1708,10 @@ ACTOR ZombiemanTorso: CurbstompedMarine
 		BLUD C 0 ThrustThing (random(0,255),random(1,5))
 		BLUD C 0 ThrustThingZ (0,random(0,50),random(0,1),0)
     Dead:
-        GORX A 10
-        Loop
+        GORX A -10
+        stop
     Crush:
-        TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail8", 0, 0, random (0, 360), 2, random (0, 360))
+        TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
         TNT1 A 0 A_PlaySound("misc/xdeath4")
         POSC A 5
         POSC A -1
@@ -1969,11 +1748,10 @@ Actor DeadZombieman1: CurbstompedMarine Replaces DeadZombieman
     damagefactor "Trample", 0.4
 	damagefactor "Crush", 10.0
 	damagefactor "BFGSplash", 100.0
-	damagefactor "Shrapnel", 10.0
 	DAMAGEFACTOR "Stomp", 10.0
 	damagefactor "Kick", 3.0
 	damagefactor "SuperKick", 3.0
-	damagefactor "ExtremePunches", 2.0
+	damagefactor "punch", 2.0
 	Painchance 256
 	Scale 0.98
 States
@@ -2018,15 +1796,6 @@ States
 
 
 
-Actor DeadZombieman1F: DeadZombieman1
-{
-States
-    {
-	Spawn:
-        POSS P -1
-        Stop
-}
-}
 
 Actor DeadZombieMan_NoArm: ZombiemanTorso
 {
@@ -2043,7 +1812,7 @@ States
 			TNT1 A 0 A_SpawnProjectile ("XDeathZombiemanHead", 15, 0, random (0, 360), 2, random (0, 180))
 			TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10)
 			TNT1 AA 0 A_SpawnProjectile ("XDeathZombieLeg", 6, 0, random (0, 360), 2, random (0, 90))
-			TNT1 A 0 A_SpawnItem("DeadZombiemanPXSXO")
+			PXSX O -1 //doomb_final_absolution(12, 12);
 			Stop
 		
 }
@@ -2061,10 +1830,10 @@ States
 		Stop 
 		Death:
 			TNT1 A 0 A_NoBlocking
-			TNT1 A 0 A_SpawnItem("DeadZombieMan_NoLegBoth", 0, 10)
 			TNT1 A 0 A_SpawnItem("MuchBlood", 0, 10)
 			TNT1 A 0 A_SpawnProjectile ("XDeathZombieLeg", 15, 0, random (0, 360), 2, random (0, 180))
-			Stop
+        POS8 D -1//doomb_final_absolution(12, 12);
+	Stop
     
 }
 
@@ -2076,12 +1845,18 @@ Health 300
 States
 {
 	Spawn:
-        POS8 D -1
-		Stop    
+        POS8 D -1//doomb_final_absolution(12, 12);
+	Stop
 	
 	Death:
 			TNT1 A 0 A_NoBlocking
-			TNT1 A 0 A_SpawnItem("RipZombieman", 0, 10)
+
+		TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeathHalfZombieMan", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
+
 			TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10)
 			Stop
     
@@ -2091,18 +1866,6 @@ States
 
 
 
-Actor DeadZombieMan_NoHead: DeadZombieMan1f
-{
-Health 300
-States
-{
-	Spawn:
-        POSH F -1
-        Stop
-    
-}
-
-}
 Actor DeadZombieMan_NoHeadFront: DeadZombieMan_NoArm
 {
 Health 300
@@ -2118,74 +1881,42 @@ States
 		TNT1 AA 0 A_SpawnProjectile ("XDeath1", 15, 0, random (0, 360), 2, random (0, 180))
 		TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 15, 0, random (0, 360), 2, random (0, 180))
 		TNT1 AAAA 0 A_SpawnProjectile ("BloodMist", 15, 0, random (0, 360), 2, random (0, 180))
-        TNT1 A 0 A_SpawnItem ("DeadZombieman_NoHeadNoArm")
+        ZZD3 H -1//doomb_final_absolution(12, 12);
 		Stop
 		
 }
 
 }
-Actor DeadZombieMan_Half: ZombieManTorso
-{
-	Mass 6000
-	 Health 300
-States
-{
-Spawn:
-        POSX E -1
-        Stop	
- 
-}
-
-}		
 
 
 
 ACTOR VeryFuckedUpBrutalizedZombiemanLeg: CurbstompedMarine
 {
 Health 200 
-DamageFactor "ExplosiveImpact", 10.0
+DamageFactor "Explosive_Impact", 10.0
 States
 {
 	 Spawn:
 
         ID13 G -1
         Stop
-	Death.ExplosiveImpact:	
+	Death.Explosive_Impact:	
 		TNT1 A 0 ThrustThingZ(0,30,0,1)
 	    ID13 ABCDEF 5
 		TNT1 A 0 A_SpawnItem ("VeryFuckedUpBrutalizedZombiemanLeg")
-		Stop
-		  
-		  Stop
+	Stop
 }
 
 }
 
-ACTOR VeryFuckedUpBrutalizedZombiemanLeg2: VeryFuckedUpBrutalizedZombiemanLeg
-{
-Health 300
-States
-{
-		Spawn:
-        ID15 E -1
-        Stop
-	Pain:
-		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_LiquidBlood2", 15, 0, random (0, 360), 2, random (0, 180))
-		Goto Spawn
-}
-
-}
-	   
-ACTOR StompedZombieman: DeadZombieman_NoHead
+ACTOR StompedZombieman: DeadZombieman_NoHeadfront
 {
 Health 300
 States
 {
 	Pain:
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_LiquidBlood2", 15, 0, random (0, 360), 2, random (0, 180))
-		Goto Spawn
-		Spawn:
-        01CB F -1
+        01CB F -1//doomb_final_absolution(12, 12);
         Stop
 }
 
@@ -2198,13 +1929,28 @@ Actor DeadZombieMan_NoArmFront: DeadZombieMan_NoArm
 	States
 	{	
 		Spawn:
-        ZZD3 D -1
+        ZZD3 D -1//doomb_final_absolution(12, 12);
         Stop  
 		
 		Death:
 	    TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode", 0, 10)
-        TNT1 A 0 A_SpawnItem ("DeadZombieman_NoHeadNoArm")
+
+	    TNT1 A 0
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+	    TNT1 AAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 A 0 A_SpawnProjectile ("Brains2", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains3", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4Green", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4GreenBig", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10))
+		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90))
+
+        ZZD3 H -1//doomb_final_absolution(12, 12);
 		Stop
 		
 		
@@ -2213,35 +1959,32 @@ Actor DeadZombieMan_NoArmFront: DeadZombieMan_NoArm
 		
 		
 
-
-ACTOR DeadZombieman_NoHeadNoArm: ZombiemanTorso
-{
-Health 200
-States
-{
-Spawn:
-        ZZD3 H -1
-		Stop
-		
-		Death:
-	    TNT1 A 0 A_NoBlocking
-		TNT1 AA 0 A_SpawnItem("MeatDeathSmall")
-		TNT1 AA 0 A_SpawnProjectile ("XDeathZombieLeg", 2, 0, random (0, 360), 2, random (0, 90))
-        TNT1 A 0 A_SpawnItem ("RipGuts")
-		Stop
-		
-}
-
-}		
 Actor DeadZombieMan_StomachExploded: DeadZombieman_NoHeadFront
-{States{	
+{
+	States
+	{	
 		Spawn:
         ZXZ1 E -1
         Stop  
 		
 		Death:
 	    TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode", 0, 10)
+
+	    TNT1 A 0
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+	    TNT1 AAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 A 0 A_SpawnProjectile ("Brains2", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains3", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4Green", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4GreenBig", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10))
+		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90))
+
         TNT1 A 0 A_SpawnItem ("DeadZombieman_NoHeadFront")
 		Stop
 		
@@ -2251,7 +1994,9 @@ Actor DeadZombieMan_StomachExploded: DeadZombieman_NoHeadFront
 		
 
 Actor DeadZombieMan_Blasted: DeadZombieMan_NoHeadFront
-{States{	
+{
+	States
+	{	
 		Spawn:
         ZXZ2 E -1
         Stop  
@@ -2261,7 +2006,7 @@ Actor DeadZombieMan_Blasted: DeadZombieMan_NoHeadFront
 		TNT1 AA 0 A_SpawnProjectile ("XDeath1", 15, 0, random (0, 360), 2, random (0, 180))
 		TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 15, 0, random (0, 360), 2, random (0, 180))
 		TNT1 AAAA 0 A_SpawnProjectile ("BloodMist", 15, 0, random (0, 360), 2, random (0, 180))
-        TNT1 A 0 A_SpawnItem ("DeadZombieman_NoHeadNoArm")
+        ZZD3 H -1//doomb_final_absolution(12, 12);
 		Stop
 		
 		
@@ -2288,7 +2033,22 @@ Spawn:
 		Stop
 	Death2:
 	    TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode", 0, 10)
+
+	    TNT1 A 0
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+	    TNT1 AAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 A 0 A_SpawnProjectile ("Brains2", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains3", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4Green", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4GreenBig", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10))
+		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90))
+
         TNT1 A 0 A_SpawnItem ("DeadZombieMan_NoHeadFront")
 		Stop
 		
@@ -2304,19 +2064,33 @@ Spawn:
         Stop  
 	Death:
 	    TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode", 0, 10)
+
+	    TNT1 A 0
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+	    TNT1 AAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 A 0 A_SpawnProjectile ("Brains2", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains3", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4Green", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4GreenBig", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10))
+		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90))
+
         TNT1 A 0 A_SpawnItem ("DeadZombieMan_NoHeadFront")
 		Stop	
-		
-		}
-		}		
-		
-Actor DeadZombieManFatality3: ZombiemanTorso
+}
+}
+
+Actor zombie_fatalized_body: ZombiemanTorso
 {
 States
 {
 Spawn:
-		FPZ3 S -1
+		FPZ3 S -1//doomb_final_absolution(12, 12);
         Stop   
 		}
 		}		
@@ -2330,9 +2104,15 @@ Spawn:
         Stop 
 		Death:
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem("RipZombieman")
+
+		TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeathHalfZombieMan", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
+
 		TNT1 A 0 A_SpawnItem("MeatDeathSmall")
-		TNT1 A 0 A_SpawnItem("DeadZombieMan_Half2")
+		ZZD1 H -1//doomb_final_absolution(12, 12);
 		Stop
 
 }
@@ -2345,30 +2125,25 @@ States
 {
 Spawn:
 		POS4 T -1
-        Stop 
+        Stop
+
 		Death:
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem("RipZombieman")
+
+		TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeathHalfZombieMan", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
+
 		TNT1 A 0 A_SpawnItem("MeatDeathSmall")
-		TNT1 A 0 A_SpawnItem("DeadZombieMan_Half2")
+		ZZD1 H -1//doomb_final_absolution(12, 12);
 		Stop
 
 }
 
 }
 
-Actor DeadZombieManMinorHead: DeadZombiemanShotguntotheFace1
-{
-Health 300
-States
-{
-Spawn:
-        POSH Z -1
-        Stop   
-}
-
-}
-		
 Actor DeadZombiemanLikeInActionMovie: DeadZombieman1
 {
 States
@@ -2378,9 +2153,15 @@ Spawn:
         Stop 
 		Death:
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItem("RipZombieman")
+
+		TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeathHalfZombieMan", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
+
 		TNT1 A 0 A_SpawnItem("MeatDeathSmall")
-		TNT1 A 0 A_SpawnItem("DeadZombieMan_Half2")
+		ZZD1 H -1//doomb_final_absolution(12, 12);
 		Stop 
 }
 
@@ -2419,36 +2200,36 @@ ACTOR DyingZombieman
     {
 	
 	Pain.Kick:
-	TNT1 A 0 A_SpawnProjectile ("Teeth", 30, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_SpawnProjectile ("Blood", 30, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_SpawnProjectile ("TeethNoBounce", 30, 0, random (0, 360), 2, random (0, 160))
-	TNT1 A 0 A_SpawnItem("CrueltyBonus1health")
-	TNT1 A 0 A_Pain
-	TNT1 A 0 A_FaceTarget
-	ZMAK ABA 4
-	ZMAM A 20
+		TNT1 A 0 A_SpawnProjectile ("Teeth", 30, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Blood", 30, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("TeethNoBounce", 30, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnItem("CrueltyBonus1health")
+		TNT1 A 0 A_Pain
+		TNT1 A 0 A_FaceTarget
+		ZMAK ABA 4
+		ZMAM A 20
 	Goto See
 	
 	
-		Death.Fatality:
-		Death.SuperPunch:
+	Death.Fatality:
+	Death.SuperPunch:
         TNT1 A 0 A_NoBlocking
         TNT1 A 0 A_GiveToTarget("HasZmanShield", 1)
 		TNT1 A 0 A_GiveToTarget("GotMeatShield", 1)
-        Stop
+	Stop
 		
-		Death.Kick:
-		Death.KickDowned:
-		Death.Extremepunches:
+	Death.Kick:
+	Death.KickDowned:
+	Death.punch:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
         TNT1 A 0 A_GiveToTarget("IsCurbstompingZombieman", 1)
-        Stop
+	Stop
 	
     Spawn:
-	TNT1 A 0
-	TNT1 A 0 A_GiveInventory("IsCrawling", 1)
-	ZMAM A 1 A_Look
+		TNT1 A 0
+		TNT1 A 0 A_GiveInventory("IsCrawling", 1)
+		ZMAM A 1 A_Look
 	Loop
     See:
 		ZMAM ABAB 10 A_Chase
@@ -2458,30 +2239,27 @@ ACTOR DyingZombieman
 	    
 		TNT1 A 0 A_GiveInventory("DeathTimer1", 1)
 		TNT1 A 0 A_JumpIfInventory("DeathTimer1", 12, "GotoDeath")
-		Loop
+	Loop
 		
 	GotoDeath:
-	TNT1 A 0
-	TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
-	TNT1 A 0 A_ChangeFlag("FRIENDLY", 1)
-		Death:
+		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
+		TNT1 A 0 A_ChangeFlag("FRIENDLY", 1)
+	Death:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_Pain
-		TNT1 A 0 A_SpawnItem ("DeadZombieManMinorHead")
-		Stop
+        POSH Z -1//doomb_final_absolution(12, 12);
+	Stop
 		
 	LastStand:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_Pain
 		TNT1 A 0 A_CHangeFlag("FRIENDLY", 0)
 		TNT1 A 0 A_SpawnItem ("ZombiemanLastStand1")
-		Stop
+	Stop
 	
 	Death.Fire:
-	Death.Flames:
-	Death.Burn:
-	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
-	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
+		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
+		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
 
 	mini_fire:
 		TNT1 A 0 A_Playsound("BurnZom")
@@ -2515,7 +2293,7 @@ ACTOR DyingZombieman
 	Stop
 	
 	Death.Trample:	
-	            TNT1 A 0 A_SpawnProjectile ("MuchBlood2", 10, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("MuchBlood2", 10, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAA 0 A_SpawnProjectile ("Brains1", 10, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile ("Brains2", 10, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile ("Brains3", 10, 0, random (0, 360), 2, random (0, 160))
@@ -2523,21 +2301,23 @@ ACTOR DyingZombieman
 		TNT1 A 0 A_SpawnProjectile ("Brains5", 10, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAA 0 A_SpawnProjectile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10))
 		TNT1 AAAA 0 A_SpawnProjectile ("SmallBrainPiece", 10, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_SpawnItem ("StompedZombieman")
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor")
+		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_LiquidBlood2", 15, 0, random (0, 360), 2, random (0, 180))
+        01CB F -1//doomb_final_absolution(12, 12);
+        Stop
 		Stop
 	
 	Death.SSG:
 	XDeath:
-	TNT1 AAAAAA 0 bright A_SpawnProjectile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
-	TNT1 AAAAAA 0 bright A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180))
-	TNT1 AA 0 bright A_SpawnProjectile ("XDeath2", 55, 0, random (0, 360), 2, random (30, 180))
-	TNT1 AA 0 bright A_SpawnProjectile ("XDeath3", 55, 0, random (0, 360), 2, random (30, 180))
-	TNT1 A 0 A_SpawnItem ("CrushedRemains")
-	TNT1 A 1
-	TNT1 A 1 A_XScream
-    TNT1 A 1 A_NoBlocking
-	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
+		TNT1 AAAAAA 0 bright A_SpawnProjectile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
+		TNT1 AAAAAA 0 bright A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180))
+		TNT1 AA 0 bright A_SpawnProjectile ("XDeath2", 55, 0, random (0, 360), 2, random (30, 180))
+		TNT1 AA 0 bright A_SpawnProjectile ("XDeath3", 55, 0, random (0, 360), 2, random (30, 180))
+		TNT1 A 0 A_SpawnItem ("CrushedRemains")
+		TNT1 A 1
+		TNT1 A 1 A_XScream
+		TNT1 A 1 A_NoBlocking
+		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
 	Stop
 	
 	Death.Shotgun:
@@ -2559,7 +2339,7 @@ ACTOR DyingZombieman
 		
 	 Crush:
 	 Death.Stomp:
-	    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail8", 0, 0, random (0, 360), 2, random (0, 360))
+	    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 AAAAAA 0 bright A_SpawnProjectile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
 		TNT1 AAAAAA 0 bright A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180))
 		TNT1 AA 0 bright A_SpawnProjectile ("XDeath2", 55, 0, random (0, 360), 2, random (30, 180))
@@ -2612,12 +2392,9 @@ ACTOR BrutalizedZombieMan1
 	TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 35, 0, random (0, 360), 2, random (0, 160))
     TNT1 AAAA 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
 	Pain:
-    ZZD1 A 30
-	Goto DieNow
-	
+		ZZD1 A 30
     DieNow:
-	TNT1 A 0
-	TNT1 A 0 A_SpawnItem ("BrutalizedZombieManStop")
+ 		TNT1 A 0 A_SpawnItem ("BrutalizedZombieManStop")
 	Stop
 	
 	Death:
@@ -2641,7 +2418,6 @@ ACTOR BrutalizedZombieMan1
 	Death.SSG:
 	XDeath:
 		TNT1 A 0 A_XScream
-  	    
 		TNT1 A 0 A_NoBlocking
         TNT1 A 0 A_SpawnProjectile ("ZombieXDeath", 0, 0, random (0, 360), 2, random (0, 160))
         Stop
@@ -2654,10 +2430,10 @@ actor BrutalizedZombieManStop: CurbstompedMarine
     States
     {
     Spawn:
-ZZD2 ABCD 5 A_SpawnItem("Brutal_FlyingBlood",0,5,0,1)
-ZZD3 D 0
-TNT1 A 0 A_SpawnItem("DeadZombieMan_NoArmFront")
-       Stop    
+		ZZD2 ABCD 5 A_SpawnItem("Brutal_FlyingBlood",0,5,0,1)
+		ZZD3 D 0
+		TNT1 A 0 A_SpawnItem("DeadZombieMan_NoArmFront")
+	Stop    
 }
 
 }
@@ -2668,18 +2444,14 @@ ACTOR BrutalizedZombieMan2: BrutalizedZombieMan1
 	Spawn:
 	Pain:
     ZZD1 B 30
-	Goto DieNow
-	
-    DieNow:
-	TNT1 A 0
 	TNT1 A 0 A_SpawnItem ("BrutalizedZombieManStop2")
 	Stop
 	
 	Death:
 		TNT1 A 0
 		TNT1 A 0 A_Recoil(2)
-	TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 35, 0, random (0, 360), 2, random (0, 160))
-    TNT1 A 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 35, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0
 		TNT1 A 0 A_Recoil(4)
 	    ZZD1 C 16
@@ -2694,8 +2466,8 @@ actor BrutalizedZombieManStop2: CurbstompedMarine
     States
     {
     Spawn:
-ZZD4 AB 6 A_SpawnItem("Brutal_FlyingBlood",0,5,0,1)
-TNT1 A 0 A_SpawnItem("DeadZombieman_NoHeadNoArm")
+		ZZD4 AB 6 A_SpawnItem("Brutal_FlyingBlood",0,5,0,1)
+		ZZD3 H -1//doomb_final_absolution(12, 12);
        Stop    
 }
 
@@ -2707,18 +2479,14 @@ ACTOR BrutalizedZombieMan3: BrutalizedZombieMan1
 	{
 	Spawn:
 	Pain:
-    ZZD1 C 30
-	Goto DieNow
-	
-    DieNow:
-	TNT1 A 0
-	TNT1 A 0 A_SpawnItem ("DeadZombieman_NoHeadNoArm")
+		ZZD1 C 30
+        ZZD3 H -1//doomb_final_absolution(12, 12);
 	Stop
 	
 	Death:
 	    TNT1 A 0
 		TNT1 A 0 A_Recoil(2)
-		TNT1 A 0 A_SpawnItem("BloodSplasher2")
+		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood")
 	    //TNT1 AAA 0 bright A_SpawnProjectile ("SuperGoreSpawner", 35, 0, random (0, 360), 2, random (30, 180))
 		TNT1 AAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
         TNT1 A 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
@@ -2728,7 +2496,7 @@ ACTOR BrutalizedZombieMan3: BrutalizedZombieMan1
 		TNT1 AAAAAA 0 A_SpawnProjectile ("Brutal_LiquidBlood", 44, 0, random (0, 360), 2, random (0, 50))
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health")
 		ZZD1 EFG 6
-		TNT1 A 0 A_SpawnItem("DeadZombieMan_Half2")
+		ZZD1 H -1//doomb_final_absolution(12, 12);
 		Stop
 
 }
@@ -2736,28 +2504,13 @@ ACTOR BrutalizedZombieMan3: BrutalizedZombieMan1
 }
 
 
-actor ZombieLegOnFoot: CurbstompedMarine
-{
-Scale 1.0
--SHOOTABLE
--SOLID
-    States
-    {
-    Spawn:
-	TNT1 A 0 A_PlaySound("misc/xdeath2")
-	LEG1 IJK 8
-		LEG1 E 1 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
-		LEG1 E -1
-	stop
-}
-}
+
 
 ACTOR BrutalizedZombieManLeg: BrutalizedZombieMan1
 {
 	States
 	{
 	Spawn:
-	Pain:
     POS7 ABCD 5 
 	TNT1 A 0 A_SpawnItem ("DeadZombieman_NoLeg")
 	Stop
@@ -2787,30 +2540,7 @@ ACTOR BrutalizedZombieManLeg: BrutalizedZombieMan1
 }
 
 		
-Actor DeadZombieMan_Half2: DeadZombieMan_Half
-{
-+NOPAIN
-States
-{
-Spawn:
-		ZZD1 H -1 
-        Stop   
-		}
-		}	
-		
-		
-Actor DeadZombieman_TearedInHalf: ZombiemanTorso
-{
-+NOPAIN
-States
-{
-Spawn:
-		PP2X E -1 
-        Stop   
-}
 
-}		
-		
 Actor DeadZombieman_Slumped: ZombiemanTorso
 {
 +NOPAIN
@@ -2837,14 +2567,29 @@ Spawn:
 	Stop
 	XDeath:
 	Death.Explosives:
-	Death.ExplosiveImpact:
+	Death.Explosive_Impact:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("ZombieXDeath")
 		Stop	
 	
 	Death.Headshot:
 		TNT1 A 0 A_NoBlocking
-		TNT1 A 0 A_SpawnItemEx("ZombiemanHeadExplode", 0, 0, 22)
+
+	    TNT1 A 0
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+	    TNT1 AAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 A 0 A_SpawnProjectile ("Brains2", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains3", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4Green", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4GreenBig", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10))
+		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90))
+
 		TNT1 A 0 A_SpawnItem("DeadZombieman_Slumped_NoHead")
 		Stop
 		
@@ -2859,8 +2604,23 @@ Spawn:
 		TNT1 AAAA 0 A_SpawnProjectile ("WallRedBlood", 32, 0, random (170, 190), 2, random (0, 40))
 		TNT1 AAA 0 A_SpawnProjectile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90))
 		TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 40, 0, random (0, 360), 2, random (30, 90))
-		TNT1 A 0 A_SpawnItemEx("ZombiemanHeadExplode", 0, 0, 22)
-		TNT1 A 0 A_SpawnItem("DeadZombieMan_Half")
+
+	    TNT1 A 0
+		TNT1 A 0 A_PlaySound("misc/xdeath4")
+	    TNT1 AAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90))
+		TNT1 A 0 A_SpawnProjectile ("Brains2", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains3", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4Green", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("Brains4GreenBig", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10))
+		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40))
+		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160))
+		TNT1 A 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90))
+
+        POSX E -1//doomb_final_absolution(12, 12);
 		Stop
 		
 }
@@ -2874,11 +2634,11 @@ Height 22
 States
 {
 Spawn:
-		BR92 B -100
+		BR92 B -1
         stop
 	XDeath:
 	Death.Explosives:
-	Death.ExplosiveImpact:
+	Death.Explosive_Impact:
 		TNT1 A 0 A_NoBlocking
 		TNT1 A 0 A_SpawnItem("ZombieXDeath")
 		Stop	
@@ -2893,51 +2653,10 @@ Spawn:
 		TNT1 AAAA 0 A_SpawnProjectile ("WallRedBlood", 32, 0, random (170, 190), 2, random (0, 40))
 		TNT1 AAA 0 A_SpawnProjectile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90))
 		TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 40, 0, random (0, 360), 2, random (30, 90))
-		TNT1 A 0 A_SpawnItem("DeadZombieMan_Half")
+        POSX E -1//doomb_final_absolution(12, 12);
 		Stop	
 		
 }
 
-}		
-		
-		
-
-Actor DeadZombiemanPXSXO: ZombiemanTorso
-{
-States
-{
-Spawn:
-		PXSX O -1
-        Stop 
-		
-		Death:
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 1 A_SpawnItem("GibsZ")
-		TNT1 A 0 A_SpawnItem("MeatDeathSmall")
-		TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 15, 0, random (0, 360), 2, random (0, 180))
-		Stop
-		
-
 }
 
-}
-
-Actor DeadZombiemanPXS2O: ZombiemanTorso
-{
-States
-{
-Spawn:
-		PXS2 O -1
-        Stop 
-		
-		Death:
-		TNT1 A 0 A_NoBlocking
-		TNT1 A 1 A_SpawnItem("GibsZ")
-		TNT1 A 0 A_SpawnItem("MeatDeathSmall")
-		TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 15, 0, random (0, 360), 2, random (0, 180))
-		TNT1 A 0 A_SpawnItem("ZombiemanHeadExplode")
-		Stop
-
-}
-
-}

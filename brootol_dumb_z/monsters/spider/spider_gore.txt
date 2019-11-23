@@ -29,10 +29,7 @@ States
 		FZD8 B 2
 		FZD8 A 10
 		FZD8 BABABA 2
-		Goto Death.Burn
 		Death.Fire:
-		Death.Flames:
-		Death.Burn:
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
 	    TNT1 A 0 A_ChangeFlag("SOLID", 0)
 	    TNT1 A 0 A_ChangeFlag("COUNTKILL", 0)

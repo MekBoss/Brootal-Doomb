@@ -100,7 +100,7 @@ Health 90
 }
 
 
-ACTOR Marine_Rifle: SwitchableDecoration
+ACTOR Marine_Rifle : doomb_monster_base
 {
 	
 	Radius 12
@@ -155,11 +155,16 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	damagefactor "Cut", 0.1
     BloodType "Brutal_Blood",  "SawBlood"
 	damagefactor "FriendBullet", 0.0
-    damagefactor "Blood", 0.0    damagefactor "GreenBlood", 0.0    damagefactor "BlueBlood", 0.0    damagefactor "Taunt", 0.0    damagefactor "KillMe", 0.0
+    damagefactor "Blood", 0.0 
+	   damagefactor "GreenBlood", 0.0  
+	     damagefactor "BlueBlood", 0.0   
+		  damagefactor "Taunt", 0.0  
+		    damagefactor "KillMe", 0.0
 	DeathSound "DSMADTH"
 	PainSound "*pain"
-    damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
-    damagefactor "Shrapnel", 0.3
+    damagefactor "Blood", 0.0
+	 damagefactor "BlueBlood", 0.0
+	  damagefactor "GreenBlood", 0.0
 	damagefactor "SpawnMarine", 0.0
 	DropItem "RifleDrop"
 	damagefactor "HelperMarineFatallity", 0.0
@@ -765,7 +770,6 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		TNT1 A 0 A_SpawnItem ("MediumBloodSpot")
         XPL3 F -1
         Stop
-	Death.Massacre:
 	Death.Explosives:
 	XDeath:
 		TNT1 A 0 ThrustThingZ(0,60,0,1)
@@ -788,7 +792,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
-	    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail8", 0, 0, random (0, 360), 2, random (0, 360))
+	    TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360))
 		TNT1 AAAAAA 0 bright A_SpawnProjectile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180))
 		TNT1 AAAAAA 0 bright A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180))
 		TNT1 AA 0 bright A_SpawnProjectile ("XDeath2", 55, 0, random (0, 360), 2, random (30, 180))
@@ -861,9 +865,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 doomb_spawn_burned_flesh()
 		EXPL AAAAAA 0 A_SpawnProjectile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360))
         TNT1 A 1
 		TNT1 A 0 A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
@@ -882,16 +884,14 @@ ACTOR Marine_Rifle: SwitchableDecoration
 	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
+	    TNT1 A 0 doomb_spawn_burned_flesh()
 		
 		EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("GreenFlameTrails", 50, 0, random (0, 360), 2, random (0, 360))
 		XBRN AAAA 2 BRIGHT A_SpawnItem("GreenFlare",0,43)
 		TNT1 A 0 A_SpawnItemEx("RemoveMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         Stop
 
-    Death.burn:
+    fire_death_1:
 	TNT1 A 0
 	TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
 	TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
@@ -907,8 +907,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
         Stop
 
     Death.Fire:
-	Death.Flames:
-	Death.Burn:
+	tnt1 a 0 a_jump(128, "fire_death_1")
 	TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
@@ -924,7 +923,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
       Stop
 	  
 	  
-	  Death.ExplosiveImpact:
+	  Death.Explosive_Impact:
 		TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("USESPECIAL", 0)
 		TNT1 A 0 A_ChangeFlag("FRIENDLY", 0)
@@ -1054,7 +1053,7 @@ ACTOR Marine_Rifle: SwitchableDecoration
 		TNT1 A 0 A_PlaySound("PLATA1", 1)
         //////////////////////////////////////////////////////
 		TNT1 A 0 A_TakeInventory("ZombieManFatality3",1)
-        TNT1 A 0 A_SpawnItem ("DeadZombieManFatality3")
+        TNT1 A 0 A_SpawnItem ("zombie_fatalized_body")
 		TNT1 A 0 A_ChangeFlag (shootable, 1)
 		TNT1 A 0 A_ChangeFlag (Invulnerable, 0)
         Goto FollowPlayer
@@ -1078,7 +1077,7 @@ TNT1 A 0 ACS_Execute(583, 0, 0, 0, 0)
         FPZ2 C 15
 		TNT1 A 0 A_PlaySound("imp/melee")
         FPZ2 D 15
-		TNT1 AAAAA 0 A_SpawnProjectile ("Instestin2", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 60, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAAAAAA 0 A_SpawnProjectile ("PlayerFlyingBlood", 60, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 ACS_Execute(580, 0, 0, 0, 0)
@@ -1202,7 +1201,7 @@ TNT1 A 0 ACS_Execute(583, 0, 0, 0, 0)
 		FPZ4 L 10
         //////////////////////////////////////////////////////
         TNT1 A 0 A_TakeInventory("ZombieManFatality3",1)
-        TNT1 A 0 A_SpawnItem ("DeadZombieManFatality3")
+        TNT1 A 0 A_SpawnItem ("zombie_fatalized_body")
 		TNT1 A 0 A_ChangeFlag (shootable, 1)
 		TNT1 A 0 A_ChangeFlag (Invulnerable, 0)
         Goto FollowPlayer
@@ -1357,10 +1356,10 @@ TNT1 A 0 ACS_Execute(583, 0, 0, 0, 0)
 		TNT1 A 0 A_PlaySound("misc/xdeath")
 		FTYS DE 4
 		
-XXXX A 0 Radius_Quake (4, 24, 0, 15, 0)
-TNT1 A 0 A_PlaySound("misc/xdeath", 3)
-TNT1 AAAA 0 A_SpawnProjectile ("XDeath1", 20, 0, random (0, 360), 2, random (0, 160))
-TNT1 AAAAAAAAAA 0 A_SpawnProjectile ("PlayerFlyingBlood", 60, 0, random (0, 360), 2, random (0, 160))
+		XXXX A 0 Radius_Quake (4, 24, 0, 15, 0)
+		TNT1 A 0 A_PlaySound("misc/xdeath", 3)
+		TNT1 AAAA 0 A_SpawnProjectile ("XDeath1", 20, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAAAAAAAA 0 A_SpawnProjectile ("PlayerFlyingBlood", 60, 0, random (0, 360), 2, random (0, 160))
         FTYS FGHIPP 4 A_SpawnProjectile ("Blood", 1, 0, random (0, 360), 2, random (0, 160))
 
         FTYS QR 8 
@@ -1369,7 +1368,7 @@ TNT1 AAAAAAAAAA 0 A_SpawnProjectile ("PlayerFlyingBlood", 60, 0, random (0, 360)
         ///////////////////////////////////////////////////////
         TNT1 A 0 A_TakeInventory("GoFatality", 1)
 		TNT1 A 0 A_TakeInventory("SergeantFatality",1)
-		 TNT1 A 0 A_SpawnProjectile ("BeheadedSergeantZombie", 1, 0, random (0, 360), 2, random (0, 160))
+		 TNT1 A 0 A_SpawnProjectile ("DeadShotgunGuy_NoHead", 1, 0, random (0, 360), 2, random (0, 160))
         TNT1 A 0 A_ChangeFlag (shootable, 1)
 		TNT1 A 0 A_ChangeFlag (Invulnerable, 0)
         Goto FollowPlayer
@@ -1477,7 +1476,7 @@ TNT1 A 0 ACS_Execute(583, 0, 0, 0, 0)
 			  tnt1 A 0 A_PlaySound("grunt/pain")
 			tnt1 A 0 A_SpawnItemEx("FootStep5", 0, 0, 40, 0, 0)
 			tnt1 A 0 Radius_Quake (4, 24, 0, 15, 0)
-			tnt1 A 0 A_SpawnProjectile ("GoreSound", 22, 0, random (0, 360), 2, random (0, 160))
+			tnt1 A 0 A_PlaySound("misc/xdeath4")
 			 CFTA L 7
 			
 			CFTA M 15

@@ -4,7 +4,7 @@ pulselight EXPLOSIONFLASH
     color 1.0 0.3 0.0
     size 100
     secondarySize 120
-    interval 0.1
+    interval 2
     offset 0 60 0
 }
 
@@ -1161,7 +1161,7 @@ pulselight GREENGOOZ
     color 0.3 1.0 0.0
     size 32
     secondarySize 34
-    interval 0.1
+    interval 2
     offset 0 40 0
 	dontlightself 1
 }
@@ -1173,7 +1173,7 @@ pulselight GREENITEM
     color 0.3 1.0 0.0
     size 14
     secondarySize 16
-    interval 0.1
+    interval 2
     offset 0 5 0
 }
 
@@ -1183,7 +1183,7 @@ pulselight BLUEITEM
     color 0.1 0.1 1.0
     size 14
     secondarySize 16
-    interval 0.1
+    interval 2
     offset 0 5 0
 }
 

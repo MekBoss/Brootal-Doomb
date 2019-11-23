@@ -1,4 +1,4 @@
-class dumb_boolet_base : fastprojectile
+class dumb_boolet_base : fastprojectile abstract
 {
 protected eventhandler sfx;
 
@@ -10,23 +10,33 @@ void set_sfx(eventhandler e)
 
 }
 
-class doomb_blood : actor
+
+class doomber : playerpawn abstract
 {
 
-protected void doomb_spawn_blood()
+protected void doomb_spawn_big_blood(int spawn_height = 0)
 {
-    for(uint i = 0; i < 2 * bd_bloodamount; i++)
+	if(waterlevel < 1)
     {
-        A_SpawnProjectile ("Brutal_FlyingBloodFake", 0, 0, random (0, 360), 2, random (0, 90));
+		for(uint i = 0; i < 2 * bd_bloodamount; i++)
+		{
+			actor a = A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 180), 2, - random (0, 180) );
+			a.setorigin(self.pos + (0, 0, spawn_height), false);
 
-        if( (i % 2) == 0)
-        {
-            A_SpawnProjectile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (40, 60));
-	        A_SpawnProjectile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (20, 40));
-	        A_SpawnProjectile ("BloodmistSmall", 0, 0, random (0, 360), 2, random (10, 40));
-	        A_SpawnProjectile ("BloodHit", 0, 0, random (0, 360), 2, random (0, 90));
-        }
-    }
+			if( (i % 2) == 0)
+			{
+				a = A_SpawnProjectile ("Brutal_FlyingBloodTrail", 15, 0, random (0, 360), 2, - random (0, 180) );
+				a.setorigin(self.pos + (0, 0, spawn_height), false);
+			}
+		}
+	}
+}
+
+protected void doomb_spawn_burned_flesh()
+{
+	A_SpawnProjectile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, - random (0, 160));
+	A_SpawnProjectile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, - random (0, 160));
+	A_SpawnProjectile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, - random (0, 160));
 }
 
 }

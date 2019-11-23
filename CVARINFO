@@ -1,6 +1,7 @@
 server int bd_bloodamount	= 2;
 server int bd_lowgraphicsmode = 0;
-server int bd_classicmonsters = 0;
+
+
 
 
 

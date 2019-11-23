@@ -20,6 +20,9 @@ inventory.maxamount 1
 
 Actor Chain_saw : doomb_weapon_base replaces Chainsaw
 {
+	Weapon.SlotNumber 1
+	Weapon.SlotPriority 0.5
+
 weapon.selectionorder 240
 inventory.pickupsound "weapons/chainsaw/draw"
 //inventory.pickupsound "none"

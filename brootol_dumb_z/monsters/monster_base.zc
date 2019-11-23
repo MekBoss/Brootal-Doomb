@@ -1,18 +1,19 @@
-class dumb_monster_base : actor
+class doomb_monster_base : actor abstract
 {
-//if you have a feeling that zscripted project brutality and zscripted brutal doom share similoar code that not a feeling 
+//if you have a feeling that zscripted project brutality and zscripted brutal doom share similar code that not a feeling
 
 //link to event which control effects
-protected eventhandler effects;
-void set_effects(eventhandler sfx)
+protected eventhandler sfx;
+void set_effects(eventhandler effects)
 {
-    effects = sfx;
+    sfx = effects;
 }
 
 
 //handler for freeze/fatality/dismembering and other death types
 //where monster ripped to pieces
 protected bool frozen, dismembered, cant_resurrect;
+
 override bool CanResurrect(Actor other, bool passive)
 {
 	return !cant_resurrect;
@@ -79,52 +80,63 @@ override void Die(Actor source, Actor inflictor, int dmgflags, Name MeansOfDeath
 
 default
 {
-	dumb_monster_base.headshot_multiplier 1;
-	dumb_monster_base.head_starting_position -1;//so that if someone forgot to define this number monster dont get headshot from every attack
-	dumb_monster_base.legs_height_max -1;//same for legs
+	doomb_monster_base.headshot_multiplier 1;
+	doomb_monster_base.head_starting_position -1;//so that if someone forgot to define this number monster dont get headshot from every attack
+	doomb_monster_base.legs_height_max -1;//same for legs
 	monster;
 	
-	dumb_monster_base.blood_color "";//by default it "null", empty string
-	dumb_monster_base.blood_size "";//same for size
+	doomb_monster_base.blood_color "";//by default it "null", empty string
+	doomb_monster_base.blood_size "";//same for size
 
-	dumb_monster_base.weapon_type '';//weapon type must be defined in 'final' monster definition
+	doomb_monster_base.weapon_type '';//weapon type must be defined in 'final' monster definition
 }
 
+protected bool is_headshot(vector3 v)
+{
+	//if head variable valid
+	if(doomb_monster_base(self).head_pos > -1 && v.z >= doomb_monster_base(self).head_pos)
+		return true;
 
-//internal gzdoom function for damaging actors
+	return false;
+}
+
+protected bool is_kneeshot(vector3 v)
+{
+	//if head variable valid
+	if(doomb_monster_base(self).legs_pos > -1 && v.z <= doomb_monster_base(self).legs_pos)
+		return true;
+
+	return false;
+}
+
 override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Flags,Double angle)
 {	//check if monster actually alive
 	if(self.bkilled == false)
 	{
         //explosion cant inflict headshot
-		if(!(flags & DMG_EXPLOSION) )
+		if(!(flags & DMG_EXPLOSION) && inflictor)
 		{
 			//to handle cases when actor vulnerable/invulnerable to some damage type
 			//before apply headshot multiplicator
 			int new_damage = super.DamageMobj(inflictor, source, damage, mod, flags ,angle);
 		
-			//find relative position of inflictor
-			vector3 relat_pos = (0, 0, 0);
-			if(inflictor != null)
-                relat_pos = self.vec3to(inflictor);
-		    
-            //if head variable valid
-			if(dumb_monster_base(self).head_pos > -1 && relat_pos.z >= dumb_monster_base(self).head_pos)
+			vector3 relat_pos = self.vec3to(inflictor);
+
+			if(is_headshot(relat_pos) )
 			{
 				new_damage *= self.head_mul;
 				return super.DamageMobj(inflictor, source, new_damage, 'headshot', flags ,angle);
 			}
 
             //check for arrow in the knee
-			if(dumb_monster_base(self).legs_pos > -1 && relat_pos.z <= dumb_monster_base(self).legs_pos)
+			if(is_kneeshot(relat_pos))
 			{
 				return super.DamageMobj(inflictor, source, new_damage, 'leg', flags ,angle);
 			}
 
 			//if((inflictor is "PB_player_pawn_base" || source is "PB_player_pawn_base") && self.target == null)
 			//{
-			//	console.printf("here, probably, must be shown some fatality");
-				//fatality placeholder
+				//backstab "fatality" placeholder
 			//}
 
 			return new_damage;
@@ -133,7 +145,8 @@ override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Fl
         //its explosion
 		return super.DamageMobj(inflictor, source, damage, mod, flags, angle);
 	}
-    //case when monster already dead
+
+    //case when monster already dead, but technicallly still can be shotted
 	else
 	{
 		int dam = super.DamageMobj(inflictor, source, damage, mod, flags, angle);
@@ -144,6 +157,7 @@ override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Fl
 		return dam;
 	}
 }
+
 
 //handling of freeze death
 override double GetDeathHeight()
@@ -164,23 +178,11 @@ protected void dumb_monster_memory(statelabel idle_state = "idle")
 		memory_timer = 0;
 		a_cleartarget();
 		state jump_to = findstate(idle_state);
-		if(jump_to == null) jump_to = findstate("see");
+		if(jump_to == null)
+			jump_to = findstate("see");
+
 		setstate(jump_to);
 	}
-}
-
-//for gibbing death
-protected void simple_death_handler()
-{
-	health += 200;
-	self.bDONTTHRUST = true;
-	self.bNOPAIN = true;
-	self.bNODROPOFF = false;
-	self.bSLIDESONWALLS = true;
-	self.bsolid = false;
-	self.bcorpse = true;
-	self.bshootable = true;
-	a_setsize(default.radius, default.height / 10);
 }
 
 protected double prev_z_vel;
@@ -201,7 +203,7 @@ protected void gibbed_falling()
 states
 {
 	//kill monsters and mdk cheats damage type
-	//so it wont explode computer by spawning >9000 gore actors
+	//so it wont explode computer by spawning >9000 blood actors
 	Death.Massacre:
 		tnt1 a 1;
 	stop;
@@ -250,21 +252,77 @@ states
 
 
 protected uint limb_state;
-
-override void beginplay()
+//
+protected void doomb_final_absolution(int h, int r)
 {
-	super.beginplay();
-	limb_state |= DLF_NO_LEFT_HAND;
+	health += 200;
+	self.bDONTTHRUST = true;
+	self.bNOPAIN = true;
+	self.bNODROPOFF = false;
+	self.bSLIDESONWALLS = true;
+	self.bsolid = false;
+	self.bcorpse = true;
+	self.bshootable = true;
+	a_setsize(h, r);
 
-	console.printf("%i", limb_state);
-	if(limb_state & DLF_NO_LEFT_HAND)
-		console.printf("true");
-
-	limb_state &= ~DLF_NO_LEFT_HAND;
-	console.printf("%i", limb_state);
+	limb_state |= DLF_FINAL_ABSOLUTION;
+	cant_resurrect = true;
 }
 
+override void tick()
+{
+	super.tick();
+
+	if(limb_state &= DLF_FINAL_ABSOLUTION)
+	{
+		if(health <= 0)
+		{
+			spawn("XDeath1", pos:self.pos + (0, 0, 7)).vel = (random(-3, 3), random(-3, 3), random(-3, 3) );
+			spawn("XDeath2", pos:self.pos + (0, 0, 7)).vel = (random(-3, 3), random(-3, 3), random(-3, 3) );
+			spawn("XDeath3", pos:self.pos + (0, 0, 7)).vel = (random(-3, 3), random(-3, 3), random(-3, 3) );
+			spawn("XDeath4", pos:self.pos + (0, 0, 7)).vel = (random(-3, 3), random(-3, 3), random(-3, 3) );
+
+			self.destroy();
+		}
+	}
 }
+
+
+
+
+
+
+protected void doomb_spawn_big_blood(int spawn_height = 0)
+{
+	if(waterlevel < 1)
+    {
+		for(uint i = 0; i < 2 * bd_bloodamount; i++)
+		{
+			actor a = A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180) );
+			a.setorigin(self.pos + (0, 0, spawn_height), false);
+
+			if( (i % 2) == 0)
+			{
+				a = A_SpawnProjectile ("Brutal_FlyingBloodTrail", 15, 0, random (0, 360), 2, random (0, 180) );
+				a.setorigin(self.pos + (0, 0, spawn_height), false);
+			}
+		}
+	}
+}
+
+protected void doomb_spawn_burned_flesh()
+{
+	A_SpawnProjectile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, - random (0, 160));
+	A_SpawnProjectile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, - random (0, 160));
+	A_SpawnProjectile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, - random (0, 160));
+}
+
+
+
+
+
+}
+
 
 /*
 |= for turn on
@@ -282,5 +340,5 @@ enum doomb_monsters_limb_states
 	DLF_NO_RIGHT_LEG = 1<<3,//8 -> 1000
 	DLF_NO_LEFT_LEG = 1<<4,//and so on
 
-
+	DLF_FINAL_ABSOLUTION = 1<<10//
 };

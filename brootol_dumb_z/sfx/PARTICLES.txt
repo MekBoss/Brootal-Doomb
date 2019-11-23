@@ -8,6 +8,13 @@ Actor IsOverLava : Inventory
 inventory.maxamount 1
 }
 
+
+
+
+
+
+
+
 Actor ExplosionParticle2
 {
   Height 1
@@ -30,22 +37,16 @@ Actor ExplosionParticle2
   States
   {
   Spawn:
+    tnt1 a 0 nodelay
+    {
+      a_setscale(frandom(0.1, 0.2));
+      a_scalevelocity(frandom(2, 3));
+      a_setgravity(frandom(0.7, 0.9));
+    }
     SPRK SSSSSSSS 1 BRIGHT
 	SPRK SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 1 Bright A_FadeOut(0.02)
     Stop
   }
-}
-
-ACTOR ExplosionParticleHeavy : ExplosionParticle2
-{
-  Scale 0.2
-}
-
-ACTOR ExplosionParticleVeryFast: ExplosionParticle2
-{
- 
- speed 18
- Gravity 0.9
 }
 
 
@@ -94,26 +95,6 @@ ACTOR ShrapnelParticle2: ShrapnelParticle
 
 
 
-Actor SuperExpensiveParticle: ExplosionParticle2
-{
-  Scale 0.1
-  Speed 2
-  Gravity 0.1
-  +DOOMBOUNCE
-  +FASTER
-  States
-  {
-  Spawn:
-    SPRK SSSSSS 1 BRIGHT A_Recoil(1)
-	TNT1 A 0 A_ChangeFLag("FASTER", 0)
-	
- Spawn2:
-    SPRK SSSS 1 BRIGHT A_SetAngle(random(angle-60, angle+60))
-	TNT1 A 0 A_FadeOut(0.1)
-	TNT1 A 0 A_Recoil(1)
-	Loop
-  }
-}
 
 
 
@@ -154,24 +135,6 @@ ACTOR ShotgunParticles
 }
 
 
-
-Actor ExplosionParticleSpawner
-{
-  +NoClip
-  +NoBlockMap
-  +NoGravity
-  +Missile
-  +FORCEXYBILLBOARD
-  States
-  {
-  Spawn:
-    TNT1 A 0
-        TNT1 AAAAA 0 A_SpawnProjectile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
-        TNT1 AAAAA 0 A_SpawnProjectile ("ExplosionParticleHeavy", 0, 0, random (0, 180), 2, random (0, 180))
-    TNT1 A 1
-    Stop
-  }
-}
 
 Actor ExplosionParticle
 {
@@ -218,17 +181,7 @@ Actor BluePlasmaParticleSpawner
   }
 }
 
-Actor PlasmaParticleSpawner: BluePlasmaParticleSpawner
-{
-  States
-  {
-  Spawn:
-    TNT1 AAAA 0 A_SpawnItemEx("PlasmaParticle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
-    TNT1 AAAA 0 A_SpawnProjectile ("PlasmaSmoke", 32, 0, random (0, 360), 2, random (0, 360))
-    TNT1 A 1
-    Stop
-  }
-}
+
 
 Actor BluePlasmaParticle
 {
@@ -469,7 +422,7 @@ states
 
 
 
-ACTOR SparkX: ExplosionParticleHeavy
+ACTOR SparkX: ExplosionParticle2
 {
  speed 10
  Gravity 0.8
@@ -495,10 +448,6 @@ ACTOR SparkX: ExplosionParticleHeavy
 }
 
 
-ACTOR SparkXNoModel: SparkX
-{
- Gravity 0.7
-}
 
 
 

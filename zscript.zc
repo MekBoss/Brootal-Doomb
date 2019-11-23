@@ -3,10 +3,16 @@ version "3.7.2"
 #include "brootol_dumb_z/sfx/sfx_main.zc"
 #include "brootol_dumb_z/sfx/sfx_base.zc"
 
+//,onsters base must go before gore
+//because gore base inherits from monster base
+#include "brootol_dumb_z/monsters/monster_base.zc"
+
+#include "brootol_dumb_z/gore/gore_base.zc"
+
+
 #include "brootol_dumb_z/weapons/weapon_base.zc"
 
 #include "brootol_dumb_z/base_definitions.zc"
-#include "brootol_dumb_z/monsters/monster_base.zc"
 
 
 /*
@@ -55,3 +61,4 @@ override void worldtick()
 }
 
 }
+

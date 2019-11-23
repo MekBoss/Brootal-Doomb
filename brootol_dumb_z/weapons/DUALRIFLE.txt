@@ -26,6 +26,9 @@ inventory.maxamount 1
 
 ACTOR DualRifles: DoomWeapon
 {
+	Weapon.SlotNumber 2
+	Weapon.SlotPriority 0
+
 	Weapon.AmmoUse1 0 
 	Weapon.SelectionOrder 5100
 	Weapon.AmmoGive1 0 //How much ammo can be gathered with this weapon

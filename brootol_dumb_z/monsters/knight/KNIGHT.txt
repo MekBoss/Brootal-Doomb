@@ -1,11 +1,22 @@
-ACTOR HellKnight2 : dumb_monster_base Replaces HellKnight
+ACTOR HellKnight2 : doomb_monster_base Replaces HellKnight
 {
-	dumb_monster_base.headshot_multiplier 2
-	dumb_monster_base.head_starting_position 58//so that if someone forgot to define this number monster dont get headshot from every attack
-	dumb_monster_base.legs_height_max -1//same for legs
+	doomb_monster_base.headshot_multiplier 2
+	doomb_monster_base.head_starting_position 58//so that if someone forgot to define this number monster dont get headshot from every attack
+	doomb_monster_base.legs_height_max -1//same for legs
 
-	Radius 24
-	Height 64
+
+		Radius 24
+		Height 64
+		Mass 1000
+		Speed 8
+		PainChance 50
+		Monster
+		+FLOORCLIP
+		Health 500
+
+		HitObituary "$OB_KNIGHTHIT"
+		Obituary "$OB_KNIGHT"
+		Tag "$FN_HELL"
 
     Scale 1.0
     Speed 8
@@ -13,32 +24,40 @@ ACTOR HellKnight2 : dumb_monster_base Replaces HellKnight
     damagefactor "Crush", 10.0
 	damagefactor "GibRemoving", 0.0
 	PainChance "Kick", 255
-	PainChance "LowKick", 220
 	PainChance "Head", 150
-	PainChance "Explosive", 255
+	PainChance "Explosive_Impact", 255
 	PainChance 25
 	PainChance "Saw", 100
 	PainChance "Cut", 100
 	damagefactor "Fatality", 2.0
 	DamageFactor "CauseObjectsToSplash", 0.0
 	damagefactor "SSG", 0.5
-		damagefactor "Avoid", 0.0
-		damagefactor "TeleportRemover", 0.0
-		PainSound "PSXDPN"
+	damagefactor "Avoid", 0.0
+	damagefactor "TeleportRemover", 0.0
+	damagefactor "Blood", 0.0
+	damagefactor "BlueBlood", 0.0
+	damagefactor "GreenBlood", 0.0
+	PainSound "PSXDPN"
     GibHealth 30
 	-BOSSDEATH
 	-FASTER
 	MaxStepHeight 24
 	MaxDropOffHeight 32
 	damagefactor "Avoid", 0.0
-damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0
     BloodType "Brutal_Blood",  "SawBlood"
 	DropItem "DemonStrengthRune" 3
 	Obituary "%o was slain by a Hell Knight."
 	DamageType HKF
-+DONTHURTSPECIES
+	+DONTHURTSPECIES
     MeleeDamage 5
-	States
+
+	SeeSound "knight/sight"
+	ActiveSound "knight/active"
+	PainSound "knight/pain"
+	DeathSound "knight/death"
+	HitObituary "$OB_KNIGHTHIT"
+
+  	States
 	{
 	Melee:
 		
@@ -272,7 +291,7 @@ TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		
 		BOS2 F 8 A_FaceTarget
 		
-		BOS2 G 8 A_SpawnProjectile("BaronBall", 36, 0, 0, 1) 
+		BOS2 G 8 A_SpawnProjectile("GreenPlasmaBall", 36, 0, 0, 1) 
 		Goto See2
 		
 	MissileInRage:
@@ -285,25 +304,19 @@ TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		BOS2 E 3 A_FaceTarget
 		TNT1 A 0 A_JumpIfInventory("CantFire",1, "SeeContinue")
 		BOS2 E 3 A_FaceTarget
-		
 		BOS2 F 6 A_FaceTarget
+		BOS2 G 6 A_SpawnProjectile("GreenPlasmaBall", 36, 0, 0, 1)
 		
-		BOS2 G 6 A_SpawnProjectile("BaronBall", 36, 0, 0, 1)
 		
+		BAS2 EF 6 A_FaceTarget
 		
-		BAS2 E 6 A_FaceTarget
-		
-		BAS2 F 6 A_FaceTarget
-		
-		BAS2 G 6 A_SpawnProjectile("BaronBall", 36, 0, 0, 1)
+		BAS2 G 6 A_SpawnProjectile("GreenPlasmaBall", 36, 0, 0, 1)
 
 		
-		BOS2 E 6 A_FaceTarget
+		BOS2 EF 6 A_FaceTarget
 		
-		BOS2 F 6 A_FaceTarget
-		
-		BOS2 G 6 A_SpawnProjectile("BaronBall", 36, 0, 0, 1)
-		Goto See2
+		BOS2 G 6 A_SpawnProjectile("GreenPlasmaBall", 36, 0, 0, 1)
+	Goto See2
 		
 	CheckRetreat:
 	TNT1 A 0
@@ -343,7 +356,7 @@ TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine")
 		BOS2 H 3 A_Pain
 		Goto See2
 	
-	Pain.Explosive:
+	Pain.Explosive_Impact:
 	TNT1 A 0
 	TNT1 A 0 ThrustThingZ(0,40,0,1)
 	Goto Pain
@@ -410,7 +423,7 @@ Death.Arm:
         TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_SpawnProjectile ("XDeath2b", 45, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AA 0 A_SpawnProjectile ("XDeath3b", 45, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAA 0 A_SpawnProjectile ("Instestin2", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_SpawnProjectile ("XDeathBrain1", 60, 0, random (0, 360), 2, random (0, 160))
         BOS2 PQRSTU 6
 		TNT1 A 0 A_SpawnItem ("GrowingBloodPool")
@@ -431,7 +444,7 @@ Death.Arm:
         TNT1 A 0 A_NoBlocking
 		TNT1 AAAAAA 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
         TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAAA 0 A_SpawnProjectile ("Instestin2", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_SpawnProjectile ("XDeathHalfHK", 24, 0, random (0, 360), 2, random (0, 160))
         BBO1 AAAAAAAAAABBBBBCCCCC 2 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, random (0, 360), 2, random (30, 110))
 		BBO1 DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 1 A_SpawnProjectile ("Brutal_LiquidBlood", 10, 0, random (0, 360), 2, random (30, 110))
@@ -446,7 +459,7 @@ Death.Arm:
         TNT1 A 0 A_NoBlocking
 		TNT1 AAAAAA 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160))
         TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160))
-		TNT1 AAAA 0 A_SpawnProjectile ("Instestin2", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AAAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 A_SpawnProjectile ("XDeathHalfHK", 24, 0, random (0, 360), 2, random (0, 160))
         BBO1 AAAAAAAAAABBBBBCCCCC 2 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, random (0, 360), 2, random (30, 110))
 		BBO1 DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 1 A_SpawnProjectile ("Brutal_LiquidBlood", 10, 0, random (0, 360), 2, random (30, 110))
@@ -521,37 +534,33 @@ Death.Arm:
         TNT1 A 0 A_XScream
         TNT1 A 0 A_NoBlocking
         TNT1 AAAA 0 A_SpawnProjectile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160))
-		
 
-
-		TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, random (0, 160))
-	    TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, random (0, 160))
+		TNT1 AA 0 doomb_spawn_burned_flesh()
 		
 		EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("GreenFlameTrails", 50, 0, random (0, 360), 2, random (0, 360))
 		XBRN AAAA 2 BRIGHT A_SpawnItem("GreenFlare",0,43)
         Stop
 
-Death.ExplosiveImpact:
+Death.Explosive_Impact:
         TNT1 A 0
 		TNT1 A 0 ThrustThingZ(0,35,0,1)
 		TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightArm", 62, 0, random (0, 360), 2, random (0, 160))
 		TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightLeg", 32, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAA 0 A_SpawnProjectile ("XDeath1", 62, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAA 0 A_SpawnProjectile ("MuchBlood", 62, 0, random (0, 360), 2, random (0, 160))
-		TNT1 A 0 A_Jump(255, "Death.ExplosiveImpact1", "Death.ExplosiveImpact2")
+		TNT1 A 0 A_Jump(255, "Death.Explosive_Impact1", "Death.Explosive_Impact2")
 	
-	Death.ExplosiveImpact1:	
+	Death.Explosive_Impact1:	
 		BAH3 A  8 A_Scream
 		BAH3 B  8 A_NoBlocking
 		BAH3 CCCCCC  8 A_CheckFloor("Land1")
 		Goto Land1
 	
 	Land1:
-		TNT1 A 0 A_SpawnItem ("DeadKnightExplosiveImpact1", 1)
+		TNT1 A 0 A_SpawnItem ("DeadKnightExplosive_Impact1", 1)
 	    Stop
 	
-	Death.ExplosiveImpact2:	
+	Death.Explosive_Impact2:	
 		BAH3 E  8 A_Scream
 		BAH3 F  8 A_NoBlocking
 		BAH3 GGGGGG  8 A_CheckFloor("Land2")
@@ -559,7 +568,7 @@ Death.ExplosiveImpact:
 	
 	
 	Land2:
-		TNT1 A 0 A_SpawnItem ("DeadKnightExplosiveImpact2", 1)
+		TNT1 A 0 A_SpawnItem ("DeadKnightExplosive_Impact2", 1)
 	    Stop
 
 
@@ -615,7 +624,7 @@ Goto See2
 	    TNT1 A 0 A_Pain
 		
 		TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1)
-		Goto Death.ExplosiveImpact
+		Goto Death.Explosive_Impact
 		
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1)
 		TNT1 A 0 A_Jump(128, "Death.Fatality3")
@@ -647,9 +656,6 @@ Goto See2
 	TNT1 A 0 A_SpawnItem("FrozenHellKnight")
 	Stop
 	
-	Death.Massacre:
-	Goto Death
-	
 	Crush:
 	 Death.Stomp:
 	    TNT1 A 0 A_Scream
@@ -669,7 +675,7 @@ Goto See2
 	}
 }  
 
-ACTOR GreenPlasmaBall: BaronBall Replaces BaronBall
+ACTOR GreenPlasmaBall
 {
 	Radius 10
 	Height 16
@@ -708,7 +714,8 @@ ACTOR GreenPlasmaBall: BaronBall Replaces BaronBall
 		Loop	
 		
 	Death:
-    TNT1 A 0 A_SpawnItemEx("PlasmaParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+    TNT1 AAAA 0 A_SpawnItemEx("PlasmaParticle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
+    TNT1 AAAA 0 A_SpawnProjectile ("PlasmaSmoke", 32, 0, random (0, 360), 2, random (0, 360))
 	//EXPL AAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("GreenFlameTrails", 0, 0, random (0, 360), 2, random (0, 360))
 	    TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	TNT1 A 0 A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
@@ -719,7 +726,8 @@ ACTOR GreenPlasmaBall: BaronBall Replaces BaronBall
 	XDeath:
 		//TNT1 AAA 0 A_SpawnItemEx("PlasmaParticle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
         TNT1 A 0 A_JumpIfCloser(220, "StopInAir")
-		TNT1 A 0 A_SpawnItemEx("PlasmaParticleSpawner", 0, 0, 0, 0, 0, 0, 0, 128)
+		TNT1 AAAA 0 A_SpawnItemEx("PlasmaParticle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
+		TNT1 AAAA 0 A_SpawnProjectile ("PlasmaSmoke", 32, 0, random (0, 360), 2, random (0, 360))
 		TNT1 AA 0 A_SpawnItem("GreenFlare",0,0)
 		FRPG ABCDEFGH 2 BRIGHT
 		Stop
@@ -730,8 +738,11 @@ ACTOR GreenPlasmaBall: BaronBall Replaces BaronBall
 	}
 }
 
-ACTOR KnightAttack: BaronBall
+ACTOR KnightAttack
 {
+	+RANDOMIZE
+	+ZDOOMTRANS
+
 	Radius 24
 	Height 16
 	DamageType HKFT
@@ -743,10 +754,6 @@ ACTOR KnightAttack: BaronBall
 	Alpha 0.6
     Damage 10
     Speed 42
-	//HitObituary "$OB_IMPHIT"
-	SeeSound "none"
-	DeathSound "none"
-	Decal "none"
 	States
 	{
 	Spawn:
@@ -846,7 +853,7 @@ Stop
 
 }
 
-Actor DeadKnightExplosiveImpact2: DeadKnight
+Actor DeadKnightExplosive_Impact2: DeadKnight
 {
 States
 {
@@ -855,7 +862,7 @@ Stop
 }
 
 }
-Actor DeadKnightExplosiveImpact1: DeadKnight
+Actor DeadKnightExplosive_Impact1: DeadKnight
 {
 States
 {
@@ -1017,7 +1024,7 @@ ACTOR DyingHellKnight
 		BTC1 ABC 10 A_Chase
 		TNT1 A 0 A_SpawnItemEx("Brutal_FlyingBlood", 0, 0, 10, 0, 0)
         BTC1 D 10 A_Pain
-		TNT1 A 0 A_SpawnItemEx("Instestin2", 0, 0, 5, 0, 0)
+		TNT1 A 0 A_SpawnItemEx("Instestin", 0, 0, 5, 0, 0)
 
 		TNT1 A 0 A_GiveInventory("DeathTimer1", 1)
 		TNT1 A 0 A_JumpIfInventory("DeathTimer1", 8, "GotoDeath")

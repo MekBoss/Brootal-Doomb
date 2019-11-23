@@ -11,7 +11,7 @@ ACTOR Rocket2 Replaces Rocket
 	Projectile
 	Speed 35
     Damage 30
-	DamageType Explosive
+	DamageType Explosive_Impact
     MeleeDamage 0
     Gravity 0.00
 	Scale 0.7
@@ -59,130 +59,27 @@ ACTOR Rocket2 Replaces Rocket
 	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 AAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
-        TNT1 AAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
-        TNT1 AAAAA 0 A_SpawnProjectile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
-        EXPL AAAAA 0 A_SpawnProjectile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 A 0 A_SpawnItemEx ("RocketExplosion",0,0,13,0,0,0,0,SXF_NOCHECKPOSITION,0)
+        TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, - random (0, 360))
+		TNT1 AAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, - random (0, 360))
+        TNT1 AAAAA 0 A_SpawnProjectile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, - random (0, 360))
+        EXPL AAAAA 0 A_SpawnProjectile ("ExplosionSmoke", 0, 0, random (0, 360), 2, - random (0, 360))
+		TNT1 A 0 A_SpawnItem("WhiteShockwave")
+		TNT1 A 0 A_Explode(120,150)
 		TNT1 A 2
-		TNT1 A 0 A_SpawnItemEx ("LiquidExplosionEffectSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
+	TNT1 A 0 A_Explode(3,9, 0, 0, 0, 0, 0, "none", "CauseWaterSplash")
 		TNT1 A 0 A_PlaySound("FAREXPL", 3)
 		TNT1 A 20
 		Stop
 	}
 }
 
-actor WeakRocket: Rocket2
-{
-speed 20
-damage 25
-}
 
-actor VanillaCyberRocket: Rocket2
-{
-speed 20
-damage 25
-Species "None"
-}
 
-actor RocketExplosion
-{
-+MISSILE
-Radius 2
-Height 2
-Damagetype ExplosiveImpact
-States    {
-    Spawn:
-	Goto Death
-	Death:
-	TNT1 A 0
-	TNT1 A 0 A_SpawnItem("WhiteShockwave")
-	TNT1 A 3
-	TNT1 A 0 A_Explode(120,150)
-        Stop
-}
-
-}		
-actor LiquidExplosionEffectSpawner
-{
-+NOBLOCKMAP
-+MISSILE
-Radius 2
-Height 2
-Damagetype CauseWaterSplash
-States    {
-    Spawn:
-	TNT1 A 1
-	TNT1 A 0 A_Explode(3,9)
-        Stop
-}
-
-}		
-actor BarrelExplosion: RocketExplosion
-{
-+FORCERADIUSDMG
-States    {
-    Spawn:
-	Goto Death
-	Death:
-	TNT1 A 0
-	TNT1 A 0 A_SpawnItem("WhiteShockwaveBig")
-	TNT1 A 3
-TNT1 A 0 A_Explode(160,200)
-        Stop
-}
-
-}		
 	
-actor BarrelExplosionAnnouncer: RocketExplosion
-{
-+FORCEPAIN
-Damagetype BarrelExploded
-States    {
-    Spawn:
-	Goto Death
-	Death:
-	TNT1 A 0
-	TNT1 A 0 A_SpawnItem("WhiteShockwaveBig")
-	TNT1 A 3
-TNT1 A 0 A_Explode(3,220)
-        Stop
-		}
-		}		
-		
-actor GrenadeExplosion: RocketExplosion
-{
-+FORCERADIUSDMG
-States    {
-    Spawn:
-	TNT1 A 0
-	TNT1 A 3
-TNT1 A 0 A_Explode(100,150)
-TNT1 A 0 A_SpawnItem("WhiteShockwaveBig")
-        Stop
-		}
-		}	
 		
 		
 		
-actor BFGSprayExplosion: RocketExplosion
-{
-+FORCERADIUSDMG
-DamageType "Desintegrate"
-States    {
-    Spawn:
-	TNT1 A 0
-	TNT1 A 1
-TNT1 A 0 A_Explode(40,1)
-        Stop
-		}
-		}	
 
-ACTOR CyberRocket: Rocket2
-{
-	Speed 30
-}
 
 ACTOR GrenadeMissile
 {
@@ -209,10 +106,10 @@ ACTOR GrenadeMissile
 		TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1)
 		TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 9, "Explode")
 		TNT1 A 0 A_CheckFloor("Death")
-		GBPJ ABCD 3 A_SpawnProjectile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
+		GBPJ ABCD 3 A_SpawnProjectile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, - random (0, 360))
 		TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 9, "Explode")
 		TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1)
-		GBPJ EFGH 3	A_SpawnProjectile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
+		GBPJ EFGH 3	A_SpawnProjectile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, - random (0, 360))
 		TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 9, "Explode")
 		
 		Loop
@@ -229,7 +126,7 @@ ACTOR GrenadeMissile
 	Death:
 	    TNT1 A 0
 		TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 9, "Explode")
-		GBPJ AAAA 3 A_SpawnProjectile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
+		GBPJ AAAA 3 A_SpawnProjectile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, - random (0, 360))
 		TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1)
 		Loop
 		
@@ -240,13 +137,6 @@ ACTOR GrenadeMissile
 	Goto Spawn
 	
 	Explode:
-	Death.Slime:
-	Death.Fire:
-	Death.Bullet:
-	Death.Shotgun:
-	Death.SSG:
-	Death.Cutless:
-	Death.Shrapnel:
 	    TNT1 A 0
 		TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0)
         EXPL A 0 Radius_Quake (3, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
@@ -255,12 +145,13 @@ ACTOR GrenadeMissile
 	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_SpawnItemEx ("GrenadeExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 AAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
-        TNT1 AAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
-        TNT1 AAAAA 0 A_SpawnProjectile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
-        EXPL AAAAA 0 A_SpawnProjectile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_Explode(100,150, 0, 0, 0, 0, 0, "none", "Explosive_Impact")
+		TNT1 A 0 A_SpawnItem("WhiteShockwaveBig")
+        TNT1 AAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, - random (0, 180))
+        TNT1 AAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, - random (0, 360))
+		TNT1 AAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, - random (0, 360))
+        TNT1 AAAAA 0 A_SpawnProjectile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, - random (0, 360))
+        EXPL AAAAA 0 A_SpawnProjectile ("ExplosionSmoke", 0, 0, random (0, 360), 2, - random (0, 360))
 		TNT1 A 0 A_PlaySound("Explosion", 1)
 		TNT1 A 1
 		TNT1 A 0 A_PlaySound("FAREXPL", 3)
@@ -280,7 +171,7 @@ ACTOR ShortGrenade: GrenadeMissile
 	{
 	Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
-		GBPJ ABCDEFGH 3 A_SpawnProjectile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, random (0, 360))
+		GBPJ ABCDEFGH 3 A_SpawnProjectile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, - random (0, 360))
 		Loop
 	
 	SpawnUnderwater:
@@ -299,75 +190,10 @@ ACTOR ShortGrenade: GrenadeMissile
 	}
 }
 
-ACTOR BouncingGrenade: GrenadeMissile
-{
-    +DOOMBOUNCE
-	+EXPLODEONWATER
-    BounceFactor 0.5
-	SeeSound "Weapons/GrenadeBounce"
-}
-
-ACTOR CyberDemonGrenade: BouncingGrenade
-{
-	Speed 28
-	Damage 30
-	DamageType Explosive
-    BounceFactor 0.9
-	States
-	{
-	Death:
-		EXPL A 1 A_Explode(200,200)
-        EXPL A 0 Radius_Quake (2, 8, 0, 15, 0)
-        TNT1 A 0 //A_AlertMonsters
-        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_SpawnItemEx ("RocketExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 AAA 0 A_SpawnProjectile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
-        TNT1 AAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
-        TNT1 AAAAAAA 0 A_SpawnProjectile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
-        EXPL AAAAAA 0 A_SpawnProjectile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 A 1
-		TNT1 A 0 A_PlaySound("FAREXPL", 3)
-		TNT1 AAAAAAAAAAAAA 3 A_SpawnProjectile ("HeavyExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
-		Stop
-	}
-}
 
 
 
-Actor DragonBreath
-{
-	Projectile
-	+RANDOMIZE
-+FORCEXYBILLBOARD
--BLOODSPLATTER 
-+BLOODLESSIMPACT
-+RIPPER
-damage 0
-radius 1
-height 1
-speed 40
-renderstyle ADD
-alpha 0.9
-scale .15
-    DamageType Flames
-	SeeSound "fatso/attack"
-    Decal "BigScorch"
-states
-	{
-	Spawn:
-		TNT1 AAAAA 2 A_SpawnItem("SpawnedFlamers")
-		Stop
-Death:
-    Stop
-XDeath:
-TNT1 A 0
-Stop
-	}
-}
+
 
 ACTOR MarinesRocket: Rocket2
 {
@@ -398,7 +224,7 @@ ACTOR CyberBalls
 	Projectile
 	Speed 20
     Damage 8
-	DamageType Explosive
+	DamageType "Explosive_Impact"
     Gravity 0.00
     Decal "Scorch"
 	Renderstyle Add
@@ -418,7 +244,7 @@ ACTOR CyberBalls
 	Spawn1:	
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater")
 	    WYVB A 1 Bright A_SpawnItem("RedFlareSmall22",0,0) 
-		TNT1 A 0 A_SpawnProjectile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, random (-30, 30))
+		TNT1 A 0 A_SpawnProjectile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, - random (-30, 30))
 		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "SpawnCheap")
 		Loop
 		
@@ -430,7 +256,7 @@ ACTOR CyberBalls
 	
 	SpawnUnderwater:
 	    WYVB A 1 Bright A_SpawnItem("YellowFlareSmall",0,0) 
-        TNT1 A 0 A_SpawnProjectile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180))
+        TNT1 A 0 A_SpawnProjectile ("BUBULZ", 0, 0, random (0, 360), 2, - random (0, 180))
 		Goto Spawn1
 	
 		
@@ -442,12 +268,13 @@ ACTOR CyberBalls
 	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_SpawnItemEx ("RocketExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 AAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
-        TNT1 AAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
-        TNT1 AAAAA 0 A_SpawnProjectile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
-        EXPL AAAAA 0 A_SpawnProjectile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItem("WhiteShockwave")
+		TNT1 A 0 A_Explode(120,150, 0, 0, 0, 0, 0, "none", "Explosive_Impact")
+        TNT1 AAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, - random (0, 180))
+        TNT1 AAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, - random (0, 360))
+		TNT1 AAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, - random (0, 360))
+        TNT1 AAAAA 0 A_SpawnProjectile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, - random (0, 360))
+        EXPL AAAAA 0 A_SpawnProjectile ("ExplosionSmoke", 0, 0, random (0, 360), 2, - random (0, 360))
 		TNT1 A 1
 		TNT1 A 0 A_PlaySound("FAREXPL", 3)
 		TNT1 A 15
@@ -460,11 +287,12 @@ ACTOR CyberBalls
 	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
 	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
         TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_SpawnItemEx ("RocketExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 AAA 0 A_SpawnProjectile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
-        TNT1 AAA 0 A_SpawnProjectile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAA 0 A_SpawnProjectile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
-        TNT1 AAAAA 0 A_SpawnProjectile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_SpawnItem("WhiteShockwave")
+		TNT1 A 0 A_Explode(120,150, 0, 0, 0, 0, 0, "none", "Explosive_Impact")
+        TNT1 AAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, - random (0, 180))
+        TNT1 AAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, - random (0, 360))
+		TNT1 AAAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, - random (0, 360))
+        TNT1 AAAAA 0 A_SpawnProjectile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, - random (0, 360))
 		TNT1 A 1
 		TNT1 A 0 A_PlaySound("FAREXPL", 3)
 		TNT1 A 15
@@ -476,129 +304,4 @@ Actor FastCyberballs: Cyberballs
 {
 Speed 40
 Damage 30
-}
-
-ACTOR CyberballTrail
-{
-    Radius 0
-    Height 0
-	Alpha 1.0
-	RenderStyle Add
-	Scale 0.9
-	Speed 2
-    +NOBLOCKMAP
-    +NOTELEPORT
-    +DONTSPLASH
-	+MISSILE
-	+FORCEXYBILLBOARD
-    +CLIENTSIDEONLY
-	Damage 0
-    +NOINTERACTION
-    States
-    {
-    Spawn:
-	    TNT1 A 2
-        WYVB CDE 1
-
-Stop
-    }
-}
-
-
-
-
-
-
-
-ACTOR MarineGrenade
-{
-	Radius 4
-	Height 4
-	Speed 20
-	Damage 20
-    +MISSILE
-    +BLOODSPLATTER
-	+EXTREMEDEATH
-	+DOOMBOUNCE
-	BounceFactor 0.5
-	Damagetype "FriendBullet"
-    Gravity 1.0
-	Scale 0.2
-    Decal "Scorch"
-    SeeSound "none"
-	DeathSound "Explosion"
-	Obituary "$OB_MPROCKET"
-	+EXTREMEDEATH
-	States
-	{
-	Spawn:
-		TNT1 A 0
-		BLUD C 0 ThrustThingZ (0,50,1,0)
-	Live:
-		GRND ABCDEFGH 2
-		Loop
-		
-		
-		Death:
-        EXPL A 0 Radius_Quake (2, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
-		TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -30)
-        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 AAA 0 A_SpawnProjectile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
-        TNT1 AAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
-        TNT1 AAAAAAA 0 A_SpawnProjectile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
-        EXPL AAAAAA 0 A_SpawnProjectile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 A 0 A_Explode(200, 300)
-		TNT1 A 1
-		TNT1 A 0 A_PlaySound("FAREXPL", 3)
-		TNT1 AAAAAAAAAAAAA 3 A_SpawnProjectile ("HeavyExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
-		Stop
-	}
-}
-
-
-
-ACTOR ZombiemanGrenade: MarineGrenade
-{
-	Damagetype "ExplosiveImpact"
-	Speed 10
-	Damage 0
-	-EXTREMEDEATH
-	+GHOST
-	+THRUGHOST
-	BounceFactor 0.7
-	States
-	{
-	Spawn:
-		TNT1 A 0
-		BLUD C 0 ThrustThingZ (0,50,1,0)
-	Live:
-		GRND ABCDEFGH 2
-		Loop
-		
-		
-		Death:
-        EXPL A 0 Radius_Quake (2, 8, 0, 15, 0)//(intensity, duration, damrad, tremrad, tid)
-		TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -30)
-        TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	    TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-	    TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-		TNT1 A 0 A_SpawnItemEx ("BarrelKaboom",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0)
-        TNT1 AAA 0 A_SpawnProjectile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 180))
-        TNT1 AAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticleHeavy", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 AAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticleVeryFast", 0, 0, random (0, 360), 2, random (0, 360))
-        TNT1 AAAAAAA 0 A_SpawnProjectile ("MediumExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360))
-        EXPL AAAAAA 0 A_SpawnProjectile ("ExplosionSmokeFast22", 0, 0, random (0, 360), 2, random (0, 360))
-		TNT1 A 0 A_Explode(20, 200, 0)
-		TNT1 A 0 A_Explode(20, 70, 1)
-		TNT1 A 1
-		TNT1 A 0 A_PlaySound("FAREXPL", 3)
-		TNT1 AAAAAAAAAAAAA 3 A_SpawnProjectile ("HeavyExplosionSmoke", 2, 0, random (0, 360), 2, random (0, 360))
-		Stop
-	}
 }
