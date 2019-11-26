@@ -48,7 +48,7 @@ States    {
 }
 
 
-ACTOR BurnParticles
+ACTOR BurnParticles : visual_sfx
 {
     Radius 8
     Height 8

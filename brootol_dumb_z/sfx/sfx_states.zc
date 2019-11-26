@@ -1,0 +1,21 @@
+extend class visual_sfx
+{
+states
+{
+    ExplosionParticle2:
+        tnt1 a 0
+        {
+            a_setscale(frandom(0.1, 0.2));
+            a_scalevelocity(frandom(2, 3));
+            bnogravity = false;
+            a_setgravity(frandom(0.7, 0.9));
+        }
+        SPRK SSSSSSSS 1 BRIGHT;
+        SPRK SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 1 Bright A_FadeOut(0.02);
+        tnt1 a 0 {bnogravity = true;}
+    goto reset_condition;
+
+
+}
+
+}

@@ -334,36 +334,32 @@ Alpha 0.9
 States 
 { 
 Spawn: 
-SHOK A 1 BRIGHT
-Goto Death 
-Death: 
-SHOK BCDEFGHIJKLMNOPQR 1 BRIGHT A_FadeOut(0.05)
+SHOK ABCDEFGHIJKLMNOPQR 1 BRIGHT A_FadeOut(0.05)
 Stop 
 } 
 } 
 
 
-ACTOR WhiteShockWave: GreenShockwave
+ACTOR WhiteShockWaveBig: GreenShockwave
 { 
-Scale 2.0
-Alpha 0.12
+Scale 3.0
 States 
 { 
 Spawn: 
-SHWK A 1
-SHWK CEGIKMOQ 1 A_FadeOut(0.01)
+SHWK ACEGIKMOQ 1 A_FadeOut(0.01)
 Stop 
 } 
 } 
 
-ACTOR WhiteShockWaveBig: WhiteShockWave
-{ 
-Scale 3.0
-} 
-
-ACTOR WhiteShockWaveSmall: WhiteShockWave
+ACTOR WhiteShockWaveSmall: GreenShockwave
 { 
 Scale 1.0
+States 
+{ 
+Spawn: 
+SHWK ACEGIKMOQ 1 A_FadeOut(0.01)
+Stop 
+} 
 } 
 
 ACTOR BFGFOG
@@ -384,10 +380,7 @@ Gravity 0
 States
 {
 Spawn:
-BFOG ABCDEF 6 BRIGHT A_SpawnItem("GreenFlareMedium",0,0)
-Goto Death
-Death:
-BFOG G 3 BRIGHT A_SpawnItem("GreenFlareMedium",0,0)
+BFOG ABCDEFG 6 BRIGHT A_SpawnItem("GreenFlareMedium",0,0)
 Stop
 }
 }
@@ -413,11 +406,7 @@ States
 {
 Spawn:
 TNT1 A 0
-TNT1 AAAAA 0 A_SpawnItemEx("BFGDeathParticle", 0, 0, 0, (0.1)*Random(20, 45), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
-TNT1 AAAAA 0 A_SpawnItemEx("BFGDeathParticle", 0, 0, 0, (0.1)*Random(20, 45), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
-TNT1 AAAAA 0 A_SpawnItemEx("BFGDeathParticle", 0, 0, 0, (0.1)*Random(20, 45), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
-TNT1 AAAAA 0 A_SpawnItemEx("BFGDeathParticle", 0, 0, 0, (0.1)*Random(20, 45), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
-TNT1 A 1
+TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("BFGDeathParticle", 0, 0, 0, (0.1)*Random(20, 45), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
 Stop
 }
 }
@@ -433,10 +422,7 @@ States
 {
 Spawn:
 TNT1 A 0
-TNT1 AAAAAAAAAAA 0 A_SpawnItemEx("BFGSuperParticle", 0, 0, 0, (0.1)*Random(10, 35), 0, (0.1)*Random(-20, 20), Random(0, 360), 128)
-TNT1 AAAAAAAAAAA 0 A_SpawnItemEx("BFGSuperParticle", 0, 0, 0, (0.1)*Random(10, 35), 0, (0.1)*Random(-20, 20), Random(0, 360), 128)
-TNT1 AAAAAAAAAAAAAAA 0 A_SpawnItemEx("BFGSuperParticle", 0, 0, 0, (0.1)*Random(10, 35), 0, (0.1)*Random(-20, 20), Random(0, 360), 128)
-TNT1 A 1
+TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnItemEx("BFGSuperParticle", 0, 0, 0, (0.1)*Random(10, 35), 0, (0.1)*Random(-20, 20), Random(0, 360), 128)
 Stop
 }
 }

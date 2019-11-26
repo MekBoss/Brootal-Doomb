@@ -3,6 +3,7 @@ class doomb_body_base : doomb_monster_base abstract
 default
 {
     -ismonster
+	-countkill
 }
 
 }

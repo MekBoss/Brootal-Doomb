@@ -165,7 +165,6 @@ ACTOR TehArchvile : doomb_monster_base Replaces Archvile
 	Stop
 
 
-	Death.SuperPlasma:
     Death.Plasma:
 	Death.Plasma2:
         TNT1 A 0

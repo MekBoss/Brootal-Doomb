@@ -2,6 +2,7 @@ class visual_sfx : actor
 {
 protected bool show_something;
 protected state off_state, reset_cond;
+//if affect spawn own effect
 protected eventhandler sfx_event;
 
 void set_event(eventhandler en)
@@ -14,7 +15,7 @@ override void beginplay()
 {
 	super.beginplay();
 	off_state = findstate("off");
-	reset_cond = findstate("reset_self_condition");
+	reset_cond = findstate("reset_condition");
 }
 
 bool check_busyness()
@@ -31,8 +32,10 @@ override int SpecialMissileHit (Actor victim)
 
 override void tick()
 {
+	/*
     if( !(Vel == (0, 0, 0) ) )
     {
+		vel.z -= 1;
         setorigin( Vec3Offset(Vel.x, Vel.y, Vel.z, false), true );
         CheckPortalTransition(true);
     }
@@ -40,7 +43,7 @@ override void tick()
     if(curstate == null)
     {
         setstate(off_state);
-        console.printf("some actor have null state");
+        console.printf("some sfx actor have null state");
         return;
     }
 
@@ -52,6 +55,8 @@ override void tick()
 				return;
 		}
     }
+	*/
+	super.tick();
 
 	if(curstate != off_state || curstate != reset_cond)
 	{
@@ -63,16 +68,27 @@ override void tick()
 
 
 default
-{+nointeraction; +noclip; +nogravity; +notonautomap; radius 1; height 1;}
+{
+	+nointeraction;
+	+noclip;
+	+nogravity;
+	+notonautomap;
+	radius 1;
+	height 1;
+}
 
 states
 {
 	spawn:
 	off:
+	//if it have missile flag, dont die just go back to off state
+	death:
+	xdeath:
+	crash:
 		tnt1 a -1;
 	stop;
 
-	reset_self_condition:
+	reset_condition:
 		tnt1 a 0
 		{
 			self.scale = (1, 1);

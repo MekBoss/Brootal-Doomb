@@ -16,6 +16,10 @@ override void worldthingspawned(worldevent e)
 {	
 	if(e.thing is "dumb_boolet_base")
 	    dumb_boolet_base(e.thing).set_sfx(self);
+
+		
+	if(e.thing is "doomb_monster_base")
+	    doomb_monster_base(e.thing).set_effects(self);
 }
 
 
@@ -40,9 +44,9 @@ private visual_sfx find_free_effect()
 			if(visual_sfx(self.vis_sfx[i]).check_busyness() == false)
 			{
 				return (visual_sfx)(self.vis_sfx[i]); break; 
+			}
+		}
 	}
-
-}	}
 
 	return null;
 }
@@ -65,20 +69,21 @@ private void approve_state(actor subject = null, statelabel state_name = null)
 
 
 //here actually shows some mikle bay explosions
-actor show_some_effect(actor caller = null, statelabel effect_state = null, vector3 offset = (0,0,0), vector3 speed = (0, 0, 0), double size = 1 )
+actor show_some_effect(actor caller = null, statelabel effect_state = null, vector3 offset = (0,0,0), vector3 speed = (0, 0, 0), vector2 size = (1, 1), double translucency = 1 )
 {
 	//effect must be "attached" to actor
 	if(caller == null || effect_state == null) {return null;}
 	
-	actor lin = find_free_effect();
-	if(lin == null)
+	actor mikle_bay = find_free_effect();
+	if(mikle_bay == null)
 		return null;
 
-	approve_state(lin, effect_state);
-	lin.setorigin(caller.pos + offset, false);
-	lin.vel = speed;
-	lin.scale = (size, size);
-	return lin;
+	approve_state(mikle_bay, effect_state);
+	mikle_bay.setorigin(caller.pos + offset, false);
+	mikle_bay.vel = speed;
+	mikle_bay.scale = size;
+	mikle_bay.alpha = translucency;
+	return mikle_bay;
 }
 
 }
