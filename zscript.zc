@@ -4,6 +4,9 @@ version "3.7.2"
 #include "brootol_dumb_z/sfx/sfx_base.zc"
 #include "brootol_dumb_z/sfx/sfx_states.zc"
 
+#include "brootol_dumb_z/actors_dump/EXPLOSIVES.zc"
+#include "brootol_dumb_z/actors_dump/DROPABLES.zc"
+
 //,onsters base must go before gore
 //because gore base inherits from monster base
 #include "brootol_dumb_z/monsters/monster_base.zc"
@@ -12,6 +15,8 @@ version "3.7.2"
 
 
 #include "brootol_dumb_z/weapons/weapon_base.zc"
+#include "brootol_dumb_z/weapons/ammo/AMMO.zc"
+
 
 #include "brootol_dumb_z/base_definitions.zc"
 

@@ -61,8 +61,6 @@ damage 0
 #include brootol_dumb_z/gore/BURN.txt
 
 
-#include brootol_dumb_z/actors_dump/EXPLOSIVES.txt
-#include brootol_dumb_z/actors_dump/DROPABLES.txt
 
 
 //Guns Guns Guns
@@ -83,7 +81,6 @@ damage 0
 #include brootol_dumb_z/weapons/STBFG10k.txt
 #include brootol_dumb_z/weapons/STRAILGUN.txt
 
-#include brootol_dumb_z/weapons/ammo/AMMO.txt
 
 //MeatShields
 #include IMPSHIELD.txt
