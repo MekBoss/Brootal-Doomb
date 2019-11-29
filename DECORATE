@@ -35,13 +35,6 @@ inventory.maxamount 500
 #include brootol_dumb_z/sfx/PUFF.txt
 
 
-//Gore N' Blood
-#include brootol_dumb_z/gore/GORE!!!.txt
-#include brootol_dumb_z/gore/GORE2.txt
-#include brootol_dumb_z/gore/GORE3.txt
-#include brootol_dumb_z/gore/BLOOD.txt
-#include brootol_dumb_z/gore/BLOODSPLASH.txt
-#include brootol_dumb_z/gore/BURN.txt
 
 
 

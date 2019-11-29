@@ -6,6 +6,15 @@ version "3.7.2"
 
 #include "brootol_dumb_z/sfx/PARTICLES.zc"
 
+//Gore N' Blood
+#include "brootol_dumb_z/gore/GORE!!!.zc"
+#include "brootol_dumb_z/gore/GORE2.zc"
+#include "brootol_dumb_z/gore/GORE3.zc"
+#include "brootol_dumb_z/gore/BLOOD.zc"
+#include "brootol_dumb_z/gore/BLOODSPLASH.zc"
+#include "brootol_dumb_z/gore/BURN.zc"
+
+
 //DECORATIONS
 #include "brootol_dumb_z/decor/FURNITURE.zc"
 #include "brootol_dumb_z/decor/LAMPS.zc"
