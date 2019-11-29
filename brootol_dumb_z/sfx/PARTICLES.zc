@@ -307,7 +307,6 @@ CLASS PlasmaParticleX : ACTOR {
 			Loop;
 		Death:
 			TNT1 A 1;
-			TNT1 A 0;
 			Stop;
 			
 	}
@@ -323,10 +322,6 @@ CLASS BigPlasmaParticleX: PlasmaParticleX {
 }
 
 CLASS PlasmaParticle: BluePlasmaParticle { 
-	Default {
-		
-		
-	}
 	States
 	{
 		Spawn:

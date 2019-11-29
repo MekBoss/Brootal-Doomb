@@ -70,13 +70,7 @@ inventory.maxamount 500
 #include ZMANSHIELD.txt
 #include SGUYSHIELD.txt
 
-//DECORATIONS
-#include brootol_dumb_z/decor/FURNITURE.txt
-#include brootol_dumb_z/decor/LAMPS.txt
-#include brootol_dumb_z/decor/NATURAL.txt
-#include brootol_dumb_z/decor/FIREWORKS.txt
-#include brootol_dumb_z/decor/TORCHES.txt
-#include brootol_dumb_z/decor/DEAD.txt
+
 
 //Enemies
 #include brootol_dumb_z/monsters/ZOMBIEMEN/ZOMBIEMEN.txt

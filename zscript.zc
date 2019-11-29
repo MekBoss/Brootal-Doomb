@@ -6,6 +6,15 @@ version "3.7.2"
 
 #include "brootol_dumb_z/sfx/PARTICLES.zc"
 
+//DECORATIONS
+#include "brootol_dumb_z/decor/FURNITURE.zc"
+#include "brootol_dumb_z/decor/LAMPS.zc"
+#include "brootol_dumb_z/decor/NATURAL.zc"
+#include "brootol_dumb_z/decor/FIREWORKS.zc"
+#include "brootol_dumb_z/decor/TORCHES.zc"
+#include "brootol_dumb_z/decor/DEAD.zc"
+
+
 #include "brootol_dumb_z/actors_dump/EXPLOSIVES.zc"
 #include "brootol_dumb_z/actors_dump/DROPABLES.zc"
 

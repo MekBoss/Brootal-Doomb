@@ -13,8 +13,8 @@ ACTOR TehArchvile : doomb_monster_base Replaces Archvile
 	Radius 24
 	Height 64
 
-	Radius 20
-	Height 56
+
+	scale 0.8
     damagefactor "Crush", 10.0
 	Mass 500
 	Speed 15
@@ -31,6 +31,13 @@ ACTOR TehArchvile : doomb_monster_base Replaces Archvile
 	+FLOORCLIP 
 	+NOTARGET
     DamageType Rape
+
+	MaxTargetRange 896
+	+QUICKTORETALIATE 
+	+FLOORCLIP 
+	+NOTARGET
+	Tag "$FN_ARCH"
+
 	DropItem "Berserker" 5
 	SeeSound "vile/sight"
 	PainSound "vile/pain"
