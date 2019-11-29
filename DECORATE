@@ -32,23 +32,8 @@ inventory.maxamount 500
 
 
 
-//Guns Guns Guns
-#include brootol_dumb_z/weapons/MELEE.txt
-#include brootol_dumb_z/weapons/SAW.txt
-#include brootol_dumb_z/weapons/RIFLE.txt
-#include brootol_dumb_z/weapons/DUALRIFLE.txt
-#include brootol_dumb_z/weapons/SHOTGUN.txt
-#include brootol_dumb_z/weapons/SSG.txt
-#include brootol_dumb_z/weapons/MINIGUN.txt
-#include brootol_dumb_z/weapons/ROCKETLAUNCHER.txt
-#include brootol_dumb_z/weapons/PLASMA.txt
-#include brootol_dumb_z/weapons/DUALPLASMA.txt
-#include brootol_dumb_z/weapons/BFG.txt
-#include brootol_dumb_z/weapons/Grenades.txt
-
-#include brootol_dumb_z/weapons/STGRENADELAUNCH.txt
-#include brootol_dumb_z/weapons/STBFG10k.txt
-#include brootol_dumb_z/weapons/STRAILGUN.txt
+#include "brootol_dumb_z/weapons/DUALRIFLE.txt"
+#include "brootol_dumb_z/weapons/DUALPLASMA.txt"
 
 
 //MeatShields
