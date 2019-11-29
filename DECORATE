@@ -100,10 +100,6 @@ inventory.maxamount 500
 #include brootol_dumb_z/monsters/EEEVILLL.txt
 //#include ARACHBOX
 
-//items
-#include brootol_dumb_z/items/ARTIFACT.txt
-#include brootol_dumb_z/items/HEALTH2.txt
-
 
 //Player Classes
 #include brootol_dumb_z/player/PLAYER.txt

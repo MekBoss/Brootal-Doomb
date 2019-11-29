@@ -31,6 +31,10 @@ version "3.7.2"
 #include "brootol_dumb_z/weapons/STBFG10k.zc"
 #include "brootol_dumb_z/weapons/STRAILGUN.zc"
 
+//items
+#include "brootol_dumb_z/items/ARTIFACT.zc"
+#include "brootol_dumb_z/items/HEALTH2.zc"
+
 
 //Gore N' Blood
 #include "brootol_dumb_z/gore/GORE!!!.zc"
