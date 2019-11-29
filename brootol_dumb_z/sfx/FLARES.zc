@@ -1,0 +1,898 @@
+
+CLASS Flare_General : ACTOR { 
+	Default {
+		
+		+NOINTERACTION;
+		+NOGRAVITY;
+		+CLIENTSIDEONLY;
+		renderstyle "Add";
+		radius 1;
+		height 1;
+		alpha 0.4;
+		scale 0.4;
+	}
+}
+
+CLASS NewfagExplosionFlare : Flare_General { 
+	Default {
+		
+		XScale 0.8;
+		YScale 0.4;
+		Alpha 0.5;
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			FLAR A 2 bright;
+			FLAR AAAAAAAAAAAAAAAA 1 BRIGHT A_FadeOut(0.11);
+			stop;
+	}
+}
+
+
+CLASS RedFlare : Flare_General { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(128,2);
+			LENR A 2 bright;
+			stop;
+			TNT1 A 0;
+			LENR B 2 bright;
+			stop;
+	}
+}
+
+CLASS RedFlare3 : Flare_General { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(128,4);
+			LENR AAB 1 bright;
+			stop;
+			TNT1 A 0;
+			LENR BAB 1 bright;
+			stop;
+	}
+}
+
+CLASS BlueFlare : Flare_General { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(128,2);
+			LENB A 2 bright;
+			stop;
+			TNT1 A 0;
+			LENB B 2 bright;
+			stop;
+	}
+}
+
+
+CLASS BlueFlare3 : Flare_General { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(128,4);
+			LENB AAB 1 bright;
+			stop;
+			TNT1 A 0;
+			LENB BAB 1 bright;
+			stop;
+	}
+}
+
+CLASS GreenFlare : Flare_General { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(128,2);
+			LENG A 2 bright;
+			stop;
+			TNT1 A 0;
+			LENG B 2 bright;
+			stop;
+	}
+}
+
+CLASS GreenFlare3 : Flare_General { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(128,4);
+			LENG AAB 1 bright;
+			stop;
+			TNT1 A 0;
+			LENG BAB 1 bright;
+			stop;
+	}
+}
+
+CLASS YellowFlare : Flare_General { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(128,2);
+			LENY A 2 bright;
+			stop;
+			TNT1 A 0;
+			LENY B 2 bright;
+			stop;
+	}
+}
+
+
+
+CLASS YellowFlareSmall : YellowFlare { 
+	Default {
+		
+		scale 0.15;
+	}
+}
+
+CLASS YellowFlareMedium : YellowFlare { 
+	Default {
+		
+		scale 0.20;
+	}
+}
+
+CLASS YellowFlareLarge1X : YellowFlare { 
+	Default {
+		
+		scale 1.0;
+	}
+}
+
+CLASS RedFlareMedium : RedFlare { 
+	Default {
+		
+		scale 0.25;
+	}
+}
+
+
+CLASS RedFlareBig : RedFlare { 
+	Default {
+		
+		scale 0.9;
+	}
+}
+
+CLASS RedFlareLarge1X : RedFlare { 
+	Default {
+		
+		scale 1.0;
+	}
+}
+
+CLASS RedFlareSmall : RedFlare { 
+	Default {
+		
+		scale 0.15;
+	}
+}
+
+CLASS RedFlareVerySmall : RedFlare { 
+	Default {
+		
+		alpha 0.15;
+		scale 0.2;
+	}
+}
+
+CLASS RedFlareSmall2 : RedFlare { 
+	Default {
+		
+		scale 0.10;
+	}
+}
+
+CLASS GreenFlareSmall : GreenFlare { 
+	Default {
+		
+		alpha 0.4;
+		scale 0.2;
+	}
+}
+
+CLASS GreenFlareMedium : GreenFlare { 
+	Default {
+		
+		alpha 0.3;
+		scale 0.25;
+	}
+}
+
+CLASS BlueFlareMedium : BlueFlare { 
+	Default {
+		
+		alpha 0.3;
+		scale 0.15;
+	}
+}
+
+CLASS BlueFlareMedium2 : BlueFlare { 
+	Default {
+		
+		alpha 0.3;
+		scale 0.25;
+	}
+}
+
+CLASS BlueFlareMedium3 : BlueFlare { 
+	Default {
+		
+		alpha 0.3;
+		scale 0.35;
+	}
+}
+
+CLASS BlueFlareSmall : BlueFlare { 
+	Default {
+		
+		alpha 0.3;
+		scale 0.15;
+	}
+}
+
+
+CLASS PlasmaFlare : Flare_General { 
+	Default {
+		
+		alpha 0.4;
+		scale 0.15;
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(128,2);
+			L2NB A 1 bright;
+			stop;
+			TNT1 A 0;
+			L2NB B 1 bright;
+			stop;
+	}
+}
+
+CLASS FireballFlare : Flare_General { 
+	Default {
+		
+		alpha 0.6;
+		scale 0.15;
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(128,2);
+			LENY A 1 bright;
+			stop;
+			TNT1 A 0;
+			LENY B 1 bright;
+			stop;
+	}
+}
+
+CLASS RocketFlare : Flare_General { 
+	Default {
+		
+		alpha 1.0;
+		yscale 0.6;
+		xscale 0.6;
+	}
+	states
+	{
+		Spawn:
+			LEYS O 2 BRIGHT;
+			Stop;
+	}
+}
+
+CLASS GreenFlareSmall2 : GreenFlare { 
+	Default {
+		
+		alpha 0.15;
+		scale 0.15;
+	}
+}
+
+
+
+
+
+CLASS LensFlare : Flare_General { 
+	Default {
+		
+		alpha 0.45;
+		scale 0.5;
+	}
+	states
+	{
+		Spawn:
+			LENS A 5 bright;
+			stop;
+	}
+}
+
+
+CLASS WhiteFlareSmall : Flare_General { 
+	Default {
+		
+		alpha 0.05;
+		scale 0.15;
+	}
+	states
+	{
+		Spawn:
+			LENW A 5 bright;
+			stop;
+	}
+}
+
+CLASS FireFightFlare : Flare_General { 
+	Default {
+		
+		+FORCEXYBILLBOARD;
+		scale 0.20;
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(128,2);
+			L2NY A 4 bright;
+			stop;
+			TNT1 A 0;
+			L2NY B 4 bright;
+			stop;
+	}
+}
+
+CLASS YellowFlareSmallB : YellowFlare { 
+	Default {
+		
+		+FORCEXYBILLBOARD;
+		scale 0.15;
+		Alpha 0.3;
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(128,2);
+			LENY A 1 bright;
+			stop;
+			TNT1 A 0;
+			LENY B 1 bright;
+			stop;
+	}
+}
+
+
+
+
+
+
+
+
+
+CLASS RedFlareSpawn : ACTOR { 
+	Default {
+		
+		Speed 20;
+		PROJECTILE;
+		+NOCLIP;
+	}
+	States
+	{
+		Spawn:
+			TNT1 AA 1 A_SpawnProjectile("RedFlareSmall2",-5,0,-85,0,random(-10,10));
+			Stop;
+	}
+}
+
+
+
+CLASS PLasmaFlareSpawn : ACTOR { 
+	Default {
+		
+		Speed 20;
+		PROJECTILE;
+		+NOCLIP;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 1 A_SpawnProjectile("PlasmaFlare",-5,0,-85,0,random(-10,10));
+			Stop;
+	}
+}
+
+
+CLASS YellowFlareSpawn : ACTOR { 
+	Default {
+		
+		Speed 20;
+		PROJECTILE;
+		+NOCLIP;
+		+NOGRAVITY;
+	}
+	States
+	{
+		Spawn:
+			TNT1 AA 1 A_SpawnProjectile("YellowFlareSmallB",-5,0,-85,0,random(-10,10));
+			//TNT1 AA 0 A_SpawnProjectile("OrangeLensFlareAlt",2,0,0,0,0)
+			Stop;
+	}
+}
+
+CLASS PlayerMuzzle1 : ACTOR { 
+	Default {
+		
+		Speed 0;
+		PROJECTILE;
+		+NOCLIP;
+		+NOGRAVITY;
+	}
+	States
+	{
+		Spawn:
+			PLMZ A 2 BRIGHT;
+			Stop;
+	}
+}
+
+
+CLASS PlayerMuzzle2 : ACTOR { 
+	Default {
+		
+		Speed 0;
+		PROJECTILE;
+		+NOCLIP;
+		+NOGRAVITY;
+		Scale 1.8;
+	}
+	States
+	{
+		Spawn:
+			PLMZ A 2 BRIGHT;
+			Stop;
+	}
+}
+
+CLASS MarineMuzzle1 : ACTOR { 
+	Default {
+		
+		Speed 0;
+		PROJECTILE;
+		+NOCLIP;
+		+NOGRAVITY;
+		Speed 5;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_SpawnItem("DistantRifleFireSound");
+			TNT1 A 4;
+			TNT1 A 0 A_Stop();
+			PLMZ A 2 BRIGHT;
+			Stop;
+	}
+}
+
+CLASS MarineMuzzle2 : ACTOR { 
+	Default {
+		
+		Speed 0;
+		PROJECTILE;
+		+NOCLIP;
+		+NOGRAVITY;
+		Speed 5;
+		Scale 1.8;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_SpawnItem("DistantMinigunFireSound");
+			TNT1 A 4;
+			TNT1 A 0 A_Stop();
+			PLMZ A 2 BRIGHT;
+			Stop;
+	}
+}
+
+CLASS BlueFlareSpawn : ACTOR { 
+	Default {
+		
+		Speed 20;
+		PROJECTILE;
+		+NOCLIP;
+	}
+	States
+	{
+		Spawn:
+			TNT1 AA 1 A_SpawnProjectile("BlueFlareSmall",-5,0,-85,0,random(-10,10));
+			Stop;
+	}
+}
+
+CLASS GreenFlareSpawn : ACTOR { 
+	Default {
+		
+		Speed 20;
+		PROJECTILE;
+		+NOCLIP;
+	}
+	States
+	{
+		Spawn:
+			TNT1 AA 1 A_SpawnProjectile("GreenFlareSmall",-5,0,-85,0,random(-10,10));
+			Stop;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CLASS RedFlare22 : Flare_General { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(128,2);
+			L2NR A 2 bright;
+			stop;
+			TNT1 A 0;
+			L2NR B 2 bright;
+			stop;
+	}
+}
+
+CLASS RedFlareSmall22 : RedFlare22 { 
+	Default {
+		
+		scale 0.15;
+	}
+}
+
+CLASS BlueFlare22 : Flare_General { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(128,2);
+			L2NB A 2 bright;
+			stop;
+			TNT1 A 0;
+			L2NB B 2 bright;
+			stop;
+	}
+}
+
+CLASS GreenFlare22 : Flare_General { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(128,2);
+			L2NG A 2 bright;
+			stop;
+			TNT1 A 0;
+			L2NG B 2 bright;
+			stop;
+	}
+}
+
+CLASS GreenFlareSmall22 : GreenFlare22 { 
+	Default {
+		
+		scale 0.22;
+	}
+}
+
+CLASS YellowFlare22 : Flare_General { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(128,2);
+			L2NY A 2 bright;
+			stop;
+			TNT1 A 0;
+			L2NY B 2 bright;
+			stop;
+	}
+}
+
+CLASS YellowFlareSmall22 : YellowFlare22 { 
+	Default {
+		
+		scale 0.15;
+	}
+}
+
+CLASS YellowFlareSmall22Long : YellowFlare22 { 
+	Default {
+		
+		scale 0.15;
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(128,2);
+			L2NY AABAB 1 bright;
+			stop;
+			TNT1 A 0;
+			L2NY BABAB 1 bright;
+			stop;
+	}
+}
+
+
+
+CLASS ExplosionFlareSpawner : Flare_General { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_SpawnItem("NewfagExplosionFlare");
+			//L2NR AAA 1 BRIGHT //A_SpawnItem("RedFlareLarge1x")
+			
+			//L2NR A 5
+			stop;
+	}
+}
+
+
+CLASS LensFlareAlt : Flare_General { 
+	Default {
+		
+		alpha 0.5;
+		xscale 0.6;
+		yscale 0.3;
+	}
+	states
+	{
+		Spawn:
+			LENS A 5 bright;
+			stop;
+	}
+}
+
+CLASS LensFlareAltLong : LensFlareAlt { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			LENS A 10 bright;
+			stop;
+	}
+}
+
+
+CLASS LensFlareAltLonger : LensFlareAlt { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 0;
+			LENS A 20 bright;
+			stop;
+	}
+}
+
+
+CLASS YellowLensFlareAlt : Flare_General { 
+	Default {
+		
+		alpha 0.5;
+		xscale 0.6;
+		yscale 0.2;
+	}
+	states
+	{
+		Spawn:
+			LEYS A 5 bright;
+			stop;
+	}
+}
+
+CLASS YellowLensFlareAltLong : YellowLensFlareAlt { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			LEYS A 5 bright;
+			stop;
+	}
+}
+
+CLASS GreenLensFlareAltSmall : Flare_General { 
+	Default {
+		
+		+FORCEYBILLBOARD;
+		alpha 0.3;
+		xscale 0.4;
+		yscale 0.1;
+	}
+	states
+	{
+		Spawn:
+			LEYS G 8 bright;
+			stop;
+	}
+}
+
+
+CLASS OrangeLensFlareAlt : Flare_General { 
+	Default {
+		
+		+MISSILE;
+		Speed 20;
+		alpha 0.6;
+		xscale 0.5;
+		yscale 0.2;
+	}
+	states
+	{
+		Spawn:
+			TNT1 A 1;
+			TNT1 A 0 A_PlaySOund("DISTFRRIFLE");
+			TNT1 A 0 A_Stop();
+			LEYS O 3 bright;
+			TNT1 A 60;
+			stop;
+	}
+}
+
+CLASS OrangeLensFlareAltFast : OrangeLensFlareAlt { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			LEYS O 2 bright;
+			TNT1 A 0 A_PlaySOund("DISTFMG");
+			TNT1 A 0 A_Stop();
+			LEYS O 2 bright;
+			TNT1 A 60;
+			stop;
+	}
+}
+
+CLASS DistantRifleFireSound : OrangeLensFlareAlt { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			LEYS O 0 bright;
+			TNT1 A 0 A_PlaySOund("DISTFRRIFLE");
+			TNT1 A 0 A_Stop();
+			LEYS O 0 bright;
+			TNT1 A 60;
+			stop;
+	}
+}
+
+CLASS DistantMinigunFireSound : OrangeLensFlareAlt { 
+	Default {
+		
+	}
+	states
+	{
+		Spawn:
+			LEYS O 0 bright;
+			TNT1 A 0 A_PlaySOund("DISTFMG");
+			TNT1 A 0 A_Stop();
+			LEYS O 0 bright;
+			TNT1 A 60;
+			stop;
+	}
+}
+
+
+CLASS GreenLensFlareAltSmallZZ : Flare_General { 
+	Default {
+		
+		+FORCEYBILLBOARD;
+		alpha 0.4;
+		xscale 0.2;
+		yscale 0.2;
+	}
+	states
+	{
+		Spawn:
+			LEYS G 3 bright;
+			stop;
+	}
+}
+
+CLASS BlueLensFlareAltSmallZZ : Flare_General { 
+	Default {
+		
+		+FORCEYBILLBOARD;
+		alpha 0.4;
+		xscale 0.2;
+		yscale 0.2;
+	}
+	states
+	{
+		Spawn:
+			LEYS B 3 bright;
+			stop;
+	}
+}

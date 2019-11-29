@@ -4,6 +4,14 @@ version "3.7.2"
 #include "brootol_dumb_z/sfx/sfx_base.zc"
 #include "brootol_dumb_z/sfx/sfx_states.zc"
 
+//sfx
+#include "brootol_dumb_z/sfx/SMOKE.zc"
+#include "brootol_dumb_z/sfx/CASING.zc"
+#include "brootol_dumb_z/sfx/FIRE.zc"
+#include "brootol_dumb_z/sfx/SPARKS.zc"
+#include "brootol_dumb_z/sfx/FLARES.zc"
+#include "brootol_dumb_z/sfx/PUFF.zc"
+
 #include "brootol_dumb_z/sfx/PARTICLES.zc"
 
 //Gore N' Blood

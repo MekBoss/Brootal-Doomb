@@ -27,13 +27,6 @@ Actor BrutalCounter2 : Inventory
 inventory.maxamount 500
 }
 
-#include brootol_dumb_z/sfx/SMOKE.txt
-#include brootol_dumb_z/sfx/CASING.txt
-#include brootol_dumb_z/sfx/FIRE.txt
-#include brootol_dumb_z/sfx/SPARKS.txt
-#include brootol_dumb_z/sfx/FLARES.txt
-#include brootol_dumb_z/sfx/PUFF.txt
-
 
 
 

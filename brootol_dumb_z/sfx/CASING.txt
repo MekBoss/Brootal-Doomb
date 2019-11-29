@@ -41,7 +41,7 @@ Actor SSGCaseSpawner : ShotcaseSpawn
 }
 
 
-ACTOR 50CaseSpawn
+ACTOR fifteen_CaseSpawn
 {
 	Speed 20
 	PROJECTILE
