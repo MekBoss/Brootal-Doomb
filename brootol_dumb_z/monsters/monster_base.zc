@@ -124,7 +124,7 @@ override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Fl
 
 			if(is_headshot(relat_pos) )
 			{
-				new_damage *= self.head_mul;
+				new_damage *= (int)(self.head_mul);
 				return super.DamageMobj(inflictor, source, new_damage, 'headshot', flags ,angle);
 			}
 
@@ -248,6 +248,14 @@ states
 		ID50 G -1;
     Stop;
 
+	death.killme:
+	death.taunt:
+	death.avoid:
+		tnt1 a 0
+		{
+			console.printf("taunt/avoid/killme death type");
+			setstatelabel("see");
+		}
 }
 
 

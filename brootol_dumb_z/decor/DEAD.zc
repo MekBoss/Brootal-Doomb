@@ -494,8 +494,8 @@ CLASS DeadDeadStick: DeadStick Replaces DeadStick {
 		DropItem "ArmorShard", 128;
 		DropItem "ArmorShard", 128;
 		DropItem "Stimpack", 128;
-		DropItem "Clips", 128;
-		DropItem "Shells", 128;
+		DropItem "Clip2", 128;
+		DropItem "Shell", 128;
 		bloodtype "DeadBlood";
 		damagefactor "Fire", 0.0;
 		damagefactor "Blood", 0.0;
@@ -543,8 +543,8 @@ CLASS DeadLiveStick: LiveStick Replaces LiveStick {
 		DropItem "ArmorShard", 128;
 		DropItem "ArmorShard", 128;
 		DropItem "Stimpack", 128;
-		DropItem "Clips", 128;
-		DropItem "Shells", 128;
+		DropItem "Clip2", 128;
+		DropItem "Shell", 128;
 		damagefactor "Fire", 0.0;
 		damagefactor "Blood", 0.0;
 		damagefactor "GreenBlood", 0.0;

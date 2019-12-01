@@ -44,23 +44,11 @@ inventory.maxamount 500
 
 
 //Enemies
-#include brootol_dumb_z/monsters/ZOMBIEMEN/ZOMBIEMEN.txt
-#include brootol_dumb_z/monsters/ZOMBIEMEN/ZOMB_gore.txt
 
-#include brootol_dumb_z/monsters/shotgunner/SERGEANTS.txt
-#include brootol_dumb_z/monsters/shotgunner/SERG_gore.txt
 
-#include brootol_dumb_z/monsters/COMmANDO/COMANDO.txt
-#include brootol_dumb_z/monsters/COMmANDO/COMmANDO_gore.txt
 
-#include brootol_dumb_z/monsters/IMP/IMP.txt
-#include brootol_dumb_z/monsters/IMP/IMP_gore.txt
 
-#include brootol_dumb_z/monsters/DEMON/DEMON.txt
-#include brootol_dumb_z/monsters/DEMON/DEMON_gore.txt
 
-#include brootol_dumb_z/monsters/KNIGHT/KNIGHT.txt
-#include brootol_dumb_z/monsters/KNIGHT/KNIGHT_gore.txt
 
 #include brootol_dumb_z/monsters/BARON/BARON.txt
 #include brootol_dumb_z/monsters/BARON/BARON_gore.txt

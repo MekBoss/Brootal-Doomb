@@ -70,6 +70,30 @@ version "3.7.2"
 
 #include "brootol_dumb_z/base_definitions.zc"
 
+#include "brootol_dumb_z/monsters/ZOMBIEMEN/ZOMBIEMEN.zc"
+#include "brootol_dumb_z/monsters/ZOMBIEMEN/ZOMB_gore.zc"
+
+#include "brootol_dumb_z/monsters/shotgunner/SERGEANTS.zc"
+#include "brootol_dumb_z/monsters/shotgunner/SERG_gore.zc"
+
+#include "brootol_dumb_z/monsters/COMmANDO/COMANDO.zc"
+#include "brootol_dumb_z/monsters/COMmANDO/COMmANDO_gore.zc"
+
+#include "brootol_dumb_z/monsters/IMP/IMP.zc"
+#include "brootol_dumb_z/monsters/IMP/IMP_gore.zc"
+
+#include "brootol_dumb_z/monsters/DEMON/DEMON.zc"
+#include "brootol_dumb_z/monsters/DEMON/DEMON_gore.zc"
+
+
+#include "brootol_dumb_z/monsters/KNIGHT/KNIGHT.zc"
+#include "brootol_dumb_z/monsters/KNIGHT/KNIGHT_gore.zc"
+
+
+
+
+
+
 
 /*
 check difficlty

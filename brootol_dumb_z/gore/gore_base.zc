@@ -6,6 +6,12 @@ default
 	-countkill
 }
 
+protected void doomb_random_death()
+{
+	if(random(0, 10) > 7)
+		a_die();
+}
+
 }
 
 
