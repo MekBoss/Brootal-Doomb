@@ -89,9 +89,31 @@ version "3.7.2"
 #include "brootol_dumb_z/monsters/KNIGHT/KNIGHT.zc"
 #include "brootol_dumb_z/monsters/KNIGHT/KNIGHT_gore.zc"
 
+#include "brootol_dumb_z/monsters/BARON/BARON.zc"
+#include "brootol_dumb_z/monsters/BARON/BARON_gore.zc"
 
+#include "brootol_dumb_z/monsters/CACODEMOn/CACODEMOn.zc"
+#include "brootol_dumb_z/monsters/CACODEMOn/CACODEMOn_gore.zc"
 
+#include "brootol_dumb_z/monsters/SPIDER/SPIDER.zc"
+#include "brootol_dumb_z/monsters/SPIDER/SPIDER_gore.zc"
 
+#include "brootol_dumb_z/monsters/REVENANT/REVENANT.zc"
+#include "brootol_dumb_z/monsters/REVENANT/REVENANT_gore.zc"
+
+#include "brootol_dumb_z/monsters/mancubus/mancubus.zc"
+#include "brootol_dumb_z/monsters/mancubus/mancubus_gore.zc"
+
+#include "brootol_dumb_z/monsters/PAIN/PAIN.zc"
+#include "brootol_dumb_z/monsters/PAIN/PAIN_gore.zc"
+
+#include "brootol_dumb_z/monsters/archvile/ARCHVILE.zc"
+#include "brootol_dumb_z/monsters/archvile/ARCH_gore.zc"
+
+#include "brootol_dumb_z/monsters/LOSTSOUL/LOSTSOUL.zc"
+
+#include "brootol_dumb_z/monsters/bosses/CYBERDEMON.zc"
+#include "brootol_dumb_z/monsters/bosses/MASTERMIND.zc"
 
 
 

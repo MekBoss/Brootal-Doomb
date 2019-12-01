@@ -35,8 +35,10 @@ CLASS doomb_Revenant : doomb_monster_base Replaces Revenant {
 		DamageFactor "CauseObjectsToSplash", 0.0;
 		PainChance "HelperMarineFatality", 255;
 		Obituary "$OB_UNDEAD";
-		DropItem "DemonStrengthRune" 5;
-		damagefactor "Blood", 0.0 damagefactor "BlueBlood", 0.0 damagefactor "GreenBlood", 0.0;
+		DropItem "DemonStrengthRune", 5;
+		damagefactor "Blood", 0.0;
+		damagefactor "BlueBlood", 0.0;
+		damagefactor "GreenBlood", 0.0;
 		MaxStepHeight 24;
 		+DONTHURTSPECIES;
 		Painchance "Head", 255;
@@ -288,8 +290,7 @@ CLASS doomb_Revenant : doomb_monster_base Replaces Revenant {
 			
 		FatalityZombieman:
 			TNT1 A 0 A_SetInvulnerable();
-			TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0);
-			SKF1 A 1 A_Chase("","");
+			SKF1 A 1 A_Chase(null,null);
 			SKF1 ABC 4 A_FaceTarget();
 			TNT1 A 0 A_PlaySound("grunt/pain", 1);
 			TNT1 A 0 A_PlaySound("CLAP", 4);
@@ -323,11 +324,11 @@ CLASS doomb_Revenant : doomb_monster_base Replaces Revenant {
 			TNT1 A 0 A_PlaySound("CLAP", 4);
 			TNT1 A 0 A_SpawnItemEx("MuchBlood2", 0, -60);
 			SKF1 H 12 A_FaceTarget();
-			SKF1 I 1 A_Chase("","");
+			SKF1 I 1 A_Chase(null,null);
 			SKF1 I 10 A_FaceTarget();
 			TNT1 A 0 A_TakeInventory("ZombieManFatality",1);
 			TNT1 A 0 A_UnSetInvulnerable();
-			TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1);
+			TNT1 A 0 {bSHOOTABLE = true;}
 			TNT1 A 0 A_SpawnProjectile("ThrowedZombieMan2", 64, 0, 0, 0);
 			SKEL HI 4;
 			Goto See;
@@ -335,8 +336,7 @@ CLASS doomb_Revenant : doomb_monster_base Replaces Revenant {
 			
 		FatalitySergeant:
 			TNT1 A 0 A_SetInvulnerable();
-			TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0);
-			SKF2 A 1 A_Chase("","");
+			SKF2 A 1 A_Chase(null,null);
 			SKF2 ABC 4 A_FaceTarget();
 			TNT1 A 0 A_PlaySound("grunt/pain", 1);
 			TNT1 A 0 A_PlaySound("CLAP", 4);
@@ -370,19 +370,17 @@ CLASS doomb_Revenant : doomb_monster_base Replaces Revenant {
 			TNT1 A 0 A_PlaySound("CLAP", 4);
 			TNT1 A 0 A_SpawnItemEx("MuchBlood2", 0, -60);
 			SKF2 H 12 A_FaceTarget();
-			SKF2 I 1 A_Chase("","");
+			SKF2 I 1 A_Chase(null,null);
 			SKF2 I 10 A_FaceTarget();
 			TNT1 A 0 A_TakeInventory("SergeantFatality",1);
 			TNT1 A 0 A_UnSetInvulnerable();
-			TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1);
 			TNT1 A 0 A_SpawnProjectile("ThrowedSergeant2", 64, 0, 0, 0);
 			SKEL HI 4;
 			Goto See;
 			
 		FatalityImp:
 			TNT1 A 0 A_SetInvulnerable();
-			TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0);
-			SKF3 A 1 A_Chase("","");
+			SKF3 A 1 A_Chase(null,null);
 			SKF3 ABC 4 A_FaceTarget();
 			TNT1 A 0 A_PlaySound("grunt/pain", 1);
 			TNT1 A 0 A_PlaySound("CLAP", 4);
@@ -416,11 +414,10 @@ CLASS doomb_Revenant : doomb_monster_base Replaces Revenant {
 			TNT1 A 0 A_PlaySound("CLAP", 4);
 			TNT1 A 0 A_SpawnItemEx("MuchBlood2", 0, -60);
 			SKF3 H 12 A_FaceTarget();
-			SKF3 I 1 A_Chase("","");
+			SKF3 I 1 A_Chase(null,null);
 			SKF3 I 10 A_FaceTarget();
 			TNT1 A 0 A_TakeInventory("ImpFatality",1);
 			TNT1 A 0 A_UnSetInvulnerable();
-			TNT1 A 0 A_ChangeFlag("SHOOTABLE", 1);
 			TNT1 A 0 A_SpawnProjectile("ThrowedImp2", 64, 0, 0, 0);
 			SKEL HI 4;
 			Goto See;
@@ -588,31 +585,17 @@ CLASS doomb_Revenant : doomb_monster_base Replaces Revenant {
 		Pain.Taunt:
 			TNT1 A 0;
 			Goto Missile;
-		Death.KillMe:
-		Death.Taunt:
-			TNT1 A 0 A_ChangeFlag("SOLID", 0);
-			TNT1 A 0 A_SpawnItem("Revenant");
-			Stop;
-			
-		Death.Ice:
-		Death.Freeze:
-		Death.Frost:
-			TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0);
-			TNT1 A 0 A_ChangeFlag("SOLID", 0);
-			TNT1 A 0 A_SpawnItem("FrozenRevenant");
-			Stop;
-			
 	}
 }
 
-CLASS RevenantBalls Replaces RevenantTracer : ACTOR { 
+CLASS RevenantBalls : ACTOR Replaces RevenantTracer { 
 	Default {
 		
 		Radius 10;
 		Height 4;
 		Speed 14;
 		FastSpeed 18;
-		Damage (random(15,20));
+		Damagefunction (random(15,20));
 		PROJECTILE;
 		+THRUGHOST;
 		+SEEKERMISSILE;
@@ -656,7 +639,7 @@ CLASS RevenantBalls Replaces RevenantTracer : ACTOR {
 			TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, random (0, 180));
 			EXPL A 0;
 			TNT1 AAAAA 0 A_SpawnProjectile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360));
-			TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0);
+			TNT1 A 0 A_NoBlocking;
 			TNT1 A 10;
 			Stop;
 			
@@ -672,16 +655,16 @@ CLASS RevenantBalls Replaces RevenantTracer : ACTOR {
 			TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, random (0, 180));
 			EXPL A 0;
 			TNT1 AAA 0 A_SpawnProjectile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360));
-			TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0);
+			TNT1 A 0 A_NoBlocking;
 			TNT1 A 10;
 			Stop;
 			
 		StopInAir:
+			TNT1 A 0 A_NoBlocking;
 			EXPL A 0 Radius_Quake (2, 54, 0, 15, 0);
 			TNT1 A 0 A_SpawnItem("WhiteShockwaveSmall");
 			TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			TNT1 AAA 0 A_SpawnProjectile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360));
-			TNT1 A 0 A_ChangeFlag("SHOOTABLE", 0);
 			Stop;
 			
 	}
@@ -725,7 +708,7 @@ CLASS REvenantAttack : ACTOR {
 		
 		Radius 24;
 		Height 16;
-		DamageType RVFT;
+		DamageType "RVFT";
 		Projectile;
 		+RANDOMIZE;
 		+FORCEXYBILLBOARD;
@@ -742,85 +725,8 @@ CLASS REvenantAttack : ACTOR {
 	States
 	{
 		Spawn:
-			TNT1 A 1 BRIGHT;
-			TNT1 A 1();//A_PlaySound("weapons/gswing")
-			Goto Death;
-		Death:
-			TNT1 A 0 BRIGHT;
+			TNT1 A 2 BRIGHT;
 			Stop;
 	}
 }
 
-
-
-
-CLASS MetalShard1 : ACTOR { 
-	Default {
-		
-		Radius 8;
-		Height 8;
-		Scale 0.6;
-		Speed 7;
-		Mass 1;
-		gravity 0.5;
-		BounceFactor 0.6;
-		+DOOMBOUNCE;
-		+MISSILE;
-		+MOVEWITHSECTOR;
-		+CLIENTSIDEONLY;
-		+NOBLOCKMAP;
-		+NOTELEPORT;
-		
-		Scale 0.2;
-		Speed 7;
-		Gravity 0.5;
-		BounceFactor 0.4;
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			JNK1 ABCDEFGH 3;
-			Loop;
-			
-		Death:
-			JNK1 H 200;
-			Stop;
-	}
-}
-
-
-CLASS MetalShard2: MetalShard1 { 
-	Default {
-		
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			JNK2 ABCDEFGH 3;
-			Loop;
-			
-		Death:
-			JNK2 H 200;
-			Stop;
-	}
-}
-
-
-CLASS MetalShard3: MetalShard1 { 
-	Default {
-		
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			JNK3 ABCDEFGH 3;
-			Loop;
-			
-		Death:
-			JNK3 H 200;
-			Stop;
-	}
-}

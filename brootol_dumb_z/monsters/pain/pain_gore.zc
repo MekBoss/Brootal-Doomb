@@ -1,4 +1,177 @@
 
+CLASS PEPart1 : ACTOR { 
+	Default {
+		
+		Radius 8;
+		Height 8;
+		Speed 12;
+		Scale 1.5;
+		Mass 1;
+		+NOBLOCKMAP;
+		+MISSILE;
+		+NOTELEPORT;
+		+MOVEWITHSECTOR;
+		+CLIENTSIDEONLY;
+		+RIPPER;
+		+BLOODLESSIMPACT;
+		+DOOMBOUNCE;
+		+SKYEXPLODE;
+		BounceFactor 0.5;
+		damagetype "Blood";
+		SeeSound "misc/xdeath4";
+		DeathSound "misc/xdeath1";
+		
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
+			ID22 A 2 A_SpawnProjectile("BloodTrails",0,0,180,2);
+			TNT1 A 0 A_SpawnProjectile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110));
+			ID22 B 2 A_SpawnProjectile("BloodTrails",0,0,180,2);
+			TNT1 A 0 A_SpawnProjectile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110));
+			ID22 C 2 A_SpawnProjectile("BloodTrails",0,0,180,2);
+			TNT1 A 0 A_SpawnProjectile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110));
+			ID22 D 2 A_SpawnProjectile("BloodTrails",0,0,180,2);
+			TNT1 A 0 A_SpawnProjectile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110));
+			Loop;
+		Death:
+			ID22 F 1;
+			ID22 F -1;
+			Stop;
+			TNT1 A 1;
+		Splash:
+			TNT1 A 0;
+			Stop;
+	}
+}
+
+
+CLASS PEPart2 : ACTOR { 
+	Default {
+		
+		Radius 8;
+		Height 8;
+		Speed 16;
+		Scale 1.5;
+		Mass 1;
+		+NOBLOCKMAP;
+		+MISSILE;
+		+NOTELEPORT;
+		+MOVEWITHSECTOR;
+		+CLIENTSIDEONLY;
+		+RIPPER;
+		+BLOODLESSIMPACT;
+		+DOOMBOUNCE;
+		+SKYEXPLODE;
+		BounceFactor 0.5;
+		damagetype "Blood";
+		SeeSound "misc/xdeath4";
+		DeathSound "misc/xdeath1";
+		
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
+			ID22 A 2 A_SpawnProjectile("BloodTrails",0,0,180,2);
+			TNT1 A 0 bright A_SpawnItem("YellowFlare",0,2);
+			TNT1 A 0 A_SPawnItem("PlasmaSmoke");
+			TNT1 A 0 A_SpawnProjectile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110));
+			
+			ID22 B 2 A_SpawnProjectile("BloodTrails",0,0,180,2);
+			TNT1 A 0 bright A_SpawnItem("YellowFlare",0,2);
+			TNT1 A 0 A_SpawnProjectile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110));
+			
+			ID22 C 2 A_SpawnProjectile("BloodTrails",0,0,180,2);
+			TNT1 A 0 bright A_SpawnItem("YellowFlare",0,2);
+			TNT1 A 0 A_SPawnItem("PlasmaSmoke");
+			TNT1 A 0 A_SpawnProjectile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110));
+			
+			ID22 D 2 A_SpawnProjectile("BloodTrails",0,0,180,2);
+			TNT1 A 0 bright A_SpawnItem("YellowFlare",0,2);
+			TNT1 A 0 A_SpawnProjectile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110));
+			Loop;
+		Death:
+			ID22 F 1 A_SpawnItem("Brutal_FlyingBlood",0,5,0,1);
+			TNT1 A 0 A_SpawnItem("o_100SmallFireFocusSpawnerz");
+			ID22 F -1;
+			Stop;
+			TNT1 A 1;
+		Splash:
+			TNT1 A 0;
+			Stop;
+	}
+}
+
+CLASS PEPart2SuperFast: PEPart2 { 
+	Default {
+		
+		Speed 22;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
+			ID22 A 1 A_SpawnProjectile("BloodTrails",0,0,180,2);
+			TNT1 A 0 bright A_SpawnItem("YellowFlare",0,2);
+			
+			TNT1 A 0 A_SpawnProjectile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110));
+			
+			ID22 B 1 A_SpawnProjectile("BloodTrails",0,0,180,2);
+			TNT1 A 0 bright A_SpawnItem("YellowFlare",0,2);
+			TNT1 A 0 A_SpawnProjectile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110));
+			
+			ID22 C 1 A_SpawnProjectile("BloodTrails",0,0,180,2);
+			TNT1 A 0 bright A_SpawnItem("YellowFlare",0,2);
+			
+			TNT1 A 0 A_SpawnProjectile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110));
+			
+			ID22 D 1 A_SpawnProjectile("BloodTrails",0,0,180,2);
+			TNT1 A 0 bright A_SpawnItem("YellowFlare",0,2);
+			TNT1 A 0 A_SpawnProjectile ("SmallFlameTrails", 2, 0, random (0, 360), 2, random (70, 110));
+			Loop;
+	}
+}
+
+
+
+
+
+
+CLASS FatalizedPE : ACTOR { 
+	Default {
+		
+		Radius 12;
+		Height 18;
+		Scale 1.2;
+		+SHOOTABLE;
+		-SOLID;
+		+NOTELEPORT;
+		+MOVEWITHSECTOR;
+		+CORPSE;
+		Mass 1000;
+		Health 200;
+		damagefactor "Blood", 0.0;
+		damagefactor "Trample", 0.0;
+	}
+	States
+	{
+		Spawn:
+			PA1F U -1;
+			Stop;
+		Death:
+			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 A_SpawnProjectile ("XDeath3", 5, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 A_SpawnProjectile ("XDeath4", 5, 0, random (0, 360), 2, random (0, 160));
+			Stop;
+			
+	}
+	
+}		
+		
+
 
 CLASS FrozenPainElemental : ACTOR { 
 	Default {

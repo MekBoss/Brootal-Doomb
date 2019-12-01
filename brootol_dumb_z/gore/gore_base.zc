@@ -6,10 +6,10 @@ default
 	-countkill
 }
 
-protected void doomb_random_death()
+protected void doomb_random_death(name st = "")
 {
 	if(random(0, 10) > 7)
-		a_die();
+		a_die(st);
 }
 
 }

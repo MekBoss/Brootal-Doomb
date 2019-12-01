@@ -50,31 +50,14 @@ inventory.maxamount 500
 
 
 
-#include brootol_dumb_z/monsters/BARON/BARON.txt
-#include brootol_dumb_z/monsters/BARON/BARON_gore.txt
 
-#include brootol_dumb_z/monsters/CACODEMOn/CACODEMOn.txt
-#include brootol_dumb_z/monsters/CACODEMOn/CACODEMOn_gore.txt
 
-#include brootol_dumb_z/monsters/SPIDER/SPIDER.txt
-#include brootol_dumb_z/monsters/SPIDER/SPIDER_gore.txt
 
-#include brootol_dumb_z/monsters/REVENANT/REVENANT.txt
-#include brootol_dumb_z/monsters/REVENANT/REVENANT_gore.txt
 
-#include brootol_dumb_z/monsters/mancubus/mancubus.txt
-#include brootol_dumb_z/monsters/mancubus/mancubus_gore.txt
 
-#include brootol_dumb_z/monsters/PAIN/PAIN.txt
-#include brootol_dumb_z/monsters/PAIN/PAIN_gore.txt
 
-#include brootol_dumb_z/monsters/archvile/ARCHVILE.txt
-#include brootol_dumb_z/monsters/archvile/ARCH_gore.txt
 
 #include brootol_dumb_z/monsters/SPECTRE.txt
-#include brootol_dumb_z/monsters/LOSTSOUL.txt
-#include brootol_dumb_z/monsters/CYBERDEMON.txt
-#include brootol_dumb_z/monsters/MASTERMIND.txt
 //ST Monsters
 #include brootol_dumb_z/monsters/BELPHEGOR.txt
 #include brootol_dumb_z/monsters/JUGGERNAUT.txt
