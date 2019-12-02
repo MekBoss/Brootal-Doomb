@@ -247,9 +247,8 @@ States
 {
 Spawn:
 Death:
-SPKG A 11 BRIGHT
-SPKG AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 Bright A_FadeOut(0.06)
-Stop
+SPKG A 2 Bright A_FadeOut(0.06)
+wait
 }
 }
 

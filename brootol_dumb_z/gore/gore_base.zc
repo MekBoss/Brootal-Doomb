@@ -22,6 +22,21 @@ protected void doomb_random_death(name st = "")
 class doomb_blood : actor abstract
 {
 
+	Default {
+		+MISSILE;
+		-nogravity
+		+CLIENTSIDEONLY;
+		+NOTELEPORT;
+		+NOBLOCKMAP;
+		+THRUACTORS;
+		+BLOODLESSIMPACT;
+		+FORCEXYBILLBOARD;
+		+NODAMAGETHRUST;
+		+MOVEWITHSECTOR;
+		+CORPSE;
+		-DONTSPLASH;
+	}
+
 protected void doomb_spawn_blood()
 {
     for(uint i = 0; i < 2 * bd_bloodamount; i++)

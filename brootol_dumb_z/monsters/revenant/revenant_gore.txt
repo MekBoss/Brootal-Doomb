@@ -438,6 +438,11 @@ States
 }
 
 }
+
+
+
+
+
 Actor NotDeadSkeleton: DeadSkeleton
 {
 Health 50 

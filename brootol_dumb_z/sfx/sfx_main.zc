@@ -10,7 +10,7 @@ override void worldloaded(worldevent e)
 	}
 }
 
-//give pointer to this event to pb actors
+//give pointer to this event to actors
 //so they can use functions of that event whenever they want
 override void worldthingspawned(worldevent e)
 {	
@@ -20,6 +20,12 @@ override void worldthingspawned(worldevent e)
 		
 	if(e.thing is "doomb_monster_base")
 	    doomb_monster_base(e.thing).set_effects(self);
+
+
+
+	if(e.thing is "visual_sfx")
+	    visual_sfx(e.thing).set_event(self);
+	
 }
 
 
@@ -85,5 +91,6 @@ actor show_some_effect(actor caller = null, statelabel effect_state = null, vect
 	mikle_bay.alpha = translucency;
 	return mikle_bay;
 }
+
 
 }

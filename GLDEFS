@@ -1011,7 +1011,7 @@ object doomb_Imp
  frame IZD4 { light BIGREDTORCH }
 }
 
-object GenericBurningGuy
+object Doomer
 {
  frame BUR2 { light BIGREDTORCH }
  frame BURNF0 { light BIGREDTORCH }

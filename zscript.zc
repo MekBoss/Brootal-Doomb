@@ -115,7 +115,7 @@ version "3.7.2"
 #include "brootol_dumb_z/monsters/bosses/CYBERDEMON.zc"
 #include "brootol_dumb_z/monsters/bosses/MASTERMIND.zc"
 
-
+#include "brootol_dumb_z/player/PLAYER.zc"
 
 /*
 check difficlty
@@ -163,4 +163,5 @@ override void worldtick()
 }
 
 }
+
 

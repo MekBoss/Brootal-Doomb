@@ -623,14 +623,11 @@ CLASS BaronofHell2 : doomb_monster_base Replaces BaronofHell {
 		Death.Fatality:
 			TNT1 A 0;
 			TNT1 A 0 A_Pain;
-			TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1);
-			Goto XDeath;
-			
 			TNT1 A 0 A_GiveToTarget("GoFatality", 1);
 			TNT1 A 0 A_GiveToTarget("BaronFatality", 1);
 			TNT1 A 1 A_NoBlocking;
 			TNT1 A 0 A_BossDeath;
-			Stop;
+		Stop;
 			
 	Death.Plasma: Death.Plasma2:
 		TNT1 A 0;

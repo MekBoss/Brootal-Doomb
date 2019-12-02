@@ -7,7 +7,7 @@ protected eventhandler sfx_event;
 
 void set_event(eventhandler en)
 {
-	if(en.getclassname() == "doomb_sfx" )
+	if(en.getclassname() == "doomb_sfx_main" )
         sfx_event = en;
 }
 
@@ -29,10 +29,10 @@ override int SpecialMissileHit (Actor victim)
 	vel = (0, 0, 0);
 	return 1;
 }
-
+/*
 override void tick()
 {
-	/*
+	
     if( !(Vel == (0, 0, 0) ) )
     {
 		vel.z -= 1;
@@ -55,7 +55,7 @@ override void tick()
 				return;
 		}
     }
-	*/
+	
 	super.tick();
 
 	if(curstate != off_state || curstate != reset_cond)
@@ -65,10 +65,11 @@ override void tick()
     else
         show_something = false;
 }
-
+*/
 
 default
 {
+	+DontSplash;
 	+nointeraction;
 	+noclip;
 	+nogravity;

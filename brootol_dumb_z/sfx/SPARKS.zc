@@ -47,7 +47,7 @@ CLASS SparkFlare_W1 : ACTOR {
 			{
 				frame = random(0, 5);
 			}
-		SPRK "#" 1 bright A_FadeOut (0.1);
+			SPRK "#" 1 bright A_FadeOut (0.1);
 		wait;
 	}
 }

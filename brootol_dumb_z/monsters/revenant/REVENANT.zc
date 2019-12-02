@@ -437,17 +437,15 @@ CLASS doomb_Revenant : doomb_monster_base Replaces Revenant {
 		Death.Fatality:
 			TNT1 A 0 A_NoBlocking();
 			TNT1 A 0;
-			TNT1 A 0 A_JumpIfIntargetInventory("FistsSelected", 1, 1);
-			Goto Death;
 			TNT1 A 0 A_GiveToTarget("GoFatality", 1);
 			TNT1 A 0 A_Jump(128,5);
 			TNT1 A 0 A_GiveToTarget("RevenantFatality", 1);
-			Stop;
+		Stop;
 			TNT1 AAAAAAA 0;
 			TNT1 A 0 A_GiveToTarget("RevenantFatality2", 1);
 			TNT1 A 1;
 			TNT1 A 0;
-			Stop;
+		Stop;
 			
 		Death.HelperMarineFatallity:
 			TNT1 A 0;

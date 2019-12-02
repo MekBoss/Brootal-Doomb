@@ -44,19 +44,6 @@ inventory.maxamount 500
 
 
 //Enemies
-
-
-
-
-
-
-
-
-
-
-
-
-
 #include brootol_dumb_z/monsters/SPECTRE.txt
 //ST Monsters
 #include brootol_dumb_z/monsters/BELPHEGOR.txt
@@ -73,7 +60,7 @@ inventory.maxamount 500
 
 
 //Player Classes
-#include brootol_dumb_z/player/PLAYER.txt
+
 #include MARINES.txt
 #include EXTRA.txt
 
@@ -97,9 +84,6 @@ Actor oneliner: Inventory
 {
 inventory.maxamount 1
 }
-
-
-
 
 
 Actor advtaunting: Inventory
@@ -202,12 +186,6 @@ Actor Timer555 : Inventory
 {
 inventory.maxamount 555
 }
-
-
-
-
-
-
 
 
 

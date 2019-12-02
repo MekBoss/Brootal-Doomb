@@ -441,7 +441,13 @@ CLASS GoryAshes : ACTOR {
 	{
 		Spawn:
 			TNT1 A 0;
-			GIBD SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 6 A_SpawnProjectile ("BurnParticles", 8, 0, random (0, 180), 2, - random (0, 180));
+			GIBD SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 6 light("BIGREDTORCH")
+			{
+				A_Explode(3,30, damagetype:"fire");
+				A_SpawnItem("RedFlare", 0, 5);
+				A_SpawnProjectile ("PlasmaSmoke", 20, 0, random (0, 360), 2, -random (60, 130));
+				A_SpawnProjectile ("SmallFireTrail324", 0, 0, random (0, 360), 2, -random (0, 130));
+			}
 			GIBD SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 8 A_SpawnProjectile ("PlasmaSmoke", 8, 0, random (0, 180), 2, - random (0, 180));
 			GIBD S -1;
 			stop;

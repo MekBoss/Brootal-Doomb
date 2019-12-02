@@ -134,10 +134,22 @@ override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Fl
 				return super.DamageMobj(inflictor, source, new_damage, 'leg', flags ,angle);
 			}
 
-			//if((inflictor is "PB_player_pawn_base" || source is "PB_player_pawn_base") && self.target == null)
-			//{
-				//backstab "fatality" placeholder
-			//}
+			if( (source is "Doomer") )
+			{
+				if(source.player.readyweapon.getclassname() == "Melee_Attacks" )
+				{
+					//backstab
+					if(self.LastEnemy == null && self.LastHeard == null && self.target == null)
+					{
+						source.a_log("backstab in process");
+							return super.DamageMobj(inflictor, source, self.health, 'Fatality', flags, angle);
+					}
+					//default fatality
+					else if(findstate("Death.Fatality") && (health - new_damage) < 0 )
+						return super.DamageMobj(inflictor, source, damage, 'Fatality', flags, angle);
+
+				}
+			}
 
 			return new_damage;
 		}
@@ -146,7 +158,7 @@ override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Fl
 		return super.DamageMobj(inflictor, source, damage, mod, flags, angle);
 	}
 
-    //case when monster already dead, but technicallly still can be shotted
+    //case when monster already dead, but technicallly still can be shoot
 	else
 	{
 		int dam = super.DamageMobj(inflictor, source, damage, mod, flags, angle);

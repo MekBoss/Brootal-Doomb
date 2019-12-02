@@ -321,15 +321,6 @@ CLASS BigPlasmaParticleX: PlasmaParticleX {
 	}
 }
 
-CLASS PlasmaParticle: BluePlasmaParticle { 
-	States
-	{
-		Spawn:
-		Death:
-			SPKG A 2 Bright A_FadeOut(0.02);
-			Loop;
-	}
-}
 
 
 
