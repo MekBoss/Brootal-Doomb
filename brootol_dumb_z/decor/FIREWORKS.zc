@@ -20,7 +20,7 @@ CLASS ComingTOGetTheBarrel : Inventory {
 	}
 }
 
-CLASS ExplosiveBarrel1 : ACTOR Replaces ExplosiveBarrel  { 
+CLASS ExplosiveBarrel1 : doomb_body_base Replaces ExplosiveBarrel  { 
 	Default {
 		
 		
@@ -177,9 +177,8 @@ CLASS ExplosiveBarrel1 : ACTOR Replaces ExplosiveBarrel  {
 			TNT1 A 0 A_SpawnItem("WhiteShockwaveBig");
 			TNT1 A 0 A_Explode(160,200);
 			TNT1 AAAAAA 0 A_SpawnProjectile ("SmallExplosionSpawner", 20, 0, random (0, 360), 2, - random (0, 180));
-			TNT1 AAAAAAA 0 A_SpawnProjectile ("ExplosionFlames", 0, 0, random (0, 360), 2, - random (0, 360));
-			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, - random (0, 180));
-			TNT1 AAAAAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, - random (0, 180));
+			TNT1 AAAAAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			EXPL A 0 Radius_Quake (2, 24, 0, 15, 0);
 			BEXP B 0 BRIGHT A_Scream();
 			
@@ -193,7 +192,7 @@ CLASS ExplosiveBarrel1 : ACTOR Replaces ExplosiveBarrel  {
 			TNT1 A 0 A_Explode(160,200);
 			TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece", random (-15, 15), random (-15, 15));
 			TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece2", random (-35, 35), random (-35, 35));
-			TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece3", random (-45, 45), random (-45, 35));
+			TNT1 AA 0 A_SpawnItemEx("TinyBurningPiece2", random (-45, 45), random (-45, 35));
 			
 			TNT1 AAAAA 8 A_SpawnProjectile ("ExplosionSmoke", 1, 0, random (0, 360), 2, - random (50, 130));
 			
@@ -394,7 +393,7 @@ CLASS RidiculousExplosionSpawner: ExplosionSpawner {
 	}
 }
 
-CLASS SpawnedExplosion : ACTOR { 
+CLASS SpawnedExplosion : visual_sfx { 
 	Default {
 		
 		+NOCLIP;
@@ -408,12 +407,12 @@ CLASS SpawnedExplosion : ACTOR {
 			EXPL A 0 A_SpawnProjectile ("BigNeoSmoke", 0, 0, random (0, 360), 2, - random (0, 360));
 			EXPL A 0 A_SpawnProjectile ("ExplosionSmoke", 0, 0, random (0, 360), 2, - random (0, 360));
 			TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 AAAA 0 A_SpawnProjectile ("ExplosionFlames", 0, 0, random (0, 360), 2, - random (0, 360));
+			TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			Stop;
 	}
 }
 
-CLASS SpawnedExplosionRepeat : ACTOR { 
+CLASS SpawnedExplosionRepeat : visual_sfx { 
 	Default {
 		
 		+NOCLIP;
@@ -427,13 +426,13 @@ CLASS SpawnedExplosionRepeat : ACTOR {
 			EXPL A 0 A_SpawnProjectile ("BigNeoSmoke", 0, 0, random (0, 360), 2, - random (0, 360));
 			EXPL A 0 A_SpawnProjectile ("ExplosionSmoke", 0, 0, random (0, 360), 2, - random (0, 360));
 			TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 AAAA 0 A_SpawnProjectile ("ExplosionFlames", 0, 0, random (0, 360), 2, - random (0, 360));
+			TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			TNT1 A 3;
-			TNT1 AAAA 0 A_SpawnProjectile ("ExplosionFlames", 0, 0, random (0, 360), 2, - random (0, 360));
+			TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			TNT1 A 3;
-			TNT1 AAAA 0 A_SpawnProjectile ("ExplosionFlames", 0, 0, random (0, 360), 2, - random (0, 360));
+			TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			TNT1 A 3;
-			TNT1 AAAA 0 A_SpawnProjectile ("ExplosionFlames", 0, 0, random (0, 360), 2, - random (0, 360));
+			TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			TNT1 A 3;
 			TNT1 AAAA 0 A_SpawnProjectile ("ExplosionFlamesBig2", 0, 0, random (0, 360), 2, - random (0, 360));
 			TNT1 A 3;
@@ -485,7 +484,7 @@ CLASS SpawnedExplosionBig : ACTOR {
 
 
 
-CLASS FireworkSFXType1 : ACTOR { 
+CLASS FireworkSFXType1 : visual_sfx { 
 	Default {
 		
 		Radius 4;
@@ -502,10 +501,9 @@ CLASS FireworkSFXType1 : ACTOR {
 	States
 	{
 		Spawn:
-			TNT1 A 0 a_spawnitemex ("SmallFlameTrails");
-			TNT1 A 0 A_SpawnProjectile ("ExplosionParticle2", 2, 0, random (0, 360), 2, random (0, 290));
+			TNT1 A 0 doomb_show_effect("FlameTrails", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+			TNT1 AA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			TNT1 A 1 A_SpawnItem("RedFlareSmall");
-			TNT1 A 0 A_SpawnProjectile ("ExplosionParticle2", 2, 0, random (0, 360), 2, random (0, 290));
 			TNT1 A 1 A_SpawnItem("RedFlareSmall");
 			Loop;
 			

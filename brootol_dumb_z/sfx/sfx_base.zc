@@ -5,67 +5,93 @@ protected state off_state, reset_cond;
 //if affect spawn own effect
 protected eventhandler sfx_event;
 
+protected actor doomb_show_effect(statelabel effect_name, vector3 offset = (0, 0, 0), vector3 velocity = (0, 0, 0), vector2 visual_size = (double.nan, double.nan), double translucency = double.nan)
+{
+	return doomb_sfx_main(sfx_event).show_some_effect(self, effect_name, offset, velocity, visual_size, translucency);
+}
+
+
 void set_event(eventhandler en)
 {
 	if(en.getclassname() == "doomb_sfx_main" )
         sfx_event = en;
 }
 
-override void beginplay()
+override void postbeginplay()
 {
-	super.beginplay();
+	super.postbeginplay();
 	off_state = findstate("off");
 	reset_cond = findstate("reset_condition");
 }
 
-bool check_busyness()
+bool is_show_something() const
 {
 	return show_something;
 }
 
-
 override int SpecialMissileHit (Actor victim)
 {
 	vel = (0, 0, 0);
-	return 1;
+	return 0;
 }
-/*
-override void tick()
+
+//sets if apperance was set outside of actor, overriding actor "defaults"
+private uint changed_fields;
+
+enum fields_flags
 {
-	
-    if( !(Vel == (0, 0, 0) ) )
+    CF_NONE = 0,
+    CF_SCALE = 1,
+    CF_ALPHA = 1 << 2,
+};
+
+//called when need change something from outside of actor
+void doomb_set_appearance_global(vector2 sc = (double.nan, double.nan), double alph = double.nan, vector3 vel_v = (0, 0, 0) )
+{
+    if(sc == sc)
     {
-		vel.z -= 1;
-        setorigin( Vec3Offset(Vel.x, Vel.y, Vel.z, false), true );
-        CheckPortalTransition(true);
+        changed_fields |= CF_SCALE;
+        if(sc.y == 0)
+            scale = (sc.x, sc.x);
+        else
+            scale = sc;
     }
 
-    if(curstate == null)
+    if(alph == alph)
     {
-        setstate(off_state);
-        console.printf("some sfx actor have null state");
-        return;
+        changed_fields |= CF_ALPHA;
+
+        do
+            a_fadeto(alph, 0.01, false);
+        while(alpha > alph)
     }
 
-	if (tics != -1)
-	{
-		if (--tics <= 0)
-		{
-			if (!SetState(curstate.nextstate))
-				return;
-		}
-    }
-	
-	super.tick();
-
-	if(curstate != off_state || curstate != reset_cond)
-	{
-		show_something = true;
-	}
-    else
-        show_something = false;
+    vel = vel_v;
+    
 }
-*/
+
+//called from actor itself, change fields if it wasnt changed from outside
+private void doomb_set_appearance(vector2 sc = (1, 1), double a = 1, double speed_scale = 1)
+{
+    show_something = true;
+    if( !(changed_fields &= CF_SCALE) )
+    {
+        if(sc.y == 0)
+            scale = (sc.x, sc.x);
+        else
+            scale = sc;
+    }
+
+    if( !(changed_fields &= CF_ALPHA) )
+    {
+        do
+            a_fadeto(a, 0.01, false);
+        while(alpha > a)
+    }
+
+    vel *= speed_scale;
+}
+
 
 default
 {
@@ -74,24 +100,31 @@ default
 	+noclip;
 	+nogravity;
 	+notonautomap;
+	+thruactors
 	radius 1;
 	height 1;
+	RenderStyle "Add";
 }
 
 states
 {
 	spawn:
 	off:
-	//if it have missile flag, dont die just go back to off state
-	death:
-	xdeath:
-	crash:
 		tnt1 a -1;
 	stop;
 
 	reset_condition:
+	death:
+	xdeath:
+	crash:
+	//if have missile flag, dont die just go back reset state
 		tnt1 a 0
 		{
+			changed_fields = 0;
+			show_something = false;
+			bcorpse = false;
+			bnoclip = true;
+			bnogravity = true;
 			self.scale = (1, 1);
 			self.vel = (0, 0, 0);
 			setorigin( (double.infinity, double.infinity, double.infinity), false );

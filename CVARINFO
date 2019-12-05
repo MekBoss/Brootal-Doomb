@@ -1,6 +1,8 @@
 server int bd_bloodamount	= 2;
 server int bd_lowgraphicsmode = 0;
 
+server noarchive bool doomb_debug = false;
+server noarchive bool doomb_sfx_effects = true;
 
 
 

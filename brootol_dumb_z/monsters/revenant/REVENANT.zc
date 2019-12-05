@@ -537,7 +537,7 @@ CLASS doomb_Revenant : doomb_monster_base Replaces Revenant {
 			SKEL O 4 A_NoBlocking();
 			SKEL P 1;
 			TNT1 A 0 A_Playsound("props/redfire");
-			CARB NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN 2 A_SpawnProjectile ("FlameTrails", 25, 0, random (0, 360), 2, random (70, 130));
+			CARB NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN 2 doomb_show_effect("FlameTrails", (0, 0, 25), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			CARB NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN 10 A_SpawnProjectile ("PlasmaSmoke", 25, 0, random (0, 360), 2, random (70, 130));
 			CARB N -1;
 			Stop;
@@ -570,9 +570,9 @@ CLASS doomb_Revenant : doomb_monster_base Replaces Revenant {
 			TNT1 A 0 A_SpawnProjectile ("RoamingLegs", 0, 0, random (0, 360), 2, random (0, 160));
 			Stop;
 		Raise:
-			TNT1 A 2 A_SpawnProjectile ("RealFlameTrailsSmall", 6, 0, random (0, 360), 2, random (70, 110));
+			TNT1 A 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60);
-			TNT1 A 2 A_SpawnProjectile ("RealFlameTrailsSmall", 6, 0, random (0, 360), 2, random (70, 110));
+			TNT1 A 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60);
 			TNT1 A 0 A_SpawnItem("TeleportFog");
 			TNT1 A 0 A_NoBlocking();
@@ -586,7 +586,7 @@ CLASS doomb_Revenant : doomb_monster_base Replaces Revenant {
 	}
 }
 
-CLASS RevenantBalls : ACTOR Replaces RevenantTracer { 
+CLASS RevenantBalls : doomb_boolet_base Replaces RevenantTracer { 
 	Default {
 		
 		Radius 10;
@@ -634,7 +634,7 @@ CLASS RevenantBalls : ACTOR Replaces RevenantTracer {
 			TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			BFE1 A 0 Bright A_Explode(7, 120, 1);
 			TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			EXPL A 0;
 			TNT1 AAAAA 0 A_SpawnProjectile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360));
 			TNT1 A 0 A_NoBlocking;
@@ -650,7 +650,7 @@ CLASS RevenantBalls : ACTOR Replaces RevenantTracer {
 			
 			BFE1 A 0 Bright A_Explode(7, 120, 1);
 			TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			EXPL A 0;
 			TNT1 AAA 0 A_SpawnProjectile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360));
 			TNT1 A 0 A_NoBlocking;

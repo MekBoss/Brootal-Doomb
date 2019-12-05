@@ -107,23 +107,13 @@ CLASS ImpFish: doomb_Imp {
 			TNT1 A 0 A_JumpIfCloser(170, "Melee");
 			TNT1 A 0 A_Playsound ("IMPCHARG");
 			TNT1 A 0 A_SpawnProjectile ("BUBULZ", 35, 30, random (0, 40), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("ImBallGettingReady", 35, 30, random (0, 140), 2, random (0, 160));
-			IUSA A 2 A_FaceTarget();
-			
-			TNT1 A 0 A_SpawnProjectile ("BUBULZ", 25, 30, random (0, 40), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("ImBallGettingReady", 25, 30, random (0, 140), 2, random (0, 160));
-			IUSA A 2 A_FaceTarget();
-			TNT1 A 0 A_SpawnProjectile ("BUBULZ", 25, 30, random (0, 40), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("ImBallGettingReady", 25, 30, random (0, 140), 2, random (0, 160));
-			IUSA A 2 A_FaceTarget();
-			TNT1 A 0 A_SpawnProjectile ("BUBULZ", 25, 30, random (0, 40), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("ImBallGettingReady", 25, 30, random (0, 140), 2, random (0, 160));
-			IUSA A 2 A_FaceTarget();
-			TNT1 A 0 A_SpawnProjectile ("BUBULZ", 25, 30, random (0, 40), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("ImBallGettingReady", 25, 30, random (0, 140), 2, random (0, 160));
-			IUSA A 2 A_FaceTarget();
-			TNT1 A 0 A_SpawnProjectile ("BUBULZ", 25, 30, random (0, 40), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("ImBallGettingReady", 25, 30, random (0, 140), 2, random (0, 160));
+			TNT1 A 0 doomb_show_effect("ImBallGettingReady", (cos(angle) * 30, sin(angle * 30), 25), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+			IUSA AAAAA 2
+			{
+				A_FaceTarget();
+				A_SpawnProjectile ("BUBULZ", 25, 30, random (0, 40), 2, random (0, 160));
+				doomb_show_effect("ImBallGettingReady", (cos(angle) * 30, sin(angle * 30), 25), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+			}
 			
 			IUSA B 2 A_FaceTarget();
 			IUSA E 6 A_SpawnProjectile("FireBall_", 34, 0, 0, 0);
@@ -1254,11 +1244,9 @@ CLASS DyingImp : doomb_body_base {
 		TNT1 A 0 A_Scream();
 		TNT1 A 0 A_NoBlocking();
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
-		TROO JJJJ 2 A_SpawnProjectile ("FlameTrails", 45, 0, random (0, 360), 2, random (50, 130));
-		TROO KKKK 2 A_SpawnProjectile ("FlameTrails", 30, 0, random (0, 360), 2, random (50, 130));
-		TROO LLLL 2 A_SpawnProjectile ("FlameTrails", 25, 0, random (0, 360), 2, random (50, 130));
+		TROO JJJJKKKKLLLL 2 doomb_show_effect("FlameTrails", (0, 0, 30), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 		TNT1 A 0 A_Playsound("props/redfire");
-		BOSB FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 2 A_SpawnProjectile ("FlameTrails", 15, 0, random (0, 360), 2, random (50, 130));
+		BOSB FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 2 doomb_show_effect("FlameTrails", (0, 0, 15), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 		BOSB FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 10 A_SpawnProjectile ("SmallSmoke", 15, 0, random (0, 360), 2, random (70, 110));
 		BOSB E -1;
 		Stop;
@@ -1334,10 +1322,85 @@ CLASS DyingImp : doomb_body_base {
 }
 
 
-CLASS BrutalizedImp1 : ACTOR { 
+CLASS BurningImpRunning : doomb_body_base
+{ 
 	Default {
-	
-	
+		Radius 12;
+		Height 56;
+		Speed 5;
+		Scale 0.85;
+		Health 100;
+		GibHealth 25;
+		damagefactor "Burn", 0.0;
+		damagefactor "Fire", 0.0;
+		damagefactor "Flames", 0.0;
+		damagefactor "Flame", 0.0;
+		damagefactor "Head", 0.0;
+		damagefactor "Explosive_Impact", 10.0;
+		MONSTER;
+		-COUNTKILL;
+		+NOICEDEATH;
+		+FRIENDLY;
+		+FLOORCLIP;
+		+SHOOTABLE;
+		+NOBLOCKMONST;
+		+DONTSPLASH;
+		
+		Gravity 0.7;
+		bloodtype "DeadBlood";
+		Obituary "%o was near someone in flames.";
+		MaxDropOffHeight 6000;
+		
+		Mass 999999;
+		
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0 A_PlaySound("BURNZOM");
+		Suffer:
+			TRBR AAA 1 BRIGHT A_Wander;
+			TNT1 A 0 A_Recoil(-1);
+			TNT1 A 0 A_PlaySound("imp/pain");
+			tnt1 B 0 doomb_show_effect("BurnParticles", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+			BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130));
+			TRBR BBB 1 BRIGHT A_Wander;
+			TNT1 A 0 A_Recoil(-1);
+			tnt1 B 0 doomb_show_effect("BurnParticles", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+			BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130));
+			TRBR CCC 1 BRIGHT A_Wander;
+			TNT1 A 0 A_Recoil(-1);
+			tnt1 B 0 doomb_show_effect("BurnParticles", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+			BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130));
+			TRBR DDD 1 BRIGHT A_Wander;
+			TNT1 A 0 A_Recoil(-1);
+			tnt1 B 0 doomb_show_effect("BurnParticles", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+			BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130));
+			TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1);
+			TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2", random (-15, 15), random (-15, 15));
+			TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 8, "Death");
+			Loop;
+		Death:
+		Death.Explosive_Impact:
+			TNT1 A 0 A_Fall;
+			TNT1 A 0 {bSHOOTABLE = false;}
+			TNT1 A 0 {bSOLID = false;}
+			TNT1 A 0 {bNOTARGET = true;}
+			IZD4 CCCDDD 2 doomb_show_effect("BurnParticles", (0, 0, 25), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+			tnt1 a 0 a_jump(200, "death");
+			TROO LLLL 2 doomb_show_effect("FlameTrails", velocity: (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+			TNT1 A 0 A_Playsound("props/redfire");
+			BOSB FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 2 doomb_show_effect("FlameTrails", velocity: (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+			BOSB FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 20 A_SpawnProjectile ("SmallSmoke", 25, 0, random (0, 360), 2, random (70, 110));
+			BOSB F -1;
+	Stop;
+	}
+}
+
+
+
+CLASS BrutalizedImp1 : ACTOR { 
+Default {
 	Radius 16;
 	Height 50;
 	Health 20;
@@ -1348,9 +1411,10 @@ CLASS BrutalizedImp1 : ACTOR {
 	+SHOOTABLE;
 	+NORADIUSDMG;
 	Scale 1.0;
-	}
-	States
-	{
+}
+
+States
+{
 	Death.Fatality:
 	Death.SuperPunch:
 		TNT1 A 0 A_NoBlocking();
@@ -1401,6 +1465,8 @@ CLASS BrutalizedImp1 : ACTOR {
 }
 
 }
+
+
 CLASS BrutalizedImpStop: CurbstompedMarine { 
 	Default {
 	
@@ -1431,9 +1497,6 @@ CLASS BrutalizedImpStop: CurbstompedMarine {
 
 }
 CLASS BrutalizedImp2: BrutalizedSergeant1 { 
-	Default {
-	
-	}
 	States
 	{
 	Spawn:

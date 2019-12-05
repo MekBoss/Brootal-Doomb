@@ -111,9 +111,9 @@ CLASS DeadBaron: CurbstompedMarine {
 			BADD F -1;
 			Stop;
 		Raise:
-			TNT1 A 2 A_SpawnProjectile ("RealFlameTrailsSmall", 6, 0, random (0, 360), 2, random (70, 110));
+			TNT1 A 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60);
-			TNT1 A 2 A_SpawnProjectile ("RealFlameTrailsSmall", 6, 0, random (0, 360), 2, random (70, 110));
+			TNT1 A 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60);
 			TNT1 A 0 A_SpawnItem("TeleportFog");
 			TNT1 A 0 A_NoBlocking;

@@ -1,2 +1,0 @@
-STARTUPTITLE = "Brootal Doomb version 0.0.1 (BD v20)"
-STARTUPCOLORS = "FF0000", "000000"

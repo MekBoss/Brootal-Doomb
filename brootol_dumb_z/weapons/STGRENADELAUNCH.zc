@@ -59,7 +59,6 @@ CLASS GrenadeLauncher : doomb_weapon_base {
 			
 		Fire:
 			TNT1 A 0 A_FireProjectile("RedFlareSpawn",-5,0,0,0);
-			TNT1 AAAAAA 0 BRIGHT A_FireProjectile("ShotgunParticles", random(-16,16), 0, -1, random(-9,9));
 			GLAF A 1 BRIGHT A_FireProjectile("ShortGrenade", 0, 1, 0, 0);
 			TNT1 A 0 A_SetPitch(-6.0 + pitch);
 			TNT1 A 0 A_PlaySound("weapons/firegrenade");
@@ -81,7 +80,6 @@ CLASS GrenadeLauncher : doomb_weapon_base {
 			
 		AltFire:
 			TNT1 A 0 A_FireProjectile("RedFlareSpawn",-5,0,0,0);
-			TNT1 AAAAAA 0 BRIGHT A_FireProjectile("ShotgunParticles", random(-16,16), 0, -1, random(-9,9));
 			GLAF A 1 BRIGHT A_FireProjectile("GrenadeMissile", 0, 1, 0, 0);
 			TNT1 A 0 A_SetPitch(-6.0 + pitch);
 			TNT1 A 0 A_PlaySound("weapons/firegrenade");

@@ -203,6 +203,53 @@ states
 
 }
 
+protected eventhandler sfx;
+void set_event(eventhandler effects)
+{
+    if(effects.getclassname() == "doomb_sfx_main")
+	    sfx = effects;
+}
+
+protected vector3 rotate_vector(vector3 v, double x_axis = double.nan, double y_axis = double.nan, double z_axis = double.nan)
+{
+	if (v == (0, 0, 0))
+		return v;
+
+	//thank you randy for this bug
+	if(z_axis)
+		z_axis *= -1;
+
+
+
+	return v;
+}
+
+protected actor doomb_show_effect(statelabel effect_name, vector3 offset = (0, 0, 0), vector3 velocity = (0, 0, 0), vector2 visual_size = (double.nan, double.nan), double translucency = double.nan)
+{
+	if(!sfx) return null;
+
+	vector3 o = 
+	(
+		cos(owner.angle) * cos(owner.pitch),//x
+		sin(owner.angle) * cos(owner.pitch),//y
+		-sin(owner.pitch)//z
+	);
+
+	vector3 oo = o;
+	oo *= 6;
+	oo.z += (owner.Player.viewz - owner.player.mo.pos.z - 3) * owner.player.crouchfactor;
+
+	oo += offset;
+
+	vector3 v = o;
+	if(velocity != (0, 0, 0))
+		v += (frandom(-0.1, 0.1), frandom(-0.1, 0.1), frandom(-0.1, 0.1) );
+	else
+		v += velocity;
+
+	return doomb_sfx_main(self.sfx).show_some_effect(owner, effect_name, oo, v, visual_size, translucency);
+}
+
 }
 
 

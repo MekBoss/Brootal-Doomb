@@ -115,13 +115,12 @@ CLASS Shot_Gun : doomb_weapon_base Replaces Shotgun {
 			SHSS ABCD 1 A_JumpIfInventory("GoFatality", 1, "Steady");
 			Goto ShakeRight;
 			TNT1 AAAAAAAAAAAAAAA 0;
-			TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute");
 			
 			
 			TNT1 A 0 A_JumpIfInventory("ImpactMovesSling", 1, "ShakeLeft");
 		ready_loop:
 			SHTG A 1 A_WeaponReady(WRF_ALLOWRELOAD);
-			loop;
+		loop;
 			
 		Ready2:
 			TNT1 A 0 A_JumpIfInventory("ImpactMovesSling", 1, "ShakeAiming");
@@ -171,7 +170,6 @@ CLASS Shot_Gun : doomb_weapon_base Replaces Shotgun {
 			RIFF AA 0 A_FireProjectile("GunFireSmoke", 0, 0, 0, 0, 0, 0);
 			TNT1 A 0;
 			TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30);
-			//TNT1 AAAAAAAAAAAA 0 BRIGHT A_FireProjectile("ShotgunParticles", random(-15,15), 0, -1, 0, 0, random(-10,10))
 			TNT1 AAAAA 0 A_FireProjectile("Tracer", random(-3,3), 0, -1, -12, 0, random(-5,5));
 			//RIFF AAAAAA 0 A_FireProjectile("WallPenetrationHitscan", random(-3,3), 0, -1, 0, 0, random(-3,3))
 			//TNT1 A 0 ACS_Execute(374, 0, 0, 0, 0)
@@ -238,7 +236,7 @@ CLASS Shot_Gun : doomb_weapon_base Replaces Shotgun {
 		Fire2:
 			TNT1 A 0 A_Takeinventory("Reloading",1);
 			TNT1 A 0 A_JumpIfInventory("ShotgunAmmo",1,2);
-			Goto Reload;
+		Goto Reload;
 			TNT1 AAAA 0;
 			TNT1 A 0 A_JumpIfInventory("ShotgunWasEmpty", 1, "Pump2");
 			//TNT1 AA 0 A_FireProjectile("SmokeSpawner",0,0,0,5)
@@ -248,7 +246,6 @@ CLASS Shot_Gun : doomb_weapon_base Replaces Shotgun {
 			TNT1 A 0;
 			TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,0,45);
 			SHTG A 0 A_FireBullets (1.7, 1.7, 10, 8, "ShotgunPuff");
-			//TNT1 AAAAAAAAAAAA 0 BRIGHT A_FireProjectile("ShotgunParticles", random(-15,15), 0, -1, 0, 0, random(-10,10))
 			TNT1 AAAAA 0 A_FireProjectile("Tracer", random(-5,5), 0, -1, 0, 0, random(-5,5));
 			TNT1 A 0 A_SetPitch(-12.0 + pitch);
 			TNT1 A 0 A_Takeinventory("ShotgunAmmo",1);
@@ -375,7 +372,6 @@ CLASS Shot_Gun : doomb_weapon_base Replaces Shotgun {
 			TNT1 A 0 A_PlaySound("weapons/sg", 1);
 			TNT1 A 0;
 			TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,5,30);
-			TNT1 AAAAAAAAAAAA 0 BRIGHT A_FireProjectile("ShotgunParticles", random(-15,15), 0, -1, 0, 0, random(-10,10));
 			TNT1 AAAAA 0 A_FireProjectile("Tracer", random(-5,5), 0, -1, -12, 0, random(-5,5));
 			TNT1 A 0 ACS_Execute(374, 0, 0, 0, 0);
 			TNT1 A 0 Radius_Quake (2, 6, 0, 1, 0);

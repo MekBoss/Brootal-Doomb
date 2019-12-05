@@ -14,42 +14,49 @@ override void worldloaded(worldevent e)
 //so they can use functions of that event whenever they want
 override void worldthingspawned(worldevent e)
 {	
-	if(e.thing is "dumb_boolet_base")
-	    dumb_boolet_base(e.thing).set_sfx(self);
+	if(e.thing is "doomb_boolet_base") 
+	    doomb_boolet_base(e.thing).set_sfx(self);
 
-		
 	if(e.thing is "doomb_monster_base")
 	    doomb_monster_base(e.thing).set_effects(self);
 
-
-
 	if(e.thing is "visual_sfx")
 	    visual_sfx(e.thing).set_event(self);
+
+	if(e.thing is "doomb_decoration_base")
+	    doomb_decoration_base(e.thing).set_effects(self);
 	
+	if(e.thing is "doomb_weapon_base")
+	    doomb_weapon_base(e.thing).set_event(self);
+
+	if(e.thing is "doomber")
+	    doomber(e.thing).set_sfx(self);
 }
 
 
 //find free effect
 private visual_sfx find_free_effect()
 {
-	int dd = self.vis_sfx.size();
+	uint dd = self.vis_sfx.size();
 
 	for(uint i = 0; i <= dd; i++)
 	{
 		if(i == dd)
 		{
-			actor ss = actor.spawn("visual_sfx", pos:(0, 0, 0) );
+			actor ss = actor.spawn("visual_sfx", pos:(double.infinity, double.infinity, double.infinity) );
 
 			visual_sfx(ss).set_event(self);
 			vis_sfx.push((visual_sfx)(ss) );
-			return (visual_sfx)(ss); break;
+			return (visual_sfx)(ss);
+			break;
 		}
 
 		if(self.vis_sfx[i])
 		{
-			if(visual_sfx(self.vis_sfx[i]).check_busyness() == false)
+			if(visual_sfx(self.vis_sfx[i]).is_show_something() == false)
 			{
-				return (visual_sfx)(self.vis_sfx[i]); break; 
+				return (visual_sfx)(self.vis_sfx[i]);
+				break; 
 			}
 		}
 	}
@@ -68,27 +75,34 @@ private void approve_state(actor subject = null, statelabel state_name = null)
 
 	let stt_lnk = subject.findstate(state_name);
 
-	if(stt_lnk == null) {console.printf("actor at %d %d %d dont have state", subject.pos.x, subject.pos.y, subject.pos.z ); return;}
+	if(stt_lnk == null)
+	{
+		console.printf("actor at %d %d %d dont have state", subject.pos.x, subject.pos.y, subject.pos.z );
+		return;
+	}
 
 	subject.setstate(stt_lnk);
 }
 
 
 //here actually shows some mikle bay explosions
-actor show_some_effect(actor caller = null, statelabel effect_state = null, vector3 offset = (0,0,0), vector3 speed = (0, 0, 0), vector2 size = (1, 1), double translucency = 1 )
+actor show_some_effect(actor caller = null, statelabel effect_state = null, vector3 offset = (0,0,0), vector3 speed = (0, 0, 0), vector2 size = (double.nan, double.nan), double translucency = double.nan )
 {
 	//effect must be "attached" to actor
-	if(caller == null || effect_state == null) {return null;}
+	if(caller == null || effect_state == null || !doomb_sfx_effects) 
+		return null;
 	
 	actor mikle_bay = find_free_effect();
 	if(mikle_bay == null)
 		return null;
 
-	approve_state(mikle_bay, effect_state);
 	mikle_bay.setorigin(caller.pos + offset, false);
-	mikle_bay.vel = speed;
-	mikle_bay.scale = size;
-	mikle_bay.alpha = translucency;
+	//mikle_bay.SetXYZ (caller.pos + offset);
+
+	approve_state(mikle_bay, effect_state);
+
+	visual_sfx(mikle_bay).doomb_set_appearance_global(size, translucency, speed);
+
 	return mikle_bay;
 }
 

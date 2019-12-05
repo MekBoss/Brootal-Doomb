@@ -293,7 +293,7 @@ ACTOR CapturedMarine: doomb_monster_base Replaces Blursphere
 	    TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160))
 	    TNT1 A 0 doomb_spawn_burned_flesh()
 		
-		EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("GreenFlameTrails", 50, 0, random (0, 360), 2, random (0, 360))
+		EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 //doomb_show_effect("GreenFlameTrails", (0, 0, 50), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 		XBRN AAAA 2 BRIGHT A_SpawnItem("GreenFlare",0,43)
         Stop
 
@@ -302,9 +302,9 @@ ACTOR CapturedMarine: doomb_monster_base Replaces Blursphere
       PBUR A 1 A_Scream
       PBUR A 1 A_NoBlocking
 	  TNT1 A 0 A_SpawnItem("RemoveMarine")
-       PBUR AAAABBBBCCCC 2 A_SpawnProjectile ("SmallFlameTrails", 32, 0, random (0, 180), 2, random (0, 180))
-	    PBUR DDDDEEEE 2 A_SpawnProjectile ("SmallFlameTrails", 16, 0, random (0, 180), 2, random (0, 180))
-        PBUR EEEEE 4 A_SpawnProjectile ("SmallFlameTrails", 8, 0, random (0, 180), 2, random (0, 180))
+       PBUR AAAABBBBCCCCDDDDEEEEEEEEE 2 //doomb_show_effect("FlameTrails", ( 0, 0, 32 - frame * 3), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );	
+
+
 		PBUR EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 6 A_SpawnProjectile ("PlasmaSmoke", 8, 0, random (0, 180), 2, random (0, 180))
         PBUR E -1
         Stop

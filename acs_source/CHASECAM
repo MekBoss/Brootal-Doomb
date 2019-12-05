@@ -15,6 +15,11 @@ Script 477 (VOID)
 	ACS_ExecuteAlways (401, 0, PlayerNumber ());
 }
 
+Script 171 (VOID)
+{
+	camera_mode[PlayerNumber ()] = OFF;
+	Thing_Remove (C_TID + PlayerNumber ());
+}
 
 Script 401 (int p_num)
 {
@@ -72,11 +77,6 @@ Script 401 (int p_num)
 
 
 
-Script 171 (VOID)
-{
-	camera_mode[PlayerNumber ()] = OFF;
-	Thing_Remove (C_TID + PlayerNumber ());
-}
 
 Script 420 (int p_num) DISCONNECT
 {
