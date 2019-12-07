@@ -1,0 +1,111 @@
+CLASS BrutalStealthArachnotron : Arachnotron Replaces StealthArachnotron { 
+	Default {
+		
+		+STEALTH;
+		RenderStyle "Translucent";
+		Alpha 0;
+	}
+}
+
+
+CLASS BrutalStealthArchvile : TehArchvile Replaces StealthArchvile { 
+	Default {
+		
+		+STEALTH;
+		RenderStyle "Translucent";
+		Alpha 0;
+	}
+}
+
+
+CLASS BrutalStealthBaron : BaronofHell2 Replaces StealthBaron { 
+	Default {
+		
+		+STEALTH;
+		RenderStyle "Translucent";
+		Alpha 0;
+	}
+}
+
+CLASS BrutalStealthCacodemon : Cacodemon_ Replaces StealthCacodemon { 
+	Default {
+		
+		+STEALTH;
+		RenderStyle "Translucent";
+		Alpha 0;
+	}
+}
+
+
+
+CLASS BrutalStealthChaingunGuy : ChaingunGuy1 Replaces StealthChaingunGuy { 
+	Default {
+		
+		+STEALTH;
+		RenderStyle "Translucent";
+		Alpha 0;
+	}
+}
+
+CLASS BrutalStealthDemon : BullDemon Replaces StealthDemon { 
+	Default {
+		
+		+STEALTH;
+		RenderStyle "Translucent";
+		Alpha 0;
+	}
+}
+
+CLASS BrutalStealthHellKnight : HellKnight2 Replaces StealthHellKnight { 
+	Default {
+		
+		+STEALTH;
+		RenderStyle "Translucent";
+		Alpha 0;
+	}
+}
+
+CLASS BrutalStealthDoomImp : doomb_Imp Replaces StealthDoomImp { 
+	Default {
+		
+		+STEALTH;
+		RenderStyle "Translucent";
+		Alpha 0;
+	}
+}
+
+CLASS BrutalStealthFatso : doomb_fatso Replaces StealthFatso { 
+	Default {
+		
+		+STEALTH;
+		RenderStyle "Translucent";
+		Alpha 0;
+	}
+}
+
+CLASS BrutalStealthRevenant : doomb_Revenant Replaces StealthRevenant { 
+	Default {
+		
+		+STEALTH;
+		RenderStyle "Translucent";
+		Alpha 0;
+	}
+}
+
+CLASS BrutalStealthShotgunGuy : doomb_shotgun_guy Replaces StealthShotgunGuy { 
+	Default {
+		
+		+STEALTH;
+		RenderStyle "Translucent";
+		Alpha 0;
+	}
+}
+
+CLASS BrutalStealthZombieMan : doomb_zombie_Man Replaces StealthZombieMan { 
+	Default {
+		
+		+STEALTH;
+		RenderStyle "Translucent";
+		Alpha 0;
+	}
+}

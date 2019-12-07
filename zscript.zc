@@ -43,6 +43,11 @@ version "3.7.2"
 #include "brootol_dumb_z/gore/BLOOD.zc"
 #include "brootol_dumb_z/gore/BLOODSPLASH.zc"
 #include "brootol_dumb_z/gore/BURN.zc"
+#include "brootol_dumb_z/gore/blueblood.zc"
+#include "brootol_dumb_z/gore/greenblood.zc"
+#include "brootol_dumb_z/gore/sticky.zc"
+#include "brootol_dumb_z/gore/flatdecals.zc"
+#include "brootol_dumb_z/gore/underwaterblood.zc"
 
 
 //DECORATIONS
@@ -54,9 +59,6 @@ version "3.7.2"
 #include "brootol_dumb_z/decor/TORCHES.zc"
 #include "brootol_dumb_z/decor/DEAD.zc"
 
-
-#include "brootol_dumb_z/actors_dump/EXPLOSIVES.zc"
-#include "brootol_dumb_z/actors_dump/DROPABLES.zc"
 
 //monsters base must go before gore
 //because gore base inherits from monster base
@@ -118,11 +120,30 @@ version "3.7.2"
 
 #include "brootol_dumb_z/player/PLAYER.zc"
 
+#include "brootol_dumb_z/marines/marines.zc"
+#include "brootol_dumb_z/marines/capturedmarine.zc"
+#include "brootol_dumb_z/marines/BFGmarine.zc"
+#include "brootol_dumb_z/marines/chaingunmarine.zc"
+#include "brootol_dumb_z/marines/plasmagunmarine.zc"
+#include "brootol_dumb_z/marines/rocketlaunchermarine.zc"
+#include "brootol_dumb_z/marines/shotgunmarine.zc"
+
 /*
 check difficlty
 G_SkillPropertyInt(SKILLP_ACSReturn)
 set acsreturn value in sklil definition
 */
+
+#include "brootol_dumb_z/actors_dump/EXPLOSIVES.zc"
+#include "brootol_dumb_z/actors_dump/DROPABLES.zc"
+#include "brootol_dumb_z/actors_dump/bossbrain.zc"
+#include "brootol_dumb_z/actors_dump/bossbrain.zc"
+#include "brootol_dumb_z/actors_dump/epic2stuff.zc"
+#include "brootol_dumb_z/actors_dump/realismmodeitems.zc"
+#include "brootol_dumb_z/actors_dump/SpecialDoom1Boses.zc"
+#include "brootol_dumb_z/actors_dump/stealthmonsters.zc"
+#include "brootol_dumb_z/actors_dump/teleport.zc"
+#include "brootol_dumb_z/actors_dump/water.zc"
 
 
 

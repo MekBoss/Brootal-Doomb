@@ -11,7 +11,7 @@ ACTOR PrePlacedMarine Replaces MarinePistol
 }
 
 
-ACTOR Marine: RedTorch
+ACTOR Marine: actor
 {
     Radius 10
     Height 48
@@ -38,7 +38,7 @@ ACTOR Marine: RedTorch
 }
 
 
-ACTOR RandomMarine: RedTorch
+ACTOR RandomMarine: actor
 {
     Radius 10
     Height 48
@@ -155,11 +155,11 @@ ACTOR Marine_Rifle : doomb_monster_base
 	damagefactor "Cut", 0.1
     BloodType "Brutal_Blood",  "SawBlood"
 	damagefactor "FriendBullet", 0.0
-    damagefactor "Blood", 0.0 
-	   damagefactor "GreenBlood", 0.0  
-	     damagefactor "BlueBlood", 0.0   
-		  damagefactor "Taunt", 0.0  
-		    damagefactor "KillMe", 0.0
+	damagefactor "Blood", 0.0 
+	damagefactor "GreenBlood", 0.0  
+	damagefactor "BlueBlood", 0.0   
+	damagefactor "Taunt", 0.0  
+	damagefactor "KillMe", 0.0
 	DeathSound "DSMADTH"
 	PainSound "*pain"
     damagefactor "Blood", 0.0

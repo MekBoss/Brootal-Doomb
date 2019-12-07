@@ -685,7 +685,7 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 		+SOLID;
 		+THRUSPECIES;
 		+MTHRUSPECIES;
-		+DONTHURTSPECIES;
+		+DONTHARMCLASS;
 		+THRUGHOST;
 		Species "Marines";
 		BloodType "Player_Blood";//, "SawBlood"
@@ -2533,7 +2533,6 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 	FatalityCacoDemon:
 		tnt1 A 0 SetPlayerProperty(0,1,0);
 		tnt1 A 0 ACS_ExecuteAlways(477, 0, 0, 0, 0);//Start Camera
-		
 		tnt1 A 0 ACS_Execute(acsFatality, 0);
 		//////////////////////////////////////////////////////
 		CACF ABC 4;
@@ -2552,6 +2551,7 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 		tnt1 A 0 A_GiveInventory("HealthBonus",10);
 		tnt1 A 0 A_SpawnItemEx("DeadCacoDemon", 0, 1, 1, 1, 1);
 		MARN A 0 ACS_ExecuteAlways(171, 0, 0, 0, 0);//Stop Camera
+		MARN A 0 ACS_ExecuteAlways(171, 0, 0, 0, 0);//Stop Camera
 		tnt1 A 0 SetPlayerProperty(0,0,0);
 	Goto StandStill;
 		
@@ -2559,7 +2559,6 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 	FatalityCacoDemon2:
 		tnt1 A 0 SetPlayerProperty(0,1,0);
 		tnt1 A 0 ACS_ExecuteAlways(477, 0, 0, 0, 0);//Start Camera
-		
 		tnt1 A 0 ACS_Execute(acsFatality, 0);
 		CA2F AB 4;
 		tnt1 A 0 A_PlaySound("demon/pain");
@@ -2577,7 +2576,7 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 		tnt1 A 0 A_TakeInventory("GoFatality", 1);
 		tnt1 A 0 A_TakeInventory("CacoDemonFatality2",1);
 		tnt1 A 0 A_GiveInventory("HealthBonus",10);
-		tnt1 A 0 A_SpawnItem ("DeadHalfCacoDemon", 1);
+		tnt1 A 0 A_SpawnItem ("Dead_lower_caco_Half", 1);
 		MARN A 0 ACS_ExecuteAlways(171, 0, 0, 0, 0);//Stop Camera
 		tnt1 A 0 SetPlayerProperty(0,0,0);
 	Goto StandStill;

@@ -269,6 +269,16 @@ states
 			console.printf("taunt/avoid/killme death type");
 			setstatelabel("see");
 		}
+
+	Raise:
+		TNT1 A 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+		TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60);
+		TNT1 A 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+		TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60);
+		TNT1 A 0 A_SpawnItem("TeleportFog");
+		TNT1 A 0 A_NoBlocking;
+		TNT1 A 0 setstatelabel("see");
+
 }
 
 
@@ -338,9 +348,9 @@ protected void doomb_spawn_burned_flesh()
 	A_SpawnProjectile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, - random (0, 160));
 }
 
-protected actor doomb_show_effect(statelabel effect_name, vector3 offset = (0, 0, 0), vector3 velocity = (0, 0, 0), vector2 visual_size = (double.nan, double.nan), double translucency = double.nan)
+protected visual_sfx doomb_show_effect(statelabel effect_name, vector3 offset = (0, 0, 0), vector3 velocity = (0, 0, 0), vector2 visual_size = (double.nan, double.nan), double translucency = double.nan)
 {
-	actor a = doomb_sfx_main(sfx).show_some_effect(self, effect_name, offset, velocity, visual_size, translucency);
+	visual_sfx a = doomb_sfx_main(sfx).show_some_effect(self, effect_name, offset, velocity, visual_size, translucency);
 	return a;
 }
 

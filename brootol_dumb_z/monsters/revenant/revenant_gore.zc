@@ -406,7 +406,7 @@ CLASS RevenantU : ACTOR {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;
 		MaxStepHeight 24;
-		+DONTHURTSPECIES;
+		+DONTHARMCLASS;
 		+NOPAIN;
 		+LOOKALLAROUND;
 		+NOTARGET;

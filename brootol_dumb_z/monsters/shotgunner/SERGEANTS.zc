@@ -1053,9 +1053,8 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 		Stop;
 		
 	Raise:
-		SPOS L 5;
-		SPOS KJIH 5;
-		Goto SeeContinue;
+		SPOS LKJIH 5;
+	Goto SeeContinue;
 		
 		
 	StealthKill:

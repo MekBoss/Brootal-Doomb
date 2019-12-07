@@ -307,14 +307,7 @@ ACTOR SuperMastermind 2547
 	Missile:
 	    TNT1 A 0 A_TakeInventory ("BrutalCounter2", 500)
 		
-		SPID A 4 A_FaceTarget 
-		
-		SPID A 4 A_FaceTarget 
-		
-		SPID A 4 A_FaceTarget 
-		
-        SPID H 4 A_FaceTarget
-		
+		SPID AAAH 4 A_FaceTarget 
 		TNT1 AAAAAAAAAAAAAAAAA 0
 		
 		
@@ -395,9 +388,9 @@ ACTOR SuperMastermind 2547
         Stop
 		
 		
-Death.Cut:
-Death.Saw:
-Death.decaptate:
+	Death.Cut:
+	Death.Saw:
+	Death.decaptate:
 		TNT1 AAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("XDeath1", 120, 0, random (0, 360), 2, random (50, 130))
 		TNT1 A 0 A_SpawnProjectile ("XSpiderMastermindCuttedBrain", 120, 0, random (0, 360), 2, random (50, 130))
 		SPIY AAAAAAAAAAA 8 A_SpawnItem("MuchBlood", 0, 120)

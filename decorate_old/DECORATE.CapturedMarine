@@ -451,7 +451,7 @@ ACTOR MarinePunch
 	Alpha 0.6
 	HitObituary "$OB_IMPHIT"
     Obituary "$OB_IMPHIT"
-	+DONTHURTSPECIES
+	+DONTHARMCLASS
 
 	SeeSound "None"
 	DeathSound "none"

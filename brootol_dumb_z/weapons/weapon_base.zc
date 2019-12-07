@@ -224,7 +224,7 @@ protected vector3 rotate_vector(vector3 v, double x_axis = double.nan, double y_
 	return v;
 }
 
-protected actor doomb_show_effect(statelabel effect_name, vector3 offset = (0, 0, 0), vector3 velocity = (0, 0, 0), vector2 visual_size = (double.nan, double.nan), double translucency = double.nan)
+protected visual_sfx doomb_show_effect(statelabel effect_name, vector3 offset = (0, 0, 0), vector3 velocity = (0, 0, 0), vector2 visual_size = (double.nan, double.nan), double translucency = double.nan)
 {
 	if(!sfx) return null;
 
@@ -247,7 +247,7 @@ protected actor doomb_show_effect(statelabel effect_name, vector3 offset = (0, 0
 	else
 		v += velocity;
 
-	return doomb_sfx_main(self.sfx).show_some_effect(owner, effect_name, oo, v, visual_size, translucency);
+	return (visual_sfx)(doomb_sfx_main(self.sfx).show_some_effect(owner, effect_name, oo, v, visual_size, translucency) );
 }
 
 }

@@ -7,9 +7,9 @@ void set_effects(eventhandler e)
         sfx = e;
 }
 
-protected actor doomb_show_effect(statelabel effect_name, vector3 offset = (0, 0, 0), vector3 velocity = (0, 0, 0), vector2 visual_size = (double.nan, double.nan), double translucency = double.nan)
+protected visual_sfx doomb_show_effect(statelabel effect_name, vector3 offset = (0, 0, 0), vector3 velocity = (0, 0, 0), vector2 visual_size = (double.nan, double.nan), double translucency = double.nan)
 {
-	return doomb_sfx_main(sfx).show_some_effect(self, effect_name, offset, velocity, visual_size, translucency);
+	return (visual_sfx)(doomb_sfx_main(sfx).show_some_effect(self, effect_name, offset, velocity, visual_size, translucency) );
 }
 
 }

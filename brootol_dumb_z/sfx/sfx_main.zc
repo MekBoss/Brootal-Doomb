@@ -37,11 +37,9 @@ override void worldthingspawned(worldevent e)
 //find free effect
 private visual_sfx find_free_effect()
 {
-	uint dd = self.vis_sfx.size();
-
-	for(uint i = 0; i <= dd; i++)
+	for(uint i = 0; i <= self.vis_sfx.size(); i++)
 	{
-		if(i == dd)
+		if(i == self.vis_sfx.size())
 		{
 			actor ss = actor.spawn("visual_sfx", pos:(double.infinity, double.infinity, double.infinity) );
 
@@ -58,6 +56,12 @@ private visual_sfx find_free_effect()
 				return (visual_sfx)(self.vis_sfx[i]);
 				break; 
 			}
+		}
+
+		else
+		{
+			vis_sfx.delete(i);
+			i--;
 		}
 	}
 
@@ -86,13 +90,24 @@ private void approve_state(actor subject = null, statelabel state_name = null)
 
 
 //here actually shows some mikle bay explosions
-actor show_some_effect(actor caller = null, statelabel effect_state = null, vector3 offset = (0,0,0), vector3 speed = (0, 0, 0), vector2 size = (double.nan, double.nan), double translucency = double.nan )
+visual_sfx show_some_effect(actor caller = null, statelabel effect_state = null, vector3 offset = (0,0,0), vector3 speed = (0, 0, 0), vector2 size = (double.nan, double.nan), double translucency = double.nan )
 {
 	//effect must be "attached" to actor
-	if(caller == null || effect_state == null || !doomb_sfx_effects) 
+	if(caller == null)
+		return null;
+
+	if(effect_state == null)
 		return null;
 	
-	actor mikle_bay = find_free_effect();
+	if(!doomb_sfx_effects) 
+		return null;
+	
+	visual_sfx mikle_bay = null;
+
+	mikle_bay
+	=
+	find_free_effect();
+	
 	if(mikle_bay == null)
 		return null;
 

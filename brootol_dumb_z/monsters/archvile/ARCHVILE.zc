@@ -102,7 +102,9 @@ States
 	Goto See;
 		
 	Heal:
+		DIBR X 1;
 		DIBR X 10 BRIGHT A_SpawnItem("PentagramSpawner");
+		DIBR X 1;
 	Goto See;
 
 	Pain:
