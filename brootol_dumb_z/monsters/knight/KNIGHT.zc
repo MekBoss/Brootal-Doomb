@@ -13,7 +13,6 @@ CLASS HellKnight2 : doomb_monster_base Replaces HellKnight {
 		PainChance 50;
 		Monster;
 		+FLOORCLIP;
-		Health 500;
 		
 		HitObituary "$OB_KNIGHTHIT";
 		Obituary "$OB_KNIGHT";
@@ -22,8 +21,6 @@ CLASS HellKnight2 : doomb_monster_base Replaces HellKnight {
 		Scale 1.0;
 		Speed 8;
 		Health 500;
-		damagefactor "Crush", 10.0;
-		damagefactor "GibRemoving", 0.0;
 		PainChance "Kick", 255;
 		PainChance "Head", 150;
 		PainChance "Explosive_Impact", 255;
@@ -35,6 +32,9 @@ CLASS HellKnight2 : doomb_monster_base Replaces HellKnight {
 		damagefactor "SSG", 0.5;
 		damagefactor "Avoid", 0.0;
 		damagefactor "TeleportRemover", 0.0;
+		damagefactor "Avoid", 0.0;
+		damagefactor "Crush", 10.0;
+		damagefactor "GibRemoving", 0.0;
 		damagefactor "Blood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;
@@ -43,7 +43,6 @@ CLASS HellKnight2 : doomb_monster_base Replaces HellKnight {
 		-BOSSDEATH;
 		MaxStepHeight 24;
 		MaxDropOffHeight 32;
-		damagefactor "Avoid", 0.0;
 		BloodType "Brutal_Blood",  "SawBlood";
 		DropItem "DemonStrengthRune", 3;
 		Obituary "%o was slain by a Hell Knight.";
@@ -129,30 +128,10 @@ CLASS HellKnight2 : doomb_monster_base Replaces HellKnight {
 			
 			
 		SeeNeverSeen:
-			//TNT1 A 0 A_SpawnItemEx("FootSep", 0, 0, 20, 0, 0)
-			
-			
-			BOS2 AA 2 A_Chase;
-			
-			BOS2 AA 2 A_Chase;
-			
-			
-			
-			BOS2 BB 2 A_Chase;
-			
-			BOS2 BB 2 A_Chase;
-			
-			
-			BOS2 CC 2 A_Chase;
-			
-			BOS2 CC 2 A_Chase;
-			
-			
-			BOS2 DD 2 A_Chase;
-			
-			BOS2 DD 2 A_Chase;
+			BOS2 AAAABBBBCCCCDDDD 2 A_Chase;
 			TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget");
-			Loop;
+		Loop;
+	
 		RAGE:
 			TNT1 A 0;
 			TNT1 A 0 A_CheckSight("See2");
@@ -373,7 +352,7 @@ CLASS HellKnight2 : doomb_monster_base Replaces HellKnight {
 			Stop;
 		Death.Arm:
 			TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightArm", 55, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("MuchBlood2", 55, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("MuchBlood", 55, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_Fall;
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_SpawnItem("DyingHellKnight1");
@@ -482,14 +461,14 @@ CLASS HellKnight2 : doomb_monster_base Replaces HellKnight {
 			TNT1 A 0 A_BossDeath;
 			TNT1 A 0 A_Scream;
 			TNT1 A 0 A_NoBlocking;
-			TNT1 AAAAA 0 A_SpawnProjectile ("PlasmaParticleX", 48, 0, random (0, 360), 2, random (0, 360));
-			TNT1 AAA 0 A_SpawnProjectile ("BigPlasmaParticleX", 42, 0, random (0, 360), 2, random (0, 360));
-			BOSB ABC 7 A_SpawnProjectile ("PlasmaSmoke", 28, 0, random (0, 180), 2, random (0, 180));
-			TNT1 AAAAA 0 A_SpawnProjectile ("PlasmaParticleX", 48, 0, random (0, 360), 2, random (0, 360));
-			TNT1 AAA 0 A_SpawnProjectile ("BigPlasmaParticleX", 42, 0, random (0, 360), 2, random (0, 360));
-			BOSB D 7 A_SpawnProjectile ("PlasmaSmoke", 14, 0, random (0, 180), 2, random (0, 180));
+			TNT1 AAAAA 0 doomb_show_effect("PlasmaParticleX", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
+			TNT1 AAA 0 doomb_show_effect("PlasmaParticleX", (0, 0, 42), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ), (frandom(1.8, 2.2), 0) );
+			BOSB ABC 7 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
+			TNT1 AAAAA 0 doomb_show_effect("PlasmaParticleX", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
+			TNT1 AAA 0 doomb_show_effect("PlasmaParticleX", (0, 0, 42), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ), (frandom(1.8, 2.2), 0) );
+			BOSB D 7 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
-			BOSB EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 8 A_SpawnProjectile ("PlasmaSmoke", 24, 0, random (0, 180), 2, random (0, 180));
+			BOSB EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 8 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			BOSB E -1;
 			Stop;
 			
@@ -547,7 +526,7 @@ CLASS HellKnight2 : doomb_monster_base Replaces HellKnight {
 			BOSB AAAABBBBCCCCDDDD 2 doomb_show_effect("FlameTrails", (0, 0, 30), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			TNT1 A 0 A_Playsound("props/redfire");
 			BOSB EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 2 doomb_show_effect("FlameTrails", (0, 0, 25), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-			BOSB EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 10 A_SpawnProjectile ("SmallSmoke", 25, 0, random (0, 360), 2, random (70, 110));
+			BOSB EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 10 doomb_show_effect("AltSmoke", (0, 0, 25), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (1.5, 0) );
 			BOSB E -1;
 			Stop;
 			
@@ -564,12 +543,12 @@ CLASS HellKnight2 : doomb_monster_base Replaces HellKnight {
 			KTFP H 2;
 			EXPL A 0 Radius_Quake (2, 24, 0, 15, 0);
 			TNT1 AAA 0 A_SpawnProjectile ("Brains1", 11, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("Brains2", 11, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("Brains3", 11, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("Brains4", 11, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("Brains5", 11, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("jaw", 11, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("eye", 11, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("head_piece", 11, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("head_piece", 11, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAA 0 A_SpawnProjectile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAA 0 A_SpawnProjectile ("MuchBlood2", 1, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 A_SpawnProjectile ("MuchBlood", 1, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnItemEx("SplatteredSmall", 0);
 			KTFP IJ 2;
 			KTFP KLLLLL 4;
@@ -618,14 +597,12 @@ CLASS HellKnight2 : doomb_monster_base Replaces HellKnight {
 
 CLASS GreenPlasmaBall : doomb_boolet_base { 
 	Default {
-		
 		Radius 10;
 		Height 16;
 		Speed 16;
 		FastSpeed 20;
 		DamageType "GreenFire";
 		Projectile;
-		+RANDOMIZE;
 		+FORCEXYBILLBOARD;
 		+THRUGHOST;
 		DamageFunction (random(25,35));
@@ -651,26 +628,14 @@ CLASS GreenPlasmaBall : doomb_boolet_base {
 			
 		Death:
 			TNT1 AAAA 0 A_SpawnItemEx("green_particle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128);
-			TNT1 AAAA 0 A_SpawnProjectile ("PlasmaSmoke", 32, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			EXPL AAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("GreenFlameTrails", (0, 0, 50), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			TNT1 A 0 A_SpawnItemEx ("DetectFloorCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			TNT1 A 0 A_SpawnItemEx ("DetectCeilCraterSmall",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			TNT1 AA 0 A_SpawnItem("GreenFlare",0,0);
 			FRPG ABCDEFGH 2 BRIGHT;
-			TNT1 AAAAA 19 A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160));
-			Stop;
-		XDeath:
-			//TNT1 AAA 0 A_SpawnItemEx("green_particle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128)
-			TNT1 A 0 A_JumpIfCloser(220, "StopInAir");
-			TNT1 AAAA 0 A_SpawnItemEx("green_particle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128);
-			TNT1 AAAA 0 A_SpawnProjectile ("PlasmaSmoke", 32, 0, random (0, 360), 2, random (0, 360));
-			TNT1 AA 0 A_SpawnItem("GreenFlare",0,0);
-			FRPG ABCDEFGH 2 BRIGHT;
-			Stop;
-			
-		StopInAir:
-			FRPG ABCDEF 1 BRIGHT;
-			Stop;
+			TNT1 AAAAA 19 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
+		Stop;
 	}
 }
 

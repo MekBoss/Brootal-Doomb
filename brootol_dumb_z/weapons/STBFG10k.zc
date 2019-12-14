@@ -84,7 +84,8 @@ CLASS BFG10k : doomb_weapon_base {
 }
 
 
-CLASS BrutalBFG10kShot : ACTOR { 
+CLASS BrutalBFG10kShot : doomb_boolet_base
+{ 
 	Default {
 		
 		Radius 11;
@@ -114,11 +115,11 @@ CLASS BrutalBFG10kShot : ACTOR {
 			TNT1 A 0 Bright A_SpawnItem("GreenShockWave",0,0,0);
 			EXPL AAAAAAA 0 A_SpawnProjectile ("BFGBIGFOG", 0, 0, random (0, 360), 2, random (0, 360));
 			TNT1 AAAAAAA 0 A_SpawnProjectile ("GreenExplosionFire", 2, 0, random (0, 360), 2, random (0, 360));
-			EXPL AA 0 A_SpawnProjectile ("BigNeoSmoke", 0, 0, random (0, 360), 2, random (0, 360));
+			EXPL AA 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			
 			BFE1 BCDEF 2 Bright;
 			TNT1 A 0 A_PlaySound("FAREXPL");
-			TNT1 AAAAAAAA 2 A_SpawnProjectile ("BigNeoSmoke", 2, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AAAAAAAA 2 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			Stop;
 	}
 }

@@ -10,7 +10,16 @@ void set_sfx(eventhandler e)
 
 protected visual_sfx doomb_show_effect(statelabel effect_name, vector3 offset = (0, 0, 0), vector3 velocity = (0, 0, 0), vector2 visual_size = (double.nan, double.nan), double translucency = double.nan)
 {
-	return (visual_sfx)(doomb_sfx_main(sfx).show_some_effect(self, effect_name, offset, velocity, visual_size, translucency) );
+	if(sfx)
+		return (visual_sfx)(doomb_sfx_main(sfx).show_some_effect(self, effect_name, offset, velocity, visual_size, translucency) );
+
+	else
+		return null;
+}
+
+default
+{
+	projectile;
 }
 
 }
@@ -29,22 +38,29 @@ void set_sfx(eventhandler e)
 
 protected visual_sfx doomb_show_effect(statelabel effect_name, vector3 offset = (0, 0, 0), vector3 velocity = (0, 0, 0), vector2 visual_size = (double.nan, double.nan), double translucency = double.nan)
 {
-	return (visual_sfx)(doomb_sfx_main(sfx).show_some_effect(self, effect_name, offset, velocity, visual_size, translucency) );
+	if(sfx && (player || player.mo || player.mo == self) )
+		return (visual_sfx)(doomb_sfx_main(sfx).show_some_effect(self, effect_name, offset, velocity, visual_size, translucency) );
+
+	else
+		return null;
 }
 
 protected void doomb_spawn_big_blood(int spawn_height = 0)
 {
-	if(waterlevel < 1)
-    {
-		for(uint i = 0; i < 2 * bd_bloodamount; i++)
+	if (player || player.mo || player.mo == self)
+	{
+		if(waterlevel < 1)
 		{
-			actor a = A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 180), 2, - random (0, 180) );
-			a.setorigin(self.pos + (0, 0, spawn_height), false);
-
-			if( (i % 2) == 0)
+			for(uint i = 0; i < 2 * bd_bloodamount; i++)
 			{
-				a = A_SpawnProjectile ("Brutal_FlyingBloodTrail", 15, 0, random (0, 360), 2, - random (0, 180) );
+				actor a = A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 180), 2, - random (0, 180) );
 				a.setorigin(self.pos + (0, 0, spawn_height), false);
+
+				if( (i % 2) == 0)
+				{
+					a = A_SpawnProjectile ("Brutal_FlyingBloodTrail", 15, 0, random (0, 360), 2, - random (0, 180) );
+					a.setorigin(self.pos + (0, 0, spawn_height), false);
+				}
 			}
 		}
 	}
@@ -52,12 +68,35 @@ protected void doomb_spawn_big_blood(int spawn_height = 0)
 
 protected void doomb_spawn_burned_flesh()
 {
-	A_SpawnProjectile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, - random (0, 160));
-	A_SpawnProjectile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, - random (0, 160));
-	A_SpawnProjectile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, - random (0, 160));
+	if (player || player.mo || player.mo == self)
+	{
+		A_SpawnProjectile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, - random (0, 160));
+		A_SpawnProjectile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, - random (0, 160));
+		A_SpawnProjectile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, - random (0, 160));
+	}
 }
 
 
 
 
+}
+
+class doomb_inventory : custominventory
+{
+protected eventhandler sfx;
+
+void set_sfx(eventhandler e)
+{
+    if(e.getclassname() == "doomb_sfx_main")
+        sfx = e;
+}
+
+protected visual_sfx doomb_show_effect(statelabel effect_name, vector3 offset = (0, 0, 0), vector3 velocity = (0, 0, 0), vector2 visual_size = (double.nan, double.nan), double translucency = double.nan)
+{
+	if(sfx)
+		return (visual_sfx)(doomb_sfx_main(sfx).show_some_effect(self, effect_name, offset, velocity, visual_size, translucency) );
+
+	else
+		return null;
+}
 }

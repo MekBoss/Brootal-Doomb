@@ -79,7 +79,7 @@ CLASS Chain_saw : doomb_weapon_base replaces Chainsaw {
 			
 			TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute");
 			
-			TNT1 A 0 A_FireProjectile("SmokeSpawner",0,0,0,5);
+			TNT1 A 0 {invoker.doomb_show_effect("GunFireSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.6,0) );}
 			TNT1 A 0 A_PlaySound("DSSAWUP", 4);
 			TNT1 A 0 A_playsound("weapons/chainsaw/idle");
 			CSWG A 2 A_weaponready;
@@ -97,7 +97,6 @@ CLASS Chain_saw : doomb_weapon_base replaces Chainsaw {
 			TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Hold.Blood");
 			TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Hold.BlueBlood");
 			TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"Hold.GreenBlood");
-			//TNT1 A 0 A_FireProjectile("SmokeSpawner",0,0,0,5)
 			TNT1 A 0 A_PlaySound("weapons/chainsaw/loop", chan_Weapon);
 			//CSWF A 1 A_CustomPunch(5,1,1,"SSawPuff")
 			CSWF A 1 A_Saw("weapons/chainsaw/loop", "CSAWCUT", 2, "SSawPuff");
@@ -126,7 +125,6 @@ CLASS Chain_saw : doomb_weapon_base replaces Chainsaw {
 			TNT1 A 0 A_playsound("weapons/chainsaw/start");
 			CSW2 ABCD 1;
 		Hold.Blood:
-			//TNT1 A 0 A_FireProjectile("SmokeSpawner",0,0,0,5)
 			KICK A 0 A_Takeinventory("PowerBlueBloodOnVisor",1);
 			KICK A 0 A_Takeinventory("PowerGreenBloodOnVisor",1);
 			CSW2 G 1 A_Saw("weapons/chainsaw/loop", "CSAWCUT", 2, "SSawPuff");
@@ -154,7 +152,6 @@ CLASS Chain_saw : doomb_weapon_base replaces Chainsaw {
 			TNT1 A 0 A_playsound("weapons/chainsaw/start");
 			CSW3 CD 1;
 		Hold.BlueBlood:
-			//TNT1 A 0 A_FireProjectile("SmokeSpawner",0,0,0,5)
 			KICK A 0 A_Takeinventory("PowerBloodOnVisor",1);
 			KICK A 0 A_Takeinventory("PowerGreenBloodOnVisor",1);
 			TNT1 A 0 A_playsound("weapons/chainsaw/loop",chan_Weapon);
@@ -183,7 +180,6 @@ CLASS Chain_saw : doomb_weapon_base replaces Chainsaw {
 			TNT1 A 0 A_playsound("weapons/chainsaw/start");
 			CSW4 CD 1;
 		Hold.GreenBlood:
-			//TNT1 A 0 A_FireProjectile("SmokeSpawner",0,0,0,5)
 			KICK A 0 A_Takeinventory("PowerBloodOnVisor",1);
 			KICK A 0 A_Takeinventory("PowerBlueBloodOnVisor",1);
 			TNT1 A 0 A_playsound("weapons/chainsaw/loop",chan_Weapon);

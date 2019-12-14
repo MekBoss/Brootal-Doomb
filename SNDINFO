@@ -252,11 +252,13 @@ puff/ric6 			dsrich6
 puff/ric7 			dsrich7
 
 
-$limit weapons/chaingun/fire 0
-weapons/chaingun/fire	CHGNSHOT
+"weapons/chaingun/fire"	CHGNSHOT
 weapons/chaingun/spin	CHGNSPIN
 weapons/chaingun/stop	CHGNSTOP
 weapons/chaingun/start	CHGNSTRT
+
+$limit "weapons/chaingun/fire" 0
+$limit CHGNSHOT 0
 
 weapons/ssg/open	SSGOPEN
 weapons/ssg/close	SSGCLOSE

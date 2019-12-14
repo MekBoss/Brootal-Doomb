@@ -98,8 +98,7 @@ ACTOR ThrowedSguy
 		Loop
 		
     Death:
-	    TNT1 AAAAAA 0 A_SpawnItem("MuchBlood2")
-		//TNT1 A 0 A_SpawnProjectile("Xdeath1", 0, 0, 180)
+	    TNT1 AAAAAA 0 A_SpawnItem("MuchBlood")
 		TNT1 A 0 A_SpawnItem("DeadShotgunguy")
 		TNT1 A 3
 		Stop

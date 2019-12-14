@@ -1,5 +1,4 @@
-
-
+//exported
 CLASS ExplosionSmoke : visual_sfx { 
 	Default {
 		
@@ -39,7 +38,7 @@ CLASS ExplosionSmoke : visual_sfx {
 	}
 }
 
-
+//not exported, dont have mentions
 CLASS ExplosionSmokeSmall22: ExplosionSmoke { 
 	Default {
 		
@@ -49,6 +48,7 @@ CLASS ExplosionSmokeSmall22: ExplosionSmoke {
 
 
 
+//exported
 CLASS HeavyExplosionSmoke: ExplosionSmoke { 
 	Default {
 		
@@ -75,6 +75,7 @@ CLASS HeavyExplosionSmoke: ExplosionSmoke {
 
 
 
+//not exported, replaced with ExplosionSmoke
 CLASS BigSmokes: ExplosionSmoke { 
 	Default {
 		
@@ -85,15 +86,6 @@ CLASS BigSmokes: ExplosionSmoke {
 	States
 	{
 		Spawn:
-			SMOK A 0;
-			Goto Death;
-		Death:
-			//SMOC ABCDEFGHIJKLMNOPQRSTUVWXYZ 4 A_FadeOut(0.01)
-			//SM7C AB 4 A_FadeOut(0.01)
-			//SMOC ABCDEFGHIJKLMNOPQRSTUVWXYZ 4 A_FadeOut(0.01)
-			//SM7C AB 4 A_FadeOut(0.01)
-			//SMOK EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 2 A_FadeOut(0.002)
-			//PUF2 ABCDEFGHIJKLMNOPQRSTUVWXYZ 2 A_FadeOut(0.010)
 			SMK3 B 100;
 			SMK3 CDEFGHIJKLM 1;
 			
@@ -102,7 +94,7 @@ CLASS BigSmokes: ExplosionSmoke {
 }
 
 
-
+//exported
 CLASS GunFireSmoke: ExplosionSmoke { 
 	Default {
 		
@@ -117,13 +109,14 @@ CLASS GunFireSmoke: ExplosionSmoke {
 			TNT1 A 0 nodelay
 			{
 				a_setscale(frandom(-0.22, 0.22));
-		}
-		SMOK ABCDEFGHIJKLMNOPQ 1;
+			}
+			SMOK ABCDEFGHIJKLMNOPQ 1;
 		Stop;
 	}
 }
 
 
+//not exported, dont have mentions
 CLASS SmallSmokers: BigSmokes { 
 	Default {
 		
@@ -143,30 +136,7 @@ CLASS SmallSmokers: BigSmokes {
 }
 
 
-CLASS BigSmallSmokers: BigSmokes { 
-	Default {
-		
-		Scale 0.6;
-		Speed 0;
-		Alpha 0.11;
-		-NOGRAVITY;
-		-NOINTERACTION;
-		Gravity 0.005;
-	}
-	States
-	{
-		Spawn:
-			PUF2 EEFGHIJK 4 A_FadeOut(0.005);
-			PUF2 LMNOPQRSTUVWXYZ 4 A_FadeOut(0.005);
-			Goto Death;
-		Death:
-			TNT1 A 0;
-			
-			Stop;
-	}
-}
-
-
+//converted
 CLASS AltSmoke: ExplosionSmoke { 
 	Default {
 		
@@ -177,15 +147,13 @@ CLASS AltSmoke: ExplosionSmoke {
 	States
 	{
 		Spawn:
-			PUF2 A 1;
-			Goto Death;
-		Death:                                                          
 			PUF2 ABCDEFGHIJKLMNOPQRSTUVWXYZ 2 A_FadeOut(0.010);
 			
 			Stop;
 	}
 }
 
+//replaced with AltSmoke
 CLASS ShinnySmoke: AltSmoke { 
 	Default {
 		
@@ -196,6 +164,7 @@ CLASS ShinnySmoke: AltSmoke {
 
 
 
+//replaced with ExplosionSmoke
 CLASS PlasmaSmoke: ExplosionSmoke { 
 	Default {
 		
@@ -216,7 +185,7 @@ CLASS PlasmaSmoke: ExplosionSmoke {
 			Goto Death;
 	}
 }
-
+//replaced with PlasmaSmoke
 CLASS Vapor1: PlasmaSmoke { 
 	Default {
 		
@@ -225,6 +194,7 @@ CLASS Vapor1: PlasmaSmoke {
 }
 
 
+//replaced with ExplosionSmoke
 CLASS RocketSmokeTrail52: ExplosionSmoke { 
 	Default {
 		
@@ -244,6 +214,7 @@ CLASS RocketSmokeTrail52: ExplosionSmoke {
 
 
 
+//replaced with ExplosionSmoke
 CLASS OldschoolRocketSmokeTrail2: AltSmoke { 
 	Default {
 		
@@ -257,36 +228,13 @@ CLASS OldschoolRocketSmokeTrail2: AltSmoke {
 		Spawn:  
 			TNT1 A 2;
 			SMK3 BCDEFGHIJKKLLMMN 2;
-			Stop;
-			
-			Stop;
+		Stop;
 	}
 }
 
 
-CLASS NeoSmoke: AltSmoke { 
-	Default {
-		
-		Alpha 0.1;
-		Speed 1;
-		+CLIENTSIDEONLY;
-		Scale 1.5;
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 2;
-			Goto Death;
-		Death:                                                          
-			PUF2 EEFGHIJK 2 A_FadeOut(0.010);
-			TNT1 A 0 A_SpawnItem ("BigSmallSmokers");
-			PUF2 LMNOPQRSTUVWXYZ 2 A_FadeOut(0.010);
-			
-			Stop;
-	}
-}
 
-
+//replaced with HeavyExplosionSmoke
 CLASS BigNeoSmoke: HeavyExplosionSmoke { 
 	Default {
 		
@@ -313,6 +261,7 @@ CLASS BigNeoSmoke: HeavyExplosionSmoke {
 }
 
 
+//replaced with HeavyExplosionSmoke
 CLASS HugeNeoSmoke: BigNeoSmoke { 
 	Default {
 		
@@ -332,6 +281,7 @@ CLASS HugeNeoSmoke: BigNeoSmoke {
 	}
 }
 
+//replaced with HeavyExplosionSmoke
 CLASS RidiculousNeoSmoke: BigNeoSmoke { 
 	Default {
 		
@@ -351,6 +301,8 @@ CLASS RidiculousNeoSmoke: BigNeoSmoke {
 	}
 }
 
+
+//replaced with AltSmoke
 CLASS SmallSmoke: AltSmoke { 
 	Default {
 		
@@ -361,7 +313,7 @@ CLASS SmallSmoke: AltSmoke {
 }
 
 
-
+//repleced by ExplosionSmoke
 CLASS MeleeSmoke: ExplosionSmoke { 
 	Default {
 		
@@ -379,7 +331,7 @@ CLASS MeleeSmoke: ExplosionSmoke {
 	}
 }
 
-
+//dont have mentions
 CLASS SmokeTrail : ACTOR { 
 	Default {
 		
@@ -402,6 +354,7 @@ CLASS SmokeTrail : ACTOR {
 	}
 }
 
+//dont have mentions
 CLASS SmokeTrail2 : ACTOR { 
 	Default {
 		
@@ -434,6 +387,7 @@ CLASS SmokeTrail2 : ACTOR {
 
 
 
+//replaced with GunFireSmoke
 CLASS SmokeSpawner : ACTOR { 
 	Default {
 		
@@ -444,12 +398,12 @@ CLASS SmokeSpawner : ACTOR {
 	{
 		Spawn:
 			TNT1 A 1;
-			TNT1 A 0 Thing_ChangeTID(0,390);
 			tnt1 AA 0 A_SpawnProjectile ("ShotSmoke", 0, 0, random (0, 360), 2, random (0, 180));
 			Stop;
 	}
 }
 
+//replaced with GunFireSmoke
 CLASS ShotSmoke : ACTOR { 
 	Default {
 		
@@ -478,6 +432,7 @@ CLASS ShotSmoke : ACTOR {
 	}
 }
 
+//replaced with GunFireSmoke
 CLASS TorchSmoke : ACTOR { 
 	Default {
 		

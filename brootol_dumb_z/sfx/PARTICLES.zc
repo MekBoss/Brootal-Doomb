@@ -15,7 +15,7 @@ CLASS IsOverLava : Inventory {
 
 
 
-
+//converted
 CLASS ExplosionParticle2 : ACTOR { 
 	Default {
 		
@@ -52,12 +52,10 @@ CLASS ExplosionParticle2 : ACTOR {
 	}
 }
 
-
+//not converted, replaced with ExplosionParticle2
+//doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.01, 0.04), 0) );
 CLASS ExplosionParticleVerySlow: ExplosionParticle2 { 
 	Default {
-		
-		
-		Scale 0.05;
 		speed 3;
 		Gravity 0.2;
 		Scale 0.03;
@@ -69,7 +67,7 @@ CLASS ExplosionParticleVerySlow: ExplosionParticle2 {
 
 
 
-
+//exported
 CLASS ShrapnelParticle : ExplosionParticle2 { 
 	Default {
 		
@@ -95,6 +93,7 @@ CLASS ShrapnelParticle : ExplosionParticle2 {
 }
 
 
+//not exported, dont have mentions
 CLASS ShrapnelParticle2: ShrapnelParticle { 
 	Default {
 		
@@ -109,7 +108,7 @@ CLASS ShrapnelParticle2: ShrapnelParticle {
 
 
 
-
+//not exported, dont have mentions
 CLASS ExplosionParticle : ACTOR { 
 	Default {
 		
@@ -134,7 +133,7 @@ CLASS ExplosionParticle : ACTOR {
 }
 
 
-
+//exported
 CLASS BluePlasmaParticle : ACTOR { 
 	Default {
 		
@@ -163,6 +162,7 @@ CLASS BluePlasmaParticle : ACTOR {
 	}
 }
 
+//exported
 CLASS BluePlasmaFire: BluePlasmaParticle { 
 	Default {
 		
@@ -181,7 +181,7 @@ CLASS BluePlasmaFire: BluePlasmaParticle {
 			Stop;
 	}
 }
-
+//dont have mentions
 CLASS BluePlasmaFireMove: BluePlasmaFire { 
 	Default {
 		
@@ -191,6 +191,7 @@ CLASS BluePlasmaFireMove: BluePlasmaFire {
 }
 
 
+//dont have mentions
 CLASS BluePlasmaFireMove2: BluePlasmaFire { 
 	Default {
 		
@@ -202,7 +203,7 @@ CLASS BluePlasmaFireMove2: BluePlasmaFire {
 
 
 
-
+//exported
 CLASS BluePlasmaFireNonStatic: BluePlasmaFire { 
 	Default {
 		
@@ -211,6 +212,7 @@ CLASS BluePlasmaFireNonStatic: BluePlasmaFire {
 	}
 }
 
+//exported
 CLASS PlasmaParticleX : ACTOR { 
 	Default {
 		
@@ -245,6 +247,7 @@ CLASS PlasmaParticleX : ACTOR {
 }
 
 
+//replaced with PlasmaParticleX
 CLASS BigPlasmaParticleX: PlasmaParticleX { 
 	Default {
 		
@@ -284,20 +287,34 @@ CLASS BarrelParticle : ACTOR {
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			TNT1 A 0;//A_SpawnItemEx("AltSmoke", 0, 0)
+			TNT1 A 0;
 			BPRT ABCDEFGH 4;
 			Loop;
 			
 		Death:
-			BPRT GGGGGGGGGGGGG 20;//A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160)) 
+			BPRT GGGGGGGGGGGGG 20;
 			Stop;
 	}
 }
 
 
-CLASS Shrapnel: BarrelParticle { 
+CLASS Shrapnel: visual_sfx { 
 	Default {
 		
+		Radius 8;
+		Height 8;
+		Scale 0.6;
+		Speed 7;
+		Mass 1;
+		gravity 0.5;
+		BounceFactor 0.6;
+		+DOOMBOUNCE;
+		+MISSILE;
+		+MOVEWITHSECTOR;
+		+CLIENTSIDEONLY;
+		+NOBLOCKMAP;
+		+NOTELEPORT;
+
 		Scale 0.02;
 		RenderStyle "Add";
 		Gravity 0.8;
@@ -308,7 +325,7 @@ CLASS Shrapnel: BarrelParticle {
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			LENY AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 A_SpawnItemEx("AltSmoke", 0, 0);
+			LENY AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2 doomb_show_effect("AltSmoke");
 			Stop;
 		Death:
 			TNT1 A 0;
@@ -317,9 +334,67 @@ CLASS Shrapnel: BarrelParticle {
 }
 
 
-CLASS WoodParticle : BarrelParticle { 
+
+//replaced with shrapnel ExplosionParticle
+CLASS SparkX: ExplosionParticle2 { 
 	Default {
 		
+		speed 10;
+		Gravity 0.8;
+		-NOGRAVITY;
+		Scale 0.05;
+		radius 1;
+		height 1;
+		+DOOMBOUNCE;
+		+GHOST;
+		BounceFactor 0.5;
+		Damage 0;
+		alpha 1.0;
+	}
+	States
+	{
+		Spawn:
+			SPKO AAA 1 BRIGHT;
+			SPKO AAAAAAA 1 Bright A_FadeOut(0.20);
+			stop;
+		Death:
+			TNT1 A 0;
+			Stop;
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CLASS WoodParticle : actor { 
+	Default {
+		
+		Radius 8;
+		Height 8;
+		Scale 0.6;
+		Speed 7;
+		Mass 1;
+		gravity 0.5;
+		BounceFactor 0.6;
+		+DOOMBOUNCE;
+		+MISSILE;
+		+MOVEWITHSECTOR;
+		+CLIENTSIDEONLY;
+		+NOBLOCKMAP;
+		+NOTELEPORT;
+
 		Scale 1.5;
 		+THRUACTORS;
 		bouncefactor 0.5;
@@ -371,61 +446,6 @@ CLASS WoodParticleTIny: WoodParticle {
 			Stop;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-CLASS SparkX: ExplosionParticle2 { 
-	Default {
-		
-		speed 10;
-		Gravity 0.8;
-		-NOGRAVITY;
-		Scale 0.05;
-		radius 1;
-		height 1;
-		+DOOMBOUNCE;
-		+GHOST;
-		BounceFactor 0.5;
-		Damage 0;
-		alpha 1.0;
-	}
-	States
-	{
-		Spawn:
-			SPKO AAA 1 BRIGHT;
-			SPKO AAAAAAA 1 Bright A_FadeOut(0.20);
-			stop;
-		Death:
-			TNT1 A 0;
-			Stop;
-	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 CLASS MudDust : ACTOR { 

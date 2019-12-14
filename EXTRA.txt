@@ -331,7 +331,9 @@ inventory.maxamount 1
 
 ACTOR HitlersBuzzsaw : DoomWeapon
 {
-	
+	Weapon.SlotNumber 9
+	Weapon.SlotPriority 1
+
 	Weapon.SelectionOrder 1
 	Weapon.AmmoUse 1
 	Weapon.AmmoGive 600

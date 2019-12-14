@@ -97,9 +97,9 @@ CLASS RailGun : doomb_weapon_base {
 			TNT1 A 0 A_FireProjectile("RailgunPuff2", 0, 0, 0, 0);
 			RAIF A 1 BRIGHT A_RailAttack(200, 0, 1, "00 FF FF", "00 FF FF");
 			TNT1 A 0 A_SetPitch(-4.0 + pitch);
-			RAIF BC 1 A_FireProjectile("SmokeSpawner",0,0,0,5);
+			RAIF BC 1 {invoker.doomb_show_effect("GunFireSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.6,0) );}
 			RAIR ABCD 1 A_SetPitch(1.0 + pitch);
-			RAIR DDDDD 3 A_FireProjectile("SmokeSpawner",0,0,0,5);
+			RAIR DDDDD 3 {invoker.doomb_show_effect("GunFireSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.6,0) );}
 			RAIR CBA 1;
 			RAIL A 5;
 			RAIL A 1 A_Refire;
@@ -159,7 +159,7 @@ CLASS RailGun : doomb_weapon_base {
 	}
 }
 
-CLASS RailGunPuff2: FastProjectile { 
+CLASS RailGunPuff2: doomb_boolet_base { 
 	Default {
 		
 		+NOEXTREMEDEATH;
@@ -177,8 +177,7 @@ CLASS RailGunPuff2: FastProjectile {
 		Death:
 			TNT1 A 0;
 			TNT1 AAAA 0 A_SpawnItemEx("green_particle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128);
-			TNT1 AAAA 0 A_SpawnProjectile ("PlasmaSmoke", 32, 0, random (0, 360), 2, random (0, 360));
-			//EXPL AAAA 0 A_SpawnProjectile ("SmallSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+			TNT1 AAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			TNT1 ABCDE 2 BRIGHT A_SpawnItem("BlueFlare" ,0);
 			Stop;
 	}
@@ -186,7 +185,7 @@ CLASS RailGunPuff2: FastProjectile {
 
 
 
-CLASS RailgunPuff: BulletPuff { 
+CLASS RailgunPuff: visual_sfx { 
 	Default {
 		
 		RenderStyle "Add";
@@ -200,10 +199,9 @@ CLASS RailgunPuff: BulletPuff {
 	{
 		Spawn:
 			PBEX A 0 BRIGHT;// A_SpawnItem("BlueFlare",0,0)
-			TNT1 AA 0 A_SpawnProjectile ("PlasmaParticleX", 12, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AA 0 doomb_show_effect("PlasmaParticleX", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
 			TNT1 AAAA 0 A_SpawnItemEx("green_particle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128);
-			TNT1 AAAA 0 A_SpawnProjectile ("PlasmaSmoke", 32, 0, random (0, 360), 2, random (0, 360));
-			//EXPL AAAA 0 A_SpawnProjectile ("SmallSmoke", 0, 0, random (0, 360), 2, random (0, 360))
+			TNT1 AAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 32), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			PLSE ABCDE 2 BRIGHT A_SpawnItem("BlueFlare" ,0);
 			stop;
 	}

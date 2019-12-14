@@ -25,7 +25,7 @@ CLASS InvulnerabilitySphere_  : PowerupGiver Replaces InvulnerabilitySphere {
 
 // Soulsphere --------------------------------------------------------------
 
-CLASS LifeSphere : CustomInventory Replaces SoulSphere { 
+CLASS LifeSphere : doomb_inventory Replaces SoulSphere { 
 	Default {
 		
 		+COUNTITEM;
@@ -43,7 +43,7 @@ CLASS LifeSphere : CustomInventory Replaces SoulSphere {
 			SOUL ABCDCB 2 BRIGHT;
 			Goto Spawn;
 		Pickup:
-			TNT1 AAAAAAAAAAAAA 0 A_SpawnProjectile ("ShinnySmoke", 0, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AAAAAAAAAAAAA 0 {invoker.doomb_show_effect("AltSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (frandom(1.8, 2.2), 0) );}
 			TNT1 A 0 A_GiveInventory("SoulSphereHealth", 1);
 			Stop;
 	}
@@ -58,7 +58,7 @@ CLASS SoulSphereHealth : Health	 {
 	}
 }
 
-CLASS EnergySphere : CustomInventory Replaces Megasphere { 
+CLASS EnergySphere : doomb_inventory Replaces Megasphere { 
 	Default {
 		
 		+COUNTITEM;
@@ -76,7 +76,7 @@ CLASS EnergySphere : CustomInventory Replaces Megasphere {
 			MEGA AABBCCDD 2 BRIGHT;
 			Goto Spawn;
 		Pickup:
-			TNT1 AAAAAAAAAAAAA 0 A_SpawnProjectile ("ShinnySmoke", 0, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AAAAAAAAAAAAA 0 {invoker.doomb_show_effect("AltSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (frandom(1.8, 2.2), 0) );}
 			TNT1 A 0 A_GiveInventory("BlueArmorForMegasphere", 1);
 			TNT1 AA 0 A_GiveInventory("SoulsphereHealth", 1);
 			Stop;

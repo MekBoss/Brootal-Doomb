@@ -1,7 +1,5 @@
-CLASS Flemoid1 : FlemoidusCommonus Replaces FlemoidusCommonus { 
+CLASS Flemoid1 : doomb_monster_base Replaces FlemoidusCommonus { 
 	Default {
-		
-		Game Chex;
 		DropItem "";
 		Obituary "$OB_COMMONUS";
 		Health 70;
@@ -25,11 +23,8 @@ CLASS Flemoid1 : FlemoidusCommonus Replaces FlemoidusCommonus {
 			FLE1 A 10 A_Look();
 			Loop;
 		See:
-			FLE1 AAAA 1 A_CHase("","");
-			FLE1 BBBB 1 A_Chase();
-			FLE1 CCCC 1 A_Chase("","");
-			FLE1 DDDD 1 A_Chase();
-			Loop;
+			FLE1 AAAABBBBCCCCDDDD 1 A_Chase();
+		Loop;
 		Missile:
 		Melee:
 			FLE1 E 6 A_FaceTarget();
@@ -81,10 +76,8 @@ CLASS Flemoid1 : FlemoidusCommonus Replaces FlemoidusCommonus {
 }
 
 
-CLASS Flemoid2 : FlemoidusBipedicus Replaces FlemoidusBipedicus { 
+CLASS Flemoid2 : doomb_monster_base Replaces FlemoidusBipedicus { 
 	Default {
-		
-		Game Chex;
 		DropItem "";
 		Obituary "$OB_BIPEDICUS";
 		Health 90;
@@ -167,7 +160,7 @@ CLASS Flemoid2 : FlemoidusBipedicus Replaces FlemoidusBipedicus {
 
 
 
-CLASS Flemoid3 :  ArmoredFlemoidusBipedicus Replaces  ArmoredFlemoidusBipedicus { 
+CLASS Flemoid3 :  doomb_monster_base Replaces  ArmoredFlemoidusBipedicus { 
 	Default {
 		
 		Game Chex;
@@ -256,7 +249,7 @@ CLASS Flemoid3 :  ArmoredFlemoidusBipedicus Replaces  ArmoredFlemoidusBipedicus 
 	}
 }
 
-CLASS Quadrumpus : ACTOR { 
+CLASS Quadrumpus : doomb_monster_base { 
 	Default {
 		
 		Game Chex;
@@ -341,7 +334,7 @@ CLASS Quadrumpus : ACTOR {
 	}
 }
 
-CLASS FlemoidAcidBall : ACTOR { 
+CLASS FlemoidAcidBall : doomb_boolet_base { 
 	Default {
 		
 		Radius 6;
@@ -369,15 +362,15 @@ CLASS FlemoidAcidBall : ACTOR {
 			TNT1 A 0;
 			TNT1 A 0 A_Explode(10, 60, 0);
 			TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile ("FlyingAcidParticles", 1, 0, random (0, 360), 2, random (10, 90));
-			TNT1 AAAAA 0 A_SpawnProjectile ("Vapor1", 1, 0, random (0, 360), 2, random (10, 90));
+			TNT1 AAAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			BAL7 CDEF 1 BRIGHT;
-			TNT1 AAAAAAAA 9 A_SpawnProjectile ("Vapor1", 1, 0, random (0, 360), 2, random (10, 90));
+			TNT1 AAAAAAAA 9 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			Stop;
 	}
 }
 
 
-CLASS AcidBallTrails : ACTOR { 
+CLASS AcidBallTrails : visual_sfx { 
 	Default {
 		
 		+CLIENTSIDEONLY;
@@ -398,7 +391,7 @@ CLASS AcidBallTrails : ACTOR {
 
 
 
-CLASS FlyingAcidParticles : ACTOR { 
+CLASS FlyingAcidParticles : visual_sfx { 
 	Default {
 		
 		+CLIENTSIDEONLY;
@@ -428,7 +421,7 @@ CLASS FlyingAcidParticles : ACTOR {
 }
 
 
-CLASS FlemoidGib1 : ACTOR { 
+CLASS FlemoidGib1 : doomb_body_base { 
 	Default {
 		
 		Radius 8;

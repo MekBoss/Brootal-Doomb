@@ -6,66 +6,6 @@ CLASS STGrenadeTimer : Inventory {
 	}
 }
 
-CLASS Rocket2 : doomb_boolet_base Replaces Rocket { 
-	Default {
-		
-		Radius 4;
-		Height 2;
-		Projectile;
-		Speed 35;
-		Damage 30;
-		DamageType "Explosive_Impact";
-		MeleeDamage 0;
-		Gravity 0.00;
-		Scale 0.7;
-		Decal "Scorch";
-		-NOGRAVITY;
-		+EXTREMEDEATH;
-		+BLOODSPLATTER;
-		SeeSound "weapons/RLL";
-		DeathSound "Explosion";
-		Obituary "$OB_MPROCKET";
-		Species "Marines";
-	}
-	States
-	{
-		Spawn:
-
-		Spawn1:
-			MISL A 1 Bright;
-			TNT1 A 0 A_PlaySound("DSRLAUN");
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater");
-			TNT1 A 0 A_SpawnItem("RocketFlare",-20,0);
-			TNT1 A 0 A_SpawnItem ("OldschoolRocketSmokeTrail2");
-			TNT1 A 0 A_SpawnProjectile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, random (-30, 30));
-			Loop;
-			
-		SpawnUnderwater:
-			TNT1 A 0 {bNOGRAVITY = false;}
-			TNT1 A 0 A_SpawnItem("RocketFlare",-20,0);
-			TNT1 A 0 A_SpawnProjectile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180));
-			Goto Spawn1;
-			
-		Death:
-			EXPL A 0 Radius_Quake (3, 8, 0, 15, 0);//(intensity, duration, damrad, tremrad, tid)
-			TNT1 A 0 A_SpawnProjectile("BigRicoChet");
-			TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-			TNT1 AAAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
-			EXPL AAAAA 0 A_SpawnProjectile ("ExplosionSmoke", 0, 0, random (0, 360), 2, - random (0, 360));
-			SHWK A 1
-			{
-				A_Explode(120,150);
-				A_Explode(3,9, 0, 0, 0, 0, 0, "none", "CauseWaterSplash");
-				A_PlaySound("FAREXPL", 3);
-		}
-		SHWK CEGIKMOQ 1 A_FadeOut(0.01);
-		Stop;
-	}
-}
 
 
 
@@ -102,13 +42,12 @@ CLASS GrenadeMissile : doomb_boolet_base {
 			TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1);
 			TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 9, "Explode");
 			TNT1 A 0 A_CheckFloor("Death");
-			GBPJ ABCD 3 A_SpawnProjectile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, - random (0, 360));
+			GBPJ ABCD 3 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
 			TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 9, "Explode");
 			TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1);
-			GBPJ EFGH 3A_SpawnProjectile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, - random (0, 360));
+			GBPJ EFGH 3 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
 			TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 9, "Explode");
-			
-			Loop;
+		Loop;
 			
 		SpawnUnderwater:
 			TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1);
@@ -117,12 +56,11 @@ CLASS GrenadeMissile : doomb_boolet_base {
 			TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1);
 			GBPJ EFGH 3;
 			TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 9, "Explode");
-			Goto Spawn;
+		Goto Spawn;
 			
 		Death:
-			TNT1 A 0;
 			TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 9, "Explode");
-			GBPJ AAAA 3 A_SpawnProjectile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, - random (0, 360));
+			GBPJ AAAA 3 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
 			TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1);
 			Loop;
 			
@@ -143,15 +81,13 @@ CLASS GrenadeMissile : doomb_boolet_base {
 			TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			TNT1 A 0 A_Explode(100,150, 0, 0, 0, 0, 0, "none", "Explosive_Impact");
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-			TNT1 AAAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
-			EXPL AAAAA 0 A_SpawnProjectile ("ExplosionSmoke", 0, 0, random (0, 360), 2, - random (0, 360));
+			TNT1 AA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
 			TNT1 A 0 A_PlaySound("Explosion", 1);
 			TNT1 A 0 A_PlaySound("FAREXPL", 3);
 			tnt1 a 0
 			{
 				a_setscale(2.0);
 				a_setrenderstyle(0.12, STYLE_add);
-				
 		}
 		SHWK ACEGIKMOQ 1 A_FadeOut(0.01);
 		Stop;
@@ -171,7 +107,7 @@ CLASS ShortGrenade: GrenadeMissile {
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater");
-			GBPJ ABCDEFGH 3 A_SpawnProjectile ("RocketSmokeTrail52", 2, 0, random (70, 110), 2, - random (0, 360));
+			GBPJ ABCDEFGH 3 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
 			Loop;
 			
 		SpawnUnderwater:
@@ -220,59 +156,57 @@ CLASS MarinesRocket: Rocket2 {
 
 
 CLASS CyberBalls : doomb_boolet_base { 
-	Default {
+Default {
+	
+	Radius 10;
+	Height 8;
+	Projectile;
+	Speed 20;
+	Damage 8;
+	DamageType "Explosive_Impact";
+	Gravity 0.00;
+	Decal "Scorch";
+	Renderstyle "Add";
+	-NOGRAVITY;
+	+EXTREMEDEATH;
+	+THRUGHOST;
+	Scale 1.7;
+	SeeSound "DSCANFIR";
+	DeathSound "Explosion";
+	Obituary "$OB_MPROCKET";
+}
+States
+{
+	Spawn:
+	Spawn1:
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater");
+		WYVB A 1 Bright A_SpawnItem("RedFlareSmall22",0,0);
+		TNT1 A 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "SpawnCheap");
+		Loop;
 		
-		Radius 10;
-		Height 8;
-		Projectile;
-		Speed 20;
-		Damage 8;
-		DamageType "Explosive_Impact";
-		Gravity 0.00;
-		Decal "Scorch";
-		Renderstyle "Add";
-		-NOGRAVITY;
-		+EXTREMEDEATH;
-		+THRUGHOST;
-		Scale 1.7;
-		SeeSound "DSCANFIR";
-		DeathSound "Explosion";
-		Obituary "$OB_MPROCKET";
-	}
-	States
-	{
-		Spawn:
-		Spawn1:
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater");
-			WYVB A 1 Bright A_SpawnItem("RedFlareSmall22",0,0);
-			TNT1 A 0 A_SpawnProjectile ("OldschoolRocketSmokeTrail2", 2, 0, random (160, 210), 2, - random (-30, 30));
-			TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "SpawnCheap");
-			Loop;
-			
-		SpawnUnderwater:
-			WYVB A 1 Bright A_SpawnItem("YellowFlareSmall",0,0);
-			TNT1 A 0 A_SpawnProjectile ("BUBULZ", 0, 0, random (0, 360), 2, - random (0, 180));
-			Goto Spawn1;
-			
-			
-		Death:
-			EXPL A 0 Radius_Quake (2, 8, 0, 15, 0);//(intensity, duration, damrad, tremrad, tid)
-			TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DeathCheap");
-			TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -30);
-			TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 A 0 A_Explode(120,150, 0, 0, 0, 0, 0, "none", "Explosive_Impact");
-			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-			TNT1 AAAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
-			EXPL AAAAA 0 A_SpawnProjectile ("ExplosionSmoke", 0, 0, random (0, 360), 2, - random (0, 360));
-			TNT1 A 0 A_PlaySound("FAREXPL", 3);
-			tnt1 a 0
-			{
-				a_setscale(2.0);
-				a_setrenderstyle(0.12, STYLE_add);
-				
+	SpawnUnderwater:
+		WYVB A 1 Bright A_SpawnItem("YellowFlareSmall",0,0);
+		TNT1 A 0 A_SpawnProjectile ("BUBULZ", 0, 0, random (0, 360), 2, - random (0, 180));
+		Goto Spawn1;
+		
+		
+	Death:
+		EXPL A 0 Radius_Quake (2, 8, 0, 15, 0);//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DeathCheap");
+		TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -30);
+		TNT1 A 0 A_SpawnItemEx ("DetectFloorCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+		TNT1 A 0 A_SpawnItemEx ("DetectCeilCrater",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+		TNT1 A 0 A_SpawnItemEx ("UnderwaterExplosion",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+		TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+		TNT1 A 0 A_Explode(120,150, 0, 0, 0, 0, 0, "none", "Explosive_Impact");
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+		EXPL AAAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
+		TNT1 A 0 A_PlaySound("FAREXPL", 3);
+		tnt1 a 0
+		{
+			a_setscale(2.0);
+			a_setrenderstyle(0.12, STYLE_add);
 		}
 		SHWK ACEGIKMOQ 1 A_FadeOut(0.01);
 		Stop;

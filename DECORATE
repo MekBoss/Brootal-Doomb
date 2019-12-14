@@ -32,9 +32,6 @@ inventory.maxamount 500
 
 
 
-#include "brootol_dumb_z/weapons/DUALRIFLE.txt"
-#include "brootol_dumb_z/weapons/DUALPLASMA.txt"
-
 
 //MeatShields
 #include IMPSHIELD.txt
@@ -56,7 +53,6 @@ inventory.maxamount 500
 
 #include TRACERS.txt
 #include brootol_dumb_z/monsters/EEEVILLL.txt
-//#include ARACHBOX
 
 
 //Player Classes

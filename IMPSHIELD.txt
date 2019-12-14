@@ -107,7 +107,7 @@ ACTOR ThrowedImp
 		Loop
 		
     Death:
-	    TNT1 AAAAAA 0 A_SpawnItem("MuchBlood2")
+	    TNT1 AAAAAA 0 A_SpawnItem("MuchBlood")
 		TNT1 A 3
 		Stop
 	}

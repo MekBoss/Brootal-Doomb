@@ -129,10 +129,10 @@ CLASS ImpFish: doomb_Imp {
 			TNT1 A 0 A_SpawnProjectile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAA 0 A_SpawnProjectile ("Brains1", 50, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("Brains3", 50, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("Brains6", 50, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("Brains7", 50, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAA 0 A_SpawnProjectile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
+			TNT1 A 0 A_SpawnProjectile ("eye", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("head_piece_dark", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("jaw", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 			TNT1 AAAA 0 A_SpawnProjectile ("SmallBrainPiece", 50, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 46, 0, random (170, 190), 2, random (0, 40));
 			TNT1 AAAAAAA 0 A_SpawnProjectile ("Brutal_Blood", 50, 0, random (0, 360), 2, random (0, 160));
@@ -481,7 +481,7 @@ CLASS HalfImpGib: BigGibBase {
 }
 
 
-CLASS XDeathBurnedImpLeg : ACTOR { 
+CLASS XDeathBurnedImpLeg : doomb_body_base { 
 	Default {
 		
 		Radius 8;
@@ -499,10 +499,10 @@ CLASS XDeathBurnedImpLeg : ACTOR {
 	States
 	{
 		Spawn:
-			CARB F 10 A_SpawnProjectile("PlasmaSmoke",0,0,180,2);
+			CARB F 10 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			Loop;
 		Death:
-			CARB FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 14 A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160));
+			CARB FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 14 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			CARB F -1;
 			Stop;
 	}
@@ -549,7 +549,7 @@ CLASS ImpTorso : doomb_body_base {
 		TNT1 A 0 A_NoBlocking();
 		TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 doomb_spawn_burned_flesh();
-		EXPL AAA 0 A_SpawnProjectile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360));
+		EXPL AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 		TNT1 A 0;
 		Stop;
 	Raise:
@@ -617,7 +617,7 @@ Death.Plasma: Death.Plasma2:
 	TNT1 A 0 A_NoBlocking();
 	TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (0, 160));
 	TNT1 A 0 doomb_spawn_burned_flesh();
-	EXPL AAA 0 A_SpawnProjectile ("ExplosionSmoke", 32, 0, random (0, 360), 2, random (0, 360));
+	EXPL AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 	TNT1 A 0;
 	Stop;
 XDeath:
@@ -1247,7 +1247,7 @@ CLASS DyingImp : doomb_body_base {
 		TROO JJJJKKKKLLLL 2 doomb_show_effect("FlameTrails", (0, 0, 30), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 		TNT1 A 0 A_Playsound("props/redfire");
 		BOSB FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 2 doomb_show_effect("FlameTrails", (0, 0, 15), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-		BOSB FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 10 A_SpawnProjectile ("SmallSmoke", 15, 0, random (0, 360), 2, random (70, 110));
+		BOSB FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 10 doomb_show_effect("AltSmoke", (0, 0, 15), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (1.5, 0) );
 		BOSB E -1;
 		Stop;
 		
@@ -1363,19 +1363,20 @@ CLASS BurningImpRunning : doomb_body_base
 			TNT1 A 0 A_Recoil(-1);
 			TNT1 A 0 A_PlaySound("imp/pain");
 			tnt1 B 0 doomb_show_effect("BurnParticles", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-			BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130));
+			tnt1 B 0 doomb_show_effect("ExplosionParticle2", (0, 0, 40), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (frandom(0.01, 0.04), 0) );
+
 			TRBR BBB 1 BRIGHT A_Wander;
 			TNT1 A 0 A_Recoil(-1);
 			tnt1 B 0 doomb_show_effect("BurnParticles", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-			BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130));
+			tnt1 B 0 doomb_show_effect("ExplosionParticle2", (0, 0, 40), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (frandom(0.01, 0.04), 0) );
 			TRBR CCC 1 BRIGHT A_Wander;
 			TNT1 A 0 A_Recoil(-1);
 			tnt1 B 0 doomb_show_effect("BurnParticles", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-			BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130));
+			tnt1 B 0 doomb_show_effect("ExplosionParticle2", (0, 0, 40), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (frandom(0.01, 0.04), 0) );
 			TRBR DDD 1 BRIGHT A_Wander;
 			TNT1 A 0 A_Recoil(-1);
 			tnt1 B 0 doomb_show_effect("BurnParticles", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-			BDT1 B 0 A_SpawnProjectile("ExplosionParticleVerySlow", 40, 0, random (0, 360), 2, random (50, 130));
+			tnt1 B 0 doomb_show_effect("ExplosionParticle2", (0, 0, 40), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (frandom(0.01, 0.04), 0) );
 			TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1);
 			TNT1 A 0 A_SpawnItemEx("TinyBurningPiece2", random (-15, 15), random (-15, 15));
 			TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 8, "Death");
@@ -1391,7 +1392,7 @@ CLASS BurningImpRunning : doomb_body_base
 			TROO LLLL 2 doomb_show_effect("FlameTrails", velocity: (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			TNT1 A 0 A_Playsound("props/redfire");
 			BOSB FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 2 doomb_show_effect("FlameTrails", velocity: (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-			BOSB FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 20 A_SpawnProjectile ("SmallSmoke", 25, 0, random (0, 360), 2, random (70, 110));
+			BOSB FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 20 doomb_show_effect("AltSmoke", (0, 0, 25), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (1.5, 0) );
 			BOSB F -1;
 	Stop;
 	}
@@ -1439,11 +1440,11 @@ States
 	Death:
 		TNT1 A 0;
 		TNT1 AAAA 0 A_SpawnProjectile ("Brains1", 50, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("Brains2", 50, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("Brains3", 50, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("Brains6", 50, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("Brains7", 50, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAAA 0 A_SpawnProjectile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
+		TNT1 A 0 A_SpawnProjectile ("jaw", 50, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("eye", 50, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("head_piece_dark", 50, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("jaw", 50, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 		TNT1 AAAA 0 A_SpawnProjectile ("SmallBrainPiece", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 46, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_Blood", 50, 0, random (0, 360), 2, random (0, 160));
@@ -1656,10 +1657,10 @@ CLASS ImpBrutalizedWithNoLeg : ACTOR {
 	Death:
 		TNT1 A 0;
 		TNT1 AAAA 0 A_SpawnProjectile ("Brains1", 50, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("Brains3", 50, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("Brains6", 50, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("Brains7", 50, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAAA 0 A_SpawnProjectile ("SmallBrainPieceFast", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
+		TNT1 A 0 A_SpawnProjectile ("eye", 50, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("head_piece_dark", 50, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("jaw", 50, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 		TNT1 AAAA 0 A_SpawnProjectile ("SmallBrainPiece", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 46, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAAAAA 0 A_SpawnProjectile ("Brutal_Blood", 50, 0, random (0, 360), 2, random (0, 160));
@@ -1813,8 +1814,104 @@ CLASS DyingImpNoArm : ACTOR {
 }
 
 
+CLASS XDeathImpHead: XDeathChaingunguyHead { 
+	States
+	{
+		Spawn:
+		Spawn1:
+			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
+			XHE4 AB 3;
+			XHE4 CDEFGH 3;
+			Loop;
+		Death:
+			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			XHE4 E 1;
+			XHE4 E 1 A_SpawnItem("ImpHead",0,0,0,1);
+			Stop;
+	}
+}
 
-CLASS DyingImpNoLeg : ACTOR { 
+
+CLASS XDeathImpHeadBeheaded: XDeathImpHead { 
+	Default {
+		
+		Speed 5;
+		Gravity 0.5;
+	}
+}
+
+CLASS XDeathImpHeadOnXDeath: XDeathImpHead { 
+	Default {
+		
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 1;
+			TNT1 A 0 A_jump(96, "ExplodeOnAir");
+			Goto Spawn1;
+		ExplodeOnAir:
+			TNT1 A 0;
+			TNT1 A 0 A_SpawnItem("ImpHeadExplode");
+			Stop;
+			
+	}
+	
+}
+CLASS ImpHead : LimbBase { 
+	Default {
+		
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_SpawnItem("Brutal_BloodSpot");
+			TNT1 A 0 A_Jump(256, "Spawn1", "Spawn2", "Spawn3");
+		Spawn1:
+			XHE4 C 1;
+			XHE4 C -1;
+			Stop;
+		Spawn2:
+			XHE4 G 1;
+			XHE4 G -1;
+			Stop;
+		Spawn3:
+			XHE4 H 1;
+			XHE4 H -1;
+			Stop;
+		Death:
+			TNT1 A 0;
+			TNT1 A 0 A_SpawnItem("ImpHeadExplode");
+			Stop;
+		Death.SuperPunch:
+		Death.Kick:
+			XHE4 EE 1 A_FaceTarget;
+			TNT1 A 0 A_SpawnProjectile ("XDeathImpHead", 5, 0, random (170, 190), 2, random (20, 40));
+			TNT1 A 0 A_PlaySound("misc/xdeath4", 1);
+			TNT1 A 0 A_PlaySound("player/cyborg/fist", 3);
+			TNT1 A 20;
+			Stop;
+			
+		Pain:
+			TNT1 A 0;
+			TNT1 A 0 ThrustThingZ(0,20,0,1);
+			XHE4 ABCDEFGH 2;
+			Goto Spawn;
+			
+		Death.Explosive_Impact:
+			TNT1 A 0;
+			TNT1 A 0 ThrustThingZ(0,50,0,1);
+			XHE4 ABCDEFGH 3;
+			XDT5 I 0 A_SpawnItem("ImpHead");
+			Stop;
+	}
+	
+}
+
+CLASS DyingImpNoLeg : doomb_body_base { 
 	Default {
 	
 	
@@ -1920,43 +2017,12 @@ CLASS ImpSaciLol: DyingImpNoLeg {
 		TNT1 A 0;
 		TNT1 A 0 A_PlaySound ("imp/pain");
 	Suffer:
-		TNT1 A 0;
-		
-		
 		ZL3E ABC 3;
-		TNT1 A 0 A_SpawnItem ("BloodDying", 0, 30);
+		TNT1 A 0 doomb_blood_dying();
 		ZL3E DDDD 1 A_Chase(null, null);
 		TNT1 A 0 A_PlaySound ("imp/pain");
-		
-		
-		ZL3E ABC 3;
-		TNT1 A 0 A_SpawnItem ("BloodDying", 0, 30);
-		ZL3E DDDD 1 A_Wander();
-		TNT1 A 0 A_PlaySound ("imp/pain");
-		
-		
-		ZL3E ABC 3;
-		TNT1 A 0 A_SpawnItem ("BloodDying", 0, 30);
-		ZL3E DDDD 1 A_Wander();
-		TNT1 A 0 A_PlaySound ("imp/pain");
-		
-		
-		ZL3E ABC 3;
-		TNT1 A 0 A_SpawnItem ("BloodDying", 0, 30);
-		ZL3E DDDD 1 A_Wander();
-		TNT1 A 0 A_PlaySound ("imp/pain");
-		
-		
-		ZL3E ABC 3;
-		TNT1 A 0 A_SpawnItem ("BloodDying", 0, 30);
-		ZL3E DDDD 1 A_Wander();
-		TNT1 A 0 A_PlaySound ("imp/pain");
-		
-		
-		ZL3E ABC 3;
-		TNT1 A 0 A_SpawnItem ("BloodDying", 0, 30);
-		ZL3E D 1 A_Wander();
-		TNT1 A 0 A_PlaySound ("imp/pain");
+		tnt1 a 0 a_jump(200, "suffer");
+
 		
 		TNT1 A 0;
 		TNT1 A 0 A_PlaySound ("none");

@@ -314,7 +314,7 @@ CLASS BrutalizedCommando1 : ACTOR {
 	States
 	{
 		Spawn:
-			CPOD JJJJJJJJJJ 10 A_SpawnItem ("DripingBlo_odLeavesPool", 0, 23);
+			CPOD JJJJJJJJJJ 10 A_SpawnItem ("TinyBlood", 0, 23);
 			CPOD K 6;
 			TNT1 A 0 A_SpawnItem ("MiniGun", 0, 5,0);
 			TNT1 A 0 A_SpawnItem ("BrutalizedDeadCommando1");
@@ -342,8 +342,8 @@ CLASS BrutalizedCommando2: BrutalizedCommando1 {
 	States
 	{
 		Spawn:
-			CPOD MMM 10 A_SpawnItem ("DripingBlo_odLeavesPool", 0, 23);
-			CPOD NNNNN 10 A_SpawnItem ("DripingBlo_odLeavesPool", 0, 23);
+			CPOD MMM 10 A_SpawnItem ("TinyBlood", 0, 23);
+			CPOD NNNNN 10 A_SpawnItem ("TinyBlood", 0, 23);
 			CPOD O 5;
 			TNT1 A 0 A_SpawnItem ("BrutalizedDeadChaingunGuy");
 			TNT1 A 0 A_SpawnItem ("MiniGun", 0, 5,0);
@@ -355,9 +355,9 @@ CLASS BrutalizedCommando2: BrutalizedCommando1 {
 			
 		Death:
 			TNT1 AAAA 0 A_SpawnProjectile ("Brains1", 50, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("Brains3", 50, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("Brains6", 50, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("Brains7", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("eye", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("head_piece_dark", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("jaw", 50, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAA 0 A_SpawnProjectile ("Brutal_Blood", 50, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (0, 40));
 			TNT1 AAAA 0 A_SpawnProjectile ("SmallBrainPiece", 50, 0, random (0, 360), 2, random (0, 160));
@@ -497,6 +497,185 @@ CLASS Gib_ChainARm: LimbBase {
 			Stop;
 	}
 	
+}
+
+
+
+CLASS XDeathChaingunguyHead: XDeathBullArm1 { 
+	Default {
+		
+		-CLIENTSIDEONLY;
+		BounceCount 3;
+		Scale 1.0;
+	}
+	States
+	{
+		Spawn:
+		Spawn1:
+			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
+			CHHE AB 3;
+			CHHE CDEFGH 3;
+			Loop;
+		Death:
+			XHE2 E 0;
+			XHE2 E 0 A_SpawnItem("ChaingunguyHead",0,0,0,1);
+			Stop;
+	}
+}
+
+
+
+CLASS XDeathChaingunguyHeadBeheaded: XDeathChaingunguyHead { 
+	Default {
+		
+		Speed 5;
+		Gravity 0.5;
+	}
+}
+
+
+CLASS XDeathChaingunguyHeadOnXDeath: XDeathChaingunguyHead { 
+	Default {
+		
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 1;
+			TNT1 A 0 A_jump(96, "ExplodeOnAir");
+			Goto Spawn1;
+		ExplodeOnAir:
+			TNT1 A 0;
+			TNT1 A 0 A_SpawnItem("ChaingunguyHeadExplode");
+			Stop;
+			
+	}
+	
+}
+CLASS ChaingunguyHead: LimbBase { 
+	Default {
+		
+		damagefactor "Kick", 9.0;
+		damagefactor "Melee", 9.0;
+		damagefactor "SuperPunch", 9.0;
+		-CLIENTSIDEONLY;
+		+SHOOTABLE;
+		+SOLID;
+		+THRUACTORS;
+		damagefactor "Crush", 50.0;
+		Radius 10;
+		
+		Mass 60;
+		Health 40;
+		Scale 1.1;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_Jump(256, "Spawn1", "SPawn2");
+		Spawn1:
+			CHHE A 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			Loop;
+		Spawn2:  
+			CHHE E 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			Loop;
+		Death:
+			TNT1 A 0;
+			TNT1 A 0 A_SpawnItem("ChaingunguyHeadExplode");
+			Stop;
+		Death.Trample:
+		Crush:
+			TNT1 A 0 A_GiveToTarget("BootsSmearedWithRedBlood", 6);
+			TNT1 AAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (60, 140));
+			TNT1 A 0 A_PlaySound("misc/xdeath4");
+			CRS1 B 5;
+			CRS1 B 9009;
+			Stop;
+		Death.plasma:
+			TNT1 A 0;
+			TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160));
+			EXPL A 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
+			TNT1 A 0;
+			Stop;
+		Death.SuperPunch:
+		Death.Kick:
+			CHHE EE 1 A_FaceTarget;
+			TNT1 A 0 A_SpawnProjectile ("XDeathChaingunguyHeadKicked", 5, 0, random (170, 190), 2, random (20, 40));
+			TNT1 A 0 A_PlaySound("misc/xdeath4", 1);
+			TNT1 A 0 A_PlaySound("player/cyborg/fist", 3);
+			TNT1 A 20;
+			Stop;
+			
+		Pain:
+			TNT1 A 0;
+			TNT1 A 0 ThrustThingZ(0,20,0,1);
+			CHHE ABCDEFGH 2;
+			Goto Spawn;
+			
+		Death.Explosive_Impact:
+			TNT1 A 0;
+			TNT1 A 0 ThrustThingZ(0,50,0,1);
+			CHHE ABCDEFGH 3;
+			XDT5 I 0 A_SpawnItem("ChaingunguyHead");
+			Stop;
+			
+			
+	}
+	
+}
+
+
+CLASS ChaingunguyHeadExplode: actor { 
+	Default {
+		
+		Radius 1;
+		Height 1;
+		Scale 0.8;
+		Speed 0;
+		Mass 1;
+		
+		BounceFactor 0.5;
+		+DOOMBOUNCE;
+		+MISSILE;
+		+NOBLOCKMAP;
+		+NOTELEPORT;
+		+MOVEWITHSECTOR;
+		+NOGRAVITY;
+		+NOCLIP;
+		+DONTSPLASH;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_PlaySound("misc/xdeath4");
+			TNT1 AAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
+			TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("head_piece_dark", 0, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("BrainsImpHeadPiece", 0, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
+			TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
+			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90));
+			TNT1 A 10;
+			Stop;
+	}
+}
+
+CLASS XDeathChaingunguyHeadKicked: XDeathChaingunguyHead { 
+	Default {
+		
+		-BOUNCEONACTORS;
+		Damage 4;
+		Speed 13;
+	}
 }
 
 CLASS PlayerChaingunguyVictim : doomb_blood { 
@@ -699,7 +878,7 @@ CLASS DyingComando : ACTOR {
 		XDeath:
 			//TNT1 A 0 A_SpawnItemEx ("XDeathChainHead", 50, 0, random (0, 360), 2, random (0, 160))
 			TNT1 A 0 A_SpawnProjectile ("ChainXDeath", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAA 0 A_SpawnProjectile ("MuchBlood2", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
 			Stop;
 	}

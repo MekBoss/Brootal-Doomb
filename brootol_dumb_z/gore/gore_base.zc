@@ -12,6 +12,40 @@ protected void doomb_random_death(name st = "")
 		a_die(st);
 }
 
+
+protected void doomb_meat_on_ceiling()
+{
+	FLineTraceData RemoteRay;
+
+	LineTrace(
+		random( 0, 360),
+		60,
+		-frandom(85 , 90),//- because thank you randi
+		TRF_THRUACTORS | TRF_NOSKY,
+		height + 1,
+		data: RemoteRay
+	);
+
+	if (RemoteRay.HitType == TRACE_HitCeiling)
+	{
+		spawn("CeilXDeath2", pos:RemoteRay.HitLocation);
+	}
+}
+
+
+protected void doomb_blood_dying()
+{
+	if(waterlevel < 1)
+	{
+		A_SpawnProjectile ("Brutal_FlyingBloodTrail", 30, 0, random (0, 360), 2, random (0, 360));
+		A_SpawnProjectile ("Brutal_FlyingBloodTrail", 30, 0, random (0, 360), 2, random (0, 360));
+		A_SpawnProjectile ("Brutal_FlyingBloodTrail", 30, 0, random (0, 360), 2, random (0, 360));
+		A_SpawnProjectile ("Brutal_FlyingBloodTrail", 30, 0, random (0, 360), 2, random (0, 360));
+		A_SpawnItem ("BloodHit", 0, 30);
+		A_SpawnItem ("Brutal_FlyingBlood", 0, 30);
+	}
+}
+
 }
 
 

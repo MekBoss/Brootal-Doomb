@@ -3,18 +3,22 @@ class visual_sfx : actor
 protected bool show_something;
 protected state off_state, reset_cond;
 //if affect spawn own effect
-protected eventhandler sfx_event;
+protected eventhandler sfx;
 
 protected visual_sfx doomb_show_effect(statelabel effect_name, vector3 offset = (0, 0, 0), vector3 velocity = (0, 0, 0), vector2 visual_size = (double.nan, double.nan), double translucency = double.nan)
 {
-	return (visual_sfx)(doomb_sfx_main(sfx_event).show_some_effect(self, effect_name, offset, velocity, visual_size, translucency) );
+	if(sfx)
+		return (visual_sfx)(doomb_sfx_main(sfx).show_some_effect(self, effect_name, offset, velocity, visual_size, translucency) );
+
+	else
+		return null;
 }
 
 
 void set_event(eventhandler en)
 {
 	if(en.getclassname() == "doomb_sfx_main" )
-        sfx_event = en;
+        sfx = en;
 }
 
 override void postbeginplay()
@@ -104,6 +108,7 @@ default
 	radius 1;
 	height 1;
 	RenderStyle "Add";
+	gravity 1;
 }
 
 states

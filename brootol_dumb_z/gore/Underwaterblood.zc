@@ -34,7 +34,6 @@ CLASS Underblood1 : ACTOR {
 			Stop;
 			
 		Splash:
-			BLOD A 0;
 			stop;
 		Death:
 			TNT1 A 0;

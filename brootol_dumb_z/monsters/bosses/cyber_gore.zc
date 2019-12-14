@@ -1,0 +1,353 @@
+
+
+CLASS XDeathCyberdemonHead: XDeathBullArm1 { 
+	Default {
+		
+		-CLIENTSIDEONLY;
+		+SKYEXPLODE;
+		-DOOMBOUNCE;
+		Scale 1.2;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
+			XHE8 ABCDEFGH 3 A_SpawnProjectile ("Brutal_FlyingBlood", 1, 0, random (0, 360), 2, random (20, 40));
+			Loop;
+		Death:
+			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			XHE8 B 1;
+			XHE8 B 1 A_SpawnItem("CyberdemonHead",0,0,0,1);
+			Stop;
+	}
+}
+
+
+CLASS CyberdemonHead: LimbBase { 
+	Default {
+		
+		-CLIENTSIDEONLY;
+		Radius 20;
+		Mass 220;
+		Health 100;
+		Scale 1.2;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			XHE8 C 1;
+			XHE8 C -1;
+			Loop;
+			
+		Death:
+		Death.Trample:
+			TNT1 A 0 A_GiveToTarget("BootsSmearedWithRedBlood", 6);
+		Crush:
+			TNT1 A 0 A_PlaySound("misc/xdeath4");
+			
+			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAA 0 A_SpawnProjectile ("head_piece_darkBig", 10, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 A_SpawnProjectile ("jawBig", 10, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAAA 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90));
+			TNT1 AAAAA 0 A_SpawnProjectile ("XDeath2b", 10, 0, random (0, 360), 2, random (50, 90));
+			TNT1 A 0 A_Stop;
+			XHE8 I 10;
+			XHE8 I -1;
+			Stop;
+			
+		Death.Explosive_Impact:
+			TNT1 A 0 A_NoBlocking;
+			TNT1 A 0 ThrustThingZ(0,30,0,1);
+			XHE8 ABCDEFGH 3;
+			XHE8 B 0 A_SpawnItem("CyberdemonHead");
+			Stop;
+			
+	}
+	
+}
+
+
+CLASS XDeathCyberdemonTorso: XDeathBullArm1 { 
+	Default {
+		
+		-CLIENTSIDEONLY;
+		+SKYEXPLODE;
+		-DOOMBOUNCE;
+		Scale 1.4;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
+			CYGT ABCDEFGH 3 A_SpawnProjectile ("Brutal_FlyingBlood", 1, 0, random (0, 360), 2, random (20, 40));
+			Loop;
+		Death:
+			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			CYGT B 1;
+			CYGT B 1 A_SpawnItem("CyberdemonTorso",0,0,0,1);
+			Stop;
+	}
+}
+
+
+CLASS CyberdemonTorso: LimbBase { 
+	Default {
+		
+		-CLIENTSIDEONLY;
+		Radius 20;
+		Mass 220;
+		Health 100;
+		Scale 1.4;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0;
+			CYGT B 1;
+			CYGT B -1;
+			Loop;
+			
+		Death:
+		Death.Trample:
+			TNT1 A 0 A_GiveToTarget("BootsSmearedWithRedBlood", 6);
+		Crush:
+			TNT1 A 0 A_PlaySound("misc/xdeath4");
+			
+			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAAA 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90));
+			TNT1 AAAAA 0 A_SpawnProjectile ("XDeath2b", 10, 0, random (0, 360), 2, random (50, 90));
+			TNT1 A 0 A_Stop;
+			TNT1 I 10;
+			TNT1 I -1;
+			Stop;
+			
+		Death.Explosive_Impact:
+			TNT1 A 0 A_NoBlocking;
+			TNT1 A 0 ThrustThingZ(0,30,0,1);
+			CYGT ABCDEFGH 3;
+			XHE8 B 0 A_SpawnItem("CyberdemonTorso");
+			Stop;
+			
+	}
+	
+}
+
+CLASS XDeathCyberdemonPiece: XDeathBullArm1 { 
+	Default {
+		
+		-CLIENTSIDEONLY;
+		+SKYEXPLODE;
+		-DOOMBOUNCE;
+		Scale 1.2;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
+			CYGP ABCDEFGH 3 A_SpawnProjectile ("Brutal_FlyingBlood", 1, 0, random (0, 360), 2, random (20, 40));
+			Loop;
+		Death:
+			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			CYGP B 1;
+			CYGP B 1 A_SpawnItem("CyberdemonPiece",0,0,0,1);
+			Stop;
+	}
+}
+
+
+CLASS CyberdemonPiece: LimbBase { 
+	Default {
+		
+		-CLIENTSIDEONLY;
+		Radius 20;
+		Mass 220;
+		Health 100;
+		Scale 1.2;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0;
+			CYGP E 1;
+			CYGP E -1;
+			Loop;
+			
+		Death:
+		Death.Trample:
+			TNT1 A 0 A_GiveToTarget("BootsSmearedWithRedBlood", 6);
+		Crush:
+			TNT1 A 0 A_PlaySound("misc/xdeath4");
+			
+			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAAA 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90));
+			TNT1 AAAAA 0 A_SpawnProjectile ("XDeath2b", 10, 0, random (0, 360), 2, random (50, 90));
+			TNT1 A 0 A_Stop;
+			TNT1 I 10;
+			TNT1 I -1;
+			Stop;
+			
+		Death.Explosive_Impact:
+			TNT1 A 0 A_NoBlocking;
+			TNT1 A 0 ThrustThingZ(0,30,0,1);
+			CYGP ABCDEFGH 3;
+			CYGP B 0 A_SpawnItem("CyberdemonPiece");
+			Stop;
+			
+	}
+	
+}
+
+
+
+CLASS XDeathCyberdemonARm: XDeathBullArm1 { 
+	Default {
+		
+		-CLIENTSIDEONLY;
+		+SKYEXPLODE;
+		-DOOMBOUNCE;
+		Scale 1.2;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
+			CYGA ABCDEFGH 3 A_SpawnProjectile ("Brutal_FlyingBlood", 1, 0, random (0, 360), 2, random (20, 40));
+			Loop;
+		Death:
+			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			CYGA B 1;
+			CYGA B 1 A_SpawnItem("CyberdemonArm",0,0,0,1);
+			Stop;
+	}
+}
+
+
+CLASS CyberdemonArm: LimbBase { 
+	Default {
+		
+		-CLIENTSIDEONLY;
+		Radius 20;
+		Mass 220;
+		Health 100;
+		Scale 1.2;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0;
+			CYGA C 1;
+			CYGA C -1;
+			Loop;
+			
+		Death:
+		Death.Trample:
+			TNT1 A 0 A_GiveToTarget("BootsSmearedWithRedBlood", 6);
+		Crush:
+			TNT1 A 0 A_PlaySound("misc/xdeath4");
+			
+			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAAA 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90));
+			TNT1 AAAAA 0 A_SpawnProjectile ("XDeath2b", 10, 0, random (0, 360), 2, random (50, 90));
+			TNT1 A 0 A_Stop;
+			TNT1 I 10;
+			TNT1 I -1;
+			Stop;
+			
+		Death.Explosive_Impact:
+			TNT1 A 0 A_NoBlocking;
+			TNT1 A 0 ThrustThingZ(0,30,0,1);
+			CYGA ABCDEFGH 3;
+			CYGA B 0 A_SpawnItem("CyberdemonArm");
+			Stop;
+			
+	}
+	
+}
+
+
+CLASS XDeathCyberdemonGun: XDeathBullArm1 { 
+	Default {
+		
+		-CLIENTSIDEONLY;
+		+SKYEXPLODE;
+		-DOOMBOUNCE;
+		Scale 1.2;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
+			CYGG ABCDEFGH 3;
+			Loop;
+		Death:
+			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			CYGG B 1;
+			CYGG B 1 A_SpawnItem("CyberdemonGun",0,0,0,1);
+			Stop;
+	}
+}
+
+
+CLASS CyberdemonGun: LimbBase { 
+	Default {
+		
+		-CLIENTSIDEONLY;
+		Radius 20;
+		Mass 220;
+		Health 100;
+		Scale 1.2;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0;
+			CYGG E 1;
+			CYGG E -1;
+			Loop;
+			
+		Death:
+		Death.Trample:
+			TNT1 A 0 A_GiveToTarget("BootsSmearedWithRedBlood", 6);
+		Crush:
+			TNT1 A 0 A_PlaySound("misc/xdeath4");
+			
+			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAAA 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90));
+			TNT1 AAAAA 0 A_SpawnProjectile ("XDeath2b", 10, 0, random (0, 360), 2, random (50, 90));
+			TNT1 A 0 A_Stop;
+			TNT1 I 10;
+			TNT1 I -1;
+			Stop;
+			
+		Death.Explosive_Impact:
+			TNT1 A 0 A_NoBlocking;
+			TNT1 A 0 ThrustThingZ(0,30,0,1);
+			CYGG ABCDEFGH 3;
+			CYGG B 0 A_SpawnItem("CyberdemonGun");
+			Stop;
+			
+	}
+	
+}

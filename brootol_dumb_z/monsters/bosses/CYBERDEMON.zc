@@ -5,7 +5,6 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 		doomb_monster_base.head_starting_position 100;//so that if someone forgot to define this number monster dont get headshot from every attack
 		doomb_monster_base.legs_height_max -1;//same for legs
 		
-		//damagefactor "BFG", 0.5
 		damagefactor "Explosive_Impact", 1.1;
 		damagefactor "HKFT", 0.05;
 		damagefactor "HKFT", 0.05;
@@ -13,11 +12,14 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 		damagefactor "Avoid", 0.0;
 		damagefactor "GibRemoving", 0.0;
 		damagefactor "TeleportRemover", 0.0;
+		damagefactor "Blood", 0.0;
+		damagefactor "BlueBlood", 0.0;
+		damagefactor "GreenBlood", 0.0;
 		DamageFactor "CauseObjectsToSplash", 0.0;
+		damagefactor "Crush", 20.0;
 		Obituary "%o was exploded to pieces by a Cyberdemon.";
 		+NOICEDEATH;
 		Health 5000;
-		damagefactor "Crush", 20.0;
 		MaxStepHeight 24;
 		MaxDropOffHeight 32;
 		Scale 1.2;
@@ -37,9 +39,6 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 		PainChance "Taunt", 255;
 		DropItem "DemonStrengthRune", 25;
 		BloodType "CyberDemon_Blood", "SawBlood", "SawBlood";
-		damagefactor "Blood", 0.0;
-		damagefactor "BlueBlood", 0.0;
-		damagefactor "GreenBlood", 0.0;
 	}
 	States
 	{
@@ -79,12 +78,10 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 			CYBR C 2 A_Metal;
 			
 			TNT1 A 0 A_SpawnItemEx("CyberStep",12,30);
-			CYBR D 2 A_Chase;
-			CYBR D 2 A_Chase;
-			TNT1 A 0 A_JumpIfCloser(120, "Stomp");
-			
 			CYBR DD 2 A_Chase;
-			Loop;
+			TNT1 A 0 A_JumpIfCloser(120, "Stomp");
+			CYBR DD 2 A_Chase;
+		Loop;
 			
 			
 		Missile:
@@ -114,7 +111,25 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 			CYBR E 6 A_FaceTarget;
 			Goto See;
 			
-			
+		SpecialAttack:
+			CYBR E 6 A_FaceTarget;
+			CYBR F 4 BRIGHT A_SpawnProjectile("CyberBalls",60,-25,0,0);
+			TNT1 A 0 A_JumpIfCloser(180, "Stomp");
+			CYBR E 4 A_FaceTarget;
+			CYBR F 4 BRIGHT A_SpawnProjectile("CyberBalls",60,-25,-7,0);
+			TNT1 A 0 A_JumpIfCloser(180, "Stomp");
+			CYBR E 4 A_FaceTarget;
+			CYBR F 4 BRIGHT A_SpawnProjectile("CyberBalls",60,-25,7,0);
+			TNT1 A 0 A_JumpIfCloser(180, "Stomp");
+			CYBR E 4 A_FaceTarget;
+			CYBR F 4 BRIGHT A_SpawnProjectile("CyberBalls",60,-25,0,0);
+			TNT1 A 0 A_JumpIfCloser(180, "Stomp");
+			CYBR E 4 A_FaceTarget;
+			CYBR F 4 BRIGHT A_SpawnProjectile("CyberBalls",60,-25,0,0);
+			CYBR E 4 A_FaceTarget;
+			CYBR F 4 BRIGHT A_SpawnProjectile("CyberBalls",60,-25,0,0);
+		Goto See;
+
 		Stomp:
 			
 			CYBR Z 5 A_FaceTarget;
@@ -145,8 +160,6 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 			CYBR JKL 5;
 			CYBR M 5 A_NoBlocking;
 			CYBR NOP 5;
-			CYBR P 120;
-			TNT1 A 0 A_BossDeath;
 			CYBR P -1 A_BossDeath;
 			Stop;
 			
@@ -189,38 +202,7 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 			CYBT FGHGFGHGFGHGFGHG 3;
 			CYBT EDA 4;
 			TNT1 A 0 A_GiveInventory("Enraged", 1);
-			Goto Missile;
-			
-		SpecialAttack:
-			
-			CYBR E 6 A_FaceTarget;
-			
-			CYBR F 4 BRIGHT A_SpawnProjectile("CyberBalls",60,-25,0,0);
-			TNT1 A 0 A_JumpIfCloser(180, "Stomp");
-			
-			CYBR E 4 A_FaceTarget;
-			
-			CYBR F 4 BRIGHT A_SpawnProjectile("CyberBalls",60,-25,-7,0);
-			TNT1 A 0 A_JumpIfCloser(180, "Stomp");
-			
-			CYBR E 4 A_FaceTarget;
-			
-			CYBR F 4 BRIGHT A_SpawnProjectile("CyberBalls",60,-25,7,0);
-			TNT1 A 0 A_JumpIfCloser(180, "Stomp");
-			
-			CYBR E 4 A_FaceTarget;
-			
-			CYBR F 4 BRIGHT A_SpawnProjectile("CyberBalls",60,-25,0,0);
-			TNT1 A 0 A_JumpIfCloser(180, "Stomp");
-			
-			CYBR E 4 A_FaceTarget;
-			
-			CYBR F 4 BRIGHT A_SpawnProjectile("CyberBalls",60,-25,0,0);
-			CYBR E 4 A_FaceTarget;
-			
-			CYBR F 4 BRIGHT A_SpawnProjectile("CyberBalls",60,-25,0,0);
-			Goto See;
-			
+		Goto Missile;
 	}
 }
 

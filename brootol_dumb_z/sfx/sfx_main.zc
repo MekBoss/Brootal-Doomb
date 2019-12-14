@@ -31,14 +31,21 @@ override void worldthingspawned(worldevent e)
 
 	if(e.thing is "doomber")
 	    doomber(e.thing).set_sfx(self);
+
+	if(e.thing is "doomb_inventory")
+	    doomb_inventory(e.thing).set_sfx(self);
+		
 }
 
 
 //find free effect
 private visual_sfx find_free_effect()
 {
-	for(uint i = 0; i <= self.vis_sfx.size(); i++)
+	for(uint i = 0;
+	 i <= self.vis_sfx.size();
+	  i++)
 	{
+		//console.printf("%i", i);
 		if(i == self.vis_sfx.size())
 		{
 			actor ss = actor.spawn("visual_sfx", pos:(double.infinity, double.infinity, double.infinity) );

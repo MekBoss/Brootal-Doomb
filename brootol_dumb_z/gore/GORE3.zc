@@ -1,4 +1,5 @@
-CLASS XDeathBurnedLeg : ACTOR { 
+CLASS XDeathBurnedLeg : doomb_body_base
+{ 
 	Default {
 		
 		Radius 8;
@@ -16,17 +17,17 @@ CLASS XDeathBurnedLeg : ACTOR {
 	States
 	{
 		Spawn:
-			CARB E 10 A_SpawnProjectile("PlasmaSmoke",0,0,180,2);
+			CARB E 10 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			Loop;
 		Death:
-			CARB EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 14 A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160));
+			CARB EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 14 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			CARB E -1;
 			Stop;
 	}
 }
 
 
-CLASS XDeathBurnedSkull : ACTOR { 
+CLASS XDeathBurnedSkull : doomb_body_base { 
 	Default {
 		
 		Radius 8;
@@ -44,16 +45,16 @@ CLASS XDeathBurnedSkull : ACTOR {
 	States
 	{
 		Spawn:
-			BURN B 10 A_SpawnProjectile("PlasmaSmoke",0,0,180,2);
+			BURN B 10 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			Loop;
 		Death:
-			BURN BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 14 A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160));
+			BURN BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 14 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			BURN B -1;
 			Stop;
 	}
 }
 
-CLASS XDeathBurnedArm : ACTOR { 
+CLASS XDeathBurnedArm : doomb_body_base { 
 	Default {
 		
 		Radius 8;
@@ -71,17 +72,17 @@ CLASS XDeathBurnedArm : ACTOR {
 	States
 	{
 		Spawn:
-			CARB D 10 A_SpawnProjectile("PlasmaSmoke",0,0,180,2);
+			CARB D 10 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			Loop;
 		Death:
-			CARB DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 14 A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160));
+			CARB DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 14 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			CARB D -1;
 			Stop;
 	}
 }
 
 
-CLASS XDeathBurnedImpArm : ACTOR { 
+CLASS XDeathBurnedImpArm : doomb_body_base { 
 	Default {
 		
 		Radius 8;
@@ -99,16 +100,16 @@ CLASS XDeathBurnedImpArm : ACTOR {
 	States
 	{
 		Spawn:
-			CARB G 10 A_SpawnProjectile("PlasmaSmoke",0,0,180,2);
+			CARB G 10 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			Loop;
 		Death:
-			CARB GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 14 A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160));
+			CARB GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 14 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			CARB G -1;
 			Stop;
 	}
 }
 
-CLASS XDeathBurnedDemonArm : ACTOR { 
+CLASS XDeathBurnedDemonArm : doomb_body_base { 
 	Default {
 		
 		Radius 8;
@@ -126,16 +127,16 @@ CLASS XDeathBurnedDemonArm : ACTOR {
 	States
 	{
 		Spawn:
-			CARB H 10 A_SpawnProjectile("PlasmaSmoke",0,0,180,2);
+			CARB H 10 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			Loop;
 		Death:
-			CARB HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 14 A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160));
+			CARB HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 14 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			CARB H -1;
 			Stop;
 	}
 }
 
-CLASS XDeathBurnedDemonLeg : ACTOR { 
+CLASS XDeathBurnedDemonLeg : doomb_body_base { 
 	Default {
 		
 		Radius 8;
@@ -153,16 +154,16 @@ CLASS XDeathBurnedDemonLeg : ACTOR {
 	States
 	{
 		Spawn:
-			CARB I 10 A_SpawnProjectile("PlasmaSmoke",0,0,180,2);
+			CARB I 10 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			Loop;
 		Death:
-			CARB IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 14 A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160));
+			CARB IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 14 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			CARB I -1;
 			Stop;
 	}
 }
 
-CLASS XDeathBurnedMeat : ACTOR { 
+CLASS XDeathBurnedMeat : doomb_body_base { 
 	Default {
 		
 		Radius 8;
@@ -180,16 +181,16 @@ CLASS XDeathBurnedMeat : ACTOR {
 	States
 	{
 		Spawn:
-			CARB A 10 A_SpawnProjectile("PlasmaSmoke",0,0,180,2);
+			CARB A 10 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			Loop;
 		Death:
-			CARB AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 14 A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160));
+			CARB AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 14 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			CARB A -1;
 			Stop;
 	}
 }
 
-CLASS XDeathBurnedMeat2 : ACTOR { 
+CLASS XDeathBurnedMeat2 : doomb_body_base { 
 	Default {
 		
 		Radius 8;
@@ -207,16 +208,16 @@ CLASS XDeathBurnedMeat2 : ACTOR {
 	States
 	{
 		Spawn:
-			CARB B 10 A_SpawnProjectile("PlasmaSmoke",0,0,180,2);
+			CARB B 10 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			Loop;
 		Death:
-			CARB BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 14 A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160));
+			CARB BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 14 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			CARB B -1;
 			Stop;
 	}
 }
 
-CLASS XDeathBurnedMeat3 : ACTOR { 
+CLASS XDeathBurnedMeat3 : doomb_body_base { 
 	Default {
 		
 		Radius 8;
@@ -234,16 +235,16 @@ CLASS XDeathBurnedMeat3 : ACTOR {
 	States
 	{
 		Spawn:
-			CARB C 10 A_SpawnProjectile("PlasmaSmoke",0,0,180,2);
+			CARB C 10 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			Loop;
 		Death:
-			CARB CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC 14 A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160));
+			CARB CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC 14 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			CARB C -1;
 			Stop;
 	}
 }
 
-CLASS XDeathBurnedBlueMeat1 : ACTOR { 
+CLASS XDeathBurnedBlueMeat1 : doomb_body_base { 
 	Default {
 		
 		Radius 8;
@@ -261,16 +262,16 @@ CLASS XDeathBurnedBlueMeat1 : ACTOR {
 	States
 	{
 		Spawn:
-			CACB P 10 A_SpawnProjectile("PlasmaSmoke",0,0,180,2);
+			CACB P 10 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			Loop;
 		Death:
-			CACB PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP 15 A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160));
+			CACB PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP 15 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			BURN D -1;
 			Stop;
 	}
 }
 
-CLASS XDeathBurnedBlueMeat2 : ACTOR { 
+CLASS XDeathBurnedBlueMeat2 : doomb_body_base { 
 	Default {
 		
 		Radius 8;
@@ -288,10 +289,10 @@ CLASS XDeathBurnedBlueMeat2 : ACTOR {
 	States
 	{
 		Spawn:
-			CACB Q 10 A_SpawnProjectile("PlasmaSmoke",0,0,180,2);
+			CACB Q 10 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			Loop;
 		Death:
-			CACB QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ 15 A_SpawnProjectile ("PlasmaSmoke", 1, 0, random (0, 360), 2, random (0, 160));
+			CACB QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ 15 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			BURN D -1;
 			Stop;
 	}

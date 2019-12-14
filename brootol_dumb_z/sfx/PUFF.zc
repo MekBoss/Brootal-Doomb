@@ -41,7 +41,7 @@ CLASS IsOverGrass : Inventory {
 }
 
 
-CLASS MeleePuff: BulletPuff { 
+CLASS MeleePuff: visual_sfx { 
 	Default {
 		
 		renderstyle "Translucent";
@@ -63,7 +63,7 @@ CLASS MeleePuff: BulletPuff {
 		Melee:
 		XDeath:
 			PUFF A 0 A_PlaySound("player/cyborg/fist");
-			EXPL AAAAAA 0 A_SpawnProjectile ("MeleeSmoke", 0, 0, random (0, 360), 2, random (0, 360));
+			EXPL AAAAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.2,0), 0.15 );
 			TNT1 A 10;
 			stop;
 			
@@ -72,7 +72,7 @@ CLASS MeleePuff: BulletPuff {
 
 
 
-CLASS HitPuff : ACTOR Replaces BulletPuff
+CLASS HitPuff : visual_sfx Replaces BulletPuff
 { 
 	Default {
 		
@@ -104,7 +104,7 @@ CLASS HitPuff : ACTOR Replaces BulletPuff
 
 
 
-CLASS RicoChet : ACTOR { 
+CLASS RicoChet : visual_sfx { 
 	Default {
 		
 		renderstyle "Add";
@@ -131,9 +131,9 @@ CLASS RicoChet : ACTOR {
 			TNT1 A 0 A_SpawnItemEx ("DetectFloorBullet",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			TNT1 A 0 A_SpawnItemEx ("DetectCeilBullet",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			TNT1 A 0 A_SpawnItemEx ("UnderwaterHitPuff",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 AAAAAAAAAA 0 A_SpawnProjectile ("SparkX", 2, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AAAAAAAAAA 0 doomb_show_effect("ShrapnelParticle", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(-0.3, 0.3)));
 			PUFF A 0 bright A_PlaySound("ricochet/hit");
-			TNT1 AAA 0 A_SpawnProjectile ("OldschoolRocketSmokeTrail2", 2, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
 			
 			TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4");
 			
@@ -164,10 +164,10 @@ CLASS RicoChet : ACTOR {
 			TNT1 A 0 A_SpawnItemEx ("DetectFloorBullet",0,0,5,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			TNT1 A 0 A_SpawnItemEx ("DetectCeilBullet",0,0,0,-5,0,0,0,SXF_NOCHECKPOSITION,0);
 			TNT1 A 0 A_SpawnItemEx ("UnderwaterHitPuff",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 AAAAAAAAAA 0 A_SpawnProjectile ("SparkX", 2, 0, random (0, 360), 2, random (30, 160));
+			TNT1 AAAAAAAAAA 0 doomb_show_effect("ShrapnelParticle", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3),  frandom(-0.3, 0.3)));
 			PUFF A 0 bright A_PlaySound("ricochet/hit");
 			IPF2 GGHH 1 bright A_SpawnItem ("YellowFlareSmall", 0);
-			TNT1 AAA 0 A_SpawnProjectile ("OldschoolRocketSmokeTrail2", 2, 0, random (0, 360), 2, random (30, 160));
+			TNT1 AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
 			stop;
 			
 		SpawnWater:
@@ -205,9 +205,9 @@ CLASS RicoChetMinor: RicoChet {
 			TNT1 A 0 A_SpawnItemEx ("DetectFloorBullet",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			TNT1 A 0 A_SpawnItemEx ("DetectCeilBullet",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			TNT1 A 0 A_SpawnItemEx ("UnderwaterHitPuff",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 AAA 0 A_SpawnProjectile ("SparkX", 2, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AAA 0 doomb_show_effect("ShrapnelParticle", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3),  frandom(-0.3, 0.3)));
 			PUFF A 0 bright A_PlaySound("ricochet/hit");
-			TNT1 AA 0 A_SpawnProjectile ("OldschoolRocketSmokeTrail2", 2, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
 			
 			TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4");
 			
@@ -423,7 +423,7 @@ CLASS SSawPuff: HitPuff {
 			TNT1 AB 1 bright;
 			TNT1 A 0 A_Jump (128,3);
 			TNT1 A 0 A_SpawnItem ("Sparks", 0);
-			TNT1 AAAAAA 0 A_SpawnProjectile ("SparkX", 2, 0, random (0, 360), 2, random (30, 170));
+			TNT1 AAAAAA 0 doomb_show_effect("ShrapnelParticle", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3),  frandom(-0.3, 0.3)));
 			BPUF C 1 bright A_PlaySound("weapons/chainsaw/hitwall");
 			BPUF D 1 bright;
 			Stop;

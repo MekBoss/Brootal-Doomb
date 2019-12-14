@@ -31,18 +31,26 @@ version "3.7.2"
 #include "brootol_dumb_z/weapons/STBFG10k.zc"
 #include "brootol_dumb_z/weapons/STRAILGUN.zc"
 
+#include "brootol_dumb_z/weapons/DUALRIFLE.zc"
+#include "brootol_dumb_z/weapons/DUALPLASMA.zc"
+
+
 //items
 #include "brootol_dumb_z/items/ARTIFACT.zc"
 #include "brootol_dumb_z/items/HEALTH2.zc"
 
 
 //Gore N' Blood
+#include "brootol_dumb_z/gore/gore_event.zc"
+#include "brootol_dumb_z/gore/GORE!!!.zc"
+#include "brootol_dumb_z/gore/GORE!!!.zc"
+
 #include "brootol_dumb_z/gore/GORE!!!.zc"
 #include "brootol_dumb_z/gore/GORE2.zc"
 #include "brootol_dumb_z/gore/GORE3.zc"
 #include "brootol_dumb_z/gore/BLOOD.zc"
 #include "brootol_dumb_z/gore/BLOODSPLASH.zc"
-#include "brootol_dumb_z/gore/BURN.zc"
+//#include "brootol_dumb_z/gore/BURN.zc"
 #include "brootol_dumb_z/gore/blueblood.zc"
 #include "brootol_dumb_z/gore/greenblood.zc"
 #include "brootol_dumb_z/gore/sticky.zc"
@@ -116,6 +124,7 @@ version "3.7.2"
 #include "brootol_dumb_z/monsters/LOSTSOUL/LOSTSOUL.zc"
 
 #include "brootol_dumb_z/monsters/bosses/CYBERDEMON.zc"
+#include "brootol_dumb_z/monsters/bosses/cyber_gore.zc"
 #include "brootol_dumb_z/monsters/bosses/MASTERMIND.zc"
 
 #include "brootol_dumb_z/player/PLAYER.zc"

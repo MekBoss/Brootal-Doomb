@@ -135,23 +135,23 @@ states
 
 CLASS SmallSuperGore : ACTOR { 
 	Default {
- 
+
 Decal "BloodSplat";
  
 	Alpha 0.5;
-+FORCEXYBILLBOARD
-+GHOST
-+NOBLOCKMAP
-  +DontSplash
--EXPLODEONWATER
--ALLOWPARTICLES 
-+CLIENTSIDEONLY
-+thruACTORS
-		+MISSILE;
-		+NOGRAVITY;
-		Speed 16;
-		Scale 2;
-	}
+	+FORCEXYBILLBOARD
+	+GHOST
+	+NOBLOCKMAP
+	+DontSplash
+	-EXPLODEONWATER
+	-ALLOWPARTICLES 
+	+CLIENTSIDEONLY
+	+thruACTORS
+	+MISSILE;
+	+NOGRAVITY;
+	Speed 16;
+	Scale 2;
+}
 	states
 	{
 		Spawn:
