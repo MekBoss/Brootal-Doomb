@@ -659,7 +659,7 @@ CLASS SargeXDeath : ACTOR {
 			TNT1 A 0 A_SpawnProjectile ("XDeathSargeLeg2", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("GibSargeBoot", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathSergeantHeadOnXDeath", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnItem ("BigBloodSpot");
+			TNT1 A 0 A_SpawnItem ("doomb_red_blood_pool");
 			
 			TNT1 A 1;
 			TNT1 A 0 ACS_ExecuteAlways(799, 0, 0, 0, 0);//Check Blood density

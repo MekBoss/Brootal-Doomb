@@ -190,12 +190,6 @@ CLASS Brutal_BloodSpot : ACTOR {
 
 
 
-CLASS BigBloodSpot: doomb_red_blood_pool { 
-	Default {
-		
-		Scale 0.7;
-	}
-}
 
 
 
@@ -247,7 +241,6 @@ CLASS DripingBloodLeavesSmallPool: TinyBlood {
 	{
 		Death:
 			TNT1 A 0;
-			TNT1 A 0 A_SpawnItem("MinuscleBloodSpot");
 			TNT1 A 0 A_PlaySound("blooddrop2");
 			XDT1 EFGHIJKL 2;
 			stop;
@@ -816,12 +809,6 @@ CLASS BloodDying : Brutal_Blood {
 
 
 
-CLASS MinuscleBloodSpot: Brutal_BloodSpot { 
-	Default {
-		
-		Scale 0.25;
-	}
-}
 
 
 

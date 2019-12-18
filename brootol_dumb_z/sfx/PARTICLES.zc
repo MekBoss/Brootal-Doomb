@@ -448,52 +448,6 @@ CLASS WoodParticleTIny: WoodParticle {
 }
 
 
-CLASS MudDust : ACTOR { 
-	Default {
-		
-		Scale 1.0;
-		+noteleport;
-		+missile;
-		+forcexybillboard;
-		+CLIENTSIDEONLY;
-		+DOOMBOUNCE;
-		BounceFactor 0.01;
-		Speed 8;
-		Gravity 0.4;
-		height 1;
-		radius 1;
-	}
-	States
-	{
-		Spawn:
-			DIRP A 1;
-			Loop;
-		Death:
-			DIRP B 300;
-			Stop;
-	}
-}
-
-
-CLASS BrownCloud: MudDust { 
-	Default {
-		
-		+NOGRAVITY;
-		+WINDTHRUST;
-		+THRUACTORS;
-		Speed 2;
-		Renderstyle "Translucent";
-		Alpha 0.3;
-	}
-	States
-	{
-		Spawn:
-			DIRP C 40;
-			DIRP CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC 1 A_FadeOut(0.01);
-			Stop;
-			
-	}
-}
 
 CLASS BrownCloudSmall: BrownCloud { 
 	Default {

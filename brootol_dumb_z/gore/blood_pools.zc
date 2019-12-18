@@ -33,7 +33,7 @@ states
     goto live;
 
 	no_scale:
-		BPDL A 1 {frame = random(0, 1);}
+		BPDL A 1 {frame = random(0, 2);}
 	Live:
         "####" "#" -1 A_QueueCorpse();
     stop;
