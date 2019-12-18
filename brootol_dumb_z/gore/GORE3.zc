@@ -1,7 +1,6 @@
 CLASS XDeathBurnedLeg : doomb_body_base
 { 
 	Default {
-		
 		Radius 8;
 		Height 8;
 		Speed 5;
@@ -84,7 +83,6 @@ CLASS XDeathBurnedArm : doomb_body_base {
 
 CLASS XDeathBurnedImpArm : doomb_body_base { 
 	Default {
-		
 		Radius 8;
 		Height 8;
 		Speed 5;
@@ -192,7 +190,6 @@ CLASS XDeathBurnedMeat : doomb_body_base {
 
 CLASS XDeathBurnedMeat2 : doomb_body_base { 
 	Default {
-		
 		Radius 8;
 		Height 8;
 		Speed 5;
@@ -219,7 +216,6 @@ CLASS XDeathBurnedMeat2 : doomb_body_base {
 
 CLASS XDeathBurnedMeat3 : doomb_body_base { 
 	Default {
-		
 		Radius 8;
 		Height 8;
 		Speed 5;

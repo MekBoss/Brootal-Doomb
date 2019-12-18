@@ -1,0 +1,56 @@
+//fixed means "improved and it cause less lags"
+CLASS SmallBrainPiece : ACTOR { 
+	Default {
+		Radius 2;
+		Height 2;
+		Speed 10;
+		Mass 1;
+		Scale 0.5;
+		Decal "BrutalBloodSuper";
+		+MISSILE;
+		+NOTELEPORT;
+		+THRUGHOST;
+		+THRUACTORS;
+		+CLIENTSIDEONLY;
+		+DONTSPLASH;
+		+MOVEWITHSECTOR;
+		-DONTSPLASH;
+		+FORCEXYBILLBOARD;
+		+FLOORCLIP;
+	}
+	States
+	{
+		Spawn:
+			XDB5 ABCDEFGH 3;
+		Loop;
+	
+	
+			XDT5 B 800;
+			XDT5 O 800;
+		Death:
+			"####" "#" 0 A_CheckFloor("on_floor");
+		stick:
+			XDB5 "#" 35 {vel = (0, 0, 0);}
+			XDB5 "#" 35
+			{
+				if(random(0, 10) > 1)
+					setstatelabel("stick");
+			}
+		fall_down:
+			XDB5 "#" 1
+			{
+				vel.z -= 0.5;
+				if(pos.z <= floorz)
+					setstatelabel("on_floor");
+			}
+		loop;
+
+		on_floor:
+			XDT5 B 800
+			{
+				frame = randompick(1, 14);
+			}
+			XDT5 "#" 35 a_fadeout(0.05);
+		wait;
+	}
+}

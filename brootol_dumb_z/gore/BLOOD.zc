@@ -234,7 +234,6 @@ CLASS CeilBloodLauncher: Brutal_FLyingBlood  {
 
 CLASS DripingBloodLeavesSmallPool: TinyBlood { 
 	Default {
-		
 		-DONTSPLASH;
 	}
 	States
@@ -289,17 +288,16 @@ CLASS Brutal_FlyingBloodTrail : brutal_blood {
 	states
 	{
 		Spawn:
-			TNT1 A 0 nodelay A_JumpIf(waterlevel > 1, "Splash");
+			TNT1 A 0 nodelay A_JumpIf(waterlevel > 1, "null");
 			tnt1 a 0
 			{
-
 			 	gravity = frandom(0.5, 0.9);
 				scale *=frandom(0.7, 1.1);
 				vel *= frandom(1, 2);
 				A_SetTranslucent(frandom(0.5, 0.7) );
 			}
 			BTRL ABCD 1;
-			BLOD ABCDEFFFFFF 4 A_JumpIf(waterlevel > 1, "Splash");
+			BLOD ABCDEFFFFFF 4 A_JumpIf(waterlevel > 1, "null");
 		stop;
 			
 		Death:
@@ -317,61 +315,6 @@ CLASS Brutal_FlyingBloodTrail : brutal_blood {
 
 
 
-CLASS SmallBrainPiece : ACTOR { 
-	Default {
-		Radius 2;
-		Height 2;
-		Speed 10;
-		Mass 1;
-		Scale 0.5;
-		Decal "BrutalBloodSuper";
-		+MISSILE;
-		+NOTELEPORT;
-		+THRUGHOST;
-		+THRUACTORS;
-		+CLIENTSIDEONLY;
-		+DONTSPLASH;
-		+MOVEWITHSECTOR;
-		-DONTSPLASH;
-		+FORCEXYBILLBOARD;
-		+FLOORCLIP;
-	}
-	States
-	{
-		Spawn:
-			XDB5 ABCDEFGH 3;
-		Loop;
-	
-	
-			XDT5 B 800;
-			XDT5 O 800;
-		Death:
-			"####" "#" 0 A_CheckFloor("on_floor");
-		on_ceiling:
-			XDB5 "#" 35 {vel = (0, 0, 0);}
-			XDB5 "#" 35
-			{
-				if(random(0, 10) > 1)
-					setstatelabel("on_ceiling");
-			}
-		fall_down:
-			XDB5 "#" 1
-			{
-				vel.z -= 0.5;
-				if(pos.z <= floorz)
-					setstatelabel("on_floor");
-			}
-		loop;
-
-		on_floor:
-			XDT5 B 800
-			{
-				frame = randompick(1, 14);
-			}
-			XDT5 "#" 35 a_fadeout(0.05);
-		wait;
-	}
-}
 
 
 
@@ -393,15 +336,12 @@ CLASS head_piece_base : doomb_body_base {
 		+DONTSPLASH;
 		+MOVEWITHSECTOR;
 		+FLOORCLIP;
-		Scale 1.2;
+		Scale 0.6;
 	}
 }
 
 
 CLASS Brains1 : head_piece_base { //Random bloody piece
-	Default {
-		scale 0.6;
-	}
 	States
 	{
 		Spawn:
@@ -409,6 +349,10 @@ CLASS Brains1 : head_piece_base { //Random bloody piece
 			XDT5 C 35 a_fadeout(0.05);
 			wait;
 			
+		Death:
+			"####" "#" 800;
+			"####" "#" 35 a_fadeout(0.05);
+		wait;
 	}
 }
 
@@ -419,10 +363,6 @@ CLASS jaw : brains1 {
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			BRIB ABCDG 4 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
 		Loop;
-			
-		Death:
-			BRIB "#" 35 a_fadeout(0.05);
-		wait;
 	}
 }
 
@@ -432,19 +372,7 @@ CLASS eye : brains1 { //Eyeballs
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			BRIB EFGH 4 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
-			Loop;
-			
-			BRIB E 800;
-			BRIB F 800;
-			BRIB G 800;
-			BRIB H 800;
-		Death:
-			BRIB E 1
-			{
-				frame = random(4, 7);
-			}
-			BRIB "#" 35 a_fadeout(0.05);
-		wait;
+		Loop;
 	}
 }
 
@@ -454,12 +382,12 @@ CLASS head_piece : brains1 { //White skinned piece 1
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			BRIB IJKL 4 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
-			Loop;
+		Loop;
+
 		Death:
-			tnt1 a 0 {frame = random(3, 4);}
 			BRIN "#" 800;
 			BRIN "#" 35 a_fadeout(0.05);
-			wait;
+		wait;
 	}
 }
 
@@ -471,21 +399,11 @@ CLASS head_piece_dark : brains1 { //Brown skinned piece
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			BRIB MNOP 4 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
 			Loop;
-		Death:
-			BRIN F 800;
-			BRIN F 35 a_fadeout(0.05);
-		wait;
 	}
 }
 
 
 
-CLASS head_piece_darkBig: head_piece_dark { //White skinned piece 1
-	Default {
-		
-		Scale 1.8;
-	}
-}
 
 
 CLASS jawBig: jaw { //White skinned piece 1
@@ -518,10 +436,6 @@ CLASS head_pieceGreenBig: Brains1 { //White skinned piece 1
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			BR7B ABCD 4 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
 			Loop;
-		Death:
-			BR7B A 800;
-			BR7B A 35 a_fadeout(0.05);
-			wait;
 	}
 }
 
@@ -535,12 +449,7 @@ CLASS head_pieceBlonde: Brains1 { //White skinned piece 1
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			BR8B IJKL 4 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
-			Loop;
-		Death:
-			BR8B I 1;
-			BR8B I 800;
-			BR8B I 35 a_fadeout(0.05);
-			wait;
+		Loop;
 	}
 }
 
@@ -551,11 +460,7 @@ CLASS head_pieceBlondeBig: Brains1 { //White skinned piece 1
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			BR8B ABCD 4 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
-			Loop;
-		Death:
-			BR8B A 800;
-			BR8B A 35 a_fadeout(0.05);
-			wait;
+		Loop;
 	}
 }
 
@@ -566,11 +471,7 @@ CLASS BrainsSergeantHeadPiece: Brains1 { //White skinned piece 1
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			BR7B EFGH 4 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
-			Loop;
-		Death:
-			BR7B E 800;
-			BR7B E 35 a_fadeout(0.05);
-			wait;
+		Loop;
 	}
 }
 
@@ -581,11 +482,7 @@ CLASS BrainsImpHeadPiece: Brains1 { //White skinned piece 1
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			BR7N E 4 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
-			Loop;
-		Death:
-			BR7N E 800;
-			BR7N E 35 a_fadeout(0.05);
-			wait;
+		Loop;
 	}
 }
 
@@ -598,22 +495,19 @@ CLASS BrainsImpHeadPiece: Brains1 { //White skinned piece 1
 
 
 
-CLASS PinkyJaw: head_piece_base { 
+CLASS PinkyJaw: Brains1 { 
 	States
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			PDG1 ABCDEFGHI 4 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
-			Loop;
-		Death:
-			PDG1 "#" 2000;
-		Stop;
+		Loop;
 	}
 }
 
 
 
-CLASS HellKnightHeadPiece: head_piece_base { 
+CLASS HellKnightHeadPiece: Brains1 { 
 	Default {
 		
 		Scale 1.0;
@@ -623,19 +517,7 @@ CLASS HellKnightHeadPiece: head_piece_base {
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			HKHE IJKL 4 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
-			Loop;
-		Death:
-			HKHE I 2;
-			TNT1 A 0 ACS_ExecuteAlways(798, 0, 0, 0, 0);//Check Effects
-			Goto Rest;
-			
-		Rest:
-			HKHE I 800;
-			TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing");
-			Loop;
-		DoNothing:
-			TNT1 A 0;
-			Stop;
+		Loop;
 	}
 }
 
@@ -678,9 +560,7 @@ CLASS MuchBlood : ACTOR {
 
 CLASS DeadBlood  : ACTOR { 
 	Default {
-		
 		Decal "BrutalBloodSplat";
-		
 		+FORCEXYBILLBOARD;
 		+GHOST;
 		+NOBLOCKMAP;
@@ -691,15 +571,12 @@ CLASS DeadBlood  : ACTOR {
 	states
 	{
 		Spawn:
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "null");
 		Spawn:
 			TNT1 A 0;
 			TNT1 AAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
 			TNT1 A 0 A_SpawnItem ("BloodHit");
-			stop;
-		Splash:
-			tnt1 A 0;
-			stop;
+		stop;
 	}
 }
 
@@ -797,12 +674,10 @@ CLASS BloodDying : Brutal_Blood {
 	{
 		Spawn:
 			TNT1 AAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "null");
 			TNT1 A 0 A_SpawnItem ("BloodHit");
 			TNT1 A 0 A_SpawnItem ("Brutal_FlyingBlood");
-			stop;
-		Splash:
-			stop;
+		stop;
 	}
 }
 
@@ -830,9 +705,7 @@ CLASS BloodDying : Brutal_Blood {
 
 CLASS SawBlood : ACTOR Replaces AxeBlood { 
 	Default {
-		
 		Decal "BrutalBloodSplat";
-		
 		+FORCEXYBILLBOARD;
 		+GHOST;
 		+NOBLOCKMAP;
@@ -888,7 +761,6 @@ CLASS Brutal_FlyingBloodSaw: Brutal_FlyingBlood  {
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
 			BLOD BC 2;
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
-			TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2");
 		Spawn1:
 			BLOD EEEEEEEEEEEEEEEEEEEEEEEE 1 A_FadeOut(0.03);
 			Stop;
@@ -924,11 +796,9 @@ CLASS Brutal_LiquidBlood: Brutal_FlyingBlood  {
 
 CLASS Brutal_LiquidBlood2: Brutal_FlyingBlood  { 
 	Default {
-		
 		speed 4;
 		scale 0.4;
 		gravity 0.6;
-		
 	}
 	States
 	{
@@ -945,7 +815,6 @@ CLASS Brutal_LiquidBlood2: Brutal_FlyingBlood  {
 
 CLASS Brutal_LiquidBlood3: Brutal_FlyingBlood  { 
 	Default {
-		
 		Speed 3;
 	}
 	States
@@ -962,8 +831,7 @@ CLASS Brutal_LiquidBlood3: Brutal_FlyingBlood  {
 		SpawnFloor:
 			tnt1 a 0 A_SPawnItem("Brutal_BloodSpot");
 			XDT1 FGHIJKL 2;
-			TNT1 A 0;
-			Stop;
+		Stop;
 	}
 }
 
@@ -971,13 +839,11 @@ CLASS Brutal_LiquidBlood3: Brutal_FlyingBlood  {
 
 CLASS Brutal_LiquidBloodTrail: Brutal_FlyingBlood  { 
 	Default {
-		
 		scale 0.4;
 	}
 	States
 	{
 		Spawn:
-			TNT1 A 0;
 			BL8D ABCDEEEEE 2;
 			Stop;
 		Death:
@@ -994,8 +860,6 @@ CLASS Brutal_LiquidBloodTrail: Brutal_FlyingBlood  {
 //cause slowdown
 CLASS Brutal_FlyingBloodFake  : brutal_blood { 
 	Default {
-		
-		
 		scale 0.5;
 		speed 3;
 		health 1;
@@ -1021,7 +885,7 @@ CLASS Brutal_FlyingBloodFake  : brutal_blood {
 	States
 	{
 		Spawn:
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "null");
 			BLOD KKKKKKKKKKKK 1 A_FadeOut(0.05);
 		Stop;
 		Death:
@@ -1038,9 +902,7 @@ CLASS Brutal_FlyingBloodFake  : brutal_blood {
 
 CLASS Cyberdemon_Blood : ACTOR { 
 	Default {
-		
 		Decal "BrutalBloodSplat";
-		
 		+FORCEXYBILLBOARD;
 		+GHOST;
 		+NOBLOCKMAP;
@@ -1075,7 +937,6 @@ CLASS Cyberdemon_Blood : ACTOR {
 
 CLASS Bloodmist : Brutal_FlyingBlood { 
 	Default {
-		
 		decal "BrutalBloodSuper";
 		+MISSILE +NOTELEPORT +NOBLOCKMAP +NOBLOCKMONST +DONTSPLASH +CLIENTSIDEONLY +THRUACTORS;
 		scale    0.8;
@@ -1096,14 +957,9 @@ CLASS Bloodmist : Brutal_FlyingBlood {
 			
 		Death:
 			TNT1 A 0;
-			TNT1 A 0 A_CheckFloor("Disappear");
+			TNT1 A 0 A_CheckFloor("null");
 			MSBL HHHHHHHH 1 A_FadeOut(0.1);
-			Stop;
-			
-		Vanish:
-		Disappear:
-			TNT1 A 2;
-			Stop;
+		Stop;
 	}
 }
 
@@ -1161,7 +1017,6 @@ CLASS BloodmistXXBig : Bloodmist {
 
 CLASS doomb_fatsoEyeballs : ACTOR { //Eyeballs
 	Default {
-		
 		Radius 2;
 		Height 2;
 		Speed 6;
@@ -1186,24 +1041,13 @@ CLASS doomb_fatsoEyeballs : ACTOR { //Eyeballs
 			Loop;
 		Death:
 			MANE Y 1;
-			TNT1 A 0 ACS_ExecuteAlways(798, 0, 0, 0, 0);//Check Effects
-			Goto Rest;
-			
-			
-		Rest:
 			MANE Y 800;
-			TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DoNothing");
-			Loop;
-			
-		DoNothing:
-			TNT1 A 0;
-			Stop;
+		stop;
 	}
 }
 
 CLASS BloodSplasherz : Inventory { 
 	Default {
-		
 		inventory.maxamount 1;
 	}
 }

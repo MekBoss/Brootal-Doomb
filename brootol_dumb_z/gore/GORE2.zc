@@ -939,7 +939,7 @@ CLASS doomb_fatsoHeadExplode: actor {
 			TNT1 AAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AA 0 A_SpawnProjectile ("doomb_fatsoEyeballs", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("head_piece_darkBig", 0, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 A_SpawnProjectile ("head_piece_dark", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("jawBig", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 			TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
@@ -958,9 +958,6 @@ CLASS doomb_fatsoHeadExplode: actor {
 
 
 CLASS MeatDeathSmall: ImpXDeath { 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:
@@ -972,6 +969,6 @@ CLASS MeatDeathSmall: ImpXDeath {
 			TNT1 A 0 A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAAA 0 A_SpawnProjectile ("SmallSuperGore", 10, 0, random (0, 360), 2, random (10, 170));
 			TNT1 AAAA 0 A_SpawnProjectile ("BloodMistSmall", 35, 0, random (0, 360), 2, random (40, 90));
-			Stop;
+		Stop;
 	}
 }
