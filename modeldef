@@ -303,69 +303,14 @@ Model GreenGuts    // Name of actor in DECORATE
 
 
 
-Model DetectFloorBullet     // Name of actor in DECORATE
-{
-   Path "models/bulletdecals"    // Path to model in PK3
-   Model 0 "buldecground1"    // Model index, model file
-   Skin 0 "BULLETDECAL1.png"     // Model index, texture (can be in any format supported by GZDoom)
-   Scale 5.0 5.0 5.0            // Scale values
-   ZOffset 0.1
-   FrameIndex XXX1 A 0 0         // The sprite lump, sprite frame, model index, frame number
-}
-
-
-Model DetectCeilBullet     // Name of actor in DECORATE
-{
-   Path "models/bulletdecals"    // Path to model in PK3
-   Model 0 "buldecceil1"    // Model index, model file
-   Skin 0 "BULLETDECAL1.png"     // Model index, texture (can be in any format supported by GZDoom)
-   Scale 5.0 5.0 5.0            // Scale values
-   ZOffset 0.1
-   FrameIndex XXX1 A 0 0         // The sprite lump, sprite frame, model index, frame number
-}
-
-Model DetectFloorCrater     // Name of actor in DECORATE
-{
-   Path "models/bulletdecals"    // Path to model in PK3
-   Model 0 "buldecground1"    // Model index, model file
-   Skin 0 "SCORCH1.png"     // Model index, texture (can be in any format supported by GZDoom)
-   Scale 10.0 10.0 10.0            // Scale values
-   ZOffset 0.1
-   FrameIndex XXX1 A 0 0         // The sprite lump, sprite frame, model index, frame number
-}
 
 
 
-Model DetectCeilCrater     // Name of actor in DECORATE
-{
-   Path "models/bulletdecals"    // Path to model in PK3
-   Model 0 "BULDECCEIL1"    // Model index, model file
-   Skin 0 "SCORCH1.png"     // Model index, texture (can be in any format supported by GZDoom)
-   Scale 10.0 10.0 10.0            // Scale values
-   ZOffset -0.1
-   FrameIndex XXX1 A 0 0         // The sprite lump, sprite frame, model index, frame number
-}
-
-Model DetectFloorCraterSmall     // Name of actor in DECORATE
-{
-   Path "models/bulletdecals"    // Path to model in PK3
-   Model 0 "buldecground1"    // Model index, model file
-   Skin 0 "SCORCH1.png"     // Model index, texture (can be in any format supported by GZDoom)
-   Scale 10.0 10.0 10.0            // Scale values
-   ZOffset 0.1
-   FrameIndex XXX1 A 0 0         // The sprite lump, sprite frame, model index, frame number
-}
 
 
-Model DetectCeilCraterSmall     // Name of actor in DECORATE
-{
-   Path "models/bulletdecals"    // Path to model in PK3
-   Model 0 "BULDECCEIL1"    // Model index, model file
-   Skin 0 "SCORCH1.png"     // Model index, texture (can be in any format supported by GZDoom)
-   Scale 10.0 10.0 10.0            // Scale values
-   ZOffset -0.1
-   FrameIndex XXX1 A 0 0         // The sprite lump, sprite frame, model index, frame number
-}
+
+
+
 
 Model visual_sfx // Name of actor in DECORATE
 { 
@@ -389,16 +334,6 @@ Model ShrapnelParticle // Name of actor in DECORATE
    FrameIndex SPKO A 0 0 // The sprite lump, sprite frame, model index, frame number
 }
 
-Model SparkX // Name of actor in DECORATE
-{ 
-   Path "MD3/Projectiles" // Path to model in PK3
-   SKIN 0 "tracer1.tga" // Model index, model file
-   MODEL 0 "Tracer.md3" // Model index, texture (can be in any format supported by GZDoom)
-   Scale 2.0 2.0 2.0 // Scale values
-   PITCHFROMMOMENTUM // A flag that will fix the model pitch for projectiles
-   
-   FrameIndex SPKO A 0 0 // The sprite lump, sprite frame, model index, frame number
-}
 
 
 
@@ -443,14 +378,3 @@ Model PentagramSpawner   // Name of actor in DECORATE
    ZOffset 0.7
    FrameIndex PNTG B 0 0         // The sprite lump, sprite frame, model index, frame number
 }
-
-
-
-
-
-
-
-
-
-
-
