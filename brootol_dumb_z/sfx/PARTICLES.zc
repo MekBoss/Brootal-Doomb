@@ -449,25 +449,6 @@ CLASS WoodParticleTIny: WoodParticle {
 
 
 
-CLASS BrownCloudSmall: BrownCloud { 
-	Default {
-		
-		Scale 0.5;
-		Alpha 0.3;
-		Speed 2;
-		-NOGRAVITY;
-		+THRUACTORS;
-		Gravity 0.1;
-	}
-	States
-	{
-		Spawn:
-			DIRP CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC 1 A_FadeOut(0.01);
-			Stop;
-			
-	}
-}
-
 
 CLASS WallChunk : ACTOR { 
 	Default {
