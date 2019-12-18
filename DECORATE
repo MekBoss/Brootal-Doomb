@@ -1,5 +1,8 @@
 // IF YOU WANT TO USE STUFF FROM THIS MOD, GIVE ME CREDITS
+
 //Ok
+//Change my mind
+//Or not
 
 Actor EnemyMemory : Inventory
 {
@@ -17,15 +20,6 @@ Actor LookingForPlayer : Inventory
 inventory.maxamount 30
 }
 
-Actor BrutalCounter : Inventory
-{
-inventory.maxamount 500
-}
-
-Actor BrutalCounter2 : Inventory
-{
-inventory.maxamount 500
-}
 
 
 
