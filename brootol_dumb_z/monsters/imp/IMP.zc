@@ -911,7 +911,7 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp {
 	FatalityMarine:
 		TNT1 A 0 A_SetInvulnerable;
 		IPFP ABCD 4;
-		TNT1 A 0 A_SpawnItemEx("FootStep5", 0, 0, 40, 0, 0);
+		TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 40, 0, 0);
 		IPFP EEF 6;
 		
 		TNT1 A 0 A_PlaySound("DSFDTHE");

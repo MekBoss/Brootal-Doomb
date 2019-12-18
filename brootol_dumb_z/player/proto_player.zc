@@ -100,7 +100,7 @@ protected void check_blood_pool()
 					{
 						if(check.pos.y - check.radius < self.pos.y && check.pos.y + check.radius > self.pos.y)
 						{
-							footprint_time = 35;
+							footprint_time = 70;
 							footprint_color = doomb_blood_pool(check).color;
 						}
 					}
@@ -121,23 +121,22 @@ protected void spawn_blood_footprint()
 
 		if(pos.z <= floorz && !(GetFloorTerrain().isLiquid) && self.footprint_time > 0)
 		{
-			actor f = spawn("RedBloodFootPrintLeft", pos:self.pos);
+			actor f = null;
+
+			footprint_time --;
+			if(right_footstep == false)
+			{
+				right_footstep = true;
+				f = spawn("RedBloodFootPrintLeft", pos:self.pos);
+			}
+			else
+			{
+				right_footstep = false;
+				f = spawn("RedBloodFootPrintright", pos:self.pos);
+			}
 
 			if(f)
 			{
-				footprint_time --;
-				if(right_footstep == true)
-				{
-					console.printf("right footprint");
-					right_footstep = false;
-				}
-				else
-				{
-					console.printf("left footprint");
-					right_footstep = true;
-					f.scale.y *= -1;
-				}
-
 				if(footprint_color = "blue")
 					f.A_SetTranslation("red_to_blue");
 
@@ -177,6 +176,22 @@ override void tick()
 
 
 CLASS RedBloodFootPrintLeft: doomb_blood
+{ 
+Default {
+    RenderStyle "normal";
+    Scale 0.09;
+	alpha 0.99;
+    +CLIENTSIDEONLY;
+}
+states
+{
+    Spawn:
+        BPDL A 600;
+	Loop;
+	}
+}
+
+CLASS RedBloodFootPrintright : doomb_blood
 { 
 Default {
     RenderStyle "normal";

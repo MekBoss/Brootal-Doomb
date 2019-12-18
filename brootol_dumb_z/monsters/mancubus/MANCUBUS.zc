@@ -182,21 +182,10 @@ CLASS doomb_fatso : doomb_monster_base Replaces Fatso {
 		LookingForPlayer:
 			TNT1 A 0 A_JumpIfInventory("EnemyMemory", 10, "ForgetTarget");
 			TNT1 A 0 A_GiveInventory("EnemyMemory", 1);
-			FATT AAA 4 A_Chase;
-			
-			FATT BB 4 A_Chase;
-			
-			FATT CC 4 A_Chase;
-			
-			////TNT1 A 0 A_SpawnItemEx("HeavyFootSteps", 0, 10)
-			FATT DD 4 A_Chase;
-			
-			FATT EE 4 A_Chase;
-			
-			FATT FF 4 A_Chase;
+			FATT AABBCCDDEEFF 4 A_Chase;
 			TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget");
 			TNT1 A 0 A_CheckSight("LookingForPlayer");
-			Goto See;
+		Goto See;
 			
 		Missile:
 			TNT1 A 0 A_JumpIfCloser(300, "Melee");
