@@ -270,7 +270,7 @@ states
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath2", 30, 0, random (0, 360), 2, random (0, 90));
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath3", 30, 0, random (0, 360), 2, random (0, 90));
 		TNT1 AAAAA 0 A_SpawnProjectile ("Instestin", 24, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnItem("SplatteredLarge");
+		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnProjectile ("SuperGoreSpawner", 30, 0, random (0, 360), 2, random (10, 90));
 		ID50 ABCDEF 7;
 		ID50 GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 13 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
@@ -363,6 +363,29 @@ protected void doomb_spawn_burned_flesh()
 	A_SpawnProjectile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, - random (0, 160));
 	A_SpawnProjectile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, - random (0, 160));
 	A_SpawnProjectile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, - random (0, 160));
+}
+
+protected void doomb_spawn_bloodpool()
+{
+	if(GetFloorTerrain().isLiquid == false)
+	{
+		actor a = spawn("doomb_red_blood_pool", pos:self.pos);
+
+		if(a)
+		{
+			if(self.getclassname() == "doomb_cacodemon")
+			{
+				a.A_SetTranslation("red_to_blue");
+				doomb_red_blood_pool(a).color = "blue";
+			}
+
+			if(self.getclassname() == "doomb_baron" || self.getclassname() == "doomb_knight")
+			{
+				a.A_SetTranslation("red_to_green");
+				doomb_red_blood_pool(a).color = "green";
+			}
+		}
+	}
 }
 
 }

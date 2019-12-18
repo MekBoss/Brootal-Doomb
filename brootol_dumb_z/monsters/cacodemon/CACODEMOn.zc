@@ -3,7 +3,7 @@
 // Cacodemon
 //
 //===========================================================================
-CLASS Cacodemon_ : doomb_monster_base Replaces Cacodemon { 
+CLASS doomb_cacodemon : doomb_monster_base Replaces Cacodemon { 
 Default {
 	
 	bloodtype "Blue_Blood", "BlueSawBlood";
@@ -71,7 +71,7 @@ States
 			A_Look();
 			A_Wander();
 		}
-	Goto SearchPlayer;
+	loop;
 		
 	See:
 		HEAD AAA 2 A_Chase;
@@ -128,7 +128,7 @@ States
 		HEAD G 3 A_Scream;
 		HEAD H 3 A_NoBlocking;
 		HEAD IJK 4 A_SpawnProjectile ("Blue_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnItem ("BlueBloodPool", 1);
+		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem ("DeadCacoDemon1", 1);
 		HEAD L -1;
 	Stop;
@@ -139,7 +139,7 @@ States
 		H3D2 CD 6;
 		TNT1 AAAA 0 A_SpawnProjectile ("Blue_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160));
 		H3D2 E 6;
-		TNT1 A 0 A_SpawnItem ("BlueBloodPool", 1);
+		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem ("DeadCacoDemon1", 1);
 		H3D2 F -1;
 	Stop;
@@ -170,7 +170,7 @@ States
 			A_SpawnProjectile ("CacoXDeath6", 50, 0, random (0, 360), 2, random (0, 160));
 		}
 		HEDC AB 9 A_SpawnProjectile ("CacoXDeath7", 50, 0, random (0, 360), 2, - random (0, 160));
-		TNT1 A 0 A_SpawnItem ("BlueBloodPool", 1);
+		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem ("SawedCacodemon", 1);
 		HEDC C -1;
 	Stop;
@@ -182,7 +182,7 @@ States
 		TNT1 A 0 A_Scream;
 		TNT1 O 0 A_NoBlocking;
 		CCD3 A 6 A_SpawnProjectile ("RipCaco", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnItem ("BlueBloodPool", 1);
+		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem ("Dead_lower_caco_Half", 1);
 		CCD3 B -1;
 	Stop;
@@ -196,7 +196,7 @@ States
 		TNT1 O 0 A_NoBlocking;
 		TNT1 A 0 A_SpawnProjectile ("RipCaco", 0, 0, random (0, 360), 2, random (0, 160));
 		CCD3 A 6;
-		TNT1 A 0 A_SpawnItem ("BlueBloodPool", 1);
+		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem ("Dead_lower_caco_Half", 1);
 		CCD3 B -1;
 	Stop;
@@ -297,13 +297,13 @@ States
 		TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath6", 50, 0, random (160, 200), 2, random (20, 40));
 		TNT1 AAAAAA 0 A_SpawnProjectile ("CacoXDeath7", 50, 0, random (160, 200), 2, random (20, 40));
 		CCD3 A 6 A_NoBlocking;
-		TNT1 A 0 A_SpawnItem ("BlueBloodPool", 1);
+		TNT1 A 0 doomb_spawn_bloodpool();
 		CCD3 B -1;
 	Stop;
 	
 	Crush:
 		CRS2 B 5 A_PlaySound("misc/xdeath4");
-		CRS2 B -1 A_SpawnItem ("BlueBloodPool", 1);
+		CRS2 B -1 doomb_spawn_bloodpool();
 	Stop;
 	
 	Pain.KillMe:
@@ -330,7 +330,7 @@ States
 		TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60);
 		TNT1 A 0 A_SpawnItem("TeleportFog");
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnItem ("CacoDemon_");
+		TNT1 A 0 A_SpawnItem ("doomb_cacodemon");
 	Stop;
 }
 }

@@ -18,7 +18,7 @@ CLASS BrutalStealthArchvile : TehArchvile Replaces StealthArchvile {
 }
 
 
-CLASS BrutalStealthBaron : BaronofHell2 Replaces StealthBaron { 
+CLASS BrutalStealthBaron : doomb_baron Replaces StealthBaron { 
 	Default {
 		
 		+STEALTH;
@@ -27,7 +27,7 @@ CLASS BrutalStealthBaron : BaronofHell2 Replaces StealthBaron {
 	}
 }
 
-CLASS BrutalStealthCacodemon : Cacodemon_ Replaces StealthCacodemon { 
+CLASS BrutalStealthCacodemon : doomb_cacodemon Replaces StealthCacodemon { 
 	Default {
 		
 		+STEALTH;
@@ -56,7 +56,7 @@ CLASS BrutalStealthDemon : BullDemon Replaces StealthDemon {
 	}
 }
 
-CLASS BrutalStealthHellKnight : HellKnight2 Replaces StealthHellKnight { 
+CLASS BrutalStealthHellKnight : doomb_knight Replaces StealthHellKnight { 
 	Default {
 		
 		+STEALTH;

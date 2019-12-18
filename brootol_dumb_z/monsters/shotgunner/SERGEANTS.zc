@@ -399,7 +399,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 			TNT1 A 0 A_Stop;
 			TNT1 AAAA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (0, 360), 2, random (50, 130));
 			ID11 EF 2;
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem("DeadShotgunguy");
 			Stop;
 			
@@ -407,7 +407,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 			TNT1 A 0;
 			TNT1 A 0 A_XScream;
 			TNT1 A 0 A_NoBLocking;
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			Goto Death.Explosive_Impact+1;
 			
 		Pain.KillMe:
@@ -445,7 +445,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 		DSFStop:
 			TNT1 A 0 A_SpawnItem("Ploft3");
 			TNT1 A 0 A_Stop;
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnProjectile ("WallRedBlood", 2, 0, random (170, 190), 2, random (0, 0));
 			TNT1 A 0 A_SpawnItem("DeadShotgunguySPO4J");
 			Stop;
@@ -466,7 +466,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 		DSFStop2:
 			TNT1 A 0 A_SpawnItem("Ploft3");
 			TNT1 A 0 A_Stop;
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnProjectile ("WallRedBlood", 2, 0, random (170, 190), 2, random (0, 0));
 			TNT1 A 0 A_SpawnItem("DeadShotgunguySPO4J");
 			Stop;
@@ -488,13 +488,13 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 			SPO4 W 5 A_SpawnProjectile ("Brutal_LiquidBlood3", 15, 0, random (0, 360), 2, random (0, 40));
 			SPO4 X 5 A_SpawnProjectile ("Brutal_LiquidBlood3", 15, 0, random (0, 360), 2, random (0, 40));
 			SPO4 Y 5 A_SpawnProjectile ("Brutal_LiquidBlood3", 15, 0, random (0, 360), 2, random (0, 40));
-			TNT1 A 0 A_SpawnItem("GrowingBloodPool");
+			TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
 			TNT1 A 0 A_SpawnItem("Deaddoomb_shotgun_guy");
 			Stop;
 		TakeASit:
 			TNT1 AAAA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
 			SPO4 U 5;
-			TNT1 A 0 A_SpawnItem("GrowingBloodPool");
+			TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
 			TNT1 A 0 A_SpawnItemEx("DeadShotgunguy_Slumped", 10);
 			Stop;
 			
@@ -549,7 +549,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 			SPOS I 5;
 			SPOS J 5 A_NoBlocking;
 			SPOS K 5;
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem("DeadShotgunguy");
 			Stop;
 			
@@ -583,7 +583,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 35, 0, random (0, 360), 2, random (0, 160));
 			SPO5 A 9 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItemEx ("DyingSergeant",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			Stop;
 			
@@ -612,7 +612,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 			SPOS VVV 2 A_SpawnProjectile ("Brutal_LiquidBlood2", 30, 0, 120, 2, random (60, 120));
 			TNT1 A 0 A_NoBlocking;
 			SPOS XXXYYY 2 A_SpawnProjectile ("Brutal_LiquidBlood2", 20, 0, random (0, 360), 2, random (60, 120));
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem("DeadShotgunGuy_NoBrain");
 			Stop;
 			
@@ -637,7 +637,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 			TNT1 A 0 A_Scream;
 			13DG M 6 A_NoBlocking;
 			
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			13DG N -1;//doomb_final_absolution(12, 12);
 			Stop;
 			
@@ -651,7 +651,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 			SPDH AAAAABBBBBBBBBBCCCCC 2 A_SpawnProjectile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (60, 120));
 			SPDH DDDDEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood2", 10, 0, random (0, 360), 2, random (60, 120));
 			SPDH EEEEEEEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood2", 5, 0, random (0, 360), 2, random (10, 40));
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem("DeadShotgunGuy_NoHead");
 			Stop;
 			
@@ -689,7 +689,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 			SPDH AAAAABBBBBBBBBBCCCCC 2 A_SpawnProjectile ("Brutal_LiquidBlood2", 30, 0, random (0, 360), 2, random (60, 120));
 			SPDH DDDDDDEEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood2", 10, 0, random (0, 360), 2, random (60, 120));
 			SPDH EEEEEEEEEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood2", 5, 0, random (0, 360), 2, random (10, 40));
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem("DeadShotgunGuy_NoHead");
 			Stop;
 			
@@ -724,7 +724,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 			TNT1 A 0 A_SpawnProjectile ("XDeathHalfSergeant", 32, 0, random (0, 360), 2, random (0, 160));
 			
 			SP2X BBCD 8;
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem("DeadShotgunGuy_Half");
 			Stop;
 			
@@ -761,7 +761,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 			TNT1 AAAA 0 A_SpawnProjectile ("WallRedBlood", 32, 0, random (170, 190), 2, random (0, 40));
 			TNT1 AAA 0 A_SpawnProjectile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90));
 			ZXZ7 A 6 A_Stop;
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			ZXZ7 BBBBBBBBBB 3 A_SpawnProjectile ("Brutal_LiquidBlood2", 26, 0, random (0, 360), 2, random (30, 60));
 			ZXZ7 CCC 3 A_SpawnProjectile ("Brutal_LiquidBlood2", 26, 0, random (0, 360), 2, random (10, 40));
 			ZXZ7 DD 3 A_SpawnProjectile ("Brutal_LiquidBlood2", 6, 0, random (0, 360), 2, random (30, 60));
@@ -781,7 +781,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 			TNT1 AAAA 0 A_SpawnProjectile ("WallRedBlood", 32, 0, random (170, 190), 2, random (0, 40));
 			TNT1 AAAA 0 A_SpawnProjectile ("BloodMistBig", 40, 0, random (0, 360), 2, random (30, 90));
 			ZXZ6 A 6 A_Stop;
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			ZXZ6 BBBBBBBBBBBBBBBBBBB 3 A_SpawnProjectile ("Brutal_LiquidBlood2", 26, 0, random (0, 360), 2, random (30, 60));
 			ZXZ6 CCC 3 A_SpawnProjectile ("Brutal_LiquidBlood2", 26, 0, random (0, 360), 2, random (10, 40));
 			ZXZ6 DD 3 A_SpawnProjectile ("Brutal_LiquidBlood2", 6, 0, random (0, 360), 2, random (30, 60));
@@ -808,7 +808,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 			TNT1 A 0 A_XScream;
 			TNT1 A 0 A_NoBlocking;
 			SZD1 EEFFGH 6;
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			SZD1 H -1;//doomb_final_absolution(12, 12);
 			Stop;
 			
@@ -910,7 +910,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 		TNT1 AAAA 0 bright A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180));
 		TNT1 AA 0 bright A_SpawnProjectile ("XDeath2b", 55, 0, random (0, 360), 2, random (30, 180));
 		TNT1 AA 0 bright A_SpawnProjectile ("XDeath3b", 55, 0, random (0, 360), 2, random (30, 180));
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem ("CrushedRemains");
 		TNT1 A 1;
 		TNT1 A 1 A_XScream;
@@ -959,7 +959,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 	Land8473:
 		SXSX N 0;
 		TNT1 A 0 A_Stop;
-		TNT1 A 0 A_SpawnItem("GrowingBloodPool");
+		TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
 		TNT1 A 0 A_SpawnItem("DeadSergeantSXSXO");
 		Stop;
 		
@@ -990,7 +990,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 	Land8472:
 		SXS2 N 0;
 		TNT1 A 0 A_Stop;
-		TNT1 A 0 A_SpawnItem("GrowingBloodPool");
+		TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
 		TNT1 A 0 A_SpawnItem("DeadSergeantSXS2O");
 		Stop;
 		
@@ -1023,7 +1023,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 		Stop;
 		
 	Dead.Explosive_Impact:
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem ("VeryFuckedUpBrutalizedSergeantLeg");
 		TNT1 A 0 A_SpawnItem ("Ploft");
 		TNT1 A 0 A_SpawnItem ("MuchBlood");
@@ -1046,7 +1046,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 		Stop;
 		
 	Dead.Landmine:
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem ("DeadShotgunguy_NoLeg", 1);
 		TNT1 A 0 A_SpawnItem ("Ploft");
 		TNT1 A 0 A_SpawnItem ("MuchBlood");

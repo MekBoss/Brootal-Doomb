@@ -45,7 +45,6 @@ CLASS CyberdemonHead: LimbBase {
 			
 		Death:
 		Death.Trample:
-			TNT1 A 0 A_GiveToTarget("BootsSmearedWithRedBlood", 6);
 		Crush:
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			
@@ -117,7 +116,6 @@ CLASS CyberdemonTorso: LimbBase {
 			
 		Death:
 		Death.Trample:
-			TNT1 A 0 A_GiveToTarget("BootsSmearedWithRedBlood", 6);
 		Crush:
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			
@@ -186,7 +184,6 @@ CLASS CyberdemonPiece: LimbBase {
 			
 		Death:
 		Death.Trample:
-			TNT1 A 0 A_GiveToTarget("BootsSmearedWithRedBlood", 6);
 		Crush:
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			
@@ -257,7 +254,6 @@ CLASS CyberdemonArm: LimbBase {
 			
 		Death:
 		Death.Trample:
-			TNT1 A 0 A_GiveToTarget("BootsSmearedWithRedBlood", 6);
 		Crush:
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			
@@ -327,7 +323,6 @@ CLASS CyberdemonGun: LimbBase {
 			
 		Death:
 		Death.Trample:
-			TNT1 A 0 A_GiveToTarget("BootsSmearedWithRedBlood", 6);
 		Crush:
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			

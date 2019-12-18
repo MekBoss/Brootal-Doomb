@@ -240,7 +240,7 @@ States
 	Raise:
 		BOS3 O 8
 		BOS3 NMLKJI  8
-        TNT1 A 0 A_SpawnItem ("HellKnight2", 3)
+        TNT1 A 0 A_SpawnItem ("doomb_knight", 3)
 		Stop
     Death:
   	    

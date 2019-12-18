@@ -1,5 +1,11 @@
 version "3.7.2"
 
+//monsters base must go before gore
+//because gore base inherits from monster base
+#include "brootol_dumb_z/monsters/monster_base.zc"
+#include "brootol_dumb_z/gore/gore_base.zc"
+#include "brootol_dumb_z/weapons/weapon_base.zc"
+
 #include "brootol_dumb_z/sfx/sfx_main.zc"
 #include "brootol_dumb_z/sfx/sfx_base.zc"
 #include "brootol_dumb_z/sfx/sfx_states.zc"
@@ -42,6 +48,8 @@ version "3.7.2"
 
 //Gore N' Blood
 #include "brootol_dumb_z/gore/gore_event.zc"
+#include "brootol_dumb_z/gore/blood_pools.zc"
+
 #include "brootol_dumb_z/gore/GORE!!!.zc"
 #include "brootol_dumb_z/gore/GORE!!!.zc"
 
@@ -68,14 +76,6 @@ version "3.7.2"
 #include "brootol_dumb_z/decor/DEAD.zc"
 
 
-//monsters base must go before gore
-//because gore base inherits from monster base
-#include "brootol_dumb_z/monsters/monster_base.zc"
-
-#include "brootol_dumb_z/gore/gore_base.zc"
-
-
-#include "brootol_dumb_z/weapons/weapon_base.zc"
 #include "brootol_dumb_z/weapons/ammo/AMMO.zc"
 
 
@@ -127,6 +127,7 @@ version "3.7.2"
 #include "brootol_dumb_z/monsters/bosses/cyber_gore.zc"
 #include "brootol_dumb_z/monsters/bosses/MASTERMIND.zc"
 
+#include "brootol_dumb_z/player/proto_PLAYER.zc"
 #include "brootol_dumb_z/player/PLAYER.zc"
 
 #include "brootol_dumb_z/marines/marines.zc"

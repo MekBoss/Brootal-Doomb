@@ -327,85 +327,72 @@ terrain carpet
 {
 	splash			carpet
 	footclip		0
-	//liquid//
 }
 
 terrain dirt
 {
 	splash			dirt
 	footclip		0
-	//liquid//
 }
 
 terrain gravel
 {
 	splash			gravel
 	footclip		0
-	//liquid//
 }
 
 terrain metal
 {
 	splash			metal
 	footclip		0
-	//liquid//
 }
 
 terrain metal2
 {
 	splash			metal2
 	footclip		0
-	//liquid//
 }
 
 terrain rock
 {
 	splash			rock
 	footclip		0
-	//liquid//
 }
 
 terrain snow
 {
 	splash			snow
 	footclip		0
-	//liquid//
 }
 
 terrain slimy
 {
 	splash			slimy
 	footclip		0
-	//liquid//
 }
 
 terrain hard
 {
 	splash			hard
 	footclip		0
-	//liquid//
 }
 
 terrain tile
 {
 	splash			tile
 	footclip		0
-	//liquid//
 }
 
 terrain tile2
 {
 	splash			tile2
 	footclip		0
-	//liquid//
 }
 
 terrain wood
 {
 	splash			wood
 	footclip		0
-	//liquid//
-	
 }
 
 

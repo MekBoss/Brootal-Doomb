@@ -1,0 +1,44 @@
+class doomb_blood_pool : doomb_blood
+{
+string color;
+
+}
+
+class doomb_red_blood_pool : doomb_blood_pool
+{
+
+Default
+{
+	-missile
+    radius 40;
+    height 1;
+    mass 1;
+    Alpha 0.99;
+    +NOTELEPORT;
+    +CLIENTSIDEONLY;
+    +FORCEXYBILLBOARD;
+    +MOVEWITHSECTOR;
+    +FLOORCLIP;
+    -DONTSPLASH;
+    Scale 1.0;
+}
+
+states
+{
+    Spawn:
+		tnt1 a 0 nodelay {angle = random(0,360);}
+		tnt1 a 0 a_jump(126, "no_scale");
+	scale:
+        TNT5 AAAAAAAAAAAAAAAAAAAAAAAAA 5 {scale *= 1.035;}
+    goto live;
+
+	no_scale:
+		BPDL A 1 {frame = random(0, 1);}
+	Live:
+        "####" "#" -1 A_QueueCorpse();
+    stop;
+}
+
+}
+
+CLASS SmallBloodPool2 : doomb_blood Replaces SmallBloodPool {}

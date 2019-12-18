@@ -278,7 +278,7 @@ States
 		SKEL N 7 A_Scream();
 		SKEL OP 7;
 		TNT1 A 0 A_NoBlocking();
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem ("DeadSkeleton", 1);
 	Stop;
 		
@@ -317,7 +317,7 @@ States
 		REVH B 8 A_NoBlocking();
 		TNT1 A 0 A_XScream();
 		REVH CD 8;
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem ("DeadSkeletonNoHead");
 		Stop;
 		
@@ -327,7 +327,7 @@ States
 		REVH A 24;
 		REVH B 8 A_NoBlocking();
 		REVH CD 8;
-		TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem ("DeadSkeletonNoHead", 1);
 		Stop;
 		

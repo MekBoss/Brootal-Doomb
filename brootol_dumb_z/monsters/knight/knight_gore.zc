@@ -64,7 +64,7 @@ CLASS DyingHellKnight1 : doomb_body_base {
 			TNT1 A 0 A_SpawnProjectile ("XDeath4", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightHead", 32, 0, random (0, 360), 2, random (0, 160));
 			BBO1 AABCD 8;
-			TNT1 A 0 A_SpawnItem ("GrowingBloodPool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem ("DeadKnightHalfDown", 1);
 			Stop;
 			
@@ -182,7 +182,6 @@ CLASS HellKnightHead: LimbBase {
 			Stop;
 		Death.Trample:
 		Crush:
-			TNT1 A 0 A_GiveToTarget("BootsSmearedWithRedBlood", 6);
 			TNT1 AAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (60, 140));
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			CRS1 B 5;
@@ -465,7 +464,7 @@ CLASS DeadKnight: CurbstompedMarine {
 			TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60);
 			TNT1 A 0 A_SpawnItem("TeleportFog");
 			TNT1 A 0 A_NoBlocking;
-			TNT1 A 0 A_SpawnItem ("HellKnight2");
+			TNT1 A 0 A_SpawnItem ("doomb_knight");
 			Stop;
 	}
 	

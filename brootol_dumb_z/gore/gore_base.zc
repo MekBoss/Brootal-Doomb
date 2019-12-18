@@ -56,20 +56,20 @@ protected void doomb_blood_dying()
 class doomb_blood : actor abstract
 {
 
-	Default {
-		+MISSILE;
-		-nogravity
-		+CLIENTSIDEONLY;
-		+NOTELEPORT;
-		+NOBLOCKMAP;
-		+THRUACTORS;
-		+BLOODLESSIMPACT;
-		+FORCEXYBILLBOARD;
-		+NODAMAGETHRUST;
-		+MOVEWITHSECTOR;
-		+CORPSE;
-		-DONTSPLASH;
-	}
+Default
+{
+	+MISSILE;
+	-nogravity
+	+CLIENTSIDEONLY;
+	+NOTELEPORT;
+	+THRUACTORS;
+	+BLOODLESSIMPACT;
+	+FORCEXYBILLBOARD;
+	+NODAMAGETHRUST;
+	+MOVEWITHSECTOR;
+	+CORPSE;
+	-DONTSPLASH;
+}
 
 protected void doomb_spawn_blood()
 {

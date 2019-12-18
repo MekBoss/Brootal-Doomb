@@ -51,22 +51,6 @@ Decal "GreenBloodSplat";
 
 
 
-CLASS GreenBloodFootPrintLeft: RedBloodFootPrintLeft { 
-	Default {
- 
-translation "168:191=112:127", "16:47=123:127";
-Decal "BlueBloodSplat";
-	}
-}
-
-
-CLASS GreenBloodFootPrintRight: RedBloodFootPrintRight { 
-	Default {
- 
-translation "168:191=112:127", "16:47=123:127";
-Decal "BlueBloodSplat";
-	}
-}
 
 
 
