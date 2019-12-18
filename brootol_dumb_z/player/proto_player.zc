@@ -83,7 +83,7 @@ protected void doomb_spawn_bloodpool()
 
 //how much time player must left footprints
 protected uint footprint_time;
-protected color footprint_color;
+protected string footprint_color;
 protected bool right_footstep;
 //check is player step into blood, and if yes start spawning blood footprints
 protected void check_blood_pool()
@@ -117,6 +117,7 @@ protected void spawn_blood_footprint()
 		if(footprint_time <= 0)
 		{
 			footprint_color = "";
+			return;
 		}
 
 		if(pos.z <= floorz && !(GetFloorTerrain().isLiquid) && self.footprint_time > 0)
@@ -137,12 +138,13 @@ protected void spawn_blood_footprint()
 
 			if(f)
 			{
-				if(footprint_color = "blue")
-					f.A_SetTranslation("red_to_blue");
+				switch( (name)(footprint_color) )
+				{
+					case 'blue' : f.A_SetTranslation("red_to_blue"); break;
+					case 'green' : f.A_SetTranslation("red_to_green"); break;
+					default : break;
+				}
 
-				if(footprint_color = "green")
-					f.A_SetTranslation("red_to_green");
-					
 				f.A_QueueCorpse();
 				f.angle = angle;
 			}
@@ -150,7 +152,7 @@ protected void spawn_blood_footprint()
 			else
 			{
 				footprint_time = 0;
-				footprint_color = "0, 0, 0";
+				footprint_color = "";
 			}
 		}
 
@@ -158,7 +160,7 @@ protected void spawn_blood_footprint()
 		else if(pos.z <= floorz && GetFloorTerrain().isLiquid)
 		{
 			footprint_time = 0;
-			footprint_color = "0, 0, 0";
+			footprint_color = "";
 		}
 	}
 }
@@ -175,7 +177,7 @@ override void tick()
 
 
 
-CLASS RedBloodFootPrintLeft: doomb_blood
+CLASS RedBloodFootPrintLeft: actor
 { 
 Default {
     RenderStyle "normal";
@@ -186,12 +188,12 @@ Default {
 states
 {
     Spawn:
-        BPDL A 600;
-	Loop;
+        foot A -1;
+	stop;
 	}
 }
 
-CLASS RedBloodFootPrintright : doomb_blood
+CLASS RedBloodFootPrintright : actor
 { 
 Default {
     RenderStyle "normal";
@@ -202,7 +204,7 @@ Default {
 states
 {
     Spawn:
-        BPDL A 600;
-	Loop;
+        foot A -1;
+	stop;
 	}
 }
