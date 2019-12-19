@@ -1524,63 +1524,17 @@ CLASS Ashes1 : ACTOR {
 	States
 	{
 		Spawn:
+			tnt1 a 0 nodelay a_jump(126, "spawn2");
+		mini:
 			ASHZ ABCB 3;
 			Loop;
-		Death:
-			ASHZ B 400;
-			Stop;
-		Splash:
-			TNT1 A 0;
-			TNT1 A 0;
-			Stop;
-	}
-}
 
-
-CLASS Ashes2 : ACTOR { 
-	Default {
-		
-		Radius 8;
-		Height 8;
-		Speed 10;
-		Scale 1.2;
-		Mass 1;
-		+NOBLOCKMAP;
-		+MISSILE;
-		+NOTELEPORT;
-		+MOVEWITHSECTOR;
-		+CLIENTSIDEONLY;
-		+RIPPER;
-		+BLOODLESSIMPACT;
-		-DONTSPLASH;
-		+THRUGHOST;
-		+THRUACTORS;
-		+FLOORCLIP;
-		damagetype "Blood";
-		SeeSound "misc/xdeath4";
-		DeathSound "misc/xdeath1";
-		Decal "BrutalBloodSuper";
-		Mass 1;
-		
-		Speed 5;
-		Gravity 0.2;
-		+DONTSPLASH;
-		DeathSound "";
-		SeeSound "";
-		Decal "";
-		Scale 1.0;
-	}
-	States
-	{
-		Spawn:
+		Spawn2:
 			ASHY ABCB 3;
 			Loop;
+
 		Death:
-			ASHY B 400;
-			Stop;
-		Splash:
-			TNT1 A 0;
-			TNT1 A 0;
+			"####" "#" 400;
 			Stop;
 	}
 }
