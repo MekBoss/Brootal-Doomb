@@ -1594,7 +1594,7 @@ CLASS Ashes2 : ACTOR {
 
 
 
-CLASS BasicGib : ACTOR { 
+CLASS BasicMarineGib1: actor { 
 	Default {
 		
 		Radius 6;
@@ -1603,18 +1603,6 @@ CLASS BasicGib : ACTOR {
 		+CLIENTSIDEONLY;
 		Mass 50;
 	}
-	States
-	{
-		Spawn:
-			TNT1 A 1;
-			Stop;
-	}
-}
-
-
-
-
-CLASS BasicMarineGib1: BasicGib { 
 	States
 	{
 		Spawn:
