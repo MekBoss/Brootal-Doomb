@@ -1126,9 +1126,9 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 			MARN A 0 A_GiveInventory("PlayerIsDead", 1);
 			tnt1 A 0 ThrustThingZ(0,60,0,1);
 			PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
-			PPOD A 0 A_SpawnItemEx("BasicMarineGib2", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
-			PPOD A 0 A_SpawnItemEx("BasicMarineGib3", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
-			PPOD A 0 A_SpawnItemEx("BasicMarineGib4", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
+			PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
+			PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
+			PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
 			tnt1 A 0 A_SpawnProjectile ("MuchMeatDeath", 0, 0, random (0, 360), 2, random (0, 160));
 			tnt1 A 0 ACS_Execute(580, 0, 0, 0, 0);//ACS 580 to 585 is the blood driping on screen
 			tnt1 A 0 ACS_Execute(581, 0, 0, 0, 0);
@@ -2892,9 +2892,9 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 		PVPF E 4;
 		tnt1 A 0 A_SpawnProjectile ("MeatDeath", 50, 0, random (0, 360), 2, random (0, 160))       ;
 		PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 50);
-		PPOD A 0 A_SpawnItemEx("BasicMarineGib2", 0, 0, 50);
-		PPOD A 0 A_SpawnItemEx("BasicMarineGib3", 0, 0, 50);
-		PPOD A 0 A_SpawnItemEx("BasicMarineGib4", 0, 0, 50);
+		PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 50);
+		PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 50);
+		PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 50);
 		tnt1 AA 0 A_SpawnProjectile ("XDeathArm1", 42, 0, random (0, 360), 2, random (0, 90));
 		PVPF EFGGGG 4;
 		//////////////////////////////////////////////////////

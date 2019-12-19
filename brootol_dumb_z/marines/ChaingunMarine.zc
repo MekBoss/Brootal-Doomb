@@ -625,9 +625,9 @@ CLASS Marine_Minigun: Marine_Rifle {
 			TNT1 A 0 {bfriendly = false;}
 			TNT1 A 0 A_SpawnProjectile ("MarineXDeath", 0, 0, random (0, 360), 2, random (0, 160));
 			PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
-			PPOD A 0 A_SpawnItemEx("BasicMarineGib2", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
-			PPOD A 0 A_SpawnItemEx("BasicMarineGib3", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
-			PPOD A 0 A_SpawnItemEx("BasicMarineGib4", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
+			PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
+			PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
+			PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
 			MHEA A 7 A_XScream;
 			MHEA B 7 A_NoBlocking;
 			TNT1 A 0 A_SpawnItemEx("RemoveMarineMinigun",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);

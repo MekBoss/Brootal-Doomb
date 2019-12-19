@@ -254,8 +254,8 @@ CLASS AteMarine: CurbstompedMarine {
 			TNT1 A 0 A_SpawnItem("MeatDeathSmall");
 			TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 15, 0, random (0, 360), 2, - random (0, 180));
 			TNT1 A 0 A_SpawnItem("RipGuts");
-			PPOD A 0 A_SpawnItemEx("BasicMarineGib3", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
-			PPOD A 0 A_SpawnItemEx("BasicMarineGib4", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
+			PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
+			PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
 			TNT1 A 0 A_SpawnItem("DeadRippedOffMarine");
 			Stop;
 	}
@@ -278,8 +278,8 @@ CLASS FuckedMarine: CurbstompedMarine {
 			TNT1 A 0 A_SpawnItem("MeatDeathSmall");
 			TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 15, 0, random (0, 360), 2, - random (0, 180));
 			TNT1 A 0 A_SpawnItem("RipGuts");
-			PPOD A 0 A_SpawnItemEx("BasicMarineGib3", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
-			PPOD A 0 A_SpawnItemEx("BasicMarineGib4", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
+			PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
+			PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
 			TNT1 A 0 A_SpawnItem("DeadRippedOffMarineRight");
 			Stop;
 			
@@ -305,7 +305,7 @@ CLASS DeadRippedOffMarine: CurbstompedMarine {
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_SpawnItem("MeatDeathSmall");
 			PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
-			PPOD A 0 A_SpawnItemEx("BasicMarineGib2", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
+			PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
 			TNT1 A 0 A_SpawnItem("GibsZ");
 			Stop;
 	}
@@ -354,8 +354,8 @@ CLASS MarineGotOwnedByImp: CurbstompedMarine {
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 15, 0, random (0, 360), 2, - random (0, 180));
 			TNT1 A 0 A_SpawnItem("MeatDeathSmall");
-			PPOD A 0 A_SpawnItemEx("BasicMarineGib3", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
-			PPOD A 0 A_SpawnItemEx("BasicMarineGib4", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
+			PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
+			PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
 			TNT1 A 0 A_SpawnItem("DeadRippedOffMarine");
 			Stop;
 	}

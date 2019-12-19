@@ -1615,9 +1615,6 @@ CLASS BasicGib : ACTOR {
 
 
 CLASS BasicMarineGib1: BasicGib { 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:
@@ -1626,64 +1623,12 @@ CLASS BasicMarineGib1: BasicGib {
 			TNT1 A 0 ThrustThingZ(0,40,0,1);
 			TNT1 A 0 A_SetAngle(random(0, 359));
 			TNT1 A 0 A_Recoil(3);
-			XDMG A -1;
+			XDMG A -1 {frame = random(0, 3);}
 			Stop;
 	}
 }
 
 
-CLASS BasicMarineGib2: BasicGib { 
-	Default {
-		
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 1;
-			TNT1 A 0 A_PlaySound("misc/xdeath4");
-			TNT1 A 0 ThrustThingZ(0,40,0,1);
-			TNT1 A 0 A_SetAngle(random(0, 359));
-			TNT1 A 0 A_Recoil(3);
-			XDMG B -1;
-			Stop;
-	}
-}
-
-
-CLASS BasicMarineGib3: BasicGib { 
-	Default {
-		
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 1;
-			TNT1 A 0 A_PlaySound("misc/xdeath4");
-			TNT1 A 0 ThrustThingZ(0,40,0,1);
-			TNT1 A 0 A_SetAngle(random(0, 359));
-			TNT1 A 0 A_Recoil(3);
-			XDMG C -1;
-			Stop;
-	}
-}
-
-
-CLASS BasicMarineGib4: BasicGib { 
-	Default {
-		
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 1;
-			TNT1 A 0 A_PlaySound("misc/xdeath4");
-			TNT1 A 0 ThrustThingZ(0,40,0,1);
-			TNT1 A 0 A_SetAngle(random(0, 359));
-			TNT1 A 0 A_Recoil(3);
-			XDMG D -1;
-			Stop;
-	}
-}
 
 
 	   
