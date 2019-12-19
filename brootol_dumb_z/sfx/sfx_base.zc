@@ -122,7 +122,7 @@ states
 	death:
 	xdeath:
 	crash:
-	//if have missile flag, dont die just go back reset state
+	//if have missile flag, dont die just go back and reset state
 		tnt1 a 0
 		{
 			changed_fields = 0;
