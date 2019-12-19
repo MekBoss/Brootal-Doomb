@@ -625,42 +625,34 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 			MARN A 0 A_JumpIfInventory("FistsSelected", 1, "FistsStand");
 			MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
 			MARN A 0 A_JumpIfInventory("CheckMarines", 1, "SpawnFriends");
-			//MARN A 0 ACS_Execute(620, 0, 0, 0, 0)
-			MARN D 0 A_JumpIf (vel.z > 0, "IsJumpin");
-			MARN D 0 A_JumpIf (vel.z < 0, "IsJumpin");
+			MARN D 0 ;
 			MARN D 3;
 			MARN A 0 A_JumpIfInventory("CheckMarines", 1, "SpawnFriends");
 			MARN D 2;
 			MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 			MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
-			MARN D 0 A_JumpIf (vel.Z > 0, "IsJumpin");
-			MARN D 0 A_JumpIf (vel.Z < 0, "IsJumpin");
+			MARN D 0 ;
 			MARN D 5;
 			MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 			MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
-			MARN D 0 A_JumpIf (vel.Z > 0, "IsJumpin");
-			MARN D 0 A_JumpIf (vel.Z < 0, "IsJumpin");
+			MARN D 0 ;
 			MARN D 5;
 			MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 			MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
-			MARN D 0 A_JumpIf (vel.Z > 0, "IsJumpin");
-			MARN D 0 A_JumpIf (vel.Z < 0, "IsJumpin");
+			MARN D 0 ;
 			
 			MARN E 5;
 			MARN E 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 			MARN E 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
-			tnt1 E 0 A_JumpIf (vel.Z > 0, "IsJumpin");
-			tnt1 E 0 A_JumpIf (vel.Z < 0, "IsJumpin");
+			MARN D 0 ;
 			MARN E 5;
 			MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 			MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
-			tnt1 A 0 A_JumpIf (vel.Z > 0, "IsJumpin");
-			tnt1 A 0 A_JumpIf (vel.Z < 0, "IsJumpin");
+			MARN D 0 ;
 			MARN E 5;
 			MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 			MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
-			tnt1 A 0 A_JumpIf (vel.Z > 0, "IsJumpin");
-			tnt1 A 0 A_JumpIf (vel.Z < 0, "IsJumpin");
+			MARN D 0 ;
 			MARN D 0 A_TakeInventory("UsedStamina", 30);
 			MARN A 0 A_JumpIfHealthLower(25, "HeavyWoundsSpawn");
 			MARN E 1;
@@ -671,48 +663,39 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 			MARN C 0 A_TakeInventory("ChainguyguyContinue", 1);
 			MARN C 0 A_JumpIfInventory("ADSMode", 1, "ADSStand");
 			MARN B 0 A_JumpIfInventory("FistsSelected", 1, "FistsMove");
-			
 			MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
-			
 			MARN A 4 A_SpawnItemEx("FootstepStrong", 0, 0, 40, 0, 0);
 			MARN A 0 spawn_blood_footprint();
-			
 			MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 			MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
-			MARN C 0 A_JumpIf (vel.Z > 0, "IsJumpin");
-			MARN B 0 A_JumpIf (vel.Z < 0, "IsJumpin");
+			MARN C 0 ;
+			MARN B 0 ;
 			MARN B 4;
 			MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 			MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
-			MARN B 0 A_JumpIf (vel.Z > 0, "IsJumpin");
-			MARN B 0 A_JumpIf (vel.Z < 0, "IsJumpin");
+			MARN B 0 ;
 			MARN C 4 A_SpawnItemEx("FootstepStrong", 0, 0, 40, 0, 0);
 			MARN C 0 spawn_blood_footprint();
-			
 			MARN C 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 			MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
-			MARN B 0 A_JumpIf (vel.Z > 0, "IsJumpin");
-			MARN A 0 A_JumpIf (vel.z < 0, "IsJumpin");
 			MARN B 4;
 			MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 			MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
-			MARN B 0 A_JumpIf (vel.z > 0, "IsJumpin");
-			MARN C 0 A_JumpIf (vel.z < 0, "IsJumpin");
+			MARN C 0 ;
 			MARN C 0 A_JumpIfHealthLower(25, "HeavyWounds");
 		Goto StandStill;
 
 
 		IsJumpin:
-			MARN A 3;
+			MARN A 1;
 			MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 			MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
 			tnt1 A 0 A_JumpIf (vel.z > 0, "InAir");
 			tnt1 A 0 A_JumpIf (vel.z < 0, "InAir");
-			Goto StandStill;
+		Goto StandStill;
 			
 		InAir:
-			MARJ A 1;
-			TNT1 A 0 A_JumpIf (vel.z == 0, "Land");
+			MARJ A 1 A_JumpIf (vel.z == 0, "Land");
 		Loop;
 			
 		Land:
@@ -725,8 +708,7 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 			
 		Kick:
 			tnt1 A 0 A_TakeInventory("KickHasHit",1);
-			tnt1 A 0 A_JumpIf (vel.z > 0, "AirKick");
-			tnt1 A 0 A_JumpIf (vel.z < 0, "AirKick");
+			tnt1 A 0 A_JumpIf (vel.z != 0, "AirKick");
 			tnt1 A 0 A_TakeInventory("KickHasHit",1);
 			PKIK AB 3 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 			PKIK CB 3 A_JumpIfInventory("KickHasHit", 1, "KickHit");
@@ -734,8 +716,7 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 			Goto StandStill;
 		RifleKick:
 			tnt1 A 0 A_TakeInventory("KickHasHit",1);
-			tnt1 A 0 A_JumpIf (vel.z > 0, "AirKick");
-			tnt1 A 0 A_JumpIf (vel.z < 0, "AirKick");
+			tnt1 A 0 A_JumpIf (vel.z != 0, "AirKick");
 			tnt1 A 0 A_TakeInventory("KickHasHit",1);
 			PKI1 AB 3 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 			PKI1 CB 3 A_JumpIfInventory("KickHasHit", 1, "KickHit");
@@ -765,8 +746,7 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 			tnt1 A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 			tnt1 A 0 A_JumpIfInventory("GotMeatShield", 1, "MeatShieldChecker");
 			tnt1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
-			
-			Goto StandStill;
+		Goto StandStill;
 			
 		SayOneLiner:
 			MARN A 1;
@@ -836,10 +816,6 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 			
 		HeavyWounds:
 			tnt1 A 0 A_JumpIfHealthLower(2, 2);
-			tnt1 A 0 A_Jump(256, 5);
-			tnt1 AA 0;
-			tnt1 A 0 A_Giveinventory("HealthBonus",1);
-			tnt1 AAA 0;
 			
 			MARN A 0 A_JumpIfInventory("FistsSelected", 1, "FistsMove");
 			MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
@@ -850,23 +826,13 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 			
 		HeavyWoundsSpawn:
 			tnt1 A 0 A_JumpIfHealthLower(2, 2);
-			tnt1 A 0 A_Jump(256, 5);
-			tnt1 AA 0;
-			tnt1 A 0 A_Giveinventory("HealthBonus",1);
-			tnt1 AAA 0;
-			//tnt1 A 0 ACS_Execute(532, 0, 0, 0, 0)//blood on screen
 			tnt1 A 0 A_SpawnItemEx("TinyBlood", 0, 0, 20, 0, 0);
 			Goto StandStill;
 			
 		FistsStand:
-			
 			tnt1 A 0 A_JumpIfInventory("HasImpShield", 1, "SeeImpShield");
 			tnt1 A 0 A_JumpIfInventory("HasZmanShield", 1, "SeeZmanShield");
 			tnt1 A 0 A_JumpIfInventory("HasSguyShield", 1, "SeeSguyShield");
-			
-			
-			
-			
 			tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
 			tnt1 A 0 A_JumpIfInventory("HasBarrel", 1, "BarrelStand");
 			tnt1 A 0 ACS_Execute(171, 0, 0, 0, 0);
@@ -875,10 +841,7 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 			tnt1 A 0 A_JumpIfInventory("advtaunting", 1, "FistTaunt");
 			tnt1 A 0 A_JumpIfInventory("oneliner", 1, "SayOneLiner");
 			
-			tnt1 A 0 A_JumpIf (vel.y > 0, "FistsMove");
-			tnt1 A 0 A_JumpIf (vel.x > 0, "FistsMove");
-			tnt1 A 0 A_JumpIf (vel.y < 0, "FistsMove");
-			tnt1 A 0 A_JumpIf (vel.x < 0, "FistsMove");
+			tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "FistsMove");
 			tnt1 A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft");
 			tnt1 A 0 A_JumpIfInventory("RollRight", 1, "RollRight");
 			tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
@@ -886,10 +849,7 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 			tnt1 A 0 A_JumpIfInventory("HasBarrel", 1, "BarrelStand");
 			PLA1 B 5;
 			
-			tnt1 A 0 A_JumpIf (vel.y > 0, "FistsMove");
-			tnt1 A 0 A_JumpIf (vel.x > 0, "FistsMove");
-			tnt1 A 0 A_JumpIf (vel.y < 0, "FistsMove");
-			tnt1 A 0 A_JumpIf (vel.x < 0, "FistsMove");
+			tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "FistsMove");
 			tnt1 A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft");
 			tnt1 A 0 A_JumpIfInventory("RollRight", 1, "RollRight");
 			tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
@@ -897,24 +857,18 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 			MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 			MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
 			PLA1 B 5;
-			tnt1 A 0 A_JumpIf (vel.y > 0, "FistsMove");
-			tnt1 A 0 A_JumpIf (vel.x > 0, "FistsMove");
-			tnt1 A 0 A_JumpIf (vel.y < 0, "FistsMove");
-			tnt1 A 0 A_JumpIf (vel.x < 0, "FistsMove");
+			tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "FistsMove");
 			tnt1 A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft");
 			tnt1 A 0 A_JumpIfInventory("RollRight", 1, "RollRight");
 			tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
 			tnt1 A 0 A_JumpIfInventory("Kicking", 1, "Kick");
 			PLA1 B 5;
-			tnt1 A 0 A_JumpIf (vel.y > 0, "FistsMove");
-			tnt1 A 0 A_JumpIf (vel.x > 0, "FistsMove");
-			tnt1 A 0 A_JumpIf (vel.y < 0, "FistsMove");
-			tnt1 A 0 A_JumpIf (vel.x < 0, "FistsMove");
+			tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "FistsMove");
 			tnt1 A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft");
 			tnt1 A 0 A_JumpIfInventory("RollRight", 1, "RollRight");
 			tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
 			tnt1 A 0 A_JumpIfInventory("Kicking", 1, "Kick");
-			Goto StandStill;
+		Goto StandStill;
 			
 			
 		FistsMove:
@@ -948,8 +902,7 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 			tnt1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
 			tnt1 A 0 A_JumpIfInventory("GotMeatShield", 1, "MeatShieldChecker");
 			tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
-			tnt1 A 0 A_JumpIf (vel.y == 0, "Spawn");
-			tnt1 A 0 A_JumpIf (vel.x == 0, "Spawn");
+			tnt1 A 0 A_JumpIf (vel.xy == (0, 0), "FistsMove");
 			
 			Goto See;
 			
@@ -957,72 +910,42 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 			
 		ADSStand:
 			MAR2 A 5;
-			MAR2 A 0 A_JumpIf (vel.y > 0, "ADSMove");
-			MAR2 A 0 A_JumpIf (vel.x > 0, "ADSMove");
-			MAR2 A 0 A_JumpIf (vel.y < 0, "ADSMove");
-			MAR2 A 0 A_JumpIf (vel.x < 0, "ADSMove");
-			MARN D 0 A_JumpIf (vel.z > 0, "IsJumpin");
-			MARN D 0 A_JumpIf (vel.z < 0, "IsJumpin");
+			tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "ADSMove");
 			MAR2 A 0 ACS_Execute(171, 0, 0, 0, 0);
 			MAR2 A 5;
 			MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 			MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
 			tnt1 A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft");
 			MAR2 A 0 A_JumpIfInventory("RollRight", 1, "RollRight");
-			MAR2 A 0 A_JumpIf (vel.y > 0, "ADSMove");
-			MAR2 A 0 A_JumpIf (vel.x > 0, "ADSMove");
-			MAR2 A 0 A_JumpIf (vel.y < 0, "ADSMove");
-			MAR2 A 0 A_JumpIf (vel.x < 0, "ADSMove");
-			MARN D 0 A_JumpIf (vel.z > 0, "IsJumpin");
-			MARN D 0 A_JumpIf (vel.z < 0, "IsJumpin");
+			tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "ADSMove");
 			MAR2 D 5;
-			MAR2 A 0 A_JumpIf (vel.y > 0, "ADSMove");
-			MAR2 A 0 A_JumpIf (vel.x > 0, "ADSMove");
-			MAR2 A 0 A_JumpIf (vel.y < 0, "ADSMove");
-			MAR2 A 0 A_JumpIf (vel.x < 0, "ADSMove");
-			MARN D 0 A_JumpIf (vel.z > 0, "IsJumpin");
-			MARN D 0 A_JumpIf (vel.z < 0, "IsJumpin");
+			tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "ADSMove");
 			MAR2 A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft");
 			MAR2 A 0 A_JumpIfInventory("RollRight", 1, "RollRight");
 			MAR2 D 5;
-			MAR2 A 0 A_JumpIf (vel.y > 0, "ADSMove");
-			MAR2 A 0 A_JumpIf (vel.x > 0, "ADSMove");
-			MAR2 A 0 A_JumpIf (vel.y < 0, "ADSMove");
-			MAR2 A 0 A_JumpIf (vel.x < 0, "ADSMove");
-			MARN D 0 A_JumpIf (vel.z > 0, "IsJumpin");
-			MARN D 0 A_JumpIf (vel.z < 0, "IsJumpin");
-			Goto StandStill;
+			tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "ADSMove");
+		Goto StandStill;
 			
 		ADSMove:
 			MAR2 A 5 A_JumpIfInventory("Kicking", 1, "Kick");
-			MARN D 0 A_JumpIf (vel.z > 0, "IsJumpin");
-			MARN D 0 A_JumpIf (vel.z < 0, "IsJumpin");
 			MAR2 B 5 A_JumpIfInventory("Kicking", 1, "Kick");
-			MARN D 0 A_JumpIf (vel.z > 0, "IsJumpin");
-			MARN D 0 A_JumpIf (vel.z < 0, "IsJumpin");
 			MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 			MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
 			MAR2 A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft");
 			MAR2 A 0 A_JumpIfInventory("RollRight", 1, "RollRight");
 			MAR2 A 0 A_SpawnItemEx("FootstepStrong", 0, 0, 40, 0, 0);
 			MAR2 C 5 A_JumpIfInventory("Kicking", 1, "Kick");
-			MARN D 0 A_JumpIf (vel.z > 0, "IsJumpin");
-			MARN D 0 A_JumpIf (vel.z < 0, "IsJumpin");
 			MAR2 B 5 A_JumpIfInventory("Kicking", 1, "Kick");
-			MARN D 0 A_JumpIf (vel.z > 0, "IsJumpin");
-			MARN D 0 A_JumpIf (vel.z < 0, "IsJumpin");
 			MAR2 A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft");
 			MAR2 A 0 A_JumpIfInventory("RollRight", 1, "RollRight");
 			MAR2 A 0 A_SpawnItemEx("FootstepStrong", 0, 0, 40, 0, 0);
-			MAR2 A 0 A_JumpIf (vel.y == 0, "Spawn");
-			MAR2 A 0 A_JumpIf (vel.x == 0, "Spawn");
-			Goto See;
+			tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "spawn");
+		Goto See;
 			
 			
 		BarrelMove:
 			tnt1 A 0 A_TakeInventory("Punching", 1);
-			tnt1 A 0 A_JumpIf (vel.y == 0, "BarrelStand");
-			tnt1 A 0 A_JumpIf (vel.x == 0, "BarrelStand");
+			tnt1 A 0 A_JumpIf (vel.xy == (0, 0), "BarrelStand");
 			PBAR A 8;
 			
 			tnt1 A 0 A_JumpIfInventory("Kicking", 1, "Kick");
@@ -1045,9 +968,8 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 			PBAR A 1;
 			tnt1 A 0 A_JumpIfInventory("Kicking", 1, "Kick");
 			tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
-			PLA3 A 0 A_JumpIf ((vel.x >= 1 || vel.x <= -1), "BarrelMove");
-			PLA3 A 0 A_JumpIf ((vel.y >= 1 || vel.x <= -1), "BarrelMove");
-			Goto StandStill;
+			tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "BarrelMove");
+		Goto StandStill;
 			
 		Pain:
 			tnt1 A 0 A_setblend("70, 0, 0", 0.2, 34);
@@ -1082,27 +1004,9 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 		Pain.SSG:
 		Pain.CutLess:
 		Pain.MonsterCutLess:
-			tnt1 A 0 A_Jump(255,"PBUL1","PBUL2","PBUL3","PBUL4","PBUL5","PBUL6");
-			Goto Pain;
 			//Scripts 611 to 616 are responsible for making the bullet damage effect on screen
-		PBUL1:
-			tnt1 A 0 ACS_Execute(611, 0, 0, 0, 0);
-			Goto Pain;
-		PBUL2:
-			tnt1 A 0 ACS_Execute(612, 0, 0, 0, 0);
-			Goto Pain;
-		PBUL3:
-			tnt1 A 0 ACS_Execute(613, 0, 0, 0, 0);
-			Goto Pain;
-		PBUL4:
-			tnt1 A 0 ACS_Execute(614, 0, 0, 0, 0);
-			Goto Pain;
-		PBUL5:
-			tnt1 A 0 ACS_Execute(615, 0, 0, 0, 0);
-			Goto Pain;
-		PBUL6:
-			tnt1 A 0 ACS_Execute(616, 0, 0, 0, 0);
-			Goto Pain;
+			tnt1 A 0 ACS_Execute(random(611, 616), 0, 0, 0, 0);
+		Goto Pain;
 			
 			
 			
@@ -2887,7 +2791,7 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 		//spawn height +20
 		TNT1 A 0;
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
-		TNT1 AAAAA 0 A_SpawnProjectile ("BloodMistBig", 0, 0, random (0, 360), 2, random (30, 90));
+		TNT1 AAAAA 0 A_SpawnProjectile ("Bloodmist", 0, 0, random (0, 360), 2, random (30, 90));
 		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
 		TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
@@ -3140,80 +3044,22 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 		// in the BLOODSPLASH lump.
 		
 	Pain.Blood:
-		tnt1 A 0 A_TakeInventory("BloodSplasherz", 1);
-		//tnt1 A 0 A_Giveinventory("BloodOnVisor",1);
-		//tnt1 A 0 A_Giveinventory("GiveHealth",1)
+		tnt1 A 0 A_Giveinventory("BloodOnVisor",1);
 		tnt1 A 0 A_GiveInventory("MeatAmmo", 1);
-		tnt1 A 0 A_Jump(255,"Bled1","Bled2","Bled3","Bled4","Bled5","Bled6");
-		Goto Bled1;
-		
-	Bled1:
-		tnt1 A 0 ACS_Execute(580, 0, 0, 0, 0);
-		Goto StandStill;
-	Bled2:
-		tnt1 A 0 ACS_Execute(581, 0, 0, 0, 0);
-		Goto StandStill;
-	Bled3:
-		tnt1 A 0 ACS_Execute(582, 0, 0, 0, 0);
-		Goto StandStill;
-	Bled4:
-		tnt1 A 0 ACS_Execute(583, 0, 0, 0, 0);
-		Goto StandStill;
-	Bled5:
-		tnt1 A 0 ACS_Execute(584, 0, 0, 0, 0);
-		Goto StandStill;
-	Bled6:
-		tnt1 A 0 ACS_Execute(585, 0, 0, 0, 0);
-		Goto StandStill;
-		
+		tnt1 A 0 ACS_Execute(random(580, 585), 0, 0, 0, 0);
+	Goto StandStill;
+
 	Pain.BlueBlood:
 		//tnt1 A 0 A_Giveinventory("BlueBloodOnVisor",1);
 		tnt1 A 0 A_Giveinventory("GiveHealth",1);
-		tnt1 A 0 A_Jump(255,"BBled1","BBled2","BBled3","BBled4","BBled5","BBled6");
-		Goto BBled1;
-	BBled1:
-		tnt1 A 0 ACS_Execute(570, 0, 0, 0, 0);
-		Goto StandStill;
-	BBled2:
-		tnt1 A 0 ACS_Execute(571, 0, 0, 0, 0);
-		Goto StandStill;
-	BBled3:
-		tnt1 A 0 ACS_Execute(572, 0, 0, 0, 0);
-		Goto StandStill;
-	BBled4:
-		tnt1 A 0 ACS_Execute(573, 0, 0, 0, 0);
-		Goto StandStill;
-	BBled5:
-		tnt1 A 0 ACS_Execute(574, 0, 0, 0, 0);
-		Goto StandStill;
-	BBled6:
-		tnt1 A 0 ACS_Execute(575, 0, 0, 0, 0);
-		Goto StandStill;
+		tnt1 A 0 ACS_Execute(random(570, 575), 0, 0, 0, 0);
+	Goto StandStill;
 		
 	Pain.GreenBlood:
 		//tnt1 A 0 A_Giveinventory("GreenBloodOnVisor",1);
 		tnt1 A 0 A_Giveinventory("GiveHealth",1);
-		tnt1 A 0 A_Jump(255,"GBled1","GBled2","GBled3","GBled4","GBled5","GBled6");
-		Goto Bled1;
-		
-	GBled1:
-		tnt1 A 0 ACS_Execute(560, 0, 0, 0, 0);
-		Goto StandStill;
-	GBled2:
-		tnt1 A 0 ACS_Execute(561, 0, 0, 0, 0);
-		Goto StandStill;
-	GBled3:
-		tnt1 A 0 ACS_Execute(562, 0, 0, 0, 0);
-		Goto StandStill;
-	GBled4:
-		tnt1 A 0 ACS_Execute(563, 0, 0, 0, 0);
-		Goto StandStill;
-	GBled5:
-		tnt1 A 0 ACS_Execute(564, 0, 0, 0, 0);
-		Goto StandStill;
-	GBled6:
-		tnt1 A 0 ACS_Execute(565, 0, 0, 0, 0);
-		Goto StandStill;
+		tnt1 A 0 ACS_Execute(random(560, 565), 0, 0, 0, 0);
+	Goto StandStill;
 		
 		
 		
@@ -3287,22 +3133,20 @@ CLASS Doomer : doomber Replaces DoomPlayer {
 		
 		
 	Salutes1:
-		tnt1 A 0;
+		tnt1 A 0 A_TakeInventory("Salute1",1);
 		tnt1 A 0 A_PlaySound ("DSSALUTE");
 		MWAV BCDEFEFDCB 7;
-		tnt1 A 0 A_TakeInventory("Salute1",1);
 		Goto StandStill;
 		
 	Salutes2:
-		tnt1 A 0;
+		tnt1 A 0 A_TakeInventory("Salute2",1);
 		tnt1 A 0 A_PlaySound ("DSSALUTE");
 		MWAV IJK 4;
 		MWAV LMNNML 3;
 		MWAV LMNNML 3;
 		MWAV LMNNML 3;
 		MWAV KJI 4;
-		tnt1 A 0 A_TakeInventory("Salute2",1);
-		Goto StandStill;
+	Goto StandStill;
 		
 		
 		
@@ -3562,15 +3406,14 @@ CLASS PlayerFlyingBlood : ACTOR {
     States
     {
 	Spawn:
-		tnt1 A 0 A_JumpIf(waterlevel > 1, "Splash");
+		tnt1 A 0 A_JumpIf(waterlevel > 1, "null");
 		XDT1 ABCD 4 A_SpawnItem("Brutal_FlyingBloodTrail",0,0,0,1);
-		loop;
-	Splash:
-		stop;
+	loop;
+
 	Death:
 		tnt1 A 1 A_SpawnItem("Brutal_BloodSpot",0,0,0,1);
 		XDT1 EFGHIJKL 3;
-		stop;
+	stop;
 }
 }
 

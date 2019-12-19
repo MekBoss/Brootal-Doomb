@@ -172,6 +172,13 @@ override void tick()
 	check_blood_pool();
 }
 
+override void CheckJump()
+{
+	super.CheckJump();
+	if(vel.z != 0)
+		setstatelabel("IsJumpin");
+}
+
 }
 
 
