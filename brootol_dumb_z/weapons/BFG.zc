@@ -33,6 +33,7 @@ States
 		BFUG A -1;
 	Stop;
 
+
 	Select:
 		BFGG A 1 A_Raise;
 	wait;
@@ -48,9 +49,7 @@ States
 	ready_loop:
 		BFGG A 4 A_WeaponReady(WRF_ALLOWRELOAD);
 	loop;
-		
-		
-		
+
 	Fire:
 		TNT1 A 0 A_PlaySound("BFGCHARGE");
 		BFGC ABABABABABABABAB 2 BRIGHT
@@ -82,48 +81,9 @@ States
 	Goto Ready_loop;
 
 
-
-
-
-
-
-
 	Deselect:
 		BFGG A 1 A_Lower;
 	wait;
-
-
-
-
-
-
-
-
-
-
-	Flash:
-		TNT1 A 0;
-		TNT1 A 0 A_JumpIfInventory("FlashlightAction", 1, "CheckFlashlight");
-		TNT1 A 1;
-		TNT1 A 0 A_JumpIfInventory("IsFlashlightOn", 1, "FlashOn");
-		Goto Flash;
-	FlashOn:
-		TNT1 A 0 A_FireProjectile("FlashlightProjectile", 0, 0, 0, 0, 0, 0);
-		TNT1 A 0 A_FireProjectile("FlashlightSource", 0, 0, 0, 0, 0, 0);
-		Goto Flash;
-	CheckFlashLight:
-		TNT1 A 1;
-		TNT1 A 0 A_TakeInventory("FlashlightAction");
-		TNT1 A 0 A_JumpIfInventory("IsFlashlightOn", 1, "TurnOffFlashlight");
-		TNT1 A 0 A_GiveInventory("IsFlashlightOn", 1);
-		Goto Flash;
-	TurnOffFlashlight:
-		TNT1 A 0 A_TakeInventory("IsFlashlightOn", 1);
-		Goto Flash;
-		
-	Steady:
-		TNT1 A 1;
-		Goto Ready;
 }
 
 }
@@ -156,7 +116,6 @@ States
 		
 	Death:
 		TNT1 A 0 Radius_Quake(4,34,0,12,0);
-		
 		TNT1 A 0 Bright A_SpawnItem("GreenShockWave",0,0,0);
 		EXPL a 0
 		{
@@ -243,9 +202,8 @@ States
 
 
 
-CLASS SuperBFGExtra : BFGExtra Replaces BFGExtra { 
+CLASS SuperBFGExtra : actor Replaces BFGExtra { 
 Default {
-	
 	+NoBlockMap;
 	+NoGravity;
 	RenderStyle "Add";
