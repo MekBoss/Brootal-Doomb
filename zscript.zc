@@ -1,5 +1,247 @@
 version "3.7.2"
 
+// IF YOU WANT TO USE STUFF FROM THIS MOD, GIVE ME CREDITS
+
+//Ok
+//Change my mind after millions of "tnt1 a 0"
+//Or not
+
+CLASS EnemyMemory : Inventory { 
+	Default {
+		
+		inventory.maxamount 60;
+	}
+}
+
+CLASS CantFire : Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+
+CLASS LookingForPlayer : Inventory { 
+	Default {
+		
+		inventory.maxamount 30;
+	}
+}
+
+
+
+
+
+
+
+
+//MeatShields
+
+
+//Enemies
+//ST Monsters
+
+//MISC
+
+
+
+//Player Classes
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CLASS oneliner: Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+
+CLASS advtaunting: Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+
+
+CLASS FistsSelected: Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+CLASS ShotgunSelected: Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+CLASS MinigunSelected: Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+CLASS SSGSelected: Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+CLASS RocketLauncherSelected: Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+CLASS GrenadeLauncherSelected: Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+
+CLASS PlasmaGunSelected: Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+CLASS RailGunSelected: Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+
+CLASS BFGSelected: Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+CLASS BFG10KSelected: Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+
+CLASS SubMachineGunSelected: Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+
+CLASS FlameCannonSelected: Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+
+CLASS RevenantLauncherSelected: Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+CLASS FallingHeight : Inventory { 
+	Default {
+		
+		inventory.maxamount 100;
+	}
+}
+
+
+CLASS LostSoulSelected: Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+
+
+CLASS DeathTimer1 : Inventory { 
+	Default {
+		
+		inventory.maxamount 120;
+	}
+}
+
+
+CLASS Timer555 : Inventory { 
+	Default {
+		
+		inventory.maxamount 555;
+	}
+}
+
+
+
+
+CLASS TargetIsACyberdemon : Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+
+CLASS TargetIsAMastermind : Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+CLASS TargetIsABaronOfHell : Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+CLASS TargetIsAdoomb_fatso : Inventory { 
+	Default {
+		
+		inventory.maxamount 1;
+	}
+}
+
+
 //monsters base must go before gore
 //because gore base inherits from monster base
 #include "brootol_dumb_z/monsters/monster_base.zc"
@@ -39,6 +281,11 @@ version "3.7.2"
 
 #include "brootol_dumb_z/weapons/DUALRIFLE.zc"
 #include "brootol_dumb_z/weapons/DUALPLASMA.zc"
+#include "brootol_dumb_z/weapons/IMPSHIELD.zc"
+#include "brootol_dumb_z/weapons/ZMANSHIELD.zc"
+#include "brootol_dumb_z/weapons/SGUYSHIELD.zc"
+#include "brootol_dumb_z/weapons/MP40.zc"
+#include "brootol_dumb_z/weapons/EXTRA.zc"
 
 
 //items
@@ -95,6 +342,8 @@ version "3.7.2"
 #include "brootol_dumb_z/monsters/DEMON/DEMON.zc"
 #include "brootol_dumb_z/monsters/DEMON/DEMON_gore.zc"
 
+#include "brootol_dumb_z/monsters/SPECTRE.zc"
+
 #include "brootol_dumb_z/monsters/KNIGHT/KNIGHT.zc"
 #include "brootol_dumb_z/monsters/KNIGHT/KNIGHT_gore.zc"
 
@@ -125,6 +374,13 @@ version "3.7.2"
 #include "brootol_dumb_z/monsters/bosses/CYBERDEMON.zc"
 #include "brootol_dumb_z/monsters/bosses/cyber_gore.zc"
 #include "brootol_dumb_z/monsters/bosses/MASTERMIND.zc"
+#include "brootol_dumb_z/monsters/NAZIS.zc"
+#include "brootol_dumb_z/monsters/BELPHEGOR.zc"
+#include "brootol_dumb_z/monsters/JUGGERNAUT.zc"
+#include "brootol_dumb_z/monsters/EEEVILLL.zc"
+
+
+
 
 #include "brootol_dumb_z/player/proto_PLAYER.zc"
 #include "brootol_dumb_z/player/PLAYER.zc"
@@ -136,6 +392,8 @@ version "3.7.2"
 #include "brootol_dumb_z/marines/plasmagunmarine.zc"
 #include "brootol_dumb_z/marines/rocketlaunchermarine.zc"
 #include "brootol_dumb_z/marines/shotgunmarine.zc"
+
+
 
 /*
 check difficlty
@@ -153,6 +411,7 @@ set acsreturn value in sklil definition
 #include "brootol_dumb_z/actors_dump/stealthmonsters.zc"
 #include "brootol_dumb_z/actors_dump/teleport.zc"
 #include "brootol_dumb_z/actors_dump/water.zc"
+#include "brootol_dumb_z/actors_dump/TRACERS.zc"
 
 
 
