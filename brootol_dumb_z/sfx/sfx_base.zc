@@ -1,8 +1,7 @@
 class visual_sfx : actor
 {
 protected bool show_something;
-protected state off_state, reset_cond;
-//if affect spawn own effect
+//if effect spawn own effect
 protected eventhandler sfx;
 
 protected visual_sfx doomb_show_effect(statelabel effect_name, vector3 offset = (0, 0, 0), vector3 velocity = (0, 0, 0), vector2 visual_size = (double.nan, double.nan), double translucency = double.nan)
@@ -19,13 +18,6 @@ void set_event(eventhandler en)
 {
 	if(en.getclassname() == "doomb_sfx_main" )
         sfx = en;
-}
-
-override void postbeginplay()
-{
-	super.postbeginplay();
-	off_state = findstate("off");
-	reset_cond = findstate("reset_condition");
 }
 
 bool is_show_something() const

@@ -162,7 +162,7 @@ CLASS HandGrenade : doomb_boolet_base {
 			TNT1 A 0 A_PlaySound("explosion", 2);
 			TNT1 A 0 A_Explode(200,800, damagetype:"Explosive_Impact");
 			TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -15);
-			TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			TNT1 A 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			TNT1 A 0 A_Explode(160,200);
 			TNT1 AAAAAA 0 A_SpawnProjectile ("SmallExplosionSpawner", 20, 0, random (0, 360), 2, - random (0, 180));
 			TNT1 AAAAAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );

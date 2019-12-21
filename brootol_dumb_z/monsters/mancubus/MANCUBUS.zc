@@ -426,7 +426,7 @@ CLASS BigFireBall : doomb_boolet_base Replaces Fatshot {
 		Death:
 			TNT1 A 0 A_Explode(10, 50, 0);
 		ExplosionEffect:
-			TNT1 AAAA 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			TNT1 AAAA 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			TNT1 AAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			EXPL AAA 0 A_SpawnProjectile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, -random(0, 90));
 			FRFX ZZZ 0 BRIGHT A_SpawnProjectile ("BigBlackSmoke", 2, 0, random (0, 360), 2, -random(0, 30));

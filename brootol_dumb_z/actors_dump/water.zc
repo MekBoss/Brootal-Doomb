@@ -7,47 +7,14 @@ CLASS UnderwaterExplosion : ACTOR {
 	states
 	{
 		Spawn:
-			TNT1 A 1;
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "Stap");
-			
 			TNT1 AAAA 0 A_SpawnProjectile ("WaterParticleXSpawner", 0, 0, random (0, 360), 2, random (60, 130));
 			TNT1 AAAAA 0 A_SpawnProjectile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180));
-			TNT1 AAAAA 0 A_SpawnProjectile ("WaterExplosionPressure", 0, 0, random (0, 360), 2, random (0, 360));
 			TNT1 A 0 A_SpawnProjectile ("WaterExplosionPressure2", 0, 0, random (0, 360), 2, random (0, 360));
-			TNT1 AAAAAAAAAA 0 A_SpawnProjectile ("EXPLOSIONBUBULZ", 0, 0, random (0, 360), 2, random (180, 360));
-			Stop;
-			
-		Stap:
-			TNT1 A 0;
-			Stop;
+			TNT1 AAAAAAAAAA 0 A_SpawnProjectile ("BUBULZ", 0, 0, random (0, 360), 2, random (180, 360));
+		Stop;
 	}
 }
 
-
-CLASS SmallUnderwaterExplosion : ACTOR { 
-	Default {
-		
-		+NOCLIP;
-		+NOGRAVITY;
-	}
-	states
-	{
-		Spawn:
-			TNT1 A 1;
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "Stap");
-			
-			TNT1 A 0 A_SpawnProjectile ("WaterParticleXSpawner", 0, 0, random (0, 360), 2, random (60, 130));
-			TNT1 AAAA 0 A_SpawnProjectile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180));
-			TNT1 AA 0 A_SpawnProjectile ("WaterExplosionPressure", 0, 0, random (0, 360), 2, random (0, 360));
-			TNT1 A 0 A_SpawnProjectile ("WaterExplosionPressure2", 0, 0, random (0, 360), 2, random (0, 360));
-			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("EXPLOSIONBUBULZ", 0, 0, random (0, 360), 2, random (180, 360));
-			Stop;
-			
-		Stap:
-			TNT1 A 0;
-			Stop;
-	}
-}
 
 
 
@@ -61,16 +28,9 @@ CLASS UnderwaterHitPuff : ACTOR {
 	states
 	{
 		Spawn:
-			TNT1 A 1;
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "Stap");
-			
 			TNT1 A 0 A_SpawnProjectile ("WaterParticleXTinySpawner", 0, 0, random (0, 360), 2, random (60, 130));
 			TNT1 A 0 A_SpawnProjectile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180));
-			TNT1 A 0 A_SpawnProjectile ("EXPLOSIONBUBULZ", 0, 0, random (0, 360), 2, random (180, 360));
-			Stop;
-			
-		Stap:
-			TNT1 A 0;
+			TNT1 A 0 A_SpawnProjectile ("BUBULZ", 0, 0, random (0, 360), 2, random (180, 360));
 			Stop;
 	}
 }
@@ -80,7 +40,6 @@ CLASS UnderwaterHitPuff : ACTOR {
 
 CLASS LiquidParticleX : ACTOR { 
 	Default {
-		
 		Height 1;
 		Radius 1;
 		Mass 0;
@@ -105,7 +64,6 @@ CLASS LiquidParticleX : ACTOR {
 	{
 		Spawn:
 			TNT1 A 1;
-		Stand:
 			LIQU ABCDDDDDDDDDDDDDDDDDDD 4;
 			Stop;
 		Death:
@@ -144,13 +102,10 @@ CLASS WaterParticleXSpawner : ACTOR {
 		SurfaceSpawn:
 			TNT1 AAAAAAAAAAAA 0 A_SpawnItem("SpawnLiquidParticleX");
 			TNT1 AAAA 1 A_SpawnItem("SpawnLiquidParticleX");
-			
-			Stop;
+		Stop;
+
 		Death:
-			Stop;
-		XDeath:
-			TNT1 A 0;
-			Stop;
+		Stop;
 	}
 }
 
@@ -195,98 +150,14 @@ CLASS BUBULZ : ACTOR {
 	{
 		Spawn:
 			TNT1 A 0;
-			TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2");
+			TNT1 A 0 {frame = randompick(0, 1);}
 		Spawn1:
-			TNT1 A 0 ThrustThingZ(0,2,0,1);
-			BUBL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 Bright A_JumpIf(waterlevel < 1, "Death");
-			Stop;
-		Spawn2:
-			TNT1 A 0 ThrustThingZ(0,2,0,1);
-			BUBL BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1 Bright A_JumpIf(waterlevel < 1, "Death");
-			Loop;
-			
-		Death:
-			TNT1 A 0;
-			Stop;
-	}
-}
-
-
-
-CLASS EXPLOSIONBUBULZ: BUBULZ { 
-	Default {
-		
-		Speed 10;
-		+NOTELEPORT;
-	}
-	States
-	{
-		Spawn:
-			BUBL A 10;
-			TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2");
-		Spawn1:
-			
-			BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL A 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1 Bright A_JumpIf(waterlevel < 1, "Death");
-			Stop;
-		Spawn2:
-			BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL B 1 BRIGHT A_JumpIf(waterlevel < 1, "Death");
-			TNT1 A 0 ThrustThingZ(0,4,0,1);
-			BUBL BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1 Bright A_JumpIf(waterlevel < 1, "Death");
-			Stop;
-			
-		Death:
-			TNT1 A 0;
-			Stop;
+			BUBL "#" 1 {vel.z += 1;}
+			tnt1 a 0
+			{
+				If(waterlevel > 1) setstatelabel("spawn1");
+			}
+		Stop;
 	}
 }
 
@@ -297,40 +168,7 @@ CLASS EXPLOSIONBUBULZ: BUBULZ {
 
 
 
-CLASS WaterExplosionPressure : ACTOR { 
-	Default {
-		
-		Radius 0;
-		Height 0;
-		Alpha 1.0;
-		RenderStyle "Add";
-		Scale 2.0;
-		Speed 2;
-		+NOBLOCKMAP;
-		+NOTELEPORT;
-		+DONTSPLASH;
-		+MISSILE;
-		+FORCEXYBILLBOARD;
-		+CLIENTSIDEONLY;
-		Damage 0;
-		+NOINTERACTION;
-		+NOTELEPORT;
-	}
-	States
-	{
-		Spawn:
-			SMOK A 0;
-			Goto Death;
-		Death:
-			
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "Stap");
-			SMOK BCDEEFGHI 3;
-			SMOK JKLMNOPQR 1;
-		Stap:
-			TNT1 A 0;
-			Stop;
-	}
-}
+
 
 
 CLASS WaterExplosionPressure2 : ACTOR { 
@@ -355,15 +193,8 @@ CLASS WaterExplosionPressure2 : ACTOR {
 	States
 	{
 		Spawn:
-			SMOK A 0;
-			Goto Death;
-		Death:
-			
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "Stap");
 			SMOK ABCDEFGHIJKLMNOPQR 1;
-		Stap:
-			TNT1 A 0;
-			Stop;
+		stop;
 	}
 }
 
@@ -385,8 +216,8 @@ CLASS WaterParticleXTinySpawner: WaterParticleXSpawner {
 			
 		SurfaceSpawn:
 			TNT1 AAAAAAA 0 A_SpawnProjectile ("LiquidParticleXSmall", 0, 0, random (0, 360), 2, random (0, 360));
-			
-			Stop;
+		Stop;
+
 		Death:
 			Stop;
 		XDeath:
@@ -395,20 +226,6 @@ CLASS WaterParticleXTinySpawner: WaterParticleXSpawner {
 	}
 }
 
-CLASS SpawnLiquidParticleXSmall : ACTOR { 
-	Default {
-		
-		+NOCLIP;
-		+NOGRAVITY;
-		+NOTELEPORT;
-	}
-	states
-	{
-		Spawn:
-			TNT1 AAAAAAA 0 A_SpawnProjectile ("LiquidParticleXSmall", 0, 0, random (0, 360), 2, random (0, 360));
-			Stop;
-	}
-}
 
 
 
@@ -439,7 +256,6 @@ CLASS LiquidParticleXSmall : ACTOR {
 	{
 		Spawn:
 			TNT1 A 1;
-		Stand:
 			LIQU ABCDDDDDDD 4;
 			Stop;
 		Death:
@@ -555,10 +371,10 @@ CLASS WaterSplashBase2 : ACTOR {
 		+DONTSPLASH;
 		+NOGRAVITY;
 		+THRUACTORS;
-		+SHOOTABLE;
 		+NOBLOOD;
 		+BLOODLESSIMPACT;
 		+NODAMAGETHRUST;
+		+noblockmap
 		Health 100;
 		DamageFactor "CauseWaterSplash", 99.0;
 		Damagetype "CauseObjectsToSplash";
@@ -569,11 +385,9 @@ CLASS WaterSplashBase2 : ACTOR {
 			TNT1 FFFFFF 0 A_SpawnProjectile ("WaterParticleX", 2, random(-5,5), random (0, 360), 2, random (50, 140));
 			TNT1 FFFFFF 0 A_SpawnProjectile ("WaterParticleXFaster", 2, random(-5,5), random (0, 360), 2, random (50, 140));
 			TNT1 A 0 A_Explode(2, 6);
-			SPSH HI 6;
-			TNT1 A 0 {bSHOOTABLE = false;}
-			SPSH HI 6;
-			TNT1 A 0 A_NoBlocking;
-			Stop;
+			SPSH EFGHIJK 6;
+		Stop;
+
 		Death.CauseWaterSplash:
 			tNT1 A 0 A_SpawnProjectile ("WaterParticleXSpawner", 0, 0, random (0, 360), 2, random (80, 110));
 			TNT1 A 0 A_SpawnItem("GiantWaterRicochet");

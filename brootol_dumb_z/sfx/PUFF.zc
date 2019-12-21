@@ -128,7 +128,7 @@ CLASS RicoChet : visual_sfx {
 			TNT1 A 0;
 			TNT1 A 0 A_CheckFloor("SpawnFloor");
 			TNT1 A 0 A_SpawnItem ("YellowFlareSmall", 0);
-			TNT1 A 0 A_SpawnItemEx ("UnderwaterHitPuff",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			TNT1 A 0 {if(waterlevel > 1) spawn("UnderwaterHitPuff", pos:self.pos); }
 			TNT1 AAAAAAAAAA 0 doomb_show_effect("ShrapnelParticle", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(-0.3, 0.3)));
 			PUFF A 0 bright A_PlaySound("ricochet/hit");
 			TNT1 AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
@@ -159,7 +159,7 @@ CLASS RicoChet : visual_sfx {
 			TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "SpawnWater");
 			TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "SpawnSlime");
 			
-			TNT1 A 0 A_SpawnItemEx ("UnderwaterHitPuff",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			TNT1 A 0 {if(waterlevel > 1) spawn("UnderwaterHitPuff", pos:self.pos); }
 			TNT1 AAAAAAAAAA 0 doomb_show_effect("ShrapnelParticle", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3),  frandom(-0.3, 0.3)));
 			PUFF A 0 bright A_PlaySound("ricochet/hit");
 			IPF2 GGHH 1 bright A_SpawnItem ("YellowFlareSmall", 0);
@@ -195,7 +195,7 @@ CLASS RicoChetMinor: RicoChet {
 		Spawn:
 			TNT1 A 0;
 			TNT1 A 0 A_SpawnItem ("YellowFlareSmall", 0);
-			TNT1 A 0 A_SpawnItemEx ("UnderwaterHitPuff",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			TNT1 A 0 {if(waterlevel > 1) spawn("UnderwaterHitPuff", pos:self.pos); }
 			TNT1 AAA 0 doomb_show_effect("ShrapnelParticle", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3),  frandom(-0.3, 0.3)));
 			PUFF A 0 bright A_PlaySound("ricochet/hit");
 			TNT1 AA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );

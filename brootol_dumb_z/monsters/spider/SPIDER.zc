@@ -213,7 +213,7 @@ CLASS Arachnotron1 : doomb_monster_base replaces Arachnotron {
 		Death.Crush:
 		XDeath:
 			BSPI J 4;
-			TNT1 A 0 A_SpawnItemEx ("ExplosionFlareSpawner",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			TNT1 A 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			TNT1 AAAAAA 0 A_SpawnProjectile ("SmallExplosionSpawner", 20, 0, random (0, 360), 2, - random (0, 180));
 			
 			TNT1 A 0 A_Jump(64, "XDeathRare");

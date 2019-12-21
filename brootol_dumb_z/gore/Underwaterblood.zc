@@ -31,13 +31,7 @@ CLASS Underblood1 : ACTOR {
 	{
 		Spawn:
 			tnt1 a 0 nodelay {scale *= frandom(1.4, 2.2);}
-			BSP4 ABCDEFGHIJKLMNOPQRSTUVWXYZ 2 A_JumpIf(waterlevel < 1, "Splash");
-			Stop;
-			
-		Splash:
-			stop;
-		Death:
-			TNT1 A 0;
-			Stop;
+			BSP4 ABCDEFGHIJKLMNOPQRSTUVWXYZ 2 A_JumpIf(waterlevel < 1, "null");
+		Stop;
 	}
 }

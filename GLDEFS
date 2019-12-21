@@ -1045,7 +1045,7 @@ pulselight ROCKETLIGHT
 
 
 
-object ExplosionFlareSpawner
+object NewfagExplosionFlare
 {
     frame L2NR { light EXPLOSIONFLASH }
 }
