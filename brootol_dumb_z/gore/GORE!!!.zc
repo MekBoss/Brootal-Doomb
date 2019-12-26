@@ -344,7 +344,6 @@ CLASS XDeath2: XDeath1 {
 			
 		SpawnFloor:
 			XME1 E 1;
-			TNT1 A 0 ACS_ExecuteAlways(798, 0, 0, 0, 0);//Check Effects
 			XME1 E 3;
 			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
 		Living:
@@ -388,7 +387,6 @@ CLASS XDeath3: XDeath1 {
 			
 		SpawnFloor:
 			XME2 E 1;
-			TNT1 A 0 ACS_ExecuteAlways(798, 0, 0, 0, 0);//Check Effects
 			XME2 E 3;
 			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
 		Living:
@@ -431,7 +429,6 @@ CLASS XDeath4: XDeath1 {
 			
 		Death1:
 			TNT1 A 0;
-			TNT1 A 0 ACS_ExecuteAlways(798, 0, 0, 0, 0);//Check Effects
 			XME3 GH 3;
 			XME3 A 1;
 			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
@@ -470,7 +467,6 @@ CLASS XDeath5: XDeath1 {
 		Death:
 			TNT1 AAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180));
 			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
-			TNT1 A 0 ACS_ExecuteAlways(798, 0, 0, 0, 0);//Check Effects
 			XME5 E 3;
 		Living:
 			XME5 E 800;//duration
@@ -896,10 +892,6 @@ CLASS Instestin : ACTOR {
 			
 			GUTS E 1;
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Water");
-			TNT1 A 0 ACS_ExecuteAlways(798, 0, 0, 0, 0);//Check Effects
-			Goto Rest;
-			
-			
 		Rest:
 			TNT1 A 0;
 			TNT1 A 0 A_Jump(255, "Rest1", "Rest2");

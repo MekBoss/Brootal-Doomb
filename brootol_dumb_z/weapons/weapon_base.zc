@@ -1,4 +1,4 @@
-class doomb_weapon_base : weapon
+class doomb_weapon_base : weapon abstract
 {
 //switch for weapon condition
 protected uint dw_state;
@@ -26,15 +26,34 @@ protected void doomb_weapon_actions()
             dw_state = DWF_NONE;
 		break;
 
-        default:
+        case DWF_TAUNT : 
+            owner.Player.SetPSprite(PSP_WEAPON, self.FindState("taunt") );
+            dw_state = DWF_NONE;
+		break;
+        
+        case DWF_SALUTE : 
+            owner.Player.SetPSprite(PSP_WEAPON, self.FindState("salute") );
+            dw_state = DWF_NONE;
+		break;
+		
+		default:
+            dw_state = DWF_NONE;
 		break;
     }
+}
+
+protected bool is_self_valid_weapon()
+{
+	if(owner && owner.player && !owner.bcorpse && owner.health > 0 && owner.player.readyweapon == self)
+		return true;
+
+	return false;
 }
 
 //check for special actions here, like kick or grenade throws
 override void doeffect()
 {
-	if(owner.player.readyweapon == self)
+	if(is_self_valid_weapon() )
 	{
 		if(self.in_specific_state == false)
 		{
@@ -45,8 +64,7 @@ override void doeffect()
                     doomb_weapon_actions();
 				}
 
-            dw_state = DWF_NONE;
-				
+				dw_state = DWF_NONE;
 			}
 		}
 	}
@@ -311,6 +329,7 @@ protected visual_sfx doomb_show_effect(statelabel effect_name, vector3 offset = 
 	return (visual_sfx)(doomb_sfx_main(self.sfx).show_some_effect(owner, effect_name, oo, v, visual_size, translucency) );
 }
 
+
 }
 
 
@@ -320,9 +339,101 @@ enum DOOMB_WEAPON_FLAGS
     DWF_KICK = 1,
     DWF_GRENADE,
     DWF_DUALWIELD,
-    DWF_UNLOAD
+    DWF_UNLOAD,
+    DWF_TAUNT,
+    DWF_SALUTE
 };
 
+
+
+class doomb_dual_weapon_base : doomb_weapon_base abstract
+{
+enum wepons
+{
+	LEFT_WEAPON = -2,
+	RIGHT_WEAPON = 2
+}
+enum doomb_dual_fire_states
+{
+	DDF_NONE = 0,
+	DDF_PRIMARY = 1,
+	DDF_ALT = 1 << 1
+};
+protected uint doomb_dual_weapon_state;
+
+
+protected void doomb_dual_primary_fire()
+{
+	if(owner.player && owner.player.cmd.buttons & BT_ATTACK && !(doomb_dual_weapon_state & DDF_PRIMARY) )
+	{
+		doomb_dual_weapon_state |= DDF_PRIMARY;
+		owner.player.GetPSprite(LEFT_WEAPON).SetState(doomb_dual_weapon_base(owner.player.ReadyWeapon).doomb_dual_get_primary_fire() );
+	}
+}
+
+
+protected void doomb_dual_alt_fire()
+{
+	if(owner.player && owner.player.cmd.buttons & BT_ALTATTACK && !(doomb_dual_weapon_state & DDF_ALT) )
+	{
+		doomb_dual_weapon_state |= DDF_ALT;
+		owner.player.GetPSprite(RIGHT_WEAPON).SetState(doomb_dual_weapon_base(owner.player.ReadyWeapon).doomb_dual_get_alt_fire() );
+	}
+}
+
+protected void init_dual_guns()
+{
+	if(is_self_valid_weapon() )
+	{
+		owner.player.GetPSprite(LEFT_WEAPON).setstate(doomb_dual_weapon_base(owner.player.readyweapon).doomb_dual_get_primary_ready() );
+		owner.player.GetPSprite(RIGHT_WEAPON).setstate(doomb_dual_weapon_base(owner.player.readyweapon).doomb_dual_get_alt_ready() );
+
+		owner.A_OverlayFlags(LEFT_WEAPON, PSPF_ADDBOB|PSPF_POWDOUBLE|PSPF_CVARFAST, true);
+		owner.A_OverlayFlags(RIGHT_WEAPON, PSPF_ADDBOB|PSPF_POWDOUBLE|PSPF_CVARFAST, true);
+	}
+}
+
+override void doeffect()
+{
+	super.doeffect();
+	if(is_self_valid_weapon() )
+	{
+		doomb_dual_primary_fire();
+		doomb_dual_alt_fire();
+	}
+}
+
+protected virtual state doomb_dual_get_primary_ready()
+{
+	return null;
+}
+protected virtual state doomb_dual_get_alt_ready()
+{
+	return null;
+}
+
+
+protected virtual state doomb_dual_get_primary_fire()
+{
+	return null;
+}
+protected virtual state doomb_dual_get_alt_fire()
+{
+	return null;
+}
+
+protected virtual state doomb_dual_get_primary_reload()
+{
+	return null;
+}
+protected virtual state doomb_dual_get_alt_reload()
+{
+	return null;
+}
+
+
+
+}
 
 
 
@@ -346,10 +457,19 @@ override void NetworkProcess(ConsoleEvent e)
 		}
 	}
 	
-	if(e.Name == 'weapon_dual')
+	if(e.Name == 'taunt')
 	{
 		if(players[e.Player].readyweapon is "doomb_weapon_base")
 		{
+			doomb_weapon_base(players[e.Player].readyweapon).dw_set_state(DWF_TAUNT);
+		}
+	}
+
+	if(e.Name == 'DWF_SALUTE')
+	{
+		if(players[e.Player].readyweapon is "doomb_weapon_base")
+		{
+			doomb_weapon_base(players[e.Player].readyweapon).dw_set_state(DWF_SALUTE);
 		}
 	}
 }

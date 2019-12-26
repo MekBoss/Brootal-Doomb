@@ -104,7 +104,30 @@ CLASS HitPuff : visual_sfx Replaces BulletPuff
 
 
 
-CLASS RicoChet : visual_sfx { 
+CLASS RicoChet : visual_sfx
+{
+protected void doomb_check_floor_pic()
+{
+	if(pos.z <= floorz)
+	{
+		string s = texman.GetName(self.floorpic);
+		s.toupper();
+
+		if(s.IndexOf("WATER") > -1)
+			giveinventory("IsOverWater", 1);
+
+		if(s.IndexOf("NUK") > -1)
+			giveinventory("IsOverSlime", 1);
+
+		if(s.IndexOf("BLOO") > -1)
+			giveinventory("IsOverBlood", 1);
+
+		if(s.IndexOf("GRAS") > -1 || s.IndexOf("ROCK") > -1 || s.IndexOf("FLAT") > -1 || s.IndexOf("FLOOR") > -1 || s.IndexOf("DESER") > -1 || s.IndexOf("MFLR") > -1)
+			giveinventory("IsOverGrass", 1);
+	}
+}
+
+
 	Default {
 		
 		renderstyle "Add";
@@ -154,8 +177,7 @@ CLASS RicoChet : visual_sfx {
 			
 		SpawnFloor:
 			TNT1 A 0;
-			TNT1 A 0 Acs_executealways(373, 0, 0, 0, 0);//Check if is under a liquid
-			TNT1 A 2;
+			TNT1 A 0 doomb_check_floor_pic();//Check if is under a liquid
 			TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "SpawnWater");
 			TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "SpawnSlime");
 			
@@ -235,8 +257,7 @@ CLASS LargeMassWaterImpact: Ricochet {
 	{
 		Spawn:
 			TNT1 A 0;
-			//TNT1 A 0 Acs_executealways(373, 0, 0, 0, 0)//Check if is under a liquid
-			TNT1 A 4;
+			TNT1 A 0 doomb_check_floor_pic();
 			TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "SpawnWater");
 			TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "SpawnSlime");
 			Stop;
@@ -263,7 +284,7 @@ CLASS LargeMassWaterImpact: Ricochet {
 }
 
 
-CLASS BigRicoChet : ACTOR { 
+CLASS BigRicoChet : Ricochet { 
 	Default {
 		
 		renderstyle "Add";
@@ -284,12 +305,6 @@ CLASS BigRicoChet : ACTOR {
 	states
 	{
 		Spawn:
-			TNT1 A 0;
-			Goto Death;
-			
-		Death:
-			//TNT1 A 0 ThrustThingZ(0,-5,0,1)
-			//TNT1 A 1
 			TNT1 A 2;
 			TNT1 A 1 A_Explode(4, 32);
 			TNT1 A 0 A_CheckFloor("SpawnFloor");
@@ -298,7 +313,7 @@ CLASS BigRicoChet : ACTOR {
 			
 		SpawnFloor:
 			TNT1 A 0;
-			TNT1 A 0 Acs_executealways(373, 0, 0, 0, 0);//Check if is under a liquid
+			TNT1 A 0 doomb_check_floor_pic();
 			TNT1 A 2;
 			//TNT1 A 0 A_JumpIfInventory("IsOverGrass", 1, "SpawnGrass")
 			TNT1 A 0 A_JumpIfInventory("IsOverWater", 1, "SpawnWater");

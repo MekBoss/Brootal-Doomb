@@ -60,9 +60,6 @@ CLASS TorchTree2: doomb_decoration_base Replaces TorchTree {
 			TRE2 O 0;
 			TRE2 O 0 Thing_ChangeTID(0,748);
 			TRE2 O 3;
-			MARN A 0 ACS_ExecuteAlways(795, 0, 0, 0, 0);//Check if advanced decorations are disabled.
-			Goto Spawn2;
-			
 		Spawn2:
 			TRE1 A -1;
 			Stop;
@@ -159,11 +156,6 @@ CLASS Big_Tree: BigTree {
 			TRE2 O 0;
 			TRE2 O 0 Thing_ChangeTID(0,748);
 			TRE2 O 3;
-			MARN A 0 ACS_ExecuteAlways(795, 0, 0, 0, 0);//Check if advanced decorations are disabled.
-			Goto Spawn2;
-			
-			
-			
 		Spawn2:
 			TRE2 O -1;
 			Stop;

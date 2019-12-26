@@ -39,7 +39,7 @@ CLASS CapturedMarine: doomb_monster_base Replaces Blursphere {
 	{
 		Spawn:
 			TNT1 A 0 A_Stop;
-			MARN A 0 ACS_ExecuteAlways(719, 0, 0, 0, 0);//Check if Coop
+			MARN A 0 {if(deathmatch) setstatelabel("dm");}
 			TNT1 A 1;
 			Goto Spawn1;
 		DM:

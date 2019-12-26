@@ -172,12 +172,24 @@ override void tick()
 	check_blood_pool();
 }
 
+protected void doomb_handle_roll()
+{
+	if( (instatesequence(curstate, findstate("roll_left")) || instatesequence(curstate, findstate("roll_right") ) ) && rolling == false)
+	{
+		rolling = true;
+	}
+}
+
 override void CheckJump()
 {
 	super.CheckJump();
 	if(vel.z != 0)
 		setstatelabel("IsJumpin");
 }
+
+private state roll_state;
+private uint roll_ticks;
+private bool rolling;
 
 }
 
@@ -214,4 +226,29 @@ states
         foot A -1;
 	stop;
 	}
+}
+
+
+
+
+
+
+
+
+
+class doom_player_movement : eventhandler
+{
+override void NetworkProcess(ConsoleEvent e)
+{
+	if(e.Name == 'roll_left')
+	{
+		players[e.Player].mo.setstatelabel("roll_left");
+	}
+
+	if(e.Name == 'roll_right')
+	{
+		players[e.Player].mo.setstatelabel("roll_right");
+	}
+}
+
 }

@@ -105,23 +105,9 @@ CLASS KnightXDeath : ACTOR {
 			TNT1 A 0 A_SpawnItem ("doomb_red_blood_pool");
 			
 			TNT1 A 1;
-			TNT1 A 0 ACS_ExecuteAlways(799, 0, 0, 0, 0);//Check Blood density
 			TNT1 A 2;
 			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
-			Stop;
-			
-		LowBlood:
-			TNT1 A 2;
-			Stop;
-		LotsOfBlood:
-			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
-			TNT1 AAAAAA 0 A_SpawnProjectile ("SuperGoreSpawner", 64, 0, random (0, 360), 2, random (20, 40));
-			Stop;
-		AbsurdBlood:
-			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
-			TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile ("SuperGoreMist", 24, 0, random (0, 360), 2, random (30, 90));
-			TNT1 AAAAAAAA 0 A_SpawnProjectile ("SuperGoreSpawner", 64, 0, random (0, 360), 2, random (20, 40));
-			Stop;
+		Stop;
 	}
 }
 
@@ -212,22 +198,8 @@ CLASS BullXDeath : ACTOR {
 			TNT1 A 0 A_SpawnProjectile ("XDeathPinkyDemonHead", 42, 0, random (0, 360), 2, random (0, 160));
 			
 			TNT1 A 1;
-			TNT1 A 0 ACS_ExecuteAlways(799, 0, 0, 0, 0);//Check Blood density
 			TNT1 A 2;
 			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
-			Stop;
-			
-		LowBlood:
-			TNT1 A 2;
-			Stop;
-		LotsOfBlood:
-			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
-			TNT1 AAAAAA 0 A_SpawnProjectile ("SuperGoreSpawner", 64, 0, random (0, 360), 2, random (20, 40));
-			Stop;
-		AbsurdBlood:
-			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
-			TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile ("SuperGoreMist", 24, 0, random (0, 360), 2, random (30, 90));
-			TNT1 AAAAAAAA 0 A_SpawnProjectile ("SuperGoreSpawner", 64, 0, random (0, 360), 2, random (20, 40));
 			Stop;
 	}
 }
@@ -266,28 +238,8 @@ CLASS ChainXDeath : ACTOR {
 			TNT1 AAAA 0 A_SpawnProjectile ("XDeath3b", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece2", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (0, 160));
-			//TNT1 A 0 A_SpawnProjectile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160))
-			//TNT1 A 0 A_SpawnProjectile ("XDeath3", 32, 0, random (0, 360), 2, random (0, 160))
-			//TNT1 A 0 A_SpawnProjectile ("XDeath4", 32, 0, random (0, 360), 2, random (0, 160))
-			//TNT1 A 0 A_SpawnProjectile ("XDeath5", 32, 0, random (0, 360), 2, random (0, 160))
-			
-			TNT1 A 1;
-			TNT1 A 0 ACS_ExecuteAlways(799, 0, 0, 0, 0);//Check Blood density
 			TNT1 A 2;
 			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
-			Stop;
-			
-		LowBlood:
-			TNT1 A 2;
-			Stop;
-		LotsOfBlood:
-			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
-			TNT1 AAAAAA 0 A_SpawnProjectile ("SuperGoreSpawner", 64, 0, random (0, 360), 2, random (20, 40));
-			Stop;
-		AbsurdBlood:
-			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
-			TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile ("SuperGoreMist", 24, 0, random (0, 360), 2, random (30, 90));
-			TNT1 AAAAAAAA 0 A_SpawnProjectile ("SuperGoreSpawner", 64, 0, random (0, 360), 2, random (20, 40));
 			Stop;
 	}
 }
@@ -330,22 +282,8 @@ CLASS MarineXDeath : ACTOR {
 			TNT1 A 0 A_SpawnItem ("doomb_red_blood_pool");
 			
 			TNT1 A 1;
-			TNT1 A 0 ACS_ExecuteAlways(799, 0, 0, 0, 0);//Check Blood density
 			TNT1 A 2;
 			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
-			Stop;
-			
-		LowBlood:
-			TNT1 A 2;
-			Stop;
-		LotsOfBlood:
-			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
-			TNT1 AAAAAA 0 A_SpawnProjectile ("SuperGoreSpawner", 64, 0, random (0, 360), 2, random (20, 40));
-			Stop;
-		AbsurdBlood:
-			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
-			TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile ("SuperGoreMist", 24, 0, random (0, 360), 2, random (30, 90));
-			TNT1 AAAAAAAA 0 A_SpawnProjectile ("SuperGoreSpawner", 64, 0, random (0, 360), 2, random (20, 40));
 			Stop;
 	}
 }
@@ -385,22 +323,8 @@ CLASS SpiderDeath : ACTOR {
 			TNT1 A 0 A_SpawnItem ("doomb_red_blood_pool");
 			
 			TNT1 A 1;
-			TNT1 A 0 ACS_ExecuteAlways(799, 0, 0, 0, 0);//Check Blood density
 			TNT1 A 2;
 			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
-			Stop;
-			
-		LowBlood:
-			TNT1 A 2;
-			Stop;
-		LotsOfBlood:
-			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
-			TNT1 AAAAAA 0 A_SpawnProjectile ("SuperGoreSpawner", 64, 0, random (0, 360), 2, random (20, 40));
-			Stop;
-		AbsurdBlood:
-			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
-			TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile ("SuperGoreMist", 24, 0, random (0, 360), 2, random (30, 90));
-			TNT1 AAAAAAAA 0 A_SpawnProjectile ("SuperGoreSpawner", 64, 0, random (0, 360), 2, random (20, 40));
 			Stop;
 	}
 }

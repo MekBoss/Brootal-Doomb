@@ -114,7 +114,6 @@ CLASS NightVision : CustomInventory Replaces InfraRed {
 			TNT1 A 0 A_GiveInventory("HasInfrared", 1);
 			TNT1 A 0 A_GiveInventory("NightVisionGiver", 1);
 			TNT1 A 0 A_GiveInventory("HasInfraRed", 1);
-			TNT1 A 0 ACS_ExecuteAlways(398, 0, 0, 0, 0);
 			TNT1 A 1;
 			Stop;
 			
@@ -153,6 +152,13 @@ CLASS HasInfrared : Inventory {
 	Default {
 		
 		inventory.maxamount 1;
+	}
+	private uint i;
+	override void doeffect()
+	{
+		i++;
+		if(i > 4200)
+			self.destroy();
 	}
 }
 
@@ -209,7 +215,6 @@ CLASS SuperBlurSphere : CustomInventory { //Replaces BlurSphere
 			TNT1 A 1;
 			TNT1 A 0 A_GiveInventory("IsInvisible", 1);
 			TNT1 A 0 A_GiveInventory("Blursphere", 1);
-			TNT1 A 0 ACS_ExecuteAlways(397, 0, 0, 0, 0);
 			TNT1 A 1;
 			Stop;
 	}

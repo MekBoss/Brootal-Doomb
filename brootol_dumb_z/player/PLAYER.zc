@@ -6,12 +6,9 @@
 //===========================================================================
 
 // ACS Script Constants
-const acsFatality = 312;
-
 CLASS Doomer : doomber Replaces DoomPlayer
-{ 
-	int user_sghorizontalspread;
-	int user_sgverticalspread;
+{
+
 Default {
 	
 	Speed 1.0;
@@ -106,7 +103,6 @@ States
 		MARN A 0 A_TakeInventory("PlayerIsDead", 1);
 		MARN D 1;
 		MARN A 0 doomb_destroy_fatality_camera();//Disable Camera.
-		MARN A 0 ACS_ExecuteAlways(719, 0, 0, 0, 0);//Check if Coop
 		MARN D 1;
 		MARN A 0 A_JumpIfInventory("CheckMarines", 1, "SpawnFriends");
 		tnt1 A 0 SetPlayerProperty(0,0,0);
@@ -116,39 +112,10 @@ States
 		MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
 		MARN A 0 A_JumpIfInventory("FistsSelected", 1, "FistsStand");
+		MARN DE 5;
 		MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
 		MARN A 0 A_JumpIfInventory("CheckMarines", 1, "SpawnFriends");
-		MARN D 0 ;
-		MARN D 3;
-		MARN A 0 A_JumpIfInventory("CheckMarines", 1, "SpawnFriends");
-		MARN D 2;
-		MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
-		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
-		MARN D 0 ;
-		MARN D 5;
-		MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
-		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
-		MARN D 0 ;
-		MARN D 5;
-		MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
-		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
-		MARN D 0 ;
-		
-		MARN E 5;
-		MARN E 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
-		MARN E 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
-		MARN D 0 ;
-		MARN E 5;
-		MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
-		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
-		MARN D 0 ;
-		MARN E 5;
-		MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
-		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
-		MARN D 0 ;
-		MARN D 0 A_TakeInventory("UsedStamina", 30);
-		MARN A 0 A_JumpIfHealthLower(25, "HeavyWoundsSpawn");
-		MARN E 1;
+		MARN A 0 {if(health < 25) A_SpawnItemEx("TinyBlood", 0, 0, 20, 0, 0);}
 	Loop;
 
 
@@ -161,28 +128,16 @@ States
 		MARN A 0 spawn_blood_footprint();
 		MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 		MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
-		MARN C 0 ;
-		MARN B 0 ;
 		MARN B 4;
 		MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
-		MARN B 0 ;
 		MARN C 4 A_SpawnItemEx("FootstepStrong", 0, 0, 40, 0, 0);
 		MARN C 0 spawn_blood_footprint();
-		MARN C 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
-		MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
-		MARN B 4;
-		MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
-		MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
-		MARN C 0 ;
-		MARN C 0 A_JumpIfHealthLower(25, "HeavyWounds");
 	Goto StandStill;
 
 
 	IsJumpin:
 		MARN A 1;
-		MARN B 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
-		MARN B 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
 		tnt1 A 0 A_JumpIf (vel.z > 0, "InAir");
 		tnt1 A 0 A_JumpIf (vel.z < 0, "InAir");
 	Goto StandStill;
@@ -196,17 +151,16 @@ States
 		MARN A 0 A_SpawnItem("FootStepStrong");
 		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1);
 		MARN AAA 1 A_SetPitch(-1.0 + pitch);
-		Goto StandStill;
+	Goto StandStill;
 		
 		
 	Kick:
-		tnt1 A 0 A_TakeInventory("KickHasHit",1);
 		tnt1 A 0 A_JumpIf (vel.z != 0, "AirKick");
 		tnt1 A 0 A_TakeInventory("KickHasHit",1);
 		PKIK AB 3 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
-		PKIK CB 3 A_JumpIfInventory("KickHasHit", 1, "KickHit");
-		tnt1 A 0 A_TakeInventory("Kicking",1);
-		Goto StandStill;
+		PKIK CB 3 ;
+	Goto StandStill;
+	
 	RifleKick:
 		tnt1 A 0 A_TakeInventory("KickHasHit",1);
 		tnt1 A 0 A_JumpIf (vel.z != 0, "AirKick");
@@ -219,13 +173,6 @@ States
 	AirKick:
 		AKIK AAAAA 2 A_JumpIfInventory("KickHasHit", 1, "KickHit");
 		tnt1 A 0 A_TakeInventory("Kicking",1);
-		Goto StandStill;
-		
-	KickHit:
-		TNT1 A 0 A_Stop;
-		tnt1 A 0 A_TakeInventory("Kicking",1);
-		tnt1 A 0 A_TakeInventory("KickHasHit",1);
-		TNT1 A 0 A_Recoil(3);
 		Goto StandStill;
 		
 	Punch:
@@ -260,40 +207,34 @@ States
 		Goto StandStill;
 		
 		
-	RollRight:
-		tnt1 A 0 A_TakeInventory("RollLeft");
-		tnt1 A 0 A_TakeInventory("RollRight");
-		tnt1 A 0 {bNOPAIN = true;}
-		
-		tnt1 A 0 doomb_init_fatality_camera();//Start Camera//Start Camera
-		tnt1 A 0 ThrustThing(angle*256/360+192,20,0,0);//Thrust Right
-		PROL EDCBA 4;
+	Roll_Right:
+		PROL E 4
+		{
+			bNOPAIN = true;
+			doomb_init_fatality_camera();//Start Camera//Start Camera
+			
+			Vel.X += 20 * Cos(angle - 90);
+			Vel.Y += 20 * Sin(angle - 90);
+		}
+		PROL DCBA 4;
 		MARN A 0 doomb_destroy_fatality_camera();//Disable Camera.
-		tnt1 A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
-		tnt1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
 		MARN A 4;
-		
 		tnt1 A 0 {bNOPAIN = false;}
-		tnt1 A 0 A_TakeInventory("RollLeft");
-		tnt1 A 0 A_TakeInventory("RollRight");
 		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1);
-		Goto StandStill;
+	Goto StandStill;
 		
-	RollLeft:
-		tnt1 A 0 A_TakeInventory("RollLeft");
-		tnt1 A 0 A_TakeInventory("RollRight");
-		tnt1 A 0 {bNOPAIN = true;}
-		
-		tnt1 A 0 doomb_init_fatality_camera();//Start Camera//Start Camera
-		tnt1 A 0 ThrustThing(angle*256/360+64,20,0,0);//Thrust Left
-		PROL ABCDE 4;
+	roll_left:
+		PROL A 4
+		{
+			bNOPAIN = true;
+			doomb_init_fatality_camera();//Start Camera//Start Camera
+			Vel.X += 20 * Cos(angle + 90);
+			Vel.Y += 20 * Sin(angle + 90);
+		}
+		PROL BCDE 4;
 		MARN A 0 doomb_destroy_fatality_camera();//Disable Camera.
-		tnt1 A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
-		tnt1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
 		MARN A 4;
 		tnt1 A 0 {bNOPAIN = false;}
-		tnt1 A 0 A_TakeInventory("RollLeft");
-		tnt1 A 0 A_TakeInventory("RollRight");
 		TNT1 A 0 A_GiveInventory("ImpactMovesSling", 1);
 	Goto StandStill;
 		
@@ -301,26 +242,12 @@ States
 	Pump:
 		PLAY ABCD 4;
 		tnt1 A 0 A_TakeInventory("Pumping");
-		Goto See;
+	Goto See;
+	
 	NoMovePump:
 		PLAY B 12;
 		tnt1 A 0 A_TakeInventory("Pumping");
-		Goto See;
-		
-	HeavyWounds:
-		tnt1 A 0 A_JumpIfHealthLower(2, 2);
-		
-		MARN A 0 A_JumpIfInventory("FistsSelected", 1, "FistsMove");
-		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
-		MARN A 0 A_SpawnItemEx("FootstepStrong", 0, 0, 40, 0, 0);
-		MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
-		tnt1 A 0 A_SpawnItemEx("TinyBlood", 0, 0, 20, 0, 0);
-		Goto See;
-		
-	HeavyWoundsSpawn:
-		tnt1 A 0 A_JumpIfHealthLower(2, 2);
-		tnt1 A 0 A_SpawnItemEx("TinyBlood", 0, 0, 20, 0, 0);
-		Goto StandStill;
+	Goto See;
 		
 	FistsStand:
 		tnt1 A 0 A_JumpIfInventory("HasImpShield", 1, "SeeImpShield");
@@ -335,30 +262,22 @@ States
 		tnt1 A 0 A_JumpIfInventory("oneliner", 1, "SayOneLiner");
 		
 		tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "FistsMove");
-		tnt1 A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft");
-		tnt1 A 0 A_JumpIfInventory("RollRight", 1, "RollRight");
 		tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
 		tnt1 A 0 A_JumpIfInventory("Kicking", 1, "Kick");
 		tnt1 A 0 A_JumpIfInventory("HasBarrel", 1, "BarrelStand");
 		PLA1 B 5;
 		
 		tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "FistsMove");
-		tnt1 A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft");
-		tnt1 A 0 A_JumpIfInventory("RollRight", 1, "RollRight");
 		tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
 		tnt1 A 0 A_JumpIfInventory("Kicking", 1, "Kick");
 		MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
 		PLA1 B 5;
 		tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "FistsMove");
-		tnt1 A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft");
-		tnt1 A 0 A_JumpIfInventory("RollRight", 1, "RollRight");
 		tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
 		tnt1 A 0 A_JumpIfInventory("Kicking", 1, "Kick");
 		PLA1 B 5;
 		tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "FistsMove");
-		tnt1 A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft");
-		tnt1 A 0 A_JumpIfInventory("RollRight", 1, "RollRight");
 		tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
 		tnt1 A 0 A_JumpIfInventory("Kicking", 1, "Kick");
 	Goto StandStill;
@@ -408,13 +327,9 @@ States
 		MAR2 A 5;
 		MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
-		tnt1 A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft");
-		MAR2 A 0 A_JumpIfInventory("RollRight", 1, "RollRight");
 		tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "ADSMove");
 		MAR2 D 5;
 		tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "ADSMove");
-		MAR2 A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft");
-		MAR2 A 0 A_JumpIfInventory("RollRight", 1, "RollRight");
 		MAR2 D 5;
 		tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "ADSMove");
 	Goto StandStill;
@@ -424,13 +339,9 @@ States
 		MAR2 B 5 A_JumpIfInventory("Kicking", 1, "Kick");
 		MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
-		MAR2 A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft");
-		MAR2 A 0 A_JumpIfInventory("RollRight", 1, "RollRight");
 		MAR2 A 0 A_SpawnItemEx("FootstepStrong", 0, 0, 40, 0, 0);
 		MAR2 C 5 A_JumpIfInventory("Kicking", 1, "Kick");
 		MAR2 B 5 A_JumpIfInventory("Kicking", 1, "Kick");
-		MAR2 A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft");
-		MAR2 A 0 A_JumpIfInventory("RollRight", 1, "RollRight");
 		MAR2 A 0 A_SpawnItemEx("FootstepStrong", 0, 0, 40, 0, 0);
 		tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "spawn");
 	Goto See;
@@ -464,6 +375,48 @@ States
 		tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "BarrelMove");
 	Goto StandStill;
 		
+		
+		
+	Death:
+		MARN A 0 A_GiveInventory("PlayerIsDead", 1);
+		tnt1 A 0 A_Jump (160, 3);
+		Goto Death.Arm;
+		tnt1 AAA 0;
+		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
+		tnt1 A 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+		PLAY H 10;
+		PLAY I 10 A_PlayerScream;
+		PLAY J 10 A_NoBlocking;
+		PLAY KLM 10;
+		tnt1 A 0 doomb_spawn_bloodpool();
+		PLAY N -1;
+		Stop;
+
+
+
+
+	// This section is responsable for calling scripts to make blood
+	// drip on the screen when the player is affected by one of the actors
+	// in the BLOODSPLASH lump.
+	
+Pain.Blood:
+	tnt1 A 0 A_Giveinventory("BloodOnVisor",1);
+	tnt1 A 0 A_GiveInventory("MeatAmmo", 1);
+	tnt1 A 0 ACS_Execute(random(580, 585), 0, 0, 0, 0);
+Goto StandStill;
+
+Pain.BlueBlood:
+	//tnt1 A 0 A_Giveinventory("BlueBloodOnVisor",1);
+	tnt1 A 0 A_Giveinventory("GiveHealth",1);
+	tnt1 A 0 ACS_Execute(random(570, 575), 0, 0, 0, 0);
+Goto StandStill;
+	
+Pain.GreenBlood:
+	//tnt1 A 0 A_Giveinventory("GreenBloodOnVisor",1);
+	tnt1 A 0 A_Giveinventory("GiveHealth",1);
+	tnt1 A 0 ACS_Execute(random(560, 565), 0, 0, 0, 0);
+Goto StandStill;
+	
 	Pain:
 		tnt1 A 0 A_setblend("70, 0, 0", 0.2, 34);
 		tnt1 A 0 A_Pain;
@@ -507,27 +460,12 @@ States
 	Pain.Rip:
 		tnt1 A 0 ACS_Execute(530, 0, 0, 0, 0);
 		tnt1 A 0 ACS_Execute(617, 0, 0, 0, 0);
-		Goto Pain;
-		
-		
-	Death:
-		tnt1 A 0 A_Takeinventory("Kicking",1);
-		MARN A 0 A_GiveInventory("PlayerIsDead", 1);
-		tnt1 A 0 A_Jump (160, 3);
-		Goto Death.Arm;
-		tnt1 AAA 0;
-		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-		tnt1 A 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-		PLAY H 10;
-		PLAY I 10 A_PlayerScream;
-		PLAY J 10 A_NoBlocking;
-		PLAY KLM 10;
-		tnt1 A 0 doomb_spawn_bloodpool();
-		PLAY N -1;
-		Stop;
-		
+	Goto Pain;
+
+
+
+
 	Death.Eat:
-		tnt1 A 0 A_Takeinventory("Kicking",1);
 		MARN A 0 A_GiveInventory("PlayerIsDead", 1);
 		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 		tnt1 A 0 A_GiveToTarget("EatMe",1);
@@ -540,11 +478,10 @@ States
 		tnt1 A 0 doomb_spawn_bloodpool();
 		PPOD A 0 A_SpawnItemEx("MarineEattenByDemon", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
 		tnt1 A -1;
-		Stop;
+	Stop;
 		
 	Death.Cut:
 	Death.Saw:
-		tnt1 A 0 A_Takeinventory("Kicking",1);
 		MARN A 0 A_GiveInventory("PlayerIsDead", 1);
 		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 		
@@ -2363,37 +2300,36 @@ Goto StandStill;
 	
 	
 	
-Death.Fatality:
-	tnt1 A 0 A_NoBlocking;
-	tnt1 A 0 A_Scream;
-	tnt1 A 0 A_GiveToTarget("GoFatality", 1);
-	tnt1 A 0 A_GiveToTarget("PVPFatality", 1);
-	tnt1 A 1;
-	tnt1 A -1;
+	Death.Fatality:
+		tnt1 A 0 A_NoBlocking;
+		tnt1 A 0 A_Scream;
+		tnt1 A 0 A_GiveToTarget("GoFatality", 1);
+		tnt1 A 0 A_GiveToTarget("PVPFatality", 1);
+		tnt1 A -1;
 	Stop;
-FatalityPVP:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
-	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-	tnt1 A 0 doomb_init_fatality_camera();
-	//////////////////////////////////////////////////////
-	PVPF ABB 10;
-	PVPF C 4;
-	PVPF D 4;
-	XXXX A 0 Radius_Quake (4, 24, 0, 15, 0);
-	PVPF E 4;
-	tnt1 A 0 A_SpawnProjectile ("MeatDeath", 50, 0, random (0, 360), 2, random (0, 160))       ;
-	PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 50);
-	PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 50);
-	PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 50);
-	PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 50);
-	tnt1 AA 0 A_SpawnProjectile ("XDeathArm1", 42, 0, random (0, 360), 2, random (0, 90));
-	PVPF EFGGGG 4;
-	//////////////////////////////////////////////////////
-	tnt1 A 0 A_TakeInventory("PVPFatality",1);
-	tnt1 A 0 A_TakeInventory("GoFatality", 1);
-	tnt1 A 0 A_GiveInventory("Megasphere",1);
-	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
+	FatalityPVP:
+		tnt1 A 0 SetPlayerProperty(0,1,0);
+		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
+		//////////////////////////////////////////////////////
+		PVPF ABB 10;
+		PVPF C 4;
+		PVPF D 4;
+		XXXX A 0 Radius_Quake (4, 24, 0, 15, 0);
+		PVPF E 4;
+		tnt1 A 0 A_SpawnProjectile ("MeatDeath", 50, 0, random (0, 360), 2, random (0, 160))       ;
+		PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 50);
+		PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 50);
+		PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 50);
+		PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 50);
+		tnt1 AA 0 A_SpawnProjectile ("XDeathArm1", 42, 0, random (0, 360), 2, random (0, 90));
+		PVPF EFGGGG 4;
+		//////////////////////////////////////////////////////
+		tnt1 A 0 A_TakeInventory("PVPFatality",1);
+		tnt1 A 0 A_TakeInventory("GoFatality", 1);
+		tnt1 A 0 A_GiveInventory("Megasphere",1);
+		MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
+		tnt1 A 0 SetPlayerProperty(0,0,0);
 	Goto StandStill;
 	
 	
@@ -2530,29 +2466,6 @@ Death.ImpFatalityMarine:
 	
 	
 	
-	// This section is responsable for calling scripts to make blood
-	// drip on the screen when the player is affected by one of the actors
-	// in the BLOODSPLASH lump.
-	
-Pain.Blood:
-	tnt1 A 0 A_Giveinventory("BloodOnVisor",1);
-	tnt1 A 0 A_GiveInventory("MeatAmmo", 1);
-	tnt1 A 0 ACS_Execute(random(580, 585), 0, 0, 0, 0);
-Goto StandStill;
-
-Pain.BlueBlood:
-	//tnt1 A 0 A_Giveinventory("BlueBloodOnVisor",1);
-	tnt1 A 0 A_Giveinventory("GiveHealth",1);
-	tnt1 A 0 ACS_Execute(random(570, 575), 0, 0, 0, 0);
-Goto StandStill;
-	
-Pain.GreenBlood:
-	//tnt1 A 0 A_Giveinventory("GreenBloodOnVisor",1);
-	tnt1 A 0 A_Giveinventory("GiveHealth",1);
-	tnt1 A 0 ACS_Execute(random(560, 565), 0, 0, 0, 0);
-Goto StandStill;
-	
-	
 	
 	
 	
@@ -2647,8 +2560,6 @@ Goto StandStill;
 SpecialChecker:
 	tnt1 A 1;
 	tnt1 A 0 A_TakeInventory("GoSpecial", 1);
-	tnt1 A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft");
-	tnt1 A 0 A_JumpIfInventory("RollRight", 1, "RollRight");
 	tnt1 A 0 A_JumpIfInventory("Salute1", 1, "Salutes1");
 	tnt1 A 0 A_JumpIfInventory("Salute2", 1, "Salutes2");
 	tnt1 A 0 A_JumpIfInventory("advtaunting", 1, "AdvancedTaunt");
@@ -2666,8 +2577,6 @@ SpecialCheckerMoving:
 	tnt1 A 1;
 	tnt1 A 0 A_TakeInventory("GoSpecial", 1);
 	tnt1 A 0 A_JumpIfInventory("GotMeatShield", 1, "MeatShieldChecker");
-	tnt1 A 0 A_JumpIfInventory("RollLeft", 1, "RollLeft");
-	tnt1 A 0 A_JumpIfInventory("RollRight", 1, "RollRight");
 	tnt1 A 0 A_JumpIfInventory("Salute1", 1, "Salutes1");
 	tnt1 A 0 A_JumpIfInventory("Salute2", 1, "Salutes2");
 	tnt1 A 0 A_JumpIfInventory("advtaunting", 1, "AdvancedTaunt");
@@ -3534,19 +3443,7 @@ Default {
 }
 }
 
-CLASS RollLeft : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
 
-CLASS RollRight : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
 
 
 

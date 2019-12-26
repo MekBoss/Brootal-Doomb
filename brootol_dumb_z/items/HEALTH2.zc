@@ -12,18 +12,8 @@ CLASS HealthPlus : Health Replaces HealthBonus {
 	States
 	{
 		Spawn:
-			TNT1 A 0;
-			MARN A 0 ACS_ExecuteAlways(795, 0, 0, 0, 0);//Check if advanced decorations are disabled.
-		Spawn2:
-			TNT1 A 0 A_CheckSight ("Spawn3");
 			BON1 ABCDCB 2 A_SpawnItem("BlueFlareSmall",0,7);
-			Loop;
-		Spawn3:
-			BON1 A 9;
-			Goto Spawn2;
-		Vanilla:
-			BON1 ABCDCB 2;
-			Loop;
+		Loop;
 	}
 }
 

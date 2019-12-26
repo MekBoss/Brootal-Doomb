@@ -423,6 +423,13 @@ CLASS IsInvisible : Inventory {
 		
 		inventory.maxamount 1;
 	}
+	private uint i;
+	override void doeffect()
+	{
+		i++;
+		if(i > 2100)
+			self.destroy();
+	}
 }
 
 

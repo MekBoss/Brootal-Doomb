@@ -12,52 +12,20 @@ addmenukey "Dual wielding" doomb_wp_dl_tt
 defaultbind  v "doomb_wp_dl_tt"
 alias doomb_wp_dl_tt "netevent weapon_dual"
 
+addmenukey "Taunt" doomb_taunt
+alias doomb_taunt "netevent taunt"
+defaultbind H doomb_taunt
+
+addmenukey "Salute" doomb_salute
+alias doomb_salute "netevent salute"
+defaultbind V doomb_salute
 
 
+addmenukey "Roll Left" doomb_roll_left
+alias doomb_roll_left "netevent roll_left"
+defaultbind Z doomb_roll_left
 
 
-
-   addkeysection "BrutalDoom - Advanced Movements" BrutalDoomActions               // the last unquoted bit used to say MySampleKeysection
-   
-   addmenukey "Unload Gun" unreloader
-   alias unreloader "puke 363"
-
-   addkeysection "Brutal Doom - Interactions" BrutalDoomInteractions               // here too
-
-  
-   addmenukey "Offend" brutaltaunt
-   alias brutaltaunt "puke 302"
-   defaultbind H brutaltaunt
-   
-   addmenukey "Wave(1)" wave1
-   alias wave1 "puke 431"
-   defaultbind V wave1
-
-   addmenukey "Wave(2)" wave2
-   alias wave2 "puke 432"
-   defaultbind X wave2
-   
-   addmenukey "Advanced Taunt" advtaunt
-   alias advtaunt "puke 304"
-   defaultbind J advtaunt
-   
-   addmenukey "One-Liners" oneliner
-   alias oneliner "puke 305"
-   defaultbind K oneliner
-   
-   
-   
-
-   
-   
-   addkeysection "Brutal Doom - Advanced Moves" BrutalDoomAdvMoves              // here too
-
-   addmenukey "Roll Left" roleft
-   alias roleft "puke 306"
-   defaultbind Z roleft
-   
-   
-   addmenukey "Roll Right" roright
-   alias roright "puke 307"
-   defaultbind C roright
-   
+addmenukey "Roll Right" doomb_roll_right
+alias doomb_roll_right "netevent roll_right"
+defaultbind C doomb_roll_right

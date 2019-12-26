@@ -65,8 +65,6 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 		
 		Spawn:
 			TNT1 A 0;
-			TNT1 A 0 ACS_ExecuteAlways(796, 0, 0, 0, 0);//Check if Vanilla Mode is activated
-			
 		Spawned:
 			TNT1 A 0 A_JumpIfInventory("EatMe", 1, "Eat");
 			SARG YZYZYZYZYZ 10 A_Look;
