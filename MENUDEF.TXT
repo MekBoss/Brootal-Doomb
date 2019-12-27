@@ -45,7 +45,7 @@ OptionMenu "BrutalOptions"
   StaticText "Makes gibs disappear after 30 seconds."
   StaticText " "
   
-  Option "Enable Shotgun Strap Physics", "zdoombd_shotgunstrap", "YesOrNo"
+  Option "Enable Shotgun Strap Physics", "zdoombd_shotgunstrap", "YesNo"
   StaticText " "
   
   StaticText "===== Server options ====="
@@ -59,7 +59,7 @@ OptionMenu "BrutalOptions"
   StaticText "Makes bullets and rockets penetrate thin walls and doors."
   StaticText " "
   
-  Option "Disable Advanced Decorative Objects", "bd_disabledecorations", "YesOrNo"
+  Option "Disable Advanced Decorative Objects", "bd_disabledecorations", "YesNo"
   StaticText " "
 }
 
@@ -70,18 +70,4 @@ OptionValue "BrutalBlood"
 	3, "Edgy As Fuck"
 	4, "Japanese Cartoon"
 	666, "Overdrawn at Blood Bank"
-}
-
-OptionValue "YesOrNo"
-{
-	0, "No"
-	1, "Yes"
-}
-
-
-
-OptionValue "YesOrNoFalse"
-{
-	1, "No"
-	0, "Yes"
 }

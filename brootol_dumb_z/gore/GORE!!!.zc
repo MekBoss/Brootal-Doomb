@@ -887,9 +887,9 @@ CLASS Instestin : ACTOR {
 	{
 		Spawn:
 			GUTS ABCD 8;
-			Loop;
+		Loop;
+		
 		Death:
-			
 			GUTS E 1;
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Water");
 		Rest:

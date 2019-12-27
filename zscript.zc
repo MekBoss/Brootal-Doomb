@@ -32,38 +32,6 @@ CLASS LookingForPlayer : Inventory {
 
 
 
-
-
-
-//MeatShields
-
-
-//Enemies
-//ST Monsters
-
-//MISC
-
-
-
-//Player Classes
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 CLASS oneliner: Inventory { 
 	Default {
 		
@@ -385,6 +353,7 @@ CLASS TargetIsAdoomb_fatso : Inventory {
 #include "brootol_dumb_z/player/proto_PLAYER.zc"
 #include "brootol_dumb_z/player/PLAYER.zc"
 
+#include "brootol_dumb_z/marines/marine_base.zc"
 #include "brootol_dumb_z/marines/marines.zc"
 #include "brootol_dumb_z/marines/capturedmarine.zc"
 #include "brootol_dumb_z/marines/BFGmarine.zc"

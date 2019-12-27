@@ -12,10 +12,10 @@ void set_sfx(eventhandler e)
 
 protected bool is_real_player()
 {
-    if(player || player.mo || player.mo == self)
-        return true;
+    if(!player || !player.mo || player.mo != self)
+        return false;
 
-    return false;
+    return true;
 }
 
 protected visual_sfx doomb_show_effect(statelabel effect_name, vector3 offset = (0, 0, 0), vector3 velocity = (0, 0, 0), vector2 visual_size = (double.nan, double.nan), double translucency = double.nan)

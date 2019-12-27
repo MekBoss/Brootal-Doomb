@@ -79,14 +79,20 @@ Default {
 
 private void doomb_init_fatality_camera()
 {
-	self.player.cheats |= (CF_CHASECAM|CF_GODMODE2);
-	self.player.mo.speed = 0;
+	if(is_real_player())
+	{
+		self.player.cheats |= (CF_CHASECAM|CF_GODMODE2);
+		self.player.mo.speed = 0;
+	}
 }
 
 private void doomb_destroy_fatality_camera()
 {
-	self.player.cheats &= ~(CF_CHASECAM|CF_GODMODE2);
-	self.player.mo.speed = 1;
+	if(is_real_player())
+	{
+		self.player.cheats &= ~(CF_CHASECAM|CF_GODMODE2);
+		self.player.mo.speed = 1;
+	}
 }
 
 

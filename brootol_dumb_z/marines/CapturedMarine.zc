@@ -49,16 +49,10 @@ CLASS CapturedMarine: doomb_monster_base Replaces Blursphere {
 			Loop;
 			
 		Spawn1:
-			TNT1 A 0 A_CheckSight("Spawn2");
-			CAPT A 1 A_Stop;
 			CAPT ABCB 15 A_Stop;
 			TNT1 A 0 A_SpawnProjectile ("OrderTitle3", 50, 0, 0, 2, 90);
 			TNT1 A 0 A_SpawnItem ("KillMe");
-			Loop;
-			
-		Spawn2:
-			CAPT A 5;
-			Goto Spawn1;
+		Loop;
 			
 		SetFree:
 		Death.Cut:
@@ -70,10 +64,8 @@ CLASS CapturedMarine: doomb_monster_base Replaces Blursphere {
 			TNT1 A 0 {bNOPAIN = true;}
 			CAPT F 12;
 			TNT1 A 0 A_NoBlocking;
-			//TNT1 A 0 A_SpawnItem("Ally")
 			TNT1 A 0 A_GiveToTarget("NumberOfAllies", 1);
 			TNT1 A 0 A_SpawnItemEx ("RandomMarine",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			CAPT N 1 A_NoBlocking;
 			Stop;
 			
 		Pain:
@@ -101,7 +93,7 @@ CLASS CapturedMarine: doomb_monster_base Replaces Blursphere {
 			PLAY KLM 10;
 			TNT1 A 0 A_SpawnItem ("MediumBloodSpot");
 			PLAY N -1;
-			Stop;
+		Stop;
 			
 		Death.Eat:
 			TNT1 A 0 A_GiveToTarget("EatMe",1);
@@ -138,12 +130,11 @@ CLASS CapturedMarine: doomb_monster_base Replaces Blursphere {
 			Stop;
 			
 		Death.Slime:
+			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_PlaySound("BIGSCREA");
 			TNT1 A 0 A_SpawnItem("RemoveMarine");
 			PMET AABBCCDDEEFFGGHHIIIII 10 doomb_show_effect("ExplosionSmoke", (0, 0, 25), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			PMET IIIIIIIIIIJJJJJJJJJJJJJJJJJJJJJJKKKKKKKKKKKKKKKKKKKKKKKKKKLLLLLLLLLLLLLLL 3 doomb_show_effect("ExplosionSmoke", (0, 0, 25), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
-			TNT1 A 0 A_NoBlocking;
-			TNT1 A -1;
 			Stop;
 			
 		Death.CutLess:
@@ -290,7 +281,7 @@ CLASS CapturedMarine: doomb_monster_base Replaces Blursphere {
 			TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 doomb_spawn_burned_flesh;
 			
-			EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0;//doomb_show_effect("GreenFlameTrails", (0, 0, 50), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+			EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("GreenFlameTrails", (0, 0, 50), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			XBRN AAAA 2 BRIGHT A_SpawnItem("GreenFlare",0,43);
 			Stop;
 			
@@ -299,9 +290,7 @@ CLASS CapturedMarine: doomb_monster_base Replaces Blursphere {
 			PBUR A 1 A_Scream;
 			PBUR A 1 A_NoBlocking;
 			TNT1 A 0 A_SpawnItem("RemoveMarine");
-			PBUR AAAABBBBCCCCDDDDEEEEEEEEE 2;//doomb_show_effect("FlameTrails", ( 0, 0, 32 - frame * 3), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );	
-			
-			
+			PBUR AAAABBBBCCCCDDDDEEEEEEEEE 2 doomb_show_effect("FlameTrails", ( 0, 0, 32 - frame * 3), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			PBUR EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 6 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			PBUR E -1;
 			Stop;
@@ -478,45 +467,6 @@ CLASS MarinePunch : ACTOR {
 
 
 
-CLASS MarineGivingHealth : ACTOR { 
-	Default {
-		
-		MONSTER;
-		-COUNTKILL;
-		+SOLID;
-		-SHOOTABLE;
-		+MISSILEMORE;
-		+MISSILEEVENMORE;
-		Health 99999;
-		Radius 16;
-		Height 52;
-		Speed 0;
-		MeleeRange 28;
-	}
-	States
-	{
-		Spawn:
-			MR8S A 1 A_Look;
-			TNT1 A 0 A_CheckSight("GiveHealth");
-			TNT1 A 0 A_PlaySound("MRNGI2");
-			Goto See;
-			
-		See:
-			MR8S AAAAABBBBB 5 A_Chase;
-			TNT1 A 0 A_CheckSight("GiveHealth");
-			Loop;
-			
-			
-			
-		Missile:
-		GiveHealth:
-			MR8S A 1 A_FaceTarget;
-			TNT1 A 0 A_NoBlocking;
-			TNT1 A 0 A_SpawnItemEx("Stimpack", 30, 0);
-			TNT1 A 0 A_SpawnItem("Marine_Rifle");
-			Stop;
-	}
-}
 
 
 
@@ -539,23 +489,7 @@ CLASS PoleWithNothing : ACTOR {
 	Default {
 		
 		+NOBLOCKMAP;
-		Mass 99999999;
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0 A_Stop;
-			TNT1 A 0 A_SpawnItem("PoleWithNothing2", 0, -40);
-			Stop;
-			
-	}
-	
-}
-
-CLASS PoleWithNothing2 : ACTOR { 
-	Default {
-		
-		+NOBLOCKMAP;
+		+noclip
 		Mass 99999999;
 	}
 	States
