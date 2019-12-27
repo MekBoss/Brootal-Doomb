@@ -95,7 +95,7 @@ override void Deactivate (Actor activator)
     }
 }
 
-virtual int doomb_get_boolet_death_sprite()
+virtual int doomb_get_aditional_death_sprite()
 {
     return -1; //<- return TNT1 sprite name 
 }
@@ -107,7 +107,7 @@ states
 	Death.Bullet:
 		"####" H 10
         {
-            sprite = doomb_get_boolet_death_sprite();
+            sprite = doomb_get_aditional_death_sprite();
             A_PlayerScream();
 		    {busespecial = false;}
 		    A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
@@ -236,7 +236,7 @@ states
 	Death.SSG:
 		"####" O 2
         {
-            sprite = doomb_get_boolet_death_sprite();
+            sprite = doomb_get_aditional_death_sprite();
 
             A_FaceTarget();
 		    {busespecial = false;}

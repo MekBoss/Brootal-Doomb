@@ -4,7 +4,7 @@ CLASS Marine_Shotgun: Marine_base {
 		DropItem "Shot_Gun";
 	}
 
-override int doomb_get_boolet_death_sprite()
+override int doomb_get_aditional_death_sprite()
 {
 	return GetSpriteIndex("PLA3");
 }

@@ -70,7 +70,7 @@ CLASS Marine_PlasmaGun: Marine_base {
 		DropItem "PlasmaRifle";
 	}
 
-override int doomb_get_boolet_death_sprite()
+override int doomb_get_aditional_death_sprite()
 {
 	return GetSpriteIndex("PLA6");
 }

@@ -103,7 +103,7 @@ CLASS Marine_BFG: Marine_base {
 		+MTHRUSPECIES;
 	}
 
-override int doomb_get_boolet_death_sprite()
+override int doomb_get_aditional_death_sprite()
 {
 	return GetSpriteIndex("PLA7");
 }

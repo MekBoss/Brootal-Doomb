@@ -69,7 +69,7 @@ CLASS Marine_Rocket: Marine_base {
 		DropItem "RocketLauncher";
 	}
 
-override int doomb_get_boolet_death_sprite()
+override int doomb_get_aditional_death_sprite()
 {
 	return GetSpriteIndex("PL5S");
 }

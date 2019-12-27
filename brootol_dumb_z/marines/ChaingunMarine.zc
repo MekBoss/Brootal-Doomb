@@ -100,7 +100,7 @@ CLASS Marine_Minigun: Marine_base
 		Scale 1.05;
 		DropItem "MiniGun";
 	}
-override int doomb_get_boolet_death_sprite()
+override int doomb_get_aditional_death_sprite()
 {
 	return GetSpriteIndex("PL42");
 }
