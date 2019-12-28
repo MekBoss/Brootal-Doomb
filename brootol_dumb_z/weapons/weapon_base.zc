@@ -93,7 +93,10 @@ protected void reload_weapon_magazine(string ammo_pool = "", string magazine_poo
 	inventory actual_ammo = owner.findinventory(ammo_pool);
 
 	if(actual_ammo == null)
-	{console.printf("there is no %s ammo in player inventory", ammo_pool); return;}
+	{
+		owner.setinventory(ammo_pool, 0);
+		actual_ammo = owner.findinventory(ammo_pool);
+	}
 
 	inventory main_ammo = owner.findinventory(magazine_pool);
 	
@@ -345,98 +348,6 @@ enum DOOMB_WEAPON_FLAGS
 };
 
 
-
-class doomb_dual_weapon_base : doomb_weapon_base abstract
-{
-enum wepons
-{
-	LEFT_WEAPON = -2,
-	RIGHT_WEAPON = 2
-}
-enum doomb_dual_fire_states
-{
-	DDF_NONE = 0,
-	DDF_PRIMARY = 1,
-	DDF_ALT = 1 << 1
-};
-protected uint doomb_dual_weapon_state;
-
-
-protected void doomb_dual_primary_fire()
-{
-	if(owner.player && owner.player.cmd.buttons & BT_ATTACK && !(doomb_dual_weapon_state & DDF_PRIMARY) )
-	{
-		doomb_dual_weapon_state |= DDF_PRIMARY;
-		owner.player.GetPSprite(LEFT_WEAPON).SetState(doomb_dual_weapon_base(owner.player.ReadyWeapon).doomb_dual_get_primary_fire() );
-	}
-}
-
-
-protected void doomb_dual_alt_fire()
-{
-	if(owner.player && owner.player.cmd.buttons & BT_ALTATTACK && !(doomb_dual_weapon_state & DDF_ALT) )
-	{
-		doomb_dual_weapon_state |= DDF_ALT;
-		owner.player.GetPSprite(RIGHT_WEAPON).SetState(doomb_dual_weapon_base(owner.player.ReadyWeapon).doomb_dual_get_alt_fire() );
-	}
-}
-
-protected void init_dual_guns()
-{
-	if(is_self_valid_weapon() )
-	{
-		owner.player.GetPSprite(LEFT_WEAPON).setstate(doomb_dual_weapon_base(owner.player.readyweapon).doomb_dual_get_primary_ready() );
-		owner.player.GetPSprite(RIGHT_WEAPON).setstate(doomb_dual_weapon_base(owner.player.readyweapon).doomb_dual_get_alt_ready() );
-
-		owner.A_OverlayFlags(LEFT_WEAPON, PSPF_ADDBOB|PSPF_POWDOUBLE|PSPF_CVARFAST, true);
-		owner.A_OverlayFlags(RIGHT_WEAPON, PSPF_ADDBOB|PSPF_POWDOUBLE|PSPF_CVARFAST, true);
-	}
-}
-
-override void doeffect()
-{
-	super.doeffect();
-	if(is_self_valid_weapon() )
-	{
-		doomb_dual_primary_fire();
-		doomb_dual_alt_fire();
-	}
-}
-
-protected virtual state doomb_dual_get_primary_ready()
-{
-	return null;
-}
-protected virtual state doomb_dual_get_alt_ready()
-{
-	return null;
-}
-
-
-protected virtual state doomb_dual_get_primary_fire()
-{
-	return null;
-}
-protected virtual state doomb_dual_get_alt_fire()
-{
-	return null;
-}
-
-protected virtual state doomb_dual_get_primary_reload()
-{
-	return null;
-}
-protected virtual state doomb_dual_get_alt_reload()
-{
-	return null;
-}
-
-
-
-}
-
-
-
 class weapon_actions : eventhandler
 {
 override void NetworkProcess(ConsoleEvent e)
@@ -471,6 +382,148 @@ override void NetworkProcess(ConsoleEvent e)
 		{
 			doomb_weapon_base(players[e.Player].readyweapon).dw_set_state(DWF_SALUTE);
 		}
+	}
+}
+
+}
+
+
+
+class doomb_dual_weapon_base : doomb_weapon_base abstract
+{
+enum wepons
+{
+	LEFT_WEAPON = -2,
+	RIGHT_WEAPON = 2
+}
+enum doomb_dual_fire_states
+{
+	DDF_NONE = 0,
+	DDF_PRIMARY_FIRE = 1,
+	DDF_ALT_FIRE = 1 << 1,
+	DDF_PRIMARY_SHOULD_EXIST = 1 << 3,
+	DDF_ALT_SHOULD_EXIST = 1 << 4
+};
+protected uint doomb_dual_weapon_state;
+
+protected bool is_self_valid_weapon()
+{
+	if(owner && owner.player && !owner.bcorpse && owner.health > 0 && owner.player.readyweapon == self)
+		return true;
+
+	return false;
+}
+
+
+protected void doom_dual_check_fire()
+{
+	if(owner.player && owner.player.cmd.buttons & BT_ATTACK && !(doomb_dual_weapon_state & DDF_PRIMARY_FIRE) && owner.player.findPSprite(LEFT_WEAPON) )
+	{
+		doomb_dual_weapon_state |= DDF_PRIMARY_FIRE;
+	}
+
+	if(owner.player && owner.player.cmd.buttons & BT_ALTATTACK && !(doomb_dual_weapon_state & DDF_ALT_FIRE) && owner.player.findPSprite(RIGHT_WEAPON))
+	{
+		doomb_dual_weapon_state |= DDF_ALT_FIRE;
+	}
+
+}
+
+protected void init_dual_guns()
+{
+	if(is_self_valid_weapon() )
+	{
+		owner.player.GetPSprite(LEFT_WEAPON).setstate(doomb_dual_weapon_base(owner.player.readyweapon).doomb_dual_get_primary_ready() );
+		owner.player.GetPSprite(RIGHT_WEAPON).setstate(doomb_dual_weapon_base(owner.player.readyweapon).doomb_dual_get_alt_ready() );
+
+		owner.A_OverlayFlags(LEFT_WEAPON, PSPF_ADDBOB|PSPF_POWDOUBLE|PSPF_CVARFAST, true);
+		owner.A_OverlayFlags(RIGHT_WEAPON, PSPF_ADDBOB|PSPF_POWDOUBLE|PSPF_CVARFAST, true);
+		doomb_dual_weapon_state |= (DDF_ALT_SHOULD_EXIST|DDF_PRIMARY_SHOULD_EXIST);
+	}
+}
+
+protected void doomb_destroy_dual_guns()
+{
+	if(is_self_valid_weapon() )
+	{
+		if( owner.player.FindPSprite(LEFT_WEAPON) )
+			owner.player.FindPSprite(LEFT_WEAPON).destroy();
+		
+		if( owner.player.FindPSprite(RIGHT_WEAPON) )
+			owner.player.FindPSprite(RIGHT_WEAPON).destroy();
+
+		doomb_dual_weapon_state &= ~ (DDF_ALT_SHOULD_EXIST|DDF_PRIMARY_SHOULD_EXIST);
+	}
+}
+
+override void doeffect()
+{
+	//super.doeffect();
+	if(is_self_valid_weapon() )
+	{
+		doom_dual_check_fire();
+	}
+}
+
+protected virtual state doomb_dual_get_primary_ready()
+{
+	return null;
+}
+protected virtual state doomb_dual_get_alt_ready()
+{
+	return null;
+}
+
+
+protected virtual state doomb_dual_get_primary_fire()
+{
+	return null;
+}
+protected virtual state doomb_dual_get_alt_fire()
+{
+	return null;
+}
+
+
+protected state doomb_dual_primary_ready()
+{
+	if(self.doomb_dual_weapon_state & DDF_PRIMARY_FIRE)
+		return doomb_dual_get_primary_fire();
+
+	else
+		return resolvestate(null);
+}
+
+protected state doomb_dual_primary_refire()
+{
+	if(self.doomb_dual_weapon_state & DDF_PRIMARY_FIRE && owner.player.cmd.buttons & BT_ATTACK)
+		return doomb_dual_get_primary_fire();
+
+	else
+	{
+		self.doomb_dual_weapon_state &= ~DDF_PRIMARY_FIRE;
+		return resolvestate(null);
+	}
+}
+
+protected state doomb_dual_alt_ready()
+{
+	if(self.doomb_dual_weapon_state & DDF_ALT_FIRE)
+		return doomb_dual_get_alt_fire();
+
+	else
+		return resolvestate(null);
+}
+
+protected state doomb_dual_alt_refire()
+{
+	if(self.doomb_dual_weapon_state & DDF_ALT_FIRE && owner.player.cmd.buttons & BT_ALTATTACK)
+		return doomb_dual_get_alt_fire();
+
+	else
+	{
+		self.doomb_dual_weapon_state &= ~DDF_ALT_FIRE;
+		return resolvestate(null);
 	}
 }
 
