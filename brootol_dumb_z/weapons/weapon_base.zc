@@ -94,8 +94,9 @@ protected void reload_weapon_magazine(string ammo_pool = "", string magazine_poo
 
 	if(actual_ammo == null)
 	{
-		owner.setinventory(ammo_pool, 0);
+		owner.A_GiveInventory(ammo_pool);
 		actual_ammo = owner.findinventory(ammo_pool);
+		actual_ammo.amount --;
 	}
 
 	inventory main_ammo = owner.findinventory(magazine_pool);
@@ -467,21 +468,21 @@ override void doeffect()
 
 protected virtual state doomb_dual_get_primary_ready()
 {
-	return null;
+	return resolvestate("right_gun_ready");
 }
 protected virtual state doomb_dual_get_alt_ready()
 {
-	return null;
+	return resolvestate("left_gun_ready");
 }
 
 
 protected virtual state doomb_dual_get_primary_fire()
 {
-	return null;
+	return resolvestate("Fire_left_Gun");
 }
 protected virtual state doomb_dual_get_alt_fire()
 {
-	return null;
+	return resolvestate("Fire_Right_Gun");
 }
 
 
@@ -525,6 +526,13 @@ protected state doomb_dual_alt_refire()
 		self.doomb_dual_weapon_state &= ~DDF_ALT_FIRE;
 		return resolvestate(null);
 	}
+}
+
+states
+{
+	wait_another_gun:
+		tnt1 a 1;
+	loop;
 }
 
 }

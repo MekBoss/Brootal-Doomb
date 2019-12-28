@@ -82,16 +82,12 @@ CLASS Rifle : doomb_weapon_base Replaces Pistol {
 			RIFF A 0 A_FireProjectile("Tracer", random(-1,1), 0, -1, -12, 0, random(-1,1));
 			TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2);
 			RIFF A 0 A_FireProjectile("WallPenetrationHitscan", 0, 0, -1, 0, 0, 0);
-			TNT1 A 0 A_SetPitch(-1.8 + pitch);
 			TNT1 A 0 Radius_Quake (1, 4, 0, 1, 0);
 			TNT1 A 0 A_Takeinventory("RifleAmmo",1);
-			TNT1 A 0 A_SetPitch(+0.9 + pitch);
 			RIFF C 1 A_FireProjectile("RifleCaseSpawn",5,0,6,-14);
-			RIFG A 1 A_SetPitch(+0.9 + pitch);
-			TNT1 A 0 A_PlaySOund("DISTFRRIFLE", 2);
+			RIFG A 1 A_PlaySOund("DISTFRRIFLE", 2);
 			RIFG A 1;
 			RIFG A 0 A_Refire();
-			RIFG A 5 A_WeaponReady(1);
 		Goto Ready_loop;
 			
 		fire_zoomed:
