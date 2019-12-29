@@ -143,7 +143,6 @@ States
 	loop;
 
 	ReadySoul:
-		TNT1 A 0 A_JumpIfInventory("Reloading",1,"KillLS");
 		THEA ABCDCD 7 BRIGHT
 		{
 			A_WeaponReady();
@@ -164,7 +163,6 @@ States
 	Deselect:
 		TNT1 AAAAAAAAAAAAAAAAAA 0 A_Lower;
 		TNT1 A 0 A_Takeinventory("FistsSelected",1);
-		//TNT1 A 0 A_jumpifinventory("LostSoulFatality",1,"KillLS")
 		TNT1 A 0 A_JumpIfInventory("HasBarrel",1,"FireBarrel");
 		TNT1 A 1;
 	Wait;
@@ -193,8 +191,7 @@ States
 		PUNS BCD 1;
 		PUNS E 7 A_PlaySound("Knuckled");
 		PUNS FGFE 3;
-		PUNS DCB 1 A_TakeInventory("Reloading", 1);
-		Goto ready_loop;
+	Goto ready_loop;
 		
 	SelectFatalityModes:
 		TNT1 A 0;
@@ -204,7 +201,6 @@ States
 		TNT1 A 0 A_Print("RIP AND TEAR! Mode");
 		PUNS BCD 1;
 		PUNS E 7 A_PlaySound("Knuckled");
-		PUNS FGFE 3 A_TakeInventory("Reloading", 1);
 		PUNS DCB 1 A_TakeInventory("NoFatality", 1);
 		Goto ready_loop;
 		
@@ -212,7 +208,6 @@ States
 		TNT1 A 0 A_Print("SMASH Mode");
 		PUNS BCD 1;
 		PUNS E 7 A_PlaySound("Knuckled");
-		PUNS FGFE 3 A_TakeInventory("Reloading", 1);
 		PUNS DCB 1 A_GiveInventory("NoFatality", 1);
 		Goto ready_loop;
 	DoingFatality:
@@ -571,25 +566,6 @@ States
 		//TNT1 A 0 A_Refire
 		Goto ready_loop;
 		
-	Flash:
-		TNT1 A 0;
-		TNT1 A 0 A_JumpIfInventory("FlashlightAction", 1, "CheckFlashlight");
-		TNT1 A 1;
-		TNT1 A 0 A_JumpIfInventory("IsFlashlightOn", 1, "FlashOn");
-		Goto Flash;
-	FlashOn:
-		TNT1 A 0 A_FireProjectile("FlashlightProjectile", 0, 0, 0, 0, 0, 0);
-		TNT1 A 0 A_FireProjectile("FlashlightSource", 0, 0, 0, 0, 0, 0);
-		Goto Flash;
-	CheckFlashLight:
-		TNT1 A 1;
-		TNT1 A 0 A_TakeInventory("FlashlightAction");
-		TNT1 A 0 A_JumpIfInventory("IsFlashlightOn", 1, "TurnOffFlashlight");
-		TNT1 A 0 A_GiveInventory("IsFlashlightOn", 1);
-		Goto Flash;
-	TurnOffFlashlight:
-		TNT1 A 0 A_TakeInventory("IsFlashlightOn", 1);
-		Goto Flash;
 }
 }
 
