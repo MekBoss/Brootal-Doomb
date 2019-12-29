@@ -64,7 +64,7 @@ CLASS Rocket_Launcher : doomb_weapon_base Replaces RocketLauncher {
 			MISG EF 2;
 			MISG A 0;
 			TNT1 A 0 A_Refire;
-			Goto Ready_loop;
+		Goto Ready_loop;
 			
 			
 		Reload:
