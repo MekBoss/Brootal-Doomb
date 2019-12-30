@@ -55,12 +55,8 @@ CLASS CyberdemonBoss: Cyberdemon
 		Spawn:
 			TNT1 A 0;
 			//headbox height 200
-			
-			TNT1 A 0 A_GiveInventory("TargetIsACyberdemon");
-			CYBR D 10 A_Look;
-			
-			CYBR Z 10 A_Look;
-			Loop;
+			CYBR DZ 10 A_Look;
+		Loop;
 			
 		See:
 			CYBR A 3 A_Hoof;
@@ -248,41 +244,27 @@ CLASS SuperMastermind : doomb_monster_base {
 		Spawn:
 			TNT1 A 0;
 			SPID A 10 A_Look;
-			TNT1 A 0 A_GiveInventory("TargetIsAMastermind");
 			Loop;
 		See:
 			//headbox height 144
 			
 			SPID A 2 A_Metal;
 			
-			SPID A 2 A_Recoil(-3);
-			
-			SPID B 2 A_Chase;
-			
-			SPID B 2 A_Recoil(-3);
-			
-			
-			
-			SPID C 2 A_Chase;
-			
-			SPID C 2 A_Recoil(-3);
-			
+			SPID ABBCCD 2
+			{
+				A_Recoil(-3);
+				A_Chase();
+			}
 			TNT1 A 0 A_SpawnItemEx("MasterMindStep", 180, 180);
 			TNT1 A 0 A_SpawnItemEx("MasterMindStep", -180, 180);
-			
-			
-			SPID D 2 A_Recoil(-3);
-			
 			SPID D 2 A_Metal;
 			
 			
-			SPID E 2 A_Recoil(-3);
-			
-			SPID E 2 A_Recoil(-3);
-			
-			SPID F 2 A_Chase;
-			
-			
+			SPID EEF 2
+			{
+				A_Recoil(-3);
+				A_Chase();
+			}
 			TNT1 A 0 A_SpawnItemEx("MasterMindStep", 180, -180);
 			TNT1 A 0 A_SpawnItemEx("MasterMindStep", -180, -180);
 			Loop;

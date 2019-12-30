@@ -52,53 +52,24 @@ States
 	Idle:
 	LookingForPlayer:
 		TNT1 A 0 A_GiveInventory("SKImp", 1);
-		
-		SKEL B 10 A_Look();
-		
-		SKEL B 10 A_Look();
-		
-		SKEL B 10 A_Look();
+		SKEL BBB 10 A_Look();
 		TNT1 A 0 A_SetAngle(angle - 40);
-		
-		SKEL B 10 A_Look();
-		
-		SKEL B 10 A_Look();
-		
-		SKEL B 10 A_Look();
+		SKEL BBB 10 A_Look();
 		TNT1 A 0 A_SetAngle(angle + 40);
+		SKEL BBB 10 A_Look();
 		
-		SKEL B 10 A_Look();
-		
-		SKEL B 10 A_Look();
-		
-		SKEL B 10 A_Look();
-		
-		SKEL A 0 A_Wander();
-		SKEL AA 2 A_Look();
-		TNT1 A 0 A_Recoil(-2);
-		
-		
-		SKEL B 0 A_Wander();
-		SKEL BB 2 A_Look();
-		TNT1 A 0 A_Recoil(-2);
-		
-		
-		SKEL C 0 A_Wander();
-		SKEL CC 2 A_Look();
-		TNT1 A 0 A_Recoil(-2);
-		
-		
-		SKEL D 0 A_Wander();
-		SKEL DD 2 A_Look();
-		TNT1 A 0 A_Recoil(-2);
-	Goto LookingForPlayer;
-		
+		SKEL AABBCCDD 2
+		{
+			A_Look();
+			A_Wander();
+			A_Recoil(-2);
+		}
+	loop;		
 		
 		
 	ForgetTarget:
 		TNT1 A 0 A_ClearTarget();
 		TNT1 A 0 A_TakeInventory("EnemyMemory", 25);
-		TNT1 A 0 A_GiveInventory("LookingForPlayer", 1);
 		Goto LookingForPlayer;
 		
 	Spawn:

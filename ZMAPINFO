@@ -11,7 +11,6 @@ SpawnNums
    148 = SmallBloodPool2
    150 = BrainStem2
    146 = Gibs2
-   149 = BurningBarrelVanilla
 
    133 = InvulnerabilitySphere_
    138 = NightVision
@@ -37,42 +36,9 @@ SpawnNums
    28 = minigun
    139 = ClipBox2
    27 = Shot_Gun
-   22 = GiveArmor
    69 = HeavyArmor
    68 = LightArmor
 
-/*
-ACTOR CrueltyBonus5armor : BasicArmorBonus
-{
-	
-	SpawnID 152
-
-ACTOR GiveHealth : Health
-{
-	
-	SpawnID 152
-
-ACTOR Medikit2 : Health Replaces Medikit
-{
-	
-	SpawnID 24
-
-ACTOR Stimpack2 : Health Replaces Stimpack
-{
-	
-	SpawnID 23
-
-Actor ArmorShard : BasicArmorBonus Replaces ArmorBonus
-{
-	
-	SpawnID 22
-
-ACTOR HealthPlus : Health Replaces HealthBonus
-{
-	
-	SpawnID 152
-
-*/
 }
 
 

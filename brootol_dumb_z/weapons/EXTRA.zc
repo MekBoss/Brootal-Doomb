@@ -42,24 +42,6 @@ CLASS FlameCannon : Weapon {
 			FLMG A 1 A_Lower;
 			Loop;
 		Select:
-			
-			TNT1 A 0 A_Takeinventory("SawSelected",1);
-			
-			
-			
-			TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1);
-			
-			
-			
-			
-			
-			
-			
-			
-			TNT1 A 0 A_Giveinventory("FlameCannonSelected",1);
-			
-			
-			
 			FLMG A 1 A_Raise;
 			wait;
 		Spawn:
@@ -215,23 +197,6 @@ CLASS HellishMissileLauncher : Weapon {
 			
 			Loop;
 		Select:
-			
-			TNT1 A 0 A_Takeinventory("SawSelected",1);
-			
-			
-			
-			TNT1 A 0 A_Takeinventory("PlasmaGunSelected",1);
-			
-			
-			
-			
-			
-			
-			TNT1 A 0 A_Giveinventory("RevenantLauncherSelected",1);
-			
-			
-			
-			
 			RVCG A 1 A_Raise;
 			wait;
 		Spawn:

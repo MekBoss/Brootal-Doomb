@@ -695,8 +695,11 @@ Pain.Taunt:
 	Stop;
 	
 	StealthKill:
-		TNT1 A 0;
-		TNT1 A 0 A_JumpIfInTargetInventory("FistsSelected", 1, 1);
+		TNT1 A 0
+		{
+			if(target.player && target.player.readyweapon.getclassname() == "Melee_Attacks")
+				setstate(curstate+1);
+		}
 		Goto Death;
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1);
 		TNT1 A 0 A_GiveToTarget("SKChaingunGuy", 1);

@@ -183,7 +183,7 @@ states
 		TNT1 A 0 bright A_SpawnProjectile ("MediumBlackSmoke", 38, 0, random (40, 180), 2, - random (60, 120));
 		TNT1 A 0 bright A_SpawnProjectile ("RealFlameTrailsSmallLong", 38, 0, random (40, 180), 2, - random (50, 130));
 		TNT1 A 0 doomb_show_effect("ImBallGettingReady", (0, 0, 35), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), 0.5 ), (frandom(2, 2.6), 0) );
-		BURB AAA 1 bright A_SpawnItem("RedFlare3",0,42);
+		BURB AAA 1 bright A_SpawnItem("RedFlare",0,42);
 	Loop;
 
 	Pain.Kick:
@@ -232,34 +232,7 @@ states
 }
 
 
-CLASS BurningBarrelDamage : ACTOR { 
-Default {
-	+NOTARGET;
-	Radius 0;
-	Height 0;
-	DamageType "Fire";
-	+NOGRAVITY;
-	+NOTELEPORT;
-	+NODAMAGETHRUST;
-	+THRUGHOST;
-	+NORADIUSDMG;
-	+NOEXTREMEDEATH;
-	+FORCERADIUSDMG;
-	-BLOODSPLATTER;
-	+BLOODLESSIMPACT;
-	PROJECTILE;
-	+DEHEXPLOSION;
-	+ACTIVATEMCROSS;
-	+NOTARGET;
-}
-States
-{
-	Spawn:
-		TNT1 A 0;
-		TNT1 AA 5 A_Explode(10,5);
-		Stop;
-}
-}
+
 
 
 
@@ -294,169 +267,5 @@ states
 		TNT1 A 0;
 		FLAR B 2 bright;
 		stop;
-		Stop;
-}
-}
-
-
-
-
-
-
-
-
-
-CLASS RedTorchVanilla : ACTOR { 
-Default {
-	Radius 16;
-	Height 68;
-	ProjectilePassHeight -16;
-	+SOLID;
-}
-States
-{
-	Spawn:
-		TRED ABCD 2 BRIGHT;
-		Loop;
-}
-}
-
-
-CLASS BlueTorchVanilla : ACTOR { 
-Default {
-	
-	
-	Radius 16;
-	Height 68;
-	ProjectilePassHeight -16;
-	+SOLID;
-}
-States
-{
-	Spawn:
-		TBLU ABCD 2 BRIGHT;
-		Loop;
-}
-}
-
-
-CLASS GreenTorchVanilla : ACTOR { 
-Default {
-	
-	
-	Radius 16;
-	Height 68;
-	ProjectilePassHeight -16;
-	+SOLID;
-}
-States
-{
-	Spawn:
-		TGRN ABCD 2 BRIGHT;
-		Loop;
-}
-}
-
-
-
-CLASS ShortBlueTorchVanilla : ACTOR { 
-Default {
-	
-	
-	Radius 16;
-	Height 37;
-	ProjectilePassHeight -16;
-	+SOLID;
-}
-States
-{
-	Spawn:
-		SMBT ABCD 2 BRIGHT;
-		Loop;
-}
-}
-
-CLASS ShortRedTorchVanilla : ACTOR { 
-Default {
-	
-	
-	Radius 16;
-	Height 37;
-	ProjectilePassHeight -16;
-	+SOLID;
-}
-States
-{
-	Spawn:
-		SMRT ABCD 2 BRIGHT;
-		Loop;
-}
-}
-
-
-CLASS ShortGreenTorchVanilla : ACTOR { 
-Default {
-	
-	
-	Radius 16;
-	Height 37;
-	ProjectilePassHeight -16;
-	+SOLID;
-}
-States
-{
-	Spawn:
-		SMGT ABCD 2 BRIGHT;
-		Loop;
-}
-}
-
-CLASS CandelabraVanilla : ACTOR { 
-Default {
-	
-	
-	Radius 16;
-	Height 60;
-	ProjectilePassHeight -16;
-	+SOLID;
-}
-States
-{
-	Spawn:
-		CBRA A -1 BRIGHT;
-		Stop;
-}
-}
-
-CLASS CandleVanilla : ACTOR { 
-Default {
-	
-	
-	Radius 20;
-	Height 14;
-	ProjectilePassHeight -16;
-}
-States
-{
-	Spawn:
-		CAND A -1 BRIGHT;
-		Stop;
-}
-}
-
-
-CLASS BurningBarrelVanilla : ACTOR { 
-Default {
-	
-	Radius 16;
-	Height 32;
-	ProjectilePassHeight -16;
-	+SOLID;
-}
-States
-{
-	Spawn:
-		FCAN ABC 2 BRIGHT;
-		Loop;
 }
 }

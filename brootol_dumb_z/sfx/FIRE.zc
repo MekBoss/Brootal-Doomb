@@ -771,8 +771,7 @@ CLASS BurningGroundLowDamage : ACTOR {
 			TNT1 A 0 A_SpawnProjectile ("MediumBlackSmoke", 40, 0, random (0, 360), 2, random (60, 130));
 			TNT1 AAAAAA 4 A_SpawnProjectile ("SmallFireTrail", 2, 0, random (0, 360), 2, random (0, 90));
 			TNT1 A 0 A_Explode(3, 90);
-			TNT1 A 0 A_GiveInventory("Timer555", 1);
-			TNT1 A 0 A_JumpIfInventory("Timer555", 9, "Death");
+			tnt1 a 0 a_jumpif(random(0, 10) < 1, "death");
 			Loop;
 		Death:
 			TNT1 A 0 A_SpawnProjectile ("MediumBlackSmoke", 40, 0, random (0, 360), 2, random (60, 130));

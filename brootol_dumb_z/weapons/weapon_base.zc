@@ -250,6 +250,7 @@ states
         {
 			invoker.in_specific_state = true;
             A_ZoomFactor(1.0);
+			self.player.mo.setstatelabel("SayOneLiner");
         }
 		TNT1 A 10;
 		FUCK F 1;

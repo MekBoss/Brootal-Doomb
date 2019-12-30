@@ -1,9 +1,4 @@
-CLASS lowgraphicsmode : Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
+
 
 CLASS IsOverLava : Inventory { 
 	Default {

@@ -90,9 +90,7 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 			TNT1 A 0;
 			TNT1 A 0 A_TakeInventory("EnemyMemory", 15);
 			TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
-			TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat");
-			TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat");
-			
+			TNT1 A 0 doomb_if_boss_retreat(target, "CheckRetreat");
 		See3:
 			
 			TNT1 A 0 A_CheckSight("SeeNeverSeen");
@@ -146,81 +144,26 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 		LookingForPlayer:
 			TNT1 A 0 A_GiveInventory("SKImp", 1);
 			
-			BOS2 B 10 A_Look;
-			
-			BOS2 B 10 A_Look;
-			
-			BOS2 B 10 A_Look;
+			BOS2 BBB 10 A_Look;
 			TNT1 A 0 A_SetAngle(angle - 40);
-			
-			BOS2 B 10 A_Look;
-			
-			BOS2 B 10 A_Look;
-			
-			BOS2 B 10 A_Look;
+			BOS2 BBB 10 A_Look;
 			TNT1 A 0 A_SetAngle(angle + 40);
 			
-			BOS2 B 10 A_Look;
-			
-			BOS2 B 10 A_Look;
-			
-			BOS2 B 10 A_Look;
-			
-			BOS2 A 0 A_Wander;
-			BOS2 AA 2 A_Look;
-			TNT1 A 0 A_Recoil(-2);
-			
-			
-			BOS2 B 0 A_Wander;
-			BOS2 BB 2 A_Look;
-			TNT1 A 0 A_Recoil(-2);
-			
-			
-			BOS2 C 0 A_Wander;
-			BOS2 CC 2 A_Look;
-			TNT1 A 0 A_Recoil(-2);
-			
-			
-			BOS2 D 0 A_Wander;
-			BOS2 DD 2 A_Look;
-			TNT1 A 0 A_Recoil(-2);
-			
-			
-			
-			TNT1 A 0 A_jump(128, "LookingForPlayer");
-			
-			
-			BOS2 A 0 A_Wander;
-			BOS2 AA 2 A_Look;
-			TNT1 A 0 A_Recoil(-2);
-			
-			
-			BOS2 B 0 A_Wander;
-			BOS2 BB 2 A_Look;
-			TNT1 A 0 A_Recoil(-2);
-			
-			
-			BOS2 C 0 A_Wander;
-			BOS2 CC 2 A_Look;
-			TNT1 A 0 A_Recoil(-2);
-			
-			
-			BOS2 D 0 A_Wander;
-			BOS2 DD 2 A_Look;
-			TNT1 A 0 A_Recoil(-2);
-			
-			
-			
-			
-			Goto LookingForPlayer;
+			BOS2 BBB 10 A_Look;
+
+			BOS2 AABBCCDD 2
+			{
+				A_Look();
+				A_Wander();
+			}
+		loop;
 			
 			
 			
 		ForgetTarget:
 			TNT1 A 0 A_ClearTarget;
 			TNT1 A 0 A_TakeInventory("EnemyMemory", 25);
-			TNT1 A 0 A_GiveInventory("LookingForPlayer", 1);
-			Goto LookingForPlayer;
+		Goto LookingForPlayer;
 			
 		Melee2:
 			TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
@@ -233,17 +176,9 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 			
 			TNT1 A 0 A_TakeInventory("EnemyMemory", 30);
 			TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
-			TNT1 A 0 A_JumpIfInTargetInventory("TargetIsACyberdemon", 1, "CheckRetreat");
-			TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMastermind", 1, "CheckRetreat");
+			TNT1 A 0 doomb_if_boss_retreat(target, "CheckRetreat");
 			TNT1 A 0 A_JumpIfInventory("StopKickingMyBallsMotherFucker", 1, "MissileInRage");
-			
-			
-			//TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 0, 5)
-			//TNT1 A 0 A_TakeInventory("CantFire", 1)
-			//TNT1 A 0 A_SpawnProjectile("MonsterTargetCheck", 34, 0, 0, 0) 
-			//TNT1 A 0 A_SpawnProjectile("MonsterTargetCheckFaster", 34, 0, 0, 0) 
 			BOS2 E 3 A_FaceTarget;
-			//TNT1 A 0 A_JumpIfInventory("CantFire",1, "SeeContinue")
 			
 			BOS2 EEEEEEE 2
 			{
@@ -257,25 +192,15 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 		Goto See2;
 			
 		MissileInRage:
-			TNT1 A 0 A_TakeInventory("CantFire", 1);
-			TNT1 A 0 A_SpawnProjectile("MonsterTargetCheck", 34, 0, 0, 0);
-			TNT1 A 0 A_SpawnProjectile("MonsterTargetCheckFaster", 34, 0, 0, 0);
-			BOS2 E 3 A_FaceTarget;
-			TNT1 A 0 A_JumpIfInventory("CantFire",1, "SeeContinue");
-			BOS2 E 3 A_FaceTarget;
+			BOS2 EE 3 A_FaceTarget;
 			BOS2 F 6 A_FaceTarget;
 			BOS2 G 6 A_SpawnProjectile("GreenPlasmaBall", 36, 0, 0, 1);
-			
-			
-			BAS2 EF 6 A_FaceTarget;
-			
-			BAS2 G 6 A_SpawnProjectile("GreenPlasmaBall", 36, 0, 0, 1);
-			
-			
-			BOS2 EF 6 A_FaceTarget;
-			
-			BOS2 G 6 A_SpawnProjectile("GreenPlasmaBall", 36, 0, 0, 1);
-			Goto See2;
+			tnt1 a 0
+			{
+				if(random(0, 10) > 3)
+					setstate(findstate("MissileInRage") +2);//jumps to BOS2 F 6 A_FaceTarget;
+			}
+		Goto See2;
 			
 		CheckRetreat:
 			TNT1 A 0;
@@ -283,17 +208,11 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 			Goto Missile+5;
 			
 		Retreat:
-			TNT1 A 0;
-			//TNT1 A 0 A_SpawnItemEx("FootSep", 0, 0)
-			TNT1 A 0 A_FaceTarget;
-			
-			BOS2 DD 2 A_Recoil(2);
-			
-			BOS2 DD 2 A_Recoil(2);
-			TNT1 A 0 A_FaceTarget;
-			
-			
-			BOS2 CCCCBBBBAAAA 2 A_Recoil(1);
+			BOS2 DDDDCCCCBBBBAAAA 2
+			{
+				A_Recoil(1);
+				A_FaceTarget();
+			}
 		Goto Missile+5;
 			
 		Pain.Explosive_Impact:

@@ -16,13 +16,6 @@ CLASS BasicRealisticItem : ACTOR {
 	}
 }
 
-CLASS RealismMode : Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
 CLASS CanGrab : Inventory { 
 	Default {
 		

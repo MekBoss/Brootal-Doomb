@@ -9,13 +9,6 @@ CLASS TechPillar1 : TechPillar replaces TechPillar {
 	}
 }
 
-CLASS DecorationDisabled : Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
 CLASS ImpaledSkulls: HeadsOnAStick Replaces HeadsOnAStick { 
 	Default {
 		

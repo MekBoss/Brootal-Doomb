@@ -223,7 +223,6 @@ CLASS SuperBlurSphere : CustomInventory { //Replaces BlurSphere
 
 CLASS DemonStrengthRune : Berserl1 { 
 	Default {
-		
 		Scale 0.2;
 		+COUNTITEM;
 		+INVENTORY.ALWAYSPICKUP;
@@ -251,7 +250,6 @@ CLASS DemonStrengthRune : Berserl1 {
 
 CLASS TimeFreezer2 : PowerupGiver { 
 	Default {
-		
 		Inventory.Pickupmessage "Time Freezer!";
 		Inventory.Icon "MEGAA0";
 		Inventory.MaxAmount 0;
@@ -271,8 +269,8 @@ CLASS TimeFreezer2 : PowerupGiver {
 }
 
 CLASS PowerTimeFreezer2 : PowerTimeFreezer { 
-	Default {
-	
+Default {
 	Powerup.Duration 2;
-	}
+}
+
 }

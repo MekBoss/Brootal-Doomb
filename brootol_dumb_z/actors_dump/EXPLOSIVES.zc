@@ -1,20 +1,4 @@
 //Everything that can explode and hurt people goes here.
-CLASS STGrenadeTimer : Inventory { 
-	Default {
-		
-		inventory.maxamount 20;
-	}
-}
-
-
-
-
-	
-		
-		
-		
-
-
 CLASS GrenadeMissile : doomb_boolet_base { 
 	Default {
 		
@@ -35,34 +19,34 @@ CLASS GrenadeMissile : doomb_boolet_base {
 		DeathSound "none";
 		Obituary "$OB_MPROCKET";
 	}
+
+	private uint timer; 
 	States
 	{
 		Spawn:
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater");
-			TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1);
-			TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 9, "Explode");
+			tnt1 a 0
+			{
+				timer++;
+				if(timer > 10)
+					setstatelabel("explode");
+			}
 			TNT1 A 0 A_CheckFloor("Death");
-			GBPJ ABCD 3 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
-			TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 9, "Explode");
-			TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1);
-			GBPJ EFGH 3 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
-			TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 9, "Explode");
+			GBPJ ABCDEFGH 3
+			{
+				if(waterlevel <= 1)
+					doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
+			}
 		Loop;
 			
-		SpawnUnderwater:
-			TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1);
-			GBPJ ABCD 3;
-			TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 9, "Explode");
-			TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1);
-			GBPJ EFGH 3;
-			TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 9, "Explode");
-		Goto Spawn;
-			
 		Death:
-			TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 9, "Explode");
+			tnt1 a 0
+			{
+				timer+= 5;
+				if(timer > 10)
+					setstatelabel("explode");
+			}
 			GBPJ AAAA 3 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
-			TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1);
-			Loop;
+		Loop;
 			
 		XDeath:
 			TNT1 A 0 A_Recoil(1);
@@ -95,34 +79,6 @@ CLASS GrenadeMissile : doomb_boolet_base {
 
 
 
-CLASS ShortGrenade: GrenadeMissile { 
-	Default {
-		
-		-DOOMBOUNCE;
-		+SLIDESONWALLS;
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater");
-			GBPJ ABCDEFGH 3 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
-			Loop;
-			
-		SpawnUnderwater:
-			TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1);
-			GBPJ ABCD 3;
-			TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 1, "Explode");
-			TNT1 A 0 A_GiveInventory("STGrenadeTimer", 1);
-			GBPJ EFGH 3;
-			TNT1 A 0 A_JumpIfInventory("STGrenadeTimer", 1, "Explode");
-			Goto Spawn;
-			
-		Death:
-		XDeath:
-			TNT1 A 0;
-			Goto Explode;
-	}
-}
 
 
 
@@ -180,7 +136,6 @@ States
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater");
 		WYVB A 1 Bright A_SpawnItem("RedFlareSmall22",0,0);
 		TNT1 A 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
-		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "SpawnCheap");
 		Loop;
 		
 	SpawnUnderwater:
@@ -191,9 +146,8 @@ States
 		
 	Death:
 		EXPL A 0 Radius_Quake (2, 8, 0, 15, 0);//(intensity, duration, damrad, tremrad, tid)
-		TNT1 A 0 A_JumpIfInventory("lowgraphicsmode", 1, "DeathCheap");
 		TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -30);
-			TNT1 A 0 {if(waterlevel > 1) spawn("UnderwaterExplosion", pos:self.pos); }
+		TNT1 A 0 {if(waterlevel > 1) spawn("UnderwaterExplosion", pos:self.pos); }
 		TNT1 A 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 		TNT1 A 0 A_Explode(120,150, 0, 0, 0, 0, 0, "none", "Explosive_Impact");
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );

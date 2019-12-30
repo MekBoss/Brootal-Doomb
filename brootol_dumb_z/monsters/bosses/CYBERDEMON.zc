@@ -30,6 +30,7 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 		+DONTRIP;
 		+NORADIUSDMG;
 		+QUICKTORETALIATE;
+		+boss
 		Speed 16;
 		FastSpeed 22;
 		painchance "kick", 255;
@@ -47,11 +48,7 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 			Goto See;
 			
 		Spawn:
-			TNT1 A 0;
 			//headbox height 100
-			
-			TNT1 A 0 A_GiveInventory("TargetIsACyberdemon");
-			
 		Stand:
 			CYBR DZ 10 A_Look;
 		Loop;

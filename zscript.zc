@@ -13,31 +13,11 @@ CLASS EnemyMemory : Inventory {
 	}
 }
 
-CLASS CantFire : Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
-
-CLASS LookingForPlayer : Inventory { 
-	Default {
-		
-		inventory.maxamount 30;
-	}
-}
 
 
 
 
 
-CLASS oneliner: Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
 
 
 CLASS advtaunting: Inventory { 
@@ -48,103 +28,6 @@ CLASS advtaunting: Inventory {
 }
 
 
-
-CLASS FistsSelected: Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
-CLASS ShotgunSelected: Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
-CLASS MinigunSelected: Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
-CLASS SSGSelected: Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
-CLASS RocketLauncherSelected: Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
-CLASS GrenadeLauncherSelected: Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
-
-CLASS PlasmaGunSelected: Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
-CLASS RailGunSelected: Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
-
-CLASS BFGSelected: Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
-CLASS BFG10KSelected: Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
-
-CLASS SubMachineGunSelected: Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
-
-CLASS FlameCannonSelected: Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
-
-CLASS RevenantLauncherSelected: Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
 CLASS FallingHeight : Inventory { 
 	Default {
 		
@@ -153,61 +36,6 @@ CLASS FallingHeight : Inventory {
 }
 
 
-CLASS LostSoulSelected: Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
-
-
-CLASS DeathTimer1 : Inventory { 
-	Default {
-		
-		inventory.maxamount 120;
-	}
-}
-
-
-CLASS Timer555 : Inventory { 
-	Default {
-		
-		inventory.maxamount 555;
-	}
-}
-
-
-
-
-CLASS TargetIsACyberdemon : Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
-
-CLASS TargetIsAMastermind : Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
-CLASS TargetIsABaronOfHell : Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
-CLASS TargetIsAdoomb_fatso : Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
 
 
 //monsters base must go before gore

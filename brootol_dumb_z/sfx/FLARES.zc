@@ -1,16 +1,56 @@
 
-CLASS Flare_General : ACTOR { 
-	Default {
-		
-		+NOINTERACTION;
-		+NOGRAVITY;
-		+CLIENTSIDEONLY;
-		renderstyle "Add";
-		radius 1;
-		height 1;
-		alpha 0.4;
-		scale 0.4;
+CLASS Flare_General : ACTOR
+{ 
+Default {
+	+noclip
+	+NOINTERACTION;
+	+NOGRAVITY;
+	renderstyle "Add";
+	radius 1;
+	height 1;
+	alpha 0.4;
+	scale 0.4;
+}
+
+private vector3 offset;
+
+void doomb_set_flare_offset(vector3 f = (0, 0, 0) )
+{
+	if(getage() < 1)
+	{
+		offset = f;
 	}
+}
+
+override void tick()
+{
+	super.tick();
+	if(target)
+	{
+		setorigin(target.pos + offset, true);
+		if(target.tics < 0 )
+		{
+			self.destroy();
+		}
+	}
+	else
+	{
+		self.destroy();
+	}
+}
+
+static actor doomb_attach_flare(actor caller = null, string type = "", vector3 offset = (0, 0, 0))
+{
+	if(caller)
+	{
+		actor f = spawn(type, pos:caller.pos + offset);
+		f.target = caller;
+		Flare_General(f).doomb_set_flare_offset(offset);
+	}
+
+	return null;
+}
+
 }
 
 CLASS NewfagExplosionFlare : Flare_General { 
@@ -23,9 +63,8 @@ CLASS NewfagExplosionFlare : Flare_General {
 	states
 	{
 		Spawn:
-			FLAR A 2 bright;
-			FLAR AAAAAAAAAAAAAAAA 1 BRIGHT A_FadeOut(0.11);
-			stop;
+			FLAR AAAAAAAAAAAAAAAAA 1 BRIGHT A_FadeOut(0.11);
+		stop;
 	}
 }
 
@@ -35,54 +74,38 @@ CLASS RedFlare : Flare_General {
 	{
 		Spawn:
 			TNT1 A 0;
-			TNT1 A 0 A_Jump(128,2);
-			LENR A 2 bright;
-			stop;
-			TNT1 A 0;
-			LENR B 2 bright;
-			stop;
+			TNT1 A 0 A_Jump(128,"mini_loop_2");
+		mini_loop_1:
+			LENR ABA 1 bright;
+		stop;
+
+		mini_loop_2:
+			LENR BAB 1 bright;
+		stop;
 	}
 }
 
-CLASS RedFlare3 : Flare_General { 
-	Default {
-		
-	}
-	states
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Jump(128,4);
-			LENR AAB 1 bright;
-			stop;
-			TNT1 A 0;
-			LENR BAB 1 bright;
-			stop;
-	}
-}
+
+
+
+
+
 
 CLASS BlueFlare : Flare_General { 
-	Default {
-		
-	}
 	states
 	{
 		Spawn:
 			TNT1 A 0;
 			TNT1 A 0 A_Jump(128,2);
-			LENB A 2 bright;
+			LENB ABA 1 bright;
 			stop;
-			TNT1 A 0;
-			LENB B 2 bright;
+			LENB BAB 1 bright;
 			stop;
 	}
 }
 
 
 CLASS BlueFlare3 : Flare_General { 
-	Default {
-		
-	}
 	states
 	{
 		Spawn:
@@ -97,9 +120,6 @@ CLASS BlueFlare3 : Flare_General {
 }
 
 CLASS GreenFlare : Flare_General { 
-	Default {
-		
-	}
 	states
 	{
 		Spawn:
@@ -114,9 +134,6 @@ CLASS GreenFlare : Flare_General {
 }
 
 CLASS GreenFlare3 : Flare_General { 
-	Default {
-		
-	}
 	states
 	{
 		Spawn:
@@ -131,9 +148,6 @@ CLASS GreenFlare3 : Flare_General {
 }
 
 CLASS YellowFlare : Flare_General { 
-	Default {
-		
-	}
 	states
 	{
 		Spawn:
@@ -151,28 +165,24 @@ CLASS YellowFlare : Flare_General {
 
 CLASS YellowFlareSmall : YellowFlare { 
 	Default {
-		
 		scale 0.15;
 	}
 }
 
 CLASS YellowFlareMedium : YellowFlare { 
 	Default {
-		
 		scale 0.20;
 	}
 }
 
 CLASS YellowFlareLarge1X : YellowFlare { 
 	Default {
-		
 		scale 1.0;
 	}
 }
 
 CLASS RedFlareMedium : RedFlare { 
 	Default {
-		
 		scale 0.25;
 	}
 }
@@ -284,7 +294,6 @@ CLASS PlasmaFlare : Flare_General {
 
 CLASS FireballFlare : Flare_General { 
 	Default {
-		
 		alpha 0.6;
 		scale 0.15;
 	}
@@ -303,7 +312,6 @@ CLASS FireballFlare : Flare_General {
 
 CLASS RocketFlare : Flare_General { 
 	Default {
-		
 		alpha 1.0;
 		yscale 0.6;
 		xscale 0.6;
@@ -318,7 +326,6 @@ CLASS RocketFlare : Flare_General {
 
 CLASS GreenFlareSmall2 : GreenFlare { 
 	Default {
-		
 		alpha 0.15;
 		scale 0.15;
 	}
@@ -330,7 +337,6 @@ CLASS GreenFlareSmall2 : GreenFlare {
 
 CLASS LensFlare : Flare_General { 
 	Default {
-		
 		alpha 0.45;
 		scale 0.5;
 	}
@@ -345,7 +351,6 @@ CLASS LensFlare : Flare_General {
 
 CLASS WhiteFlareSmall : Flare_General { 
 	Default {
-		
 		alpha 0.05;
 		scale 0.15;
 	}
@@ -359,7 +364,6 @@ CLASS WhiteFlareSmall : Flare_General {
 
 CLASS FireFightFlare : Flare_General { 
 	Default {
-		
 		+FORCEXYBILLBOARD;
 		scale 0.20;
 	}
@@ -580,9 +584,6 @@ CLASS GreenFlareSpawn : ACTOR {
 
 
 CLASS RedFlare22 : Flare_General { 
-	Default {
-		
-	}
 	states
 	{
 		Spawn:
@@ -604,9 +605,6 @@ CLASS RedFlareSmall22 : RedFlare22 {
 }
 
 CLASS BlueFlare22 : Flare_General { 
-	Default {
-		
-	}
 	states
 	{
 		Spawn:
@@ -621,9 +619,6 @@ CLASS BlueFlare22 : Flare_General {
 }
 
 CLASS GreenFlare22 : Flare_General { 
-	Default {
-		
-	}
 	states
 	{
 		Spawn:
@@ -639,15 +634,11 @@ CLASS GreenFlare22 : Flare_General {
 
 CLASS GreenFlareSmall22 : GreenFlare22 { 
 	Default {
-		
 		scale 0.22;
 	}
 }
 
 CLASS YellowFlare22 : Flare_General { 
-	Default {
-		
-	}
 	states
 	{
 		Spawn:
@@ -663,14 +654,12 @@ CLASS YellowFlare22 : Flare_General {
 
 CLASS YellowFlareSmall22 : YellowFlare22 { 
 	Default {
-		
 		scale 0.15;
 	}
 }
 
 CLASS YellowFlareSmall22Long : YellowFlare22 { 
 	Default {
-		
 		scale 0.15;
 	}
 	states
@@ -692,7 +681,6 @@ CLASS YellowFlareSmall22Long : YellowFlare22 {
 
 CLASS LensFlareAlt : Flare_General { 
 	Default {
-		
 		alpha 0.5;
 		xscale 0.6;
 		yscale 0.3;
@@ -706,9 +694,6 @@ CLASS LensFlareAlt : Flare_General {
 }
 
 CLASS LensFlareAltLong : LensFlareAlt { 
-	Default {
-		
-	}
 	states
 	{
 		Spawn:
@@ -719,9 +704,6 @@ CLASS LensFlareAltLong : LensFlareAlt {
 
 
 CLASS LensFlareAltLonger : LensFlareAlt { 
-	Default {
-		
-	}
 	states
 	{
 		Spawn:
@@ -748,9 +730,6 @@ CLASS YellowLensFlareAlt : Flare_General {
 }
 
 CLASS YellowLensFlareAltLong : YellowLensFlareAlt { 
-	Default {
-		
-	}
 	states
 	{
 		Spawn:
@@ -761,7 +740,6 @@ CLASS YellowLensFlareAltLong : YellowLensFlareAlt {
 
 CLASS GreenLensFlareAltSmall : Flare_General { 
 	Default {
-		
 		+FORCEYBILLBOARD;
 		alpha 0.3;
 		xscale 0.4;
@@ -778,7 +756,6 @@ CLASS GreenLensFlareAltSmall : Flare_General {
 
 CLASS OrangeLensFlareAlt : Flare_General { 
 	Default {
-		
 		+MISSILE;
 		Speed 20;
 		alpha 0.6;
@@ -798,9 +775,6 @@ CLASS OrangeLensFlareAlt : Flare_General {
 }
 
 CLASS OrangeLensFlareAltFast : OrangeLensFlareAlt { 
-	Default {
-		
-	}
 	states
 	{
 		Spawn:
@@ -818,7 +792,6 @@ CLASS OrangeLensFlareAltFast : OrangeLensFlareAlt {
 
 CLASS GreenLensFlareAltSmallZZ : Flare_General { 
 	Default {
-		
 		+FORCEYBILLBOARD;
 		alpha 0.4;
 		xscale 0.2;
@@ -834,7 +807,6 @@ CLASS GreenLensFlareAltSmallZZ : Flare_General {
 
 CLASS BlueLensFlareAltSmallZZ : Flare_General { 
 	Default {
-		
 		+FORCEYBILLBOARD;
 		alpha 0.4;
 		xscale 0.2;
