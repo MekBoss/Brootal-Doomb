@@ -12,7 +12,7 @@ CLASS FlameCannon : Weapon {
 		Weapon.AmmoType "Gas";
 		Inventory.PickupSound "BFGREADY";
 		+WEAPON.NOAUTOAIM;
-		Inventory.PickupMessage "You got the doomb_fatso Flame Cannon (Slot 9)";
+		Inventory.PickupMessage "You got the Mancubus Flame Cannon (Slot 9)";
 	}
 	States
 	{

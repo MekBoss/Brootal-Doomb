@@ -187,11 +187,81 @@ override void CheckJump()
 		setstatelabel("IsJumpin");
 }
 
+protected void doomb_init_fatality_camera()
+{
+	if(!camera)
+	{
+		camera = spawn("fatality_camera", self.pos);
+		camera.master = self.player.mo;
+	}
+
+	if(is_real_player() && camera)
+	{
+		self.player.cheats |= CF_GODMODE2;
+		self.player.mo.speed = 0;
+		self.player.camera = camera;
+		fatality_camera(camera).turn_on();
+		camera.setorigin(self.pos, false);
+	}
+}
+
+protected void doomb_destroy_fatality_camera()
+{
+	if(is_real_player() && camera)
+	{
+		fatality_camera(camera).turn_off();
+		self.player.cheats &= ~CF_GODMODE2;
+		self.player.camera = self.player.mo;
+		self.player.mo.speed = 1;
+	}
+}
+
+protected actor camera;
+
 private state roll_state;
 private uint roll_ticks;
 private bool rolling;
 
 }
+
+class fatality_camera : actor
+{
+private bool watch_fatality;
+
+void turn_on()
+{
+	watch_fatality = true;
+}
+void turn_off()
+{
+	watch_fatality = false;
+}
+
+default
+{
+	+nointeraction
+	+noclip
+	cameraheight 5;
+}
+
+override void tick()
+{
+	super.tick();
+	if(watch_fatality && master)
+	{
+		double pt = clamp(master.pitch, -10, 20);
+
+		double ang_x = cos(master.angle);
+		double ang_y = sin(master.angle);
+
+		angle = master.angle;
+		pitch = pt;
+		setorigin(master.pos + ( (ang_x, ang_y, 0) * -100) + (0, 0, master.height/2), true);
+	}
+}
+
+}
+
 
 
 
@@ -203,6 +273,7 @@ Default {
     Scale 0.09;
 	alpha 0.99;
     +CLIENTSIDEONLY;
+	+noclip
 }
 states
 {
@@ -219,6 +290,7 @@ Default {
     Scale 0.09;
 	alpha 0.99;
     +CLIENTSIDEONLY;
+	+noclip
 }
 states
 {

@@ -14,68 +14,15 @@ CLASS ImpFish: doomb_Imp {
 		See:
 			
 			TNT1 A 0 ThrustThingZ(0,-2,0,1);
-			IUSA AA 2 A_Chase();
-			
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "JumpOutOfWater");
-			TNT1 A 0 A_Recoil(-1);
-			IUSA AA 2 A_Chase();
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "JumpOutOfWater");
-			TNT1 A 0 A_Recoil(-1);
-			
-			IUSA BB 2 A_Chase();
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "JumpOutOfWater");
-			TNT1 A 0 A_Recoil(-1);
-			IUSA BB 2 A_Chase();
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "JumpOutOfWater");
-			TNT1 A 0 A_Recoil(-1);
-			
-			TNT1 A 0 ThrustThingZ(0,-2,0,1);
-			IUSA CC 2 A_Chase();
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "JumpOutOfWater");
-			TNT1 A 0 A_Recoil(-1);
-			IUSA CC 2 A_Chase();
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "JumpOutOfWater");
-			TNT1 A 0 A_Recoil(-1);
-			
-			IUSA DD 2 A_Chase();
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "JumpOutOfWater");
-			TNT1 A 0 A_Recoil(-1);
-			IUSA DD 2 A_Chase();
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "JumpOutOfWater");
-			TNT1 A 0 A_Recoil(-1);
-			TNT1 A 0 A_JumpIf(waterlevel == 1, "JumpOutOfWater");
-			Loop;
-			
-		See2:
-			IUSA AA 2 A_Chase();
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "JumpOutOfWater");
-			TNT1 A 0 A_Recoil(-1);
-			IUSA AA 2 A_Chase();
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "JumpOutOfWater");
-			TNT1 A 0 A_Recoil(-1);
-			
-			IUSA BB 2 A_Chase();
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "JumpOutOfWater");
-			TNT1 A 0 A_Recoil(-1);
-			IUSA BB 2 A_Chase();
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "JumpOutOfWater");
-			TNT1 A 0 A_Recoil(-1);
-			
-			IUSA CC 2 A_Chase();
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "JumpOutOfWater");
-			TNT1 A 0 A_Recoil(-1);
-			IUSA CC 2 A_Chase();
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "JumpOutOfWater");
-			TNT1 A 0 A_Recoil(-1);
-			
-			IUSA DD 2 A_Chase();
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "JumpOutOfWater");
-			TNT1 A 0 A_Recoil(-1);
-			IUSA DD 2 A_Chase();
-			TNT1 A 0 A_JumpIf(waterlevel < 1, "JumpOutOfWater");
-			TNT1 A 0 A_Recoil(-1);
-			Loop;
-			
+			IUSA AAAABBBBCCCCDDDD 2
+			{
+				if(waterlevel < 1)
+					setstatelabel("JumpOutOfWater");
+				A_Chase();
+				A_Recoil(-1);
+			}
+		Loop;
+		
 		JumpOutOfWater:
 			TROO A 1 A_Facetarget();
 			TNT1 A 0 A_Recoil(-6);
@@ -170,16 +117,12 @@ CLASS ImpFish: doomb_Imp {
 			TROO VW 4;
 		Sink:
 			TROO X 4 A_CheckFloor ("Deadz");
-			TNT1 A 0 ThrustThingZ (0,7,1,0);
-			TROO X 4 A_CheckFloor ("Deadz");
-			TNT1 A 0 ThrustThingZ (0,7,1,0);
-			TNT1 A 0 A_SpawnProjectile ("Underblood1", 32, 0, random (0, 360), 2, random (0, 160));
-			Loop;
+		Loop;
 			
 		Deadz:
 			TROO YYYYYYY 8 A_SpawnProjectile ("Underblood1", 32, 0, random (0, 360), 2, random (0, 160));
 			TROO Y -1;
-			Loop;
+		Loop;
 			
 	}
 }
@@ -609,23 +552,23 @@ States
 		TNT1 A 0 A_SpawnItem ("DeadImp_NoLeg", 5);
 		TNT1 A 0 A_NoBlocking();
 		TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10);
-		Stop;
-		
-Death.Plasma: Death.Plasma2:
-	TNT1 A 0;
-	TNT1 A 0 A_XScream();
-	TNT1 A 0 A_NoBlocking();
-	TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (0, 160));
-	TNT1 A 0 doomb_spawn_burned_flesh();
-	EXPL AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-	TNT1 A 0;
 	Stop;
-XDeath:
-	TNT1 A 0 A_SpawnItem("GibsZ");
-	TNT1 AA 0 A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160));
-	TNT1 A 0 A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160));
-	TNT1 A 0 A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160));
-	TNT1 A 0 A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160));
+		
+	Death.Plasma: Death.Plasma2:
+		TNT1 A 0;
+		TNT1 A 0 A_XScream();
+		TNT1 A 0 A_NoBlocking();
+		TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_spawn_burned_flesh();
+		EXPL AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
+		TNT1 A 0;
+	Stop;
+	XDeath:
+		TNT1 A 0 A_SpawnItem("GibsZ");
+		TNT1 AA 0 A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160));
 	Stop;
 	
 }
@@ -1577,9 +1520,9 @@ CLASS BrutalizedImp3: BrutalizedImp1 {
 		TNT1 A 0 A_Recoil(2);
 		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 		TNT1 AA 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 A_SpawnProjectile ("XDeath3b", 40, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AA 0 A_SpawnProjectile ("XDeath3", 40, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath4", 40, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("XDeath2b", 40, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("XDeath2", 40, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAAAAA 0 A_SpawnProjectile ("Brutal_LiquidBlood", 44, 0, random (0, 360), 2, random (0, 50));
 		IZD1 EFGH 6;
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
@@ -2054,4 +1997,61 @@ States
 		Stop;
 }
 }		
+
+CLASS ImpXDeath : ACTOR { 
+	Default {
+		
+		Radius 1;
+		Height 1;
+		Scale 0.8;
+		Speed 0;
+		Mass 1;
+		
+		BounceFactor 0.5;
+		+DOOMBOUNCE;
+		+MISSILE;
+		+NOBLOCKMAP;
+		+NOTELEPORT;
+		+MOVEWITHSECTOR;
+		+NOGRAVITY;
+		+NOCLIP;
+		+DONTSPLASH;
+	}
+	States
+	{
+		Spawn:
+			tnt1 a 0 A_Explode(3,600, 0, 0, 0, 0, 0, "none", "blood");
+			TNT1 AAAAAAAAAAAAAAA 0 A_SpawnProjectile ("WallRedBlood", 40, 0, random (0, 360), 2, random (-15, 15));
+			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130));
+			TNT1 A 0 A_SpawnProjectile ("XDeathImpArm", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("XDeathHalfImpUpperPart32", 32, 0, random (0, 360), 2, random (10, 60));
+			TNT1 AA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAA 0 A_SpawnProjectile ("XDeath2", 15, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAA 0 A_SpawnProjectile ("XDeath3", 15, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece2", 15, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAAAAA 0 A_SpawnProjectile ("Instestin", 24, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("XDeathImpLeg", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("XDeathImpHeadOnXDeath", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnItem ("doomb_red_blood_pool");
+			
+			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
+			Stop;
+			
+		LowBlood:
+			TNT1 A 2;
+			Stop;
+		LotsOfBlood:
+			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
+			TNT1 AAAAAA 0 A_SpawnProjectile ("SuperGoreSpawner", 64, 0, random (0, 360), 2, random (20, 40));
+			Stop;
+		AbsurdBlood:
+			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
+			TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile ("SuperGoreMist", 24, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAAAAAAA 0 A_SpawnProjectile ("SuperGoreSpawner", 64, 0, random (0, 360), 2, random (20, 40));
+			Stop;
+	}
+}
 

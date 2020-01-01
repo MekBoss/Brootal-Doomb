@@ -136,7 +136,7 @@ override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Fl
 		{
 			//to handle cases when actor vulnerable/invulnerable to some damage type
 			//before apply headshot multiplicator
-			int new_damage = super.DamageMobj(inflictor, source, damage, mod, flags ,angle);
+			int new_damage = damage;
 		
 			vector3 relat_pos = self.vec3to(inflictor);
 
@@ -157,10 +157,9 @@ override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Fl
 				if(source.player.readyweapon.getclassname() == "Melee_Attacks" )
 				{
 					//backstab
-					if(self.LastEnemy == null && self.LastHeard == null && self.target == null)
+					if(self.LastHeard == null && self.lastenemy == null)
 					{
-						source.a_log("backstab in process");
-							return super.DamageMobj(inflictor, source, self.health, 'Fatality', flags, angle);
+							return super.DamageMobj(inflictor, source, self.health, 'back_stab', flags, angle);
 					}
 					//default fatality
 					else if(findstate("Death.Fatality") && (health - new_damage) < 0 )

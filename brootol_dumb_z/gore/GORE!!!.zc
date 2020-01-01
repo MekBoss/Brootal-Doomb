@@ -79,9 +79,9 @@ CLASS BigGibBase : doomb_body_base {
 			TNT1 AAAA 0 A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, random (10, 130));
 			TNT1 AAAA 0 A_SpawnProjectile ("SmallSuperGore", 10, 0, random (0, 360), 2, random (10, 30));
 			TNT1 A 0 doomb_spawn_bloodpool();
-			XME2 L 1;
 			XME2 L -1;
-			Stop;
+		Stop;
+		
 		Death.TeleportRemover:
 			TNT1 A 0;
 			TNT1 A 0 {bNOCLIP = true;}
@@ -310,8 +310,8 @@ CLASS XDeath1 : doomb_body_base {
 			BLOD A 4 A_SpawnProjectile ("Brutal_LiquidBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
 			Loop;
 		Death:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
 			XDT1 EFGHIJKL 5;
+			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
 			Stop;
 			TNT1 A 1;
 		Underwater:
@@ -356,13 +356,6 @@ CLASS XDeath2: XDeath1 {
 }
 
 
-CLASS XDeath2b: XDeath2 { 
-	Default {
-		
-		Speed 4;
-	}
-}
-
 CLASS XDeath3: XDeath1 { 
 	Default {
 		
@@ -397,13 +390,6 @@ CLASS XDeath3: XDeath1 {
 	}
 }
 
-CLASS XDeath3b: XDeath3 { 
-	Default {
-		
-		Speed 4;
-	}
-}
-
 CLASS XDeath4: XDeath1 { 
 	Default {
 		
@@ -421,28 +407,8 @@ CLASS XDeath4: XDeath1 {
 			XME3 ABCDEFGH 3 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
 			Loop;
 		Death:
-			TNT1 A 0;
-			TNT1 A 0 A_Jump(255, "Death1", "Death2");
-			GOto Death1;
-			
-		Death1:
-			TNT1 A 0;
-			XME3 GH 3;
-			XME3 A 1;
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
-		Living1:
-			XME3 A 600;//duration
-			Loop;
-		Death2:
-			XME3 I 1;
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
-			XME3 I 1;
-		Living2:
-			XME3 I 600;//duration
-			Loop;
-		Vanish:
-			TNT1 A 1;
-			Stop;
+			XME3 "#" 800;
+		loop;
 	}
 }
 
@@ -477,7 +443,6 @@ CLASS XDeath5: XDeath1 {
 
 CLASS XDeathOrgan1 : ACTOR { 
 	Default {
-		
 		Radius 8;
 		Height 8;
 		Speed 10;
@@ -499,8 +464,6 @@ CLASS XDeathOrgan1 : ACTOR {
 		DeathSound "misc/xdeath1";
 		Decal "BrutalBloodSuper";
 		Mass 1;
-		
-		
 		SeeSound "misc/xdeath4";
 		DeathSound "misc/xdeath3";
 		Scale 0.9;

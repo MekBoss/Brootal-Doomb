@@ -21,7 +21,7 @@ void doomb_set_flare_offset(vector3 f = (0, 0, 0) )
 		offset = f;
 	}
 }
-
+/*
 override void tick()
 {
 	super.tick();
@@ -38,7 +38,7 @@ override void tick()
 		self.destroy();
 	}
 }
-
+*/
 static actor doomb_attach_flare(actor caller = null, string type = "", vector3 offset = (0, 0, 0))
 {
 	if(caller)

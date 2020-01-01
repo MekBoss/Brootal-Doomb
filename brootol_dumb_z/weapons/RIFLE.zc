@@ -91,27 +91,30 @@ CLASS Rifle : doomb_weapon_base Replaces Pistol {
 		Goto Ready_loop;
 			
 		fire_zoomed:
-			TNT1 A 0 A_PlaySound("weapons/rifle", 1);
-			RI2G A 0 A_AlertMonsters();
-			RIFF A 0 {invoker.doomb_show_effect("GunFireSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 1) ) );}
-			
-			TNT1 A 0 A_SpawnItemEx("PlayerMuzzle1",30,0,45);
-			RI2F A 2 BRIGHT A_FireBullets (0.1, 0.1, -1, 9, "HitPuff");
-			RI2F A 0 BRIGHT A_FireProjectile("Tracer", 0, 0, -1, 0);
+			RI2F A 2 BRIGHT
+			{
+				A_FireBullets (0.1, 0.1, -1, 9, "HitPuff");
+				A_PlaySound("weapons/rifle", 1);
+				A_AlertMonsters();
+				{invoker.doomb_show_effect("GunFireSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 1) ) );}
+				A_SpawnItemEx("PlayerMuzzle1",30,0,45);
+				A_FireProjectile("Tracer", 0, 0, -1, 0);
+			}
 			TNT1 A 0 A_JumpIfInventory("NoPenetration", 1, 2);
 			RIFF A 0 A_FireProjectile("WallPenetrationHitscan", 0, 0, -1, -12, 0, 0);
-			TNT1 A 0;
 			
-			TNT1 A 0 Radius_Quake (1, 4, 0, 1, 0);
-			TNT1 A 0 A_SetPitch(-0.8 + pitch);
-			TNT1 A 0 A_Takeinventory("RifleAmmo",1);
-			TNT1 A 0 A_PlaySOund("DISTFRRIFLE", 2);
-			RI2F B 2 A_WeaponReady(1);
-			TNT1 A 0 A_SetPitch(+0.4 + pitch);
-			TNT1 A 0 A_FireProjectile("RifleCaseSpawn",1,0,8,0);
+			RI2F B 2
+			{
+				Radius_Quake (1, 4, 0, 1, 0);
+				A_SetPitch(-0.4 + pitch);
+				A_Takeinventory("RifleAmmo",1);
+				A_PlaySOund("DISTFRRIFLE", 2);
+				A_WeaponReady(1);
+				A_FireProjectile("RifleCaseSpawn",1,0,8,0);
+			}
 			RI2F C 1 A_WeaponReady(1);
 			TNT1 A 0 A_SetPitch(+0.4 + pitch);
-			RI2G A 2 A_WeaponReady(1);
+			RI2G A 1 A_WeaponReady(1);
 			RI2F B 0 A_ReFire();
 			RI2G A 10 A_WeaponReady(1);
 		Goto Ready2;

@@ -77,41 +77,19 @@ Default {
 }
 
 
-private void doomb_init_fatality_camera()
-{
-	if(is_real_player())
-	{
-		self.player.cheats |= (CF_CHASECAM|CF_GODMODE2);
-		self.player.mo.speed = 0;
-	}
-}
-
-private void doomb_destroy_fatality_camera()
-{
-	if(is_real_player())
-	{
-		self.player.cheats &= ~(CF_CHASECAM|CF_GODMODE2);
-		self.player.mo.speed = 1;
-	}
-}
-
-
 States
 {
 	Spawn:
-		MARN A 0;
-		MARN A 0 A_TakeInventory("PlayerIsDead", 1);
 		MARN A 0 A_TakeInventory("IsInvisible", 1);
-		tnt1 A 0 SetPlayerProperty(0,1,0);
+	
 		TNT1 A 0 {bNOPAIN = true;}
 		MARN A 0 A_TakeInventory("ChainguyguyContinue", 1);
 		MARN A 0 A_TakeInventory("HasInfrared", 1);
-		MARN A 0 A_TakeInventory("PlayerIsDead", 1);
 		MARN D 1;
 		MARN A 0 doomb_destroy_fatality_camera();//Disable Camera.
 		MARN D 1;
 		MARN A 0 A_JumpIfInventory("CheckMarines", 1, "SpawnFriends");
-		tnt1 A 0 SetPlayerProperty(0,0,0);
+	
 		TNT1 A 0 {bNOPAIN = false;}
 	StandStill:
 		MARN A 0 A_JumpIfInventory("ADSMode", 1, "ADSStand");
@@ -379,7 +357,7 @@ States
 		
 		
 	Death:
-		MARN A 0 A_GiveInventory("PlayerIsDead", 1);
+
 		tnt1 A 0 A_Jump (160, 3);
 		Goto Death.Arm;
 		tnt1 AAA 0;
@@ -467,7 +445,7 @@ Goto StandStill;
 
 
 	Death.Eat:
-		MARN A 0 A_GiveInventory("PlayerIsDead", 1);
+
 		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 		tnt1 A 0 A_GiveToTarget("EatMe",1);
 		tnt1 A 0 A_SpawnProjectile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160));
@@ -483,7 +461,7 @@ Goto StandStill;
 		
 	Death.Cut:
 	Death.Saw:
-		MARN A 0 A_GiveInventory("PlayerIsDead", 1);
+
 		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 		
 		tnt1 A 0 A_SpawnProjectile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160));
@@ -506,7 +484,7 @@ Goto StandStill;
 		
 	Death.Slime:
 		tnt1 A 0 A_PlaySound("BIGSCREA");
-		MARN A 0 A_GiveInventory("PlayerIsDead", 1);
+
 		tnt1 A 0 A_Takeinventory("Kicking",1);
 		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 		PMET AABBCCDDEEFFGGHHIIIII 10 doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
@@ -518,7 +496,7 @@ Goto StandStill;
 	Death.CutLess:
 	Death.MonsterCutless:
 		tnt1 A 0 A_Takeinventory("Kicking",1);
-		MARN A 0 A_GiveInventory("PlayerIsDead", 1);
+
 		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 		tnt1 A 0 A_Scream;
 		tnt1 A 0 A_Stop;
@@ -535,7 +513,7 @@ Goto StandStill;
 		
 	Death.Rip:
 		tnt1 A 0 A_Takeinventory("Kicking",1);
-		MARN A 0 A_GiveInventory("PlayerIsDead", 1);
+
 		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 		tnt1 AAAAAAAAAAA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
 		XPL3 A 10 A_XScream;
@@ -554,7 +532,7 @@ Goto StandStill;
 	Death.Explosives:
 	XDeath:
 		tnt1 A 0 A_Takeinventory("Kicking",1);
-		MARN A 0 A_GiveInventory("PlayerIsDead", 1);
+
 		tnt1 A 0 ThrustThingZ(0,60,0,1);
 		PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
 		PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
@@ -584,7 +562,7 @@ Goto StandStill;
 	Death.Blast:
 	Death.SSG:
 		tnt1 A 0 A_Takeinventory("Kicking",1);
-		MARN A 0 A_GiveInventory("PlayerIsDead", 1);
+
 		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 		POSS Q 2 A_FaceTarget;
 		//tnt1 A 0 A_SpawnProjectile ("MeatDeath", 0, 0, random (0, 360), 2, random (0, 160))
@@ -611,7 +589,7 @@ Goto StandStill;
 		
 	Death.Rape:
 		tnt1 A 0 A_Takeinventory("Kicking",1);
-		MARN A 0 A_GiveInventory("PlayerIsDead", 1);
+
 		tnt1 A 0 A_Jump (160, 3);
 		Goto Death.Arm;
 		tnt1 AAA 0;
@@ -640,7 +618,7 @@ Goto StandStill;
 		
 	Death.Arm:
 		tnt1 A 0 A_Takeinventory("Kicking",1);
-		MARN A 0 A_GiveInventory("PlayerIsDead", 1);
+
 		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 		tnt1 AA 0 A_SpawnProjectile ("XDeath1", 50, 0, random (0, 360), 2, random (0, 160));
 		tnt1 A 0 A_SpawnProjectile ("XDeathArm1", 50, 0, random (0, 360), 2, random (0, 160));
@@ -659,7 +637,7 @@ Goto StandStill;
 	Death.punch:
 	Death.Explosive_Impact:
 		tnt1 A 0 A_Takeinventory("Kicking",1);
-		MARN A 0 A_GiveInventory("PlayerIsDead", 1);
+
 		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 		tnt1 A 0 ThrustThingZ(0,30,0,1);
 		tnt1 AAAA 0 A_SpawnProjectile ("Brains1", 50, 0, random (0, 360), 2, random (0, 160));
@@ -685,7 +663,7 @@ Goto StandStill;
 	Death.GreenFire:
 		tnt1 A 0;
 		tnt1 A 0 A_XScream;
-		MARN A 0 A_GiveInventory("PlayerIsDead", 1);
+
 		tnt1 A 0 A_NoBlocking;
 		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 		tnt1 AAAA 0 A_SpawnProjectile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160));
@@ -702,8 +680,6 @@ Goto StandStill;
 		Stop;
 		
 Death.Plasma: Death.Plasma2:
-	tnt1 A 0;
-	MARN A 0 A_GiveInventory("PlayerIsDead", 1);
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	PBR1 A 6 A_Scream;
 	tnt1 AAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Ashes1", 32, 0, random (0, 360), 2, random (0, 180));
@@ -717,7 +693,6 @@ Death.Plasma: Death.Plasma2:
 	
 Death.Fire:
 	tnt1 a 0 a_jump(128,"fire_death_1");
-	MARN A 0 A_GiveInventory("PlayerIsDead", 1);
 	tnt1 A 0 A_Takeinventory("Kicking",1);
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	PBUR A 1;
@@ -730,7 +705,7 @@ Death.Fire:
 	Stop;
 	
 fire_death_1:
-	MARN A 0 A_GiveInventory("PlayerIsDead", 1);
+
 	tnt1 A 0 A_Takeinventory("Kicking",1);
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	tnt1 A 0 A_Scream;
@@ -758,7 +733,7 @@ fire_death_1:
 Stop;
 
 Death.Desintegrate:
-	MARN A 0 A_GiveInventory("PlayerIsDead", 1);
+
 	tnt1 A 0 A_Takeinventory("Kicking",1);
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	TNT1 A 0 A_XScream;
@@ -779,7 +754,7 @@ Death.Desintegrate:
 	Stop;
 	
 Death.Stomp:
-	MARN A 0 A_GiveInventory("PlayerIsDead", 1);
+
 	tnt1 AAAAAA 0 bright A_SpawnProjectile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180));
 	tnt1 AAAAAA 0 bright A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180));
 	tnt1 AA 0 bright A_SpawnProjectile ("XDeath2", 55, 0, random (0, 360), 2, random (30, 180));
@@ -822,7 +797,7 @@ Crush:
 	
 	
 FatalityZMan:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();
 	//////////////////////////////////////////////////////
 	FTYZ AB 4;
@@ -872,7 +847,7 @@ FatalityZMan:
 	
 	
 FatalityZMan2:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -914,7 +889,7 @@ FatalityZMan2:
 	
 	
 FatalityZMan3:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -997,7 +972,7 @@ FatalityZMan3:
 	
 	
 FatalityZMan4:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -1107,7 +1082,7 @@ FatalityZMan4:
 	Goto StandStill;
 	
 FatalityImp:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -1143,7 +1118,7 @@ FatalityImp:
 	
 	
 FatalityImp2:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -1179,12 +1154,12 @@ FatalityImp2:
 	tnt1 A 0 A_GiveInventory("HealthBonus",10);
 	tnt1 A 0 A_SpawnItem ("ImpMessyCorpse");
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 	Goto StandStill;
 	
 	
 FatalityImp3:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -1267,12 +1242,12 @@ FatalityImp3:
 	tnt1 A 0 A_SpawnItem ("impfacesorapedomgthisiscruel");
 	//tnt1 A 0 A_SpawnItem ("ZombieManDyingAfterFatality")
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 	Goto StandStill;
 	
 	
 FatalitySergeant:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -1314,7 +1289,7 @@ FatalitySergeant:
 	Goto StandStill;
 	
 FatalitySergeant2:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -1350,12 +1325,12 @@ FatalitySergeant2:
 	tnt1 A 0 doomb_spawn_bloodpool();
 	tnt1 A 0 A_SpawnItem ("DeadShotgunguy_Half", 1);
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 	Goto StandStill;
 	
 	
 FatalitySergeant3:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -1403,12 +1378,12 @@ FatalitySergeant3:
 	tnt1 A 0 A_TakeInventory("SergeantFatality3",1);
 	tnt1 A 0 A_GiveInventory("HealthBonus",10);
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 	Goto StandStill;
 	
 	
 FatalityComando:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -1451,11 +1426,11 @@ FatalityComando:
 	tnt1 A 0 A_SpawnProjectile ("XDeathChainArm", 40, -15, 0, 2, 0);
 	tnt1 A 0 A_SpawnProjectile ("XDeathChainArm", 40, 15, 0, 2, 0);
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 	Goto StandStill;
 	
 FatalityComando2:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -1486,11 +1461,11 @@ FatalityComando2:
 	tnt1 A 0 A_GiveInventory("HealthBonus",10);
 	tnt1 A 0 A_SpawnItemEx("DeadChaingunGuy_Half", 0, 0, 40, 0, 0);
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 	Goto StandStill;
 	
 FatalityDemon:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -1517,12 +1492,12 @@ FatalityDemon:
 	tnt1 A 0 A_TakeInventory("DemonFatality",1);
 	tnt1 A 0 A_GiveInventory("HealthBonus",10);
 	tnt1 A 0 A_SpawnItemEx("DyingDemon", 0, 1, 1, 1, 1);
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 	MARN A 0 doomb_destroy_fatality_camera();//Disable Camera.
 	Goto StandStill;
 	
 FatalityDemon2:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -1550,12 +1525,12 @@ FatalityDemon2:
 	tnt1 A 0 A_TakeInventory("GoFatality", 1);
 	tnt1 A 0 A_GiveInventory("HealthBonus",10);
 	tnt1 A 0 A_SpawnItemEx("DeadDemonHalf", 0, 1, 1, 1, 1);
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
 	Goto StandStill;
 	
 FatalityDemon3:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -1606,12 +1581,12 @@ FatalityDemon3:
 	tnt1 A 0 A_TakeInventory("GoFatality", 1);
 	tnt1 A 0 A_GiveInventory("HealthBonus",10);
 	tnt1 A 0 A_SpawnItemEx("DeadDemonStomped", 0, 1, 1, 1, 1);
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
 Goto StandStill;
 	
 FatalityCacoDemon:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	tnt1 A 0 doomb_init_fatality_camera();
 	//////////////////////////////////////////////////////
@@ -1632,12 +1607,12 @@ FatalityCacoDemon:
 	tnt1 A 0 A_SpawnItemEx("DeadCacoDemon", 0, 1, 1, 1, 1);
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 Goto StandStill;
 	
 	
 FatalityCacoDemon2:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	tnt1 A 0 doomb_init_fatality_camera();
 	CA2F AB 4;
@@ -1658,12 +1633,12 @@ FatalityCacoDemon2:
 	tnt1 A 0 A_GiveInventory("HealthBonus",10);
 	tnt1 A 0 A_SpawnItem ("Dead_lower_caco_Half", 1);
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 Goto StandStill;
 	
 	
 FatalityRevenant:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -1701,12 +1676,12 @@ FatalityRevenant:
 	tnt1 A 0 A_GiveInventory("HealthBonus",15);
 	tnt1 A 0 A_SpawnItemEx("DyingRevenant", 0, 35, 35, 1, 1);
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 Goto StandStill;
 	
 	
 FatalityRevenant2:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -1728,12 +1703,12 @@ FatalityRevenant2:
 	tnt1 A 0 A_GiveInventory("HealthBonus",15);
 	tnt1 A 0 A_SpawnItem("VeryFuckedUpRevenant");
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 Goto StandStill;
 	
 	
 FatalityFatso:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -1772,12 +1747,12 @@ FatalityFatso:
 	tnt1 A 0 A_GiveInventory("HealthBonus",15);
 	tnt1 A 0 A_SpawnItemEx("FatalizedFatso", 0, 1, 1, 1, 1);
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 Goto StandStill;
 	
 	
 FatalityBaron:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -1820,7 +1795,7 @@ FatalityBaron:
 	tnt1 AAAA 0 A_GiveInventory("Medikit",1);
 	tnt1 A 0 A_SpawnItemEx("DeadBaronNoHead", 0, 1, 1, 1, 1);
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 Goto StandStill;
 	
 	
@@ -1828,7 +1803,7 @@ Goto StandStill;
 	
 	
 FatalityHK:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -1867,13 +1842,13 @@ FatalityHK:
 	tnt1 A 0 A_GiveInventory("HealthBonus",10);
 	tnt1 A 0 A_SpawnItemEx("RapedHK", 0, 1, 1, 1, 1);
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 Goto StandStill;
 	
 	
 	
 FatalityHK3:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -1884,7 +1859,7 @@ FatalityHK3:
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	HKF3 ABC 6;
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	XXXX A 0 Radius_Quake (4, 24, 0, 15, 0);
 	tnt1 A 0 A_PlaySound("PSXDPN", 2);
 	HKF3 D 15;
@@ -1919,12 +1894,12 @@ FatalityHK3:
 	tnt1 A 0 A_GiveInventory("HealthBonus",10);
 	tnt1 A 0 A_SpawnItemEx("NoArmNoHeadFatalizedHK", 0, 1, 1, 1, 1);
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 Goto StandStill;
 	
 	
 FatalityHK2:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -1932,7 +1907,7 @@ FatalityHK2:
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	HKF2 AAB 6;
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 A_PlaySound("PSXDPN");
 	
 	HKF2 DEFFGH 8;
@@ -1963,13 +1938,13 @@ FatalityHK2:
 	tnt1 A 0 A_GiveInventory("HealthBonus",10);
 	tnt1 A 0 A_SpawnItemEx("OmgSoDeadHK", 0, 1, 1, 1, 1);
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 Goto StandStill;
 	
 	
 	
 FatalityArachnotron:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -2002,12 +1977,12 @@ FatalityArachnotron:
 	tnt1 A 0 A_SpawnItemEx("RapedArachnotron", 0, 1, 1, 1, 1);
 	//tnt1 A 0 A_SpawnProjectile ("SpiderLeg", 30, 0, 0, 2, 0)
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 Goto StandStill;
 	
 	
 FatalityArachnotron2:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -2038,13 +2013,13 @@ FatalityArachnotron2:
 	tnt1 A 0 A_SpawnItemEx("NoLegsSpider", 0, 1, 1, 1, 1);
 	//tnt1 A 0 A_SpawnProjectile ("SpiderLeg", 30, 0, 0, 2, 0)
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 Goto StandStill;
 	
 	
 	
 FatalityArchVile:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -2095,12 +2070,12 @@ FatalityArchVile:
 	tnt1 A 0 A_GiveInventory("HealthBonus",20);
 	tnt1 A 0 A_SpawnItem("FatalizedArchvile1");
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 Goto StandStill;
 	
 	
 FatalityPE:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
@@ -2196,18 +2171,18 @@ FatalityPE:
 	tnt1 A 0 A_TakeInventory("GoFatality", 1);
 	tnt1 A 0 A_SpawnItemEx("FatalizedPE", 0, 1, 1, 1, 1);
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 Goto StandStill;
 
 
 CurbstompZombieman:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
 	//////////////////////////////////////////////////////
 	01CB A 3;
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 A_PlaySound("grunt/death");
 	01CB BCCCC 3 SetPlayerProperty(0,1,0);
 	tnt1 A 0 A_PlaySound("misc/xdeath1");
@@ -2231,7 +2206,7 @@ CurbstompZombieman:
 	TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
 	TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 	TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
-	TNT1 A 0 A_SpawnProjectile ("XDeath3b", 10, 0, random (0, 360), 2, random (50, 90));
+	TNT1 A 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 90));
 	
 	TNT1 A 0 A_SpawnItemEx("doomb_red_blood_pool", 0, 20);
 	01CB E 20;
@@ -2241,19 +2216,19 @@ CurbstompZombieman:
 	tnt1 A 0 A_SpawnProjectile ("StompedZombieman", 1, 0, random (0, 360), 2, random (0, 160));
 	tnt1 A 0 A_TakeInventory("GoFatality", 1);
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 Goto StandStill;
 	
 	
 	
 CurbstompSergeant:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	
 	tnt1 A 0 doomb_init_fatality_camera();
 	//////////////////////////////////////////////////////
 	02CB A 3;
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 A_PlaySound("grunt/death");
 	02CB BCCCC 3 SetPlayerProperty(0,1,0);
 	tnt1 A 0 A_PlaySound("misc/xdeath1");
@@ -2272,7 +2247,7 @@ CurbstompSergeant:
 	tnt1 A 0 A_GiveInventory("HealthBonus",5);
 	tnt1 A 0 A_SpawnProjectile ("StompedSergeant", 1, 0, random (0, 360), 2, random (0, 160));
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 Goto StandStill;
 	
 	
@@ -2310,7 +2285,7 @@ Goto StandStill;
 	Stop;
 
 	FatalityPVP:
-		tnt1 A 0 SetPlayerProperty(0,1,0);
+	
 		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 		//////////////////////////////////////////////////////
 		PVPF ABB 10;
@@ -2330,7 +2305,7 @@ Goto StandStill;
 		tnt1 A 0 A_TakeInventory("GoFatality", 1);
 		tnt1 A 0 A_GiveInventory("Megasphere",1);
 		MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-		tnt1 A 0 SetPlayerProperty(0,0,0);
+	
 	Goto StandStill;
 	
 	
@@ -2341,46 +2316,43 @@ Goto StandStill;
 	// STEALTH KILLS
 	
 	
-StealthKillZombieman:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
-	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-	tnt1 A 0 doomb_init_fatality_camera();
-	//////////////////////////////////////////////////////
-	SFZM AB 8;
-	SFZM C 16;
-	tnt1 A 0 A_PlaySound("misc/xdeath4");
-	SFZM D 16;
-	
-	//////////////////////////////////////////////////////
-	tnt1 A 0 A_TakeInventory("SKZombieMan",1);
-	tnt1 A 0 A_TakeInventory("GoFatality", 1);
-	tnt1 A 0 A_SpawnItemEx("DeadZombieMan", 35, 0, 40, 0, 0);
-	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+	StealthKillZombieman:
+		tnt1 A 0 doomb_init_fatality_camera();
+		//////////////////////////////////////////////////////
+		SFZM AB 8;
+		SFZM C 16;
+		tnt1 A 0 A_PlaySound("misc/xdeath4");
+		SFZM D 16;
+		
+		//////////////////////////////////////////////////////
+		tnt1 A 0 A_TakeInventory("SKZombieMan",1);
+		tnt1 A 0 A_TakeInventory("GoFatality", 1);
+		tnt1 A 0 A_SpawnItemEx("DeadZombieMan", 35, 0, 40, 0, 0);
+		MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
 	Goto StandStill;
 	
 	
-StealthKillShotgunGuy:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
-	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-	tnt1 A 0 doomb_init_fatality_camera();
-	//////////////////////////////////////////////////////
-	SFSZ A 8;
-	SFSZ B 8;
-	SFSZ C 16;
-	tnt1 A 0 A_PlaySound("misc/xdeath4");
-	SFSZ D 16;
-	
-	//////////////////////////////////////////////////////
-	tnt1 A 0 A_TakeInventory("SKShotgunGuy",1);
-	tnt1 A 0 A_TakeInventory("GoFatality", 1);
-	tnt1 A 0 A_SpawnItemEx("DeadShotgunGuy", 35, 0, 40, 0, 0);
-	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+	StealthKillShotgunGuy:
+
+		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
+		tnt1 A 0 doomb_init_fatality_camera();
+		//////////////////////////////////////////////////////
+		SFSZ A 8;
+		SFSZ B 8;
+		SFSZ C 16;
+		tnt1 A 0 A_PlaySound("misc/xdeath4");
+		SFSZ D 16;
+		
+		//////////////////////////////////////////////////////
+		tnt1 A 0 A_TakeInventory("SKShotgunGuy",1);
+		tnt1 A 0 A_TakeInventory("GoFatality", 1);
+		tnt1 A 0 A_SpawnItemEx("DeadShotgunGuy", 35, 0, 40, 0, 0);
+		MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
+
 	Goto StandStill;
 	
 StealthKillChaingunGuy:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	tnt1 A 0 doomb_init_fatality_camera();
 	//////////////////////////////////////////////////////
@@ -2394,12 +2366,12 @@ StealthKillChaingunGuy:
 	tnt1 A 0 A_TakeInventory("GoFatality", 1);
 	tnt1 A 0 A_SpawnItemEx("DeadChaingunGuy_KilledByMinorHead", 35, 0, 40, 0, 0);
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 	Goto StandStill;
 	
 	
 StealthKillImp:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	tnt1 A 0 doomb_init_fatality_camera();
 	//////////////////////////////////////////////////////
@@ -2414,12 +2386,12 @@ StealthKillImp:
 	tnt1 A 0 A_TakeInventory("GoFatality", 1);
 	tnt1 A 0 A_SpawnItemEx("DeadImp", 35, 0, 40, 0, 0);
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 	Goto StandStill;
 	
 	
 StealthKillNazi:
-	tnt1 A 0 SetPlayerProperty(0,1,0);
+
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	tnt1 A 0 doomb_init_fatality_camera();
 	//////////////////////////////////////////////////////
@@ -2433,7 +2405,7 @@ StealthKillNazi:
 	tnt1 A 0 A_TakeInventory("GoFatality", 1);
 	tnt1 A 0 A_SpawnItemEx("DeadNazi", 35, 0, 40, 0, 0);
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 	Goto StandStill;
 	
 	
@@ -2658,7 +2630,7 @@ MeatShieldCheckerMoving:
 SpawnFriends: //This spawn any friendly marines that survived on the previous level
 	tnt1 A 0 A_TakeInventory("CheckMarines", 1);
 	PLAY A 2;
-	tnt1 A 0 SetPlayerProperty(0,0,0);
+
 	TNT1 A 0 {bNOPAIN = false;}
 	//tnt1 A 0 Thing_ChangeTID (0, 567)
 	tnt1 A 0 A_JumpIfInventory("NumberOfAllies", 1, "SummonMarines");
@@ -2859,7 +2831,7 @@ Default {
 Powerup.Duration 9;
 Speed 0.4;
 Inventory.Icon "TNT1A0";
-Powerup.Color "70,0,0,0.0";
+Powerup.Color "0,0,0,0.0";
 }
 }
 
@@ -2892,7 +2864,7 @@ Default {
 Powerup.Duration 9;
 Speed 0.4;
 Inventory.Icon "TNT1A0";
-Powerup.Color "70,0,0,0.0";
+Powerup.Color "0,0,0,0.0";
 }
 }
 
@@ -2924,7 +2896,7 @@ Default {
 Powerup.Duration 9;
 Speed 0.4;
 Inventory.Icon "TNT1A0";
-Powerup.Color "70,0,0,0.0";
+Powerup.Color "0,0,0,0.0";
 }
 }
 
@@ -2973,22 +2945,6 @@ stop;
 
 }	   
 	
-
-CLASS ChaseCam2 : ACTOR { 
-Default {
-	
-	height 0;
-	radius 0;
-	+NOGRAVITY;
-}
-states
-{
-	Spawn:
-		tnt1 A -1;
-		stop;
-}
-}
-
 
 CLASS JustStartedGame : Inventory { 
 Default {
@@ -3475,11 +3431,3 @@ Default {
 	inventory.maxamount 1;
 }
 }
-
-CLASS PlayerIsDead : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-

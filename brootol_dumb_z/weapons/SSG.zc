@@ -137,7 +137,7 @@ CLASS SSG : doomb_weapon_base Replaces SuperShotgun {
 			SHT2 B 2 Offset(20,48);
 			SHT2 B 2 Offset(10,36);
 			SHT2 BCDEFGHIJ 1;
-			tnt1 a 0 {self.player.mo.setstatelabel("pumping");}
+			tnt1 a 0 {self.player.mo.setstatelabel("pump");}
 			
 			TNT1 A 0 A_PlaySound("weapons/sshotc");
 			TNT1 AA 0 A_FireProjectile("SSGCaseSpawner",0,0,-10);

@@ -42,7 +42,7 @@ CLASS FallingHeight : Inventory {
 //because gore base inherits from monster base
 #include "brootol_dumb_z/monsters/monster_base.zc"
 #include "brootol_dumb_z/gore/gore_base.zc"
-#include "brootol_dumb_z/weapons/weapon_base.zc"
+#include "brootol_dumb_z/weapons/weapon_base.zc" 
 
 #include "brootol_dumb_z/sfx/sfx_main.zc"
 #include "brootol_dumb_z/sfx/sfx_base.zc"
@@ -104,7 +104,6 @@ CLASS FallingHeight : Inventory {
 #include "brootol_dumb_z/gore/BLOODSPLASH.zc"
 #include "brootol_dumb_z/gore/blueblood.zc"
 #include "brootol_dumb_z/gore/greenblood.zc"
-//#include "brootol_dumb_z/gore/sticky.zc"
 #include "brootol_dumb_z/gore/underwaterblood.zc"
 
 
