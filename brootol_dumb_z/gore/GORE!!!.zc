@@ -818,8 +818,9 @@ CLASS XDeathBrain2 : ACTOR {
 
 
 
-
-CLASS Instestin : ACTOR { 
+//cause slowdown
+CLASS Instestin : doomb_blood
+{ 
 	Default {
 		
 		Radius 8;
@@ -848,27 +849,26 @@ CLASS Instestin : ACTOR {
 		Loop;
 		
 		Death:
-			GUTS E 1;
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Water");
+			tnt1 a 0 A_QueueCorpse;
+			GUTS E 1 A_JumpIf(waterlevel > 1, "Water");
 		Rest:
-			TNT1 A 0;
 			TNT1 A 0 A_Jump(255, "Rest1", "Rest2");
 		Rest1:
-			GUTS E 800;
-			Loop;
+			GUTS E -1;
+		stop;
 			
 		Rest2:
-			GUTS F 800;
-			Loop;
+			GUTS F -1;
+		stop;
 		Water:
 			TNT1 A 0 A_Jump(128, "Water2");
 		Water1:
 			GUTS GH 10;
-			Loop;
+			stop;
 			
 		Water2:
 			GUTS IJ 10;
-			Loop;
+			stop;
 	}
 }
 

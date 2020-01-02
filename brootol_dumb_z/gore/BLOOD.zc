@@ -150,7 +150,8 @@ CLASS Brutal_FlyingBlood : Brutal_Blood {
 }
 
 
-CLASS Brutal_BloodSpot : ACTOR { 
+CLASS Brutal_BloodSpot : doomb_blood
+{ 
 	Default {
 		radius 2;
 		height 2;

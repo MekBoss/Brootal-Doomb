@@ -51,7 +51,6 @@ States
 {
 	Idle:
 	LookingForPlayer:
-		TNT1 A 0 A_GiveInventory("SKImp", 1);
 		SKEL BBB 10 A_Look();
 		TNT1 A 0 A_SetAngle(angle - 40);
 		SKEL BBB 10 A_Look();
@@ -76,8 +75,7 @@ States
 		TNT1 A 0;
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "FatalityMarine");
 	Spawn2:
-		TNT1 A 0;
-		SKEL BBBBBBBBBB 10 A_Look();
+		SKEL B 10 A_Look();
 		Loop;
 		
 	See:
@@ -99,7 +97,7 @@ States
 		SKEL G 1 A_FaceTarget();
 		SKEL G 6 A_SkelWhoosh();
 		SKEL H 6 A_FaceTarget();
-		TNT1 A 0 A_SpawnProjectile("RevenantAttack",10);
+		TNT1 A 0 doomb_cheap_melee_attack(100, random(10, 60), "RVFT");
 		SKEL I 6;
 		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman");
 		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant");
@@ -234,11 +232,15 @@ States
 		SKF3 H 12;
 		tnt1 a 0 a_jump(200, "FatalityImp");
 		
+	throw_imp:
 		SKF3 I 1 A_Chase(null,null);
-		SKF3 I 10 A_FaceTarget();
-		TNT1 A 0 A_TakeInventory("ImpFatality",1);
-		TNT1 A 0 A_UnSetInvulnerable();
-		TNT1 A 0 A_SpawnProjectile("ThrowedImp2", 64, 0, 0, 0);
+		SKF3 I 10
+		{
+			A_FaceTarget();
+			A_SpawnProjectile("ThrowedImp2", 64, 0, 0, 0);
+			A_TakeInventory("ImpFatality",1);
+			A_UnSetInvulnerable();
+		}
 		SKEL HI 4;
 	Goto See;
 
@@ -451,52 +453,3 @@ States
 		Loop;
 }
 }
-
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-CLASS REvenantAttack : doomb_boolet_base
-{ 
-Default {
-	
-	Radius 24;
-	Height 16;
-	DamageType "RVFT";
-	Projectile;
-	+RANDOMIZE;
-	+FORCEXYBILLBOARD;
-	+THRUGHOST;
-	RenderStyle "Add";
-	Alpha 0.6;
-	Damage 10;
-	Speed 28;
-	//HitObituary "$OB_IMPHIT"
-	SeeSound "none";
-	DeathSound "none";
-	Decal "none";
-}
-States
-{
-	Spawn:
-		TNT1 A 4;
-		Stop;
-}
-}
-
-class emptybrass : actor{}

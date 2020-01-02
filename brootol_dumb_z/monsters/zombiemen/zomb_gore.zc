@@ -2556,7 +2556,6 @@ States
 		TNT1 A 0 A_SpawnItem("DeadZombieman1");
 		Stop;
 	XDeath:
-	Death.Explosives:
 	Death.Explosive_Impact:
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 A_SpawnItem("ZombieXDeath");
@@ -2629,7 +2628,6 @@ States
 		BR92 B -1;
 		stop;
 	XDeath:
-	Death.Explosives:
 	Death.Explosive_Impact:
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 A_SpawnItem("ZombieXDeath");

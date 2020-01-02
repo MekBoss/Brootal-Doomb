@@ -198,11 +198,9 @@ set acsreturn value in sklil definition
 */
 
 #include "brootol_dumb_z/actors_dump/EXPLOSIVES.zc"
-#include "brootol_dumb_z/actors_dump/DROPABLES.zc"
 #include "brootol_dumb_z/actors_dump/bossbrain.zc"
 #include "brootol_dumb_z/actors_dump/bossbrain.zc"
 #include "brootol_dumb_z/actors_dump/epic2stuff.zc"
-#include "brootol_dumb_z/actors_dump/realismmodeitems.zc"
 #include "brootol_dumb_z/actors_dump/SpecialDoom1Boses.zc"
 #include "brootol_dumb_z/actors_dump/stealthmonsters.zc"
 #include "brootol_dumb_z/actors_dump/teleport.zc"

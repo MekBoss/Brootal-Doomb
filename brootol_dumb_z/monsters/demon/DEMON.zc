@@ -168,8 +168,7 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 			TNT1 A 0 A_JumpIfInTargetInventory("ComeEatMeDemon", 1, "MeleeDown");
 			SARG E 6 A_FaceTarget;
 			SARG F 6 A_FaceTarget;
-			TNT1 A 0 A_SpawnProjectile("DemonAttack",40,0,0,0);
-			SARG G 12 A_SpawnProjectile("DemonAttack",5,0,0,0);
+			SARG G 12 doomb_cheap_melee_attack(60, random(16, 40), "eat");
 			
 			TNT1 A 0 A_JumpIfInventory("ZombieManFatality", 1, "FatalityZombieman");
 			TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant");
@@ -181,7 +180,7 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 			
 		MeleeDown:
 			PDEV AB 6 A_FaceTarget;
-			PDEV C 12 A_SpawnProjectile("DemonAttack",5,0,0,0);
+			PDEV C 12 doomb_cheap_melee_attack(60, random(16, 40), "eat");
 			TNT1 A 0 A_JumpIfInventory("ZombieManFatality", 1, "FatalityZombieman");
 			TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant");
 			TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp");
@@ -723,41 +722,3 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 		Goto MeleeDown;
 	}
 }
-
-
-CLASS DemonAttack : ACTOR { 
-	Default {
-		
-		Radius 8;
-		Height 8;
-		DamageType "Eat";
-		Projectile;
-		Speed 15;
-		+RANDOMIZE;
-		Damagefunction (random(2,3));
-		+RIPPER;
-		+FORCEXYBILLBOARD;
-		+THRUGHOST;
-		RenderStyle "Add";
-		Alpha 0.6;
-		SeeSound "none";
-		DeathSound "none";
-		Decal "none";
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 4 BRIGHT;
-			Goto Vanish;
-		Vanish:
-			TNT1 A 0;
-			Stop;
-			
-		Death:
-			TNT1 A 0 BRIGHT;
-			TNT1 A 0 A_PlaySOund ("misc/xdeath1");
-			TNT1 A 10;
-			Stop;
-	}
-}
-

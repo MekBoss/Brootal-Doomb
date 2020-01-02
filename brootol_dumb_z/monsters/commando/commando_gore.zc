@@ -185,7 +185,6 @@ CLASS DeadChaingunguy_Slumped: CurbstompedMarine {
 			TNT1 A 0 A_SpawnItem("DeadChaingunguy1");
 			Stop;
 		XDeath:
-		Death.Explosives:
 		Death.Explosive_Impact:
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_SpawnItem("ChainXDeath");
@@ -268,7 +267,6 @@ CLASS DeadChaingunguy_Slumped_NoHead: CurbstompedMarine {
 			BR95 B 100;
 			Loop ;
 		XDeath:
-		Death.Explosives:
 		Death.Explosive_Impact:
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_SpawnItem("ChainXDeath");

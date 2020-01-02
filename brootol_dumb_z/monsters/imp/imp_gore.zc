@@ -41,7 +41,7 @@ CLASS ImpFish: doomb_Imp {
 			TNT1 A 0 A_JumpIf(waterlevel < 1, "JumpOutOfWater");
 			TNT1 A 0 A_FaceTarget();
 			IUSA E 6;
-			TNT1 AA 0 A_SpawnProjectile("ImpAttack",10,0,0,0);
+			TNT1 AA 0 doomb_cheap_melee_attack(80, random(5, 10), "ImpFatalityMarine");
 			TNT1 A 0;
 			TNT1 A 0 A_JumpIf(waterlevel < 1, "JumpOutOfWater");
 			IUSA B 6;
@@ -855,7 +855,6 @@ damageFactor "Head", 15.0;
 			TNT1 A 0 A_SpawnItem("DeadImp");
 			Stop;
 		XDeath:
-		Death.Explosives:
 		Death.Explosive_Impact:
 			TNT1 A 0 A_NoBlocking();
 			TNT1 A 0 A_SpawnItem("ImpXDeath");
@@ -899,7 +898,6 @@ CLASS DeadImp_Slumped_NoHead: ImpTorso {
 			BR94 B 100;
 			Loop ;
 		XDeath:
-		Death.Explosives:
 		Death.Explosive_Impact:
 			TNT1 A 0 A_NoBlocking();
 			TNT1 A 0 A_SpawnItem("ImpXDeath");
@@ -1671,7 +1669,7 @@ Default {
 		Stop;
 		
 	XDeath:
-	Death.Explosives:
+	Death.Explosive_impact:
 		TNT1 A 0 A_XScream();
 		TNT1 A 0 A_NoBlocking();
 		TNT1 A 0 A_FaceTarget();

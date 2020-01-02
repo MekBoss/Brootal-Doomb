@@ -38,7 +38,6 @@ CLASS doomb_fatso : doomb_monster_base Replaces Fatso {
 	{
 		Idle:
 		LookingForPlayer:
-			TNT1 A 0 A_GiveInventory("SKImp", 1);
 			FATT BBB 10 A_Look;
 			TNT1 A 0 A_SetAngle(angle - 40);
 			FATT BBB 10 A_Look;
@@ -46,7 +45,6 @@ CLASS doomb_fatso : doomb_monster_base Replaces Fatso {
 			
 			FATT BBB 10 A_Look;
 
-			FATT A 0 A_Wander;
 			FATT AABBCCDD 2
 			{
 				A_Look();
@@ -149,38 +147,21 @@ CLASS doomb_fatso : doomb_monster_base Replaces Fatso {
 		Goto See;
 			
 		Melee:
-			
 			TNT1 A 0 A_JumpIfInventory("Enraged", 1, 1);
 			FATT G 10 A_FatRaise;
-			
 			FATT G 10 A_FaceTarget;
-			
 			TNT1 A 0 A_PlaySound("BREATHOF");
 			TNT1 A 0 A_SpawnProjectile("FlamethrowerMissile",30,-25,15,0);
 			TNT1 A 0 A_SpawnProjectile("FlamethrowerMissile",30,25,-15,0);
 			FATT H 10 BRIGHT;
-			
 			FATT IG 5 A_FaceTarget;
-			
-			TNT1 A 0 A_PlaySound("BREATHOF");
-			TNT1 A 0 A_SpawnProjectile("FlamethrowerMissile",30,-25,15,0);
-			TNT1 A 0 A_SpawnProjectile("FlamethrowerMissile",30,25,-15,0);
-			FATT H 10 BRIGHT;
-			
-			FATT IG 5 A_FaceTarget;
-			
-			TNT1 A 0 A_PlaySound("BREATHOF");
-			TNT1 A 0 A_SpawnProjectile("FlamethrowerMissile",30,-25,15,0);
-			TNT1 A 0 A_SpawnProjectile("FlamethrowerMissile",30,25,-15,0);
-			FATT H 10 BRIGHT;
-			
-			FATT IG 5 A_FaceTarget;
-			Goto See;
+			tnt1 a 0 a_jump(128, "melee");
+		Goto See;
+
 		Pain:
-			
 			FATT J 3;
 			FATT J 3 A_Pain;
-			Goto See;
+		Goto See;
 			
 		Pain.Explosive_Impact:
 		Pain.SSG:
@@ -269,7 +250,6 @@ CLASS doomb_fatso : doomb_monster_base Replaces Fatso {
 			CARB L -1;
 			Stop;
 			
-		Death.Explosives:
 		XDeath:
 		Death.Explosive_Impact:
 		Death.Landmine:

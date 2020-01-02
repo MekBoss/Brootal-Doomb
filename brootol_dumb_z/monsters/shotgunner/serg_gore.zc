@@ -295,7 +295,6 @@ CLASS DeadShotgunguy_Slumped: CurbstompedMarine {
 			TNT1 A 0 A_SpawnItem("Deaddoomb_shotgun_guy");
 			Stop;
 		XDeath:
-		Death.Explosives:
 		Death.Explosive_Impact:
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_SpawnItem("SargeXDeath");
@@ -349,7 +348,6 @@ CLASS DeadShotgunguy_Slumped_NoHead: CurbstompedMarine {
 			BR93 B 100;
 			Loop ;
 		XDeath:
-		Death.Explosives:
 		Death.Explosive_Impact:
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_SpawnItem("SargeXDeath");

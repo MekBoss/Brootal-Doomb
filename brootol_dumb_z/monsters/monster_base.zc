@@ -168,7 +168,7 @@ override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Fl
 				}
 			}
 
-			return new_damage;
+			return super.DamageMobj(inflictor, source, damage, mod, flags ,angle);
 		}
 
         //its explosion
@@ -186,20 +186,33 @@ override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Fl
 		return dam;
 	}
 }
+//can actually hit another actor(not monster target)
+protected void doomb_cheap_melee_attack(double distance = 0, int dam = 0, name damage_type = "")
+{
+	FLineTraceData punch;
+	LineTrace(angle + frandom(-5, 5), distance, pitch,
+	offsetz:pos.z + height / 2, data: punch);
+	
+	if(punch.hitactor != null)
+	{
+		punch.hitactor.damagemobj(self, self, dam, damage_type, 0, 0);
+	}
 
+}
 
 //handling of freeze death
 override double GetDeathHeight()
 {
 	if(DamageType == 'Ice' || DamageType == 'Freeze' || DamageType == 'Chill')
-	{return default.height;}
+		return default.height;
+
 	return super.GetDeathHeight();
 }
 
 //how much time monster seeek it target before forgeting
 protected int memory_timer;
 const max_memory = 20;
-protected void dumb_monster_memory(statelabel idle_state = "idle")
+protected void doomb_monster_memory(statelabel idle_state = "idle")
 {
 	memory_timer++;
 	if(memory_timer > max_memory)
@@ -218,7 +231,9 @@ protected double prev_z_vel;
 
 protected bool check_falling()
 {
-	if(vel.z == 0 && prev_z_vel < 0) return true;
+	if(vel.z == 0 && prev_z_vel < 0)
+		return true;
+	
 	prev_z_vel = vel.z;
 	return false;
 }

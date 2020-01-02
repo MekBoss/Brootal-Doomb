@@ -93,8 +93,8 @@ States
 	Melee:
 		HEAD B 4 A_Facetarget;
 		HEAD C 4 A_Recoil(-5);
-		TNT1 A 0 A_SpawnProjectile("CacodemonBite", 34, 0, 0, 0);
-		//TNT1 A 0 A_JumpIfInventory("Fatality_Marine", 1, "FatalityMarine")
+		tnt1 a 0 doomb_cheap_melee_attack(80, random(20, 80), "HKFT");
+		TNT1 A 0 A_PlaySound("imp/melee");
 		HEAD D 4;
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "FatalityMarine");
 	Goto See;
@@ -275,7 +275,6 @@ States
 	Stop;
 	
 	Death.Explosive_Impact:
-	Death.Explosives:
 	XDeath:
 		TNT1 A 0 A_XScream;
 		TNT1 A 0 A_NoBlocking;
@@ -362,8 +361,8 @@ Default
 States
 {
 	Spawn:
-		BAL2 AA 2 BRIGHT A_SpawnItem("RedFlareMedium",0,0);
-		BAL2 BB 2 BRIGHT A_SpawnItem("BlueFlareMedium",0,0);
+		BAL2 AA 2 BRIGHT light ("CACOBALL") A_SpawnItem("RedFlareMedium",0,0);
+		BAL2 BB 2 BRIGHT light ("CACOBALL") A_SpawnItem("BlueFlareMedium",0,0);
 	Loop;
 
 	Death:
@@ -372,7 +371,7 @@ States
 			A_SpawnProjectile ("Shoque", 3, 0, random (0, 360), 2, random (0, 360));
 			A_SpawnProjectile ("ShoqueAzul", 3, 0, random (0, 360), 2, random (0, 360));
 		}
-		BAL2 CDE 6 BRIGHT;
+		BAL2 CDEF 6 BRIGHT light ("CACOBALL_X2");
 	Stop;
 }
 }
@@ -427,49 +426,6 @@ States
 		TNT1 A 1;
 		SH1K ABCDEFG 2 BRIGHT;
 	Stop;
-}
-
-}
-
-
-
-
-	
-	
-	
-	
-	
-CLASS CacodemonBite: doomb_boolet_base
-{ 
-Default {
-	Radius 10;
-	Height 18;
-	Projectile;
-	+RANDOMIZE;
-	+FORCEXYBILLBOARD;
-	+THRUGHOST;
-	+BLOODSPLATTER;
-	RenderStyle "Add";
-	Alpha 0.6;
-	HitObituary "$OB_IMPHIT";
-	Obituary "$OB_IMPHIT";
-	
-	SeeSound "None";
-	DeathSound "none";
-	Decal "none";
-	Speed 20;
-	DamageType "HKFT";
-	Damage 5;
-}
-States
-{
-	Spawn:
-		TNT1 A 4 BRIGHT;
-		Stop;
-	Death:
-		TNT1 A 0 A_PlaySound("imp/melee");
-		TNT1 A 0 BRIGHT;
-		Stop;
 }
 
 }

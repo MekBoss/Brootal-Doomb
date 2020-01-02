@@ -125,13 +125,13 @@ states
 	Spawn:
 	Stay:
 		TNT1 A 0 bright A_SpawnItem("YellowFlare22",0,61);
-		CBRA CC 1 bright;
+		CBRA CC 1 bright light("BIGREDTORCH");
 		TNT1 A 0 bright A_SpawnItem("YellowFlare22",0,61);
-		CBRA BC 1 bright;
+		CBRA BC 1 bright light("BIGREDTORCH");
 		TNT1 A 0 bright A_SpawnItem("YellowFlare22",0,61);
-		CBRA BC 1 bright;
+		CBRA BC 1 bright light("BIGREDTORCH");
 		TNT1 A 0 bright A_SpawnItem("YellowFlare22",0,61);
-		CBRA BB 1 bright;
+		CBRA BB 1 bright light("BIGREDTORCH");
 	Loop;
 }
 }
@@ -149,9 +149,9 @@ states
 		
 	Stay:
 		TNT1 A 0 bright A_SpawnItem("YellowFlareSmall22Long",0,16);
-		CAND CCCB 1 bright;
+		CAND CCCB 1 bright light("SMALLREDTORCH");
 		TNT1 A 0 bright A_SpawnItem("YellowFlareSmall22Long",0,16);
-		CAND BCBB 1 bright;
+		CAND BCBB 1 bright light("SMALLREDTORCH");
 	Loop;
 }
 }

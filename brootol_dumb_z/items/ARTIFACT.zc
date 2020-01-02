@@ -130,7 +130,6 @@ CLASS NightVisionGiver : PowerupGiver {
 		Inventory.MaxAmount 0;
 		Powerup.Type "powerLightAmp";
 		Inventory.PickupMessage "$GOTVISOR";
-		//Powerup.Colormap 0.0, 0.0, 0.0, 1.0,0.5,0.5
 		Powerup.Duration 4200;
 	}
 	States
