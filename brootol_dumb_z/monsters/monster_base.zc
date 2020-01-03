@@ -124,7 +124,7 @@ protected bool is_headshot(vector3 v)
 
 protected bool is_kneeshot(vector3 v)
 {
-	//if head variable valid
+	//if leg variable valid
 	if(doomb_monster_base(self).legs_pos > -1 && v.z <= doomb_monster_base(self).legs_pos)
 		return true;
 
@@ -193,8 +193,9 @@ override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Fl
 //can actually hit another actor(not monster target)
 protected void doomb_cheap_melee_attack(double distance = 0, int dam = 0, name damage_type = "")
 {
+	double new_pitch = AimLineAttack (angle, DEFMELEERANGE, null, 0., ALF_CHECK3D);
 	FLineTraceData punch;
-	LineTrace(angle + frandom(-5, 5), distance, pitch,
+	LineTrace(angle + frandom(-5, 5), distance, new_pitch + random (-5, 5),
 	offsetz:height / 2, data: punch);
 	
 	if(punch.HitType == TRACE_HitActor)

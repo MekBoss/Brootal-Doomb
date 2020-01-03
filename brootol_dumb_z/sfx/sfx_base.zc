@@ -42,6 +42,7 @@ enum fields_flags
 };
 
 //called when need change something from outside of actor
+//no else cases because it handled aditionaly by next function
 void doomb_set_appearance_global(vector2 sc = (double.nan, double.nan), double alph = double.nan, vector3 vel_v = (0, 0, 0) )
 {
     if(sc == sc)

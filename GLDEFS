@@ -885,7 +885,7 @@ object Doomer
 }
 
 
-object TehLostSoul
+object doomb_lost_soul
 {
     frame LSOL { light LOSTSOUL_X1 }
 }

@@ -495,7 +495,7 @@ CLASS CyberStep : ACTOR {
 	}
 }
 
-CLASS LostSoulOnHandFireSpawner : ACTOR { 
+CLASS LostSoulOnHandFireSpawner : visual_sfx { 
 	Default {
 		
 		Speed 20;
@@ -506,7 +506,7 @@ CLASS LostSoulOnHandFireSpawner : ACTOR {
 		Spawn:
 			TNT1 A 1;
 			TNT1 A 0 Thing_ChangeTID(0,390);
-			tnt1 AAA 0 A_SpawnProjectile ("SoulTrails", 0, 0, random (0, 360), 2, random (0, 180));
+			tnt1 AAA 0 doomb_show_effect("SoulTrails", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			Stop;
 	}
 }
