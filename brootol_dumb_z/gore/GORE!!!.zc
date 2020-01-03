@@ -818,7 +818,7 @@ CLASS XDeathBrain2 : ACTOR {
 
 
 
-//cause slowdown
+//TODO cause slowdown
 CLASS Instestin : doomb_blood
 { 
 	Default {

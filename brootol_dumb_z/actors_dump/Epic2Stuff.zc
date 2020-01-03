@@ -159,8 +159,6 @@ CLASS AltMap01CloudSpawner : ACTOR {
 	}
 }
 
-//, random(-2, 2), random(-4, 4)
-
 CLASS AltMap01Cloud : ACTOR { 
 	Default {
 		

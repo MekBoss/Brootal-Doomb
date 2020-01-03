@@ -349,7 +349,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 		GetUp:
 			TNT1 A 0;
 			TNT1 A 0 A_GiveInventory("IsDown", 1);
-			TNT1 A 0 A_SpawnItem("LargeMassWaterImpact");
+			TNT1 A 0 {if(waterlevel > 1) A_SpawnItem("LargeMassWaterImpact");}
 			TNT1 A 0 {bFORCEXYBILLBOARD = true;}
 			TNT1 A 0 {bSOLID = false;}
 			TNT1 A 0 {bNOPAIN = false;}

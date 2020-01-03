@@ -222,7 +222,6 @@ CLASS LargeMassWaterImpact: Ricochet {
 		SpawnWater:
 			TNT1 A 0;
 			TNT1 A 0 A_PlaySound("bigspl1");
-			//TNT1 AAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("LiquidParticleX", 0, 0, random (0, 360), 2, random (0, 360))
 			TNT1 AAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("WaterParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160));
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("WaterParticleXSuperFast", 14, 0, random (0, 360), 2, random (30, 160));
 			TNT1 A 20;
@@ -231,9 +230,7 @@ CLASS LargeMassWaterImpact: Ricochet {
 		Death.CauseObjectsToSplashSlime:
 			TNT1 A 0;
 			TNT1 A 0 A_PlaySound("bigspl1");
-			//TNT1 AAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("LiquidParticleX", 0, 0, random (0, 360), 2, random (0, 360))
 			TNT1 AAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("SlimeParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160));
-			//TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("SlimeParticleXSuperFast", 14, 0, random (0, 360), 2, random (30, 160))
 			TNT1 A 20;
 			Stop;
 	}

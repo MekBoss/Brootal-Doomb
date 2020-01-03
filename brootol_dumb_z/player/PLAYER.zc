@@ -2992,7 +2992,7 @@ States
 	Death:
 	Crash:
 		tnt1 A 1;
-		TNT1 A 0 A_SpawnItem("LargeMassWaterImpact");
+		TNT1 A 0 {if(waterlevel > 1) A_SpawnItem("LargeMassWaterImpact");}
 		tnt1 A 0 A_Explode(60,5,0);
 		stop;
 }

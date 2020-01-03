@@ -26,7 +26,6 @@ Decal "GreenBloodSplat";
 states
 {
      Death:
-  	    //TNT1 A 0 A_SpawnProjectile ("SmallBloodSplasher", 0, 0, random (0, 360), 2, random (0, 160))
        TNT1 A 1 A_SpawnItem("Green_BloodSpot",0,0,0,1);
         XDT1 EFGHIJKL 3;
        Stop;
@@ -187,12 +186,10 @@ Water:
 	
 Water1:
 	GUTS GH 10;
-	//TNT1 A 0 A_JumpIf(waterlevel == 0, "Death")
 	Loop;
 	
 Water2:
 	GUTS IJ 10;
-	//TNT1 A 0 A_JumpIf(waterlevel == 0, "Death")
 	Loop;
 }
 }

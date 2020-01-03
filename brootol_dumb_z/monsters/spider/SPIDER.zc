@@ -35,6 +35,7 @@ CLASS Arachnotron1 : doomb_monster_base replaces Arachnotron {
 		Species "Spider";
 		+DONTHARMCLASS;
 		Scale 1.3;
+		mass 2200;
 	}
 	States
 	{

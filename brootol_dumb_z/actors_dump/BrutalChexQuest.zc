@@ -12,7 +12,6 @@ CLASS Flemoid1 : doomb_monster_base Replaces FlemoidusCommonus {
 		+GHOST;
 		Bloodtype "Green_Blood";
 		SeeSound "FLEMSIT";
-		//AttackSound "grunt/attack"
 		PainSound "FLEMPAIN1";
 		DeathSound "FLEMDIE";
 		ActiveSound "FLEMSIT";
@@ -90,7 +89,6 @@ CLASS Flemoid2 : doomb_monster_base Replaces FlemoidusBipedicus {
 		+GHOST;
 		Bloodtype "Green_Blood";
 		SeeSound "FLEMSIT";
-		//AttackSound "grunt/attack"
 		PainSound "FLEMPAIN1";
 		DeathSound "FLEMDIE";
 		ActiveSound "FLEMSIT";
@@ -176,7 +174,6 @@ CLASS Flemoid3 :  doomb_monster_base Replaces  ArmoredFlemoidusBipedicus {
 		+GHOST;
 		Bloodtype "Green_Blood";
 		SeeSound "FLEMSIT";
-		//AttackSound "grunt/attack"
 		PainSound "FLEMPAIN1";
 		DeathSound "FLEMDIE";
 		ActiveSound "FLEMSIT";
@@ -266,7 +263,6 @@ CLASS Quadrumpus : doomb_monster_base {
 		+GHOST;
 		Bloodtype "Green_Blood";
 		SeeSound "FLEMSIT";
-		//AttackSound "grunt/attack"
 		PainSound "FLEMPAIN1";
 		DeathSound "FLEMDIE";
 		ActiveSound "FLEMSIT";
@@ -739,7 +735,6 @@ CLASS XJunk1 : ACTOR {
 			Loop;
 		Death:
 			
-			//TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
 			JNK6 A 2000;
 			Stop;
 		Splash:
@@ -763,7 +758,6 @@ CLASS XJunk2: XJunk1 {
 			Loop;
 		Death:
 			
-			//TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
 			JNK7 A 2000;
 			Stop;
 		Splash:
@@ -787,7 +781,6 @@ CLASS XJunk3: XJunk1 {
 			Loop;
 		Death:
 			
-			//TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
 			JNK8 A 2000;
 			Stop;
 		Splash:
@@ -811,7 +804,6 @@ CLASS XJunk4: XJunk1 {
 			Loop;
 		Death:
 			
-			//TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
 			JNK4 A 2000;
 			Stop;
 		Splash:
@@ -835,7 +827,6 @@ CLASS XJunk5: XJunk1 {
 			Loop;
 		Death:
 			
-			//TNT1 A 0 A_SpawnItem("NashGore_BloodSpot",0,0,0,1)
 			JNK5 A 2000;
 			Stop;
 		Splash:

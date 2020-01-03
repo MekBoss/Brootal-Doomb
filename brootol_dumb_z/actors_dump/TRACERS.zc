@@ -7,7 +7,6 @@ CLASS Tracer: FastProjectile {
 		+RANDOMIZE;
 		+FORCEXYBILLBOARD;
 		+DONTSPLASH;
-		// +BLOODSPLATTER 
 		+NOEXTREMEDEATH;
 		+MISSILE;
 		damage 0;

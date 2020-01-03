@@ -26,6 +26,10 @@ protected bool frozen, dismembered, cant_resurrect;
 
 override bool CanResurrect(Actor other, bool passive)
 {
+	if (!passive && self.getclassname() == "TehArchvile")
+	{
+		return false;
+	}
 	return !cant_resurrect;
 }
 
@@ -191,9 +195,9 @@ protected void doomb_cheap_melee_attack(double distance = 0, int dam = 0, name d
 {
 	FLineTraceData punch;
 	LineTrace(angle + frandom(-5, 5), distance, pitch,
-	offsetz:pos.z + height / 2, data: punch);
+	offsetz:height / 2, data: punch);
 	
-	if(punch.hitactor != null)
+	if(punch.HitType == TRACE_HitActor)
 	{
 		punch.hitactor.damagemobj(self, self, dam, damage_type, 0, 0);
 	}
