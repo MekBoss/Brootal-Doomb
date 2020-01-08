@@ -853,7 +853,9 @@ CLASS DyingZombiemanLostTeeth: doomb_zombie_Man {
 	Default {
 		
 		Radius 12;
-		Height 32;
+		Height 32+15;
+		doomb_monster_base.head_starting_position 32;
+
 		Speed 0;
 		Health 40;
 		-COUNTKILL;
@@ -871,7 +873,6 @@ CLASS DyingZombiemanLostTeeth: doomb_zombie_Man {
 			TNT1 A 0 A_SpawnProjectile ("jaw", 50, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("Teeth", 50, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("TeethNoBounce", 50, 0, random (0, 360), 2, random (0, 160));
-			//headbox height 32
 			ZZD5 A 6 A_SpawnProjectile ("MuchBlood", 40, 0, random (0, 360), 2, random (0, 160));
 			ZZD5 CB 8;
 			ZZD5 CB 12 A_Pain;
@@ -880,11 +881,10 @@ CLASS DyingZombiemanLostTeeth: doomb_zombie_Man {
 		Death:
 			TNT1 A 0 A_Scream;
 			ZZD5 D 6 A_NoBlocking;
-			
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem("DeadZombieManFacingFront");
 			FPZ2 J 0;
-			Stop;
+		Stop;
 			
 		Death.Headshot:
 			TNT1 A 0;
@@ -893,8 +893,8 @@ CLASS DyingZombiemanLostTeeth: doomb_zombie_Man {
 			TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate");
 			TNT1 A 0 A_JumpIfHealthLower(-600, "XDeath");
 			TNT1 A 0 A_JumpIfHealthLower(-250, "Death.SSGHead");
-			Goto Death.HeadExplode;
-			
+		Goto Death.HeadExplode;
+		//FIXME jump to parent state, can cause problems
 		Death.Shotgun:
 			Goto DeathShotgunFly;
 		Death.Cutless:
@@ -907,7 +907,9 @@ CLASS DyingZombiemanNoArm : doomb_body_base {
 	Default {
 		
 		Radius 16;
-		Height 28;
+		Height 28+18;
+		doomb_monster_base.head_starting_position 30;
+
 		Health 50;
 		PainSound "grunt/pain";
 		PainChance 255;
@@ -954,41 +956,15 @@ CLASS DyingZombiemanNoArm : doomb_body_base {
 			TNT1 A 0 A_PlaySound ("BURNZOM");
 			ZZD1 IIIIAAAAA 2 A_SpawnProjectile ("Brutal_LiquidBlood", 40, 0, 90, 2, random (0, 45));
 			ZZD1 A 1 A_Chase;
-			Goto Suffer;
 		Suffer:
-			//headbox height 48
 			TNT1 A 0 A_FaceTarget;
 			ZZD2 AAAAAAAA 2 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, 90, 2, random (0, 45));
-			ZZD2 EEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
+			ZZD2 EEEEEBBBBB 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
 			TNT1 A 0 A_FaceTarget;
-			ZZD2 BBBBB 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-			TNT1 A 0 A_Jump(128, "Death");
-			TNT1 A 0 A_FaceTarget;
-			ZZD2 EEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-			TNT1 A 0 A_FaceTarget;
-			ZZD2 BBBBB 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-			TNT1 A 0 A_FaceTarget;
-			ZZD2 EEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-			TNT1 A 0 A_FaceTarget;
-			ZZD2 BBBBB 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-			TNT1 A 0 A_FaceTarget;
-			ZZD2 EEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-			TNT1 A 0 A_FaceTarget;
-			ZZD2 BBBBB 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-			TNT1 A 0 A_Jump(32, "LastStand")   ;
-			
-			TNT1 A 0 A_FaceTarget;
-			ZZD2 EEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-			
-			TNT1 A 0 A_FaceTarget;
-			ZZD2 BBBBB 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-			TNT1 A 0 A_FaceTarget;
-			ZZD2 EEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-			TNT1 A 0 A_FaceTarget;
-			ZZD2 BBBBB 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
 			TNT1 A 0 A_Jump(32, "LastStand");
-			Goto Death;
-			
+			tnt1 a 0 a_jumpif(random(0, 10) < 1, "death");
+		loop;
+
 		Death.Cut:
 		Death.Cutless:
 		Death:
@@ -1001,11 +977,8 @@ CLASS DyingZombiemanNoArm : doomb_body_base {
 			Stop;
 			
 		Death.Headshot:
-			TNT1 A 0;
 			TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma");
 			TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate");
-			
-			TNT1 A 0;
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			TNT1 AAAAA 0 A_SpawnProjectile ("Bloodmist", 0, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
@@ -1026,21 +999,8 @@ CLASS DyingZombiemanNoArm : doomb_body_base {
 			TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
 			ZZD3 GGGG 2 A_SpawnProjectile ("Brutal_LiquidBlood", 35, 0, random (0, 360), 2, random (0, 90));
 			ZZD3 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 1 A_SpawnProjectile ("Brutal_LiquidBlood", 10, 0, random (0, 360), 2, random (0, 90));
-			ZZD3 H -1;//doomb_final_absolution(12, 12);
-			Stop;
-			
-			
-		Death.Decaptate:
-			TNT1 A 0 A_PlaySound("misc/xdeath4");
-			tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
-			TNT1 A 0 A_SpawnProjectile ("XDeathZombiemanHead", 35, 0, random (0, 360), 2, random (30, 110));
-			TNT1 A 0 A_XScream;
-			TNT1 A 0 A_NoBlocking;
-			TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
-			ZZD3 GGGG 2 A_SpawnProjectile ("Brutal_LiquidBlood", 35, 0, random (0, 360), 2, random (0, 90));
-			ZZD3 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 1 A_SpawnProjectile ("Brutal_LiquidBlood", 10, 0, random (0, 360), 2, random (0, 90));
-			ZZD3 H -1;//doomb_final_absolution(12, 12);
-			Stop;
+			ZZD3 H -1 doomb_final_absolution(12, 12);
+		Stop;
 			
 	Death.Plasma: Death.Plasma2:
 		TNT1 A 0;
@@ -1371,7 +1331,9 @@ CLASS ZombiemanGotHisLegBlowed : doomb_body_base {
 	Default {
 	
 	Radius 16;
-	Height 28;
+	Height 28 + 18;
+	doomb_monster_base.head_starting_position 30;
+
 	Health 50;
 	PainSound "grunt/pain";
 	PainChance 255;
@@ -1391,32 +1353,25 @@ CLASS ZombiemanGotHisLegBlowed : doomb_body_base {
 	+GHOST;
 	+THRUGHOST;
 	-SOLID;
-	
 	+FLOORCLIP;
 	+DONTSPLASH;
-	
-	
-	}
-	States
-	{
-	
+}
+States
+{
 	Spawn:
 		TNT1 A 0;
 		TNT1 A 0 A_PlaySound ("BURNZOM");
 		POS7 AAAAABBCC 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random (0, 360), 2, random (0, 45));
 		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_Jump(16, "GotoDeath");
-		
-		
-		Goto Suffer;
 	Suffer:
 		TNT1 A 0;
 		POS7 EEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45));
 		POS7 FFFFF 2 A_SpawnProjectile ("Brutal_LiquidBlood", 12, 0, random (0, 360), 2, random (0, 45));
 		TNT1 A 0 A_Jump(12, "LastStand");
 		TNT1 A 0 A_Jump(24, "LeaveCrawling");
-			tnt1 a 0 a_jumpif(random(0, 10) < 1, "death");
-		Loop;
+		tnt1 a 0 a_jumpif(random(0, 10) < 1, "death");
+	Loop;
 		
 	Death.Cut:
 	Death.Cutless:
@@ -1442,9 +1397,6 @@ CLASS ZombiemanGotHisLegBlowed : doomb_body_base {
 		Stop;
 		
 	Death.Headshot:
-		TNT1 A 0;
-		
-		TNT1 A 0;
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		TNT1 AAAAA 0 A_SpawnProjectile ("Bloodmist", 0, 0, random (0, 360), 2, random (30, 90));
 		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
@@ -1516,13 +1468,9 @@ States
 	{
 	Spawn:
 		ZBLS A 1 A_Look;
-		Goto See;
-		
 	See:
-		//headbox height 28
-		
-		ZBLS AAAAA 1 A_Chase;
-		Loop;
+		ZBLS A 1 A_Chase;
+	Loop;
 		
 	Missile:
 		ZBLS AAAA 10 A_FaceTarget;
@@ -2535,7 +2483,8 @@ CLASS DeadZombieman_Slumped: ZombiemanTorso {
 	+NOPAIN;
 	Health 200;
 	DamageFactor "Head", 15.0;
-	Height 22;
+	Height 22+15;
+	doomb_monster_base.head_starting_position 22;
 	Radius 6;
 	}
 States
@@ -2544,17 +2493,13 @@ States
 		TNT1 A 0;
 		TNT1 A 0 A_Recoil(6);
 		BR92 A 6;
-		TNT1 A 0 A_JumpIf(vel.x < 0, "LayDown");
-		TNT1 A 0 A_JumpIf(vel.y < 0, "LayDown");
-		TNT1 A 0 A_JumpIf(vel.x > 0, "LayDown");
-		TNT1 A 0 A_JumpIf(vel.y > 0, "LayDown");
-		//headbox height 22
+		TNT1 A 0 A_JumpIf(vel.x == 0 && vel.y ==0, "LayDown");
 		BR92 A 16;
-		Loop ;
 	LayDown:
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 A_SpawnItem("DeadZombieman1");
-		Stop;
+	Stop;
+	
 	XDeath:
 	Death.Explosive_Impact:
 		TNT1 A 0 A_NoBlocking;

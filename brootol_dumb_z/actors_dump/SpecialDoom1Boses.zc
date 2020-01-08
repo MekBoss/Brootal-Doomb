@@ -18,7 +18,10 @@ CLASS CyberdemonBoss: doomb_monster_base
 		MaxDropOffHeight 32;
 		Scale 2.4;
 		Radius 90;
-		Height 220;
+		Height 220 + 32;
+		doomb_monster_base.head_starting_position 200;
+		doomb_monster_base.headshot_multiplier 1.5;
+
 		+MISSILEMORE;
 		+MISSILEEVENMORE;
 		+DONTRIP;
@@ -46,8 +49,6 @@ CLASS CyberdemonBoss: doomb_monster_base
 			Stop;
 			
 		Spawn:
-			TNT1 A 0;
-			//headbox height 200
 			CYBR DZ 10 A_Look;
 		Loop;
 			
@@ -212,11 +213,14 @@ CLASS SuperMastermind : doomb_monster_base {
 		Obituary "%o was destroyed by a Mastermind.";
 		+NOICEDEATH;
 		
+		Height 144 + 100;
+		doomb_monster_base.head_starting_position 150;
+		doomb_monster_base.headshot_multiplier 1.5;
+
 		Health 20000;
 		Radius 210;
 		damagefactor "Crush", 30.0;
 		Scale 2.5;
-		Height 144;
 		Mass 500000;
 		Speed 40;
 		+NOTARGET;
@@ -256,8 +260,6 @@ CLASS SuperMastermind : doomb_monster_base {
 			SPID A 10 A_Look;
 			Loop;
 		See:
-			//headbox height 144
-			
 			SPID A 2 A_Metal;
 			
 			SPID ABBCCD 2

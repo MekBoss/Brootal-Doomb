@@ -21,6 +21,9 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 		Health 5000;
 		MaxStepHeight 24;
 		MaxDropOffHeight 32;
+		doomb_monster_base.head_starting_position 90;
+		doomb_monster_base.headshot_multiplier 1.5;
+
 		Scale 1.2;
 		Radius 45;
 		Height 110;
@@ -43,7 +46,6 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 	States
 	{
 		Spawn:
-			//headbox height 100
 		Stand:
 			CYBR DZ 10 A_Look;
 		Loop;

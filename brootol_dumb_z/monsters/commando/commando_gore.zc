@@ -163,7 +163,8 @@ CLASS DeadChaingunguy_Slumped: CurbstompedMarine {
 		+NOPAIN;
 		Health 200;
 		DamageFactor "Head", 15.0;
-		Height 22;
+	Height 22+15;
+	doomb_monster_base.head_starting_position 22;
 		Radius 6;
 		Scale 0.9;
 	}
@@ -173,11 +174,7 @@ CLASS DeadChaingunguy_Slumped: CurbstompedMarine {
 			TNT1 A 0;
 			TNT1 A 0 A_Recoil(6);
 			BR95 A 6;
-			TNT1 A 0 A_JumpIf(vel.x < 0, "LayDown");
-			TNT1 A 0 A_JumpIf(vel.y < 0, "LayDown");
-			TNT1 A 0 A_JumpIf(vel.x > 0, "LayDown");
-			TNT1 A 0 A_JumpIf(vel.y > 0, "LayDown");
-			//headbox height 22
+			TNT1 A 0 A_JumpIf(vel.x == 0 && vel.y == 0, "LayDown");
 			BR95 A 16;
 			Loop ;
 		LayDown:
