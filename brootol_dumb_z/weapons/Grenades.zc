@@ -16,18 +16,14 @@ CLASS HandGrenades : doomb_weapon_base {
 		+WEAPON.NOAUTOAIM;
 		+WEAPON.NOALERT;
 		+WEAPON.NOAUTOFIRE;
-		//+INVENTORY.UNDROPPABLE
 		Scale 0.3;
 	}
 	States
 	{
 		Ready:
-			TNT1 A 0;
 			TNT1 A 0 A_JumpIfInventory("GrenadeAmmo", 1, 1);
 			Goto NoGrenades;
 			GRHO AB 1;
-			Goto Steady;
-			
 		Steady:
 			GRHO C 1 A_WeaponReady;
 			Loop;
@@ -141,34 +137,53 @@ CLASS HandGrenade : doomb_boolet_base {
 		DeathSound "none";
 		Obituary "%o ate %k grenade.";
 	}
+	private uint timer; 
+
 	States
 	{
 		Spawn:
+			tnt1 a 0
+			{
+				timer++;
+				if(timer > 5)
+					setstatelabel("explode");
+			}
 			GRND ABCDEFGH 2 {vel.z -= 1;}
-			TNT1 A 0 A_GiveInventory("GrenadeTime", 1);
-			TNT1 A 0 A_JumpIfInventory("GrenadeTime", 3, "Explode");
-			Loop;
+		Loop;
+
 		Death:
-			TNT1 A 0;
+			tnt1 a 0
+			{
+				timer++;
+				if(timer > 5)
+					setstatelabel("explode");
+
+				vel.z -= 5;
+			}
 			GRND H 16;
-			TNT1 A 0 A_GiveInventory("GrenadeTime", 1);
-			TNT1 A 0 A_JumpIfInventory("GrenadeTime", 3, "Explode");
-			Loop;
+		Loop;
 			
 			
 			
 		Explode:
 			TNT1 A 0 A_PlaySound("FAREXPL", 3);
 			TNT1 A 0 A_PlaySound("explosion", 2);
-			TNT1 A 0 A_Explode(200,800, damagetype:"Explosive_Impact");
+			TNT1 A 0 A_Explode(200,200, damagetype:"Explosive_Impact");
 			TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -15);
 			TNT1 A 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 A 0 A_Explode(160,200);
-			TNT1 AAAAAA 0 A_SpawnProjectile ("SmallExplosionSpawner", 20, 0, random (0, 360), 2, - random (0, 180));
+			TNT1 AAAAAA 0
+			{
+				doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+				doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
+				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
+				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
+				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
+			}
+
 			TNT1 AAAAAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			EXPL A 0 Radius_Quake (2, 24, 0, 15, 0);
-			BEXP B 0 BRIGHT A_Scream;
+			BEXP B 0 A_Scream;
 			TNT1 A 0 A_ALertMonsters;
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("ShrapnelParticle", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
 			TNT1 A 0 A_SpawnItem("BarrelExplosionSmokeColumn");
@@ -177,8 +192,8 @@ CLASS HandGrenade : doomb_boolet_base {
 				a_setscale(3.0);
 				a_setrenderstyle(0.12, STYLE_add);
 			}
-			SHWK ACEGIKMOQ 1 A_FadeOut(0.01);
 			TNT1 a 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
+			//SHWK ACEGIKMOQ 1 A_FadeOut(0.01);
 		Stop;
 	}
 }

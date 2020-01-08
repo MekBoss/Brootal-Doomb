@@ -300,7 +300,7 @@ CLASS BrutalizedCommando1 : ACTOR {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "Avoid", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		PainSound "grunt/pain";
 		Mass 999999;
 		-SOLID;
@@ -811,7 +811,7 @@ CLASS DyingComando : ACTOR {
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 	}

@@ -360,7 +360,7 @@ CLASS ShotgunAmmo : Ammo {
 }
 
 
-//TODO cause slowdown
+//SLOWDOWN
 CLASS Shotgunpuff : RicoChet { 
 	Default {
 		renderstyle "Translucent";

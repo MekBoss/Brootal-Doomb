@@ -138,7 +138,6 @@ CLASS MeatShieldTracer: Tracer {
 		speed 100;
 		damagefunction (random(20,25));
 		Decal "BulletDecalNew1";
-		DamageType "FriendBullet";
 	}
 	States
 	{
@@ -170,7 +169,6 @@ CLASS MarineTracer: Tracer {
 		speed 100;
 		damagefunction (random(8,10));
 		Decal "BulletDecalNew1";
-		DamageType "FriendBullet";
 	}
 	States
 	{
@@ -469,7 +467,6 @@ CLASS Penetrator: MarineTracer {
 	damagefunction (random(8,10));
 	//Decal "BulletDecalNew1"
 	Decal "none";
-	DamageType "FriendBullet";
 	-SKYEXPLODE;
 	}
 States

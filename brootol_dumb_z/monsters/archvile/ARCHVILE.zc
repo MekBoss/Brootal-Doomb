@@ -203,7 +203,6 @@ States
 		CRS2 A -1;
 	Stop;
 		
-	Pain.KillMe:
 	Pain.Taunt:
 		TNT1 A 0;
 	Goto Missile;

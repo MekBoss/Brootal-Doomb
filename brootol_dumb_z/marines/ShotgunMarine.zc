@@ -1,5 +1,5 @@
 
-CLASS Marine_Shotgun: Marine_base { 
+CLASS Marine_Shotgun: doomb_marine_base { 
 	Default {
 		DropItem "Shot_Gun";
 	}
@@ -145,7 +145,7 @@ override int doomb_get_aditional_death_sprite()
 		Missile:
 			//PLA3 E 1
 			TNT1 A 0 {bnodropoff = true;}
-			TNT1 A 0 A_SpawnItem("KillMeSmall");
+			TNT1 A 0 doomb_trigger_monsters(cursector);
 			TNT1 A 0 doomb_if_boss_retreat(target, "CheckRetreat");
 			TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPLayer");//
 			TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "CheckRangeToWait");
@@ -267,7 +267,7 @@ CLASS ShotgunMarineGuarding: Marine_Shotgun {
 			
 		Missile:
 			TNT1 A 0 {bfriendly = true;}
-			TNT1 A 0 A_SpawnItem("KillMeSmall");
+			TNT1 A 0 doomb_trigger_monsters(cursector);
 			TNT1 A 0 doomb_if_boss_retreat(target, "CheckRetreat");
 			TNT1 A 0 {bshootable = true;}
 			TNT1 A 0 {bsolid = true;}

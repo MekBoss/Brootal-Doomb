@@ -1,12 +1,14 @@
-class marine_base : doomb_monster_base
+//contain all monster fatality states 
+class doomb_marine_base : doomb_monster_base
 {
 
-private bool guarding;
+protected bool guarding;
 
 Default
 {
     Radius 12;
-    MaxTargetRange 99999;
+    //this made enemy search waaaaaaay to slow
+	//MaxTargetRange 99999;
 
     damagefactor "Leg", 0.0;
     damagefactor "Shotgun", 0.0;
@@ -18,7 +20,6 @@ Default
     damagefactor "shotgun", 0.0;
     damagefactor "ssg", 0.0;
     damagefactor "InstakillMarines", 40.0;
-    damagefactor "FriendBullet", 0.0;
     damagefactor "Blood", 0.0;
     damagefactor "GreenBlood", 0.0 ;
     damagefactor "BlueBlood", 0.0  ;
@@ -28,7 +29,7 @@ Default
     damagefactor "GreenBlood", 0.0;
     damagefactor "SpawnMarine", 0.0;
     damagefactor "HelperMarineFatallity", 0.0;
-    damagefactor "KillMe", 0.0;
+    
     damagefactor "Avoid", 0.0;
 
     Height 52;
@@ -98,6 +99,52 @@ override void Deactivate (Actor activator)
 virtual int doomb_get_aditional_death_sprite()
 {
     return -1; //<- return TNT1 sprite name 
+}
+
+override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Flags,Double angle)
+{
+	//friendly marines cant harm player
+	if( (inflictor && inflictor is "doomb_marine_base") || (source && source is "doomb_marine_base") )
+	{
+		return 0;
+	}
+
+	//cant headshot and etc marines, so call original damage mobj to save time
+	return actor.DamageMobj(inflictor, source, damage, mod, flags, angle);
+}
+
+protected void doomb_trigger_monsters(sector square = null, bool original = true)
+{
+	if(square)
+	{
+		if(original)
+		{
+			for (Actor check = square.thinglist; check != null; check = check.snext)
+			{
+				if (check.bnoclip == true ||  check.bnoblockmap == true || check.bnointeraction == true || check.bkilled == true)
+					continue;
+				
+				if(check.bismonster == true && check.health > 0 && check.bcorpse == false )
+				{
+					vector3 p = level.vec3diff(self.pos, check.pos);
+
+					if(p dot p < 250000)
+						check.target = self;
+				}
+			}
+		}
+		//check neighborn sectors
+		else
+		{
+			for(uint i = 0; i < square.lines.size(); i++)
+			{
+				if(square.lines[i].frontsector == square)
+					doomb_trigger_monsters(square.lines[i].backsector, false);
+				else
+					doomb_trigger_monsters(square.lines[i].frontsector, false);
+			}
+		}
+	}
 }
 
 states

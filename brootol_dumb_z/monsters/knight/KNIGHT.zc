@@ -62,7 +62,7 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 			BOS2 E 6 A_FaceTarget;
 			TNT1 A 0 A_PlaySound("weapons/gswing");
 			BOS2 F 6 A_FaceTarget;
-			BOS2 G 6 {doomb_cheap_melee_attack(160, random(10, 60), "HKFT");}
+			BOS2 G 6 {doomb_cheap_melee_attack(160, random(30, 60), "HKFT");}
 			TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
 		Goto See2;
 			
@@ -450,7 +450,6 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 			TNT1 A 0 A_BossDeath;
 			Stop;
 			
-		Pain.KillMe:
 		Pain.Taunt:
 			Goto Missile;
 			

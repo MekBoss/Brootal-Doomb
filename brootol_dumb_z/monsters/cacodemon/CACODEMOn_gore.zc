@@ -341,7 +341,7 @@ Default {
 	damagefactor "BlueBlood", 0.0;
 	damagefactor "GreenBlood", 0.0;
 	damagefactor "Avoid", 0.0;
-	damagefactor "KillMe", 0.0;
+	
 	damagefactor "Cutless", 0.6;
 	bloodtype "Blue_Blood";
 	bloodcolor "darkblue";

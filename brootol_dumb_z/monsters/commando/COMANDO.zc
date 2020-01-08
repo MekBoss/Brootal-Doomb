@@ -651,7 +651,6 @@ Death.Stomp:
 	TNT1 A 1 A_XScream;
 	Stop;
 	
-Pain.KillMe:
 Pain.Taunt:
 	TNT1 A 0;
 	Goto Missile;

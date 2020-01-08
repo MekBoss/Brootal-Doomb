@@ -1,6 +1,6 @@
 //All the liquid gore stuff goes here.
 
-//TODO cause slowdown
+//SLOWDOWN
 CLASS TinyBlood : doomb_blood { 
 	Default {
 		scale 0.2;
@@ -56,13 +56,12 @@ CLASS TinyBlood : doomb_blood {
 
 
 
-//TODO cause slowdown
+//SLOWDOWN
 CLASS Brutal_Blood : doomb_blood Replaces Blood { 
 	Default {
-		renderstyle "translucent";
+		renderstyle "add";
 		Decal "BrutalBloodSplat";
 		+FORCEXYBILLBOARD;
-		+NOGRAVITY;
 		+THRUACTORS;
 		+CLIENTSIDEONLY;
 		Scale 0.5;
@@ -269,7 +268,7 @@ CLASS DripingBloodLeavesSmallPool: TinyBlood {
 
 
 // Blood trails spawned by FlyingBlood
-//TODO cause slowdown
+//SLOWDOWN
 CLASS Brutal_FlyingBloodTrail : brutal_blood { 
 	Default
 	{
@@ -814,7 +813,7 @@ CLASS Brutal_LiquidBloodTrail: Brutal_FlyingBlood  {
 
 
 
-//TODO cause slowdown
+//SLOWDOWN
 CLASS Brutal_FlyingBloodFake  : brutal_blood { 
 	Default {
 		scale 0.5;
@@ -901,7 +900,7 @@ CLASS Bloodmist : Brutal_FlyingBlood {
 		height    2;
 		speed    8;
 		Gravity 0.4;
-		RenderStyle    "Translucent";
+		RenderStyle   "Translucent";
 		alpha    0.9;
 	}
 	states
@@ -920,7 +919,7 @@ CLASS Bloodmist : Brutal_FlyingBlood {
 }
 
 
-//TODO cause slowdown
+//SLOWDOWN
 CLASS BloodmistSmall : Bloodmist { 
 	Default {
 		

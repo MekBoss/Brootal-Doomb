@@ -6,7 +6,7 @@ CLASS VeryDeadMarine: DeadMarine Replaces DeadMarine {
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "BlueBlood", 0.0 ;
 		damagefactor "Taunt", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		damagefactor "GibRemoving", 990.0;
 		+CLIENTSIDEONLY;
 		+FLOORCLIP;
@@ -131,7 +131,7 @@ CLASS CurbstompedMarine : doomb_body_base {
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		+MOVEWITHSECTOR;
 		+FLOORCLIP;
 		+NOBLOCKMONST;
@@ -508,7 +508,7 @@ CLASS DeadDeadStick: DeadStick Replaces DeadStick {
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "BlueBlood", 0.0 ;
 		damagefactor "Taunt", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		GibHealth 10;
@@ -555,7 +555,7 @@ CLASS DeadLiveStick: LiveStick Replaces LiveStick {
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";
@@ -600,7 +600,7 @@ CLASS DeadBloodyTwitch : BloodyTwitch Replaces BloodyTwitch {
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";
@@ -710,7 +710,7 @@ CLASS HangingBody: Meat2 Replaces Meat2 {
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";
@@ -812,7 +812,7 @@ CLASS HangingDeadGuyNoLeg: Meat3 Replaces Meat3 {
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";
@@ -926,7 +926,7 @@ CLASS DeadHangNoGuts: HangNoGuts Replaces HangNoGuts {
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";
@@ -969,7 +969,7 @@ CLASS DeadHangBNoBrain: HangBNoBrain Replaces HangBNoBrain {
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";
@@ -1014,7 +1014,7 @@ CLASS DeadHangTLookingDown: HangTLookingDown Replaces HangTLookingDown {
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";
@@ -1057,7 +1057,7 @@ CLASS DeadHangTLookingUp: HangTLookingUp Replaces HangTLookingUp {
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";
@@ -1100,7 +1100,7 @@ CLASS DeadHangTSkull: HangTSkull replaces HangTSkull {
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";
@@ -1143,7 +1143,7 @@ CLASS DeadHangTNoBrain: HangTNoBrain Replaces HangTNoBrain {
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";

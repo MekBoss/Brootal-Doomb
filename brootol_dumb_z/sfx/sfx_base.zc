@@ -126,6 +126,7 @@ states
 			self.scale = (1, 1);
 			self.vel = (0, 0, 0);
 			setorigin( (double.infinity, double.infinity, double.infinity), false );
+			a_setrenderstyle(alpha, STYLE_Add);
 			alpha = 1;
 
 			for(uint i = 0; i < 10; i++)

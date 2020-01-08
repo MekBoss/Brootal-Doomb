@@ -19,7 +19,7 @@ CLASS CapturedMarine: doomb_monster_base Replaces Blursphere {
 		damagefactor "Cut", 10.0;
 		damagefactor "Taunt", 0.0;
 		damagefactor "headcut", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		damagefactor "Fatality", 99.0;
 		damagefactor "Melee", 99.0;
 		damagefactor "Kick", 99.0;
@@ -51,7 +51,6 @@ CLASS CapturedMarine: doomb_monster_base Replaces Blursphere {
 		Spawn1:
 			CAPT ABCB 15 A_Stop;
 			TNT1 A 0 A_SpawnProjectile ("OrderTitle3", 50, 0, 0, 2, 90);
-			TNT1 A 0 A_SpawnItem ("KillMe");
 		Loop;
 			
 		SetFree:
@@ -354,75 +353,6 @@ CLASS CapturedMarine: doomb_monster_base Replaces Blursphere {
 			TNT1 A 0 A_GiveToTarget("Fatality_Marine",1);
 			TNT1 A -1;
 			Stop;
-	}
-}
-
-CLASS KillMe : ACTOR { 
-	Default {
-		
-		+NOTARGET;
-		Radius 10;
-		Height 10;
-		DamageType "KillMe";
-		+NOGRAVITY;
-		+NOTELEPORT;
-		+NODAMAGETHRUST;
-		+THRUGHOST;
-		+NORADIUSDMG;
-		+NOEXTREMEDEATH;
-		+FORCERADIUSDMG;
-		-BLOODSPLATTER;
-		+BLOODLESSIMPACT;
-		PROJECTILE;
-		+DEHEXPLOSION;
-		+ACTIVATEMCROSS;
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Explode(3,500);
-			Stop;
-	}
-}
-
-
-
-
-
-
-CLASS KillMeSmall: KillMe { 
-	Default {
-		
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Explode(3,400);
-			Stop;
-	}
-}
-
-CLASS MarineSurvivor2: Marine
-{ 
-	Default {
-		Speed 5;
-		Health 6;
-	}
-	States
-	{
-		Spawn:
-			PLAY A 0;
-			TNT1 A 0 A_CheckSight("Spawn2");
-			PLAY A 0;
-			//TNT1 A 0 A_SpawnItem ("GiantKillMe")
-			PLAY A 1 A_Chase;
-			Goto See;
-			
-		Spawn2:
-			PLAY A 1;
-			Goto Spawn;
 	}
 }
 

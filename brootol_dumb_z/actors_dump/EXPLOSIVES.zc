@@ -1,70 +1,70 @@
 //Everything that can explode and hurt people goes here.
 CLASS GrenadeMissile : doomb_boolet_base { 
-	Default {
-		
-		Radius 4;
-		Height 4;
-		Speed 50;
-		Damage 6;
-		+MISSILE;
-		+BLOODSPLATTER;
-		Gravity 0.7;
-		
-		+SKYEXPLODE;
-		+DOOMBOUNCE;
-		+EXPLODEONWATER;
-		DamageType "Kick";
-		BounceFactor 0.5;
-		SeeSound "Weapons/GrenadeBounce";
-		DeathSound "none";
-		Obituary "$OB_MPROCKET";
-	}
+Default {
+	
+	Radius 4;
+	Height 4;
+	Speed 50;
+	Damage 6;
+	+MISSILE;
+	+BLOODSPLATTER;
+	Gravity 0.7;
+	
+	+SKYEXPLODE;
+	+DOOMBOUNCE;
+	+EXPLODEONWATER;
+	DamageType "Kick";
+	BounceFactor 0.5;
+	SeeSound "Weapons/GrenadeBounce";
+	DeathSound "none";
+	Obituary "$OB_MPROCKET";
+}
 
-	private uint timer; 
-	States
-	{
-		Spawn:
-			tnt1 a 0
-			{
-				timer++;
-				if(timer > 10)
-					setstatelabel("explode");
-			}
-			TNT1 A 0 A_CheckFloor("Death");
-			GBPJ ABCDEFGH 3
-			{
-				if(waterlevel <= 1)
-					doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
-			
-				vel.z += 1;
-			}
-		Loop;
-			
-		Death:
-			tnt1 a 0
-			{
-				vel.z += 5;
-				timer+= 5;
-				if(timer > 10)
-					setstatelabel("explode");
-			}
-			GBPJ AAAA 3 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
-		Loop;
-			
-		Explode:
-			EXPL A 0 Radius_Quake (3, 8, 0, 15, 0);//(intensity, duration, damrad, tremrad, tid)
-			TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -30);
-			TNT1 A 0 {if(waterlevel > 1) spawn("UnderwaterExplosion", pos:self.pos); }
-			TNT1 A 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 A 0 A_Explode(100,150, 0, 0, 0, 0, 0, "none", "Explosive_Impact");
-			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-			TNT1 AA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
-			TNT1 A 0 A_PlaySound("Explosion", 1);
-			TNT1 A 0 A_PlaySound("FAREXPL", 3);
-			tnt1 a 0
-			{
-				a_setscale(2.0);
-				a_setrenderstyle(0.12, STYLE_add);
+private uint timer; 
+States
+{
+	Spawn:
+		tnt1 a 0
+		{
+			timer++;
+			if(timer > 10)
+				setstatelabel("explode");
+		}
+		TNT1 A 0 A_CheckFloor("Death");
+		GBPJ ABCDEFGH 3
+		{
+			if(waterlevel <= 1)
+				doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
+		
+			vel.z -= 1;
+		}
+	Loop;
+		
+	Death:
+		tnt1 a 0
+		{
+			vel.z -= 5;
+			timer+= 5;
+			if(timer > 10)
+				setstatelabel("explode");
+		}
+		GBPJ AAAA 3 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
+	Loop;
+		
+	Explode:
+		EXPL A 0 Radius_Quake (3, 8, 0, 15, 0);//(intensity, duration, damrad, tremrad, tid)
+		TNT1 A 0 A_SpawnItem ("BigRicoChet", 0, -30);
+		TNT1 A 0 {if(waterlevel > 1) spawn("UnderwaterExplosion", pos:self.pos); }
+		TNT1 A 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+		TNT1 A 0 A_Explode(100,150, damagetype:"Explosive_Impact");
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+		TNT1 AA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
+		TNT1 A 0 A_PlaySound("Explosion", 1);
+		TNT1 A 0 A_PlaySound("FAREXPL", 3);
+		tnt1 a 0
+		{
+			a_setscale(2.0);
+			a_setrenderstyle(0.12, STYLE_add);
 		}
 		SHWK ACEGIKMOQ 1 A_FadeOut(0.01);
 		Stop;
@@ -79,13 +79,6 @@ CLASS GrenadeMissile : doomb_boolet_base {
 
 
 
-
-CLASS MarinesRocket: Rocket2 { 
-	Default {
-		
-		DamageType "FriendBullet";
-	}
-}
 
 
 

@@ -566,7 +566,6 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 			SARG NMLKJI 5;
 		Goto See;
 			
-		Pain.KillMe:
 		Pain.Taunt:
 			TNT1 A 0;
 			Goto See;

@@ -26,7 +26,7 @@ CLASS Marine_RocketSpawn: RedTorch {
 	}
 }
 
-CLASS Marine_Rocket: Marine_base { 
+CLASS Marine_Rocket: doomb_marine_base { 
 	Default {
 		
 		DropItem "RocketLauncher";
@@ -170,7 +170,7 @@ override int doomb_get_aditional_death_sprite()
 			
 		Missile:
 			TNT1 A 0 {bnodropoff = true;}
-			TNT1 A 0 A_SpawnItem("KillMeSmall");
+			TNT1 A 0 doomb_trigger_monsters(cursector);
 			TNT1 A 0 doomb_if_boss_retreat(target, "CheckRetreat");
 			TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "FollowPLayer");//
 			TNT1 A 0 A_JumpIfInTargetInventory("IsPlayer", 1, "CheckRangeToWait");
@@ -286,7 +286,7 @@ CLASS RocketMarineGuarding: Marine_Rocket {
 			
 		Missile:
 			TNT1 A 0 {bfriendly = true;}
-			TNT1 A 0 A_SpawnItem("KillMeSmall");
+			TNT1 A 0 doomb_trigger_monsters(cursector);
 			TNT1 A 0 doomb_if_boss_retreat(target, "CheckRetreat");
 			TNT1 A 0 {bshootable = true;}
 			TNT1 A 0 {bsolid = true;}

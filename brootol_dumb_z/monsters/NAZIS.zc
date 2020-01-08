@@ -20,7 +20,7 @@ CLASS Nazi : doomb_monster_base {
 		Obituary "%o was terminated by a Nazi.";
 		DropItem "None";
 		DamageFactor "Melee", 2.0;
-		DamageFactor "KillMe", 0.0;
+		
 		DamageFactor "SSG", 10.0;
 		PainChance "Melee", 255;
 		DamageFactor "CauseObjectsToSplash", 0.0;
@@ -242,9 +242,6 @@ CLASS Nazi : doomb_monster_base {
 			TNT1 A 0 A_SpawnItem("NaziChecker");
 			Stop;
 			
-		Pain.Killme:
-			TNT1 A 0;
-			stop;
 		Pain.punch:
 		Pain.Fatality:
 			NAZI G 3;
@@ -378,8 +375,8 @@ CLASS Nazi : doomb_monster_base {
 		
 	Pain.Taunt:
 		TNT1 A 0;
-		Goto Missile;
-	Death.KillMe:
+	Goto Missile;
+
 	Death.Taunt:
 		TNT1 A 0 A_ChangeFlag("SOLID", 0);
 		TNT1 A 0 A_SpawnItem("Nazi");
@@ -457,7 +454,6 @@ CLASS NaziChecker: Nazi { //Replaces WolfensteinSS
 		NAZI A 1 A_LookEx(LOF_NOSOUNDCHECK, 0, 12560, 0, 0, "SpawnMonster");
 	Goto Surrender;
 		
-	Pain.KillMe:
 	SpawnMonster:
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 A_SpawnItem("Nazi");

@@ -125,7 +125,6 @@ Default {
 	Projectile;
 	Speed 35;
 	Damage 30;
-	DamageType "Explosive_Impact";
 	MeleeDamage 0;
 	Gravity 0.00;
 	Scale 0.7;

@@ -8,7 +8,7 @@ CLASS DyingHellKnight1 : doomb_body_base {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "Avoid", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		damagefactor "Cutless", 0.6;
 		Mass 999999;
 		-SOLID;

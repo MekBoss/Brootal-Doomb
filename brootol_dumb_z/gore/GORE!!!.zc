@@ -23,7 +23,6 @@ CLASS BigGibBase : doomb_body_base {
 		painchance "Flames", 0;
 		painchance "Fire", 0;
 		painchance "Burn", 0;
-		painchance "KillMe", 0;
 		damagefactor "Kick", 3.0;
 		damagefactor "SuperKick", 3.0;
 		damagefactor "punch", 2.0;
@@ -33,7 +32,6 @@ CLASS BigGibBase : doomb_body_base {
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0 ;
-		damagefactor "KillMe", 0.0 ;
 		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		damagefactor "Trample", 5000.0;
@@ -127,7 +125,7 @@ CLASS LimbBase: BigGibBase {
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "BlueBlood", 0.0 ;
 		damagefactor "Taunt", 0.0 ;
-		damagefactor "KillMe", 0.0;
+		
 		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		//damagefactor "Plasma", 99000.0
@@ -818,7 +816,7 @@ CLASS XDeathBrain2 : ACTOR {
 
 
 
-//TODO cause slowdown
+//SLOWDOWN
 CLASS Instestin : doomb_blood
 { 
 	Default {

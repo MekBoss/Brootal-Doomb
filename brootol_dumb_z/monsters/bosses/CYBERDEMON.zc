@@ -18,13 +18,13 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 		DamageFactor "CauseObjectsToSplash", 0.0;
 		damagefactor "Crush", 20.0;
 		Obituary "%o was exploded to pieces by a Cyberdemon.";
-		+NOICEDEATH;
 		Health 5000;
 		MaxStepHeight 24;
 		MaxDropOffHeight 32;
 		Scale 1.2;
 		Radius 45;
 		Height 110;
+		+NOICEDEATH;
 		+MISSILEMORE;
 		+MISSILEEVENMORE;
 		+DONTRIP;
@@ -36,17 +36,12 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 		painchance "kick", 255;
 		mass 5000;
 		PainChance "Head", 80;
-		PainChance "KillMe", 64;
 		PainChance "Taunt", 255;
 		DropItem "DemonStrengthRune", 25;
 		BloodType "CyberDemon_Blood", "SawBlood", "SawBlood";
 	}
 	States
 	{
-		Pain.Killme:
-			TNT1 A 0;
-			Goto See;
-			
 		Spawn:
 			//headbox height 100
 		Stand:
@@ -142,8 +137,14 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 		Death:
 			CYBR H 10;
 			EXPL A 0 Radius_Quake (6, 100, 0, 22, 0);
-			TNT1 AAAA 0 A_SpawnProjectile ("ExplosionSpawner", 90, 0, random (0, 360), 2, random (0, 180));
-			TNT1 AAAAAA 0 A_SpawnProjectile ("ExplosionSpawner", 90, 0, random (0, 360), 2, random (0, 180));
+		TNT1 AAAA 0
+		{
+			A_PlaySound("FAREXPL");
+			doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
+			A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+		}
 			TNT1 AAAA 0 A_SpawnProjectile ("UltraGoreSPawner", 90, 0, random (0, 360), 2, random (0, 180));
 			TNT1 A 0 A_SpawnProjectile ("XDeathCyberdemonHead", 120, 0, random (0, 360), 2, random (0, 180));
 			TNT1 A 0 A_SpawnProjectile ("XDeathCyberdemonArm", 120, 0, random (0, 360), 2, random (0, 180));
@@ -165,8 +166,14 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 			CYBB AAAAA 8 A_SpawnItem("MuchBlood", 0, 120);
 			CYBB ABCABCB 8 A_SpawnItem("MuchBlood", 0, 120);
 			EXPL A 0 Radius_Quake (6, 100, 0, 22, 0);
-			TNT1 AAAA 0 A_SpawnProjectile ("ExplosionSpawner", 90, 0, random (0, 360), 2, random (0, 180));
-			TNT1 AAAAAA 0 A_SpawnProjectile ("ExplosionSpawner", 90, 0, random (0, 360), 2, random (0, 180));
+		TNT1 AAAA 0
+		{
+			A_PlaySound("FAREXPL");
+			doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
+			A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+		}
 			TNT1 AAAA 0 A_SpawnProjectile ("UltraGoreSPawner", 90, 0, random (0, 360), 2, random (0, 180));
 			
 			TNT1 AAAAAA 0 A_SpawnProjectile ("UltraGoreSpawner", 90, 0, random (0, 360), 2, random (0, 180));

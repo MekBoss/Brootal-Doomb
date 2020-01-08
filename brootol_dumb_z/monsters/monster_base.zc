@@ -200,6 +200,7 @@ protected void doomb_cheap_melee_attack(double distance = 0, int dam = 0, name d
 	
 	if(punch.HitType == TRACE_HitActor)
 	{
+		//console.printf("cheap melee hit %s", punch.hitactor.getclassname() );
 		punch.hitactor.damagemobj(self, self, dam, damage_type, 0, 0);
 	}
 
@@ -304,12 +305,11 @@ states
 		ID50 G -1;
     Stop;
 
-	death.killme:
 	death.taunt:
 	death.avoid:
 		tnt1 a 0
 		{
-			console.printf("taunt/avoid/killme death type");
+			console.printf("taunt/avoid death type");
 			setstatelabel("see");
 		}
 	goto bug;

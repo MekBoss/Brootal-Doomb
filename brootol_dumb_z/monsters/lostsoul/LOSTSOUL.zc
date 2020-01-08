@@ -126,7 +126,6 @@ CLASS doomb_lost_soul : doomb_monster_base Replaces LostSoul {
 			LSOL HI 0;
 			Stop;
 			
-		Pain.KillMe:
 		Pain.Taunt:
 			TNT1 A 0;
 			Goto Missile;

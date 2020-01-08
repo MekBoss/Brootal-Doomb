@@ -10,7 +10,7 @@ CLASS TechLamp1 : doomb_decoration_base replaces TechLamp {
 		damagefactor "Avoid", 0.0;
 		damagefactor "Kick", 0.0;
 		damagefactor "Melee", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		+LOOKALLAROUND;
 		+RANDOMIZE;
 		mass 99999;
@@ -67,7 +67,7 @@ CLASS TechLamp21 : doomb_decoration_base replaces TechLamp2 {
 		damagefactor "Avoid", 0.0;
 		damagefactor "Kick", 0.0;
 		damagefactor "Melee", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		+LOOKALLAROUND;
 		+SHOOTABLE;
 		+NOBLOOD;
@@ -124,7 +124,7 @@ CLASS Column1 : doomb_decoration_base replaces Column {
 		damagefactor "Avoid", 0.0;
 		damagefactor "Kick", 0.0;
 		damagefactor "Melee", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 		+LOOKALLAROUND;
 		+SHOOTABLE;
 		mass 99999;

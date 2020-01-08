@@ -304,7 +304,6 @@ States
 		CRS2 B -1 doomb_spawn_bloodpool();
 	Stop;
 	
-	Pain.KillMe:
 	Pain.Taunt:
 		TNT1 A 0;
 	Goto Missile;

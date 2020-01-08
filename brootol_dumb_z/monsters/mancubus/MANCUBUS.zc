@@ -290,12 +290,7 @@ CLASS doomb_fatso : doomb_monster_base Replaces Fatso {
 			TNT1 A 0 A_Pain;
 			FATR ABAC 8;
 			TNT1 A 0 A_GiveInventory("Enraged", 1);
-			Goto Missile;
-			
-		Pain.KillMe:
-			TNT1 A 0;
-			Goto Missile;
-			
+		Goto Missile;
 	} 
 } 
 

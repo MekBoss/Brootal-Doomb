@@ -260,6 +260,17 @@ override void tick()
 	}
 }
 
+override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Flags,Double angle)
+{
+	//friendly marines cant harm player
+	if( (inflictor && inflictor is "doomb_marine_base") || (source && source is "doomb_marine_base") )
+	{
+		return 0;
+	}
+
+	return super.DamageMobj(inflictor, source, damage, mod, flags, angle);
+}
+
 }
 
 

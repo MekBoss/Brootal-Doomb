@@ -20,7 +20,7 @@ Default {
 }
 }
 
-CLASS ExplosiveBarrel1 : doomb_body_base Replaces ExplosiveBarrel  { 
+CLASS ExplosiveBarrel1 : doomb_decoration_base Replaces ExplosiveBarrel  { 
 Default {
 	damagefactor "Trample", 0.0;
 	damagefactor "Kick", 0.1;
@@ -36,7 +36,7 @@ Default {
 	damagefactor "BlueBlood", 0.0;
 	damagefactor "GreenBlood", 0.0  ;
 	damagefactor "Avoid", 0.0;
-	damagefactor "KillMe", 0.0;
+	
 	damagefactor "TeleportRemover", 0.0;
 	Species "Marines";
 	Health 20;
@@ -117,7 +117,15 @@ States
 		TNT1 A 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 		TNT1 A 0 A_SpawnItem("WhiteShockwaveBig");
 		TNT1 A 0 A_Explode(160,200);
-		TNT1 AAAAAA 0 A_SpawnProjectile ("SmallExplosionSpawner", 20, 0, random (0, 360), 2, - random (0, 180));
+		TNT1 AAAAAA 0
+					{
+				doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+				doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
+				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
+				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
+				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
+			}
+
 		TNT1 AAAAAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 		EXPL A 0 Radius_Quake (2, 24, 0, 15, 0);
@@ -266,27 +274,14 @@ Default {
 states
 {
 	Spawn:
-		TNT1 AAAA 2 A_SpawnItem("SpawnedExplosion");
-	Stop;
-}
-}
-
-CLASS SmallExplosionSpawner: ExplosionSpawner { 
-Default {
-	
-	Speed 30;
-}
-states
-{
-	Spawn:
-		tnt1 aaa 2
+		TNT1 AAAA 0
 		{
+			A_PlaySound("FAREXPL");
 			doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
-			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
-			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
-	}
+			A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+		}
 	Stop;
 }
 }
@@ -295,35 +290,6 @@ states
 
 
 
-CLASS RidiculousExplosionSpawner: ExplosionSpawner { 
-Default {
-	
-	speed 20;
-	renderstyle "Add";
-	alpha 0.9;
-	scale .15;
-	Decal "BigScorch";
-	+SKYEXPLODE;
-	-DOOMBOUNCE;
-	+NOGRAVITY;
-}
-states
-{
-	Spawn:
-		EXPL AAAA 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
-		TNT1 AAAAA 2 A_SpawnItem("SpawnedExplosionRepeat");
-		EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
-		TNT1 AA 4 A_SpawnItem("SpawnedExplosionBig");
-		TNT1 A 0 A_SpawnItem("NewfagExplosionFlare");
-		TNT1 A 0 A_PlaySound("FAREXPL");
-		EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
-		EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
-		TNT1 A 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-		TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(9, 9.4), 0) );
-		TNT1 AAA 2 A_SpawnItem("NewfagExplosionFlare");
-		Stop;
-}
-}
 
 CLASS SpawnedExplosion : visual_sfx { 
 Default {
@@ -335,7 +301,7 @@ states
 {
 	Spawn:
 		TNT1 A 2;
-		TNT1 A 2 A_PlaySound("FAREXPL");
+		TNT1 A 0 A_PlaySound("FAREXPL");
 		EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 		EXPL A 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 		TNT1 A 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
@@ -375,25 +341,8 @@ states
 }
 }
 
-CLASS SpawnedExplosionBig : visual_sfx { 
-Default {
-	+NOCLIP;
-	+NOGRAVITY;
-}
-states
-{
-	Spawn:
-		TNT1 A 2;
-		TNT1 A 2 A_PlaySound("FAREXPL");
-		EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (frandom(2.3, 2.7), 0), 0.5 );
-		EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-		TNT1 A 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-		TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(6, 6.4), 0) );
-		TNT1 A 3;
-		TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(6, 6.4), 0) );
-		Stop;
-}
-}
+
+
 
 
 

@@ -54,7 +54,7 @@ CLASS DecorativeSkullA : ACTOR {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "Taunt", 0.0;
-		damagefactor "KillMe", 0.0;
+		
 	}
 	States
 	{
