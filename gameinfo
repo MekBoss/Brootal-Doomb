@@ -1,4 +1,4 @@
-STARTUPTITLE = "Brootal Doomb version 0.2.0 (BD v20)"
+STARTUPTITLE = "Brootal Doomb version 0.2.1 (BD v20)"
 STARTUPCOLORS = "FF0000", "000000"
 
 LOAD = "resources/models.bdz_res","resources/sounds.bdz_res", "resources/textures.bdz_res"
