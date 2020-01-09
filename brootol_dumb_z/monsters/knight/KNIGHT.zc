@@ -22,7 +22,6 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 		Speed 8;
 		Health 500;
 		PainChance "Kick", 255;
-		PainChance "Head", 150;
 		PainChance "Explosive_Impact", 255;
 		PainChance 25;
 		PainChance "Saw", 100;

@@ -832,7 +832,6 @@ CLASS DeadImp_Slumped: ImpTorso {
 Default {
 	+NOPAIN
 	Health 200;
-	damageFactor "Head", 15.0;
 	Height 22+15;
 	doomb_monster_base.head_starting_position 22;
 	Radius 8;
@@ -1270,7 +1269,6 @@ Default {
 	damagefactor "Fire", 0.0;
 	damagefactor "Flames", 0.0;
 	damagefactor "Flame", 0.0;
-	damagefactor "Head", 0.0;
 	damagefactor "Explosive_Impact", 10.0;
 	MONSTER;
 	-COUNTKILL;

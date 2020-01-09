@@ -38,7 +38,6 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 		FastSpeed 22;
 		painchance "kick", 255;
 		mass 5000;
-		PainChance "Head", 80;
 		PainChance "Taunt", 255;
 		DropItem "DemonStrengthRune", 25;
 		BloodType "CyberDemon_Blood", "SawBlood", "SawBlood";

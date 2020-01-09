@@ -17,7 +17,6 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp {
 		Mass 100;
 		GibHealth 35;
 		PainChance 200;
-		PainChance "Head", 255;
 		PainChance "Taunt", 255;
 		PainChance "Kick", 255;
 		PainChance "Melee", 255;

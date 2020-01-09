@@ -42,7 +42,6 @@ Default {
 	FastSpeed 12;
 	PainChance 200;
 	PainChance "Avoid", 50;
-	PainChance "Head", 255;
 	PainChance "Kick", 255;
 	PainChance "Melee", 255;
 	PainChance "Taunt", 255;

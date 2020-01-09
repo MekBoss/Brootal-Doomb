@@ -8,7 +8,6 @@ CLASS TheSpiderMastermind : doomb_monster_base Replaces SpiderMastermind{
 		
 		damagefactor "BFG", 0.2;
 		damagefactor "HKFT", 0.05;
-		//damagefactor "Head", 1.5
 		damagefactor "Explosive_Impact", 1.5;
 		damagefactor "Avoid", 0.0;
 		damagefactor "Decaptate", 5.0;

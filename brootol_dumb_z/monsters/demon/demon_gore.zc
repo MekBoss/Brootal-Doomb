@@ -994,7 +994,6 @@ CLASS BurningDemon : doomb_body_base {
 	damagefactor "Fire", 0.0;
 	damagefactor "Flames", 0.0;
 	damagefactor "Flame", 0.0;
-	damagefactor "Head", 0.0;
 	damagefactor "Explosive_Impact", 10.0;
 	MONSTER;
 	-COUNTKILL;

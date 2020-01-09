@@ -25,7 +25,6 @@ Default {
 	damagefactor "GreenBlood", 0.0;
 	DamageFactor "CauseObjectsToSplash", 0.0;
 	damagefactor "Plasma", 0.5;
-	damagefactor "head", 1.9;
 	damagefactor "GibRemoving", 0.0;
 	damagefactor "Avoid", 0.0;
 	PainChance "Kick", 255;
@@ -41,7 +40,6 @@ Default {
 	DropItem "DemonStrengthRune", 5;
 	MaxStepHeight 24;
 	+DONTHARMCLASS;
-	Painchance "Head", 255;
 	MaxDropOffHeight 32;
 	Radius 20;
 	Height 56;

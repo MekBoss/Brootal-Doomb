@@ -14,7 +14,6 @@ Default {
 	Health 1000;
 	PainChance "Saw", 100;
 	PainChance "Cut", 100;
-	PainChance "Head", 120;
 	PainChance 25;
 	PainChance "Kick", 255;
 	PainChance "CallingTheBaronAFaggot", 255;

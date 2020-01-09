@@ -27,7 +27,6 @@ Default {
 	+THRUGHOST;
 	Species "Marines";
 	BloodType "Player_Blood";//, "SawBlood"
-	damagefactor "Head", 0.0;
 	damagefactor "Taunt", 0.0;
 	
 	damagefactor "Shotgun", 0.7;

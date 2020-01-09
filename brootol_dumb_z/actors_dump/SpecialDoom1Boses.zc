@@ -32,7 +32,6 @@ CLASS CyberdemonBoss: doomb_monster_base
 		FastSpeed 32;
 		painchance "kick", 255;
 		mass 5000;
-		PainChance "Head", 80;
 		PainChance "Taunt", 255;
 		DropItem "DemonStrengthRune", 25;
 		BloodType "CyberDemon_Blood", "SawBlood", "SawBlood";

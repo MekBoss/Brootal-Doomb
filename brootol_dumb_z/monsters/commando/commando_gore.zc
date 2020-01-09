@@ -162,7 +162,6 @@ CLASS DeadChaingunguy_Slumped: CurbstompedMarine {
 		
 		+NOPAIN;
 		Health 200;
-		DamageFactor "Head", 15.0;
 	Height 22+15;
 	doomb_monster_base.head_starting_position 22;
 		Radius 6;

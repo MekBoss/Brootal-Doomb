@@ -30,7 +30,6 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 		Scale 0.98;
 		PainChance 200;
 		PainChance "Avoid", 50;
-		PainChance "Head", 255;
 		PainChance "Kick", 255;
 		PainChance "Melee", 255;
 		PainChance "HelperMarineFatality", 255;
