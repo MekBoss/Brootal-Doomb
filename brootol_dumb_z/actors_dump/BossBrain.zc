@@ -15,7 +15,7 @@ CLASS BossBrainReplacer : ACTOR Replaces BossBrain {
 		damagefactor "GreenBlood", 0.0 ;
 		damagefactor "Avoid", 0.0;
 		
-		damagefactor "TeleportRemover", 0.0;
+
 	}
 	States
 	{
@@ -73,7 +73,7 @@ CLASS AltMap01Airplane : ACTOR {
 		damagefactor "GreenBlood", 0.0 ;
 		damagefactor "Avoid", 0.0;
 		
-		damagefactor "TeleportRemover", 0.0;
+
 	}
 	States
 	{

@@ -10,8 +10,7 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 		damagefactor "HKFT", 0.05;
 		damagefactor "Decaptate", 5.0;
 		damagefactor "Avoid", 0.0;
-		damagefactor "GibRemoving", 0.0;
-		damagefactor "TeleportRemover", 0.0;
+
 		damagefactor "Blood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;

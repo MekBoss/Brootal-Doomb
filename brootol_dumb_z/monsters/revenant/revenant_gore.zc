@@ -553,7 +553,6 @@ CLASS RevenantHead: LimbBase {
 		
 		damagefactor "Kick", 9.0;
 		damagefactor "Melee", 9.0;
-		damagefactor "SuperPunch", 9.0;
 		BloodType "RevenantBlood";
 		-CLIENTSIDEONLY;
 		Radius 10;
@@ -582,7 +581,7 @@ CLASS RevenantHead: LimbBase {
 			TNT1 A 0;
 			Stop;
 		Death:
-		Death.SuperPunch:
+		Death.punch:
 		Death.Kick:
 			XHE6 A 1 A_Pain;
 			XHE6 A 1 A_FaceTarget;

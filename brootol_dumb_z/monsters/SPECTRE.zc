@@ -11,7 +11,6 @@ default
     damagefactor "SSG", 5.0;
 	damagefactor "Avoid", 0.0;
 	PainChance "Kick", 255;
-	damagefactor "TeleportRemover", 0.0;
 	Monster;
 	damagefactor "Avoid", 0.0;
 	damagefactor "Blood", 0.0 ;

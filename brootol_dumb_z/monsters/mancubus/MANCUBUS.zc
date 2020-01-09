@@ -14,8 +14,7 @@ CLASS doomb_fatso : doomb_monster_base Replaces Fatso {
 		PainChance "Kick", 255;
 		PainChance "Taunt", 255;
 		PainChance "Explosive_Impact", 255;
-		damagefactor "TeleportRemover", 0.0;
-		damagefactor "GibRemoving", 0.0;
+
 		DamageFactor "CauseObjectsToSplash", 0.0;
 		DamageFactor "Shotgun", 0.8;
 		PainChance "SSG", 255;

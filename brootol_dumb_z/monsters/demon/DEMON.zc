@@ -36,9 +36,8 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 		damagefactor "Crush", 10.0;
 		damagefactor "SSG", 5.0;
 		damagefactor "Avoid", 0.0;
-		damagefactor "GibRemoving", 0.0;
 		damagefactor "SSG", 5.0;
-		damagefactor "TeleportRemover", 0.0;
+
 		DamageFactor "CauseObjectsToSplash", 0.0;
 		+CANPASS;
 		Monster;
@@ -359,7 +358,6 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 			SARC D 0 A_SpawnItem("DeadDemonHalf23");
 			Stop;
 			
-		Death.SuperPunch:
 		Death.punch:
 			TNT1 A 0;
 			TNT1 A 0 A_JumpIfInTargetInventory("HeavyStrikeRight", 1, "HeavyPunchRight");

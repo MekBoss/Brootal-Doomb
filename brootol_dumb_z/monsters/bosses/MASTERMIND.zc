@@ -12,9 +12,8 @@ CLASS TheSpiderMastermind : doomb_monster_base Replaces SpiderMastermind{
 		damagefactor "Avoid", 0.0;
 		damagefactor "Decaptate", 5.0;
 		damagefactor "Stomp", 0.0;
-		damagefactor "GibRemoving", 0.0;
 		damagefactor "Trample", 0.0;
-		damagefactor "TeleportRemover", 0.0;
+
 		DamageFactor "CauseObjectsToSplash", 0.0;
 		Obituary "%o was destroyed by a Mastermind.";
 		+NOICEDEATH;

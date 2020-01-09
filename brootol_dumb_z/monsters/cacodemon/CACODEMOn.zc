@@ -20,7 +20,6 @@ Default {
 	PainChance "Kick", 255;
 	PainChance "Avoid", 90;
 	PainChance "Saw", 255;
-	damagefactor "GibRemoving", 0.0;
 	Monster;
 	Scale 0.9;
 	+FLOAT +NOGRAVITY;
@@ -28,7 +27,6 @@ Default {
 	PainSound "caco/pain";
 	DeathSound "caco/death";
 	ActiveSound "caco/active";
-	damagefactor "TeleportRemover", 0.0;
 	DamageFactor "CauseObjectsToSplash", 0.0;
 	Obituary "$OB_CACO";
 	HitObituary "$OB_CACOHIT";

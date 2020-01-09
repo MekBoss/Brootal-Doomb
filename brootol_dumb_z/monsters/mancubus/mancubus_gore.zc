@@ -241,7 +241,6 @@ CLASS doomb_fatsoHead: LimbBase {
 		
 		damagefactor "Kick", 9.0;
 		damagefactor "Melee", 9.0;
-		damagefactor "SuperPunch", 9.0;
 		-CLIENTSIDEONLY;
 		Radius 10;
 		
@@ -281,7 +280,7 @@ CLASS doomb_fatsoHead: LimbBase {
 			EXPL A 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 			TNT1 A 0;
 			Stop;
-		Death.SuperPunch:
+		Death.punch:
 		Death.Kick:
 			XHE7 A 1 A_Pain;
 			XHE7 A 1 A_FaceTarget;

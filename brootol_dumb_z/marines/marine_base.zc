@@ -60,8 +60,6 @@ Default
     Activation THINGSPEC_Activate;
     DamageFactor "CauseObjectsToSplash", 0.0;
     Species "Marines";
-    damagefactor "TeleportRemover", 0.0;
-    damagefactor "GibRemoving", 0.0;
     Translation "112:127=117:127";
     Scale 0.98;
     AttackSound "none";
@@ -278,7 +276,7 @@ states
 	Stop;
 		
 	Death.Blast:
-	Death.SuperPunch:
+	Death.punch:
 	Death.SSG:
 		"####" O 2
         {

@@ -30,10 +30,9 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 		DamageFactor "CauseObjectsToSplash", 0.0;
 		damagefactor "SSG", 0.5;
 		damagefactor "Avoid", 0.0;
-		damagefactor "TeleportRemover", 0.0;
+
 		damagefactor "Avoid", 0.0;
 		damagefactor "Crush", 10.0;
-		damagefactor "GibRemoving", 0.0;
 		damagefactor "Blood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;

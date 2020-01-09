@@ -7,7 +7,6 @@ CLASS VeryDeadMarine: DeadMarine Replaces DeadMarine {
 		damagefactor "BlueBlood", 0.0 ;
 		damagefactor "Taunt", 0.0;
 		
-		damagefactor "GibRemoving", 990.0;
 		+CLIENTSIDEONLY;
 		+FLOORCLIP;
 		Radius 0;
@@ -147,8 +146,6 @@ CLASS CurbstompedMarine : doomb_body_base {
 		PainChance 255;
 		Mass 6000;
 		
-		damagefactor "TeleportRemover", 1000.0;
-		damagefactor "GibRemoving", 0.5;
 		damagefactor "Normal", 2.0;
 		damagefactor "Desintegrate", 990.0;
 		damagefactor "BFG", 990.0;
@@ -156,7 +153,6 @@ CLASS CurbstompedMarine : doomb_body_base {
 		damagefactor "SuperKick", 3.0;
 		
 		damagefactor "punch", 2.0;
-		damagefactor "SuperPunch", 2.0;
 		bloodtype "DeadBlood";
 	}
 	States
@@ -194,12 +190,6 @@ CLASS CurbstompedMarine : doomb_body_base {
 			TNT1 A 0 doomb_spawn_burned_flesh;
 			EXPL AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 			TNT1 A 0;
-			Stop;
-			
-		Death.TeleportRemover:
-		Death.GibRemoving:
-			TNT1 A 0;
-			TNT1 A 0 A_Scream;
 			Stop;
 			
 		Death.Trample: 

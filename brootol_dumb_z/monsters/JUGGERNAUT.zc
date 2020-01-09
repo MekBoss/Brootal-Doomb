@@ -8,8 +8,7 @@ CLASS Hectebus : doomb_fatso { //Replaces Hectebus
 		damagefactor "Avoid", 0.0;
 		PainChance "Kick", 255;
 		damagefactor "Stomp", 0.0;
-		damagefactor "GibRemoving", 0.0;
-		damagefactor "TeleportRemover", 0.0;
+
 		DamageFactor "CauseObjectsToSplash", 0.0;
 		Health 8000;
 		+NOICEDEATH;

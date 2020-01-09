@@ -47,12 +47,9 @@ Default {
 	PainChance "Taunt", 255;
 	PainChance "HelperMarineFatality", 255;
 	damagefactor "Crush", 5.0;
-	damagefactor "GibRemoving", 0.0;
-	damagefactor "DontCallTheBaron", 0.0;
 	damagefactor "HelperMarineFatallity", 3.0;
 	damagefactor "Avoid", 1.0;
 	damagefactor "SSG", 50.0;
-	damagefactor "TeleportRemover", 0.0;
 	damagefactor "Explosive_Impact", 2.5;
 	damagefactor "Taunt", 1.0;
 	damagefactor "cut", 0.7;

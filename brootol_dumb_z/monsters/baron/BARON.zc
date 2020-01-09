@@ -9,7 +9,6 @@ Default {
 	
 	Scale 1.1;
 	damagefactor "Crush", 10.0;
-	damagefactor "GibRemoving", 0.0;
 	GibHealth 25;
 	Health 1000;
 	PainChance "Saw", 100;
@@ -17,10 +16,8 @@ Default {
 	PainChance 25;
 	PainChance "Kick", 255;
 	PainChance "CallingTheBaronAFaggot", 255;
-	damagefactor "TeleportRemover", 0.0;
 	damagefactor "Avoid", 0.0;
 	damagefactor "SSG", 0.2;
-	damagefactor "DontCallTheBaron", 0.0;
 	DamageFactor "CauseObjectsToSplash", 0.0;
 	damagefactor "Fatality", 3.0;
 	damagefactor "Blood", 0.0;

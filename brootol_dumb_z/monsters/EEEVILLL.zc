@@ -69,7 +69,7 @@ CLASS EvilMarine : doomb_monster_base Replaces WolfensteinSS {
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "Avoid", 0.0;
 		
-		damagefactor "TeleportRemover", 0.0;
+
 		SeeSound "none";
 		AttackSound "grunt/attack";
 		PainSound "evilmarinepain";
@@ -350,10 +350,9 @@ CLASS EvilMarine : doomb_monster_base Replaces WolfensteinSS {
 		Stop;
 		
 	Death.Blast:
-	Death.SuperPunch:
+	Death.punch:
 	Death.SSG:
 		PLAY O 2 A_FaceTarget;
-		//TNT1 A 0 A_SpawnProjectile ("MeatDeath", 0, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAA 0 A_SpawnProjectile ("XDeath2", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAA 0 A_SpawnProjectile ("XDeath3", 32, 0, random (170, 190), 2, random (0, 40));

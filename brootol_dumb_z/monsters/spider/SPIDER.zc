@@ -14,12 +14,10 @@ CLASS Arachnotron1 : doomb_monster_base replaces Arachnotron {
 		height 64;
 		damagefactor "Crush", 10.0;
 		damagefactor "Avoid", 0.0;
-		damagefactor "GibRemoving", 0.0;
 		SeeSound "baby/sight";
 		PainSound "baby/pain";
 		DeathSound "baby/death";
 		ActiveSound "baby/active";
-		damagefactor "TeleportRemover", 0.0;
 		DamageFactor "CauseObjectsToSplash", 0.0;
 		Obituary "$OB_BABY";
 		BloodType "Brutal_Blood",  "SawBlood";

@@ -172,7 +172,6 @@ CLASS Brutal_BloodSpot : doomb_blood
 		Mass 99999999;
 		Scale 0.5;
 		Decal "BrutalBloodSplat";
-		DamageFactor "TeleportRemover", 100.0;
 	}
 	states
 	{

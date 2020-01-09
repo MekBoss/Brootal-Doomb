@@ -27,17 +27,14 @@ Default {
 	damagefactor "Melee", 0.1;
 	damagefactor "punch", 0.1;
 	damagefactor "Fatality", 10.1;
-	damagefactor "SuperPunch", 10.1;
 	damagefactor "Explosive_Impact", 0.4;
 	damagefactor "Fire", 3.5;
-	damagefactor "GibRemoving", 0.0;
 	damagefactor "BHFTOnBarrel", 500.0;
 	damagefactor "Blood", 0.0;
 	damagefactor "BlueBlood", 0.0;
 	damagefactor "GreenBlood", 0.0  ;
 	damagefactor "Avoid", 0.0;
 	
-	damagefactor "TeleportRemover", 0.0;
 	Species "Marines";
 	Health 20;
 	Radius 10;
@@ -68,7 +65,6 @@ Default {
 	PainChance "Kick", 255;
 	DeathSound "Explosion";
 	Obituary "$OB_BARREL";
-	PainChance "DontCallTheBaron", 255;
 	Painchance 255;
 }
 States
@@ -151,7 +147,6 @@ States
 		
 	Death.BHFT:
 	Death.BHFTOnBarrel:
-	Death.SuperPunch:
 	Death.Fatality:
 		TNT1 A 0 A_NoBlocking();
 		TNT1 A 0 A_GiveToTarget("GoSpecial", 1);

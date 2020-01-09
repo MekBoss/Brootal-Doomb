@@ -21,7 +21,6 @@ CLASS doomb_lost_soul : doomb_monster_base Replaces LostSoul {
 		DamageFunction (random(10,15));
 		PainChance 255;
 		PainChance "Kick", 255;
-		damagefactor "GibRemoving", 0.0;
 		PainChance "Avoid", 255;
 		damagefactor "Fire", 0;
 		Monster;
@@ -30,7 +29,7 @@ CLASS doomb_lost_soul : doomb_monster_base Replaces LostSoul {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "Fatality", 5.0;
-		damagefactor "TeleportRemover", 0.0;
+
 		DamageFactor "CauseObjectsToSplash", 0.0;
 		RenderStyle "Normal";
 		+FLOAT +NOGRAVITY

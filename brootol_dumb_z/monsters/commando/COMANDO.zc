@@ -21,9 +21,7 @@ CLASS ChaingunGuy1 : doomb_monster_base Replaces ChaingunGuy {
 		PainChance "Melee", 255;
 		damagefactor "Cut", 0.3;
 		damagefactor "Avoid", 0.0;
-		damagefactor "GibRemoving", 0.0;
 		damagefactor "Crush", 5.0;
-		damagefactor "TeleportRemover", 0.0;
 		damagefactor "cut", 0.7;
 		damagefactor "saw", 0.7;
 		damagefactor "Explosive_Impact", 2.0;

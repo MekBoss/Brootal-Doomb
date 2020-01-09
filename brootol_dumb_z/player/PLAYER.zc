@@ -5,7 +5,7 @@
 //
 //===========================================================================
 
-// ACS Script Constants
+
 CLASS Doomer : doomber Replaces DoomPlayer
 {
 
@@ -26,7 +26,7 @@ Default {
 	+DONTHARMCLASS;
 	+THRUGHOST;
 	Species "Marines";
-	BloodType "Player_Blood";//, "SawBlood"
+	BloodType "Player_Blood";
 	damagefactor "Taunt", 0.0;
 	
 	damagefactor "Shotgun", 0.7;
@@ -43,13 +43,11 @@ Default {
 	damagefactor "Fatality", 5.0;
 	damagefactor "CancelTeleportFog", 0.0;
 	damagefactor "BHFTOnBarrel", 0.0;
-	damagefactor "GibRemoving", 0.0;
-	damagefactor "SuperPunch", 5.0;
 	damagefactor "HelperMarineFatallity", 0.0;
 	damagefactor "Leg", 0.0;
 	damagefactor "SpawnMarine", 0.0;
-	damagefactor "TeleportRemover", 0.0;
 	DamageFactor "CauseObjectsToSplash", 0.0;
+
 	Player.ColorRange 112, 127;
 	Player.StartItem "Rifle";
 	Player.StartItem "Melee_Attacks";
@@ -67,7 +65,7 @@ Default {
 	Player.StartItem "LeftRifleAmmo", 31;
 	Player.StartItem "JustStartedGame", 1;
 	Player.StartItem "NeverSelectedShotgun", 1;
-	//Player.StartItem "TargetIsAMarine", 1
+
 	Player.JumpZ 7.4;
 	Player.DisplayName "Modern";
 	Player.CrouchSprite "PLYC";
@@ -549,7 +547,7 @@ Goto StandStill;
 		XDMG E -1;
 		Stop;
 		
-	Death.SuperPunch:
+	Death.punch:
 	Death.Blast:
 	Death.SSG:
 		tnt1 A 0 A_Takeinventory("Kicking",1);

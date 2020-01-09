@@ -23,7 +23,6 @@ Default {
 	PainChance 10;
 	PainChance "Kick", 90;
 	damagefactor "Avoid", 0.0;
-	damagefactor "GibRemoving", 0.0;
 	DamageFactor "CauseObjectsToSplash", 0.0;
 	BloodType "Brutal_Blood",  "SawBlood";
 	Monster;
@@ -41,7 +40,6 @@ Default {
 	DeathSound "vile/death";
 	ActiveSound "vile/active";
 	MeleeSound "vile/stop";
-	damagefactor "TeleportRemover", 0.0;
 	Obituary "%o was exploded by an Arch-Vile.";
 	damagefactor "Blood", 0.0;
 	damagefactor "BlueBlood", 0.0;

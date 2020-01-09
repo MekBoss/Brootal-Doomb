@@ -388,10 +388,9 @@ CLASS Nazi : doomb_monster_base {
 		
 	Death.Blast:
 	Death.SSG:
-	Death.SuperPunch:
+	Death.punch:
 		POSS Q 1 A_Pain;
 		POSS Q 1 A_FaceTarget;
-		//TNT1 A 0 A_SpawnProjectile ("MeatDeath", 0, 0, random (0, 360), 2, random (0, 160))
 		TNT1 AAAA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAA 0 A_SpawnProjectile ("XDeath2", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAA 0 A_SpawnProjectile ("XDeath3", 32, 0, random (170, 190), 2, random (0, 40));
@@ -510,7 +509,6 @@ CLASS NaziSurrendered: Nazi {
 		Stop;
 		
 	Death.Fatality:
-	Death.SuperPunch:
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 A_GiveToTarget("HasZmanShield", 1);
 		Stop;
