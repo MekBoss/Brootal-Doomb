@@ -231,12 +231,6 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp {
 			TNT1 A 0;
 			Goto Missile;
 			
-		Pain.head:
-		Pain.minorhead:
-			TROO H 6;
-			TROO H 6 A_Pain;
-		Goto SeeContinue;
-			
 		Pain.Explosive_Impact:
 		Pain.punch:
 			TROO A 4;

@@ -10,7 +10,6 @@ CLASS Belphegor : doomb_monster_base {
 		damagefactor "Avoid", 0.0;
 		damagefactor "Head", 2.0;
 		damagefactor "GibRemoving", 0.0;
-		damagefactor "MINORHead", 1.0;
 		DamageFactor "CauseObjectsToSplash", 0.0;
 		damagefactor "TeleportRemover", 0.0;
 		Health 2000;

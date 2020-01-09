@@ -276,7 +276,6 @@ States
 		Stop;
 		
 		
-	Death.Minorhead:
 	Death.Headshot:
 		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma");
 		TNT1 AAAAA 0 A_SpawnProjectile ("Xdeath1", 72, 0, random (0, 360), 2, random (0, 160));
@@ -325,13 +324,11 @@ States
 		TNT1 AA 0 A_SpawnProjectile ("BigLSPart2", 37, 0, random (0, 360), 2, random (30, 150));
 		TNT1 AAAAAAA 0 A_SpawnProjectile ("RevenantPiece", 37, 0, random (0, 360), 2, random (30, 150));
 		TNT1 A 0 A_Jump(64, "Death.Rare");
-		Goto Death.Rare;
 		TNT1 A 0 A_NoBlocking();
 		TNT1 A 0 A_Scream();
-		SKEX A 100 A_SpawnItem("RevenantU", 0, 40);
 		SKEX BCDE 6;
 		TNT1 A 0 A_SpawnItem ("XDeadSkeleton", 1);
-		Stop;
+	Stop;
 		
 	Death.Plasma:
 	Death.Plasma2:

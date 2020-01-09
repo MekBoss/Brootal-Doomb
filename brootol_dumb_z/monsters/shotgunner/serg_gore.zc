@@ -803,7 +803,7 @@ CLASS DyingSergeant : doomb_body_base {
 		Death:
 			SPO5 D 8;
 			TNT1 A 0 A_PlaySound ("grunt/death");
-			SPO5 E -1;//doomb_final_absolution(12, 12);
+			SPO5 E -1 doomb_final_absolution(12, 12);
 			Stop;
 			
 		Death.Headshot:
@@ -816,7 +816,7 @@ CLASS DyingSergeant : doomb_body_base {
 			TNT1 AAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_Blood", 37, 0, random (0, 360), 2, random (0, 160));
 			SZD4 AAAAA 2 A_SpawnProjectile ("Brutal_LiquidBlood", 25, 0, random (0, 360), 2, random (30, 110));
 			SZD4 BBBBBBBBBBBBBBBBBBBBBBBBB 1 A_SpawnProjectile ("Brutal_LiquidBlood", 10, 0, random (0, 360), 2, random (30, 110));
-			SZD4 B -1;//doomb_final_absolution(12, 12);
+			SZD4 B -1 doomb_final_absolution(12, 12);
 			Stop;
 			
 		Death.Decaptate:
@@ -829,7 +829,7 @@ CLASS DyingSergeant : doomb_body_base {
 			TNT1 A 0 A_NoBlocking;
 			SZD4 AAAAA 2 A_SpawnProjectile ("Brutal_LiquidBlood", 25, 0, random (0, 360), 2, random (30, 110));
 			SZD4 BBBBBBBBBBBBBBBBBBBBBBBBB 1 A_SpawnProjectile ("Brutal_LiquidBlood", 10, 0, random (0, 360), 2, random (30, 110));
-			SZD4 B -1;//doomb_final_absolution(12, 12);
+			SZD4 B -1 doomb_final_absolution(12, 12);
 			Stop;
 			
 	Death.Plasma: Death.Plasma2:
@@ -850,7 +850,7 @@ CLASS DyingSergeant : doomb_body_base {
 		TNT1 AAAAA 0 doomb_show_effect("PlasmaParticleX", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
 		TNT1 AAA 0 doomb_show_effect("PlasmaParticleX", (0, 0, 42), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ), (frandom(1.8, 2.2), 0) );
 		TNT1 A 0;
-		Stop;
+	Stop;
 		
 	Xdeath:
 	Death.SuperPunch:
@@ -858,7 +858,6 @@ CLASS DyingSergeant : doomb_body_base {
 	Death.SSG:
 	Death.Shotgun:
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus10Armor");
-		//TNT1 A 0 A_SpawnProjectile ("MeatDeath", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAAA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 40));
 		TNT1 AAAA 0 A_SpawnProjectile ("Bloodmist", 30, 0, random (0, 360), 2, random (30, 90));
 		TNT1 A 0 A_SpawnProjectile ("XDeath2", 32, 0, random (170, 190), 2, random (0, 40));
@@ -873,7 +872,7 @@ CLASS DyingSergeant : doomb_body_base {
 		TNT1 A 0 A_NoBlocking;
 		SZD1 EFGH 6;
 		TNT1 A 0 doomb_spawn_bloodpool();
-		SZD1 H -1;//doomb_final_absolution(12, 12);
+		SZD1 H -1 doomb_final_absolution(12, 12);
 		Stop;
 		
 	LastStand:
@@ -2024,18 +2023,11 @@ CLASS SergeantLastStand1: DyingSergeantNoLeg {
 			Loop;
 			
 		Missile:
-			ZSLS A 10 A_FaceTarget;
-			TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 6, 0, random(0, 180), 2, random (0, 35));
-			
-			ZSLS A 10 A_FaceTarget;
-			TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 6, 0, random(0, 180), 2, random (0, 35));
-			
-			ZSLS A 10 A_FaceTarget;
-			TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 6, 0, random(0, 180), 2, random (0, 35));
-			
-			ZSLS A 10 A_FaceTarget;
-			TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 6, 0, random(0, 180), 2, random (0, 35));
-			
+			ZSLS AAAA 10
+			{
+				A_FaceTarget();
+				A_SpawnProjectile ("Brutal_LiquidBlood", 6, 0, random(0, 180), 2, random (0, 35));
+			}
 			TNT1 AA 0 A_SpawnProjectile("OrangeLensFlareAlt", 24, 10, 15, 0);
 			TNT1 A 0 A_PlaySound("weapons/rifle");
 			ZSLS B 6 BRIGHT A_SpawnProjectile("MonsterTracer", 28, 0, random(-12, 12), 0);
@@ -2045,7 +2037,7 @@ CLASS SergeantLastStand1: DyingSergeantNoLeg {
 			
 		loop;			
 			
-		Death.MinorHead:
+		Death.headshot:
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			TNT1 AA 0 A_SpawnProjectile ("SmallBrainPiece", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_Scream;
@@ -2053,7 +2045,7 @@ CLASS SergeantLastStand1: DyingSergeantNoLeg {
 			TNT1 A 0 A_NoBlocking;
 			POS7 GHI 6;
 			TNT1 A 0 A_SpawnItem ("DeadShotgunguy_NoLeg", 1);
-			Stop;
+		Stop;
 	}
 }	
 
@@ -2082,29 +2074,29 @@ CLASS SergeantLastStand2: DyingSergeant {
 			Loop;
 			
 		Missile:
-			ZSLS C 10 A_FaceTarget;
-			TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-			
-			ZSLS C 10 A_FaceTarget;
-			TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-			
-			ZSLS C 10 A_FaceTarget;
-			TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-			
-			ZSLS C 10 A_FaceTarget;
-			TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-			
+			ZSLS CCCC 10
+			{
+				A_FaceTarget();
+				A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
+			}			
 			TNT1 AA 0 A_SpawnProjectile("OrangeLensFlareAlt", 24, 10, 15, 0);
 			TNT1 A 0 A_PlaySound("weapons/rifle");
 			ZSLS D 6 BRIGHT A_SpawnProjectile("MonsterTracer", 28, 0, random(-12, 12), 0);
 			TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 20,0);
-			tnt1 a 0 a_jump(180, "missile");
-			
 			tnt1 a 0 doomb_random_death();	
 		loop;			
 			
-		Death.MinorHead:
-			TNT1 A 0;
-			Goto Death.headshot;
+		Death.Headshot:
+			TNT1 A 0 A_PlaySound("misc/xdeath4");
+			TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma");
+			TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate");
+			TNT1 A 0 A_SpawnItem("ShotgunguyHeadExplode", 0, 30);
+			TNT1 A 0 A_XScream;
+			TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
+			TNT1 AAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_Blood", 37, 0, random (0, 360), 2, random (0, 160));
+			SZD4 AAAAA 2 A_SpawnProjectile ("Brutal_LiquidBlood", 25, 0, random (0, 360), 2, random (30, 110));
+			SZD4 BBBBBBBBBBBBBBBBBBBBBBBBB 1 A_SpawnProjectile ("Brutal_LiquidBlood", 10, 0, random (0, 360), 2, random (30, 110));
+			SZD4 B -1 doomb_final_absolution(12, 12);
+			Stop;
 	}
 }

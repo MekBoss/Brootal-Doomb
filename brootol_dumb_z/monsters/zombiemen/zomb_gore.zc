@@ -894,6 +894,7 @@ CLASS DyingZombiemanLostTeeth: doomb_zombie_Man {
 			TNT1 A 0 A_JumpIfHealthLower(-600, "XDeath");
 			TNT1 A 0 A_JumpIfHealthLower(-250, "Death.SSGHead");
 		Goto Death.HeadExplode;
+		
 		//FIXME jump to parent state, can cause problems
 		Death.Shotgun:
 			Goto DeathShotgunFly;
@@ -1194,7 +1195,6 @@ CLASS ZombieManDyingAfterFatality : doomb_body_base {
 		stop;
 		
 	Death.Headshot:
-	Death.Minorhead:
 		TNT1 A 0;
 		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma");
 		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate");
@@ -1251,7 +1251,7 @@ CLASS ZombieManDyingAfterFatality : doomb_body_base {
 }
 }
 
-CLASS ZombiemanLastStand2 : ACTOR { 
+CLASS ZombiemanLastStand2 : ZombiemanLastStand1 { 
 	Default {
 	
 	Radius 16;
@@ -1296,32 +1296,18 @@ States
 		Loop;
 		
 	Missile:
-		ZBLS C 10 A_FaceTarget;
-		TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-		
-		ZBLS C 10 A_FaceTarget;
-		TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-		
-		ZBLS C 10 A_FaceTarget;
-		TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-		
-		ZBLS C 10 A_FaceTarget;
-		TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-		
+		ZBLS CCCC 10
+		{
+			A_FaceTarget();
+			A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
+		}
 		TNT1 AA 0 A_SpawnProjectile("OrangeLensFlareAlt", 24, 10, 15, 0);
 		TNT1 A 0 A_PlaySound("weapons/rifle");
 		ZBLS D 6 BRIGHT A_SpawnProjectile("MonsterTracer", 28, 0, random(-12, 12), 0);
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 20,0);
 		TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-		tnt1 a 0 a_jump(200, "missile");
-		
-		ZBLS C 10 A_FaceTarget;
-		Goto Death;
-		
-		
-	Death.MinorHead:
-		TNT1 A 0;
-		Goto Death.headshot;
+		tnt1 a 0 doomb_random_death();
+	loop;		
 }
 }
 
@@ -1491,7 +1477,7 @@ States
 		Goto GotoDeath;
 		
 		
-	Death.MinorHead:
+	Death.headshot:
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		TNT1 AA 0 A_SpawnProjectile ("SmallBrainPiece", 32, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_Scream;
@@ -1972,9 +1958,6 @@ States
 
 }		
 CLASS DeadZombieManFacingFrontMinorHead: DeadZombieManFacingFront { 
-	Default {
-	
-	}
 States
 {
 	Spawn:
