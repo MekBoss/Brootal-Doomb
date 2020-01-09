@@ -128,7 +128,7 @@ CLASS Brutal_FlyingBlood : Brutal_Blood {
 		+NODAMAGETHRUST;
 		+MOVEWITHSECTOR;
 		+CORPSE;
-		-DONTSPLASH;
+		+DONTSPLASH;
 		Mass 1;
 	}
 	States

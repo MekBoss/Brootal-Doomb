@@ -64,7 +64,6 @@ CLASS SuperGore : ACTOR {
 	states
 	{
 		Spawn:
-			TNT1 A 0;
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater");
 			BLER G 1 A_FadeOut(0.01);
 			wait;
