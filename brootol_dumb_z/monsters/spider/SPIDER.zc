@@ -5,13 +5,13 @@
 //===========================================================================
 CLASS Arachnotron1 : doomb_monster_base replaces Arachnotron { 
 	Default {
-		
+		Health 500;
 		Monster;
 		+FLOORCLIP;
 		+BOSSDEATH;
 		GibHealth 20;
-		Radius 48;
-		height 56;
+		Radius 64;
+		height 64;
 		damagefactor "Crush", 10.0;
 		damagefactor "Avoid", 0.0;
 		damagefactor "GibRemoving", 0.0;

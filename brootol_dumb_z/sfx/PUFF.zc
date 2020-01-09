@@ -99,7 +99,6 @@ protected void doomb_check_floor_pic()
 
 
 	Default {
-		
 		renderstyle "Add";
 		alpha 1.0;
 		-COUNTKILL;
@@ -126,7 +125,7 @@ protected void doomb_check_floor_pic()
 			PUFF A 0 bright A_PlaySound("ricochet/hit");
 			TNT1 AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
 			
-			TNT1 A 0 A_Jump(255, "Spawn1", "Spawn2", "Spawn3", "Spawn4");
+			TNT1 A 0 A_Jump(256, "Spawn1", "Spawn2", "Spawn3", "Spawn4");
 			
 		Spawn1:
 			IPF2 AABB 1 bright light ("HUEHUE") A_SpawnItem ("YellowFlareSmall", 0);

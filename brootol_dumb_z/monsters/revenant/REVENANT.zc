@@ -44,8 +44,8 @@ Default {
 	Painchance "Head", 255;
 	MaxDropOffHeight 32;
 	Radius 20;
-	Height 60;
-	scale 0.8;
+	Height 56;
+	scale 0.7;
 }
 States
 {
