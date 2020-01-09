@@ -224,17 +224,19 @@ override int doomb_get_aditional_death_sprite()
 		loop;
 			
 		StrafeLeft:
-			PL42 A 3 A_FaceTarget;
-			PL42 B 3 ThrustThing(angle*256/360+192, 3, 0, 0);
-			PL42 C 3 A_FaceTarget;
-			PL42 D 3 ThrustThing(angle*256/360+192, 3, 0, 0);
+			PL42 ABCD 3
+			{
+				A_FaceTarget();
+				vel.xy += (3 * sin(angle - 90), 3 * cos(angle - 90) );
+			}
 			Goto Missile2;
 			
 		StrafeRight:
-			PL42 A 3 A_FaceTarget;
-			PL42 B 3 ThrustThing(angle*256/360+64, 3, 0, 0);
-			PL42 C 3 A_FaceTarget;
-			PL42 D 3 ThrustThing(angle*256/360+64, 3, 0, 0);
+			PL42 ABCD 3
+			{
+				A_FaceTarget();
+				vel.xy += (3 * sin(angle + 90), 3 * cos(angle + 90) );
+			}
 			Goto Missile2;
 			
 		CheckRetreat:
@@ -349,17 +351,19 @@ CLASS MinigunMarineGuarding: Marine_Minigun {
 			Goto See;
 			
 		StrafeLeft:
-			PL42 A 3 A_FaceTarget;
-			PL42 B 3 ThrustThing(angle*256/360+192, 3, 0, 0);
-			PL42 C 3 A_FaceTarget;
-			PL42 D 3 ThrustThing(angle*256/360+192, 3, 0, 0);
+			PL42 ABCD 3
+			{
+				A_FaceTarget();
+				vel.xy += (3 * sin(angle - 90), 3 * cos(angle - 90) );
+			}
 			Goto Missile2;
 			
 		StrafeRight:
-			PL42 A 3 A_FaceTarget;
-			PL42 B 3 ThrustThing(angle*256/360+64, 3, 0, 0);
-			PL42 C 3 A_FaceTarget;
-			PL42 D 3 ThrustThing(angle*256/360+64, 3, 0, 0);
+			PL42 ABCD 3
+			{
+				A_FaceTarget();
+				vel.xy += (3 * sin(angle + 90), 3 * cos(angle + 90) );
+			}
 			Goto Missile2;
 	}
 }

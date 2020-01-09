@@ -42,24 +42,24 @@ private void doomb_remove_gibs()
 	}
 }
 
-//TODO add function which remove gibs
-	Default {
-		+THRUACTORS;
-		+PAINLESS;
-		+NODAMAGETHRUST;
-		-BLOODSPLATTER;
-		+BLOODLESSIMPACT;
-		+FORCERADIUSDMG;
-		+FLOORCLIP;
-		+DONTSPLASH;
-		Mass 0;
-		Radius 0;
-		Height 0;
-	}
-	States
-	{
-		Death:
-			TNT1 A 5;
-		stop;
-	}
+Default {
+	+THRUACTORS;
+	+PAINLESS;
+	+NODAMAGETHRUST;
+	-BLOODSPLATTER;
+	+BLOODLESSIMPACT;
+	+FORCERADIUSDMG;
+	+FLOORCLIP;
+	+DONTSPLASH;
+	Mass 0;
+	Radius 0;
+	Height 0;
+}
+States
+{
+	Death:
+		TNT1 A 5;
+	stop;
+}
+
 }

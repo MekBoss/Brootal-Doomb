@@ -95,7 +95,6 @@ States
 		BAR1 A 0 A_Chase(null,null);
 		BAR1 A 1 A_FaceTarget();
 		TNT1 A 0 HealThing(100);
-		TNT1 A 0 ThrustThing(angle*256/360+128, 10, 0, 0);
 		TNT1 A 0 ThrustThingZ(0,10,0,1);
 		TNT1 A 0 {bFRIENDLY = true;}
 		TNT1 A 0 A_JumpIfInventory("GotBloody", 1, "StayBloody");

@@ -190,17 +190,19 @@ override int doomb_get_aditional_death_sprite()
 			Goto See;
 			
 		StrafeLeft:
-			PL5S A 3 A_FaceTarget;
-			PL5S B 3 ThrustThing(angle*256/360+192, 3, 0, 0);
-			PL5S C 3 A_FaceTarget;
-			PL5S D 3 ThrustThing(angle*256/360+192, 3, 0, 0);
+			PL5S ABCD 3
+			{
+				A_FaceTarget();
+				vel.xy += (3 * sin(angle - 90), 3 * cos(angle - 90) );
+			}
 			Goto Missile2;
 			
 		StrafeRight:
-			PL5S A 3 A_FaceTarget;
-			PL5S B 3 ThrustThing(angle*256/360+64, 3, 0, 0);
-			PL5S C 3 A_FaceTarget;
-			PL5S D 3 ThrustThing(angle*256/360+64, 3, 0, 0);
+			PL5S ABCD 3
+			{
+				A_FaceTarget();
+				vel.xy += (3 * sin(angle + 90), 3 * cos(angle + 90) );
+			}
 			Goto Missile2;
 			
 		CheckRetreat:
@@ -309,17 +311,19 @@ CLASS RocketMarineGuarding: Marine_Rocket {
 			Goto See;
 			
 		StrafeLeft:
-			PL5S A 3 A_FaceTarget;
-			PL5S B 3 ThrustThing(angle*256/360+192, 3, 0, 0);
-			PL5S C 3 A_FaceTarget;
-			PL5S D 3 ThrustThing(angle*256/360+192, 3, 0, 0);
-			Goto Missile2;
+			PL5S ABCD 3
+			{
+				A_FaceTarget();
+				vel.xy += (3 * sin(angle - 90), 3 * cos(angle - 90) );
+			}
+		Goto Missile2;
 			
 		StrafeRight:
-			PL5S A 3 A_FaceTarget;
-			PL5S B 3 ThrustThing(angle*256/360+64, 3, 0, 0);
-			PL5S C 3 A_FaceTarget;
-			PL5S D 3 ThrustThing(angle*256/360+64, 3, 0, 0);
+			PL5S ABCD 3
+			{
+				A_FaceTarget();
+				vel.xy += (3 * sin(angle + 90), 3 * cos(angle + 90) );
+			}
 			Goto Missile2;
 	}
 }

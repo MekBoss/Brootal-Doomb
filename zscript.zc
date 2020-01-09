@@ -207,6 +207,12 @@ set acsreturn value in sklil definition
 #include "brootol_dumb_z/actors_dump/water.zc"
 #include "brootol_dumb_z/actors_dump/TRACERS.zc"
 
+//third party dependencies
+//gutawewr zforms
+#include "third_party_library/doomb_ZForms/Include.zsc"
+
+
+
 
 
 class debugger : eventhandler

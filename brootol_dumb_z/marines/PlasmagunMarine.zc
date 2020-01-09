@@ -196,17 +196,19 @@ override int doomb_get_aditional_death_sprite()
 		Goto See;
 			
 		StrafeLeft:
-			PLA6 A 3 A_FaceTarget;
-			PLA6 B 3 ThrustThing(angle*256/360+192, 3, 0, 0);
-			PLA6 C 3 A_FaceTarget;
-			PLA6 D 3 ThrustThing(angle*256/360+192, 3, 0, 0);
+			PLA6 ABCD 3
+			{
+				A_FaceTarget();
+				vel.xy += (3 * sin(angle - 90), 3 * cos(angle - 90) );
+			}
 			Goto Missile2;
 			
 		StrafeRight:
-			PLA6 A 3 A_FaceTarget;
-			PLA6 B 3 ThrustThing(angle*256/360+64, 3, 0, 0);
-			PLA6 C 3 A_FaceTarget;
-			PLA6 D 3 ThrustThing(angle*256/360+64, 3, 0, 0);
+			PLA6 ABCD 3
+			{
+				A_FaceTarget();
+				vel.xy += (3 * sin(angle + 90), 3 * cos(angle + 90) );
+			}
 			Goto Missile2;
 			
 		CheckRetreat:
@@ -338,17 +340,19 @@ CLASS PlasmaGunMarineGuarding: Marine_PlasmaGun {
 			Goto See;
 			
 		StrafeLeft:
-			PLA6 A 3 A_FaceTarget;
-			PLA6 B 3 ThrustThing(angle*256/360+192, 3, 0, 0);
-			PLA6 C 3 A_FaceTarget;
-			PLA6 D 3 ThrustThing(angle*256/360+192, 3, 0, 0);
+			PLA6 ABCD 3
+			{
+				A_FaceTarget();
+				vel.xy += (3 * sin(angle - 90), 3 * cos(angle - 90) );
+			}
 			Goto Missile2;
 			
 		StrafeRight:
-			PLA6 A 3 A_FaceTarget;
-			PLA6 B 3 ThrustThing(angle*256/360+64, 3, 0, 0);
-			PLA6 C 3 A_FaceTarget;
-			PLA6 D 3 ThrustThing(angle*256/360+64, 3, 0, 0);
+			PLA6 ABCD 3
+			{
+				A_FaceTarget();
+				vel.xy += (3 * sin(angle + 90), 3 * cos(angle + 90) );
+			}
 			Goto Missile2;
 	}
 }

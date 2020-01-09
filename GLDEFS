@@ -788,12 +788,6 @@ object FlamethrowerMissile
 }
 
 
-object BurnParticles
-{
-frame TNT1 { light BIGREDTORCH }
-}
-
-
 object NewfagExplosionFlare
 {
     frame L2NR { light EXPLOSIONFLASH }

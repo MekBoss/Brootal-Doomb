@@ -884,7 +884,8 @@ states
 		tnt1 A 0 A_SpawnItemEx("DyingComando", 0, 0, 40, 0, 0);
 		TNT1 A 0 {bshootable = true;}
 		TNT1 A 0 {binvulnerable = false;}
-		Goto See;
+		tnt1 a 0 setstatelabel("see");
+		stop;
 		
 		
 		

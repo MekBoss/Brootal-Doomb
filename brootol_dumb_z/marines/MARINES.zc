@@ -102,7 +102,7 @@ CLASS Marine_SSG: PrePlacedMarine Replaces MarineSSG {
 CLASS Marine_Rifle : doomb_marine_base {
 	Default 
 	{
-		    DropItem "RifleDrop";
+		    DropItem "Rifle";
 	}
 
 	States
@@ -314,8 +314,11 @@ CLASS Marine_Rifle : doomb_marine_base {
 	Goto See;
 		
 	MissileLeft:
-		MARN A 2 A_FaceTarget;
-		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0);
+		MARN A 2
+		{
+			A_FaceTarget();
+			vel.xy += (3 * sin(angle - 90), 3 * cos(angle - 90) );
+		}
 		TNT1 A 0 A_SpawnProjectile("MarineMuzzle1", 34);
 		TNT1 A 0 A_PlaySound("weapons/rifle");
 		MARN B 2 BRIGHT;
@@ -327,8 +330,11 @@ CLASS Marine_Rifle : doomb_marine_base {
 		
 		
 	MissileRight:
-		MARN A 2 A_FaceTarget;
-		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0);
+		MARN A 2
+			{
+				A_FaceTarget();
+				vel.xy += (3 * sin(angle + 90), 3 * cos(angle + 90) );
+			}
 		TNT1 A 0 A_SpawnProjectile("MarineMuzzle1", 34);
 		TNT1 A 0 A_PlaySound("weapons/rifle");
 		MARN B 2 BRIGHT;
@@ -376,8 +382,11 @@ CLASS Marine_Rifle : doomb_marine_base {
 		
 		
 	AttackKick:
-		PLAY A 1 A_FaceTarget;
-		TNT1 A 0 ThrustThingZ(0,40,0,1);
+		PLAY A 1 
+			{
+				A_FaceTarget();
+				vel.xy += (40 * sin(angle), 40 * cos(angle) );
+			}
 		TNT1 A 0 A_Recoil(-8);
 		MARJ A 6 A_FaceTarget;
 		AKIK A 1 A_SpawnProjectile("AirKickAttack",40,0,0,0);
@@ -468,8 +477,11 @@ CLASS RifleMarineGuarding: Marine_Rifle {
 	Goto See;
 		
 	MissileLeft:
-		MARN A 2 A_FaceTarget;
-		TNT1 A 0 ThrustThing(angle*256/360+192, 3, 0, 0);
+		MARN A 2
+			{
+				A_FaceTarget();
+				vel.xy += (3 * sin(angle - 90), 3 * cos(angle - 90) );
+			}
 		TNT1 A 0 A_SpawnProjectile("MarineMuzzle1", 34);
 		TNT1 A 0 A_PlaySound("weapons/rifle");
 		MARN B 2 BRIGHT;
@@ -481,8 +493,11 @@ CLASS RifleMarineGuarding: Marine_Rifle {
 		
 		
 	MissileRight:
-		MARN A 2 A_FaceTarget;
-		TNT1 A 0 ThrustThing(angle*256/360+64, 3, 0, 0);
+		MARN A 2 
+			{
+				A_FaceTarget();
+				vel.xy += (3 * sin(angle + 90), 3 * cos(angle + 90) );
+			}
 		TNT1 A 0 A_SpawnProjectile("MarineMuzzle1", 34);
 		TNT1 A 0 A_PlaySound("weapons/rifle");
 		MARN B 2 BRIGHT;

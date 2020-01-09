@@ -4,7 +4,7 @@ CLASS doomb_baron : doomb_monster_base Replaces BaronofHell
 Default {
 	
 	doomb_monster_base.headshot_multiplier 2;
-	doomb_monster_base.head_starting_position 58;//so that if someone forgot to define this number monster dont get headshot from every attack
+	doomb_monster_base.head_starting_position 50;//so that if someone forgot to define this number monster dont get headshot from every attack
 	doomb_monster_base.legs_height_max -1;//same for legs
 	
 	Scale 1.1;

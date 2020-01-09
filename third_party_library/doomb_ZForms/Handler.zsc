@@ -1,0 +1,10 @@
+class doomb_ZF_Handler ui {
+	virtual void buttonClickCommand(doomb_ZF_Button caller, string command) {
+	}
+	
+	virtual void buttonHeldCommand(doomb_ZF_Button caller, string command) {
+	}
+
+	virtual void elementHoverChanged(doomb_ZF_Element caller, string command, bool unhovered) {
+	}
+}

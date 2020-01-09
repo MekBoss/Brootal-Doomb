@@ -14,9 +14,9 @@ SpawnNums
 
    133 = InvulnerabilitySphere_
    138 = NightVision
-   //138 = NightVisionGiver
+   214 = NightVisionGiver
    134 = Berserl1
-   //134 = DemonStrengthRune
+   119 = DemonStrengthRune
 
    1 = doomb_shotgun_guy
    7 = TheSpiderMastermind
@@ -34,7 +34,7 @@ SpawnNums
    4 = EvilMarine
    33 = SSG
    28 = minigun
-   139 = ClipBox2
+   312 = ClipBox2
    27 = Shot_Gun
    69 = HeavyArmor
    68 = LightArmor

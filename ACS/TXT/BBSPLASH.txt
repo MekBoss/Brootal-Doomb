@@ -6,7 +6,7 @@
 
 script 560 (void)
 {
-SetHudSize(400,250,1);
+	SetHudSize(400,250,1);
 
 	delay(1);
 	setfont("GBLD1");
