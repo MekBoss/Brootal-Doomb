@@ -326,9 +326,8 @@ CLASS Marine_Rifle : doomb_marine_base {
 		TNT1 A 0 A_SpawnItem ("RifleCaseSpawn", 0, 30,0);
 		tnt1 a 0 a_jump(140, "MissileLeft");
 	Goto See;
-		
-		
-		
+
+
 	MissileRight:
 		MARN A 2
 			{

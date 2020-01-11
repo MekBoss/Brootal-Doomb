@@ -8,11 +8,11 @@ CLASS TinyBlood : doomb_blood {
 		health 1;
 		radius 8;
 		height 1;
-		+DontSplash;
 		Gravity 0.7;
 		Decal "BrutalBloodSplat";
 		XScale 0.4;
 		YScale 0.8;
+		+DontSplash;
 		+MISSILE;
 		+CLIENTSIDEONLY;
 		+NOTELEPORT;
@@ -31,6 +31,8 @@ CLASS TinyBlood : doomb_blood {
 			{
 				if(pos.z <= floorz)
 					setstatelabel("death");
+				
+				vel.z -= 2;
 			}
 		loop;
 
@@ -328,6 +330,7 @@ CLASS head_piece_base : doomb_body_base {
 		Speed 6;
 		Mass 1;
 		Decal "BrutalBloodSplat";
+		-solid
 		+CLIENTSIDEONLY;
 		BounceFactor 0.4;
 		+DOOMBOUNCE;

@@ -149,7 +149,7 @@ CLASS Column1 : doomb_decoration_base replaces Column {
 			
 		Stay:
 			TNT1 A 0 A_CheckSight("Spawn2");
-			COLU A 4 bright light ("YELLOWLAMP") A_SpawnItem("yellowlensflarealtlong",0,44);
+			COLU A 4 bright light ("YELLOWLAMP") A_SpawnItem("YellowLensFlareAlt",0,44);
 			Loop;
 		Spawn2:
 			COLU A 5;

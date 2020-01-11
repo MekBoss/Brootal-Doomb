@@ -95,7 +95,7 @@ CLASS CyberdemonBoss: doomb_monster_base
 			CYBR Z 0 A_FaceTarget;
 			TNT1 A 0 A_Recoil(-15);
 			
-			TNT1 A 0 A_SpawnProjectile("CyberStompBig",10,0,0,0);
+			TNT1 A 0 A_Spawnitem("CyberStomp",10);
 			CYMA B 7;
 			
 			CYMA B 7;

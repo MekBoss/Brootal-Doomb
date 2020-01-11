@@ -38,6 +38,7 @@ Default
     Health 60;
     PainChance 200;
     PainChance "Kick", 255;
+
     Monster;
     +FLOORCLIP;
     -NORADIUSDMG;
@@ -57,7 +58,9 @@ Default
     +USESPECIAL;
     +MTHRUSPECIES;
     +DONTHARMCLASS;
-    Activation THINGSPEC_Activate;
+	+friendly
+    
+	Activation THINGSPEC_Activate;
     DamageFactor "CauseObjectsToSplash", 0.0;
     Species "Marines";
     Translation "112:127=117:127";

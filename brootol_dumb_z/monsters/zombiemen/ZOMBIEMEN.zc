@@ -73,7 +73,6 @@ Default {
 	damagefactor "BlueBlood", 0.0;
 	damagefactor "GreenBlood", 0.0;
 	damagefactor "Explosive_Impact", 0.6;
-	DropItem "Rifle";
 	Obituary "%o has been gunned down by a Zombie Soldier.";
 	+RANDOMIZE;
 	DamageFactor "CauseObjectsToSplash", 0.0;

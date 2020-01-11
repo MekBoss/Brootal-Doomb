@@ -9,14 +9,20 @@ Default {
 	doomb_monster_base.headshot_multiplier 2;
 	doomb_monster_base.head_starting_position 50;//so that if someone forgot to define this number monster dont get headshot from every attack
 	doomb_monster_base.legs_height_max 10;//same for legs
-	
 	speed 10;
 	mass 600;
-	
+	MaxStepHeight 24;
+	MaxDropOffHeight 32;
+	Radius 20;
+	Height 56;
+	scale 0.9;
 	GibHealth 45;
 	Health 250;
-	Monster;
 	MeleeThreshold 196;
+	
+	
+	Monster;
+	+DONTHARMCLASS;
 	+FLOORCLIP;
 	damagefactor "Crush", 10.0;
 	damagefactor "Blood", 0.0;
@@ -36,12 +42,6 @@ Default {
 	PainChance "HelperMarineFatality", 255;
 	Obituary "$OB_UNDEAD";
 	DropItem "DemonStrengthRune", 5;
-	MaxStepHeight 24;
-	+DONTHARMCLASS;
-	MaxDropOffHeight 32;
-	Radius 20;
-	Height 56;
-	scale 0.7;
 }
 States
 {
@@ -334,7 +334,7 @@ States
 		TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160));
 		EXPL AAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-		RVDP ABCDEFG 5 BRIGHT A_SpawnItem("BlueFlare3",0,30);
+		RVDP ABCDEFG 5 BRIGHT A_SpawnItem("BlueFlare",0,30);
 		RVDP GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 10 doomb_show_effect("AltSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (1.5, 0) );
 		RVDP G -1;
 		Stop;

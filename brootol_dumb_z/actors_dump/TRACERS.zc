@@ -1,6 +1,6 @@
 //Tracing projectiles goes here
 
-CLASS Tracer: FastProjectile { 
+CLASS Tracer: doomb_boolet_base { 
 	Default {
 		
 		Projectile;
@@ -307,6 +307,8 @@ CLASS MastermindTracer: Tracer {
 		
 		Spawn:
 			tnt1 a 0 nodelay {vel *= frandom(0.8, 1.2);}
+		mini:
+			TRAC A 1;
 		Loop;
 
 		Death:
@@ -320,7 +322,7 @@ CLASS MastermindTracer: Tracer {
 			TNT1 AAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, random (0, 360));
 			TNT1 AAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, random (0, 40));
 			TNT1 A 0 A_PlaySound("FAREXPL");
-			TNT1 AAAAAAAA 4 A_SpawnProjectile ("PlasmaSmoke", 2, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AAAAAAAA 4 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
 		Stop;
 			
 			
@@ -427,37 +429,6 @@ states
 }
 
 
-
-CLASS SpawnRocketDecalBackwards: FastProjectile { 
-	Default {
-	
-	Projectile;
-	+RANDOMIZE;
-	+FORCEXYBILLBOARD;
-	+DONTSPLASH;
-	+THRUACTORS;
-	damage 0;
-	radius 6;
-	height 2;
-	speed 50;
-	renderstyle "Add";
-	Decal "Scorch";
-	alpha 0.9;
-	scale .3;
-	}
-states
-	{
-	Spawn:
-		TNT1 A 1 BRIGHT;
-		Loop;
-	Death:
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 4 A_SpawnProjectile ("PLasmaSmoke", 2, 0, random (0, 360), 2, random (10, 60));
-		Stop;
-	XDeath:
-		TNT1 A 0;
-		Stop;
-}
-}
 
 
 CLASS Penetrator: MarineTracer { 

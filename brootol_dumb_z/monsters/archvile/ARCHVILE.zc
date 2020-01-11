@@ -213,6 +213,7 @@ Default {
 	Scale 1.0;
 	+NOBLOCKMAP
 	+NOGRAVITY;
+	+noclip
 	RenderStyle "Add";
 	Alpha 0.6;
 }
@@ -223,6 +224,9 @@ States
 	mini_loop:
 		TNT1 AAAAAAAAAAAAAAAAB 2
 		{
+			if(target)
+				tracer = target.target;
+
 			A_Fire();
 			for(uint i = 0; i < 2; i++)
 			{

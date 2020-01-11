@@ -12,7 +12,9 @@ CLASS HealthPlus : Health Replaces HealthBonus {
 	States
 	{
 		Spawn:
-			BON1 ABCDCB 2 A_SpawnItem("BlueFlareSmall",0,7);
+			tnt1 A 0 nodelay {flare_general.doomb_attach_flare(self, "BlueFlareSmall", (0, 0, 7));}
+		mini:
+			BON1 ABCDCB 2;
 		Loop;
 	}
 }
@@ -35,7 +37,9 @@ CLASS ArmorShard : BasicArmorBonus Replaces ArmorBonus {
 	States
 	{
 		Spawn:
-			BON2 AAABCDB 2 A_SpawnItem("GreenFlareSmall",0,7);
+			tnt1 A 0 nodelay {flare_general.doomb_attach_flare(self, "greenlensflarealtsmall", (0, 0, 7));}
+		mini:
+			BON2 AAABCDB 2;
 		Loop;
 	}
 }

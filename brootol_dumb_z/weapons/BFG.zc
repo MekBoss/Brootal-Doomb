@@ -140,7 +140,7 @@ States
 			A_SpawnProjectile ("BFGBIGFOG", 0, 0, random (0, 360), 2, random (0, 360));
 			
 			//add removing gib functionality here
-			A_Explode(80,300, damagetype:"Desintegrate");
+			A_Explode(80,300, 0, damagetype:"Desintegrate");
 		}
 		BFGB ABCDEFGHIJK 1 Bright
 		{
@@ -172,7 +172,7 @@ States
 {
 	Spawn:
 		BFE2 A 0;
-		TNT1 A 0 A_Explode(40, 3, damagetype:"Desintegrate");
+		TNT1 A 0 A_Explode(40, 3, 0, damagetype:"Desintegrate");
 		BFGB ABCDEFGHIJK 2 Bright A_SpawnItem("GreenFlareMedium",0,0);
 	stop;
 }

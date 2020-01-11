@@ -946,11 +946,6 @@ object MarineMuzzle1
     frame PLMZ { light HUEHUE }
 }
 
-object MarineMuzzle2
-{
-    frame PLMZ { light HUEHUEHUEHUE }
-}
-
 object OrangeLensFlareAlt
 {
     frame LEYS { light HUEHUE }

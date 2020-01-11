@@ -125,11 +125,8 @@ Default {
 	Projectile;
 	Speed 35;
 	Damage 30;
-	MeleeDamage 0;
-	Gravity 0.00;
 	Scale 0.7;
 	Decal "Scorch";
-	-NOGRAVITY;
 	+EXTREMEDEATH;
 	+BLOODSPLATTER;
 	SeeSound "weapons/RLL";

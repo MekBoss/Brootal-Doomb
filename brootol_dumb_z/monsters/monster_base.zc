@@ -233,6 +233,7 @@ protected void doomb_monster_memory(statelabel idle_state = "idle")
 	}
 }
 
+
 protected double prev_z_vel;
 
 protected bool check_falling()
@@ -360,6 +361,10 @@ override void tick()
 			self.destroy();
 		}
 	}
+
+	if(curstate == findstate("missile") || curstate == findstate("melee"))
+		memory_timer = 0;
+
 }
 
 
