@@ -27,7 +27,6 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 		PainChance "Saw", 100;
 		PainChance "Cut", 100;
 		damagefactor "Fatality", 2.0;
-		DamageFactor "CauseObjectsToSplash", 0.0;
 		damagefactor "SSG", 0.5;
 		damagefactor "Avoid", 0.0;
 

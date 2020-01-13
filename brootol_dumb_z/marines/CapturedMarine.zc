@@ -24,7 +24,6 @@ CLASS CapturedMarine: doomb_monster_base Replaces Blursphere {
 		damagefactor "Melee", 99.0;
 		damagefactor "Kick", 99.0;
 
-		DamageFactor "CauseObjectsToSplash", 0.0;
 		DeathSound "*death";
 		PainSound "*pain50";
 		BloodType "Brutal_Blood";

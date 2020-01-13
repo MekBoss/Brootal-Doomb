@@ -13,7 +13,6 @@ CLASS TheSpiderMastermind : doomb_monster_base Replaces SpiderMastermind{
 		damagefactor "Blood", 0.0;
 		damagefactor "Stomp", 0.0;
 		damagefactor "Crush", 30.0;
-		DamageFactor "CauseObjectsToSplash", 0.0;
 		damagefactor "Trample", 0.0;
 
 		PainChance 30;

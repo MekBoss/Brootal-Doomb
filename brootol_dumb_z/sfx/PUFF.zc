@@ -198,8 +198,6 @@ CLASS HitPuff : RicoChet Replaces BulletPuff
 
 CLASS LargeMassWaterImpact: Ricochet { 
 	Default {
-		
-		DamageFactor "CauseObjectsToSplash", 99.0;
 		+SHOOTABLE;
 		+NOBLOOD;
 		Health 1;
@@ -215,7 +213,6 @@ CLASS LargeMassWaterImpact: Ricochet {
 			TNT1 A 0 A_JumpIfInventory("IsOverSlime", 1, "SpawnSlime");
 			Stop;
 			
-		Death.CauseObjectsToSplash:
 		SpawnWater:
 			TNT1 A 0 A_PlaySound("bigspl1");
 			TNT1 AAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("WaterParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160));
@@ -223,7 +220,7 @@ CLASS LargeMassWaterImpact: Ricochet {
 			TNT1 A 20;
 			Stop;
 			
-		Death.CauseObjectsToSplashSlime:
+		SpawnSlime:
 			TNT1 A 0;
 			TNT1 A 0 A_PlaySound("bigspl1");
 			TNT1 AAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("SlimeParticleXFAster", 8, 0, random (0, 360), 2, random (30, 160));

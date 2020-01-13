@@ -33,7 +33,6 @@ CLASS ChaingunGuy1 : doomb_monster_base Replaces ChaingunGuy {
 		damagefactor "cut", 0.7;
 		damagefactor "saw", 0.7;
 		damagefactor "Explosive_Impact", 2.0;
-		DamageFactor "CauseObjectsToSplash", 0.0;
 		damagefactor "Blood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;

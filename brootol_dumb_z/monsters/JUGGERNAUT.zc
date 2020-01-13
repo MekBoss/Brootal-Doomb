@@ -8,7 +8,6 @@ CLASS Hectebus : doomb_fatso { //Replaces Hectebus
 		PainChance "Kick", 255;
 		damagefactor "Stomp", 0.0;
 
-		DamageFactor "CauseObjectsToSplash", 0.0;
 		Health 8000;
 		+NOICEDEATH;
 		PainSound "juggernaut/pain";

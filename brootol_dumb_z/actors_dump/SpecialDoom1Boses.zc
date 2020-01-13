@@ -8,7 +8,6 @@ CLASS CyberdemonBoss: doomb_monster_base
 		damagefactor "Decaptate", 5.0;
 		damagefactor "Avoid", 0.0;
 
-		DamageFactor "CauseObjectsToSplash", 0.0;
 		Obituary "%o was destroyed by the Cyberdemon.";
 		+NOICEDEATH;
 		Health 10000;
@@ -206,7 +205,6 @@ CLASS SuperMastermind : doomb_monster_base {
 		damagefactor "Stomp", 0.0;
 		damagefactor "Trample", 0.0;
 
-		DamageFactor "CauseObjectsToSplash", 0.0;
 		Obituary "%o was destroyed by a Mastermind.";
 		+NOICEDEATH;
 		

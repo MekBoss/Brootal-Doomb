@@ -64,7 +64,6 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 		Obituary "%o got his face splattered on the wall by a Zombie Shotgunner.";
 		MaxStepHeight 24;
 		MaxDropOffHeight 32;
-		DamageFactor "CauseObjectsToSplash", 0.0;
 	}
 	States
 	{

@@ -46,7 +46,6 @@ Default {
 	damagefactor "HelperMarineFatallity", 0.0;
 	damagefactor "Leg", 0.0;
 	damagefactor "SpawnMarine", 0.0;
-	DamageFactor "CauseObjectsToSplash", 0.0;
 
 	Player.ColorRange 112, 127;
 	Player.StartItem "Rifle";

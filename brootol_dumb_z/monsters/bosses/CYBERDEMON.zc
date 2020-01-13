@@ -14,14 +14,13 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 		damagefactor "Blood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;
-		DamageFactor "CauseObjectsToSplash", 0.0;
 		damagefactor "Crush", 20.0;
 		Obituary "%o was exploded to pieces by a Cyberdemon.";
 		SeeSound "cyber/sight";
 		PainSound "cyber/pain";
 		DeathSound "cyber/death";
 		ActiveSound "cyber/active";
-		
+
 		Health 5000;
 		MaxStepHeight 24;
 		MaxDropOffHeight 32;

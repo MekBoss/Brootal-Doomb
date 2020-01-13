@@ -21,7 +21,6 @@ CLASS Nazi : doomb_monster_base {
 		
 		DamageFactor "SSG", 10.0;
 		PainChance "Melee", 255;
-		DamageFactor "CauseObjectsToSplash", 0.0;
 		MaxStepHeight 24;
 		MaxDropOffHeight 32;
 		damagefactor "Blood", 0.0;

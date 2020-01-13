@@ -23,7 +23,6 @@ Default {
 	PainChance 10;
 	PainChance "Kick", 90;
 	damagefactor "Avoid", 0.0;
-	DamageFactor "CauseObjectsToSplash", 0.0;
 	BloodType "Brutal_Blood",  "SawBlood";
 	Monster;
 	DamageType "Rape";

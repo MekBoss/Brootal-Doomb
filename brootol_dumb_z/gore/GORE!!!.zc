@@ -13,7 +13,6 @@ CLASS BigGibBase : doomb_body_base {
 		+FLOORCLIP;
 		+SLIDESONWALLS;
 		+FORCEXYBILLBOARD;
-		DamageFactor "CauseObjectsToSplash", 0.0;
 		-SOLID;
 		+SHOOTABLE;
 		damagefactor "Crush", 50.0;

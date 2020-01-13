@@ -18,7 +18,6 @@ CLASS Arachnotron1 : doomb_monster_base replaces Arachnotron {
 		PainSound "baby/pain";
 		DeathSound "baby/death";
 		ActiveSound "baby/active";
-		DamageFactor "CauseObjectsToSplash", 0.0;
 		Obituary "$OB_BABY";
 		BloodType "Brutal_Blood",  "SawBlood";
 		MaxStepHeight 24;

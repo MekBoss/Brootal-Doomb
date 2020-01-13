@@ -2128,7 +2128,6 @@ CLASS DyingZombieman : doomb_body_base
 	damagefactor "Kick", 6.0;
 	PainChance "Kick", 255;
 	damagefactor "trample", 2.0;
-	DamageFactor "CauseObjectsToSplash", 0.0;
 	damagefactor "Avoid", 0.0;
 	damagefactor "Death.KickDowned", 100.0;
 	damagefactor "Death.KickDownedAny", 100.0;

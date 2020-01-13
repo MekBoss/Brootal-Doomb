@@ -80,7 +80,6 @@ Default {
 	damagefactor "GreenBlood", 0.0;
 	damagefactor "Explosive_Impact", 0.6;
 	Obituary "%o has been gunned down by a Zombie Soldier.";
-	DamageFactor "CauseObjectsToSplash", 0.0;
 }
 States
 {

@@ -8,7 +8,6 @@ CLASS Belphegor : doomb_monster_base {
 		+NOICEDEATH;
 		PainChance "Kick", 255;
 		damagefactor "Avoid", 0.0;
-		DamageFactor "CauseObjectsToSplash", 0.0;
 
 		Health 2000;
 		damagefactor "Blood", 0.0;

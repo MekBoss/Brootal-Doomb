@@ -377,7 +377,6 @@ CLASS WaterSplashBase2 : ACTOR {
 		+noblockmap
 		Health 100;
 		DamageFactor "CauseWaterSplash", 99.0;
-		Damagetype "CauseObjectsToSplash";
 	}
 	States
 	{

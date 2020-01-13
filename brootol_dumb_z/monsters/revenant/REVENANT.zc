@@ -28,7 +28,6 @@ Default {
 	damagefactor "Blood", 0.0;
 	damagefactor "BlueBlood", 0.0;
 	damagefactor "GreenBlood", 0.0;
-	DamageFactor "CauseObjectsToSplash", 0.0;
 	damagefactor "Plasma", 0.5;
 	damagefactor "Avoid", 0.0;
 	PainChance "Kick", 255;

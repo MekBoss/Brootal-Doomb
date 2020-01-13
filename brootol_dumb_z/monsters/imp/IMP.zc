@@ -29,7 +29,6 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp {
 		damagefactor "Trample", 1.5;
 		damagefactor "SSG", 50.0;
 		damagefactor "Crush", 10.0;
-		DamageFactor "CauseObjectsToSplash", 0.0;
 		Monster;
 		Species "Imps";
 		damagefactor "Blood", 0.0;

@@ -18,7 +18,6 @@ Default {
 	PainChance "CallingTheBaronAFaggot", 255;
 	damagefactor "Avoid", 0.0;
 	damagefactor "SSG", 0.2;
-	DamageFactor "CauseObjectsToSplash", 0.0;
 	damagefactor "Fatality", 3.0;
 	damagefactor "Blood", 0.0;
 	damagefactor "BlueBlood", 0.0;

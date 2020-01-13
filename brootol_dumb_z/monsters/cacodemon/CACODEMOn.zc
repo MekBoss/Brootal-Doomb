@@ -27,7 +27,6 @@ Default {
 	PainSound "caco/pain";
 	DeathSound "caco/death";
 	ActiveSound "caco/active";
-	DamageFactor "CauseObjectsToSplash", 0.0;
 	Obituary "$OB_CACO";
 	HitObituary "$OB_CACOHIT";
 	DropItem "DemonStrengthRune", 5;

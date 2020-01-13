@@ -23,7 +23,6 @@ CLASS PainElemental1 : doomb_monster_base Replaces PainElemental {
 		ActiveSound "pain/active";
 		bloodtype "Brutal_Blood";
 		DropItem "DemonStrengthRune", 5;
-		DamageFactor "CauseObjectsToSplash", 0.0;
 		PainChance "Kick", 255;
 		damagefactor "Avoid", 0.0;
 		damagefactor "Blood", 0.0;
