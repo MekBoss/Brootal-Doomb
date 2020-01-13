@@ -9,12 +9,20 @@ CLASS ChaingunGuy1 : doomb_monster_base Replaces ChaingunGuy {
 		doomb_monster_base.headshot_multiplier 2;
 		doomb_monster_base.head_starting_position 50;//so that if someone forgot to define this number monster dont get headshot from every attack
 		doomb_monster_base.legs_height_max 10;//same for legs
+		doomb_monster_base.weapon_type "MiniGun";
 		
 		Health 90;
 		Radius 16;
 		Height 56;
 		Mass 100;
 		Speed 5;
+
+		Monster;
+		+FLOORCLIP;
+		+MISSILEMORE;
+		+MISSILEEVENMORE;
+		+RANDOMIZE;
+
 		PainChance 200;
 		PainChance "HelperMarineFatality", 255;
 		PainChance "Kick", 255;
@@ -25,20 +33,17 @@ CLASS ChaingunGuy1 : doomb_monster_base Replaces ChaingunGuy {
 		damagefactor "cut", 0.7;
 		damagefactor "saw", 0.7;
 		damagefactor "Explosive_Impact", 2.0;
+		DamageFactor "CauseObjectsToSplash", 0.0;
+		damagefactor "Blood", 0.0;
+		damagefactor "BlueBlood", 0.0;
+		damagefactor "GreenBlood", 0.0;
 		damagetype "Melee";
-		Monster;
+
 		Translation "192:207=176:191";
 		damagefactor "SSG", 50.0;
 		MaxStepHeight 24;
 		MaxDropOffHeight 32;
-		+FLOORCLIP;
-		+MISSILEMORE;
-		+MISSILEEVENMORE;
-		+RANDOMIZE;
 		
-		damagefactor "Blood", 0.0;
-		damagefactor "BlueBlood", 0.0;
-		damagefactor "GreenBlood", 0.0;
 		BloodType "Brutal_Blood",  "SawBlood";
 		SeeSound "grunt/sight";
 		PainSound "grunt/pain";
@@ -47,7 +52,6 @@ CLASS ChaingunGuy1 : doomb_monster_base Replaces ChaingunGuy {
 		AttackSound "weapons/minigunfire";
 		damagefactor "Explosive_Impact", 2.0;
 		Obituary "%o has been mowed down by a Zombie Commando.";
-		DamageFactor "CauseObjectsToSplash", 0.0;
 	}
 	States
 	{

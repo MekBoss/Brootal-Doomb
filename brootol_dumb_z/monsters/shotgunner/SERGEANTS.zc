@@ -19,9 +19,9 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 		doomb_monster_base.headshot_multiplier 2;
 		doomb_monster_base.head_starting_position 50;
 		doomb_monster_base.legs_height_max 10;
+		doomb_monster_base.weapon_type "Shot_Gun";
+
 		Height 56;
-		
-		Health 50;
 		Radius 16;
 		
 		Mass 300;
@@ -38,8 +38,8 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 		PainChance "Taunt", 255;
 		damagefactor "Avoid", 1.0;
 		damagefactor "SSG", 50.0;
+
 		DropItem "GrenadeAmmo", 15;
-		DropItem "Shotgun";
 		damagetype "Melee";
 
 		Monster;
