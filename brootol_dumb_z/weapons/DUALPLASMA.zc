@@ -9,8 +9,11 @@ Default {
 	Weapon.AmmoGive1 0;//How much ammo can be gathered with this weapon
 	Weapon.AmmoUse2 0;
 	Weapon.AmmoGive2 0;
+	Inventory.PickupMessage "You find second Plasma Gun";
+
 	Weapon.AmmoType1 "Cell";//Reserve ammo type
 	Weapon.AmmoType2 "DoublePlasmagunAmmo";//Magazine ammo type
+	Inventory.PickupSound "PLSDRAW";
 	Obituary "%o was drilled by %k's Double Plasmaguns.";//Kill message
 	AttackSound "None";//You better leave this clear
 	Inventory.Pickupmessage "";//Pickup message
@@ -27,7 +30,7 @@ States
 {
 	Spawn:
 		PLAS A 20;
-		TNT1 A 0 A_SpawnItem("DropedPlasmaGun");
+		PLAS A -1;
 	Stop;
 
 	Select:

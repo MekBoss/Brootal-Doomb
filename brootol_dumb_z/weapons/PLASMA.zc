@@ -52,6 +52,18 @@ CLASS Plasma_Gun : doomb_weapon_base {
 		if(owner && owner.player && owner.player.cmd.buttons & BT_RELOAD)
 			reloading = true;
 	}
+
+	override void Touch (Actor toucher)
+	{
+		if(toucher.findinventory("plasma_gun"))
+		{
+			let item = Inventory(Spawn("DualPlasmaRifles"));
+			item.touch(toucher);
+		}
+	
+		super.Touch(toucher);
+	}
+
 	States
 	{
 		Spawn:

@@ -51,7 +51,6 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 		PainSound "knight/pain";
 		DeathSound "knight/death";
 		HitObituary "$OB_KNIGHTHIT";
-		
 	}
 	States
 	{
