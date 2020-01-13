@@ -26,9 +26,9 @@ CLASS Plasma_Gun : doomb_weapon_base {
 	Default {
 		
 		Weapon.SlotNumber 6;
-		Weapon.SlotPriority 0;
-		
+		Weapon.SlotPriority 1;
 		Weapon.SelectionOrder 100;
+		
 		Weapon.AmmoUse1 0;
 		Weapon.AmmoGive1 50;
 		Weapon.AmmoUse2 0;

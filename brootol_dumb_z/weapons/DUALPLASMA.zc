@@ -3,9 +3,9 @@ CLASS DualPlasmaRifles: doomb_dual_weapon_base
 Default {
 	Weapon.SlotNumber 6;
 	Weapon.SlotPriority 0;
+	Weapon.SelectionOrder 200;
 	
 	Weapon.AmmoUse1 0;
-	Weapon.SelectionOrder 100;
 	Weapon.AmmoGive1 0;//How much ammo can be gathered with this weapon
 	Weapon.AmmoUse2 0;
 	Weapon.AmmoGive2 0;
