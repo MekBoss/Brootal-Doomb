@@ -89,14 +89,6 @@ private void doomb_set_appearance(vector2 sc = (1, 1), double a = 1, double spee
     vel *= speed_scale;
 }
 
-override void tick()
-{
-	if(pos != pos)
-		return;//actor unused, so dont tick and save some time for other actors
-
-	super.tick();
-}
-
 default
 {
 	+DontSplash;
