@@ -649,8 +649,6 @@ States
 		TNT1 A 0 A_GiveToTarget("ZombieManFatality", 1);
 	Stop;
 		
-	HeadExploder:
-		TNT1 A 0 A_Jump(72, "Death.HeadExplode");
 	Death.Headshot:
 		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma");
 		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate");
