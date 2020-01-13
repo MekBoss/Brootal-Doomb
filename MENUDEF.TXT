@@ -2,6 +2,8 @@ OptionMenu "OptionsMenu"
 {
 	Title "OPTIONS"
 	Submenu "Brutal Doom Options",			"BrutalOptions"
+	Submenu "Brootal Doomb Options",			"doomb_options"
+
 	StaticText " "
 	Submenu "Customize Controls",		"CustomizeControls"
 	Submenu "Mouse options",			"MouseOptions"
@@ -71,3 +73,15 @@ OptionValue "BrutalBlood"
 	4, "Japanese Cartoon"
 	666, "Overdrawn at Blood Bank"
 }
+
+OptionMenu "doomb_options"
+{
+	Title "Brootal Doomb Options"
+	StaticText " "
+
+	Option "Show flares around light sources ", "doomb_show_flares", "YesNo"
+	StaticText "Its eat performance like crazy, disable in the first place if you have FPS problems"
+
+
+}
+

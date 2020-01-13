@@ -36,7 +36,8 @@ Default {
 	doomb_monster_base.headshot_multiplier 2;
 	doomb_monster_base.head_starting_position 50;
 	doomb_monster_base.legs_height_max 10;
-	
+	doomb_monster_base.weapon_type "rifle";
+
 	Speed 6;
 	Mass 300;
 	FastSpeed 12;
@@ -57,9 +58,14 @@ Default {
 	PainChance "Trample", 255;
 	PainChance "Explosive_Impact", 255;
 	damagetype "Melee";
+	
 	Monster;
 	+FLOORCLIP;
+	+RANDOMIZE;
 	+SLIDESONWALLS;
+	+DONTHARMCLASS
+	+DONTHARMSPECIES
+	
 	Scale 0.98;
 	MaxStepHeight 24;
 	MaxDropOffHeight 32;
@@ -74,7 +80,6 @@ Default {
 	damagefactor "GreenBlood", 0.0;
 	damagefactor "Explosive_Impact", 0.6;
 	Obituary "%o has been gunned down by a Zombie Soldier.";
-	+RANDOMIZE;
 	DamageFactor "CauseObjectsToSplash", 0.0;
 }
 States

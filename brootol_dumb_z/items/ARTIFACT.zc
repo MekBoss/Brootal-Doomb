@@ -208,7 +208,7 @@ CLASS SuperBlurSphere : CustomInventory { //Replaces BlurSphere
 	States
 	{
 		Spawn:
-			PINS AABBCCDDCCBB 2 Bright A_SpawnItem("RedFlare", 0, 24);
+			PINS AABBCCDDCCBB 2 Bright {Spawn("RedFlare", pos + (0, 0, 24));}
 			Loop;
 		Pickup:
 			TNT1 A 1;
@@ -231,12 +231,11 @@ CLASS DemonStrengthRune : Berserl1 {
 	States
 	{
 		Spawn:
-			DPRF AABBCCBB 2 A_SpawnItem("RedFlareSmall",0,20);
+			DPRF AABBCCBB 2 {Spawn("RedFlareSmall", pos + (0, 0, 20));}
 			Loop;
 		Pickup:
 			TNT1 A 0 A_GiveInventory("PowerStrength");
 			TNT1 A 0 HealThing(10, 0);
-			TNT1 A 20;
 			TNT1 A 0 A_Print ("You got the Demon Strength Rune. RIP AND TEAR!");
 			Stop;
 	}

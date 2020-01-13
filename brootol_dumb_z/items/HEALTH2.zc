@@ -110,7 +110,7 @@ CLASS LightArmor : BasicArmorPickup Replaces GreenArmor {
 	{
 		Spawn:
 			ARM1 A 10;
-			ARM1 B 10 bright A_SpawnItem("GreenFlareMedium",0,10);
+			ARM1 B 10 bright {Spawn("GreenFlareMedium", pos + (0, 0, 10) );}
 		loop;
 	}
 }
@@ -133,7 +133,7 @@ CLASS HeavyArmor : BasicArmorPickup Replaces BlueArmor {
 	{
 		Spawn:
 			ARM2 A 10;
-			ARM2 B 10 bright A_SpawnItem("BlueFlareMedium3",0,10);
+			ARM2 B 10 bright {Spawn("BlueFlareMedium3", pos + (0, 0, 10) );}
 		loop;
 	}
 }

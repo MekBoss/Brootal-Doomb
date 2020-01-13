@@ -56,13 +56,14 @@ CLASS doomb_lost_soul : doomb_monster_base Replaces LostSoul {
 				vel.xy += (10 * sin(angle + i), 10 * cos(angle + i) );
 			}
 			LSOL B 5 light ("LOSTSOUL_X1") A_FaceTarget;
-			Goto Missile;
+		Goto Missile;
 			
 		Spawn:
+			tnt1 a 0 nodelay {flare_general.doomb_attach_flare(self, "RedFlareMedium", (0, 0, 24) );}
+		idle:
 			LSOL A 2 BRIGHT
 			{
 				A_Look();
-				A_SpawnItem ("RedFlareMedium", 0, 24);
 				doomb_show_effect("SoulTrails", (0, 0, 24), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			}
 		Loop;
@@ -74,13 +75,11 @@ CLASS doomb_lost_soul : doomb_monster_base Replaces LostSoul {
 			TNT1 A 0 {bNOPAIN = false;}
 			LSOL A 2 BRIGHT A_Chase;
 			TNT1 A 0 A_JumpIfCloser(160, "Retreat");
-			TNT1 A 0 A_SpawnItem ("RedFlareMedium", 0, 24);
 			LSOL A 0 doomb_show_effect("SoulTrails", (0, 0, 24), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			Loop;
 		Retreat:
 			LSOL A 1 A_FaceTarget;
 			TNT1 A 0 A_Recoil(3);
-			TNT1 A 0 A_SpawnItem ("RedFlareMedium", 0, 24);
 			LSOL A 0 doomb_show_effect("SoulTrails", (0, 0, 24), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			Goto See;
 			
@@ -89,9 +88,8 @@ CLASS doomb_lost_soul : doomb_monster_base Replaces LostSoul {
 			LSOL B 3 BRIGHT
 			{
 				A_FaceTarget();
-				A_SpawnItem ("RedFlare", 0, 24);
+				{Spawn("RedFlare", pos + (0, 0, 24));}
 				bNOPAIN = true;
-				A_SpawnItem ("RedFlare", 0, 24);
 				doomb_show_effect("SoulTrails", (0, 0, 24), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			}
 			TNT1 A 0 A_JumpIfInventory("MaxLostSoulRange", 10, "See");

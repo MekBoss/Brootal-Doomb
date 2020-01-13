@@ -656,7 +656,7 @@ CLASS FlyingBurningFuel : visual_sfx {
 			F1RE A 0 A_Playsound("props/redfire");
 			"####" ABCDEFGHzABCDEFGHyABCDEFGHzABCDEFGHyABCDEFGHzABCDEFGHyABCDEFGHzABCDEFGHy 1 bright
 			{
-				A_SpawnItem("RedFlareMedium",0,32);
+				Spawn("RedFlareMedium", pos+(0, 0, 32) );
 				doomb_show_effect("ExplosionSmoke", (0, 0, 80), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 				if(frame == 25)
 				{
@@ -859,7 +859,7 @@ CLASS FlamethrowerMissile : ACTOR {
 				A_Explode(1, 70, 0);
 		}
 		EXPL A 0 A_SpawnProjectile ("FlamethrowerFireParticles", 6, 0, 0, 2, random (10, 20));
-		FIR3 JKL 1 BRIGHT A_SpawnItem("RedFlare", 0, 0);
+		FIR3 JKL 1 BRIGHT {Spawn("RedFlare", pos);}
 		TNT1 A 0 A_Explode(3, 150, 0);
 		EXPL A 0 A_SpawnProjectile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (10, 90));
 		Stop;
@@ -901,9 +901,9 @@ CLASS TinyBurningPiece: actor {
 	States
 	{
 		Spawn:
-			CFCF ABCD 1 BRIGHT;// A_SpawnItem("RedFlareSmall", 0, 5)
+			CFCF ABCD 1 BRIGHT;
 			TNT1 A 0 A_Explode(2, 60);
-			CFCF EFGHIJKL 1 BRIGHT;// A_SpawnItem("RedFlareSmall", 0, 5)
+			CFCF EFGHIJKL 1 BRIGHT;
 			TNT1 A 0 A_Jump(24, "StopBurning");
 		Loop;
 			

@@ -24,8 +24,8 @@ CLASS Tracer: doomb_boolet_base {
 			TRAC A 1 BRIGHT;
 			Loop;
 		Death:
-			
-			Stop;
+			tnt1 a 1;
+		Stop;
 	}
 }
 
@@ -314,13 +314,10 @@ CLASS MastermindTracer: Tracer {
 		Death:
 			EXPL A 0 A_Explode (2, 120, 0);
 			TNT1 A 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 AA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, random (0, 180));
-			TNT1 AAAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 180), 2, random (0, 180));
+			TNT1 AAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			XXXX A 0 Radius_Quake (4, 24, 0, 15, 0);
 			TNT1 AAAA 0 A_SpawnProjectile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360));
 			TNT1 A 0 A_SpawnItem("WhiteShockwaveSmall");
-			TNT1 AAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, random (0, 360));
-			TNT1 AAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, random (0, 40));
 			TNT1 A 0 A_PlaySound("FAREXPL");
 			TNT1 AAAAAAAA 4 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
 		Stop;
@@ -329,12 +326,10 @@ CLASS MastermindTracer: Tracer {
 		XDeath:
 			EXPL A 0 A_Explode (2, 120, 0);
 			TNT1 A 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 AA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, random (0, 180));
-			TNT1 AAAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 180), 2, random (0, 180));
+			TNT1 AAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			XXXX A 0 Radius_Quake (4, 24, 0, 15, 0);
 			TNT1 AAAA 0 A_SpawnProjectile ("SmallExplosionFlames", 0, 0, random (0, 360), 2, random (0, 360));
 			TNT1 A 0 A_SpawnItem("WhiteShockwaveSmall");
-			TNT1 AAA 0 A_SpawnProjectile ("ExplosionParticle2", 0, 0, random (0, 360), 2, random (0, 40));
 			TNT1 A 0 A_PlaySound("FAREXPL");
 			TNT1 AAAAAAAA 4;
 			Stop;
@@ -361,39 +356,6 @@ CLASS SuperMastermindTracer: MastermindTracer {
 	
 	
 	
-class WallPenetrationHitscan : FastProjectile
-{
-default
-{	
-	Projectile;
-	+RANDOMIZE;
-	+FORCEXYBILLBOARD;
-	+DONTSPLASH;
-	damage 0;
-	radius 2;
-	height 2;
-	speed 900;
-	renderstyle "Add";
-	alpha 0.9;
-	scale .3;
-}
-states
-{
-Spawn:
-	TRAC A 1 BRIGHT;
-	Loop;
-Death:
-	TNT1 A 0;
-	TNT1 A 0 A_CheckFloor("XDeath");
-	TNT1 A 0 A_CheckCeiling("XDeath");
-	TNT1 A 0 A_SpawnItemEx ("Penetrator",cos(-pitch)*24,0,0+(sin(pitch)*24),cos(-pitch)*100,0,sin(pitch)*100,0,SXF_TRANSFERPITCH);
-	tnt1 A 2;
-	Stop;
-XDeath:
-	TNT1 A 0;
-	Stop;
-}
-}
 
 
 CLASS SpawnBulletDecalBackwards: FastProjectile { 

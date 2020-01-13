@@ -68,7 +68,7 @@ protected bool chose_what_spawn()
 
 protected void spawn_reward()
 {
-	if(weapon_type != null)
+	if(weapon_type != null && !(self is "doomb_body_base") )
 	{
 		if( chose_what_spawn() )
 		{
@@ -78,17 +78,36 @@ protected void spawn_reward()
 		{
 			class<Ammo> amo = weapon(getdefaultbytype(weapon_type) ).AmmoType1;
 			if(amo == null) return;
-			inventory am = (inventory)(spawn(amo,  + (0, 0, default.height/2) ) );
+			inventory am = (inventory)(spawn(amo, pos + (0, 0, default.height/2) ) );
 			if(random(0, 1) == 1) inventory(am).amount += random(0, inventory(am).amount);
 		}
 	}
 }
 
+protected bool called_die;
+
 override void Die(Actor source, Actor inflictor, int dmgflags, Name MeansOfDeath)
 {
-	spawn_reward();
-	super.Die(source, inflictor, dmgflags);
+	if(!called_die)
+	{
+		spawn_reward();
+		called_die = true;
+	}
+	
+	super.Die(source, inflictor, dmgflags, MeansOfDeath);
 }
+/*
+override void OnDestroy()
+{
+	if(!called_die)
+	{
+		spawn_reward();
+		called_die = true;
+	}
+
+	super.ondestroy();
+}
+*/
 
 protected void doomb_if_boss_retreat(actor who = null, statelabel retereat_to = null)
 {

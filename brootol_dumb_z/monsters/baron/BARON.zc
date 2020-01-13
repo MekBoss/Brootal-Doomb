@@ -142,7 +142,6 @@ States
 		{
 			A_FaceTarget();
 			doomb_show_effect("GreenFlameTrails", ( (cos(angle - 90), sin(angle - 90) ) * 40 , 78), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-			A_SpawnProjectile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160));
 		}
 		BOSS F 3 A_FaceTarget;
 		
@@ -158,8 +157,6 @@ States
 			A_FaceTarget();
 			doomb_show_effect("GreenFlameTrails", ( (cos(angle - 90), sin(angle - 90) ) * 40 , 78), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			doomb_show_effect("GreenFlameTrails", ( (cos(angle - 90), sin(angle - 90) ) * 40 , 78), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-			A_SpawnProjectile ("BallGettingReadyGreen", 79, 40, random (0, 140), 2, random (0, 160));
-			A_SpawnProjectile ("BallGettingReadyGreen", 79, -40, random (0, 140), 2, random (0, 160));
 		}
 		BOSS QQ 4
 		{

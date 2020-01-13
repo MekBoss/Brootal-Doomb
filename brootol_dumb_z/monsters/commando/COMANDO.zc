@@ -526,7 +526,7 @@ CLASS ChaingunGuy1 : doomb_monster_base Replaces ChaingunGuy {
 			tnt1 B 0 light("BIGREDTORCH")
 			{
 				A_Explode(3,30, damagetype:"fire");
-				A_SpawnItem("RedFlare", 0, 5);
+				{Spawn("RedFlare", pos);}
 				doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 				A_SpawnProjectile ("SmallFireTrail324", 0, 0, random (0, 360), 2, -random (0, 130));
 			}
@@ -537,7 +537,7 @@ CLASS ChaingunGuy1 : doomb_monster_base Replaces ChaingunGuy {
 			tnt1 B 0 light("BIGREDTORCH")
 			{
 				A_Explode(3,30, damagetype:"fire");
-				A_SpawnItem("RedFlare", 0, 5);
+				{Spawn("RedFlare", pos);}
 				doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 				A_SpawnProjectile ("SmallFireTrail324", 0, 0, random (0, 360), 2, -random (0, 130));
 			}
@@ -547,7 +547,7 @@ CLASS ChaingunGuy1 : doomb_monster_base Replaces ChaingunGuy {
 			tnt1 B 0 light("BIGREDTORCH")
 			{
 				A_Explode(3,30, damagetype:"fire");
-				A_SpawnItem("RedFlare", 0, 5);
+				{Spawn("RedFlare", pos);}
 				doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 				A_SpawnProjectile ("SmallFireTrail324", 0, 0, random (0, 360), 2, -random (0, 130));
 			}
@@ -557,7 +557,7 @@ CLASS ChaingunGuy1 : doomb_monster_base Replaces ChaingunGuy {
 			tnt1 B 0 light("BIGREDTORCH")
 			{
 				A_Explode(3,30, damagetype:"fire");
-				A_SpawnItem("RedFlare", 0, 5);
+				{Spawn("RedFlare", pos);}
 				doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 				A_SpawnProjectile ("SmallFireTrail324", 0, 0, random (0, 360), 2, -random (0, 130));
 			}
@@ -568,7 +568,7 @@ CLASS ChaingunGuy1 : doomb_monster_base Replaces ChaingunGuy {
 			tnt1 B 0 light("BIGREDTORCH")
 			{
 				A_Explode(3,30, damagetype:"fire");
-				A_SpawnItem("RedFlare", 0, 5);
+				{Spawn("RedFlare", pos);}
 				doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 				A_SpawnProjectile ("SmallFireTrail324", 0, 0, random (0, 360), 2, -random (0, 130));
 			}
@@ -583,7 +583,7 @@ CLASS ChaingunGuy1 : doomb_monster_base Replaces ChaingunGuy {
 		BRZ3 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 3 light("BIGREDTORCH")
 		{
 			A_Explode(3,30, damagetype:"fire");
-			A_SpawnItem("RedFlare", 0, 5);
+			{Spawn("RedFlare", pos);}
 			doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			A_SpawnProjectile ("SmallFireTrail324", 0, 0, random (0, 360), 2, -random (0, 130));
 		}

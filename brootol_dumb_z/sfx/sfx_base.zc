@@ -89,6 +89,13 @@ private void doomb_set_appearance(vector2 sc = (1, 1), double a = 1, double spee
     vel *= speed_scale;
 }
 
+override void tick()
+{
+	if(pos != pos)
+		return;//actor unused, so dont tick and save some time for other actors
+
+	super.tick();
+}
 
 default
 {
@@ -125,12 +132,13 @@ states
 			bnogravity = true;
 			self.scale = (1, 1);
 			self.vel = (0, 0, 0);
-			setorigin( (double.infinity, double.infinity, double.infinity), false );
 			a_setrenderstyle(alpha, STYLE_Add);
 			alpha = 1;
 
 			for(uint i = 0; i < 10; i++)
 				a_stopsound(i);
+
+			setorigin( (double.infinity, double.infinity, double.infinity), false );
 		}
 	goto off;
 }

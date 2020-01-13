@@ -61,7 +61,7 @@ states
         {
             doomb_set_appearance( speed_scale:frandom(3, 7) );
             A_Explode(3,30, damagetype:"fire");
-            A_SpawnItem("RedFlare", 0, 5);
+            {Spawn("RedFlare", pos);}
             doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
             A_SpawnProjectile ("SmallFireTrail324", 0, 0, random (0, 360), 2, -random (0, 130));
             doomb_show_effect("FlameTrails", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
@@ -98,7 +98,7 @@ states
             bmissile = true;
             bnoclip = false;
         }
-        EXPL AA 3 BRIGHT A_SpawnItem("RedFlare",0,0);
+        EXPL AA 3 BRIGHT {Spawn("RedFlare", pos);}
         EXPL BCDFGHII 3 BRIGHT doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
     goto reset_condition;
     

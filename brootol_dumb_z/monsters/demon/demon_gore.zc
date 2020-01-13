@@ -1022,7 +1022,7 @@ CLASS BurningDemon : doomb_body_base {
 			tnt1 B 0 light("BIGREDTORCH")
 			{
 				A_Explode(3,30, damagetype:"fire");
-				A_SpawnItem("RedFlare", 0, 5);
+				{Spawn("RedFlare", pos);}
 				doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 				A_SpawnProjectile ("SmallFireTrail324", 0, 0, random (0, 360), 2, -random (0, 130));
 			}
@@ -1033,7 +1033,7 @@ CLASS BurningDemon : doomb_body_base {
 			tnt1 B 0 light("BIGREDTORCH")
 			{
 				A_Explode(3,30, damagetype:"fire");
-				A_SpawnItem("RedFlare", 0, 5);
+				{Spawn("RedFlare", pos);}
 				doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 				A_SpawnProjectile ("SmallFireTrail324", 0, 0, random (0, 360), 2, -random (0, 130));
 			}
@@ -1044,7 +1044,7 @@ CLASS BurningDemon : doomb_body_base {
 			tnt1 B 0 light("BIGREDTORCH")
 			{
 				A_Explode(3,30, damagetype:"fire");
-				A_SpawnItem("RedFlare", 0, 5);
+				{Spawn("RedFlare", pos);}
 				doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 				A_SpawnProjectile ("SmallFireTrail324", 0, 0, random (0, 360), 2, -random (0, 130));
 			}
@@ -1055,7 +1055,7 @@ CLASS BurningDemon : doomb_body_base {
 			tnt1 B 0 light("BIGREDTORCH")
 			{
 				A_Explode(3,30, damagetype:"fire");
-				A_SpawnItem("RedFlare", 0, 5);
+				{Spawn("RedFlare", pos);}
 				doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 				A_SpawnProjectile ("SmallFireTrail324", 0, 0, random (0, 360), 2, -random (0, 130));
 			}
