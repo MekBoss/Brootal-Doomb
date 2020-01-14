@@ -5,31 +5,37 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 		doomb_monster_base.head_starting_position 100;//so that if someone forgot to define this number monster dont get headshot from every attack
 		doomb_monster_base.legs_height_max -1;//same for legs
 		
+		painchance "kick", 255;
+		PainChance "Taunt", 255;
 		damagefactor "Explosive_Impact", 1.1;
-		damagefactor "HKFT", 0.05;
 		damagefactor "HKFT", 0.05;
 		damagefactor "Decaptate", 5.0;
 		damagefactor "Avoid", 0.0;
-
 		damagefactor "Blood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "Crush", 20.0;
+
+		BloodType "CyberDemon_Blood", "SawBlood", "SawBlood";
+		DropItem "DemonStrengthRune", 25;
 		Obituary "%o was exploded to pieces by a Cyberdemon.";
 		SeeSound "cyber/sight";
 		PainSound "cyber/pain";
 		DeathSound "cyber/death";
 		ActiveSound "cyber/active";
 
+		Speed 16;
+		Scale 1.2;
+		Radius 45;
+		Height 110;
+		FastSpeed 22;
+		mass 5000;
 		Health 5000;
 		MaxStepHeight 24;
 		MaxDropOffHeight 32;
 		doomb_monster_base.head_starting_position 90;
 		doomb_monster_base.headshot_multiplier 1.5;
 
-		Scale 1.2;
-		Radius 45;
-		Height 110;
 		+NOICEDEATH;
 		+MISSILEMORE;
 		+MISSILEEVENMORE;
@@ -37,13 +43,6 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 		+NORADIUSDMG;
 		+QUICKTORETALIATE;
 		+boss
-		Speed 16;
-		FastSpeed 22;
-		painchance "kick", 255;
-		mass 5000;
-		PainChance "Taunt", 255;
-		DropItem "DemonStrengthRune", 25;
-		BloodType "CyberDemon_Blood", "SawBlood", "SawBlood";
 	}
 	States
 	{

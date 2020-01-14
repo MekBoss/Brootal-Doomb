@@ -341,8 +341,7 @@ CLASS CyberStomp : visual_sfx {
 			TNT1 A 0 A_PlaySound("CLAP");
 			EXPL AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 			EXPL AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-			
-			EXPL A 0 A_Explode(40, 40);
+			EXPL A 0 A_Explode(90, 80, damagetype:"stomp");
 			MNSM ABCDEFGHIJKLMNOPQ 1 bright;
 			Stop;
 	}
