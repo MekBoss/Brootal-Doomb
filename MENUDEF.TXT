@@ -82,6 +82,8 @@ OptionMenu "doomb_options"
 	Option "Show flares around light sources ", "doomb_show_flares", "YesNo"
 	StaticText "Its eat performance like crazy, disable in the first place if you have FPS problems"
 
+	Option "Show effects", "doomb_sfx_effects", "YesNo"
+	StaticText "Disable ALL effects like smoke/sparks/fire/etc."
 
 }
 

@@ -1,3 +1,4 @@
+//all base classes for blood related actors
 class doomb_body_base : doomb_monster_base abstract
 {
 default
@@ -69,6 +70,7 @@ Default
 	+MOVEWITHSECTOR;
 	+CORPSE;
 	-DONTSPLASH;
+	Decal "BrutalBloodSplat";
 }
 
 protected void doomb_spawn_blood()

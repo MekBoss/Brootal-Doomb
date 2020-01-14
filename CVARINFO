@@ -1,7 +1,7 @@
 server int bd_bloodamount	= 2;
 
 server noarchive bool doomb_debug = false;
-server noarchive bool doomb_sfx_effects = true;
+server bool doomb_sfx_effects = true;
 
 server bool doomb_show_flares = true;
 

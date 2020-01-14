@@ -100,7 +100,7 @@ CLASS FallingHeight : Inventory {
 #include "brootol_dumb_z/gore/GORE!!!.zc"
 #include "brootol_dumb_z/gore/GORE2.zc"
 #include "brootol_dumb_z/gore/GORE3.zc"
-#include "brootol_dumb_z/gore/BLOOD.zc"
+#include "brootol_dumb_z/gore/BLOOD/BLOOD.zc"
 #include "brootol_dumb_z/gore/BLOODSPLASH.zc"
 #include "brootol_dumb_z/gore/blueblood.zc"
 #include "brootol_dumb_z/gore/greenblood.zc"
