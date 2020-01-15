@@ -423,15 +423,14 @@ States
 		POS4 W 5 A_SpawnProjectile ("Brutal_LiquidBlood", 15, 0, random (0, 360), 2, random (0, 40));
 		POS4 X 5 A_SpawnProjectile ("Brutal_LiquidBlood", 15, 0, random (0, 360), 2, random (0, 40));
 		POS4 Y 5 A_SpawnProjectile ("Brutal_LiquidBlood", 15, 0, random (0, 360), 2, random (0, 40));
-		TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
-		POSS L 0;
+		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem("DeadZombieman1");
 	Stop;
 	
 	TakeASit:
 		TNT1 AAAA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
 		POS4 U 5;
-		TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
+		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItemEx("DeadZombieman_Slumped", 10);
 		Stop;
 		
@@ -1034,7 +1033,7 @@ States
 	Land8473:
 		PXSX N 0;
 		TNT1 A 0 A_Stop;
-		TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
+		TNT1 A 0 doomb_spawn_bloodpool();
 		PXSX O -1 doomb_final_absolution(12, 12);
 		Stop;
 		
@@ -1065,7 +1064,7 @@ States
 	Land8472:
 		PXS2 N 0;
 		TNT1 A 0 A_Stop;
-		TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
+		TNT1 A 0 doomb_spawn_bloodpool();
 		PXS2 O -1 doomb_final_absolution(12, 12);
 		Stop;
 		

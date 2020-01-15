@@ -1332,7 +1332,7 @@ Stop;
 
 
 
-CLASS BrutalizedImp1 : ACTOR { 
+CLASS BrutalizedImp1 : doomb_body_base { 
 Default {
 Radius 16;
 Height 50;
@@ -1429,34 +1429,50 @@ Death.punch:
 }
 
 }
-CLASS BrutalizedImp2: BrutalizedSergeant1 { 
+
+CLASS BrutalizedImp2: doomb_body_base
+{
+Default
+{
+	Radius 16;
+	Height 50;
+	Health 20;
+	PainSound "grunt/pain";
+	PainChance 255;
+	Mass 999999;
+	-SOLID;
+	+SHOOTABLE;
+	+FLOORCLIP;
+	+DONTSPLASH;
+	+GHOST;
+	+THRUGHOST;
+	Scale 1.0;
+
+}
+
 States
 {
-Spawn:
-Pain:
-	IZD1 B 30;
-	Goto DieNow;
-	
-DieNow:
-	TNT1 A 0;
-	TNT1 A 0 A_SpawnItem ("BrutalizedImpStop2");
+	Spawn:
+	Pain:
+		IZD1 B 30;
+		TNT1 A 0 A_SpawnItem ("BrutalizedImpStop2");
+	Stop;
+
+	Death:
+		TNT1 A 0;
+		TNT1 A 0 A_Recoil(2);
+		TNT1 A 0 A_SpawnProjectile ("XDeathImpArm", 35, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AA 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0;
+		IZD1 C 16;
+		TNT1 A 0 A_SpawnItem ("BrutalizedImp3");
 	Stop;
 	
-Death:
-	TNT1 A 0;
-	TNT1 A 0 A_Recoil(2);
-	TNT1 A 0 A_SpawnProjectile ("XDeathImpArm", 35, 0, random (0, 360), 2, random (0, 160));
-	TNT1 AA 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
-	TNT1 A 0;
-	IZD1 C 16;
-	TNT1 A 0 A_SpawnItem ("BrutalizedImp3");
-	Stop;
-	
-Death.Fatality:
-Death.punch:
-	TNT1 A 0 A_NoBlocking();
-	TNT1 A 0 A_GiveToTarget("HasImpShield", 1);
-	TNT1 A 0 A_GiveToTarget("GotMeatShield", 1);
+	Death.Fatality:
+	Death.punch:
+		TNT1 A 0 A_NoBlocking();
+		TNT1 A 0 A_GiveToTarget("HasImpShield", 1);
+		TNT1 A 0 A_GiveToTarget("GotMeatShield", 1);
 	Stop;
 	
 	
@@ -1465,14 +1481,11 @@ Death.punch:
 
 }
 CLASS BrutalizedImpStop2: BrutalizedImpStop { 
-Default {
-
-}
 States
 {
 Spawn:
 	IZD4 AB 6;
-	TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
+	TNT1 A 0 doomb_spawn_bloodpool();
 	TNT1 A 0 A_SpawnItem("DeadImpIZD3D");
 	Stop;
 	
@@ -1515,7 +1528,7 @@ Death:
 	TNT1 AAAAAA 0 A_SpawnProjectile ("Brutal_LiquidBlood", 44, 0, random (0, 360), 2, random (0, 50));
 	IZD1 EFGH 6;
 	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
-	TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
+	TNT1 A 0 doomb_spawn_bloodpool();
 	TNT1 A 0 A_SpawnItem("DeadImpIZD1H");
 	Stop;
 	
@@ -1531,7 +1544,7 @@ States
 {
 Spawn:
 	IZD3 AB 6;
-	TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
+	TNT1 A 0 doomb_spawn_bloodpool();
 	TNT1 A 0 A_SpawnItem("DeadImpIZD1H");
 	Stop;
 	
@@ -1985,7 +1998,7 @@ Death:
 }
 }		
 
-CLASS ImpXDeath : ACTOR { 
+CLASS ImpXDeath : doomb_body_base { 
 Default {
 	
 	Radius 1;
@@ -2022,7 +2035,7 @@ States
 		TNT1 AAAAAAA 0 A_SpawnProjectile ("Instestin", 24, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeathImpLeg", 32, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeathImpHeadOnXDeath", 32, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnItem ("doomb_red_blood_pool");
+		TNT1 A 0 doomb_spawn_bloodpool();
 		
 		TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
 		Stop;

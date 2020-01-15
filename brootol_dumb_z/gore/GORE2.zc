@@ -1,7 +1,4 @@
-
-
-
-CLASS ChainXDeath : ACTOR { 
+CLASS ChainXDeath : doomb_body_base { 
 	Default {
 		
 		Radius 1;
@@ -41,7 +38,7 @@ CLASS ChainXDeath : ACTOR {
 	}
 }
 
-CLASS MarineXDeath : ACTOR { 
+CLASS MarineXDeath : doomb_body_base { 
 	Default {
 		
 		Radius 1;
@@ -76,7 +73,7 @@ CLASS MarineXDeath : ACTOR {
 			TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece2", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeath4", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnItem ("doomb_red_blood_pool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			
 			TNT1 A 1;
 			TNT1 A 2;
@@ -85,7 +82,7 @@ CLASS MarineXDeath : ACTOR {
 	}
 }
 
-CLASS SpiderDeath : ACTOR { 
+CLASS SpiderDeath : doomb_body_base { 
 	Default {
 		
 		Radius 1;
@@ -117,7 +114,7 @@ CLASS SpiderDeath : ACTOR {
 			TNT1 A 0 A_SpawnProjectile ("XDeathBrain1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathBrain2", 32, 0, random (0, 360), 2, random (0, 160));
 			
-			TNT1 A 0 A_SpawnItem ("doomb_red_blood_pool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			
 			TNT1 A 1;
 			TNT1 A 2;
@@ -127,7 +124,7 @@ CLASS SpiderDeath : ACTOR {
 }
 
 
-CLASS HalfManDeath : ACTOR { 
+CLASS HalfManDeath : doomb_body_base { 
 	Default {
 		
 		Radius 1;
@@ -166,7 +163,7 @@ CLASS HalfManDeath : ACTOR {
 	}
 }
 
-CLASS MeatDeath : ACTOR { 
+CLASS MeatDeath : doomb_body_base { 
 	Default {
 		
 		Radius 1;
@@ -204,9 +201,6 @@ CLASS MeatDeath : ACTOR {
 
 
 CLASS SmalllMeatDeath: MeatDeath { 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:
@@ -223,7 +217,7 @@ CLASS SmalllMeatDeath: MeatDeath {
 	}
 }
 
-CLASS MuchMeatDeath : ACTOR { 
+CLASS MuchMeatDeath : doomb_body_base { 
 	Default {
 		
 		Radius 1;
@@ -261,7 +255,7 @@ CLASS MuchMeatDeath : ACTOR {
 
 
 
-CLASS RipGuts : ACTOR { 
+CLASS RipGuts : doomb_body_base { 
 	Default {
 		
 		Radius 1;
@@ -297,7 +291,7 @@ CLASS RipGuts : ACTOR {
 
 
 
-CLASS RipImp : ACTOR { 
+CLASS RipImp : doomb_body_base { 
 	Default {
 		
 		
@@ -331,7 +325,7 @@ CLASS RipImp : ACTOR {
 	}
 }
 
-CLASS CacoXDeath : ACTOR { 
+CLASS CacoXDeath : doomb_body_base { 
 	Default {
 		
 		Radius 1;
@@ -370,7 +364,7 @@ CLASS CacoXDeath : ACTOR {
 }
 
 
-CLASS RipCaco : ACTOR { 
+CLASS RipCaco : doomb_body_base { 
 	Default {
 		
 		Radius 1;
@@ -409,7 +403,7 @@ CLASS RipCaco : ACTOR {
 
 
 
-CLASS NaziHeadExplode: actor { 
+CLASS NaziHeadExplode: doomb_body_base { 
 	Default {
 		
 		Radius 1;
@@ -456,7 +450,7 @@ CLASS NaziHeadExplode: actor {
 
 
 
-CLASS ImpHeadExplode: actor { 
+CLASS ImpHeadExplode: doomb_body_base { 
 	Default {
 		
 		Radius 1;
@@ -504,7 +498,7 @@ CLASS ImpHeadExplode: actor {
 
 
 
-CLASS HellKnightHeadExplode: actor { 
+CLASS HellKnightHeadExplode: doomb_body_base { 
 	Default {
 		
 		Radius 1;
@@ -548,7 +542,7 @@ CLASS HellKnightHeadExplode: actor {
 
 
 
-CLASS HellKnightHeadExplodeHalf: actor { 
+CLASS HellKnightHeadExplodeHalf: doomb_body_base { 
 	Default {
 		
 		Radius 1;
@@ -590,7 +584,7 @@ CLASS HellKnightHeadExplodeHalf: actor {
 
 
 
-CLASS BaronOfHellHeadExplode: actor { 
+CLASS BaronOfHellHeadExplode: doomb_body_base { 
 	Default {
 		
 		Radius 1;
@@ -633,7 +627,7 @@ CLASS BaronOfHellHeadExplode: actor {
 
 
 
-CLASS doomb_fatsoHeadExplode: actor { 
+CLASS doomb_fatsoHeadExplode: doomb_body_base { 
 	Default {
 		
 		Radius 1;
@@ -676,6 +670,37 @@ CLASS doomb_fatsoHeadExplode: actor {
 
 
 
+
+
+CLASS doomb_fatsoEyeballs : doomb_body_base { //Eyeballs
+	Default {
+		Radius 2;
+		Height 2;
+		Speed 6;
+		Mass 1;
+		Decal "BrutalBloodSplat";
+		+CLIENTSIDEONLY;
+		BounceFactor 0.5;
+		+DOOMBOUNCE;
+		+MISSILE;
+		+NOBLOCKMAP;
+		+NOTELEPORT;
+		+DONTSPLASH;
+		+MOVEWITHSECTOR;
+		+FLOORCLIP;
+		Scale 1.2;
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+			MANE Y 4 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
+			Loop;
+		Death:
+			MANE Y 800;
+		stop;
+	}
+}
 
 
 CLASS MeatDeathSmall: ImpXDeath { 

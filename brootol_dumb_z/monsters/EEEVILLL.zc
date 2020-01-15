@@ -354,7 +354,7 @@ CLASS EvilMarine : doomb_monster_base Replaces WolfensteinSS {
 		TNT1 AAAAAA 0 bright A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180));
 		TNT1 AA 0 bright A_SpawnProjectile ("XDeath2", 55, 0, random (0, 360), 2, random (30, 180));
 		TNT1 AA 0 bright A_SpawnProjectile ("XDeath3", 55, 0, random (0, 360), 2, random (30, 180));
-		TNT1 A 0 A_SpawnItem ("doomb_red_blood_pool");
+		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem ("CrushedRemains");
 		TNT1 A 1;
 		TNT1 A 1 A_XScream;

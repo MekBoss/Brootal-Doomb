@@ -1,7 +1,7 @@
 
 
 
-CLASS SuperGoreSpawner : ACTOR { 
+CLASS SuperGoreSpawner : doomb_blood { 
 	Default {
 		
 		Projectile;
@@ -44,7 +44,7 @@ CLASS UltraGoreSpawner: SuperGoreSpawner {
 	}
 }
 
-CLASS SuperGore : ACTOR { 
+CLASS SuperGore : doomb_blood { 
 	Default {
 		
 		Decal "BloodSplat";
@@ -132,7 +132,7 @@ states
 
 
 
-CLASS SmallSuperGore : ACTOR { 
+CLASS SmallSuperGore : doomb_blood { 
 	Default {
 
 Decal "BloodSplat";

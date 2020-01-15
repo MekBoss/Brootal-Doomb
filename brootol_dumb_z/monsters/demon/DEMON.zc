@@ -514,7 +514,7 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 			SRRD DDDDDDDDDD 3 A_CheckFloor("LandBlownAwayLeft");
 		LandBlownAwayLeft:
 			TNT1 A 0 A_Stop;
-			TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem("DeadDemonSRRDE");
 			Stop;
 			
@@ -536,7 +536,7 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 			SRRD GGGGGGGGGG 3 A_CheckFloor("LandBlownAwayRight");
 		LandBlownAwayRight:
 			TNT1 A 0 A_Stop;
-			TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem("DeadDemonSRRDJ");
 			Stop;
 			

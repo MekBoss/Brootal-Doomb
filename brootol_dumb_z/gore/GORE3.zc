@@ -28,7 +28,6 @@ CLASS XDeathBurnedLeg : doomb_body_base
 
 CLASS XDeathBurnedSkull : doomb_body_base { 
 	Default {
-		
 		Radius 8;
 		Height 8;
 		Speed 5;

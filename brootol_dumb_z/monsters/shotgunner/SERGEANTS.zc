@@ -404,13 +404,13 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 			SPO4 W 5 A_SpawnProjectile ("Brutal_LiquidBlood", 15, 0, random (0, 360), 2, random (0, 40));
 			SPO4 X 5 A_SpawnProjectile ("Brutal_LiquidBlood", 15, 0, random (0, 360), 2, random (0, 40));
 			SPO4 Y 5 A_SpawnProjectile ("Brutal_LiquidBlood", 15, 0, random (0, 360), 2, random (0, 40));
-			TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
+		TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem("Deaddoomb_shotgun_guy");
 			Stop;
 		TakeASit:
 			TNT1 AAAA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
 			SPO4 U 5;
-			TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
+		TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItemEx("DeadShotgunguy_Slumped", 10);
 			Stop;
 			
@@ -848,7 +848,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 	Land8473:
 		SXSX N 0;
 		TNT1 A 0 A_Stop;
-		TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
+		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem("DeadSergeantSXSXO");
 		Stop;
 		
@@ -879,7 +879,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 	Land8472:
 		SXS2 N 0;
 		TNT1 A 0 A_Stop;
-		TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
+		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem("DeadSergeantSXS2O");
 		Stop;
 		

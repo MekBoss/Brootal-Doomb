@@ -1093,16 +1093,15 @@ CLASS BurningDemon : doomb_body_base {
 }
 
 
-CLASS BullXDeath : ACTOR { 
+CLASS BullXDeath : doomb_body_base { 
 	Default {
-		
 		Radius 1;
 		Height 1;
 		Scale 0.8;
 		Speed 0;
 		Mass 1;
-		
 		BounceFactor 0.5;
+
 		+DOOMBOUNCE;
 		+MISSILE;
 		+NOBLOCKMAP;
@@ -1119,7 +1118,7 @@ CLASS BullXDeath : ACTOR {
 			TNT1 AAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
 			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130));
 			TNT1 AA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnItem ("doomb_red_blood_pool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 AAAA 0 A_SpawnProjectile ("XDeath2", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAA 0 A_SpawnProjectile ("XDeath3", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece2", 15, 0, random (0, 360), 2, random (0, 160));

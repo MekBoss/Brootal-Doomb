@@ -511,7 +511,7 @@ CLASS DyingShotgunguyHitInEye: doomb_body_base {
 			SPO4 W 5 A_SpawnProjectile ("Brutal_LiquidBlood", 15, 0, random (0, 360), 2, random (0, 40));
 			SPO4 X 5 A_SpawnProjectile ("Brutal_LiquidBlood", 15, 0, random (0, 360), 2, random (0, 40));
 			SPO4 Y 5 A_SpawnProjectile ("Brutal_LiquidBlood", 15, 0, random (0, 360), 2, random (0, 40));
-			TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem("Deaddoomb_shotgun_guy");
 		Stop;
 		
@@ -655,7 +655,7 @@ CLASS XDeathSergeantHeadOnXDeath: XDeathSergeantHead {
 }
 
 
-CLASS SargeXDeath : ACTOR { 
+CLASS SargeXDeath : doomb_body_base { 
 	Default {
 		
 		Radius 1;
@@ -682,10 +682,6 @@ CLASS SargeXDeath : ACTOR {
 			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130));
 			TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160));
-			//TNT1 A 0 A_SpawnProjectile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160));
-			//TNT1 A 0 A_SpawnProjectile ("XDeath3", 32, 0, random (0, 360), 2, random (0, 160));
-			//TNT1 AA 0 A_SpawnProjectile ("XDeath4", 32, 0, random (0, 360), 2, random (0, 160));
-			//TNT1 A 0 A_SpawnProjectile ("XDeath5", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAA 0 A_SpawnProjectile ("XDeath2", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAA 0 A_SpawnProjectile ("XDeath3", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece2", 15, 0, random (0, 360), 2, random (0, 160));
@@ -697,7 +693,7 @@ CLASS SargeXDeath : ACTOR {
 			TNT1 A 0 A_SpawnProjectile ("XDeathSargeLeg2", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("GibSargeBoot", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathSergeantHeadOnXDeath", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnItem ("doomb_red_blood_pool");
+			tnt1 a 0 doomb_spawn_bloodpool();
 			
 			TNT1 A 1;
 			TNT1 A 2;
@@ -1531,8 +1527,6 @@ CLASS DyingSergeantLegBlewedOff : DyingSergeantNoLeg {
 
 CLASS BrutalizedSergeant1 : doomb_body_base { 
 	Default {
-	
-	
 	Radius 16;
 	Height 50;
 	Health 20;
@@ -1655,7 +1649,7 @@ CLASS BrutalizedSergeant3: BrutalizedSergeant1 {
 		SZD1 C 25;
     DieNow:
 		SZD3 ABC 6 A_SpawnItem("Brutal_FlyingBlood",0,5,0,1);
-		TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
+		TNT1 A 0 doomb_spawn_bloodpool();
 		SZD3 C -1 doomb_final_absolution(12, 12);
 	Stop;
 	
@@ -1670,7 +1664,7 @@ CLASS BrutalizedSergeant3: BrutalizedSergeant1 {
 		TNT1 AAAAAA 0 A_SpawnProjectile ("Brutal_LiquidBlood", 44, 0, random (0, 360), 2, random (0, 50));
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
 		SZD1 EFGH 6;
-		TNT1 A 0 A_SpawnItem("doomb_red_blood_pool");
+		TNT1 A 0 doomb_spawn_bloodpool();
 		SZD1 H -1 doomb_final_absolution(12, 12);
 	Stop;
 }
@@ -1932,7 +1926,8 @@ CLASS SergeantGotHisLegBlowed : doomb_body_base {
 
 
 
-CLASS FlyingImpaledSergeant : ACTOR { 
+CLASS FlyingImpaledSergeant : doomb_body_base
+{ 
 	Default {
 		
 		Radius 8;
@@ -1965,7 +1960,7 @@ CLASS FlyingImpaledSergeant : ACTOR {
 			ID11 H 3 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
 			Loop;
 		Death:
-			TNT1 A 0 A_SpawnItem("doomb_red_blood_pool",0,0,0,1);
+		TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem("DeadShotgunguy");
 			Stop;
 			

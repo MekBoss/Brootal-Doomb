@@ -29,7 +29,7 @@ states
 		tnt1 a 0 nodelay {angle = random(0,360);}
 		tnt1 a 0 a_jump(126, "no_scale");
 	scale:
-        TNT5 AAAAAAAAAAAAAAAAAAAAAAAAA 5 {scale *= 1.035;}
+        TNT5 AAAAAAAAAAAAAAAAAAAAAAAAA 5 {scale *= 1.03;}
     goto live;
 
 	no_scale:
@@ -41,4 +41,4 @@ states
 
 }
 
-CLASS SmallBloodPool2 : doomb_blood Replaces SmallBloodPool {}
+CLASS SmallBloodPool2 : doomb_red_blood_pool Replaces SmallBloodPool {}

@@ -420,6 +420,25 @@ protected void doomb_spawn_bloodpool()
 {
 	if(GetFloorTerrain().isLiquid == false)
 	{
+		bool inside_another_pool = false;
+
+		for (Actor check = cursector.thinglist; check != null; check = check.snext)
+		{
+			if (check is "doomb_blood_pool")
+			{
+				if(check.pos.x - check.radius < self.pos.x && check.pos.x + check.radius > self.pos.x)
+				{
+					if(check.pos.y - check.radius < self.pos.y && check.pos.y + check.radius > self.pos.y)
+					{
+						inside_another_pool = true;
+					}
+				}
+			}
+		}
+
+		if(inside_another_pool)
+			return;
+	
 		actor a = spawn("doomb_red_blood_pool", pos:self.pos);
 
 		if(a)
