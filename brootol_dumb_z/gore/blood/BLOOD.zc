@@ -1,7 +1,7 @@
 //All the liquid gore stuff goes here.
 
 //SLOWDOWN
-//doomb_for_khorn("TinyBlood", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+//doomb_for_khorne("TinyBlood", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 CLASS TinyBlood : doomb_blood { 
 	Default {
 		scale 0.2;
@@ -216,8 +216,7 @@ CLASS CeilBloodLauncher: Brutal_FLyingBlood  {
 			bpdl AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1
 			{
 				a_settics(random(5, 24) );
-				doomb_for_khorn("TinyBlood", (0, 0, -10 ) );
-
+				doomb_for_khorne("TinyBlood", (0, 0, -10 ) );
 			}
 			BPDL AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 2;
 			BPDL AAAAAAAAA 1 A_FadeOut(0.1);

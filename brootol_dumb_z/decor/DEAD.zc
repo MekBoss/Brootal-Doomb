@@ -506,7 +506,7 @@ CLASS DeadDeadStick: doomb_body_base Replaces DeadStick {
 		Spawn:
 			TNT1 A 0 doomb_spawn_bloodpool();
 		Stand:
-			POL1 A 60 doomb_for_khorn("TinyBlood", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			POL1 A 60 doomb_for_khorne("TinyBlood", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		Loop;
 
 		Death:
@@ -606,7 +606,7 @@ CLASS DeadBloodyTwitch : doomb_body_base Replaces BloodyTwitch {
 		Stand:
 			GOR1 A 10;
 			TNT1 A 0 A_JumpIfInventory("TVRRainVerification", 10, "Replacerain");
-			TNT1 A 0 doomb_for_khorn("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		Stand2:
 			GOR1 B 15;
 			GOR1 C 8;
@@ -643,7 +643,7 @@ CLASS DeadBloodyTwitchB: DeadBloodyTwitch {
 	States
 	{
 		Spawn:
-			GOR1 D 15 doomb_for_khorn("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			GOR1 D 15 doomb_for_khorne("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			GOR1 D 100;
 		loop;
 
@@ -672,9 +672,8 @@ CLASS DeadBloodyTwitchC: DeadBloodyTwitchB {
 
 // Meat 2 ------------------------------------------------------------------
 
-CLASS HangingBody: Meat2 Replaces Meat2 { 
+CLASS HangingBody: doomb_body_base Replaces Meat2 { 
 	Default {
-		
 		Radius 16;
 		Height 84;
 		Health 100;
@@ -702,9 +701,8 @@ CLASS HangingBody: Meat2 Replaces Meat2 {
 	States
 	{
 		Spawn:
-			TNT1 A 0 doomb_for_khorn("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			GOR2 A 50;
-			GOR2 A 100;
+			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			GOR2 A 11100;
 		loop;
 
 		Death:
@@ -725,7 +723,7 @@ CLASS HangingPairOfLegs: DeadBloodyTwitchB Replaces Meat4 {
 	States
 	{
 		Spawn:
-			TNT1 A 0 doomb_for_khorn("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			GOR2 B 1283;
 		loop;
 		
@@ -758,7 +756,7 @@ CLASS Meat2C: DeadBloodyTwitchB {
 
 // Meat 3 ------------------------------------------------------------------
 
-CLASS HangingDeadGuyNoLeg: Meat3 Replaces Meat3 { 
+CLASS HangingDeadGuyNoLeg: doomb_body_base Replaces Meat3 { 
 	Default {
 		
 		Radius 16;
@@ -788,7 +786,7 @@ CLASS HangingDeadGuyNoLeg: Meat3 Replaces Meat3 {
 	{
 		
 		Spawn:
-			TNT1 A 0 doomb_for_khorn("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			GOR3 A 1100;
 		loop;
 			
@@ -811,7 +809,7 @@ CLASS HangingLeg: DeadBloodyTwitchB Replaces Meat5 {
 	States
 	{
 		Spawn:
-			TNT1 A 0 doomb_for_khorn("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			GOR3 B 1100;
 		loop;
 			
@@ -868,9 +866,8 @@ CLASS DeadNonsolidTwitch : DeadBloodyTwitch Replaces NonsolidTwitch {
 
 // Hanging with no guts ----------------------------------------------------
 
-CLASS DeadHangNoGuts: HangNoGuts Replaces HangNoGuts { 
+CLASS DeadHangNoGuts: doomb_body_base Replaces HangNoGuts { 
 	Default {
-		
 		Radius 20;
 		Height 90;
 		Health 100;
@@ -893,7 +890,7 @@ CLASS DeadHangNoGuts: HangNoGuts Replaces HangNoGuts {
 	States
 	{
 		Spawn:
-			TNT1 A 0 doomb_for_khorn("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			HDB1 A 1190;
 		loop;
 		
@@ -908,7 +905,7 @@ CLASS DeadHangNoGuts: HangNoGuts Replaces HangNoGuts {
 
 // Hanging from bottom with no brain ---------------------------------------
 
-CLASS DeadHangBNoBrain: HangBNoBrain Replaces HangBNoBrain { 
+CLASS DeadHangBNoBrain: doomb_body_base Replaces HangBNoBrain { 
 	Default {
 		
 		Radius 16;
@@ -934,7 +931,7 @@ CLASS DeadHangBNoBrain: HangBNoBrain Replaces HangBNoBrain {
 	{
 		
 		Spawn:
-			TNT1 A 0 doomb_for_khorn("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			HDB2 A 1190;
 		loop;
 			
@@ -949,7 +946,7 @@ CLASS DeadHangBNoBrain: HangBNoBrain Replaces HangBNoBrain {
 
 // Hanging from top, looking down ------------------------------------------
 
-CLASS DeadHangTLookingDown: HangTLookingDown Replaces HangTLookingDown { 
+CLASS DeadHangTLookingDown: doomb_body_base Replaces HangTLookingDown { 
 	Default {
 		
 		Radius 16;
@@ -974,7 +971,7 @@ CLASS DeadHangTLookingDown: HangTLookingDown Replaces HangTLookingDown {
 	States
 	{
 		Spawn:
-			TNT1 A 0 doomb_for_khorn("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			HDB3 A 1190;
 		loop;
 		
@@ -989,7 +986,7 @@ CLASS DeadHangTLookingDown: HangTLookingDown Replaces HangTLookingDown {
 
 // Hanging from top, looking up --------------------------------------------
 
-CLASS DeadHangTLookingUp: HangTLookingUp Replaces HangTLookingUp { 
+CLASS DeadHangTLookingUp: doomb_body_base Replaces HangTLookingUp { 
 	Default {
 		
 		Radius 16;
@@ -1014,7 +1011,7 @@ CLASS DeadHangTLookingUp: HangTLookingUp Replaces HangTLookingUp {
 	States
 	{
 		Spawn:
-			TNT1 A 0 doomb_for_khorn("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			HDB5 A 1190;
 		loop;
 		
@@ -1029,7 +1026,7 @@ CLASS DeadHangTLookingUp: HangTLookingUp Replaces HangTLookingUp {
 
 // Hanging from top, skully ------------------------------------------------
 
-CLASS DeadHangTSkull: HangTSkull replaces HangTSkull { 
+CLASS DeadHangTSkull: doomb_body_base replaces HangTSkull { 
 	Default {
 		
 		Radius 16;
@@ -1054,7 +1051,7 @@ CLASS DeadHangTSkull: HangTSkull replaces HangTSkull {
 	States
 	{
 		Spawn:
-			TNT1 A 0 doomb_for_khorn("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			HDB4 A 1190;
 		loop;
 		
@@ -1070,7 +1067,7 @@ CLASS DeadHangTSkull: HangTSkull replaces HangTSkull {
 
 // Hanging from top without a brain ----------------------------------------
 
-CLASS DeadHangTNoBrain: HangTNoBrain Replaces HangTNoBrain { 
+CLASS DeadHangTNoBrain: doomb_body_base Replaces HangTNoBrain { 
 	Default {
 		
 		Radius 16;
@@ -1095,7 +1092,7 @@ CLASS DeadHangTNoBrain: HangTNoBrain Replaces HangTNoBrain {
 	States
 	{
 		Spawn:
-			TNT1 A 0 doomb_for_khorn("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			HDB6 A 1190;
 		loop;
 		

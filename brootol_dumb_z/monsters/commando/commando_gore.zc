@@ -285,7 +285,7 @@ CLASS DeadChaingunguy_Slumped_NoHead: CurbstompedMarine {
 }
 
 
-CLASS BrutalizedCommando1 : ACTOR { 
+CLASS BrutalizedCommando1 : doomb_body_base { 
 	Default {
 		Radius 16;
 		Height 50;
@@ -305,7 +305,7 @@ CLASS BrutalizedCommando1 : ACTOR {
 	States
 	{
 		Spawn:
-			CPOD JJJJJJJJJJ 10 	doomb_for_khorn("TinyBlood", (0, 0, 23), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			CPOD JJJJJJJJJJ 10 	doomb_for_khorne("TinyBlood", (0, 0, 23), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			CPOD K 6
 			{
 				A_SpawnItem ("MiniGun", 0, 5,0);
@@ -328,14 +328,30 @@ CLASS BrutalizedCommando1 : ACTOR {
 	}
 	
 }
-CLASS BrutalizedCommando2: BrutalizedCommando1 { 
-	Default {
-		
+CLASS BrutalizedCommando2: doomb_body_base
+{
+	Default
+	{
+		Radius 16;
+		Height 50;
+		Health 30;
+		damagefactor "Blood", 0.0;
+		damagefactor "BlueBlood", 0.0;
+		damagefactor "GreenBlood", 0.0;
+		damagefactor "Avoid", 0.0;
+		PainSound "grunt/pain";
+		Mass 999999;
+		-SOLID;
+		+SHOOTABLE;
+		+FLOORCLIP;
+		+DONTSPLASH;
+		Scale 1.0;
 	}
+ 
 	States
 	{
 		Spawn:
-			CPOD MMMNNNNN 10 doomb_for_khorn("TinyBlood", (0, 0, 23), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			CPOD MMMNNNNN 10 doomb_for_khorne("TinyBlood", (0, 0, 23), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			CPOD O 5
 			{
 				A_SpawnItem ("BrutalizedDeadChaingunGuy");
@@ -345,7 +361,7 @@ CLASS BrutalizedCommando2: BrutalizedCommando1 {
 			
 		Pain:
 			CPOD M 5 A_Pain;
-			Goto Spawn;
+		Goto Spawn;
 			
 		Death:
 			TNT1 AAAA 0 A_SpawnProjectile ("Brains1", 50, 0, random (0, 360), 2, random (0, 160));
@@ -359,10 +375,8 @@ CLASS BrutalizedCommando2: BrutalizedCommando1 {
 			TNT1 AA 0 A_SpawnProjectile ("XDeath1", 45, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnItem ("BrutalizedCommando3");
 			TNT1 A 0 A_SpawnItem ("MiniGun", 0, 5,0);
-			Stop;
-			
+		Stop;
 	}
-	
 }
 
 CLASS BrutalizedCommando3: BrutalizedCommando1 { 

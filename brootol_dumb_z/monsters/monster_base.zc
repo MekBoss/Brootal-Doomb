@@ -464,17 +464,17 @@ protected eventhandler blood_throne;
 
 void set_blood_throne(eventhandler e)
 {
-    if(e.getclassname() == "doomb_blood_good")
+    if(e.getclassname() == "doomb_blood_god")
         blood_throne = e;
 }
 
-protected doomb_blood doomb_for_khorn(class<actor> it = null, vector3 off = (0, 0, 0), vector3 vel_dir = (0, 0, 0) )
+protected doomb_blood doomb_for_khorne(class<actor> it = null, vector3 off = (0, 0, 0), vector3 vel_dir = (0, 0, 0) )
 {
 	if(blood_throne && it)
 	{
 		if(it is "doomb_blood")
 		{
-			doomb_blood b = doomb_blood_good(blood_throne).doomb_blood_bank(it);
+			doomb_blood b = doomb_blood_god(blood_throne).doomb_blood_bank(it);
 			if(b)
 			{
 				b.setorigin(pos + off, false);

@@ -1,4 +1,4 @@
-class doomb_blood_good :eventhandler
+class doomb_blood_god :eventhandler
 {
 
 override void worldthingspawned(worldevent e)
@@ -7,6 +7,9 @@ override void worldthingspawned(worldevent e)
 	    doomb_monster_base(e.thing).set_blood_throne(self);
 	if(e.thing is "doomber")
 	    doomber(e.thing).set_blood_throne(self);
+    
+	if(e.thing is "doomb_blood")
+	    doomb_blood(e.thing).set_blood_throne(self);
 		
 }
 
