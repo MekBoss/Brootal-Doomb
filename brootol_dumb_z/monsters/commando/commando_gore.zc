@@ -287,8 +287,6 @@ CLASS DeadChaingunguy_Slumped_NoHead: CurbstompedMarine {
 
 CLASS BrutalizedCommando1 : ACTOR { 
 	Default {
-		
-		
 		Radius 16;
 		Height 50;
 		Health 30;
@@ -296,7 +294,6 @@ CLASS BrutalizedCommando1 : ACTOR {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "Avoid", 0.0;
-		
 		PainSound "grunt/pain";
 		Mass 999999;
 		-SOLID;
@@ -308,11 +305,13 @@ CLASS BrutalizedCommando1 : ACTOR {
 	States
 	{
 		Spawn:
-			CPOD JJJJJJJJJJ 10 A_SpawnItem ("TinyBlood", 0, 23);
-			CPOD K 6;
-			TNT1 A 0 A_SpawnItem ("MiniGun", 0, 5,0);
-			TNT1 A 0 A_SpawnItem ("BrutalizedDeadCommando1");
-			Stop;
+			CPOD JJJJJJJJJJ 10 	doomb_for_khorn("TinyBlood", (0, 0, 23), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			CPOD K 6
+			{
+				A_SpawnItem ("MiniGun", 0, 5,0);
+				A_SpawnItem ("BrutalizedDeadCommando1");
+			}
+		Stop;
 			
 		Pain:
 			CPOD J 1 A_Pain;
@@ -336,12 +335,13 @@ CLASS BrutalizedCommando2: BrutalizedCommando1 {
 	States
 	{
 		Spawn:
-			CPOD MMM 10 A_SpawnItem ("TinyBlood", 0, 23);
-			CPOD NNNNN 10 A_SpawnItem ("TinyBlood", 0, 23);
-			CPOD O 5;
-			TNT1 A 0 A_SpawnItem ("BrutalizedDeadChaingunGuy");
-			TNT1 A 0 A_SpawnItem ("MiniGun", 0, 5,0);
-			Stop;
+			CPOD MMMNNNNN 10 doomb_for_khorn("TinyBlood", (0, 0, 23), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			CPOD O 5
+			{
+				A_SpawnItem ("BrutalizedDeadChaingunGuy");
+				A_SpawnItem ("MiniGun", 0, 5,0);
+			}
+		Stop;
 			
 		Pain:
 			CPOD M 5 A_Pain;

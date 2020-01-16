@@ -93,5 +93,26 @@ protected void doomb_spawn_bloodpool()
 	}
 }
 
+protected bool active;
+bool is_active() const
+{
+	return active;
 }
 
+states
+{
+	wait_in_beaker:
+		tnt1 a -1
+		{
+			vel = (0, 0, 0);
+			active = false;
+			bcorpse = false;
+			for(uint i = 0; i < 10; i++)
+				a_stopsound(i);
+
+			setorigin((double.infinity, double.infinity, double.infinity), false);
+		}
+	stop;
+}
+
+}

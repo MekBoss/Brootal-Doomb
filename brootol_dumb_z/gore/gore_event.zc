@@ -18,7 +18,7 @@ private doomb_blood doomb_find_freash_blood(class<actor> type = null)
     {
         for(uint i = 0; i < blood_stains.size(); i++)
         {
-            if(blood_stains[i] && blood_stains[i].getclass() == type)
+            if(blood_stains[i] && blood_stains[i].getclass() == type && doomb_blood(blood_stains[i]).is_active() == false)
             {
                 return (doomb_blood)(blood_stains[i]);
             }

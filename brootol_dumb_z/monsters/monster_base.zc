@@ -479,6 +479,7 @@ protected doomb_blood doomb_for_khorn(class<actor> it = null, vector3 off = (0, 
 			{
 				b.setorigin(pos + off, false);
 				b.vel = vel_dir;
+				b.setstate(findstate("spawn"));
 				return b;
 			}
 		}
