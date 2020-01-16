@@ -1,6 +1,8 @@
 //all base classes for blood related actors
 class doomb_body_base : doomb_monster_base abstract
 {
+protected bool bleeding;
+
 default
 {
     -ismonster
@@ -102,6 +104,48 @@ protected void doomb_spawn_big_blood(int spawn_height = 0)
 			{
 				a = A_SpawnProjectile ("Brutal_FlyingBloodTrail", 15, 0, random (0, 360), 2, - random (0, 180) );
 				a.setorigin(self.pos + (0, 0, spawn_height), false);
+			}
+		}
+	}
+}
+
+protected void doomb_spawn_bloodpool()
+{
+	if(GetFloorTerrain().isLiquid == false)
+	{
+		bool inside_another_pool = false;
+
+		for (Actor check = cursector.thinglist; check != null; check = check.snext)
+		{
+			if (check is "doomb_blood_pool")
+			{
+				if(check.pos.x - check.radius < self.pos.x && check.pos.x + check.radius > self.pos.x)
+				{
+					if(check.pos.y - check.radius < self.pos.y && check.pos.y + check.radius > self.pos.y)
+					{
+						inside_another_pool = true;
+					}
+				}
+			}
+		}
+
+		if(inside_another_pool)
+			return;
+	
+		actor a = spawn("doomb_red_blood_pool", pos:self.pos);
+
+		if(a)
+		{
+			if(self.getclassname() == "doomb_cacodemon")
+			{
+				a.A_SetTranslation("red_to_blue");
+				doomb_red_blood_pool(a).color = "blue";
+			}
+
+			if(self.getclassname() == "doomb_baron" || self.getclassname() == "doomb_knight")
+			{
+				a.A_SetTranslation("red_to_green");
+				doomb_red_blood_pool(a).color = "green";
 			}
 		}
 	}

@@ -2,7 +2,7 @@ gameinfo
 {
    PlayerClasses = "Doomer"
 
-   addeventhandlers = "doomb_sfx_main", "doomb_gore_event", "weapon_actions", "debugger", "doom_player_movement", "on_screen_blood_overlay"
+   addeventhandlers = "doomb_sfx_main", "doomb_blood_good", "weapon_actions", "debugger", "doom_player_movement", "on_screen_blood_overlay"
 }
 
 SpawnNums

@@ -1,4 +1,37 @@
-class doomb_gore_event :eventhandler
+class doomb_blood_good :eventhandler
 {
-    
+
+override void worldthingspawned(worldevent e)
+{	
+	if(e.thing is "doomb_monster_base")
+	    doomb_monster_base(e.thing).set_blood_throne(self);
+	if(e.thing is "doomber")
+	    doomber(e.thing).set_blood_throne(self);
+		
+}
+
+private array<doomb_blood> blood_stains;
+
+doomb_blood doomb_find_freash_blood(class<actor> type = null)
+{
+    if(type)
+    {
+        for(uint i = 0; i < blood_stains.size(); i++)
+        {
+            if(blood_stains[i] && blood_stains[i].getclass() == type)
+            {
+                return blood_stains[i];
+            }
+
+            else if (!blood_stains[i])
+            {
+                blood_stains.delete(i);
+                i--;
+            }
+        }
+    }
+
+    return null;
+}
+
 }

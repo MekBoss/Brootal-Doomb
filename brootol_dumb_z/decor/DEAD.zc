@@ -1,4 +1,4 @@
-CLASS VeryDeadMarine: DeadMarine Replaces DeadMarine { 
+CLASS VeryDeadMarine: doomb_body_base Replaces DeadMarine { 
 	Default {
 		
 		damagefactor "Avoid", 0.0;
@@ -18,7 +18,7 @@ CLASS VeryDeadMarine: DeadMarine Replaces DeadMarine {
 			TNT1 A 0;
 			TNT1 AAAAA 0 A_SpawnProjectile ("WallRedBlood", 10, 0, random (0, 360), 2, - random (5, 40));
 			TNT1 AAAAAA 0 A_SpawnItemEx("Brutal_BloodSpot",random(64, -64),- random(64, -64));
-			TNT1 A 0 A_SpawnItem("MediumBloodSpot");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_CheckSight("Spawn2");
 			TNT1 A 0;
 			TNT1 A 0 A_Jump(160,2);
@@ -64,7 +64,7 @@ CLASS VeryDeadMarine: DeadMarine Replaces DeadMarine {
 	}
 }
 
-CLASS VeryVeryDeadMarine: GibbedMarine Replaces GibbedMarine { 
+CLASS VeryVeryDeadMarine: doomb_body_base Replaces GibbedMarine { 
 	Default {
 		
 		+CLIENTSIDEONLY;
@@ -77,7 +77,7 @@ CLASS VeryVeryDeadMarine: GibbedMarine Replaces GibbedMarine {
 			TNT1 A 0;
 			TNT1 AAAAA 0 A_SpawnProjectile ("WallRedBlood", 10, 0, random (0, 360), 2, - random (5, 40));
 			TNT1 AAAAAAA 0 A_SpawnItemEx("Brutal_BloodSpot",random(64, -64),random(64, -64));
-			TNT1 A 0 A_SpawnItem("MediumBloodSpot");
+			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_CheckSight("Spawn2");
 			TNT1 A 0 A_Jump(160,2);
 			TNT1 A 1 A_SpawnItem("GibsZ");
@@ -476,7 +476,7 @@ CLASS GibsZ : ACTOR {
 	
 }// Dead on a stick ---------------
 
-CLASS DeadDeadStick: DeadStick Replaces DeadStick { 
+CLASS DeadDeadStick: doomb_body_base Replaces DeadStick { 
 	Default {
 		
 		Health 200;
@@ -507,7 +507,7 @@ CLASS DeadDeadStick: DeadStick Replaces DeadStick {
 	{
 		Spawn:
 			TNT1 A 0;
-			TNT1 A 0 A_SpawnItem("MediumBloodSpot",0,0);
+			TNT1 A 0 doomb_spawn_bloodpool();
 			Goto Stand;
 		Stand:
 			POL1 A 60 A_SpawnItemEx ("TinyBlood", random (-5, 5), random (-5, 5), 15);
@@ -523,7 +523,7 @@ CLASS DeadDeadStick: DeadStick Replaces DeadStick {
 
 // Still alive on a stick --------------------------------------------------
 
-CLASS DeadLiveStick: LiveStick Replaces LiveStick { 
+CLASS DeadLiveStick: doomb_body_base Replaces LiveStick { 
 	Default {
 		
 		Health 200;
@@ -554,7 +554,7 @@ CLASS DeadLiveStick: LiveStick Replaces LiveStick {
 	{
 		Spawn:
 			TNT1 A 0;
-			TNT1 A 0 A_SpawnItem("MediumBloodSpot",0,0);
+			TNT1 A 0 doomb_spawn_bloodpool();
 		Stand:
 			POL6 A 6;
 			POL6 B 8;
@@ -574,7 +574,7 @@ CLASS DeadLiveStick: LiveStick Replaces LiveStick {
 	}
 }
 
-CLASS DeadBloodyTwitch : BloodyTwitch Replaces BloodyTwitch { 
+CLASS DeadBloodyTwitch : doomb_body_base Replaces BloodyTwitch { 
 	Default {
 		
 		Radius 16;
@@ -1170,7 +1170,7 @@ CLASS DeadHangTNoBrain: HangTNoBrain Replaces HangTNoBrain {
 
 
 
-CLASS ColonGibs2 : ACTOR Replaces ColonGibs { 
+CLASS ColonGibs2 : doomb_body_base Replaces ColonGibs { 
 	Default {
 		
 		Radius 20;
@@ -1183,7 +1183,7 @@ CLASS ColonGibs2 : ACTOR Replaces ColonGibs {
 		Spawn:
 		Stay:
 			POB1 A 8;
-			TNT1 A 0 A_SpawnItem("MediumBloodSpot",0,0);
+			TNT1 A 0 doomb_spawn_bloodpool();
 			POB1 A -1;
 			Stop;
 	}
@@ -1195,7 +1195,7 @@ CLASS ColonGibs2 : ACTOR Replaces ColonGibs {
 
 // brain stem lying on the ground ------------------------------------------
 
-CLASS BrainStem2 : ACTOR Replaces BrainStem { 
+CLASS BrainStem2 : doomb_body_base Replaces BrainStem { 
 	Default {
 		
 		Radius 20;
@@ -1207,14 +1207,14 @@ CLASS BrainStem2 : ACTOR Replaces BrainStem {
 	{
 		Spawn:
 			TNT1 A 0;
-			TNT1 A 0 A_SpawnItem("MediumBloodSpot",0,0);
+			TNT1 A 0 doomb_spawn_bloodpool();
 			BRS1 A -1;
 			Stop;
 	}
 }
 
 
-CLASS RealGibs2 : ACTOR Replaces RealGibs { 
+CLASS RealGibs2 : doomb_body_base Replaces RealGibs { 
 	Default {
 		
 		+DROPOFF;
@@ -1226,7 +1226,7 @@ CLASS RealGibs2 : ACTOR Replaces RealGibs {
 	{
 		Spawn:
 			TNT1 A 0;
-			TNT1 A 0 A_SpawnItem("MediumBloodSpot",0,0);
+			TNT1 A 0 doomb_spawn_bloodpool();
 			POL5 A -1;
 			Stop;
 	}
@@ -1268,23 +1268,18 @@ CLASS CrushedRemains: CurbstompedMarine {
 }	   
 	   
 CLASS PlayerJustGotCutInHalf: CurbstompedMarine { 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:
 			XPL2 GHIJKL 5;
-			XPL2 L -1 A_SpawnItem("MediumBloodSpot");
+			TNT1 A 0 doomb_spawn_bloodpool();
+			XPL2 L -1;
 			Stop;
 	}
 	
 }	   
 	   
 CLASS DeadNazi: CurbstompedMarine { 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:

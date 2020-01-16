@@ -1,28 +1,19 @@
-server int bd_bloodamount	= 2;
-
 server noarchive bool doomb_debug = false;
+
 server bool doomb_sfx_effects = true;
-
 server bool doomb_show_flares = true;
+server bool doomb_spawn_blood = true;
+server bool doomb_body_parts = true;
 
 
 
+
+server int bd_bloodamount	= 2;
 server int zdoombrutalblood	= 2;
 server int zdoombrutaljanitor = 0;
-
-
-
 server int isrunningzandronum = 1;
-
-
-
 server int bd_nobulletpenetration = 1;
-
 user int bd_shotgunstrap = 0;
 server int zdoombd_shotgunstrap = 0;
-
-
-
 server int bd_isnazilevel = 0;
-
 server int bd_disabledecorations = 0;
