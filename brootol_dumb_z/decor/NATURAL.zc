@@ -38,7 +38,6 @@ CLASS TorchTree2: doomb_decoration_base Replaces TorchTree {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "Plasma", 10.0;
-		damagefactor "Flames", 5.0;
 		damagefactor "Fire", 5.0;
 		+SOLID;
 		+SHOOTABLE;
@@ -134,7 +133,6 @@ CLASS Big_Tree: BigTree {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "Plasma", 10.0;
-		damagefactor "Flames", 5.0;
 		damagefactor "Fire", 5.0;
 		damagefactor "Blood", 10.0;
 		+SOLID;

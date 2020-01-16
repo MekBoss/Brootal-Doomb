@@ -34,7 +34,6 @@ Default {
 	damagefactor "Blood", 0.5;
 	damagefactor "BlueBlood", 0.5;
 	damagefactor "GreenBlood", 0.5;
-	damagefactor "Decaptate", 0.0;
 	damagefactor "MonsterBullet", 0.33;
 	damagefactor "MonsterShotgunBullet", 0.33;
 	damagefactor "MonsterCutless", 0.33;

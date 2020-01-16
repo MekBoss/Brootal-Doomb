@@ -150,8 +150,6 @@ CLASS CurbstompedMarine : doomb_body_base {
 		damagefactor "Desintegrate", 990.0;
 		damagefactor "BFG", 990.0;
 		damagefactor "Kick", 3.0;
-		damagefactor "SuperKick", 3.0;
-		
 		damagefactor "punch", 2.0;
 		bloodtype "DeadBlood";
 	}

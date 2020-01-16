@@ -1,0 +1,165 @@
+//all base classes for blood related actors
+class doomb_body_base : doomb_monster_base abstract
+{
+protected bool bleeding;
+
+default
+{
+    -ismonster
+	-countkill
+}
+
+protected void doomb_random_death(name st = "")
+{
+	if(random(0, 10) > 7)
+		a_die(st);
+}
+
+
+protected void doomb_meat_on_ceiling()
+{
+	FLineTraceData RemoteRay;
+
+	LineTrace(
+		random( 0, 360),
+		60,
+		-frandom(85 , 90),//- because thank you randi
+		TRF_THRUACTORS | TRF_NOSKY,
+		height + 1,
+		data: RemoteRay
+	);
+
+	if (RemoteRay.HitType == TRACE_HitCeiling)
+	{
+		spawn("CeilXDeath2", pos:RemoteRay.HitLocation);
+	}
+}
+
+
+protected void doomb_blood_dying()
+{
+	if(waterlevel < 1)
+	{
+		A_SpawnProjectile ("Brutal_FlyingBloodTrail", 30, 0, random (0, 360), 2, random (0, 360));
+		A_SpawnProjectile ("Brutal_FlyingBloodTrail", 30, 0, random (0, 360), 2, random (0, 360));
+		A_SpawnProjectile ("Brutal_FlyingBloodTrail", 30, 0, random (0, 360), 2, random (0, 360));
+		A_SpawnProjectile ("Brutal_FlyingBloodTrail", 30, 0, random (0, 360), 2, random (0, 360));
+		A_SpawnItem ("BloodHit", 0, 30);
+		A_SpawnItem ("Brutal_FlyingBlood", 0, 30);
+	}
+}
+
+}
+
+
+CLASS BigGibBase : doomb_body_base { 
+	Default {
+		Radius 10;
+		Height 10;
+		Mass 1000;
+		Health 100;
+
+		+NOTELEPORT;
+		+MOVEWITHSECTOR;
+		+DONTSPLASH;
+		+NOBLOCKMONST;
+		-NOBLOCKMAP;
+		+GHOST;
+		+THRUACTORS;
+		+FLOORCLIP;
+		+SLIDESONWALLS;
+		+FORCEXYBILLBOARD;
+		-SOLID;
+		+SHOOTABLE;
+	DeathSound "misc/xdeath4";
+	
+		painchance 255;
+		painchance "Fire", 0;
+
+		damagefactor "Crush", 50.0;
+		damagefactor "Blood", 0.0;
+		damagefactor "GreenBlood", 0.0;
+		damagefactor "BlueBlood", 0.0 ;
+		damagefactor "Taunt", 0.0 ;
+		damagefactor "Avoid", 0.0;
+		damagefactor "Taunt", 0.0;
+		damagefactor "Trample", 2.0;
+		damagefactor "Kick", 9.0;
+		damagefactor "punch", 2.0;
+		damagefactor "Explosive_Impact", 9.1;
+		damagefactor "Melee", 9.0;
+		damagefactor "Plasma", 20.0;
+	}
+	States 
+	{
+		Spawn:
+			TNT1 A 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			Loop;
+			
+			
+		Death:
+			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAAAAA 0 A_SpawnProjectile ("XDeathSkinPiece2", 5, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAA 0 A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAA 0 A_SpawnProjectile ("SmallSuperGore", 10, 0, random (0, 360), 2, random (10, 170));
+			Stop;
+			
+		Death.plasma:
+		Death.Fire:
+			TNT1 A 0;
+			TNT1 A 0 A_NoBlocking;
+			TNT1 A 0 A_Jump(128, "DeathFire2");
+			TNT1 A 0 doomb_spawn_burned_flesh();
+			EXPL AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
+			TNT1 A 0;
+			Stop;
+			
+		DeathFire2:
+			TNT1 A 0 doomb_spawn_burned_flesh();
+			EXPL AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
+			TNT1 A 0;
+			Stop;
+		Death.Trample:
+		Death.Crush:
+		Death.Stomp:
+		Death.punch:
+			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 30));
+			TNT1 AAAA 0 A_SpawnProjectile ("BloodMist", 5, 0, random (0, 360), 2, random (0, 30));
+			TNT1 AAAAAAA 0 A_SpawnProjectile ("XDeathSkinPiece2", 5, 0, random (0, 360), 2, random (10, 30));
+			TNT1 AAAA 0 A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, random (10, 130));
+			TNT1 AAAA 0 A_SpawnProjectile ("SmallSuperGore", 10, 0, random (0, 360), 2, random (10, 30));
+			TNT1 A 0 doomb_spawn_bloodpool();
+			XME2 L -1;
+		Stop;
+		
+		Death.Desintegrate:
+			TNT1 A 0;
+			TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodFake", 0, 0, random (0, 360), 2, random (0, 90));
+			TNT1 A 0 A_SpawnProjectile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 60));
+			TNT1 A 0 A_SpawnProjectile ("BloodMistSmall", 7, 0, random (0, 360), 2, random (30, 60));
+		Stop;
+	}
+}
+
+CLASS LimbBase: BigGibBase
+{ 
+States
+{
+	Spawn:
+		TNT1 A 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+		Loop;
+	Death:
+		TNT1 AAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180));
+		TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+		XDT3 BCDEFGH 3;
+	Death.Crush:
+		TNT1 A 1 A_SpawnProjectile ("XDeath1", 5, 5, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("XDeath3", 5, -5, random (0, 360), 2, random (0, 160));
+		
+		CRSB A 9009;
+		Stop ;
+		Stop;
+}
+
+}

@@ -988,10 +988,7 @@ CLASS BurningDemon : doomb_body_base {
 	Scale 0.85;
 	Health 100;
 	GibHealth 25;
-	damagefactor "Burn", 0.0;
 	damagefactor "Fire", 0.0;
-	damagefactor "Flames", 0.0;
-	damagefactor "Flame", 0.0;
 	damagefactor "Explosive_Impact", 10.0;
 	MONSTER;
 	-COUNTKILL;

@@ -272,6 +272,7 @@ States
 		
 		
 	Death.Headshot:
+		TNT1 A 0 A_Jump(126, "headshot_1");
 		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma");
 		TNT1 AAAAA 0 A_SpawnProjectile ("Xdeath1", 72, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAAA 0 A_SpawnProjectile ("SmallLSPart1", 70, 0, random (0, 360), 2, random (0, 360));
@@ -287,7 +288,7 @@ States
 		TNT1 A 0 A_SpawnItem ("DeadSkeletonNoHead");
 		Stop;
 		
-	Death.Decaptate:
+	headshot_1:
 		TNT1 AAAAAAAA 0 A_SpawnProjectile ("Xdeath1", 72, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeathRevenantHead", 64, 0, random (0, 360), 2, random (50, 130));
 		REVH A 24;

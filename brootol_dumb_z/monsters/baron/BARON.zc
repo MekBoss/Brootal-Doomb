@@ -328,6 +328,7 @@ States
 		
 	Death.Headshot:
 		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma");
+		tnt1 a 0 a_jump(120, "no_head_1");
 		TNT1 A 0 A_SpawnItem("BaronOfHellHeadExplode", 0, 62);
 		BADH A 9;
 		BADH B 9;
@@ -337,7 +338,7 @@ States
 		TNT1 A 0 doomb_spawn_bloodpool();
 	Stop;
 		
-	Death.decaptate:
+	no_head_1:
 		TNT1 AAAAA 0 A_SpawnProjectile ("Xdeath1", 62, 0, random (0, 360), 2, random (50, 130));
 		TNT1 A 0 A_SpawnProjectile ("XDeathBaronHead5", 62, 0, random (0, 360), 2, random (50, 130));
 		BADH AB 9;
@@ -346,7 +347,8 @@ States
 		TNT1 A 0 A_SpawnItem ("DeadBaronNoHead", 1);
 		TNT1 A 0 doomb_spawn_bloodpool();
 	Stop;
-		
+
+
 	Death.Fatality:
 		TNT1 A 0 A_Pain;
 		TNT1 A 0 A_GiveToTarget("GoFatality", 1);

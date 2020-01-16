@@ -381,7 +381,7 @@ CLASS ChaingunGuy1 : doomb_monster_base Replaces ChaingunGuy {
 	Death.Headshot:
 		TNT1 A 0;
 		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma");
-		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate");
+		TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "headshot_1");
 		TNT1 A 0 A_JumpIfHealthLower(-50, "Death.HeadExplode");
 	Death.HeadMinor:
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
@@ -425,8 +425,9 @@ CLASS ChaingunGuy1 : doomb_monster_base Replaces ChaingunGuy {
 		CPHS FFFFFFFFFFFFFFF 2 A_SpawnProjectile ("Brutal_LiquidBlood", 5, 0, random (0, 360), 2, random (10, 40));
 		TNT1 A 0 A_SpawnItem ("MiniGun", 0, 5,0);
 		TNT1 A 1 A_SpawnItem ("DeadChaingunGuy_NoHead", 3);
-		Stop;
-	Death.decaptate:
+	Stop;
+
+	headshot_1:
 		TNT1 AAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Blood", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		TNT1 A 0 A_SpawnItemEx ("XDeathChaingunguyHeadBeheaded", 50, 0, random (0, 360), 2, random (40, 90));

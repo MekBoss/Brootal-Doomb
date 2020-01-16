@@ -9,7 +9,6 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 		PainChance "Taunt", 255;
 		damagefactor "Explosive_Impact", 1.1;
 		damagefactor "HKFT", 0.05;
-		damagefactor "Decaptate", 5.0;
 		damagefactor "Avoid", 0.0;
 		damagefactor "Blood", 0.0;
 		damagefactor "BlueBlood", 0.0;
@@ -157,20 +156,20 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 			CYBR P -1 A_BossDeath;
 			Stop;
 			
-		Death.Decaptate:
+		Death.headshot:
 			TNT1 A 0 A_SpawnProjectile ("XDeathCyberdemonHead", 120, 0, random (0, 360), 2, random (0, 180));
 			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("XDeath1", 120, 0, random (0, 360), 2, random (0, 180));
 			CYBB AAAAA 8 A_SpawnItem("MuchBlood", 0, 120);
 			CYBB ABCABCB 8 A_SpawnItem("MuchBlood", 0, 120);
 			EXPL A 0 Radius_Quake (6, 100, 0, 22, 0);
-		TNT1 AAAA 0
-		{
-			A_PlaySound("FAREXPL");
-			doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-			A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-		}
+			TNT1 AAAA 0
+			{
+				A_PlaySound("FAREXPL");
+				doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+				doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
+				A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+			}
 			TNT1 AAAA 0 A_SpawnProjectile ("UltraGoreSPawner", 90, 0, random (0, 360), 2, random (0, 180));
 			
 			TNT1 AAAAAA 0 A_SpawnProjectile ("UltraGoreSpawner", 90, 0, random (0, 360), 2, random (0, 180));

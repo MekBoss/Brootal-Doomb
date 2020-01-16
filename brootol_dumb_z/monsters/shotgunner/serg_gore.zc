@@ -843,7 +843,7 @@ CLASS DyingSergeant : doomb_body_base {
 		Death.Headshot:
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma");
-			TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate");
+			TNT1 A 0 A_Jump(126, "headshot_1");
 			TNT1 A 0 A_SpawnItem("ShotgunguyHeadExplode", 0, 30);
 			TNT1 A 0 A_XScream;
 			TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
@@ -853,7 +853,7 @@ CLASS DyingSergeant : doomb_body_base {
 			SZD4 B -1 doomb_final_absolution(12, 12);
 			Stop;
 			
-		Death.Decaptate:
+		headshot_1:
 			tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 			TNT1 AAAAAAAA 0 A_SpawnProjectile ("SmallSuperGore", 32, 0, random (0, 360), 2, random (10, 170));
 			TNT1 A 0 A_SpawnProjectile ("XDeathSergeantHead", 32, 0, random (0, 360), 2, random (0, 160));
@@ -1175,10 +1175,7 @@ CLASS BurningShotgunguy : doomb_body_base {
 		Scale 0.85;
 		Health 100;
 		GibHealth 25;
-		damagefactor "Burn", 0.0;
 		damagefactor "Fire", 0.0;
-		damagefactor "Flames", 0.0;
-		damagefactor "Flame", 0.0;
 		damagefactor "Explosive_Impact", 10.0;
 		MONSTER;
 		-COUNTKILL;
@@ -1324,9 +1321,7 @@ CLASS DyingSergeantNoLegInFlames : doomb_body_base {
 		+FRIGHTENED;
 		-SOLID;
 		
-		damagefactor "Burn", 0.0;
 		damagefactor "Fire", 0.0;
-		damagefactor "Flames", 0.0;
 	}
 	States
 	{
@@ -1455,7 +1450,6 @@ CLASS DyingSergeantLegBlewedOff : DyingSergeantNoLeg {
 			Stop;
 			
 		Death.Headshot:
-		Death.Decaptate:
 			TNT1 A 0;
 			TNT1 A 0 A_SpawnItem("ShotgunguyHeadExplode", 0, 30);
 			TNT1 A 0 A_XScream;
@@ -1863,7 +1857,7 @@ CLASS SergeantGotHisLegBlowed : doomb_body_base {
 			Stop;
 			
 		Death.Headshot:
-			TNT1 A 0;
+			TNT1 A 0 A_Jump(126, "headshot_1");
 			TNT1 A 0 A_SpawnItem("ShotgunguyHeadExplode", 0, 30);
 			TNT1 A 0 A_Scream;
 			TNT1 AAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_Blood", 37, 0, random (0, 360), 2, random (0, 160));
@@ -1873,7 +1867,7 @@ CLASS SergeantGotHisLegBlowed : doomb_body_base {
 			TNT1 A 0 A_SpawnItem ("DeadShotgunguy_NoLeg", 1);
 			Stop;
 			
-		Death.Decaptate:
+		headshot_1:
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			TNT1 A 0 A_SpawnProjectile ("XDeathSergeantHead", 32, 0, random (0, 360), 2, random (30, 110));
 			TNT1 A 0 A_Scream;
@@ -2120,7 +2114,7 @@ CLASS SergeantLastStand2: DyingSergeant {
 		Death.Headshot:
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma");
-			TNT1 A 0 A_JumpIfInTargetInventory("HasCutingWeapon", 1, "Death.Decaptate");
+			TNT1 A 0 A_Jump(126, "headshot_1");
 			TNT1 A 0 A_SpawnItem("ShotgunguyHeadExplode", 0, 30);
 			TNT1 A 0 A_XScream;
 			TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");

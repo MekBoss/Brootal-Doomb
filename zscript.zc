@@ -41,8 +41,9 @@ CLASS FallingHeight : Inventory {
 //monsters base must go before gore
 //because gore base inherits from monster base
 #include "brootol_dumb_z/monsters/monster_base.zc"
-#include "brootol_dumb_z/gore/gore_base.zc"
-#include "brootol_dumb_z/weapons/weapon_base.zc" 
+#include "brootol_dumb_z/weapons/weapon_base.zc"
+
+#include "brootol_dumb_z/gore/bodies/gore_base.zc"
 
 #include "brootol_dumb_z/sfx/sfx_main.zc"
 #include "brootol_dumb_z/sfx/sfx_base.zc"
@@ -93,6 +94,9 @@ CLASS FallingHeight : Inventory {
 #include "brootol_dumb_z/gore/gore_event.zc"
 #include "brootol_dumb_z/gore/blood_pools.zc"
 #include "brootol_dumb_z/gore/gore_fixed.zc"
+
+#include "brootol_dumb_z/gore/BLOOD/BLOOD_base.zc"
+#include "brootol_dumb_z/gore/BLOOD/BLOOD.zc"
 
 #include "brootol_dumb_z/gore/GORE!!!.zc"
 #include "brootol_dumb_z/gore/GORE!!!.zc"

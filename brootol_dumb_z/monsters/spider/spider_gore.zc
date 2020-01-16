@@ -424,10 +424,8 @@ CLASS CrawlingDyingSpider : doomb_body_base {
 		PainSound "grunt/pain";
 		damagefactor "Kick", 0.1;
 		damagefactor "Melee", 0.1;
-		damagefactor "SuperKick", 0.1;
 		damagefactor "punch", 0.1;
 		PainChance "Kick", 255;
-		PainChance "SuperKick", 255;
 		PainChance "punch", 255;
 		PainChance 255;
 		damagefactor "trample", 2.0;
