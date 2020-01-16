@@ -12,7 +12,7 @@ override void worldthingspawned(worldevent e)
 
 private array<doomb_blood> blood_stains;
 
-doomb_blood doomb_find_freash_blood(class<actor> type = null)
+private doomb_blood doomb_find_freash_blood(class<actor> type = null)
 {
     if(type)
     {
@@ -20,7 +20,7 @@ doomb_blood doomb_find_freash_blood(class<actor> type = null)
         {
             if(blood_stains[i] && blood_stains[i].getclass() == type)
             {
-                return blood_stains[i];
+                return (doomb_blood)(blood_stains[i]);
             }
 
             else if (!blood_stains[i])
@@ -29,9 +29,18 @@ doomb_blood doomb_find_freash_blood(class<actor> type = null)
                 i--;
             }
         }
+
+        doomb_blood b = doomb_blood(actor.spawn(type, (double.infinity, double.infinity, double.infinity)));
+        blood_stains.push(b);
+        return b;
     }
 
     return null;
+}
+
+doomb_blood doomb_blood_bank(class<actor> type = null)
+{
+    return doomb_find_freash_blood(type);
 }
 
 }

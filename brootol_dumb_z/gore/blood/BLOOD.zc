@@ -872,4 +872,3 @@ CLASS CeilXDeath2: doomb_blood {
 		stop;
 	}
 }
-
