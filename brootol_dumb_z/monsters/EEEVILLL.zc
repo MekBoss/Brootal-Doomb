@@ -349,7 +349,7 @@ CLASS EvilMarine : doomb_monster_base Replaces WolfensteinSS {
 		
 	Crush:
 	Death.Stomp:
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 AAAAAA 0 bright A_SpawnProjectile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180));
 		TNT1 AAAAAA 0 bright A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180));
 		TNT1 AA 0 bright A_SpawnProjectile ("XDeath2", 55, 0, random (0, 360), 2, random (30, 180));
@@ -369,7 +369,7 @@ CLASS EvilMarine : doomb_monster_base Replaces WolfensteinSS {
 		TNT1 AAAA 0 A_SpawnProjectile ("XDeath2", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAA 0 A_SpawnProjectile ("XDeath3", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
-		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 32, 0, random (170, 190), 2, random (0, 40));
+		TNT1 AAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAA 0 A_SpawnProjectile ("WallRedBlood", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAA 0 A_SpawnProjectile ("WallRedBlood", 46, 0, random (170, 190), 2, random (0, 40));

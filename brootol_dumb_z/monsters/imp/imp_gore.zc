@@ -140,7 +140,7 @@ States
 	Spawn:
 		TNT1 A 0;
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-		HND4 ABCDEFGH 4 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
+		HND4 ABCDEFGH 4 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		Loop;
 	Death.plasma:
 		TNT1 A 0 A_SpawnProjectile ("XDeathBurnedImpArm", 32, 0, random (0, 360), 2, random (0, 160));
@@ -165,9 +165,10 @@ States
 	Death.plasma:
 	Death.Fire:
 		TNT1 A 0 A_SpawnProjectile ("XDeathBurnedImpArm", 32, 0, random (0, 360), 2, random (0, 160));
-		Stop;
+	Stop;
+	
 	Death:    
-		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
+		TNT1 AAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 A 0 A_SpawnProjectile ("GibImpHand", 0, 0, random (0, 180), 2, random (0, 180));
 		TNT1 A 0 A_SpawnProjectile ("GibImpArmPart", 0, 0, random (0, 180), 2, random (0, 180));
 		Stop;
@@ -280,7 +281,7 @@ States
 	Spawn:
 		TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-		LEG4 ABCDEFGH 5 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
+		LEG4 ABCDEFGH 5 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		Loop;
 	Death:
 		LEG4 I 1;
@@ -305,7 +306,7 @@ States
 		TNT1 A 0 A_SpawnProjectile ("XDeathBurnedImpLeg", 32, 0, random (0, 360), 2, random (0, 160));
 		Stop;
 	Death:    
-		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
+		TNT1 AAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 A 0 A_SpawnProjectile ("GibImpPaw", 0, 0, random (0, 180), 2, random (0, 180));
 		TNT1 A 0 A_SpawnProjectile ("GibImpLegPart", 0, 0, random (0, 180), 2, random (0, 180));
 		Stop;
@@ -370,9 +371,9 @@ States
 }
 
 
-CLASS XDeathHalfImp : ACTOR { 
+CLASS XDeathHalfImp : doomb_body_base
+{ 
 Default {
-	
 	Radius 8;
 	Height 8;
 	Speed 7;
@@ -392,7 +393,7 @@ States
 	Spawn:
 		TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-		TROG K 12 A_SpawnProjectile("Brutal_FlyingBloodTrail",0,0,180,2);
+		TROG K 12 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		Loop;
 	Death:
 		TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
@@ -867,7 +868,7 @@ States
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (150, 210), 2, random (0, 40));
 		TNT1 AAA 0 A_SpawnProjectile ("Xdeath3", 16, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
-		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 32, 0, random (170, 190), 2, random (0, 40));
+		TNT1 AAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAA 0 A_SpawnProjectile ("WallRedBlood", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAA 0 A_SpawnProjectile ("Bloodmist", 40, 0, random (0, 360), 2, random (30, 90));
@@ -902,7 +903,7 @@ States
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (150, 210), 2, random (0, 40));
 		TNT1 AAA 0 A_SpawnProjectile ("Xdeath3", 16, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
-		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 32, 0, random (170, 190), 2, random (0, 40));
+		TNT1 AAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAA 0 A_SpawnProjectile ("WallRedBlood", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAA 0 A_SpawnProjectile ("Bloodmist", 40, 0, random (0, 360), 2, random (30, 90));
@@ -1207,7 +1208,7 @@ Death.SSG:
 	TNT1 A 0 A_SpawnProjectile ("XDeath2", 32, 0, random (170, 190), 2, random (0, 40));
 	TNT1 A 0 A_SpawnProjectile ("XDeath3", 32, 0, random (170, 190), 2, random (0, 40));
 	TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
-	TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 32, 0, random (170, 190), 2, random (0, 40));
+	TNT1 AAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 	TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
 	TNT1 AAAA 0 A_SpawnProjectile ("WallRedBlood", 32, 0, random (170, 190), 2, random (0, 40));
 	TNT1 AAAA 0 A_SpawnProjectile ("WallRedBlood", 46, 0, random (170, 190), 2, random (0, 40));
@@ -1239,7 +1240,7 @@ Death.Railgun:
 	TNT1 A 0 A_SpawnProjectile ("XDeathImpHead", 32, 0, random (150, 210), 2, random (0, 40));
 	TNT1 AAA 0 A_SpawnProjectile ("Xdeath3", 16, 0, random (170, 190), 2, random (0, 40));
 	TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
-	TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 32, 0, random (170, 190), 2, random (0, 40));
+	TNT1 AAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 	TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
 	TNT1 AAAA 0 A_SpawnProjectile ("WallRedBlood", 32, 0, random (170, 190), 2, random (0, 40));
 	TNT1 AAA 0 A_SpawnProjectile ("Bloodmist", 40, 0, random (0, 360), 2, random (30, 90));
@@ -1691,7 +1692,7 @@ States
 		TNT1 A 0 A_SpawnProjectile ("XDeathImpArm", 32, 0, random (150, 210), 2, random (0, 40));
 		TNT1 AAA 0 A_SpawnProjectile ("Xdeath3", 16, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
-		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 32, 0, random (170, 190), 2, random (0, 40));
+		TNT1 AAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAA 0 A_SpawnProjectile ("WallRedBlood", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAA 0 A_SpawnProjectile ("Bloodmist", 40, 0, random (0, 360), 2, random (30, 90));

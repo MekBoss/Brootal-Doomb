@@ -1,6 +1,6 @@
 //All the liquid gore stuff goes here.
 
-//SLOWDOWN
+//SLOWDOWN ADRESSED
 //doomb_for_khorne("TinyBlood", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 CLASS TinyBlood : doomb_blood { 
 	Default {
@@ -235,6 +235,7 @@ CLASS CeilBloodLauncher: Brutal_FLyingBlood  {
 
 // Blood trails spawned by FlyingBlood
 //SLOWDOWN
+//doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 CLASS Brutal_FlyingBloodTrail : brutal_blood { 
 	Default
 	{
@@ -265,10 +266,10 @@ CLASS Brutal_FlyingBloodTrail : brutal_blood {
 			}
 			BTRL ABCD 1;
 			BLOD ABCDEFFFFFF 4 A_JumpIf(waterlevel > 1, "null");
-		stop;
+		goto wait_in_beaker;
 			
 		Death:
-		Stop;
+		goto wait_in_beaker;
 	}
 }
 
@@ -305,7 +306,7 @@ CLASS MuchBlood : doomb_blood
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "NULL");
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
-			TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 15, 0, random (0, 360), 2, - random (0, 360));
+			TNT1 AAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 AAA 0 A_SpawnProjectile("BloodMistSmall", 0, 0, 180);
 			TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, - random (0, 160));
 		stop;
@@ -329,7 +330,7 @@ CLASS DeadBlood  : doomb_blood {
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "null");
 		Spawn:
 			TNT1 A 0;
-			TNT1 AAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AAAAAAAAAAAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 A_SpawnItem ("BloodHit");
 		stop;
 	}
@@ -597,7 +598,7 @@ CLASS Cyberdemon_Blood : doomb_blood {
 	{
 		Spawn:
 			TNT1 A 0;
-			TNT1 AAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AAAAAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
 			TNT1 AAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodFake", 7, 0, random (0, 360), 2, random (0, 360));
 			TNT1 A 0 A_SpawnProjectile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (0, 360));
@@ -633,7 +634,7 @@ CLASS BloodTrails : doomb_blood {
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
-			TNT1 AAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 180));
+			TNT1 AAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			stop;
 	}
 }
@@ -866,7 +867,7 @@ CLASS CeilXDeath2: doomb_blood {
 
 		death:
 		hit_ground:
-			"####" AAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180));
+			"####" AAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			"####" A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1);
 			"####" E -1;
 		stop;

@@ -39,12 +39,12 @@ protected void doomb_spawn_big_blood(int spawn_height = 0)
     {
 		for(uint i = 0; i < 2 * bd_bloodamount; i++)
 		{
-			actor a = A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 180), 2, - random (0, 180) );
+			actor a = doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			a.setorigin(self.pos + (0, 0, spawn_height), false);
 
 			if( (i % 2) == 0)
 			{
-				a = A_SpawnProjectile ("Brutal_FlyingBloodTrail", 15, 0, random (0, 360), 2, - random (0, 180) );
+				a = doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 				a.setorigin(self.pos + (0, 0, spawn_height), false);
 			}
 		}

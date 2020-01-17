@@ -145,7 +145,7 @@ CLASS XDeathHellKnightArm: XDeathArm1 {
 		Spawn:
 			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			GHKA ABCDEFGH 3 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
+			GHKA ABCDEFGH 3 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			Loop;
 		Death:
 			GHKA I 1;
@@ -268,8 +268,8 @@ CLASS Gib_HellKnightArm: LimbBase {
 			Stop;
 			
 		Death:    
-			TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
-			TNT1 AAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			TNT1 AAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 A_SpawnProjectile ("Xdeath1", 0, 0, random (0, 360), 2, random (0, 360));
 			Stop;
 	}
@@ -289,7 +289,7 @@ CLASS XDeathHellKnightLeg: XDeathArm1 {
 		Spawn:
 			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			GHKL ABCDEFG 3 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
+			GHKL ABCDEFG 3 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			Loop;
 		Death:
 			GHKL A 1;
@@ -313,7 +313,7 @@ CLASS Gib_HellKnightLeg: LimbBase {
 			TNT1 A 0 doomb_spawn_burned_flesh;
 			Stop;
 		Death:    
-			TNT1 AAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 A_SpawnProjectile ("Xdeath1", 0, 0, random (0, 360), 2, random (0, 360));
 			Stop;
 	}
@@ -335,7 +335,7 @@ CLASS XDeathHellKnightTorso: XDeathArm1 {
 		Spawn:
 			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			GHKT ABCDEFGH 3 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
+			GHKT ABCDEFGH 3 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			Loop;
 		Death:
 			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
@@ -361,7 +361,7 @@ CLASS Gib_HellKnightTorso: LimbBase {
 			TNT1 A 0 doomb_spawn_burned_flesh;
 			Stop;
 		Death:    
-			TNT1 AAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 A_SpawnProjectile ("Xdeath1", 0, 0, random (0, 360), 2, random (0, 360));
 			Stop;
 	}
