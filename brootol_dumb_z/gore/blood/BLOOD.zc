@@ -234,7 +234,7 @@ CLASS CeilBloodLauncher: Brutal_FLyingBlood  {
 
 
 // Blood trails spawned by FlyingBlood
-//SLOWDOWN
+//SLOWDOWN ADRESSED
 //doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 CLASS Brutal_FlyingBloodTrail : brutal_blood { 
 	Default

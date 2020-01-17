@@ -23,11 +23,12 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 
 		Height 56;
 		Radius 16;
-		
+		health 50;
 		Mass 300;
 		Speed 6;
 		FastSpeed 12;
 		Scale 0.98;
+
 		PainChance 200;
 		PainChance "Avoid", 50;
 		PainChance "Kick", 255;
