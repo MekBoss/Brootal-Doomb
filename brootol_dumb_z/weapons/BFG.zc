@@ -122,8 +122,7 @@ States
 				A_SpawnItem("GreenFlareMedium");
 				A_SpawnItemEx("BFGFOG");
 			}
-
-			A_SpawnItemEx("green_particle", Random(-13, 13), Random(-13, 13), Random(0, 18), Random(1, 3), 0, (0.1)*Random(-10, 10), Random(-20, 20), 128);
+			doomb_show_effect("green_particle", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 		}
 	Loop;
 		
@@ -135,7 +134,7 @@ States
 		
 			for(uint i = 0; i < 400; i++)
 			{
-				spawn("green_particle", pos:self.pos + (0, 0, height/2) ).vel = (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1));
+				doomb_show_effect("green_particle", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			}
 			A_SpawnProjectile ("BFGBIGFOG", 0, 0, random (0, 360), 2, random (0, 360));
 			
@@ -180,36 +179,6 @@ States
 
 
 
-//TODO export to visual_sfx
-class green_particle : visual_sfx
-{
-Default
-{
-    -nogravity
-    bouncefactor 0.8;
-	RenderStyle "Add";
-	Speed 1;
-    Gravity 0.8;
-    scale 1;
-}
-	States
-	{
-		Spawn:
-            tnt1 a 0 nodelay
-            {
-                vel *= random(1, 24);
-                scale *= frandom(0.035, 0.1);
-            }
-
-            SPKG A 1 Bright
-            {
-                A_FadeOut(0.01);
-				vel += (frandom(1,-1), frandom(1,-1), frandom(1,-1) );
-           }
-        wait;
-	}
-
-}
 
 
 

@@ -246,6 +246,21 @@ states
         FRFX KLMNOP 3 BRIGHT;
     goto reset_condition;
    
+    //doomb_show_effect("green_particle", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+    green_particle:
+        tnt1 a 0
+        {
+            doomb_set_appearance( (frandom(0.035, 0.1), 0), 0.4, random(2, 15) );
+        }
+        SPKG A 1 Bright {prev_state = curstate;}
+        SPKG A 1 Bright
+        {
+            A_FadeOut(0.01, false);
+            vel += (frandom(1,-1), frandom(1,-1), frandom(1,-1) );
+            if(alpha > 0)
+                setstate(prev_state);
+        }
+    goto reset_condition;
 }
 
 }

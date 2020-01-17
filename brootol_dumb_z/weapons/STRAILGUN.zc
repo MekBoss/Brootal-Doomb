@@ -157,7 +157,7 @@ CLASS RailGunPuff2: doomb_boolet_base {
 			Loop;
 		Death:
 			TNT1 A 0;
-			TNT1 AAAA 0 A_SpawnItemEx("green_particle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128);
+			TNT1 AAAA 0 doomb_show_effect("green_particle", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			TNT1 AAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			TNT1 ABCDE 2 BRIGHT A_SpawnItem("BlueFlare" ,0);
 			Stop;
@@ -181,7 +181,7 @@ CLASS RailgunPuff: visual_sfx {
 		Spawn:
 			PBEX A 0 BRIGHT;// A_SpawnItem("BlueFlare",0,0)
 			TNT1 AA 0 doomb_show_effect("PlasmaParticleX", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
-			TNT1 AAAA 0 A_SpawnItemEx("green_particle", 0, 0, 14, (0.1)*Random(10, 40), 0, (0.1)*Random(-40, 40), Random(0, 360), 128);
+			TNT1 AAAA 0 doomb_show_effect("green_particle", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			TNT1 AAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 32), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			PLSE ABCDE 2 BRIGHT A_SpawnItem("BlueFlare" ,0);
 			stop;
