@@ -209,6 +209,7 @@ override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Fl
 		return dam;
 	}
 }
+
 //can actually hit another actor(not monster target)
 protected void doomb_cheap_melee_attack(double distance = 0, int dam = 0, name damage_type = "")
 {
@@ -217,7 +218,7 @@ protected void doomb_cheap_melee_attack(double distance = 0, int dam = 0, name d
 	LineTrace(angle + frandom(-5, 5), distance, new_pitch + random (-5, 5),
 	offsetz:height / 2, data: punch);
 	
-	if(punch.HitType == TRACE_HitActor)
+	if(punch.HitType == TRACE_HitActor && (punch.hitactor.getclass() != self.getclass() || infighting  == 1) )
 	{
 		//console.printf("cheap melee hit %s", punch.hitactor.getclassname() );
 		punch.hitactor.damagemobj(self, self, dam, damage_type, 0, 0);
@@ -479,7 +480,7 @@ protected doomb_blood doomb_for_khorne(class<actor> it = null, vector3 off = (0,
 			{
 				b.setorigin(pos + off, false);
 				b.vel = vel_dir;
-				b.setstate(findstate("spawn"));
+				b.setstate(b.findstate("spawn"));
 				return b;
 			}
 		}

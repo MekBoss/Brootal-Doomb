@@ -47,10 +47,12 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp {
 		damagefactor "Explosive_Impact", 2.5;
 		MaxStepHeight 24;
 		MaxDropOffHeight 32;
+		+FLOORCLIP;
 		+MISSILEMORE;
 		+SLIDESONWALLS;
 		+RANDOMIZE;
 		+MTHRUSPECIES;
+		+dontharmclass
 		PainChance "Trample", 255;
 		Speed 8;
 	}

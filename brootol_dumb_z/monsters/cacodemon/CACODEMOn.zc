@@ -22,7 +22,9 @@ Default {
 	PainChance "Saw", 255;
 	Monster;
 	Scale 0.9;
-	+FLOAT +NOGRAVITY;
+	+FLOAT
+	+NOGRAVITY;
+	+dontharmclass
 	SeeSound "caco/sight";
 	PainSound "caco/pain";
 	DeathSound "caco/death";
