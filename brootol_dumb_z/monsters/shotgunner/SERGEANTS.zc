@@ -186,42 +186,14 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 		Goto SeeContinue;
 			
 		Reload:
-			TNT1 A 0;
-			
 			SPSR A 15;
-			
 			ID12 EFG 5;
 			TNT1 A 0 A_PlaySound("insertshell");
 			TNT1 A 0 A_TakeInventory("SergeantAmmo", 1);
-			ID12 EFG 5;
-			TNT1 A 0 A_PlaySound("insertshell");
-			TNT1 A 0 A_TakeInventory("SergeantAmmo", 1);
-			
-			ID12 EFG 5;
-			TNT1 A 0 A_PlaySound("insertshell");
-			TNT1 A 0 A_TakeInventory("SergeantAmmo", 1);
-			
-			ID12 EFG 5;
-			TNT1 A 0 A_PlaySound("insertshell");
-			TNT1 A 0 A_TakeInventory("SergeantAmmo", 1);
-			
-			ID12 EFG 5;
-			TNT1 A 0 A_PlaySound("insertshell");
-			TNT1 A 0 A_TakeInventory("SergeantAmmo", 1);
-			
-			ID12 EFG 5;
-			TNT1 A 0 A_PlaySound("insertshell");
-			TNT1 A 0 A_TakeInventory("SergeantAmmo", 1);
-			
-			SPSR A 10;
-			TNT1 A 0 A_PlaySound("weapons/sgpump");
-			
-			
-			SPSR B 10;
-			
-			SPSR A 10;
-			
-			Goto SeeContinue;
+			tnt1 a 0 a_jump(200, "reload");
+			SPSR A 10 A_PlaySound("weapons/sgpump");
+			SPSR BA 10;
+		Goto SeeContinue;
 			
 			
 			

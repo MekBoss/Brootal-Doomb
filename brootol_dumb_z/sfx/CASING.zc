@@ -184,8 +184,6 @@ CLASS ShotgunCasing : ACTOR {
 		+FORCEXYBILLBOARD;
 		+NOTDMATCH;
 		+GHOST;
-		//+CANBOUNCEWATER
-		//+DONTSPLASH
 		Mass 1;
 		BounceFactor 0.3;
 		SeeSound "weapons/shell";

@@ -34,7 +34,7 @@ CLASS Plasma_Gun : doomb_weapon_base Replaces PlasmaRifle{
 		Weapon.AmmoUse2 0;
 		Weapon.AmmoGive2 0;
 		Inventory.PickupSound "PLSDRAW";
-		Weapon.AmmoType1 "Cell";
+		Weapon.AmmoType1 "doomb_cells";
 		Weapon.AmmoType2 "PlasmaAmmo";
 		+WEAPON.NOAUTOAIM;
 		+FORCEXYBILLBOARD;
@@ -194,7 +194,7 @@ CLASS Plasma_Gun : doomb_weapon_base Replaces PlasmaRifle{
 			TNT1 A 0 {invoker.reloading = false;}
 			TNT1 A 0 A_ClearReFire;
 			TNT1 A 0 A_JumpIfInventory("PlasmaAmmo",50,"ready_loop");
-			TNT1 A 0 A_JumpIfInventory("Cell",1,7);
+			TNT1 A 0 A_JumpIfInventory("doomb_cells",1,7);
 			
 			TNT1 A 0 A_PlaySound("BEP");
 			PLSR A 4 A_WeaponReady(WRF_NOFIRE);
@@ -209,7 +209,7 @@ CLASS Plasma_Gun : doomb_weapon_base Replaces PlasmaRifle{
 			TNT1 A 0 A_FireProjectile("PlasmaCaseSpawn",-210,0,20,-20);
 			PLSR CDEEEEEEEEEEEEEEEF 1;
 			PLSR GHHIIIJJJJJJJJIKLBAAAAA 1; 
-			tnt1 a 0 {invoker.reload_weapon_magazine("plasmaammo", "cell");}
+			tnt1 a 0 {invoker.reload_weapon_magazine("plasmaammo", "doomb_cells");}
 		Goto ready_loop;
 	}
 }
@@ -282,3 +282,4 @@ CLASS PlasmaBall99: Plasma_Ball {
 		SeeSound "PLSM9";
 	}
 }
+

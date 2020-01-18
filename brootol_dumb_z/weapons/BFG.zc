@@ -8,7 +8,7 @@ Default {
 	Weapon.SelectionOrder 2800;
 	Weapon.AmmoUse 40;
 	Weapon.AmmoGive 40;
-	Weapon.AmmoType "Cell";
+	Weapon.AmmoType "doomb_cells";
 	Inventory.PickupSound "BFGREADY";
 	+FORCEXYBILLBOARD;
 	+WEAPON.NO_AUTO_SWITCH;

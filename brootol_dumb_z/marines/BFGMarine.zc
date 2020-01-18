@@ -44,6 +44,7 @@ CLASS Marine_BFGSpawn: ACTOR Replaces MarineBFG {
 
 CLASS Marine_BFG: doomb_marine_base { 
 	Default {
+		doomb_marine_base.spare_ammo "doomb_cells";
 		
 		DropItem "BFG9000";
 		+DONTHARMCLASS;
@@ -164,7 +165,6 @@ override int doomb_get_aditional_death_sprite()
 			TNT1 A 0 {bshootable = false;}
 			TNT1 A 0 {bsolid = true;}
 			TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "BecomeEnemy23");
-			TNT1 A 0 A_JumpIfInTargetInventory("Clip2", 50, "GiveAmmo");
 			
 			PLA7 E 8 A_Stop;
 			PLA7 E 8 A_Stop;
@@ -188,7 +188,6 @@ override int doomb_get_aditional_death_sprite()
 			PLA7 A 10 A_FaceTarget;
 			TNT1 A 0 A_PlaySound("MRNGI1");
 			PLA7 I 30;
-			TNT1 A 0 A_GiveToTarget("Clip2", 100);
 			Goto Waits;
 			
 		Missile:

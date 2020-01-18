@@ -60,6 +60,7 @@ CLASS Marine_MinigunSpawn: RedTorch {
 CLASS Marine_Minigun: doomb_marine_base
 { 
 	Default {
+		doomb_marine_base.spare_ammo "doomb_clip";
 		
 		Scale 1.05;
 		DropItem "MiniGun";
@@ -175,7 +176,6 @@ override int doomb_get_aditional_death_sprite()
 			TNT1 A 0 {bshootable = false;}
 			TNT1 A 0 {bsolid = false;}
 			TNT1 A 0 A_JumpIfInTargetInventory("TargetIsAMarine", 1, "BecomeEnemy23");
-			TNT1 A 0 A_JumpIfInTargetInventory("Clip2", 50, "GiveAmmo");
 			
 			PL42 H 8 A_Stop;
 			PL42 E 8 A_Stop;
@@ -199,7 +199,6 @@ override int doomb_get_aditional_death_sprite()
 			PL42 A 10 A_FaceTarget;
 			TNT1 A 0 A_PlaySound("MRNGI1");
 			PL42 I 30;
-			TNT1 A 0 A_GiveToTarget("Clip2", 100);
 			//TNT1 A 0 A_SpawnItemEx("Stimpack", 40, 0)
 			Goto Waits;
 			

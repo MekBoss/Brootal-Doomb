@@ -16,13 +16,9 @@ CLASS TeleportationFog : visual_sfx Replaces TeleportFog {
 	{
 		Spawn:
 			TNT1 AAAAAAAAAAAAAAA 0 doomb_show_effect("green_particle", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-			TNT1 A 0;
-			TNT1 A 2;
-			TNT1 A 0 A_PlaySound("DSTELEPT");
-			TFOG A 3 BRIGHT;
-			TNT1 A 0 A_SpawnItem("PentagramSpawner");
-			TFOG BCDE 3 BRIGHT A_SpawnItem("YellowFlare",0,40);
-			TFOG FGHGFEDCBA 3 Bright A_SpawnItem("YellowFlare",0,40);
+			TNT1 A 2 A_PlaySound("DSTELEPT");
+			TFOG A 3 BRIGHT A_SpawnItem("PentagramSpawner");
+			TFOG BCDEFGHGFEDCBA 3 BRIGHT A_SpawnItem("YellowFlare",0,40);
 			TNT1 A 0 A_NoBlocking();
 			Stop;
 		Death:
@@ -31,35 +27,4 @@ CLASS TeleportationFog : visual_sfx Replaces TeleportFog {
 	}
 }
 
-
-
-CLASS TeleportRemovalThing : TeleportDest Replaces TeleportDest { 
-private void doomb_remove_gibs()
-{
-	if(self && self.cursector)
-	{
-		
-	}
-}
-
-Default {
-	+THRUACTORS;
-	+PAINLESS;
-	+NODAMAGETHRUST;
-	-BLOODSPLATTER;
-	+BLOODLESSIMPACT;
-	+FORCERADIUSDMG;
-	+FLOORCLIP;
-	+DONTSPLASH;
-	Mass 0;
-	Radius 0;
-	Height 0;
-}
-States
-{
-	Death:
-		TNT1 A 5;
-	stop;
-}
-
-}
+class doomb_teleport_destination_placeholder_name : visual_sfx Replaces TeleportDest {}

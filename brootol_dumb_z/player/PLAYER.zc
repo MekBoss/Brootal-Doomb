@@ -49,7 +49,7 @@ Default {
 	Player.ColorRange 112, 127;
 	Player.StartItem "Rifle";
 	Player.StartItem "Melee_Attacks";
-	Player.StartItem "Clip2", 60;
+	Player.StartItem "doomb_clip", 60;
 	Player.StartItem "RifleAmmo", 31;
 	Player.StartItem "DoubleRifleAmmo", 31;
 	Player.StartItem "ShotgunAmmo", 8;

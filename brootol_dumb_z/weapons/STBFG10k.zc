@@ -5,7 +5,7 @@ CLASS BFG10k : doomb_weapon_base {
 		Height 20;
 		Weapon.AmmoUse 15;
 		Weapon.AmmoGive 90;
-		Weapon.AmmoType "Cell";
+		Weapon.AmmoType "doomb_cells";
 		Weapon.Kickback 100;
 		Weapon.SelectionOrder 8500;
 		Inventory.Pickupmessage "You got the BFG10000!  HELL YES!";

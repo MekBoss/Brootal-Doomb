@@ -488,7 +488,7 @@ CLASS DeadDeadStick: doomb_body_base Replaces DeadStick {
 		DropItem "ArmorShard", 128;
 		DropItem "ArmorShard", 128;
 		DropItem "Stimpack", 128;
-		DropItem "Clip2", 128;
+		DropItem "Clip", 128;
 		DropItem "Shell", 128;
 		bloodtype "DeadBlood";
 		damagefactor "Fire", 0.0;
@@ -535,7 +535,7 @@ CLASS DeadLiveStick: doomb_body_base Replaces LiveStick {
 		DropItem "ArmorShard", 128;
 		DropItem "ArmorShard", 128;
 		DropItem "Stimpack", 128;
-		DropItem "Clip2", 128;
+		DropItem "Clip", 128;
 		DropItem "Shell", 128;
 		damagefactor "Fire", 0.0;
 		damagefactor "Blood", 0.0;

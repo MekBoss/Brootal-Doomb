@@ -11,8 +11,8 @@ CLASS GrenadeLauncher : doomb_weapon_base {
 		Weapon.AmmoUse1 1;
 		Weapon.AmmoUse2 1;
 		Weapon.AmmoGive 6;
-		Weapon.AmmoType1 "RocketAmmo";
-		Weapon.AmmoType2 "RocketAmmo";
+		Weapon.AmmoType1 "doomb_rockets_ammo";
+		Weapon.AmmoType2 "doomb_rockets_ammo";
 		Inventory.PickupSound "ROCKPKUP";
 		+WEAPON.NOAUTOAIM;
 		Weapon.SelectionOrder 8500;

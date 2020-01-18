@@ -1,3 +1,4 @@
+//FIXME mStateInfo.mPSPIndex can be used to return psprite index/layer
 CLASS DualPlasmaRifles: doomb_dual_weapon_base
 { 
 Default {
@@ -11,7 +12,7 @@ Default {
 	Weapon.AmmoGive2 0;
 	Inventory.PickupMessage "You find second Plasma Gun";
 
-	Weapon.AmmoType1 "Cell";//Reserve ammo type
+	Weapon.AmmoType1 "doomb_cells";//Reserve ammo type
 	Weapon.AmmoType2 "DoublePlasmagunAmmo";//Magazine ammo type
 	Inventory.PickupSound "PLSDRAW";
 	Obituary "%o was drilled by %k's Double Plasmaguns.";//Kill message
@@ -29,7 +30,6 @@ Default {
 States
 {
 	Spawn:
-		PLAS A 20;
 		PLAS A -1;
 	Stop;
 
@@ -140,7 +140,7 @@ States
 	Reload:
 		tnt1 a 0
 		{
-			if(countinv("DoublePlasmagunAmmo") >= 100 || countinv("cell") < 1)
+			if(countinv("DoublePlasmagunAmmo") >= 100 || countinv("doomb_cells") < 1)
 			{
 				self.player.GetPSprite(PSP_WEAPON).SetState(player.ReadyWeapon.findstate("ready_loop") );
 				return;
@@ -182,7 +182,7 @@ States
 		P2SR GHHIIIJJJJJJJJIKLB 1;
 		TNT1 A 5
 		{
-			invoker.reload_weapon_magazine("LeftPlasmagunAmmo", "cell");
+			invoker.reload_weapon_magazine("LeftPlasmagunAmmo", "doomb_cells");
 			inventory am = findinventory("DoublePlasmagunAmmo");
 			am.amount += 50;
 			if(am.amount > 100)
@@ -208,7 +208,7 @@ States
 		TNT1 A 5;
 		TNT1 A 0
 		{
-			invoker.reload_weapon_magazine("RightPlasmagunAmmo", "cell");
+			invoker.reload_weapon_magazine("RightPlasmagunAmmo", "doomb_cells");
 			inventory am = findinventory("DoublePlasmagunAmmo");
 			am.amount += 50;
 			if(am.amount > 100)

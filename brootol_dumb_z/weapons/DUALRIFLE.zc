@@ -9,7 +9,7 @@ Default {
 	Weapon.AmmoGive1 0;//How much ammo can be gathered with this weapon
 	Weapon.AmmoUse2 0;
 	Weapon.AmmoGive2 0;
-	Weapon.AmmoType1 "Clip2";//Reserve ammo type
+	Weapon.AmmoType1 "doomb_clip";//Reserve ammo type
 	Weapon.AmmoType2 "DoubleRifleAmmo";//Magazine ammo type
 	Obituary "%o was drilled by %k's Double Rifles.";//Kill message
 	AttackSound "None";//You better leave this clear
@@ -128,7 +128,7 @@ States
 	Reload:
 		tnt1 a 0
 		{
-			if(countinv("DoubleRifleAmmo") >= 60 || countinv("Clip2") < 1)
+			if(countinv("DoubleRifleAmmo") >= 60 || countinv("doomb_clip") < 1)
 			{
 				self.player.GetPSprite(PSP_WEAPON).SetState(player.ReadyWeapon.findstate("ready_loop") );
 				return;
@@ -168,7 +168,7 @@ States
 		TNT1 A 5
 		{
 			a_fireprojectile("EmptyClipSpawn",185,0,8,-4);
-			invoker.reload_weapon_magazine("LeftRifleAmmo", "clip2");
+			invoker.reload_weapon_magazine("LeftRifleAmmo", "doomb_clip");
 			inventory am = findinventory("DoubleRifleAmmo");
 			am.amount += 30;
 			if(am.amount > 60)
@@ -190,7 +190,7 @@ States
 		TNT1 A 5
 		{
 			a_fireprojectile("EmptyClipSpawn",-5,0,8,-4);
-			invoker.reload_weapon_magazine("RightRifleAmmo", "clip2");
+			invoker.reload_weapon_magazine("RightRifleAmmo", "doomb_clip");
 			inventory am = findinventory("DoubleRifleAmmo");
 			am.amount += 30;
 			if(am.amount > 60)
