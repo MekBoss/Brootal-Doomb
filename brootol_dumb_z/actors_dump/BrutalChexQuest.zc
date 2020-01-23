@@ -387,33 +387,36 @@ CLASS AcidBallTrails : visual_sfx {
 
 
 
-CLASS FlyingAcidParticles : visual_sfx { 
-	Default {
-		
-		+CLIENTSIDEONLY;
-		+THRUACTORS;
-		+NOGRAVITY;
-		+MISSILE;
-		-NOGRAVITY;
-		+DOOMBOUNCE;
-		Radius 2;
-		Height 2;
-		BounceFactor 0.01;
-		Speed 6;
-		Gravity 0.4;
-		RenderStyle "Add";
-		Scale 0.6;
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 1;
-			BAL7 CDDEEFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 1 BRIGHT;
-			BAL7 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 1 A_FadeOut(0.01);
-			Stop;
-		Death:
-			Stop;
-	}
+CLASS FlyingAcidParticles : visual_sfx
+{ 
+Default
+{
+	+CLIENTSIDEONLY;
+	+THRUACTORS;
+	+NOGRAVITY;
+	+MISSILE;
+	-NOGRAVITY;
+	+DOOMBOUNCE;
+	Radius 2;
+	Height 2;
+	BounceFactor 0.01;
+	Speed 6;
+	Gravity 0.4;
+	RenderStyle "Add";
+	Scale 0.6;
+}
+
+States
+{
+	Spawn:
+		TNT1 A 1;
+		BAL7 CDDEEFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 1 BRIGHT;
+		BAL7 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 1 A_FadeOut(0.01);
+		Stop;
+	Death:
+		Stop;
+}
+
 }
 
 

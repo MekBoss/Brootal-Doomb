@@ -262,10 +262,7 @@ States
 		TNT1 A 0 A_PlaySound ("PSXDPN");
 		KSA8 BC 6;
 		TNT1 A 0 doomb_blood_dying();
-		KSA8 BC 6;
-		TNT1 A 0 doomb_blood_dying();
-		TNT1 A 0 A_PlaySound ("PSXDPN");
-		tnt1 a 0 a_jump(180, "spawn");
+		tnt1 a 0 a_jump(200, "spawn");
 	Death:
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 A_Fall;

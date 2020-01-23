@@ -1,3 +1,5 @@
+//everything that need to have base class but too "small" to have its own file
+
 class doomb_boolet_base : fastprojectile abstract
 {
 protected eventhandler sfx;
@@ -15,6 +17,46 @@ protected visual_sfx doomb_show_effect(statelabel effect_name, vector3 offset = 
 
 	else
 		return null;
+}
+
+//attack only in volume of some sphere actually
+protected void doomb_spherical_rail_attack(uint dist = 128)
+{
+	FLineTraceData sphere;
+	vector2 store = (self.angle, self.pitch);
+
+	LineTrace(frandom(-180, 180), dist, frandom(-90, 90),
+	offsetz: height / 2, data: sphere);
+
+	spawn("SuperBFGExtra", pos:sphere.HitLocation);
+
+	vector3 off, from, to, add;
+
+	off = level.vec3diff(self.pos, sphere.HitLocation);
+	from = self.pos;
+	to = sphere.HitLocation;
+
+	add = off;
+	add /= (dist);
+
+	vector3 vv = add;
+
+	uint i = 0;
+
+	//while ( i < dist);// || i < (dist + 1) );
+	{
+		a_spawnparticle("33FF33", SPF_FULLBRIGHT , xoff:vv.x, yoff:vv.y, zoff:vv.z);
+		vv += add;
+		i ++;
+	} 
+	
+	if(i > (dist + 1))
+		console.printf("ded");
+	
+	if(sphere.hitactor != null)
+	{
+		sphere.hitactor.damagemobj(self, self.target, random(15, 25), 'Desintegrate', 0, 0);
+	}
 }
 
 default

@@ -652,9 +652,6 @@ CLASS XDeathZombiemanHeadBeheaded : XDeathZombieManHead {
 
 
 CLASS XDeathZombiemanHeadOnXDeath : XDeathZombieManHead { 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:
@@ -856,13 +853,13 @@ States
 {
 	Spawn:
 	SEE:
-		TNT1 A 0 A_Pain;
+		TNT1 A 0;
 		TNT1 A 0 A_SpawnProjectile ("jaw", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 A_SpawnProjectile ("Teeth", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 A_SpawnProjectile ("TeethNoBounce", 50, 0, random (0, 360), 2, random (0, 160));
 		ZZD5 A 6 A_SpawnProjectile ("MuchBlood", 40, 0, random (0, 360), 2, random (0, 160));
 	mini:
-		ZZD5 CBCB 12 A_Pain;
+		ZZD5 CBCB 12 A_PlaySound("grunt/pain", 3);
 		tnt1 a 0 doomb_random_death();
 	loop;
 
@@ -987,9 +984,9 @@ CLASS DyingZombiemanNoArm : doomb_body_base {
 			TNT1 A 0 A_PlaySound ("BURNZOM");
 			ZZD1 IIIIAAAAA 2 A_SpawnProjectile ("Brutal_LiquidBlood", 40, 0, 90, 2, random (0, 45));
 			ZZD1 A 1 A_Chase;
-		Suffer:
 			TNT1 A 0 A_FaceTarget;
 			ZZD2 AAAAAAAA 2 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, 90, 2, random (0, 45));
+		Suffer:
 			ZZD2 EEEEEBBBBB 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
 			TNT1 A 0 A_FaceTarget;
 			TNT1 A 0 A_Jump(32, "LastStand");
@@ -2284,15 +2281,19 @@ CLASS DyingZombieman : doomb_body_base
 }
 
 
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+//zombieman minigun fatality
+//////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-CLASS BrutalizedZombieMan1 : ACTOR { 
-	Default {
-	
-	
+
+CLASS BrutalizedZombieMan1 : doomb_body_base
+{
+Default
+{
 	Radius 16;
 	Height 50;
-	Health 20;
+	Health 300;
 	bloodtype "DeadBlood";
 	PainSound "grunt/pain";
 	PainChance 255;
@@ -2306,31 +2307,29 @@ CLASS BrutalizedZombieMan1 : ACTOR {
 	+GHOST;
 	-SOLID;
 	+THRUGHOST;
+	+nopain
 	Scale 1.0;
 	Mass 500;
-	}
-	States
-	{
-	Death.Fatality:
-	Death.punch:
-		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 A_GiveToTarget("HasZManShield", 1);
-		TNT1 A 0 A_GiveToTarget("GotMeatShield", 1);
-		Stop;
-		
+}
+
+States
+{
 	Spawn:
 		TNT1 A 0;
 		TNT1 A 0 A_Recoil(2);
 		TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 35, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAAA 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
-	Pain:
-		ZZD1 A 30;
-	DieNow:
+		ZZD1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1
+		{
+			if(health <= 200)
+				setstatelabel("no_head");
+		}
 		TNT1 A 0 A_SpawnItem ("BrutalizedZombieManStop");
-		Stop;
+	Stop;
+
 		
-	Death:
-		TNT1 A 0;
+	//BrutalizedZombieMan2
+	no_head:
 		TNT1 AAAA 0 A_SpawnProjectile ("Brains1", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("jaw", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("eye", 50, 0, random (0, 360), 2, random (0, 160));
@@ -2342,25 +2341,54 @@ CLASS BrutalizedZombieMan1 : ACTOR {
 		TNT1 AAAAAAAA 0 A_SpawnProjectile ("Brutal_Blood", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_Recoil(4);
-		ZZD1 B 16;
-		TNT1 A 0;
-		TNT1 A 0 A_SpawnItem ("BrutalizedZombieMan2");
-		Stop;
+		ZZD1 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1
+		{
+			if(health <= 100)
+				setstatelabel("just_torso");
+		}
+		TNT1 A 0 A_SpawnItem ("BrutalizedZombieManStop2");
+	Stop;
+
+	just_torso:
+		ZZD1 C 35;//just die
+		ZZD3 H -1 doomb_final_absolution(12, 12);
+	Stop;
 		
+	Death:
+		TNT1 A 0;
+		TNT1 A 0 A_Recoil(2);
+		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
+		TNT1 AAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AA 0 A_SpawnProjectile ("XDeath3", 40, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("XDeath4", 40, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("XDeath2", 40, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAAAAA 0 A_SpawnProjectile ("Brutal_LiquidBlood", 44, 0, random (0, 360), 2, random (0, 50));
+		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
+		ZZD1 EFG 6;
+		ZZD1 H -1 doomb_final_absolution(12, 12);
+	Stop;
+
+
+
 	Death.SSG:
 	XDeath:
 		TNT1 A 0 A_XScream;
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 A_SpawnProjectile ("ZombieXDeath", 0, 0, random (0, 360), 2, random (0, 160));
-		Stop;
-		
+	Stop;
+
+	Death.Fatality:
+	Death.punch:
+		TNT1 A 0 A_NoBlocking;
+		TNT1 A 0 A_GiveToTarget("HasZManShield", 1);
+		TNT1 A 0 A_GiveToTarget("GotMeatShield", 1);
+	Stop;
 }
 
 }
+
 CLASS BrutalizedZombieManStop: CurbstompedMarine { 
-	Default {
-	
-	}
     States
     {
 	Spawn:
@@ -2371,85 +2399,20 @@ CLASS BrutalizedZombieManStop: CurbstompedMarine {
 }
 
 }
-CLASS BrutalizedZombieMan2: BrutalizedZombieMan1 { 
-	Default {
-	
-	}
-	States
-	{
-	Spawn:
-	Pain:
-		ZZD1 B 30;
-		TNT1 A 0 A_SpawnItem ("BrutalizedZombieManStop2");
-		Stop;
-		
-	Death:
-		TNT1 A 0;
-		TNT1 A 0 A_Recoil(2);
-		TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 35, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0;
-		TNT1 A 0 A_Recoil(4);
-		ZZD1 C 16;
-		TNT1 A 0 A_SpawnItem ("BrutalizedZombieMan3");
-		Stop;
-		
-}
 
-}
 CLASS BrutalizedZombieManStop2: CurbstompedMarine { 
-	Default {
-	
-	}
     States
     {
 	Spawn:
 		ZZD4 AB 6 A_SpawnItem("Brutal_FlyingBlood",0,5,0,1);
-		ZZD3 H -1;//doomb_final_absolution(12, 12);
-		Stop   ;
-}
-
-}
-
-CLASS BrutalizedZombieMan3: BrutalizedZombieMan1 { 
-	Default {
-	
-	}
-	States
-	{
-	Spawn:
-	Pain:
-		ZZD1 C 30;
-		ZZD3 H -1;//doomb_final_absolution(12, 12);
+		ZZD3 H -1 doomb_final_absolution(12, 12);
 		Stop;
-		
-	Death:
-		TNT1 A 0;
-		TNT1 A 0 A_Recoil(2);
-		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
-		//TNT1 AAA 0 bright A_SpawnProjectile ("SuperGoreSpawner", 35, 0, random (0, 360), 2, random (30, 180))
-		TNT1 AAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 A_SpawnProjectile ("XDeath3", 40, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("XDeath4", 40, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("XDeath2", 40, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAAAAA 0 A_SpawnProjectile ("Brutal_LiquidBlood", 44, 0, random (0, 360), 2, random (0, 50));
-		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
-		ZZD1 EFG 6;
-		ZZD1 H -1;//doomb_final_absolution(12, 12);
-		Stop;
-		
 }
 
 }
-
-
 
 
 CLASS BrutalizedZombieManLeg: BrutalizedZombieMan1 { 
-	Default {
-	
-	}
 	States
 	{
 	Spawn:

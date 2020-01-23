@@ -500,7 +500,7 @@ CLASS GreenPlasmaBall : doomb_boolet_base {
 		Loop;
 			
 		Death:
-			TNT1 AAAA 0 doomb_show_effect("green_particle", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+			TNT1 AAAA 0 doomb_show_effect("green_particle", velocity:(frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
 			TNT1 AAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			EXPL AAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("GreenFlameTrails", (0, 0, 50), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			TNT1 AA 0 A_SpawnItem("GreenFlare",0,0);

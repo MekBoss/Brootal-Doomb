@@ -1,4 +1,5 @@
 server noarchive bool doomb_debug = false;
+server noarchive bool doomb_blood_debug = false;
 
 server bool doomb_sfx_effects = true;
 server bool doomb_show_flares = true;

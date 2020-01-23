@@ -12,6 +12,13 @@ override void worldthingspawned(worldevent e)
 	    doomb_blood(e.thing).set_blood_throne(self);
 		
 }
+/* */
+override void worldtick()
+{
+    if(doomb_blood_debug)
+        console.printf("size %i", blood_stains.size() );
+}
+
 
 private array<doomb_blood> blood_stains;
 
@@ -19,8 +26,15 @@ private doomb_blood doomb_find_freash_blood(class<actor> type = null)
 {
     if(type)
     {
-        for(uint i = 0; i < blood_stains.size(); i++)
+        for(uint i = 0; i <= blood_stains.size(); i++)
         {
+            if(i == blood_stains.size() )
+            {
+                doomb_blood b = doomb_blood(actor.spawn(type, (double.infinity, double.infinity, double.infinity)));
+                blood_stains.push(b);
+                return b;
+            }
+
             if(blood_stains[i] && blood_stains[i].getclass() == type && doomb_blood(blood_stains[i]).is_active() == false)
             {
                 return (doomb_blood)(blood_stains[i]);
@@ -33,9 +47,6 @@ private doomb_blood doomb_find_freash_blood(class<actor> type = null)
             }
         }
 
-        doomb_blood b = doomb_blood(actor.spawn(type, (double.infinity, double.infinity, double.infinity)));
-        blood_stains.push(b);
-        return b;
     }
 
     return null;

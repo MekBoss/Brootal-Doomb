@@ -14,11 +14,77 @@ CLASS AmmoSuply : backpack Replaces Backpack {
 	}
 }
 
-class doomb_cells : cell replaces cell {}
-class doomb_cell_pack : cellpack replaces cellpack {}
+class doomb_cells : ammo replaces cell
+{
+	Default
+	{
+		Inventory.PickupMessage "$GOTCELL";
+		Inventory.Amount 20;
+		Inventory.MaxAmount 300;
+		Ammo.BackpackAmount 20;
+		Ammo.BackpackMaxAmount 600;
+		Inventory.Icon "CELLA0";
+		Tag "$AMMO_CELLS";
+	}
+	States
+	{
+	Spawn:
+		CELL A -1;
+		Stop;
+	}
+}
 
-class doomb_rockets_ammo : RocketAmmo replaces RocketAmmo {}
-class doomb_rocket_box : rocketbox replaces rocketbox {}
+class doomb_cell_pack : doomb_cells replaces cellpack
+{
+	Default
+	{
+		Inventory.PickupMessage "$GOTCELLBOX";
+		Inventory.Amount 100;
+	}
+	States
+	{
+	Spawn:
+		CELP A -1;
+		Stop;
+	}
+}
+
+
+class doomb_rockets_ammo : Ammo replaces RocketAmmo
+{
+	Default
+	{
+		Inventory.PickupMessage "$GOTROCKET";
+		Inventory.Amount 1;
+		Inventory.MaxAmount 50;
+		Ammo.BackpackAmount 1;
+		Ammo.BackpackMaxAmount 100;
+		Inventory.Icon "ROCKA0";
+		Tag "$AMMO_ROCKETS";
+	}
+	States
+	{
+	Spawn:
+		ROCK A -1;
+		Stop;
+	}
+}
+
+class doomb_rocket_box : doomb_rockets_ammo replaces rocketbox
+{
+	Default
+	{
+		Inventory.PickupMessage "$GOTROCKBOX";
+		Inventory.Amount 5;
+	}
+	States
+	{
+	Spawn:
+		BROK A -1;
+		Stop;
+	}
+}
+
 
 class doomb_shell : ammo replaces shell
 {
@@ -44,7 +110,7 @@ class doomb_shell_box : doomb_shell replaces shellbox
 {
 Default
 {
-	Inventory.PickupMessage "$GOTSHELLBOX"; // "Picked up a box of shotgun shells."
+	Inventory.PickupMessage "$GOTSHELLBOX";// "Picked up a box of shotgun shells."
 	Inventory.Amount 20;
 }
 

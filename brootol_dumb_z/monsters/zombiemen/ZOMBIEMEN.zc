@@ -1122,7 +1122,7 @@ Default {
 	Obituary "$OB_MPROCKET";
 	
 	Damagetype "Explosive_Impact";
-	Speed 10;
+	Speed 15;
 	Damage 0;
 	+GHOST;
 	+THRUGHOST;
@@ -1131,10 +1131,9 @@ Default {
 	States
 	{
 	Spawn:
-		TNT1 A 0;
-		BLUD C 0 ThrustThingZ (0,50,1,0);
+		TNT1 A 0 nodelay {vel.z += 15;}
 	Live:
-		GRND ABCDEFGH 2;
+		GRND ABCDEFGH 2 {vel.z -= 1;}
 		Loop;
 		
 		
@@ -1144,17 +1143,16 @@ Default {
 		TNT1 A 0 {if(waterlevel > 1) spawn("UnderwaterExplosion", pos:self.pos); }
 		TNT1 A 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 		TNT1 AAAAAA 0
-					{
-				doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-				doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
-				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
-				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
-			}
+		{
+			doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
+			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
+			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
+			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
+		}
 
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 		TNT1 AAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
-		TNT1 A 0 A_Explode(20, 200, 0);
 		TNT1 A 0 A_Explode(20, 70, 1);
 		TNT1 A 1;
 		TNT1 A 0 A_PlaySound("FAREXPL", 3);

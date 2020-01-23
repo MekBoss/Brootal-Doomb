@@ -60,12 +60,13 @@ CLASS XDeath1 : doomb_body_base {
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater");
 			BLOD A 4 A_SpawnProjectile ("Brutal_LiquidBloodTrail", 0, 0, random (0, 360), 2, random (0, 360));
-			Loop;
+		Loop;
+		
 		Death:
 			XDT1 EFGHIJKL 5;
 			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
-			Stop;
-			TNT1 A 1;
+		Stop;
+		
 		Underwater:
 		Splash:
 			XDT1 ABCD 3
@@ -76,7 +77,7 @@ CLASS XDeath1 : doomb_body_base {
 		stop;
 	}
 }
-
+//SLOWDOWN
 CLASS XDeath2: XDeath1 { 
 	Default {
 		DeathSound "misc/xdeath2";
@@ -88,19 +89,20 @@ CLASS XDeath2: XDeath1 {
 			XME1 ABCD 3 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			Loop;
 		Death:
-			TNT1 AAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180));
+			TNT1 AAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 A_CheckFloor("SpawnFloor");
 			TNT1 A 0 A_SpawnItemEx ("CeilBloodLauncher",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			TNT1 A 0 doomb_meat_on_ceiling();
-			Stop;
+		Stop;
 			
 		SpawnFloor:
 			XME1 E 1;
 			XME1 E 3;
 			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
 		Living:
-			XME1 E 600;
-			Loop;
+			XME1 E 3400;
+		stop;
+
 		Vanish:
 			TNT1 A 5;
 			Stop;
@@ -120,10 +122,9 @@ CLASS XDeath3: XDeath1 {
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
-			XME2 ABCD 3 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			Loop;
+			XME2 ABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCDABCD 3 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		Death:
-			TNT1 AAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180));
+			TNT1 AAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 A_CheckFloor("SpawnFloor");
 			TNT1 A 0 A_SpawnItemEx ("CeilBloodLauncher",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			TNT1 A 0 doomb_meat_on_ceiling();
@@ -179,7 +180,7 @@ CLASS XDeath5: XDeath1 {
 			XME5 ABCD 3 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			Loop;
 		Death:
-			TNT1 AAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180));
+			TNT1 AAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
 			XME5 E 3;
 		Living:
@@ -284,7 +285,7 @@ CLASS XDeathGuts : doomb_body_base {
 			XME4 AAAABBBBCCCCDDDD 2;
 			Loop;
 		Death:
-			TNT1 AAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180));
+			TNT1 AAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			//TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1)
 			XME4 E 9009;
 			Stop;
@@ -442,7 +443,7 @@ CLASS XDeathStomach: XDeathArm1 {
 			Loop;
 		Death:
 			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
-			XSTO EEEEEEEEE 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180));
+			XSTO EEEEEEEEE 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			XSTO E 9009;
 			Stop;
 	}
@@ -472,7 +473,7 @@ CLASS XDeathHalfMarine : doomb_body_base {
 		Spawn:
 			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			HPLA A 12 A_SpawnProjectile("Brutal_FlyingBloodTrail",0,0,180,2);
+			HPLA A 12 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			Loop;
 		Death:
 			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
@@ -633,7 +634,7 @@ CLASS BurningFlyingMeatPiece : doomb_body_base {
 			Loop;
 		Death:
 			XME1 E 1 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
-			TNT1 AAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180));
+			TNT1 AAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			XME1 EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 7 doomb_show_effect("FlameTrails", velocity: (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			XME1 E 9009;
 			TNT1 A 1;

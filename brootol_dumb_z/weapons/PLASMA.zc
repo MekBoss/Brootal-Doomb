@@ -218,13 +218,14 @@ CLASS Plasma_Gun : doomb_weapon_base Replaces PlasmaRifle{
 
 CLASS Plasma_Ball: doomb_boolet_base Replaces PlasmaBall { 
 	Default {
-		
 		Radius 10;
 		Height 2;
 		Speed 60;
 		Damage 8;
-		DamageType "Plasma";
-		Decal "SmallerScorch";
+		alpha 0.90;
+		Scale 0.10;
+		Health 5;
+		
 		Projectile;
 		+RANDOMIZE;
 		-NOBLOCKMAP;
@@ -232,18 +233,16 @@ CLASS Plasma_Ball: doomb_boolet_base Replaces PlasmaBall {
 		+NORADIUSDMG;
 		+THRUSPECIES;
 		+MTHRUSPECIES;
-		Species "Marines";
+
 		damagefactor "Blood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "Taunt", 0.0;
 		
-		Health 5;
-		Scale 1.0;
-		
+		Species "Marines";
 		renderstyle "Add";
-		alpha 0.90;
-		Scale 0.10;
+		DamageType "Plasma";
+		Decal "SmallerScorch";
 		DeathSound "weapons/plasmax";
 		SeeSound "None";
 		Obituary "$OB_MPPLASMARIFLE";
@@ -255,14 +254,13 @@ CLASS Plasma_Ball: doomb_boolet_base Replaces PlasmaBall {
 		Loop;
 			
 		Death:
-			TNT1 A 1
+			TNT1 A 5
 			{
 				A_Explode(6,50, 0);
 				doomb_show_effect("BluePlasmaFire", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
 				doomb_show_effect("BluePlasmaParticle", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
 			}
-			TNT1 B 4;
-			TNT2 AAAAAAAAAAA 9 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
+			TNT2 AAAAAAAAAAAAA 9 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 		Stop;
 	}
 }

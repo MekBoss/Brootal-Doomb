@@ -96,12 +96,11 @@ CLASS TorchTreeInFlames : doomb_decoration_base {
 	{
 		Spawn:
 			TNT1 A 0 A_Playsound("props/redfire");
-			TRE1 C 0 doomb_show_effect("GunFireSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (1.2, 0) );
-			TNT1 A 0 bright A_SpawnProjectile ("RealFlameTrailsSmallLong", 38, 0, random (0, 360), 2, random (50, 130));
 			TRE1 CCC 3 bright
 			{
+				doomb_show_effect("GunFireSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (1.2, 0) );
 				Spawn("RedFlare", pos + (0, 0, 32));
-				A_SpawnProjectile ("RealFlameTrailsSmallLong", 38, 0, random (0, 360), 2, random (50, 130));
+				doomb_show_effect("RealFlameTrailsSmall", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ), (frandom(1, 1.2), 0) );
 			}
 			Loop;
 			
@@ -119,10 +118,9 @@ CLASS BigTreeReplacer : RandomSpawner Replaces BigTree {
 	}
 }
 
-CLASS Big_Tree: BigTree { 
+CLASS Big_Tree: doomb_decoration_base
+{
 	Default {
-		
-		
 		Radius 32;
 		Height 84;
 		+NOBLOODDECALS;
@@ -177,14 +175,14 @@ CLASS Big_Tree: BigTree {
 		Death.Plasma2:
 			TRE2 NNNNNNNNNN 1 bright
 			{
-				A_SpawnProjectile ("RealFlameTrailsSmallLong", random (40, 59), random (-10, 10), random (0, 360), 2, random (10, 55));
+				doomb_show_effect("RealFlameTrailsSmall", (0, 0, 40), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ), (frandom(1, 1.2), 0) );
 				Spawn("RedFlare", pos + (0, 0, random(60, 90)) );
 			}
 
 			TNT1 A 0 A_Playsound("props/redfire");
 			TNT1 A 0 A_Explode(10,5, damagetype:"fire");
-			TNT1 A 0 bright A_SpawnProjectile ("MediumBlackSmoke", 88, 0, random (40, 180), 2, random (40, 120));
-			Loop;
+			TNT1 A 0 bright doomb_show_effect("BigBlackSmoke", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ), visual_size: (frandom(0.2, 0.4), 0) );
+		Loop;
 	}
 }
 

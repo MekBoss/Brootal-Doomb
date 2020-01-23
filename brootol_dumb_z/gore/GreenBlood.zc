@@ -32,7 +32,7 @@ states
 }
 }
 
-
+//FIXME jump to forbidden state
 CLASS Green_FlyingBloodTrail: Brutal_FlyingBloodTrail { 
 	Default {
  

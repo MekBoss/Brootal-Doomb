@@ -122,7 +122,7 @@ CLASS PainElemental1 : doomb_monster_base Replaces PainElemental {
 				for(uint i = 0; i < 100; i++)
 				{
 					doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-					A_SpawnProjectile ("RealFlameTrailsSmallLong", 1, 0, random (0, 360), 2, random (70, 110));
+					doomb_show_effect("RealFlameTrailsSmall", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ), (frandom(1, 1.2), 0) );
 				}
 			}
 		Stop;

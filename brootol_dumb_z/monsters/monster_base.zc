@@ -213,9 +213,9 @@ override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Fl
 //can actually hit another actor(not monster target)
 protected void doomb_cheap_melee_attack(double distance = 0, int dam = 0, name damage_type = "")
 {
-	double new_pitch = AimLineAttack (angle, DEFMELEERANGE, null, 0., ALF_CHECK3D);
+	double new_pitch = AimLineAttack (angle, distance, null, 0., ALF_CHECK3D);
 	FLineTraceData punch;
-	LineTrace(angle + frandom(-5, 5), distance, new_pitch + random (-5, 5),
+	LineTrace(angle + frandom(-5, 5), distance, new_pitch + frandom (-5, 5),
 	offsetz:height / 2, data: punch);
 	
 	if(punch.HitType == TRACE_HitActor && (punch.hitactor.getclass() != self.getclass() || infighting  == 1) )
@@ -331,7 +331,6 @@ states
 		tnt1 a 0
 		{
 			console.printf("taunt/avoid death type");
-			setstatelabel("see");
 		}
 	goto bug;
 
@@ -373,10 +372,10 @@ override void tick()
 	{
 		if(health <= 0)
 		{
-			spawn("XDeath1", pos:self.pos + (0, 0, 7)).vel = (random(-3, 3), random(-3, 3), random(-3, 3) );
-			spawn("XDeath2", pos:self.pos + (0, 0, 7)).vel = (random(-3, 3), random(-3, 3), random(-3, 3) );
-			spawn("XDeath3", pos:self.pos + (0, 0, 7)).vel = (random(-3, 3), random(-3, 3), random(-3, 3) );
-			spawn("XDeath4", pos:self.pos + (0, 0, 7)).vel = (random(-3, 3), random(-3, 3), random(-3, 3) );
+			spawn("XDeath1", pos:self.pos + (0, 0, 7)).vel = (random(-3, 3), random(-3, 3), random(0, 3) );
+			spawn("XDeath2", pos:self.pos + (0, 0, 7)).vel = (random(-3, 3), random(-3, 3), random(0, 3) );
+			spawn("XDeath3", pos:self.pos + (0, 0, 7)).vel = (random(-3, 3), random(-3, 3), random(0, 3) );
+			spawn("XDeath4", pos:self.pos + (0, 0, 7)).vel = (random(-3, 3), random(-3, 3), random(0, 3) );
 
 			self.destroy();
 		}

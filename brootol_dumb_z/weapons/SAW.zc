@@ -28,25 +28,27 @@ CLASS SawFireSeq2: Inventory {
 
 CLASS Chain_saw : doomb_weapon_base replaces Chainsaw { 
 	Default {
-		
+		Inventory.PickupMessage "$GOTCHAINSAW";
+		Obituary "$OB_MPCHAINSAW";
+		Tag "$TAG_CHAINSAW"	;	
 		Weapon.SlotNumber 1;
 		Weapon.SlotPriority 0.5;
 		
 		weapon.selectionorder 240;
 		inventory.pickupsound "weapons/chainsaw/draw";
-		//inventory.pickupsound "none"
 		Weapon.UpSound "none";
 		weapon.readysound "weapons/chainsaw/idle";
 		+WEAPON.NOAUTOAIM;
 		+WEAPON.AXEBLOOD;
 		+FORCEXYBILLBOARD;
 		+WEAPON.NO_AUTO_SWITCH;
-		//Weapon.AmmoType "Gas"
-		//Weapon.AmmoGive 400
 	}
 	states
 	{
-		
+		Spawn:
+			CSAW A -1;
+    	Stop;
+
 		Select:
 			TNT1 AAAAAAAAAAA 0 A_Raise;
 			wait;

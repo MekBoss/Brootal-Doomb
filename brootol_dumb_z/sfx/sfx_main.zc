@@ -6,7 +6,9 @@ override void worldloaded(worldevent e)
 {
 	for(uint i = 1; i < 100; i++)
 	{
-		vis_sfx.push( (visual_sfx)(actor.spawn("visual_sfx", (double.infinity, double.infinity, double.infinity) ) ) );
+		visual_sfx sfx = visual_sfx(actor.spawn("visual_sfx", (double.infinity, double.infinity, double.infinity) ) );
+		sfx.setstatelabel("off");
+		vis_sfx.push(sfx);
 	}
 }
 

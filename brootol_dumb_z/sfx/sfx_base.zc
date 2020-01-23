@@ -105,7 +105,6 @@ default
 
 states
 {
-	spawn:
 	off:
 		tnt1 a -1;
 	stop;
@@ -124,8 +123,8 @@ states
 			bnogravity = true;
 			self.scale = (1, 1);
 			self.vel = (0, 0, 0);
-			a_setrenderstyle(alpha, STYLE_Add);
 			alpha = 1;
+			a_setrenderstyle(alpha, STYLE_Add);
 
 			for(uint i = 0; i < 10; i++)
 				a_stopsound(i);

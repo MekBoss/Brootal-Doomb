@@ -24,7 +24,7 @@ states
 }
 
 
-
+//FIXME jumps to forbiden state
 CLASS BlueBloodTrails: Brutal_FlyingBloodTrail { 
 	Default {
  
@@ -39,6 +39,7 @@ Loop;
 }
 }
 
+//FIXME jumps to forbiden state
 CLASS Blue_FlyingBloodTrail: Brutal_FlyingBloodTrail { 
 	Default {
  

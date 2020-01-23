@@ -122,7 +122,11 @@ States
 				A_SpawnItem("GreenFlareMedium");
 				A_SpawnItemEx("BFGFOG");
 			}
-			doomb_show_effect("green_particle", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+			doomb_show_effect("green_particle", velocity:(frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
+			
+			//for(uint i = 0; i < 20; i++)
+				doomb_spherical_rail_attack();
+				//A_Customrailgun(30,0,"","33FF33",RGF_SILENT|RGF_FULLBRIGHT|RGF_EXPLICITANGLE,2,15,"BFGFOG", random(0,359),random(0,359),128, 13, sparsity:0.5);
 		}
 	Loop;
 		
@@ -133,9 +137,8 @@ States
 			A_SpawnItem("GreenShockWave");
 		
 			for(uint i = 0; i < 400; i++)
-			{
-				doomb_show_effect("green_particle", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-			}
+				doomb_show_effect("green_particle", velocity: (frandom(-13, 13), frandom(-13, 13), frandom(-13, 13) ) );
+
 			A_SpawnProjectile ("BFGBIGFOG", 0, 0, random (0, 360), 2, random (0, 360));
 			
 			//add removing gib functionality here
@@ -146,6 +149,7 @@ States
 			A_SpawnItem("GreenFlare",0,0);
 			if(frame == 5)
 				A_BFGSpray("SuperBFGExtra", 40, 1);
+			
 			A_SpawnItem("GreenFlare",0,0);
 		}
 	Stop;

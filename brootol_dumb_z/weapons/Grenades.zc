@@ -145,7 +145,7 @@ CLASS HandGrenade : doomb_boolet_base {
 			tnt1 a 0
 			{
 				timer++;
-				if(timer > 5)
+				if(timer > 15)
 					setstatelabel("explode");
 			}
 			GRND ABCDEFGH 2 {vel.z -= 1;}
@@ -155,7 +155,7 @@ CLASS HandGrenade : doomb_boolet_base {
 			tnt1 a 0
 			{
 				timer++;
-				if(timer > 5)
+				if(timer > 15)
 					setstatelabel("explode");
 
 				vel.z -= 5;
@@ -174,9 +174,9 @@ CLASS HandGrenade : doomb_boolet_base {
 			TNT1 AAAAAA 0
 			{
 				doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-				doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
-				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
+				//doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
+				//doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
+				//doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
 				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
 			}
 

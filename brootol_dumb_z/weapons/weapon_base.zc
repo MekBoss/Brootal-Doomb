@@ -148,7 +148,7 @@ states
 			{
 				A_Print("No Grenades left");
 				invoker.in_specific_state = false; 
-				player.GetPSprite(PSP_WEAPON).SetState(player.ReadyWeapon.GetReadyState() );
+				player.GetPSprite(StateInfo.mPSPIndex).SetState(player.ReadyWeapon.GetReadyState() );
 			}
 		}       
 		GRTH ABCD 1;
@@ -163,7 +163,7 @@ states
 		{
 			A_SetRoll(0);
 			invoker.in_specific_state = false;
-			player.GetPSprite(PSP_WEAPON).SetState(player.ReadyWeapon.GetReadyState() );
+			player.GetPSprite(StateInfo.mPSPIndex).SetState(player.ReadyWeapon.GetReadyState() );
 		}
 	Goto bug;
 
@@ -189,7 +189,19 @@ states
 			LineTrace(self.player.mo.angle + frandom(-0.5, 0.5), 50, self.player.mo.pitch,
 			offsetz:(self.player.viewz - self.player.mo.Pos.Z) / 2, data: try_kick);
 			
-			if(try_kick.hittype == TRACE_HitNone){return;}
+			if(try_kick.hittype == TRACE_HitNone)
+				return;
+
+			if(try_kick.hittype == TRACE_HitFloor)
+			{}
+			if(try_kick.hittype == TRACE_HitCeiling)
+			{}
+			if(try_kick.hittype == TRACE_HitWall)
+			{
+				try_kick.HitLine.Activate(self, 0, SPAC_PCross|SPAC_Impact);
+			}
+
+
 
 			if(try_kick.hitactor != null)
 			{

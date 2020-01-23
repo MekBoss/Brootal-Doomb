@@ -8,6 +8,8 @@ protected playerpawn leader;
 
 protected void doomb_set_leader()
 {
+	if(leader) return;
+
 	if(target && target.player && target is "playerpawn")
 		leader = playerpawn(target);
 
@@ -29,13 +31,24 @@ protected void doomb_set_leader()
 	}
 }
 
-protected void doomb_warp_to_leader()
+protected double doomb_sqrt_distance_to_leader()
 {
 	if(leader)
 	{
 		vector3 v = level.vec3diff(self.pos, leader.pos);
-		
-		if(v dot v > 300 * 300)
+
+		double d = (v dot v);
+		return d;
+	}
+
+	return double.infinity;
+}
+
+protected void doomb_warp_to_leader()
+{
+	if(leader)
+	{
+		if(doomb_sqrt_distance_to_leader() > 300 * 300)
 		{
 			//spawns behind player, i.e. player wouldn see how marines pops out from empty space
 			vector3 offset = (( sin(leader.angle), cos(leader.angle) ) * -(self.radius + leader.radius + 1), leader.pos.z);
@@ -44,13 +57,17 @@ protected void doomb_warp_to_leader()
 	}
 }
 
-protected void doomb_give_player_ammo()
+protected void doomb_find_free_ammo()
+{
+	if(random(0, 100) < 5)
+		setstatelabel("share_some_ammo");
+}
+
+protected void doomb_give_leader_ammo()
 {
 	if(leader)
 	{
-		vector3 v = level.vec3diff(self.pos, leader.pos);
-		
-		if(v dot v < 100 * 100)
+		if(doomb_sqrt_distance_to_leader() < 100 * 100)
 		{
 			if(spare_ammo)
 			{

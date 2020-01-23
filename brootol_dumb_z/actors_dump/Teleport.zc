@@ -15,7 +15,7 @@ CLASS TeleportationFog : visual_sfx Replaces TeleportFog {
 	States
 	{
 		Spawn:
-			TNT1 AAAAAAAAAAAAAAA 0 doomb_show_effect("green_particle", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+			TNT1 AAAAAAAAAAAAAAA 0 doomb_show_effect("green_particle", velocity:(frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
 			TNT1 A 2 A_PlaySound("DSTELEPT");
 			TFOG A 3 BRIGHT A_SpawnItem("PentagramSpawner");
 			TFOG BCDEFGHGFEDCBA 3 BRIGHT A_SpawnItem("YellowFlare",0,40);
@@ -26,5 +26,3 @@ CLASS TeleportationFog : visual_sfx Replaces TeleportFog {
 			Stop;
 	}
 }
-
-class doomb_teleport_destination_placeholder_name : visual_sfx Replaces TeleportDest {}
