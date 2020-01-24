@@ -228,7 +228,6 @@ CLASS Hectebus : doomb_fatso { //Replaces Hectebus
 			BS1B BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 5
 			{
 				doomb_show_effect("ExplosionSmoke", (0, 0, 60), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
-				A_SpawnProjectile ("RealFlameTrailsMedium", 60, 0, random (0, 360), 2, random (0, 160));
 			}
 		Decay:
 			BS1B B 38 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );

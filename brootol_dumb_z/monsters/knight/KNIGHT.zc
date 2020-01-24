@@ -141,7 +141,6 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 			{
 				A_FaceTarget();
 				doomb_show_effect("GreenFlameTrails", ( (cos(angle - 90), sin(angle - 90) ) * 30 , 64), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-				A_SpawnProjectile ("BallGettingReadyGreen", 64, 30, random (0, 140), 2, random (0, 160));
 			}
 			BOS2 F 8 A_FaceTarget;
 			

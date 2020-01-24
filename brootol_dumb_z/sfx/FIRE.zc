@@ -269,38 +269,7 @@ CLASS BallGettingReadyBlue: ImBallGettingReady {
 }
 
 
-CLASS BallGettingReadyGreen: ImBallGettingReady { 
-	Default {
-		Speed 0;
-		-FORCEXYBILLBOARD;
-		Alpha 1.0;
-		Renderstyle "Add";
-		Scale 1.6;
-	}
-	States
-	{
-		Spawn:
-			FRPG JK 3 BRIGHT;
-			Stop;
-	}
-}
 
-CLASS ImBallGettingReady3: ImBallGettingReady { 
-	Default {
-		
-		Speed 0;
-		-FORCEXYBILLBOARD;
-		Alpha 1.0;
-		Renderstyle "Add";
-		Scale 1.6;
-	}
-	States
-	{
-		Spawn:
-			FRFX AB 3 BRIGHT;
-			Stop;
-	}
-}
 
 //exported
 CLASS RealFlameTrailsSmall : ACTOR { 
@@ -332,20 +301,6 @@ CLASS RealFlameTrailsSmall : ACTOR {
 }
 
 
-CLASS RealFlameTrailsMedium: RealFlameTrailsSmall { 
-	Default {
-		
-		Scale 1.9;
-		Speed 2;
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			FIR1 AABBCCDEFGHII 2 BRIGHT;
-			Stop;
-	}
-}
 
 
 
@@ -980,7 +935,7 @@ CLASS PentagramSpawner : ACTOR {
 		RenderStyle "Add";
 		XScale 0.25;
 		YScale 0.025;
-		Alpha 1;
+		Alpha 0;
 		Gravity 1;
 		Radius 1;
 		Height 1;
@@ -989,9 +944,9 @@ CLASS PentagramSpawner : ACTOR {
 	{
 		Spawn:
 			TNT1 A 0;
-			PNTG AAAAAAAAAAAAAAAAAAAAAAA 1 A_FadeIn(0.02, false);
+			PNTG AAAAA 1 A_FadeIn(0.2, false);
 			PNTG B 300;
-			PNTG BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1 A_FadeOut(0.02);
+			PNTG BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1 A_FadeOut(0.02);
 			Stop;
 	}
 }
