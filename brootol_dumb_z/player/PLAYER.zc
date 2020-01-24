@@ -712,8 +712,8 @@ fire_death_1:
 			doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			doomb_show_effect("SmallFireTrail", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
 	}
-			TNT1 A 0 A_SpawnItemEx("BarrelExplosionSmokeColumn",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 A 0 A_SpawnItemEx("SmallFireFocus24",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+	TNT1 A 0 A_SpawnItemEx("BarrelExplosionSmokeColumn",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+	TNT1 A 0 doomb_show_effect("SmallFireFocus24", (frandom(-0.5, 0.5), frandom(-0.5, 0.5), 0 ) );
 	BURN VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 9 doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 	BURN V -1;
 Stop;

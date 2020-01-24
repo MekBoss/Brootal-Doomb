@@ -31,9 +31,6 @@ states
         tnt1 a 0
         {
             doomb_set_appearance( (frandom(0.5, 0.8), 0), 1, frandom(3, 7) );
-            bmissile = true;
-			bnogravity = false;
-            bnoclip = false;
 		}
         FIR5 ABCDEFGHIJKLMNOP 1 Bright A_FadeOut(0.04, false);
     goto reset_condition;
@@ -72,9 +69,6 @@ states
         tnt1 a 0
         {
             doomb_set_appearance( (frandom(0.06, 0.08), 0), 1, random(10, 12) );
-            bmissile = true;
-			bnogravity = false;
-            bnoclip = false;
 		}
         FIR5 ABCDEFGHIJKLMNOP 1 Bright A_FadeOut(0.04, false);
     goto reset_condition;
@@ -97,7 +91,21 @@ states
         CFCF ABCDEFGHIJKLNOP 1 BRIGHT;
     goto reset_condition;
 
-
+    //doomb_show_effect("SmallFireFocus24", (frandom(-0.5, 0.5), frandom(-0.5, 0.5), 0 ) );
+    SmallFireFocus24:
+        tnt1 a 0
+        {
+            a_setrenderstyle(alpha, STYLE_Translucent);
+            doomb_set_appearance( (frandom(0.6, 0.8), 0), 0.9, 0);
+		}
+        FLME ABCDEFGHIJKLMNABCDEFGHIJKLMNABCDEFGHIJKLMNABCDEFGHIJKLMNABCDEFGHIJKLMNABCDEFGHIJKLMN 1 BRIGHT light ("SMALLREDTORCH")
+        {
+            doomb_show_effect("RealFlameTrailsSmall", (0, 0, 24), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
+            A_SpawnItem("RedFlareSmall", 0, 15);
+        }
+		TNT1 AAAAA 3 BRIGHT doomb_show_effect("RealFlameTrailsSmall", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
+		TNT1 AAA 8 BRIGHT doomb_show_effect("RealFlameTrailsSmall", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
+    goto reset_condition;
 
 
 
@@ -254,10 +262,8 @@ states
     ExplosionSmoke:
         tnt1 a 0
         {
-            doomb_set_appearance( (frandom(1, 1.3), 0), 0.15, random(30, 50) );
-            bnoclip = false;
-            bmissile = true;
             a_setrenderstyle(alpha, STYLE_Translucent);
+            doomb_set_appearance( (frandom(1, 1.3), 0), 0.15, random(30, 50) );
 		}
         SMK3 BBB 2;// A_Fadeout(0.1);
         SMK3 B 1 {tics = random(30, 50);}

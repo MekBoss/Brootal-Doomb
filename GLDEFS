@@ -807,7 +807,6 @@ object BigFireBallWithGravity
 {
     frame MANFA { light IMPBALL   }
     frame MANFB { light IMPBALL   }
-	frame FLME { light IMPBALL   }
 	frame F1RE { light IMPBALL   }
 	frame F2RE { light IMPBALL   }
 	frame FRFX { light ROCKETLIGHT }
@@ -893,7 +892,6 @@ object BigFireBall
 {
     frame MANFA { light IMPBALL   }
     frame MANFB { light IMPBALL   }
-	frame FLME { light IMPBALL   }
 	frame F1RE { light IMPBALL   }
 	frame F2RE { light IMPBALL   }
 	frame FRFX { light ROCKETLIGHT }
@@ -979,13 +977,6 @@ object ShortTorch_Green
 object ShortTorch_Red
 {
     frame STRB { light SMALLREDTORCH }
-}
-
-
-object SmallFireFocus24
-{
-    frame FLME { light SMALLREDTORCH }
-	frame F1RE { light SMALLREDTORCH }
 }
 
 
