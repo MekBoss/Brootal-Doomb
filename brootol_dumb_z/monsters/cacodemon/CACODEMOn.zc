@@ -239,7 +239,7 @@ States
 			A_Explode(3,30, damagetype:"fire");
 			{Spawn("RedFlare", pos);}
 			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
-			A_SpawnProjectile ("SmallFireTrail324", 0, 0, random (0, 360), 2, -random (0, 130));
+			doomb_show_effect("TinyBurningPiece", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
 		}
 		HEAD NNEE 1 Bright A_Wander;
 		tnt1 B 0
@@ -247,7 +247,7 @@ States
 			A_Explode(3,30, damagetype:"fire");
 			{Spawn("RedFlare", pos);}
 			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
-			A_SpawnProjectile ("SmallFireTrail324", 0, 0, random (0, 360), 2, -random (0, 130));
+			doomb_show_effect("TinyBurningPiece", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
 			A_SpawnProjectile("FireballExplosionFlamesBig", 40, 0, random (0, 360), 2, random (50, 130));
 			doomb_show_effect("ExplosionParticle2", (0, 0, 40), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (frandom(0.01, 0.04), 0) );
 		}
@@ -259,7 +259,7 @@ States
 			A_Explode(3,30, damagetype:"fire");
 			{Spawn("RedFlare", pos);}
 			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
-			A_SpawnProjectile ("SmallFireTrail324", 0, 0, random (0, 360), 2, -random (0, 130));
+			doomb_show_effect("TinyBurningPiece", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
 			doomb_show_effect("ExplosionParticle2", (0, 0, 40), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (frandom(0.01, 0.04), 0) );
 		}
 		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 15, "Death_fire");

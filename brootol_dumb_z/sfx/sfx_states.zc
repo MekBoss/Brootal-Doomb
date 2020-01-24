@@ -5,13 +5,15 @@ private state prev_state;
 
 states
 {
+    //////////////////////////////////////////////////////////////////////////////////////////
+    //fire sfx
+    //////////////////////////////////////////////////////////////////////////////////////////
+
     //doomb_show_effect("FlameTrails", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
     FlameTrails:
         tnt1 a 0
         {
             doomb_set_appearance( (frandom(0.4, 0.6), 0), frandom(0.7, 0.9), frandom(2, 3) );
-            bmissile = true;
-            bnoclip = false;
         }
         FRPR ABCDEFGH 3 BRIGHT;
     goto reset_condition;
@@ -24,6 +26,96 @@ states
         }
         FRPG CDEFGH 1 BRIGHT;
     goto reset_condition;
+
+    BluePlasmaFire:
+        tnt1 a 0
+        {
+            doomb_set_appearance( (frandom(0.5, 0.8), 0), 1, frandom(3, 7) );
+            bmissile = true;
+			bnogravity = false;
+            bnoclip = false;
+		}
+        FIR5 ABCDEFGHIJKLMNOP 1 Bright A_FadeOut(0.04, false);
+    goto reset_condition;
+
+    //doomb_show_effect("FireBallExplosion", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+    FireBallExplosion:
+        tnt1 a 0
+        {
+            doomb_set_appearance( (frandom(1.4, 1.8), 0), frandom(0.7, 0.9), frandom(2, 3) );
+        }
+        FX98 ABCDEFGHIJKL 1 BRIGHT A_SpawnItem("YellowFlare",0,0);
+        FX98 MNOPQ 1;
+    goto reset_condition;
+
+    //doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+    ExplosionFlames:
+        tnt1 a 0
+        {
+            doomb_set_appearance( (frandom(2, 2.6), 0), frandom(0.7, 0.9), frandom(2, 3) );
+        }
+        EXPL AA 3 BRIGHT {Spawn("RedFlare", pos);}
+        EXPL BCDFGHII 3 BRIGHT doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
+    goto reset_condition;
+    
+    //doomb_show_effect("RealFlameTrailsSmall", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
+    RealFlameTrailsSmall:
+        tnt1 a 0
+        {
+            doomb_set_appearance( (frandom(0.7, 0.9), 0), frandom(0.7, 0.9), frandom(3, 5) );
+        }
+        FIR1 AABBCCDEFGHII 1 BRIGHT;
+    goto reset_condition;
+
+    //doomb_show_effect("BluePlasmaFire", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
+    BluePlasmaFire:
+        tnt1 a 0
+        {
+            doomb_set_appearance( (frandom(0.06, 0.08), 0), 1, random(10, 12) );
+            bmissile = true;
+			bnogravity = false;
+            bnoclip = false;
+		}
+        FIR5 ABCDEFGHIJKLMNOP 1 Bright A_FadeOut(0.04, false);
+    goto reset_condition;
+
+    //doomb_show_effect("TinyBurningPiece", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
+    SmallFireTrail:
+        tnt1 a 0
+        {
+            doomb_set_appearance( (frandom(0.7, 0.9), 0), frandom(0.7, 0.9), frandom(2, 3) );
+        }
+        FIR3 CDEFGHIJKLMNOP 2 BRIGHT;
+    goto reset_condition;
+
+    //doomb_show_effect("TinyBurningPiece", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
+   TinyBurningPiece:
+        tnt1 a 0
+        {
+            doomb_set_appearance( (frandom(0.7, 1.1), 0), 0.7, 1);
+        }
+        CFCF ABCDEFGHIJKLNOP 1 BRIGHT;
+    goto reset_condition;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    //particle sfx
+    //////////////////////////////////////////////////////////////////////////////////////////
 
     //doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
     ExplosionParticle2:
@@ -44,17 +136,6 @@ states
         }
     goto reset_condition;
 
-    BluePlasmaFire:
-        tnt1 a 0
-        {
-            doomb_set_appearance( (frandom(0.5, 0.8), 0), 1, frandom(3, 7) );
-            bmissile = true;
-			bnogravity = false;
-            bnoclip = false;
-		}
-        FIR5 ABCDEFGHIJKLMNOP 1 Bright A_FadeOut(0.04, false);
-    goto reset_condition;
-
     //doomb_show_effect("BurnParticles", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
     BurnParticles:
         TNT1 A 3 light ("BIGREDTORCH")
@@ -63,61 +144,9 @@ states
             A_Explode(3,30, damagetype:"fire");
             {Spawn("RedFlare", pos);}
             doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
-            A_SpawnProjectile ("SmallFireTrail324", 0, 0, random (0, 360), 2, -random (0, 130));
+            doomb_show_effect("SmallFireTrail", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
             doomb_show_effect("FlameTrails", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
         }
-    goto reset_condition;
-
-
-    //doomb_show_effect("ImBallGettingReady", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-    ImBallGettingReady:
-        tnt1 a 0
-        {
-            doomb_set_appearance( ( frandom(1, 1.3), 0), frandom(0.7, 0.9), frandom(2, 3) );
-        }
-        FRFX AB 1 BRIGHT;
-    goto reset_condition;
-
-    //doomb_show_effect("FireBallExplosion", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-    FireBallExplosion:
-        tnt1 a 0
-        {
-            doomb_set_appearance( (frandom(1.4, 1.8), 0), frandom(0.7, 0.9), frandom(2, 3) );
-            bmissile = true;
-            bnoclip = false;
-        }
-        FX98 ABCDEFGHIJKL 1 BRIGHT A_SpawnItem("YellowFlare",0,0);
-        FX98 MNOPQ 1;
-    goto reset_condition;
-
-    //doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-    ExplosionFlames:
-        tnt1 a 0
-        {
-            doomb_set_appearance( (frandom(2, 2.6), 0), frandom(0.7, 0.9), frandom(2, 3) );
-            bmissile = true;
-            bnoclip = false;
-        }
-        EXPL AA 3 BRIGHT {Spawn("RedFlare", pos);}
-        EXPL BCDFGHII 3 BRIGHT doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
-    goto reset_condition;
-    
-    //doomb_show_effect("RealFlameTrailsSmall", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
-    RealFlameTrailsSmall:
-        tnt1 a 0
-        {
-            doomb_set_appearance( (frandom(0.7, 0.9), 0), frandom(0.7, 0.9), frandom(3, 5) );
-        }
-        FIR1 AABBCCDEFGHII 1 BRIGHT;
-    goto reset_condition;
-
-    //doomb_show_effect("BallGettingReadyBlue", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
-    BallGettingReadyBlue:
-        tnt1 a 0
-        {
-            doomb_set_appearance( ( frandom(1.3, 1.6), 0), frandom(0.7, 0.9), frandom(2, 3) );
-        }
-        FRPB JK 3 BRIGHT;
     goto reset_condition;
 
     //doomb_show_effect("ShrapnelParticle", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3) );
@@ -147,17 +176,6 @@ states
         }
     goto reset_condition;
 
-    //doomb_show_effect("BluePlasmaFire", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
-    BluePlasmaFire:
-        tnt1 a 0
-        {
-            doomb_set_appearance( (frandom(0.06, 0.08), 0), 1, random(10, 12) );
-            bmissile = true;
-			bnogravity = false;
-            bnoclip = false;
-		}
-        FIR5 ABCDEFGHIJKLMNOP 1 Bright A_FadeOut(0.04, false);
-    goto reset_condition;
 
     //doomb_show_effect("PlasmaParticleX", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
     PlasmaParticleX:
@@ -177,6 +195,60 @@ states
                 setstate(prev_state);
         }
     goto reset_condition;
+
+    //doomb_show_effect("green_particle", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+    green_particle:
+        tnt1 a 0
+        {
+            doomb_set_appearance( (frandom(0.035, 0.1), 0), 0.8);//, random(2, 15) );
+        }
+        SPKG A 1 Bright {prev_state = curstate;}
+        SPKG A 1 Bright
+        {
+            A_FadeOut(0.01, false);
+            vel += (frandom(1,-1), frandom(1,-1), frandom(1,-1) );
+            if(alpha > 0)
+                setstate(prev_state);
+        }
+    goto reset_condition;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    //////////////////////////////////////////////////////////////////////////////////////////
+    //smoke sfx
+    //////////////////////////////////////////////////////////////////////////////////////////
 
     //doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
     ExplosionSmoke:
@@ -243,21 +315,6 @@ states
         FRFX KLMNOP 3 BRIGHT;
     goto reset_condition;
    
-    //doomb_show_effect("green_particle", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-    green_particle:
-        tnt1 a 0
-        {
-            doomb_set_appearance( (frandom(0.035, 0.1), 0), 0.8);//, random(2, 15) );
-        }
-        SPKG A 1 Bright {prev_state = curstate;}
-        SPKG A 1 Bright
-        {
-            A_FadeOut(0.01, false);
-            vel += (frandom(1,-1), frandom(1,-1), frandom(1,-1) );
-            if(alpha > 0)
-                setstate(prev_state);
-        }
-    goto reset_condition;
 
     //doomb_show_effect("BigBlackSmoke", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
     BigBlackSmoke:
