@@ -328,7 +328,7 @@ CLASS BigFireBall : doomb_boolet_base Replaces Fatshot {
 			MANF AB 1 BRIGHT
 			{
 				A_SpawnItem("RedFlare22");
-				A_SpawnItem ("FireballExplosionFlamesSmall");
+				doomb_show_effect("SmallFireTrail");
 				doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
 			}
 		Loop;

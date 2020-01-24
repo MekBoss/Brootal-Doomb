@@ -289,86 +289,6 @@ CLASS RealFlameTrailsBlue: RealFlameTrailsSmall {
 
 
 
-CLASS CoolandNewFlameTrails: FlameTrails { 
-	Default {
-		
-		Scale 0.3;
-		Speed 1;
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 2;
-			FIR3 JMP 1 BRIGHT;
-			Stop;
-	}
-}
-
-CLASS CoolandNewFlameTrailsLong: FlameTrails { 
-	Default {
-		
-		Scale 0.6;
-		Speed 1;
-	}
-	States
-	{
-		Spawn:
-			//TNT1 A 2
-			FIR3 BCDEFGHIJKLMNOP 1 BRIGHT;
-			Stop;
-	}
-}
-
-CLASS CoolandNewFlameTrailsLongAlpha: CoolandNewFlameTrailsLong { 
-	Default {
-		
-		Alpha 0.5;
-	}
-}
-
-CLASS FireballExplosionFlames: FlameTrails { 
-	Default {
-		
-		Scale 0.8;
-		Speed 1;
-	}
-	States
-	{
-		Spawn:
-			FIR3 CDEFGHIJKLMNOP 1 BRIGHT;
-			Stop;
-	}
-}
-
-CLASS FireballExplosionFlamesSmall: FlameTrails { 
-	Default {
-		
-		Scale 0.5;
-		Speed 1;
-	}
-	States
-	{
-		Spawn:
-			FIR3 KLMNOP 1 BRIGHT;
-			Stop;
-	}
-}
-
-
-CLASS FireballExplosionFlamesBig: FlameTrails { 
-	Default {
-		
-		Scale 1.6;
-		Speed 2;
-	}
-	States
-	{
-		Spawn:
-			FIR3 CDEFGHIJKLMNOP 2 BRIGHT;
-			TNT1 A 0 doomb_show_effect("ExplosionSmoke", (0, 0, 15), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-			Stop;
-	}
-}
 
 
 
@@ -376,19 +296,10 @@ CLASS FireballExplosionFlamesBig: FlameTrails {
 
 
 
-CLASS FireballExplosionFlamesMedium: FlameTrails { 
-	Default {
-		
-		Scale 1.1;
-		Speed 4;
-	}
-	States
-	{
-		Spawn:
-			FIR3 ABCDEFGHIJKLMNOP 1 BRIGHT;
-			Stop;
-	}
-}
+
+
+
+
 
 
 CLASS RevenantProjectileTrails: FlameTrails { 

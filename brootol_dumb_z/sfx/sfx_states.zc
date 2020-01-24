@@ -73,13 +73,13 @@ states
         FIR5 ABCDEFGHIJKLMNOP 1 Bright A_FadeOut(0.04, false);
     goto reset_condition;
 
-    //doomb_show_effect("TinyBurningPiece", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
+    //doomb_show_effect("SmallFireTrail", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
     SmallFireTrail:
         tnt1 a 0
         {
             doomb_set_appearance( (frandom(0.7, 0.9), 0), frandom(0.7, 0.9), frandom(2, 3) );
         }
-        FIR3 CDEFGHIJKLMNOP 2 BRIGHT;
+        FIR3 ABCDEFGHIJKLMNOP 2 BRIGHT;
     goto reset_condition;
 
     //doomb_show_effect("TinyBurningPiece", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
