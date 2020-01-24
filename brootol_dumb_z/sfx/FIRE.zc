@@ -478,26 +478,6 @@ CLASS o_12SmallFireFocusSpawnerz: visual_sfx
 	}
 }
 
-CLASS o_100SmallFireFocusSpawnerz: visual_sfx
-{ 
-	Default {
-		
-		XScale 1.4;
-		+NOBLOCKMAP;
-		+NOTELEPORT;
-		+DONTSPLASH;
-		+CLIENTSIDEONLY;
-		Damage 0;
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 1;
-			TNT1 A 0 A_SpawnItemEx("BarrelExplosionSmokeColumn",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 A 0 A_SpawnItemEx("SmallFireFocus24",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			Stop;
-	}
-}
 
 CLASS SmallFireFocus24: visual_sfx
 { 
@@ -533,6 +513,67 @@ CLASS SmallFireFocus24: visual_sfx
 	
 	
 	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 CLASS FlyingBurningFuel : visual_sfx { 
 	Default {
 		
@@ -542,14 +583,6 @@ CLASS FlyingBurningFuel : visual_sfx {
 		Scale 0.8;
 		Mass 1;
 		Damage 3;
-		+NOBLOCKMAP;
-		+MISSILE;
-		+NOTELEPORT;
-		+MOVEWITHSECTOR;
-		+RIPPER;
-		+BLOODLESSIMPACT;
-		-DONTSPLASH;
-		+THRUGHOST;
 		DamageType "fire";
 		Decal "";
 		Mass 1;
@@ -598,31 +631,6 @@ CLASS FlyingBurningFuel : visual_sfx {
 }	
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 CLASS FlamethrowerFireParticles : visual_sfx
 { 
 	Default {
@@ -656,8 +664,6 @@ CLASS FlamethrowerFireParticles : visual_sfx
 }
 
 
-
-
 CLASS BurningGroundLowDamage : visual_sfx
 { 
 	Default {
@@ -685,7 +691,7 @@ CLASS BurningGroundLowDamage : visual_sfx
 			TNT1 A 0 doomb_show_effect("BigBlackSmoke", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ), visual_size: (frandom(0.2, 0.4), 0) );
 			TNT1 AAAAAA 4 doomb_show_effect("TinyBurningPiece", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
 			TNT1 A 0 A_Explode(3, 90);
-			tnt1 a 0 a_jumpif(random(0, 10) < 1, "death");
+			tnt1 a 0 doomb_random_death;
 		Loop;
 
 		Death:
@@ -699,40 +705,6 @@ CLASS BurningGroundLowDamage : visual_sfx
 			Stop;
 	}
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

@@ -776,7 +776,7 @@ pulselight BLUEITEM
 object FlyingBurningFuel
 {
     frame F1RE{ light SMALLREDTORCH }
-	 frame F2RE{ light SMALLREDTORCH }
+    frame F2RE{ light SMALLREDTORCH }
 }
 
 
