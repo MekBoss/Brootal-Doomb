@@ -645,25 +645,7 @@ Goto StandStill;
 		XPL6 F -1;
 		Stop;
 		
-	Death.GreenFire:
-		tnt1 A 0;
-		tnt1 A 0 A_XScream;
-
-		tnt1 A 0 A_NoBlocking;
-		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-		tnt1 AAAA 0 A_SpawnProjectile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160));
-		
-		tnt1 A 0 A_SpawnProjectile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160));
-		tnt1 A 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160));
-		tnt1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160));
-		tnt1 A 0 doomb_spawn_burned_flesh;
-		
-		EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("GreenFlameTrails", (0, 0, 50), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-		tnt1 AAAA 2 BRIGHT A_SpawnItem("GreenFlare",0,43);
-		tnt1 A 1;
-		tnt1 A -1;
-		Stop;
-		
+	
 Death.Plasma: Death.Plasma2:
 	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 	PBR1 A 6 A_Scream;

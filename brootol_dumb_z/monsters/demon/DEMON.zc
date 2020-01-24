@@ -399,21 +399,6 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 		DeathRemoveArm:
 			Goto Death+14;
 			
-		Death.GreenFire:
-			TNT1 A 0;
-			TNT1 A 0 A_XScream;
-			TNT1 A 0 A_NoBlocking;
-			TNT1 AAAA 0 A_SpawnProjectile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160));
-			
-			
-			TNT1 A 0 A_SpawnProjectile ("XDeathBurnedDemonArm", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeathBurnedDemonLeg", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 doomb_spawn_burned_flesh;
-			
-			EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("GreenFlameTrails", (0, 0, 50), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-			XBRN AAAA 2 BRIGHT A_SpawnItem("GreenFlare",0,43);
-			Stop;
-			
 		Death.Plasma:
 		Death.Plasma2:
 			TNT1 A 0;

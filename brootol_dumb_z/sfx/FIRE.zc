@@ -1,8 +1,9 @@
-//exported
-CLASS FlameTrails : visual_sfx { 
+////////////////////////////////////////////////////////////////////////////
+//have too specific/rare usage, dont have point to export
+////////////////////////////////////////////////////////////////////////////
+
+CLASS GreenExplosionFlameTrail: visual_sfx { 
 	Default {
-		
-		
 		Radius 1;
 		Height 1;
 		Speed 3;
@@ -20,291 +21,40 @@ CLASS FlameTrails : visual_sfx {
 		Scale 0.5;
 		Alpha 1;
 		Gravity 0;
-	}
-	States
-	{
-		Spawn:
-			FRPR ABCDEFGH 3 BRIGHT;
-			Stop;
-	}
-}
 
-//exported
-CLASS GreenFlameTrails: FlameTrails { 
-	States
-	{
-		Spawn:
-			FRPG CDEFGH 1 BRIGHT;
-			Stop;
-	}
-}
-
-//dont have mention, not exported
-CLASS BlueFlameTrails: FlameTrails { 
-	States
-	{
-		Spawn:
-			FRPB CDEFGH 1 BRIGHT;
-			Stop;
-	}
-}
-
-//not exported replaced with flametrails
-CLASS SmallFlameTrails: FlameTrails { 
-	Default {
-		Scale 0.3;
-	}
-	States
-	{
-		Spawn:
-			FRPR ABCDEFGH 3 BRIGHT;
-			Stop;
-	}
-}
-
-
-//dont have mention, not exported
-CLASS FastSmallFlameTrails : ACTOR { 
-	Default {
-		
-		
-		Radius 1;
-		Height 1;
-		Speed 3;
-		Damage 0;
-		+NOBLOCKMAP;
-		+NOTELEPORT;
-		+DONTSPLASH;
-		+MISSILE;
-		+FORCEXYBILLBOARD;
-		+CLIENTSIDEONLY;
-		+NOINTERACTION;
-		RenderStyle "Add";
-		DamageType "fire";
-		Scale 0.3;
-		Alpha 1;
-		Gravity 0;
-	}
-	States
-	{
-		Spawn:
-			FRPR ABCDEFGH 1 BRIGHT;
-			Stop;
-	}
-}
-
-//exported
-CLASS SmallGreenFlameTrails: GreenFlameTrails { 
-	Default {
-		Scale 0.3;
-	}
-}
-
-
-//exported
-CLASS FireBallExplosion: FlameTrails { 
-	Default {
-		Scale 1.6;
-	}
-	States
-	{
-		Spawn:
-			FX98 ABCDEFGHIJKL 1 BRIGHT A_SpawnItem("YellowFlare",0,0);
-			FX98 MNOPQ 1;
-			Stop;
-	}
-}
-
-//exported
-CLASS ExplosionFlames: FlameTrails { 
-	Default {
-		
 		Scale 2.2;
 		Speed 2;
-	}
-	States
-	{
-		Spawn:
-			EXPL AA 3 BRIGHT A_SpawnItem("RedFlare",0,0);
-			EXPL AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-			EXPL GHII 3 BRIGHT;
-			Stop;
-	}
-}
-
-
-//not exported, replaced with ExplosionFlames
-CLASS ExplosionFlamesBig2: ExplosionFlames { 
-	Default {
-		
-		Scale 3.2;
-		Speed 4;
-	}
-}
-
-
-//not exported, replaced with ExplosionFlames
-CLASS ExplosionFlamesBig: ExplosionFlames { 
-	Default {
-		
-		Scale 6.2;
-		Speed 4;
-	}
-}
-
-
-//not exported, replaced with ExplosionFlames
-CLASS ExplosionFlamesGiant: ExplosionFlames { 
-	Default {
-		
-		Scale 9.2;
-		Speed 5;
-	}
-}
-
- 
-//not exported, replaced with ExplosionFlames
-CLASS SmallExplosionFlames: ExplosionFlames { 
-	Default {
-		
-		Scale 0.9;
-		Speed 3;
-	}
-	States
-	{
-		Spawn:
-			EXPL AA 2 BRIGHT A_SpawnItem("RedFlare",0,0);
-			EXPL BCDFGHII 1 BRIGHT;
-			Stop;
-	}
-}
-
-//not exported, replaced with ExplosionFlames
-CLASS MediumExplosionFlames: ExplosionFlames { 
-	Default {
-		
-		Scale 1.3;
-		Speed 4;
-	}
-	States
-	{
-		Spawn:
-			EXPL AA 2 BRIGHT A_SpawnItem("RedFlare",0,0);
-			EXPL A 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-		Stop;
-	}
-}
-
-
-//not exported, dont have mentions
-CLASS GreenExplosionFlameTrail: ExplosionFlames { 
-	Default {
 
 		Scale 0.5;
 	}
 	States
 	{
 		Spawn:
-			TNT1 A 2;
-			EXPG CDEFG 1 BRIGHT;
+			EXPG ABCDEFG 1 BRIGHT;
 			Stop;
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-//exported
-CLASS RealFlameTrailsSmall : ACTOR { 
+CLASS RevenantProjectileTrails: visual_sfx { 
 	Default {
 		Radius 1;
 		Height 1;
-		Speed 4;
+		Speed 3;
 		Damage 0;
 		+NOBLOCKMAP;
 		+NOTELEPORT;
 		+DONTSPLASH;
 		+MISSILE;
-		+FORCEYBILLBOARD;
+		+FORCEXYBILLBOARD;
 		+CLIENTSIDEONLY;
 		+NOINTERACTION;
 		+NOCLIP;
 		RenderStyle "Add";
 		DamageType "fire";
-		Scale 0.8;
-		Alpha 1.0;
+		Scale 0.5;
+		Alpha 1;
 		Gravity 0;
-	}
-	States
-	{
-		Spawn:
-			FIR1 AABBCCDEFGHII 1 BRIGHT;
-		Stop;
-	}
-}
 
-
-
-
-
-
-
-CLASS RealFlameTrailsGreen: RealFlameTrailsSmall { 
-	Default {
-		
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			FIRG AABBCCDEFGHII 1 BRIGHT;
-			Stop;
-	}
-}
-
-CLASS RealFlameTrailsBlue: RealFlameTrailsSmall { 
-	Default {
-		
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			FIRB AABBCCDEFGHII 1 BRIGHT;
-			Stop;
-	}
-}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-CLASS RevenantProjectileTrails: FlameTrails { 
-	Default {
-		
 		
 		Scale 0.3;
 	}
@@ -317,91 +67,6 @@ CLASS RevenantProjectileTrails: FlameTrails {
 	}
 }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
-	
-	
-	
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-////////////////////////////////////////////////////////////////////////////
-//have too specific/rare usage, dont have point to export
-////////////////////////////////////////////////////////////////////////////
 
 CLASS FlyingBurningFuel : visual_sfx { 
 	Default {
@@ -488,7 +153,7 @@ CLASS FlamethrowerFireParticles : visual_sfx
 			FIR3 ABCD 2 BRIGHT A_SpawnItem("RedFlare", 0, 10);
 			TNT1 A 0 doomb_show_effect("BigBlackSmoke", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
 			FIR3 EFGHIJKLMNOP 2 BRIGHT A_SpawnItem("RedFlare", 0, 10);
-			Stop;
+		Stop;
 	}
 }
 
@@ -496,23 +161,7 @@ CLASS FlamethrowerFireParticles : visual_sfx
 CLASS BurningGroundLowDamage : visual_sfx
 { 
 	Default {
-		Radius 1;
-		Height 1;
-		Speed 2;
-		Damage 0;
-		+NOBLOCKMAP;
-		+NOTELEPORT;
-		+DONTSPLASH;
-		+CLIENTSIDEONLY;
-		+NOINTERACTION;
-		+NOCLIP;
-		+FORCEXYBILLBOARD;
-		-NOGRAVITY;
-		RenderStyle "Translucent";
 		DamageType "fire";
-		Scale 1.0;
-		Alpha 1.0;
-		Gravity 0.3;
 	}
 	States
 	{

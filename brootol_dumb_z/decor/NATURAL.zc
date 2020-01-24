@@ -44,6 +44,7 @@ CLASS TorchTree2: doomb_decoration_base Replaces TorchTree {
 		BloodType "TreeBlood";
 		+FORCEYBILLBOARD;
 		+NOBLOODDECALS;
+		+DONTTHRUST
 		Mass 999999999999999;
 		damagefactor "Explosive_Impact" , 10.0;
 		Health 200;
@@ -83,7 +84,7 @@ CLASS TorchTree2: doomb_decoration_base Replaces TorchTree {
 
 CLASS TorchTreeInFlames : doomb_decoration_base { 
 	Default {
-		
+		+DONTTHRUST
 		+LOOKALLAROUND;
 		+SHOOTABLE;
 		+INVULNERABLE;
@@ -110,7 +111,7 @@ CLASS TorchTreeInFlames : doomb_decoration_base {
 
 CLASS BigTreeReplacer : RandomSpawner Replaces BigTree { 
 	Default {
-		
+		+DONTTHRUST
 		DropItem "Big_Tree";
 		DropItem "Big_Tree2";
 		DropItem "Big_Tree3";
@@ -133,6 +134,7 @@ CLASS Big_Tree: doomb_decoration_base
 		damagefactor "Plasma", 10.0;
 		damagefactor "Fire", 5.0;
 		damagefactor "Blood", 10.0;
+		+DONTTHRUST
 		+SOLID;
 		+SHOOTABLE;
 		+FORCEYBILLBOARD;
@@ -189,14 +191,14 @@ CLASS Big_Tree: doomb_decoration_base
 
 CLASS Big_Tree2: Big_Tree { 
 	Default {
-		
+		+DONTTHRUST
 		XScale -1.0;
 	}
 }
 
 CLASS Big_Tree3: Big_Tree { 
 	Default {
-		
+		+DONTTHRUST
 		XScale -1.1;
 		YScale 0.8;
 	}
@@ -204,7 +206,7 @@ CLASS Big_Tree3: Big_Tree {
 
 CLASS Big_Tree4: Big_Tree { 
 	Default {
-		
+		+DONTTHRUST
 		YScale 1.2;
 	}
 }
@@ -216,6 +218,7 @@ CLASS Big_Tree4: Big_Tree {
 
 CLASS Wolfenstein3DFlowerPot : ACTOR { 
 	Default {
+		+DONTTHRUST
 		Radius 8;
 		Height 60;
 		sCALE 1.2;
@@ -236,6 +239,7 @@ CLASS Wolfenstein3DFlowerPot : ACTOR {
 
 CLASS VanillaBigTree : ACTOR { 
 	Default {
+		+DONTTHRUST
 		Radius 24;
 		Height 108;
 		ProjectilePassHeight -16;
@@ -257,6 +261,7 @@ CLASS VanillaBigTree : ACTOR {
 
 CLASS VanillaSmallTree : ACTOR { 
 	Default {
+		+DONTTHRUST
 		Radius 16;
 		Height 56;
 		ProjectilePassHeight -16;

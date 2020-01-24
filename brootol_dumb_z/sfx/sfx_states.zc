@@ -5,6 +5,11 @@ private state prev_state;
 
 states
 {
+    template_state:
+        tnt1 a 6;
+    goto reset_condition;
+
+
     //////////////////////////////////////////////////////////////////////////////////////////
     //fire sfx
     //////////////////////////////////////////////////////////////////////////////////////////
@@ -107,7 +112,23 @@ states
 		TNT1 AAA 8 BRIGHT doomb_show_effect("RealFlameTrailsSmall", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
     goto reset_condition;
 
+    //doomb_show_effect("RealFlameTrailsGreen", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
+    RealFlameTrailsGreen:
+        tnt1 a 0
+        {
+            doomb_set_appearance( (frandom(0.7, 0.9), 0), frandom(0.7, 0.9), frandom(3, 5) );
+        }
+        FIRG AABBCCDEFGHII 1 BRIGHT;
+    goto reset_condition;
 
+    //doomb_show_effect("RealFlameTrailsBlue", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
+    RealFlameTrailsBlue:
+        tnt1 a 0
+        {
+            doomb_set_appearance( (frandom(0.7, 0.9), 0), frandom(0.7, 0.9), frandom(3, 5) );
+        }
+        FIRB AABBCCDEFGHII 1 BRIGHT;
+    goto reset_condition;
 
 
 

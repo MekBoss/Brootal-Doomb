@@ -74,10 +74,13 @@ CLASS TheSpiderMastermind : doomb_monster_base Replaces SpiderMastermind{
 			SPID G 2 A_FaceTarget();
 			SPID H 5 BRIGHT
 			{
-				A_SpawnProjectile("MastermindTracer", 72, 0, random(-7, 7), 1, random(-4, 2));
-				A_SpawnItem ("MasterMindCaseSpawn", 0, 60,0);
+				for(uint i = 0; i < 3; i++)
+				{
+					A_SpawnProjectile("MastermindTracer", 72, 0, random(-7, 7), 1, random(-4, 2));
+					A_SpawnItem ("MasterMindCaseSpawn", 0, 60,0);
+				}
 			}
-			SPID G 0 a_jump(15, "see");
+			SPID G 0 a_spidrefire();
 		loop;
 			
 		Pain:
