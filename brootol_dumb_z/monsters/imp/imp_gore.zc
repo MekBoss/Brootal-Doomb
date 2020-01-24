@@ -1869,7 +1869,6 @@ Death.Headshot:
 CLASS ImpSaciLol: DyingImpNoLeg { 
 Default {
 
-//MONSTER
 +GHOST;
 +THRUGHOST;
 -COUNTKILL;
@@ -1882,18 +1881,13 @@ States
 Spawn:
 	TNT1 A 0;
 	TNT1 A 0 A_PlaySound ("imp/pain");
-Suffer:
 	ZL3E ABC 3;
 	TNT1 A 0 doomb_blood_dying();
-	ZL3E DDDD 1 A_Chase(null, null);
+	ZL3E DDDD 1;
+Suffer:
 	TNT1 A 0 A_PlaySound ("imp/pain");
+	TR09 AB 6;
 	tnt1 a 0 a_jump(200, "suffer");
-
-	
-	TNT1 A 0;
-	TNT1 A 0 A_PlaySound ("none");
-	TR09 A 6;
-	TR09 AB 3;
 	TR09 C 3 A_NoBlocking();
 	TNT1 A 0 A_SpawnItem ("DyingImpNoLeg");
 	Stop;
