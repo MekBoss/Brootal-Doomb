@@ -249,7 +249,6 @@ CLASS DeadChaingunguy_Slumped_NoHead: CurbstompedMarine {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //miniguner minigun fatality
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//FIXME squish all class brutalized_name_ into one for each class
 CLASS BrutalizedCommando1 : doomb_body_base
 {
 Default
@@ -359,9 +358,6 @@ CLASS XDeathChainLeg: XDeathArm1 {
 }
 
 CLASS Gib_ChainLeg: LimbBase { 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:
@@ -405,9 +401,6 @@ CLASS XDeathChainArm: XDeathArm1 {
 }
 
 CLASS Gib_ChainARm: LimbBase { 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:

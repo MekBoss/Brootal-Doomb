@@ -440,7 +440,7 @@ States
 {
 	Spawn:
 		FATB AB 1 BRIGHT A_SpawnItem("YellowFlareSmall",0,0);
-		TNT1 A 0 doomb_show_effect("FlameTrails");
+		TNT1 A 0 doomb_show_effect("FlameTrails", visual_size:(0.1, 0) );
 		TNT1 A 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
 		Loop;
 }

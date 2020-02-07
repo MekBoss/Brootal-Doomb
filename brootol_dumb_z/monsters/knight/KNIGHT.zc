@@ -18,7 +18,7 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 		Obituary "$OB_KNIGHT";
 		Tag "$FN_HELL";
 		
-		Scale 0.8;
+		Scale 0.9;
 		Speed 8;
 		Health 500;
 		PainChance "Kick", 255;
@@ -78,16 +78,12 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 		See: 
 			Goto Rage;
 		See2:
-			TNT1 A 0 A_TakeInventory("EnemyMemory", 15);
 			TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
 			TNT1 A 0 doomb_if_boss_retreat(target, "CheckRetreat");
 		See3:
 		SeeContinue:
-			TNT1 A 0 A_JumpIfInventory("EnemyMemory", 20, "ForgetTarget");
-			TNT1 A 0 A_GiveInventory("EnemyMemory", 1);
-			
 			BOS2 AAAABBBBCCCCDDDD 2 A_Chase;
-			TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget");
+			TNT1 A 0 doomb_monster_memory("LookingForPlayer");
 		Loop;
 			
 			
@@ -120,16 +116,14 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 			
 			
 			
-		ForgetTarget:
-			TNT1 A 0 A_ClearTarget;
-			TNT1 A 0 A_TakeInventory("EnemyMemory", 25);
-		Goto LookingForPlayer;
-			
-		Melee2:
+		Melee:
+			BOS2 E 6 A_FaceTarget;
+			TNT1 A 0 A_PlaySound("weapons/gswing");
+			BOS2 F 6 A_FaceTarget;
+			BOS2 G 6 {doomb_cheap_melee_attack(160, random(30, 60), "HKFT");}
 			TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
-			BOS2 EF 8 A_FaceTarget;
-			BOS2 G 8 {doomb_cheap_melee_attack(160, 10, "HKFT");}
-			Goto See2;
+		Goto See2;
+		
 		Missile:
 			TNT1 A 0 A_TakeInventory("EnemyMemory", 30);
 			TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
@@ -241,10 +235,10 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 			TNT1 AA 0 A_SpawnProjectile ("XDeath3", 45, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("XDeathBrain1", 60, 0, random (0, 360), 2, random (0, 160));
-			BOS2 PQRSTU 6;
+			BOS2 PQRSTU 3;
 			TNT1 A 0 doomb_spawn_bloodpool();
-			BOS2 VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 1 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random (0, 360), 2, random (30, 110));
-			TNT1 A 0 A_SpawnItem ("DeadKnightHalfDown", 1);
+			BOS2 VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random (0, 360), 2, random (30, 110));
+			BOS2 V -1;
 			Stop;
 			
 		XDeath:
@@ -304,7 +298,19 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 			BTN5 FFFFFFFFFFFFFFFFFFFFFFFFFFFFF 2 A_SpawnProjectile ("Brutal_LiquidBlood", 10, 0, random (0, 360), 2, random (30, 110));
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SPawnItem ("DeadKnightBTN5F");
-			Stop;
+		Stop;
+
+		headshot_1:
+			TNT1 AAAAA 0 A_SpawnProjectile ("Xdeath1", 62, 0, random (0, 360), 2, random (50, 130));
+			TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightHead", 62, 0, random (0, 360), 2, random (50, 130));
+			BTN2 AAAAAAAAAAA 2 A_SpawnProjectile ("Brutal_LiquidBlood", 62, 0, random (0, 360), 2, random (30, 110));
+			BTN2 BBBBB 2 A_SpawnProjectile ("Brutal_LiquidBlood", 50, 0, random (0, 360), 2, random (30, 110));
+			TNT1 A 0 A_NoBlocking;
+			BTN2 CCCCC 2 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, random (0, 360), 2, random (30, 110));
+			BTN2 DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 2 A_SpawnProjectile ("Brutal_LiquidBlood", 10, 0, random (0, 360), 2, random (30, 110));
+			TNT1 A 0 doomb_spawn_bloodpool();
+			TNT1 A 0 A_SpawnItem("DeadKnightNoHead");
+		Stop;
 			
 		Death.headExplode:
 			TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma");
@@ -316,7 +322,8 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 			BTN2 DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 2 A_SpawnProjectile ("Brutal_LiquidBlood", 10, 0, random (0, 360), 2, random (30, 110));
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem("DeadKnightNoHead");
-			Stop;
+		Stop;
+
 		headshot_1:
 			TNT1 AAAAA 0 A_SpawnProjectile ("Xdeath1", 62, 0, random (0, 360), 2, random (50, 130));
 			TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightHead", 62, 0, random (0, 360), 2, random (50, 130));
@@ -327,7 +334,7 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 			BTN2 DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 2 A_SpawnProjectile ("Brutal_LiquidBlood", 10, 0, random (0, 360), 2, random (30, 110));
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem("DeadKnightNoHead");
-			Stop;
+		Stop;
 			
 		Death.Plasma:
 		Death.Plasma2:

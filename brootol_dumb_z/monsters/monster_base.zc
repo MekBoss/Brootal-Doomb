@@ -237,7 +237,7 @@ override double GetDeathHeight()
 
 //how much time monster seeek it target before forgeting
 protected int memory_timer;
-const max_memory = 20;
+const max_memory = 30;
 protected void doomb_monster_memory(statelabel idle_state = "idle")
 {
 	memory_timer++;
@@ -302,14 +302,13 @@ states
 			if(scale.x > 0.01)
 			{
 				scale -= (0.01, 0.01);
-				//spawn smoke here
+				//spawn vapor here
 				//setstate(curstate);
 			}
 		}
 	Stop;
 
 	Death.GreenFire:
-		TNT1 A 0;
 		TNT1 A 0 A_XScream;
 		TNT1 A 0 A_NoBlocking;
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160));

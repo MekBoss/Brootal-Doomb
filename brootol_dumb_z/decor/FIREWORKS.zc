@@ -35,7 +35,6 @@ Default {
 	damagefactor "GreenBlood", 0.0  ;
 	damagefactor "Avoid", 0.0;
 	
-	Species "Marines";
 	Health 20;
 	Radius 10;
 	Height 34;

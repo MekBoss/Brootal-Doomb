@@ -157,7 +157,7 @@ override int doomb_get_aditional_death_sprite()
 			TNT1 A 0 {bsolid = true;}
 			PLA3 E 6 A_FaceTarget;
 			TNT1 A 0 A_PlaySound("weapons/sg", 1);
-			TNT1 AAAAAAAA 0 A_SpawnProjectile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3));
+			TNT1 AAAAAAAA 0 A_SpawnProjectile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, frandom(-5, 5) );
 			PLA3 F 3 BRIGHT;
 			PLA3 E 6 A_FaceTarget;
 			PLA3 J 6 A_PlaySound("weapons/sgpump", 3);
@@ -277,7 +277,7 @@ CLASS ShotgunMarineGuarding: Marine_Shotgun {
 			TNT1 A 0 {bsolid = true;}
 			PLA3 E 6 A_FaceTarget;
 			TNT1 A 0 A_PlaySound("weapons/sg", 1);
-			TNT1 AAAAAAAA 0 A_SpawnProjectile("MarineShotgunTracer", 32, 0, random(-6, 6), 1, random(-3, 3));
+			TNT1 AAAAAAAA 0 A_SpawnProjectile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, frandom(-5, 5) );
 			PLA3 F 3 BRIGHT;
 			PLA3 E 6 A_FaceTarget;
 			PLA3 J 6 A_PlaySound("weapons/sgpump", 3);
