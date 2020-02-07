@@ -66,7 +66,7 @@ CLASS ShotgunguyTracer: Tracer {
 		speed 60;
 		damagefunction (random(9,14));
 		Decal "BulletDecalNew1";
-		DamageType "MonsterShotgunBullet";
+		DamageType "Shotgun";
 	}
 }
 

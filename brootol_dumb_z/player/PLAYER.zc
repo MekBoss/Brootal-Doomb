@@ -29,13 +29,12 @@ Default {
 	BloodType "Player_Blood";
 	damagefactor "Taunt", 0.0;
 	
-	damagefactor "Shotgun", 0.7;
+	damagefactor "Shotgun", 0.5;
 	damagefactor "SSG", 5.0;
 	damagefactor "Blood", 0.5;
 	damagefactor "BlueBlood", 0.5;
 	damagefactor "GreenBlood", 0.5;
 	damagefactor "MonsterBullet", 0.33;
-	damagefactor "MonsterShotgunBullet", 0.33;
 	damagefactor "MonsterCutless", 0.33;
 	damagefactor "Trample", 8.0;
 	damagefactor "Kick", 3.0;
@@ -415,7 +414,7 @@ Goto StandStill;
 	Pain.Bullet:
 	Pain.MonsterBullet:
 	Pain.MonsterMinigunBullet:
-	Pain.MonsterShotgunBullet:
+	Pain.Shotgun:
 	Pain.SSG:
 	Pain.CutLess:
 	Pain.MonsterCutLess:
