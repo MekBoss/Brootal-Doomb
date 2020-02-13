@@ -41,23 +41,13 @@ protected void doomb_spherical_rail_attack(uint dist = 128)
 
 	uint i = 0;
 
-	uint safety = 0;
 
-	while(i < dist)// || safety <= (dist + 15))//while ( i < dist);// || i < (dist + 1) );
+	while(i < dist)
 	{
 		a_spawnparticle("33FF33", SPF_FULLBRIGHT, lifetime :16, size:5, xoff:from.x, yoff:from.y, zoff:from.z, sizestep:0.1);
 		from += add;
 		i ++;
-		safety++;
-		if(i > dist + 15)
-			break;
 	} 
-	
-	if(safety > dist)
-		console.printf("ti che durak shtoli?");
-	
-	if(i > (dist + 1))
-		console.printf("ded");
 	
 	if(sphere.hitactor != null)
 	{

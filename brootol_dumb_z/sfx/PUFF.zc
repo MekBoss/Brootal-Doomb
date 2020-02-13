@@ -161,6 +161,12 @@ states
 		TNT1 AAAAA 0 A_SpawnProjectile ("nukageParticleXFAster", 24, 0, random (0, 360), 2, random (30, 160));
 		TNT1 A 0 A_SpawnItem("SlimeRicochet");
 	Stop;
+
+	death:
+	xdeath:
+	crash:
+		tnt1 a 1;
+	stop;
 }
 
 }

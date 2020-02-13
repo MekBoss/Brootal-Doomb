@@ -131,15 +131,10 @@ CLASS XDeath3: XDeath1 {
 			Stop;
 			
 		SpawnFloor:
-			XME2 E 1;
-			XME2 E 3;
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			XME2 E 1 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
 		Living:
-			XME2 E 600;
-			Loop;
-		Vanish:
-			TNT1 A 5;
-			Stop;
+			XME2 E 3500;
+		Stop;
 	}
 }
 

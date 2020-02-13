@@ -97,7 +97,9 @@ CLASS Rocket_Launcher : doomb_weapon_base Replaces RocketLauncher {
 }
 
 
-CLASS Rocket2 : doomb_boolet_base Replaces Rocket { 
+CLASS Rocket2 : doomb_boolet_base Replaces Rocket
+{
+
 Default
 {	
 	Radius 4;
@@ -114,6 +116,7 @@ Default
 	Obituary "$OB_MPROCKET";
 	Species "Marines";
 }
+
 States
 {
 	Spawn:
@@ -155,8 +158,8 @@ States
 }
 
 CLASS RocketRounds : Ammo { 
-	Default {
-		
+	Default
+	{
 		Inventory.Amount 0;
 		Inventory.MaxAmount 6;
 		Ammo.BackpackAmount 0;
@@ -167,7 +170,6 @@ CLASS RocketRounds : Ammo {
 
 CLASS RocketCaseSpawn : ACTOR { 
 	Default {
-		
 		Speed 20;
 		PROJECTILE;
 		+NOCLIP;
