@@ -944,7 +944,6 @@ CLASS DyingZombiemanNoArm : doomb_body_base {
 		damagefactor "Blood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;
-		damagefactor "Avoid", 0.0;
 		damagefactor "Leg", 0.0;
 		damagefactor "Kick", 6.0;
 		Mass 500;
@@ -1160,7 +1159,6 @@ CLASS ZombieManDyingAfterFatality : doomb_body_base {
 	damagefactor "Blood", 0.0;
 	damagefactor "BlueBlood", 0.0;
 	damagefactor "GreenBlood", 0.0;
-	damagefactor "Avoid", 0.0;
 	damagefactor "Leg", 0.0;
 	damagefactor "Kick", 6.0;
 	Mass 500;
@@ -1286,7 +1284,6 @@ CLASS ZombiemanLastStand2 : ZombiemanLastStand1 {
 	damagefactor "Blood", 0.0;
 	damagefactor "BlueBlood", 0.0;
 	damagefactor "GreenBlood", 0.0;
-	damagefactor "Avoid", 0.0;
 	damagefactor "Leg", 0.0;
 	damagefactor "Kick", 6.0;
 	Mass 500;
@@ -1350,7 +1347,6 @@ CLASS ZombiemanGotHisLegBlowed : doomb_body_base {
 	damagefactor "Blood", 0.0;
 	damagefactor "BlueBlood", 0.0;
 	damagefactor "GreenBlood", 0.0;
-	damagefactor "Avoid", 0.0;
 	damagefactor "Leg", 0.0;
 	damagefactor "Kick", 6.0;
 	Mass 500;
@@ -2105,7 +2101,6 @@ CLASS DyingZombieman : doomb_body_base
 	damagefactor "Kick", 6.0;
 	PainChance "Kick", 255;
 	damagefactor "trample", 2.0;
-	damagefactor "Avoid", 0.0;
 	damagefactor "Death.KickDowned", 100.0;
 	damagefactor "Death.KickDownedAny", 100.0;
 	+SHOOTABLE;

@@ -9,10 +9,8 @@ default
 	Mass 400;
     damagefactor "Crush", 10.0;
     damagefactor "SSG", 5.0;
-	damagefactor "Avoid", 0.0;
 	PainChance "Kick", 255;
 	Monster;
-	damagefactor "Avoid", 0.0;
 	damagefactor "Blood", 0.0 ;
 	damagefactor "BlueBlood", 0.0;
 	damagefactor "GreenBlood", 0.0;

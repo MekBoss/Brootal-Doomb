@@ -193,28 +193,7 @@ override int doomb_get_aditional_death_sprite()
 			tnt1 a 0 a_jump(200, "missile2");
 		Goto See;
 			
-		StrafeLeft:
-			PLA6 ABCD 3
-			{
-				A_FaceTarget();
-				vel.xy += (3 * sin(angle - 90), 3 * cos(angle - 90) );
-			}
-			Goto Missile2;
 			
-		StrafeRight:
-			PLA6 ABCD 3
-			{
-				A_FaceTarget();
-				vel.xy += (3 * sin(angle + 90), 3 * cos(angle + 90) );
-			}
-			Goto Missile2;
-			
-		CheckRetreat:
-			TNT1 A 0;
-			TNT1 A 0 A_JumpIfCloser(500, "Retreat");
-		Pain.Avoid:
-			TNT1 A 0 A_Jump(256, "StrafeLeft", "StrafeRight");
-			Goto StrafeLeft;
 			
 		Retreat:
 			TNT1 A 0;
@@ -337,6 +316,13 @@ CLASS PlasmaGunMarineGuarding: Marine_PlasmaGun {
 			TNT1 A 0 A_Jump(128, "StrafeLeft", "StrafeRight");
 			Goto See;
 			
+		CheckRetreat:
+			TNT1 A 0;
+			TNT1 A 0 A_JumpIfCloser(500, "Retreat");
+		Avoid:
+			TNT1 A 0 A_Jump(256, "StrafeLeft", "StrafeRight");
+		Goto StrafeLeft;
+
 		StrafeLeft:
 			PLA6 ABCD 3
 			{

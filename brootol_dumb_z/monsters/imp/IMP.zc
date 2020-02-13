@@ -25,7 +25,6 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp {
 		
 
 		PainChance "Explosive_Impact", 255;
-		damagefactor "Avoid", 0.0;
 		damagefactor "Trample", 1.5;
 		damagefactor "SSG", 50.0;
 		damagefactor "Crush", 10.0;

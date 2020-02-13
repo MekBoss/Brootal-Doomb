@@ -22,7 +22,6 @@ CLASS doomb_fatso : doomb_monster_base Replaces Fatso {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;
 		DamageFactor "Shotgun", 0.8;
-		damagefactor "Avoid", 0.0;
 
 		PainChance "Kick", 255;
 		PainChance "SSG", 255;

@@ -66,7 +66,6 @@ CLASS EvilMarine : doomb_monster_base Replaces WolfensteinSS {
 		damagefactor "Blood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;
-		damagefactor "Avoid", 0.0;
 		
 
 		SeeSound "none";

@@ -9,7 +9,6 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 		PainChance "Taunt", 255;
 		damagefactor "Explosive_Impact", 1.1;
 		damagefactor "HKFT", 0.05;
-		damagefactor "Avoid", 0.0;
 		damagefactor "Blood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;

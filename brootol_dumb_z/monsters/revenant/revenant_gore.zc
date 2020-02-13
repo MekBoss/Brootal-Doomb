@@ -132,10 +132,9 @@ CLASS MetalShard3: MetalShard1 {
 }
 
 
-CLASS DyingRevenant : doomb_blood { 
+CLASS DyingRevenant : doomb_body_base
+{ 
 	Default {
-		
-		
 		Radius 16;
 		Height 60;
 		Health 40;
@@ -148,7 +147,6 @@ CLASS DyingRevenant : doomb_blood {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
 		
-		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 	}
 	States
@@ -375,9 +373,8 @@ CLASS RevenantTorso5: RevenantPiece {
 
 
 
-CLASS RevenantU : ACTOR { 
+CLASS RevenantU : doomb_monster_base { 
 	Default {
-		
 		GibHealth 45;
 		Health 150;
 		Monster;
@@ -387,7 +384,6 @@ CLASS RevenantU : ACTOR {
 		Speed 6;
 		damagefactor "Crush", 10.0;
 		damagefactor "Plasma", 0.5;
-		damagefactor "Avoid", 0.0;
 		PainChance "Kick", 255;
 		BloodType "RevenantBlood";
 		SeeSound "skeleton/sight";

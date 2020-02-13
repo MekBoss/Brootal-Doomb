@@ -22,7 +22,6 @@ Default {
 	Health 750;
 	PainChance 10;
 	PainChance "Kick", 90;
-	damagefactor "Avoid", 0.0;
 	BloodType "Brutal_Blood",  "SawBlood";
 	Monster;
 	DamageType "Rape";

@@ -33,7 +33,6 @@ Default {
 	damagefactor "Blood", 0.0;
 	damagefactor "BlueBlood", 0.0;
 	damagefactor "GreenBlood", 0.0  ;
-	damagefactor "Avoid", 0.0;
 	
 	Health 20;
 	Radius 10;

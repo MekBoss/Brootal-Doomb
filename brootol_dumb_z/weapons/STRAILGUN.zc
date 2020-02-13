@@ -51,7 +51,6 @@ CLASS RailGun : doomb_weapon_base {
 			SNIP A 9 A_WeaponReady(1);
 			
 			SNIP A 9 A_WeaponReady(1);
-			TNT1 A 0 BRIGHT A_FireProjectile("Alerter", 0, 0, -1, 0);
 			Loop;
 			
 		DontNeedToReload:

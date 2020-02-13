@@ -35,7 +35,6 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 		PainChance "Kick", 255;
 		damagefactor "Crush", 10.0;
 		damagefactor "SSG", 5.0;
-		damagefactor "Avoid", 0.0;
 		damagefactor "SSG", 5.0;
 
 		+CANPASS;

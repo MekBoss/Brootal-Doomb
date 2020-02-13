@@ -42,14 +42,12 @@ Default {
 	Mass 300;
 	FastSpeed 12;
 	PainChance 200;
-	PainChance "Avoid", 50;
 	PainChance "Kick", 255;
 	PainChance "Melee", 255;
 	PainChance "Taunt", 255;
 	PainChance "HelperMarineFatality", 255;
 	damagefactor "Crush", 5.0;
 	damagefactor "HelperMarineFatallity", 3.0;
-	damagefactor "Avoid", 1.0;
 	damagefactor "SSG", 50.0;
 	damagefactor "Explosive_Impact", 2.5;
 	damagefactor "Taunt", 1.0;
@@ -214,12 +212,13 @@ States
 		POSS A 10;
 	Goto SeeContinue;
 		
-		//Currently unused. Used to make the enemy rolls left or right when hit by a rocket alert actor.
-	Pain.Avoid:
+	//MARK V Currently unused. Used to make the enemy rolls left or right when hit by a rocket alert actor.
+	//But I dont think so :v
+	Avoid:
 		POSS A 1 A_FaceTarget;
 		TNT1 A 0 ThrustThing((int)(angle*256/360+randompick(64, 192)), 15, 0, 0);
 		ZRO2 ABCDEFGH 3 A_FaceTarget;
-		Goto Missile;
+	Goto Missile;
 		
 	Pain:
 		TNT1 A 0 A_JumpIfInventory ("IsDown", 1, 8);

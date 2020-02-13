@@ -776,7 +776,6 @@ CLASS DyingSergeant : doomb_body_base {
 		damagefactor "Blood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;
-		damagefactor "Avoid", 0.0;
 		damagefactor "Leg", 0.0;
 		damagefactor "Kick", 6.0;
 		Mass 500;
@@ -1404,7 +1403,6 @@ CLASS DyingSergeantLegBlewedOff : DyingSergeantNoLeg {
 	damagefactor "Blood", 0.0;
 	damagefactor "BlueBlood", 0.0;
 	damagefactor "GreenBlood", 0.0;
-	damagefactor "Avoid", 0.0;
 	damagefactor "Kick", 6.0;
 	Mass 500;
 	-SOLID;
@@ -1810,7 +1808,6 @@ CLASS SergeantGotHisLegBlowed : doomb_body_base {
 	damagefactor "Blood", 0.0;
 	damagefactor "BlueBlood", 0.0;
 	damagefactor "GreenBlood", 0.0;
-		damagefactor "Avoid", 0.0;
 		damagefactor "Leg", 0.0;
 		damagefactor "Kick", 6.0;
 		Mass 500;

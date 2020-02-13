@@ -161,7 +161,6 @@ CLASS HellishMissileLauncher : Weapon {
 			
 		OpenFire:
 			TNT1 A 0 A_JumpIfInventory("RevenantRocketFire1823", 1, "OpenFire2");
-			TNT1 A 0 BRIGHT A_FireProjectile("Alerter", 0, 0, -1, 0);
 			RVCG B 2 BRIGHT A_FireProjectile("RevenantBalls66", random(4,-4), 1, -10, 0);
 			TNT1 A 0 Radius_Quake (2, 6, 0, 1, 0);
 			RVCG CDE 2;
@@ -170,7 +169,6 @@ CLASS HellishMissileLauncher : Weapon {
 			Goto Ready+1;
 			
 		OpenFire2:
-			//TNT1 A 0 BRIGHT A_FireProjectile("Alerter")
 			RVCG F 2 BRIGHT A_FireProjectile("RevenantBalls66", random(4,-4), 1, 10, 0);
 			TNT1 A 0 Radius_Quake (2, 6, 0, 1, 0);
 			RVCG GHI 2;

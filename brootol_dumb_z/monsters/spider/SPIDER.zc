@@ -13,7 +13,6 @@ CLASS Arachnotron1 : doomb_monster_base replaces Arachnotron {
 		Radius 64;
 		height 64;
 		damagefactor "Crush", 10.0;
-		damagefactor "Avoid", 0.0;
 		SeeSound "baby/sight";
 		PainSound "baby/pain";
 		DeathSound "baby/death";

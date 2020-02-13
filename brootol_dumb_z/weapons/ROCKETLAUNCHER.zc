@@ -55,7 +55,6 @@ CLASS Rocket_Launcher : doomb_weapon_base Replaces RocketLauncher {
 			
 			TNT1 A 0 A_FireProjectile("RedFlareSpawn",-5,0,0,0);
 			TNT1 A 0 A_PlaySound ("DSRFIRE");
-			TNT1 A 0 BRIGHT A_FireProjectile("Alerter");
 			MISF A 1 BRIGHT A_FireProjectile("Rocket", 0, 1, 0, -10);
 			TNT1 A 0 A_Takeinventory("RocketRounds",1);
 			MISF BCD 1 BRIGHT;

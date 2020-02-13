@@ -7,7 +7,6 @@ CLASS Belphegor : doomb_monster_base {
 		GibHealth 25;
 		+NOICEDEATH;
 		PainChance "Kick", 255;
-		damagefactor "Avoid", 0.0;
 
 		Health 2000;
 		damagefactor "Blood", 0.0;

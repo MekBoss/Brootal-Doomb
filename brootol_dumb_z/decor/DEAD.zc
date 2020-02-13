@@ -1,7 +1,5 @@
 CLASS VeryDeadMarine: doomb_body_base Replaces DeadMarine { 
 	Default {
-		
-		damagefactor "Avoid", 0.0;
 		damagefactor "Blood", 0.0;
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "BlueBlood", 0.0 ;
@@ -66,10 +64,7 @@ CLASS VeryDeadMarine: doomb_body_base Replaces DeadMarine {
 
 CLASS VeryVeryDeadMarine: doomb_body_base Replaces GibbedMarine { 
 	Default {
-		
 		+CLIENTSIDEONLY;
-		damagefactor "Avoid", 0.0;
-		
 	}
 	States
 	{
@@ -497,7 +492,6 @@ CLASS DeadDeadStick: doomb_body_base Replaces DeadStick {
 		damagefactor "BlueBlood", 0.0 ;
 		damagefactor "Taunt", 0.0;
 		
-		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		GibHealth 10;
 	}
@@ -543,7 +537,6 @@ CLASS DeadLiveStick: doomb_body_base Replaces LiveStick {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
 		
-		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";
 	}
@@ -588,7 +581,6 @@ CLASS DeadBloodyTwitch : doomb_body_base Replaces BloodyTwitch {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
 		
-		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";
 		DropItem "HealthPlus", 128;
@@ -694,7 +686,6 @@ CLASS HangingBody: doomb_body_base Replaces Meat2 {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
 		
-		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";
 	}
@@ -778,7 +769,6 @@ CLASS HangingDeadGuyNoLeg: doomb_body_base Replaces Meat3 {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
 		
-		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";
 	}
@@ -883,7 +873,6 @@ CLASS DeadHangNoGuts: doomb_body_base Replaces HangNoGuts {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
 		
-		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";
 	}
@@ -923,7 +912,6 @@ CLASS DeadHangBNoBrain: doomb_body_base Replaces HangBNoBrain {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
 		
-		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";
 	}
@@ -964,7 +952,6 @@ CLASS DeadHangTLookingDown: doomb_body_base Replaces HangTLookingDown {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
 		
-		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";
 	}
@@ -1004,7 +991,6 @@ CLASS DeadHangTLookingUp: doomb_body_base Replaces HangTLookingUp {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
 		
-		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";
 	}
@@ -1044,7 +1030,6 @@ CLASS DeadHangTSkull: doomb_body_base replaces HangTSkull {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
 		
-		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";
 	}
@@ -1085,7 +1070,6 @@ CLASS DeadHangTNoBrain: doomb_body_base Replaces HangTNoBrain {
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "Taunt", 0.0;
 		
-		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		bloodtype "DeadBlood";
 	}

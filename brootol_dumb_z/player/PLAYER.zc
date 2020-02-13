@@ -29,13 +29,16 @@ Default {
 	BloodType "Player_Blood";
 	damagefactor "Taunt", 0.0;
 	
-	damagefactor "Shotgun", 0.5;
-	damagefactor "SSG", 5.0;
+	//FIXME most defenitelly sometyhing nasty
 	damagefactor "Blood", 0.5;
 	damagefactor "BlueBlood", 0.5;
 	damagefactor "GreenBlood", 0.5;
-	damagefactor "MonsterBullet", 0.33;
-	damagefactor "MonsterCutless", 0.33;
+
+
+	damagefactor "Shotgun", 0.5;
+	damagefactor "SSG", 5.0;
+	damagefactor "Bullet", 0.5;
+	damagefactor "Cutless", 0.33;
 	damagefactor "Trample", 8.0;
 	damagefactor "Kick", 3.0;
 	damagefactor "Fatality", 5.0;
@@ -412,12 +415,10 @@ Goto StandStill;
 		
 		
 	Pain.Bullet:
-	Pain.MonsterBullet:
 	Pain.MonsterMinigunBullet:
 	Pain.Shotgun:
 	Pain.SSG:
 	Pain.CutLess:
-	Pain.MonsterCutLess:
 		//Scripts 611 to 616 are responsible for making the bullet damage effect on screen
 		tnt1 A 0 A_PlaySound("PAIN1", 2);
 		tnt1 A 0 ACS_Execute(random(611, 616), 0, 0, 0, 0);
@@ -481,7 +482,6 @@ Goto StandStill;
 		Stop;
 		
 	Death.CutLess:
-	Death.MonsterCutless:
 		tnt1 A 0 A_Takeinventory("Kicking",1);
 		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 		tnt1 A 0 A_Scream;

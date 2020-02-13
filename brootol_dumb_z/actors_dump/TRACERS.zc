@@ -1,26 +1,54 @@
 //Tracing projectiles goes here
 
-CLASS Tracer: doomb_boolet_base { 
-	Default {
-		
+CLASS Tracer: doomb_boolet_base
+{
+override void Tick ()
+{
+	if(target is "playerpawn")
+	{
+		if(random[monster_avoid](0,10) <= 1)
+		{
+			FLineTraceData avoider;
+
+			LineTrace(angle, speed, pitch, data: avoider);
+
+			if(avoider.hitactor && avoider.hitactor is "doomb_monster_base" && !(avoider.hitactor is "doomb_body_base") )
+			{
+				state neo = avoider.hitactor.findstate("avoid");
+				if(neo)
+					avoider.hitactor.setstate(neo);
+			}
+		}
+	}
+
+	super.tick();
+}
+
+	Default
+	{
 		Projectile;
 		+RANDOMIZE;
 		+FORCEXYBILLBOARD;
 		+DONTSPLASH;
 		+NOEXTREMEDEATH;
 		+MISSILE;
+		-DONTSPLASH;
+
 		damage 0;
 		radius 2;
 		height 2;
-		speed 140;
+		speed 100;
 		renderstyle "Add";
 		alpha 0.9;
 		scale 0.15;
+		Decal "BulletDecalNew1";
 		
 	}
 	states
 	{
 		Spawn:
+			TRAC A 1 BRIGHT nodelay {vel *= frandom(0.8, 1.4);}
+		spawn_mini_loop:
 			TRAC A 1 BRIGHT;
 		Loop;
 
@@ -32,7 +60,6 @@ CLASS Tracer: doomb_boolet_base {
 
 CLASS MinigunTracer: Tracer { 
 	Default {
-		-DONTSPLASH;
 		seesound "weapons/minigunfire";
 		damagetype "Cutless";
 	}
@@ -43,14 +70,11 @@ CLASS MinigunTracer: Tracer {
 CLASS MonsterTracer: Tracer
 {
 	Default {
-		
 		+BLOODSPLATTER;
 		+THRUGHOST;
-		-DONTSPLASH;
 		speed 60;
 		damagefunction (random(9,12));
-		Decal "BulletDecalNew1";
-		DamageType "MonsterBullet";
+		DamageType "Bullet";
 	}
 }
 
@@ -58,14 +82,11 @@ CLASS MonsterTracer: Tracer
 
 CLASS ShotgunguyTracer: Tracer { 
 	Default {
-		
 		+BLOODSPLATTER;
 		+THRUGHOST;
-		-DONTSPLASH;
 		+MISSILE;
 		speed 60;
 		damagefunction (random(9,14));
-		Decal "BulletDecalNew1";
 		DamageType "Shotgun";
 	}
 }
@@ -79,51 +100,39 @@ CLASS ZombieManTracer: MonsterTracer {
 
 CLASS MonsterMinigunTracer: MonsterTracer { 
 	Default {
-		
 		+BLOODSPLATTER;
 		+THRUGHOST;
-		-DONTSPLASH;
 		speed 60;
 		damagefunction (6);
 		seesound "CHGNSHOT";
-		damagetype "MonsterCutless";
-		Decal "BulletDecalNew1";
+		damagetype "Cutless";
 	}
 }
 
 
 CLASS MeatShieldTracer: Tracer { 
 	Default {
-		
 		+BLOODSPLATTER;
 		+THRUACTORS;
-		-DONTSPLASH;
-		speed 100;
 		damagefunction (random(20,25));
-		Decal "BulletDecalNew1";
 	}
 }
 
 
 CLASS MarineTracer: Tracer { 
 	Default {
-		
 		+BLOODSPLATTER;
 		+THRUGHOST;
-		-DONTSPLASH;
 		-GHOST;
 		-THRUGHOST;
 		+THRUSPECIES;
 		+MTHRUSPECIES;
-		speed 100;
 		damagefunction (random(8,10));
-		Decal "BulletDecalNew1";
 	}
 }
 
 CLASS MarineStrongTracer: MarineTracer { 
 	Default {
-		
 		damagefunction (random(12,13));
 	}
 }
@@ -131,7 +140,6 @@ CLASS MarineStrongTracer: MarineTracer {
 
 CLASS MarineShotgunTracer: MarineTracer { 
 	Default {
-		
 		damagefunction (random(10,12));
 		damagetype "Shotgun";
 	}
@@ -139,35 +147,14 @@ CLASS MarineShotgunTracer: MarineTracer {
 
 
 
-CLASS Alerter: MonsterTracer { 
-	Default {
-		
-		-BLOODSPLATTER;
-		+THRUGHOST;
-		+DONTSPLASH;
-		-ACTIVATEIMPACT;
-		-ACTIVATEMCROSS;
-		-ACTIVATEPCROSS;
-		speed 200;
-		radius 12;
-		height 12;
-		damagefunction (1);
-		DamageType "Avoid";
-		Decal "None";
-	}
-}
-
-
 //check it
 CLASS Taunter: MonsterTracer { 
 	Default {
-		
 		-BLOODSPLATTER;
 		+THRUGHOST;
 		+DONTSPLASH;
 		radius 16;
 		height 16;
-		speed 100;
 		damagefunction (random(1,2));
 		DamageType "Taunt";
 		Decal "None";
@@ -182,11 +169,8 @@ CLASS Taunter: MonsterTracer {
 
 CLASS MastermindTracer: Tracer { 
 	Default {
-		
 		+BLOODSPLATTER;
 		+THRUGHOST;
-		-DONTSPLASH;
-		speed 90;
 		damagefunction (random(5,7));
 		scale .2;
 		RenderStyle "Add";
@@ -220,8 +204,6 @@ CLASS MastermindTracer: Tracer {
 
 CLASS SuperMastermindTracer: MastermindTracer { 
 	Default {
-		
-		Speed 120;
 		damagefunction (random(25,30));
 		Height 24;
 	}

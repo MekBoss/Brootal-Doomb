@@ -17,14 +17,12 @@ CLASS PainElemental1 : doomb_monster_base Replaces PainElemental {
 		+FLOAT;
 		+NOGRAVITY;
 		SeeSound "pain/sight";
-		damagefactor "Avoid", 0.0;
 		PainSound "pain/pain";
 		DeathSound "pain/death";
 		ActiveSound "pain/active";
 		bloodtype "Brutal_Blood";
 		DropItem "DemonStrengthRune", 5;
 		PainChance "Kick", 255;
-		damagefactor "Avoid", 0.0;
 		damagefactor "Blood", 0.0;
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;

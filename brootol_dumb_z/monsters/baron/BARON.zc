@@ -16,7 +16,6 @@ Default {
 	PainChance 25;
 	PainChance "Kick", 255;
 	PainChance "CallingTheBaronAFaggot", 255;
-	damagefactor "Avoid", 0.0;
 	damagefactor "SSG", 0.2;
 	damagefactor "Fatality", 3.0;
 	damagefactor "Blood", 0.0;

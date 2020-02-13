@@ -4,7 +4,6 @@ CLASS Hectebus : doomb_fatso { //Replaces Hectebus
 		Scale 1.5;
 		
 		GibHealth 25;
-		damagefactor "Avoid", 0.0;
 		PainChance "Kick", 255;
 		damagefactor "Stomp", 0.0;
 

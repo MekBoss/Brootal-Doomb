@@ -80,7 +80,6 @@ CLASS BigGibBase : doomb_body_base {
 		damagefactor "GreenBlood", 0.0;
 		damagefactor "BlueBlood", 0.0 ;
 		damagefactor "Taunt", 0.0 ;
-		damagefactor "Avoid", 0.0;
 		damagefactor "Taunt", 0.0;
 		damagefactor "Trample", 2.0;
 		damagefactor "Kick", 9.0;

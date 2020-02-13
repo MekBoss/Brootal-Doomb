@@ -30,14 +30,12 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 		Scale 0.98;
 
 		PainChance 200;
-		PainChance "Avoid", 50;
 		PainChance "Kick", 255;
 		PainChance "Melee", 255;
 		PainChance "HelperMarineFatality", 255;
 		PainChance "Explosive_Impact", 255;
 		damagefactor "Crush", 5.0;
 		PainChance "Taunt", 255;
-		damagefactor "Avoid", 1.0;
 		damagefactor "SSG", 50.0;
 
 		DropItem "GrenadeAmmo", 15;
@@ -69,7 +67,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 	States
 	{
 		
-		Pain.Avoid: 
+		Avoid: 
 			SPOS A 1 A_FaceTarget;
 			TNT1 A 0 
 			{
@@ -77,7 +75,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy {
 				vel.xy += (10 * sin(angle + i), 10 * cos(angle + i) );
 			}
 			ZRO3 ABCDEFGH 2 A_FaceTarget;
-			Goto Missile;
+		Goto Missile;
 			
 		Spawn:
 			TNT1 A 0;

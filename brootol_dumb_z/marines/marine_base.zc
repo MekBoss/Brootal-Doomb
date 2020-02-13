@@ -116,7 +116,6 @@ Default
     damagefactor "BlueBlood", 0.0;
     damagefactor "GreenBlood", 0.0;
     damagefactor "SpawnMarine", 0.0;
-    damagefactor "Avoid", 0.0;
     damagefactor "Cut", 0.1;
     damagefactor "HelperMarineFatallity", 0.0;
     
