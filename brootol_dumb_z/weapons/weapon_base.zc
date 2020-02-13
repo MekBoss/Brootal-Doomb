@@ -4,6 +4,8 @@ class doomb_weapon_base : weapon abstract
 protected uint dw_state;
 protected bool iron_sight;
 
+const psprite_kick = -5;
+
 void dw_set_state(uint i = 0)
 {
     dw_state = i;
@@ -86,27 +88,27 @@ default
 }
 
 //base function for reloading magazine based weapon
-protected void reload_weapon_magazine(string ammo_pool = "", string magazine_pool = "")
+protected void reload_weapon_magazine(string magazine_pool = "", string reserve_pool = "")
 {
-	if(ammo_pool == "" || magazine_pool == "") {return;}
+	if(magazine_pool == "" || magazine_pool == "") {return;}
 
-	inventory actual_ammo = owner.findinventory(ammo_pool);
+	inventory magazine_ammo = owner.findinventory(magazine_pool);
 
-	if(actual_ammo == null)
+	if(magazine_ammo == null)
 	{
-		owner.A_GiveInventory(ammo_pool);
-		actual_ammo = owner.findinventory(ammo_pool);
-		actual_ammo.amount --;
+		owner.A_GiveInventory(magazine_pool);
+		magazine_ammo = owner.findinventory(magazine_pool);
+		magazine_ammo.amount --;
 	}
 
-	inventory main_ammo = owner.findinventory(magazine_pool);
+	inventory main_ammo = owner.findinventory(reserve_pool);
 	
 	if(main_ammo == null)
-	{console.printf("there is no %s ammo in player inventory", magazine_pool); return;}
+	{console.printf("there is no %s ammo in player inventory", reserve_pool); return;}
 
-	while( (actual_ammo).amount < (actual_ammo).maxamount && (main_ammo).amount > 0)
+	while( (magazine_ammo).amount < (magazine_ammo).maxamount && (main_ammo).amount > 0)
 	{
-		actual_ammo.amount ++;
+		magazine_ammo.amount ++;
 		main_ammo.amount --;
 	}
 }
@@ -429,7 +431,7 @@ protected bool is_self_valid_weapon()
 }
 
 
-protected void doom_dual_check_fire()
+protected void doomb_dual_check_fire()
 {
 	if(owner.player && owner.player.cmd.buttons & BT_ATTACK && !(doomb_dual_weapon_state & DDF_PRIMARY_FIRE) && owner.player.findPSprite(LEFT_WEAPON) )
 	{
@@ -475,7 +477,7 @@ override void doeffect()
 	//super.doeffect();
 	if(is_self_valid_weapon() )
 	{
-		doom_dual_check_fire();
+		doomb_dual_check_fire();
 	}
 }
 
