@@ -831,50 +831,25 @@ object ArmorShard
 }
 
 
-object Big_Tree
-{
-	frame TRE2N { light FIREBARREL }
-}
-
-object Big_Tree2
-{
-	frame TRE2N { light FIREBARREL }
-
-}
-
-object Big_Tree3
-{
-	frame TRE2N { light FIREBARREL }
-
-}
-
-object Big_Tree4
-{
-    frame TREE { light FATSHADOW  }
-	frame TRE2N { light FIREBARREL }
-
-}
-
-
 object Doomer
 {
- frame BUR2 { light BIGREDTORCH }
- frame BURNF0 { light BIGREDTORCH }
- frame BURNG0 { light BIGREDTORCH }
- frame BURNH0 { light BIGREDTORCH }
- frame BURNI0 { light BIGREDTORCH }
- frame BURNJ0 { light BIGREDTORCH }
- frame BURNK0 { light BIGREDTORCH }
- frame BURNL0 { light BIGREDTORCH }
- frame BURNM0 { light BIGREDTORCH }
- frame BURNN0 { light BIGREDTORCH }
- frame BURNO0 { light BIGREDTORCH }
- frame BURNP0 { light BIGREDTORCH }
- frame BURNQ0 { light BIGREDTORCH }
- frame BURNR0 { light BIGREDTORCH }
- frame BURNS0 { light BIGREDTORCH }
- frame BURNT0 { light SMALLREDTORCH }
- frame BURNU0 { light SMALLREDTORCH }
+    frame BUR2 { light BIGREDTORCH }
+    frame BURNF0 { light BIGREDTORCH }
+    frame BURNG0 { light BIGREDTORCH }
+    frame BURNH0 { light BIGREDTORCH }
+    frame BURNI0 { light BIGREDTORCH }
+    frame BURNJ0 { light BIGREDTORCH }
+    frame BURNK0 { light BIGREDTORCH }
+    frame BURNL0 { light BIGREDTORCH }
+    frame BURNM0 { light BIGREDTORCH }
+    frame BURNN0 { light BIGREDTORCH }
+    frame BURNO0 { light BIGREDTORCH }
+    frame BURNP0 { light BIGREDTORCH }
+    frame BURNQ0 { light BIGREDTORCH }
+    frame BURNR0 { light BIGREDTORCH }
+    frame BURNS0 { light BIGREDTORCH }
+    frame BURNT0 { light SMALLREDTORCH }
+    frame BURNU0 { light SMALLREDTORCH }
 }
 
 
@@ -988,11 +963,6 @@ object ShortTorch_Blue
 object BurningBarrel1
 {
     frame BURB { light FIREBARREL }
-}
-
-object TorchTreeInFlames
-{
-    frame TRE1 { light FIREBARREL }
 }
 
 object TallTorch_Green
