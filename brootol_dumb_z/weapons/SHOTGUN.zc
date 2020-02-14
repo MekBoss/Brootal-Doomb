@@ -336,7 +336,7 @@ CLASS ShotgunAmmo : Ammo {
 }
 
 
-//SLOWDOWN
+//SLOWDOWN ADRESSED
 CLASS Shotgunpuff : hitpuff
 { 
 	Default {

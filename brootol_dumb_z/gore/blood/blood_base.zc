@@ -1,6 +1,14 @@
 class doomb_blood : actor abstract
 {
 
+private state in_beaker_state;
+
+override void postbeginplay()
+{
+	in_beaker_state = findstate("wait_in_beaker");
+	super.postbeginplay();
+}
+
 Default
 {
 	+MISSILE;
@@ -131,7 +139,7 @@ override void tick()
 {
 	super.tick();
 
-	if(instatesequence(curstate, self.findstate("wait_in_beaker") ) )
+	if(instatesequence(curstate, in_beaker_state ) )
 		self.active = false;
 	else
 		active = true;
