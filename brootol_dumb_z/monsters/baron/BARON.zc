@@ -22,7 +22,7 @@ Default {
 	damagefactor "BlueBlood", 0.0;
 	damagefactor "GreenBlood", 0.0;
 	+QUICKTORETALIATE;
-	PainChance "Explosive_Impact", 255;
+	PainChance "Explosive_Impact", 90;
 	PainSound "PSXDPN";
 	BloodType "Brutal_Blood",  "SawBlood";
 	Obituary "%o was brutalized by a Baron of Hell.";

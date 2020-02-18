@@ -22,7 +22,7 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 		Speed 8;
 		Health 500;
 		PainChance "Kick", 255;
-		PainChance "Explosive_Impact", 255;
+		PainChance "Explosive_Impact", 130;
 		PainChance 25;
 		PainChance "Saw", 100;
 		PainChance "Cut", 100;
@@ -64,28 +64,11 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 			TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
 			
 		Stand:
-			TNT1 A 0 A_CheckSight("Stand2");
 			BOS2 B 10 A_Look;
 		Loop;
 			
-		Stand2:
-			BOS2 B 11 A_Look;
-			Goto Stand;
 			
 		See: 
-			Goto Rage;
-		See2:
-			TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
-			TNT1 A 0 doomb_if_boss_retreat(target, "CheckRetreat");
-		See3:
-		SeeContinue:
-			BOS2 AAAABBBBCCCCDDDD 2 A_Chase;
-			TNT1 A 0 doomb_monster_memory("LookingForPlayer");
-		Loop;
-			
-			
-		RAGE:
-			TNT1 A 0;
 			TNT1 A 0 A_CheckSight("See2");
 			BTS2 ABC 1;
 			BTS2 DEDF 2;
@@ -93,7 +76,13 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 			BTS2 CBA 1 A_FaceTarget;
 			TNT1 A 0 HealThing(200);
 			TNT1 A 0 A_Jump(96, "MissileInRage");
-			Goto See2;
+		See2:
+			TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
+			TNT1 A 0 doomb_if_boss_retreat(target, "CheckRetreat");
+			BOS2 AAAABBBBCCCCDDDD 2 A_Chase;
+			TNT1 A 0 doomb_monster_memory("LookingForPlayer");
+		Loop;
+			
 			
 		Idle:
 		LookingForPlayer:
@@ -151,8 +140,8 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 			
 		CheckRetreat:
 			TNT1 A 0 A_JumpIfCloser(500, "Retreat");
-			Goto Missile+5;
-			
+		goto missile+5;
+		
 		Retreat:
 			BOS2 DDDDCCCCBBBBAAAA 2
 			{

@@ -34,7 +34,7 @@ CLASS Rifle : doomb_weapon_base Replaces Pistol {
 
 	override void Touch (Actor toucher)
 	{
-		if(toucher.findinventory("Rifle"))
+		if(toucher && toucher is "playerpawn" && toucher.findinventory("Rifle"))
 		{
 			let item = Inventory(Spawn("DualRifles"));
 			item.touch(toucher);

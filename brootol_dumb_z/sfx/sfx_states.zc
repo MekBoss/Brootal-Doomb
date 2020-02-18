@@ -6,7 +6,10 @@ private state prev_state;
 states
 {
     template_state:
-        tnt1 a 6;
+        tnt1 a 6
+        {
+            //last_state_name = "template_state";
+        }
     goto reset_condition;
 
 
@@ -18,6 +21,7 @@ states
     FlameTrails:
         tnt1 a 0
         {
+            //last_state_name = "FlameTrails";
             doomb_set_appearance( (frandom(0.4, 0.6), 0), frandom(0.7, 0.9), frandom(2, 3) );
         }
         FRPR ABCDEFGH 3 BRIGHT;
@@ -27,6 +31,7 @@ states
     GreenFlameTrails:
         tnt1 a 0
         {
+            //last_state_name = "GreenFlameTrails";
             doomb_set_appearance( (frandom(0.4, 0.6), 0), 1, frandom(2, 3) );
         }
         FRPG CDEFGH 1 BRIGHT;
@@ -35,6 +40,7 @@ states
     BluePlasmaFire:
         tnt1 a 0
         {
+            //last_state_name = "BluePlasmaFire";
             doomb_set_appearance( (frandom(0.5, 0.8), 0), 1, frandom(3, 7) );
 		}
         FIR5 ABCDEFGHIJKLMNOP 1 Bright A_FadeOut(0.04, false);
@@ -44,6 +50,7 @@ states
     FireBallExplosion:
         tnt1 a 0
         {
+            //last_state_name = "FireBallExplosion";
             doomb_set_appearance( (frandom(1.4, 1.8), 0), frandom(0.7, 0.9), frandom(2, 3) );
         }
         FX98 ABCDEFGHIJKL 1 BRIGHT A_SpawnItem("YellowFlare",0,0);
@@ -54,6 +61,7 @@ states
     ExplosionFlames:
         tnt1 a 0
         {
+            //last_state_name = "ExplosionFlames";
             doomb_set_appearance( (frandom(2, 2.6), 0), frandom(0.7, 0.9), frandom(2, 3) );
         }
         EXPL AA 3 BRIGHT {Spawn("RedFlare", pos);}
@@ -64,6 +72,7 @@ states
     RealFlameTrailsSmall:
         tnt1 a 0
         {
+            //last_state_name = "RealFlameTrailsSmall";
             doomb_set_appearance( (frandom(0.7, 0.9), 0), frandom(0.7, 0.9), frandom(3, 5) );
         }
         FIR1 AABBCCDEFGHII 1 BRIGHT;
@@ -73,6 +82,7 @@ states
     BluePlasmaFire:
         tnt1 a 0
         {
+            //last_state_name = "BluePlasmaFire";
             doomb_set_appearance( (frandom(0.06, 0.08), 0), 1, random(10, 12) );
 		}
         FIR5 ABCDEFGHIJKLMNOP 1 Bright A_FadeOut(0.04, false);
@@ -82,6 +92,7 @@ states
     SmallFireTrail:
         tnt1 a 0
         {
+            //last_state_name = "SmallFireTrail";
             doomb_set_appearance( (frandom(0.7, 0.9), 0), frandom(0.7, 0.9), frandom(2, 3) );
         }
         FIR3 ABCDEFGHIJKLMNOP 2 BRIGHT;
@@ -91,6 +102,7 @@ states
    TinyBurningPiece:
         tnt1 a 0
         {
+            //last_state_name = "TinyBurningPiece";
             doomb_set_appearance( (frandom(0.7, 1.1), 0), 0.7, 1);
         }
         CFCF ABCDEFGHIJKLNOP 1 BRIGHT;
@@ -100,6 +112,7 @@ states
     SmallFireFocus24:
         tnt1 a 0
         {
+            //last_state_name = "SmallFireFocus24";
             a_setrenderstyle(alpha, STYLE_Translucent);
             doomb_set_appearance( (frandom(0.6, 0.8), 0), 0.9, 0);
 		}
@@ -116,6 +129,7 @@ states
     RealFlameTrailsGreen:
         tnt1 a 0
         {
+            //last_state_name = "RealFlameTrailsGreen";
             doomb_set_appearance( (frandom(0.7, 0.9), 0), frandom(0.7, 0.9), frandom(3, 5) );
         }
         FIRG AABBCCDEFGHII 1 BRIGHT;
@@ -125,6 +139,7 @@ states
     RealFlameTrailsBlue:
         tnt1 a 0
         {
+            //last_state_name = "RealFlameTrailsBlue";
             doomb_set_appearance( (frandom(0.7, 0.9), 0), frandom(0.7, 0.9), frandom(3, 5) );
         }
         FIRB AABBCCDEFGHII 1 BRIGHT;
@@ -150,6 +165,7 @@ states
     ExplosionParticle2:
         tnt1 a 0
         {
+            //last_state_name = "ExplosionParticle2";
             doomb_set_appearance( (frandom(0.05, 0.1), 0), 1, frandom(3, 4) );
             bmissile = true;
 			bnogravity = false;
@@ -169,6 +185,7 @@ states
     BurnParticles:
         TNT1 A 3 light ("BIGREDTORCH")
         {
+            //last_state_name = "BurnParticles";
             doomb_set_appearance( speed_scale:frandom(3, 7) );
             A_Explode(3,30, damagetype:"fire");
             {Spawn("RedFlare", pos);}
@@ -182,6 +199,7 @@ states
     ShrapnelParticle:
         tnt1 a 0
         {
+            //last_state_name = "ShrapnelParticle";
             doomb_set_appearance( (frandom(0.05, 0.1), 0), 1, frandom(13, 14) );
 		}
         SPKO AAAAAAAAA 1 Bright A_FadeOut(0.1, false);
@@ -191,6 +209,7 @@ states
     BluePlasmaParticle:
         tnt1 a 0
         {
+            //last_state_name = "BluePlasmaParticle";
             doomb_set_appearance( (frandom(0.03, 0.04), 0), 1, random(10, 12) );
             bmissile = true;
             bnoclip = false;
@@ -210,6 +229,7 @@ states
     PlasmaParticleX:
         tnt1 a 0
         {
+             //last_state_name = "PlasmaParticleX";
             doomb_set_appearance( (1, 0), 1, random(3, 5) );
             bmissile = true;
 			bnogravity = false;
@@ -229,6 +249,7 @@ states
     green_particle:
         tnt1 a 0
         {
+             //last_state_name = "green_particle";
             doomb_set_appearance( (frandom(0.035, 0.1), 0), 0.8);//, random(2, 15) );
         }
         SPKG A 1 Bright {prev_state = curstate;}
@@ -283,6 +304,7 @@ states
     ExplosionSmoke:
         tnt1 a 0
         {
+            //last_state_name = "ExplosionSmoke";
             a_setrenderstyle(alpha, STYLE_Translucent);
             doomb_set_appearance( (frandom(1, 1.3), 0), 0.15, random(30, 50) );
 		}
@@ -296,6 +318,7 @@ states
     HeavyExplosionSmoke:
         tnt1 a 0
         {
+            //last_state_name = "HeavyExplosionSmoke";
             doomb_set_appearance( (frandom(1, 1.2), 0), 0.1, random(3, 5) );
             bnoclip = false;
             bmissile = true;
@@ -317,6 +340,7 @@ states
     GunFireSmoke:
         tnt1 a 0
         {
+            //last_state_name = "GunFireSmoke";
             doomb_set_appearance( (frandom(-0.22, 0.22), 0), 0.1, random(3, 5) );
 		}
 		SMOK ABCDEFGHIJKLMNOPQ 1;
@@ -326,17 +350,19 @@ states
     AltSmoke:
         tnt1 a 0
         {
+            //last_state_name = "AltSmoke";
             doomb_set_appearance( (frandom(0.7, 0.9), 0), 0.1, random(3, 5) );
             bnoclip = false;
             bmissile = true;
 		}
-        PUF2 ABCDEFGHIJKLMNOPQRSTUVWXYZ 2 A_FadeOut(0.010);
+        PUF2 ABCDEFGHIJKLMNOPQRSTUVWXYZ 2 A_FadeOut(0.01, false);
     goto reset_condition;
 
     //doomb_show_effect("SoulTrails", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
     SoulTrails:
         tnt1 a 0
         {
+            //last_state_name = "SoulTrails";
             doomb_set_appearance( (frandom(0.4, 0.6), 0), 0.4, random(2, 4) );
 		}
         FRFX KLMNOP 3 BRIGHT;
@@ -347,6 +373,7 @@ states
     BigBlackSmoke:
         tnt1 a 0
         {
+            //last_state_name = "BigBlackSmoke";
             a_setrenderstyle(alpha, STYLE_Translucent);
             doomb_set_appearance( (frandom(0.6, 0.8), 0), 0.15, 1);
         }

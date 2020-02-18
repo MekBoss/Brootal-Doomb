@@ -130,4 +130,20 @@ states
 	goto off;
 }
 
+private string last_state_name;
+/*
+override void ondestroy()
+{
+	if(getclass() == "visual_sfx")
+	{
+		if(last_state_name != "")
+			console.printf("last state was %s", last_state_name);
+		
+		if(last_state_name == "")
+			console.printf("unknown state type, how is it possible?");
+	}
+
+	super.ondestroy();
+}
+*/
 }

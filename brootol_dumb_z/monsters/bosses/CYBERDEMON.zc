@@ -42,65 +42,72 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 		+QUICKTORETALIATE;
 		+boss
 	}
+
+	private void doomb_cyber_stomp()
+	{
+		if(target && target.health > 0)
+		{
+			//if( (abs(target.pos.x) - abs(pos.x))< 50 && (abs(target.pos.y) - abs(pos.y)) < 50 && (abs(target.pos.z) - abs(pos.z)) < 10)
+			if( (abs(target.pos.x - pos.x))< 50 && (abs(target.pos.y - pos.y)) < 50 && (abs(target.pos.z - pos.z)) < 10)
+				setstatelabel("stomp");
+		}
+	}
+
 	States
 	{
 		Spawn:
-		Stand:
 			CYBR DZ 10 A_Look;
 		Loop;
 			
 		See:
 			TNT1 A 0 A_SpawnItem("HeavyFootSteps32");
 			CYBR A 3 A_Hoof;
-			CYBR A 3;//A_Chase
-			TNT1 A 0 A_JumpIfCloser(120, "Stomp");
-			
-			CYBR AA 2 A_Chase;
-			TNT1 A 0 A_JumpIfCloser(120, "Stomp");
-			TNT1 A 0 A_SpawnItemEx("CyberStomp",12,-30);
-			CYBR BB 2 A_Chase;
-			
-			CYBR BBC 2 A_Chase;
-			TNT1 A 0 A_SpawnItem("HeavyFootSteps32");
-			TNT1 A 0 A_JumpIfCloser(120, "Stomp");
-			
-			CYBR C 2 A_Chase;
+
+			CYBR AAA 2
+			{
+				A_Chase();
+				doomb_cyber_stomp();
+			}
+			tnt1 a 0 A_SpawnItemEx("CyberStomp",12,-30);
+			CYBR BBBBC 2
+			{
+				A_Chase();
+				doomb_cyber_stomp();
+			}
+			CYBR C 2
+			{
+				A_Chase();
+				A_SpawnItem("HeavyFootSteps32");
+			}
 			CYBR C 2;
 			CYBR C 2 A_Metal;
 			
 			TNT1 A 0 A_SpawnItemEx("CyberStomp",12,30);
-			CYBR DD 2 A_Chase;
-			TNT1 A 0 A_JumpIfCloser(120, "Stomp");
-			CYBR DD 2 A_Chase;
+			CYBR DDDD 2
+			{
+				A_Chase();
+				doomb_cyber_stomp();
+			}
 		Loop;
 			
 			
 		Missile:
-			TNT1 A 0 A_JumpIfCloser(180, "Stomp");
+			TNT1 A 0 doomb_cyber_stomp();
 			TNT1 A 0 A_JumpIfInventory("Enraged", 1, "SpecialAttack");
 			
-			CYBR E 8 A_FaceTarget;
-			
-			CYBR F 6 BRIGHT A_SpawnProjectile("CyberBalls",60,-25,0,0);
-			TNT1 A 0 A_JumpIfCloser(180, "Stomp");
-			
-			CYBR E 6 A_FaceTarget;
-			
-			CYBR F 6 BRIGHT A_SpawnProjectile("CyberBalls",60,-25,-7,0);
-			TNT1 A 0 A_JumpIfCloser(180, "Stomp");
-			
-			CYBR E 6 A_FaceTarget;
-			
-			CYBR F 6 BRIGHT A_SpawnProjectile("CyberBalls",60,-25,7,0);
-			TNT1 A 0 A_JumpIfCloser(180, "Stomp");
-			
-			CYBR E 6 A_FaceTarget;
-			
-			CYBR F 6 BRIGHT A_SpawnProjectile("CyberBalls",60,-25,0,0);
-			TNT1 A 0 A_JumpIfCloser(180, "Stomp");
-			
-			CYBR E 6 A_FaceTarget;
-			Goto See;
+			CYBR EFEFEFEF 6
+			{
+				doomb_cyber_stomp();
+
+				if(frame == 4)
+					A_FaceTarget();
+				if(frame == 5)
+				{
+					bBright = true;
+					A_SpawnProjectile("CyberBalls",60,-25,0,0);
+				}
+			}
+		Goto See;
 			
 		SpecialAttack:
 			CYBR E 6 A_FaceTarget;
@@ -122,24 +129,31 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 		Goto See;
 
 		Stomp:
-			CYBR Z 5 A_FaceTarget;
-			TNT1 A 0 A_Recoil(-5);
-			CYMA A 7 A_FaceTarget;
-			TNT1 A 0 A_Spawnitem("CyberStomp", 30);
+			tnt1 aaaaaaaaaaaaaaaaaaaaaaaaa 0;
+			CYBR Z 5
+			{
+				A_FaceTarget();
+				A_Recoil(-5);
+			}
+			CYMA A 7
+			{
+				A_FaceTarget();
+				A_Spawnitem("CyberStomp", 30);
+			}
 			CYMA B 7;
 		Goto See;
 
 		Death:
 			CYBR H 10;
 			EXPL A 0 Radius_Quake (6, 100, 0, 22, 0);
-		TNT1 AAAA 0
-		{
-			A_PlaySound("FAREXPL");
-			doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-			A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-		}
+			TNT1 AAAA 0
+			{
+				A_PlaySound("FAREXPL");
+				doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+				doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
+				A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+			}
 			TNT1 AAAA 0 A_SpawnProjectile ("UltraGoreSPawner", 90, 0, random (0, 360), 2, random (0, 180));
 			TNT1 A 0 A_SpawnProjectile ("XDeathCyberdemonHead", 120, 0, random (0, 360), 2, random (0, 180));
 			TNT1 A 0 A_SpawnProjectile ("XDeathCyberdemonArm", 120, 0, random (0, 360), 2, random (0, 180));

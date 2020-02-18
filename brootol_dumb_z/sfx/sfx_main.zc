@@ -43,9 +43,7 @@ override void worldthingspawned(worldevent e)
 //find free effect
 private visual_sfx find_free_effect()
 {
-	for(uint i = 0;
-	 i <= self.vis_sfx.size();
-	  i++)
+	for(uint i = 0; i <= self.vis_sfx.size(); i++)
 	{
 		//console.printf("%i", i);
 		if(i == self.vis_sfx.size())
@@ -58,7 +56,15 @@ private visual_sfx find_free_effect()
 			break;
 		}
 
-		if(self.vis_sfx[i])
+		if (vis_sfx[i] == null)
+		{
+			uint g = vis_sfx.size() - 1;
+
+			vis_sfx[i] = vis_sfx[g];
+			vis_sfx.delete(g);
+		}
+
+		if(vis_sfx[i])
 		{
 			if(visual_sfx(self.vis_sfx[i]).is_show_something() == false)
 			{
@@ -67,11 +73,6 @@ private visual_sfx find_free_effect()
 			}
 		}
 
-		else
-		{
-			vis_sfx.delete(i);
-			i--;
-		}
 	}
 
 	return null;

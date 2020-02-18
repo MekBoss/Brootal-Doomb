@@ -113,7 +113,7 @@ protected void doomb_if_boss_retreat(actor who = null, statelabel retereat_to = 
 {
 	if(who && retereat_to)
 	{
-		if(who.bboss)
+		if(who.bboss && who.health > 0 && random[doomb_retreat_chance](0, 10) < 3 )
 			self.setstatelabel(retereat_to);
 	}
 }

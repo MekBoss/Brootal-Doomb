@@ -180,7 +180,6 @@ CLASS MastermindTracer: Tracer {
 		scale .2;
 		RenderStyle "Add";
 		Alpha 0.9;
-		seesound "SSHFIRE";
 		damagetype "Explosive_Impact";
 		Decal "Scorch";
 		Obituary "$OB_SPIDER";
@@ -190,19 +189,23 @@ CLASS MastermindTracer: Tracer {
 		
 		Spawn:
 			tnt1 a 0 nodelay {vel *= frandom(0.8, 1.2);}
+			tnt1 a 0 a_playsound("SSHFIRE", CHAN_AUTO, 1);
+
 		mini:
 			TRAC A 1;
 		Loop;
 
 		Death:
-			EXPL A 0 A_Explode (2, 120, 0);
-			TNT1 A 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 AAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-			XXXX A 0 Radius_Quake (4, 24, 0, 15, 0);
-			TNT1 a 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (0.9, 0.9) );
-			TNT1 A 0 A_SpawnItem("WhiteShockwaveSmall");
-			TNT1 A 0 A_PlaySound("FAREXPL");
-			//TNT1 AAAAAAAA 4 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
+			tnt1 A 1
+			{
+				A_Explode (2, 120, 0);
+				A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+				doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+				Radius_Quake (4, 24, 0, 15, 0);
+				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (0.9, 0.9) );
+				A_SpawnItem("WhiteShockwaveSmall");
+				A_PlaySound("FAREXPL");
+			}
 		Stop;
 	}
 }

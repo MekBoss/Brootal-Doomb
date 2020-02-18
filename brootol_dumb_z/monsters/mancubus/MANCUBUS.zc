@@ -26,7 +26,7 @@ CLASS doomb_fatso : doomb_monster_base Replaces Fatso {
 		PainChance "Kick", 255;
 		PainChance "SSG", 255;
 		PainChance "Taunt", 255;
-		PainChance "Explosive_Impact", 255;
+		PainChance "Explosive_Impact", 55;
 
 		+FLOORCLIP
 		+DONTHARMCLASS;
@@ -326,13 +326,18 @@ CLASS BigFireBall : doomb_boolet_base Replaces Fatshot {
 		Spawn:
 			MANF AB 1 BRIGHT
 			{
-				A_SpawnItem("RedFlare22");
-				actor a = doomb_show_effect("FlameTrails", (prev-pos), (0, 0, frandom(0, 1) ), (0.5, 0) );
-				if(a)
+				if(frame == 1)
 				{
-					a.setstate(a.curstate+2);
+					A_SpawnItem("RedFlare22");
+				actor a = doomb_show_effect("FlameTrails", (prev-pos), (0, 0, frandom(0, 1) ), (0.5, 0) );
+					if(a)
+					{
+						a.setstate(a.curstate+2);
+						//a.sprite = self.sprite;
+						//a.frame = self.frame;
+					}
+					doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
 				}
-				doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
 			}
 		Loop;
 			
