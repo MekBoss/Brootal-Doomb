@@ -1,11 +1,4 @@
 
-CLASS TargetIsAnExplosiveBarrel : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
 CLASS HasExplosiveBarrel : Inventory { 
 Default {
 	
