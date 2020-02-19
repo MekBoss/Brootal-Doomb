@@ -258,7 +258,7 @@ protected void doomb_update_memory()
 	memory_timer = 0;
 }
 
-protected bool is_backstab_kill()
+protected bool is_melee_player_kill()
 {
 	if(target && target.player)
 	{
@@ -521,8 +521,8 @@ protected doomb_blood doomb_for_khorne(class<actor> it = null, vector3 off = (0,
 }
 
 protected playerinfo fatalizer;
-protected actor fatality_camera;
-
+protected actor fatality_camera, marine_fatalizer;
+//set camera for player and also handle marines fatality
 protected void doomb_monster_fatality_camera(actor to_who)
 {
 	if(to_who && to_who.player)
@@ -547,6 +547,16 @@ protected void doomb_monster_fatality_camera(actor to_who)
 			fatality_camera(fatality_camera).turn_on();
 		}
 	}
+
+	else if(to_who && to_who is "doomb_marine_base")
+	{
+		marine_fatalizer = to_who;
+		
+		to_who.bnodamage = true;
+		to_who.bnoclip = true;
+		to_who.tics = -1;
+		to_who.sprite = 0;
+	}
 }
 
 protected void doomb_destroy_monster_fatality_camera()
@@ -562,6 +572,19 @@ protected void doomb_destroy_monster_fatality_camera()
 		fatalizer.mo.tics = 1;
 		//fatalizer.mo.sprite = -1;//just hope that player pawn jump to the next state with proper sprite
 
+
+		fatality_camera.destroy();
+	}
+
+	else if (marine_fatalizer)
+	{
+		marine_fatalizer.setorigin(pos, false);
+
+		fatality_camera(fatality_camera).turn_off();
+
+		marine_fatalizer.bnodamage = false;
+		marine_fatalizer.bnoclip = false;
+		marine_fatalizer.tics = 0;
 
 		fatality_camera.destroy();
 	}

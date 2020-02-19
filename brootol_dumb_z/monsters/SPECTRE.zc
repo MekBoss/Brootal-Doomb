@@ -40,12 +40,12 @@ States
     Spawn:
 		TNT1 A 0;
 	Spawned:
-		SPEC AAAAAAAAAAAAAAAAAA 10 BRIGHT A_Look;
-		Loop;
+		SPEC A 10 BRIGHT A_Look;
+	Loop;
+
 	SpawnVisible:
-		
 		SARG A 10;
-		Goto Spawned;
+	Goto Spawned;
 		
 	See:
         TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 30, 0, 0);
@@ -76,19 +76,7 @@ States
 		TNT1 A 0 A_Recoil (2);
 		SARG H 2;
 		SARG H 2;
-	Goto See;
-		 
-	Melee:
-		TNT1 A 0 doomb_update_memory();
-		TNT1 A 0 A_JumpIfInTargetInventory("ComeEatMeDemon", 1, "MeleeDown");
-		SARG EF 6 A_FaceTarget;
-		SARG G 12 doomb_cheap_melee_attack(60, random(16, 40), "eat");
-		TNT1 A 0 A_JumpIfInventory("ZombieManFatality", 1, "FatalityZombieman");
-		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant");
-		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp");
-		TNT1 A 0 A_JumpIfInventory("ComandoFatality", 1, "FatalityComando")	;
+	Goto See;		 
+}
 
-     TNT1 A 0 A_JumpIfInventory("EatMe", 1, "Eat");
-		Goto See;
-	}
 }

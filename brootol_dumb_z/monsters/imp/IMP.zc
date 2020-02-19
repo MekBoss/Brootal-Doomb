@@ -784,7 +784,7 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp {
 	death.back_stab: 
 		TNT1 A 0
 		{
-			if(is_backstab_kill() )
+			if(is_melee_player_kill() )
 				setstate(curstate+1);
 		}
 	Goto Death;
