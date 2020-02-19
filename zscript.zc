@@ -6,13 +6,6 @@ version "3.7.2"
 //Change my mind after millions of "tnt1 a 0"
 //Or not
 
-CLASS EnemyMemory : Inventory { 
-	Default {
-		
-		inventory.maxamount 60;
-	}
-}
-
 
 
 

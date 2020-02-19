@@ -95,8 +95,7 @@ States
 	SearchForPlayer:
 	Idle:
 		TNT1 A 0 A_ClearTarget;
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 30);
-		TNT1 A 0 A_GiveInventory("SKZombieMan", 1);
+		TNT1 A 0 doomb_update_memory();
 		PSSS ABACADA 10 A_Look;
 		POSS ABCD 4
 		{
@@ -121,18 +120,15 @@ States
 	See:
 		TNT1 A 0 {bNODROPOFF = false;}
 		TNT1 A 0 A_TakeInventory("SKZombieman", 1);
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 15);
+		TNT1 A 0 doomb_update_memory();
 		TNT1 A 0 A_CheckSight("SeeNeverSeen");
 	SeeContinue:
 		TNT1 A 0 A_JumpIfCloser(200, "FallBack");
 	Advance:
 		TNT1 A 0 {bNODROPOFF = false;}
-		TNT1 A 0 A_JumpIfInventory("EnemyMemory", 15, "SearchForPlayer");
-		TNT1 A 0 A_GiveInventory("EnemyMemory", 1);
-		POSS AA 2 A_Chase;
-		TNT1 A 0 A_TakeInventory("SKZombieman", 1);
-		POSS BBCCDD 2 A_Chase;
+		POSS AABBCCDD 2 A_Chase;
 		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "Idle");
+		TNT1 A 0 doomb_monster_memory();
 	Loop;
 		
 	SeeNeverSeen:
@@ -155,10 +151,9 @@ States
 	Goto Missile;
 		
 	Missile:
+		TNT1 A 0 doomb_update_memory();
 		POSS E 1 A_Stop;
 		TNT1 A 0 {bNODROPOFF = false;}
-		TNT1 A 0 A_TakeInventory("SKZombieman", 1);
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 10);
 		TNT1 A 0 A_Jump(80, "Grenade");
 		
 		POSS EE 3 A_FaceTarget;
@@ -191,10 +186,9 @@ States
 		
 		
 	Grenade:
+		TNT1 A 0 doomb_update_memory();
 		TNT1 A 0 A_Stop;
 		TNT1 A 0 {bNODROPOFF = false;}
-		TNT1 A 0 A_TakeInventory("SKZombieman", 1);
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 10);
 		TNT1 A 0 A_JumpIfCloser(500, "Missile");
 		POSG A 6 A_FaceTarget;
 		TNT1 A 0 A_PLaySound ("GRNPIN");

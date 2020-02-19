@@ -58,6 +58,7 @@ States
 		{
 			A_VileStart();
 			A_VileTarget("doomb_arch_fire");
+			doomb_update_memory();
 		}
 		DIAB EEFFEEFF 3 bright
 		{

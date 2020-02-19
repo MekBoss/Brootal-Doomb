@@ -46,6 +46,11 @@ CLASS doomb_fatso : doomb_monster_base Replaces Fatso {
 	}
 	States
 	{
+		Spawn:
+		Spawn2:
+			FATT B 10 A_Look;
+		Loop;
+			
 		Idle:
 		LookingForPlayer:
 			FATT BBB 10 A_Look;
@@ -66,13 +71,69 @@ CLASS doomb_fatso : doomb_monster_base Replaces Fatso {
 			
 		ForgetTarget:
 			TNT1 A 0 A_ClearTarget;
-			TNT1 A 0 A_TakeInventory("EnemyMemory", 25);
-			Goto LookingForPlayer;
+		Goto LookingForPlayer;
 			
-		Spawn:
-		Spawn2:
-			FATT BBBBBBBBBB 10 A_Look;
-		Loop;
+		See:
+			TNT1 A 0;
+		LookingForPlayer:
+			FATT AABBCCDDEEFF 4 A_Chase;
+			TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget");
+			tnt1 a 0 doomb_monster_memory();
+		Goto See;
+			
+		Missile:
+			TNT1 A 0 doomb_update_memory();
+			TNT1 A 0 A_JumpIfCloser(300, "Melee");
+			FATT G 4 A_FaceTarget;
+			TNT1 A 0 A_JumpIfInventory("Enraged", 1, 1);
+			FATT G 6 A_FatRaise;
+			FATT G 10 A_FaceTarget;
+		actual_fire:
+			FATT IG 5 A_FaceTarget;
+			FATT H 10 BRIGHT
+			{
+				A_SpawnProjectile("BigFireBall",30,-25,0,0);
+				A_SpawnProjectile("BigFireBall",30,25,-10,0);
+			}
+			tnt1 a 0 a_jump(200, "actual_fire");
+		Goto See;
+			
+		Melee:
+			TNT1 A 0 doomb_update_memory();
+			TNT1 A 0 A_JumpIfInventory("Enraged", 1, 1);
+			FATT G 10 A_FatRaise;
+			FATT G 10 A_FaceTarget;
+			TNT1 A 0 A_PlaySound("BREATHOF");
+			TNT1 A 0 A_SpawnProjectile("FlamethrowerMissile",30,-25,15,0);
+			TNT1 A 0 A_SpawnProjectile("FlamethrowerMissile",30,25,-15,0);
+			FATT H 10 BRIGHT;
+			FATT IG 5 A_FaceTarget;
+			tnt1 a 0 a_jump(128, "melee");
+		Goto See;
+
+		Pain:
+			FATT J 3;
+			FATT J 3 A_Pain;
+		Goto See;
+			
+		Pain.Explosive_Impact:
+		Pain.SSG:
+			TNT1 A 0 A_FaceTarget;
+			TNT1 A 0 {bNOPAIN = true;}
+			FAT4 A 4 {vel.z += 5;}
+			FAT4 B 4 A_Pain;
+			FAT4 CDDDD 4;
+			FAT4 C 4 A_Stop;
+			FAT4 BA 4;
+			TNT1 A 0 {bNOPAIN = false;}
+		Goto See;
+			
+		Pain.Kick:
+			TNT1 A 0 A_FaceTarget;
+			TNT1 A 0 A_Recoil(2);
+			FATT J 9 A_Pain ;
+			FATT J 8;
+		Goto See;
 			
 		Death.Headshot:
 			TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma");
@@ -126,71 +187,6 @@ CLASS doomb_fatso : doomb_monster_base Replaces Fatso {
 			TNT1 A 0 A_SpawnItem ("DeadFat", 1);
 			Stop;
 			
-		See:
-			TNT1 A 0;
-			TNT1 A 0 A_TakeInventory("EnemyMemory", 5);
-			
-		LookingForPlayer:
-			TNT1 A 0 A_JumpIfInventory("EnemyMemory", 10, "ForgetTarget");
-			TNT1 A 0 A_GiveInventory("EnemyMemory", 1);
-			FATT AABBCCDDEEFF 4 A_Chase;
-			TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget");
-			TNT1 A 0 A_CheckSight("LookingForPlayer");
-		Goto See;
-			
-		Missile:
-			TNT1 A 0 A_JumpIfCloser(300, "Melee");
-			FATT G 4 A_FaceTarget;
-			TNT1 A 0 A_JumpIfInventory("Enraged", 1, 1);
-			FATT G 6 A_FatRaise;
-			FATT G 10 A_FaceTarget;
-		actual_fire:
-			FATT IG 5 A_FaceTarget;
-			FATT H 10 BRIGHT
-			{
-				A_SpawnProjectile("BigFireBall",30,-25,0,0);
-				A_SpawnProjectile("BigFireBall",30,25,-10,0);
-			}
-			tnt1 a 0 a_jump(200, "actual_fire");
-		Goto See;
-			
-		Melee:
-			TNT1 A 0 A_JumpIfInventory("Enraged", 1, 1);
-			FATT G 10 A_FatRaise;
-			FATT G 10 A_FaceTarget;
-			TNT1 A 0 A_PlaySound("BREATHOF");
-			TNT1 A 0 A_SpawnProjectile("FlamethrowerMissile",30,-25,15,0);
-			TNT1 A 0 A_SpawnProjectile("FlamethrowerMissile",30,25,-15,0);
-			FATT H 10 BRIGHT;
-			FATT IG 5 A_FaceTarget;
-			tnt1 a 0 a_jump(128, "melee");
-		Goto See;
-
-		Pain:
-			FATT J 3;
-			FATT J 3 A_Pain;
-		Goto See;
-			
-		Pain.Explosive_Impact:
-		Pain.SSG:
-			TNT1 A 0 A_FaceTarget;
-			TNT1 A 0 {bNOPAIN = true;}
-			FAT4 A 4 {vel.z += 5;}
-			FAT4 B 4 A_Pain;
-			FAT4 CDDDD 4;
-			FAT4 C 4 A_Stop;
-			FAT4 BA 4;
-			TNT1 A 0 {bNOPAIN = false;}
-		Goto See;
-			
-		Pain.Kick:
-			TNT1 A 0 A_FaceTarget;
-			TNT1 A 0 A_Recoil(2);
-			FATT J 9 A_Pain ;
-			FATT J 8;
-		Goto See;
-			
-			
 			
 		Death.Fatality:
 			TNT1 A 0 A_Pain;
@@ -202,7 +198,8 @@ CLASS doomb_fatso : doomb_monster_base Replaces Fatso {
 			
 		Death.cut:
 		Death.Saw:
-			TNT1 O 0 A_Jump(195, 2);
+		Death.cutless:
+			TNT1 O 0 A_Jump(195, 1);
 		Goto Death;
 			TNT1 AAA 0 A_SpawnProjectile ("MuchBlood", 35, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_Scream;
@@ -211,21 +208,6 @@ CLASS doomb_fatso : doomb_monster_base Replaces Fatso {
 			TNT1 AAAA 0 A_SpawnProjectile ("RipGuts", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_BossDeath;
-			FAT2 MNOP 5 A_SpawnProjectile ("MuchBlood", 15, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 doomb_spawn_bloodpool();
-			TNT1 A 0 A_SpawnItem ("NoGutsFatso", 1);
-			Stop;
-			
-		Death.cutless:
-			TNT1 O 0 A_Jump(110, 2);
-			Goto Death;
-			TNT1 AAA 0 A_SpawnProjectile ("MuchBlood", 35, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_Scream;
-			TNT1 O 0 A_NoBlocking;
-			FAT2 KL 5 A_SpawnProjectile ("MuchBlood", 75, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAA 0 A_SpawnProjectile ("RipGuts", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_BossDeath;
-			TNT1 AA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
 			FAT2 MNOP 5 A_SpawnProjectile ("MuchBlood", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem ("NoGutsFatso", 1);
@@ -289,8 +271,7 @@ CLASS doomb_fatso : doomb_monster_base Replaces Fatso {
 			TNT1 A 0 {bMISSILEEVENMORE = true;}
 			TNT1 A 0 A_PlaySound("demon/pain");
 			FATR A 1 A_FaceTarget;
-			FATR A 10;
-			TNT1 A 0 A_Pain;
+			FATR A 10 A_Pain;
 			FATR BAC 8;
 			TNT1 A 0 A_Pain;
 			FATR ABAC 8;

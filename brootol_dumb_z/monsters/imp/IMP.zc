@@ -61,16 +61,14 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp {
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel >= 2, "Swim");
 			TNT1 A 0 A_JumpIfInventory("Fatality_Marine", 1, "FatalityMarine");
-			
 		Stand:
 			TROS AB 10 A_Look;
-			Loop;
+		Loop;
 			
 		Idle:
 		LookingForPlayer:
 			TROS AAA 10 A_Look;
 			TNT1 A 0 {angle += random(-40, 40);}
-			
 			TROS AAAAAA 10 A_Look;
 			TROO AABBCCDD 2
 			{
@@ -79,8 +77,6 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp {
 				A_Recoil(-2);
 			}
 		loop;
-			
-			
 			
 		See:
 			TROT A 2 A_faceTarget;
@@ -95,14 +91,9 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp {
 			TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget");
 		Loop;
 			
-		SeeNeverSeen:
-			TROO AAAABBBBCCCCDDDD 2 A_Chase;
-			TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "ForgetTarget");
-			Loop;
-			
 		Melee:
 			TROO E 1 A_FaceTarget;
-			TNT1 A 0 A_TakeInventory("EnemyMemory", 100);
+			TNT1 A 0 doomb_update_memory();
 			TNT1 A 0 A_JumpIfCloser(50, "Melee2");
 			TROT CD 4;
 			TNT1 A 0 ThrustThingZ(0,25,0,1);
@@ -132,12 +123,9 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp {
 			Goto SeeContinue;
 			
 		Missile:
-			TNT1 A 0;
 			TNT1 A 0 A_JumpIfCloser(200, "Melee");
-			TNT1 A 0 A_TakeInventory("EnemyMemory", 100);
-			
+			TNT1 A 0 doomb_update_memory();
 			TROO E 3 A_FaceTarget;
-			
 		FireballAttack:
 			TROO E 2 A_FaceTarget;
 			TNT1 A 0 A_JumpIfCloser(170, "Melee");

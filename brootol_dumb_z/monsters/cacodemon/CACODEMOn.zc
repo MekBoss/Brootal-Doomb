@@ -37,8 +37,6 @@ Default {
 }
 States
 {
-	
-		
 	Spawn:
 		HEAD A 0;
 		HEAD A 1 A_Look;
@@ -49,7 +47,6 @@ States
 		
 	SearchPlayer:
 		TNT1 A 0 A_ClearTarget;
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 40);
 		HEAD A 10 A_Look;
 		TNT1 A 0 A_SetAngle(angle - 30);
 		HEAD A 10 A_Look;
@@ -68,12 +65,11 @@ States
 	See:
 		HEAD AAA 2 A_Chase;
 		TNT1 A 0 A_JumpIfCloser(99, "Melee");
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 1);
 		TNT1 A 0 A_JumpIfInTargetInventory("IsInvisible", 1, "SearchPlayer");
 	Loop;
 		
 	Missile:
-		TNT1 A 0 A_TakeInventory("EnemyMemory", 30);
+		TNT1 A 0 doomb_update_memory();
 		TNT1 A 0 A_JumpIfCloser(140, "Melee");
 		TNT1 A 0 A_Jump (198, 3);
 	Goto Avoid;
@@ -84,7 +80,11 @@ States
 	Goto See;
 		
 	Melee:
-		HEAD B 4 A_Facetarget;
+		HEAD B 4
+		{
+			A_Facetarget();
+			doomb_update_memory();
+		}
 		HEAD C 4 A_Recoil(-5);
 		tnt1 a 0 doomb_cheap_melee_attack(80, random(20, 80), "HKFT");
 		TNT1 A 0 A_PlaySound("imp/melee");

@@ -37,10 +37,8 @@ CLASS ArmlessDemon: Bulldemon {
 			TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45));
 			Loop;
 		Melee:
-			TNT1 A 0;
 			TNT1 A 0 A_GiveInventory("DemonBleedingOut", 1);
 			TNT1 A 0 A_JumpIfInventory("DemonBleedingOut", 15, "Death");
-			TNT1 A 0 A_TakeInventory("EnemyMemory", 100);
 			SG1A E 3 A_FaceTarget;
 			TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45));
 			SG1A E 3 A_FaceTarget;
