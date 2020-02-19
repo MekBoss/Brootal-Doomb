@@ -11,13 +11,6 @@ CLASS EatMe : Inventory {
 	}
 }
 
-CLASS DemonBleedingOut : Inventory { 
-	Default {
-		
-		inventory.maxamount 50;
-	}
-}
-
 CLASS BullDemon : doomb_monster_base Replaces Demon { 
 	Default {
 		
@@ -29,7 +22,7 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 		Radius 22;
 		Mass 400;
 		Speed 11;
-		FastSpeed 9;//yes, his fast speed is slower because it would make him sanic fast if it was default.
+		FastSpeed 11;//yes, his fast speed is slower because it would make him sanic fast if it was default.
 		PainChance "Saw", 200;
 		PainChance "Cut", 200;
 		PainChance "Kick", 255;

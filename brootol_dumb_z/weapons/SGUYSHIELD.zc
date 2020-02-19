@@ -46,14 +46,11 @@ CLASS SguyShield : Rifle {
 			TNT1 A 0 A_FireProjectile("ThrowedSguy", 0, 0, 0, 0);
 			TNT1 A 0 A_TakeInventory("GotMeatShield", 1);
 			TNT1 A 0 A_TakeInventory("HasSguyShield",1);
-			TNT1 A 0 A_Giveinventory("Punching",1);
 			THEF B 4;
 			THEF C 4;
-			TNT1 A 0 A_Giveinventory("Punching",1);
 			THEF D 4;
 			TNT1 A 0 A_TakeInventory("GoSpecial",1);
 			TNT1 A 0 A_TakeInventory("GotMeatShield", 1);
-			TNT1 A 0 A_Giveinventory("Punching",1);
 			tnt1 a 0 a_selectweapon("rifle");
 			TNT1 A 0 A_TakeInventory("SguyShield",1);
 			stop;
@@ -67,7 +64,6 @@ CLASS SguyShield : Rifle {
 			TNT1 A 0 A_TakeInventory("GoSpecial",1);
 			TNT1 A 0 A_TakeInventory("GotMeatShield", 1);
 			TNT1 A 0 A_TakeInventory("HasSguyShield",1);
-			TNT1 A 0 A_Giveinventory("Punching",1);
 			tnt1 a 0 a_selectweapon("rifle");
 			TNT1 A 0 A_TakeInventory("SguyShield",1);
 			stop;

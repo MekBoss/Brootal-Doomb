@@ -76,11 +76,6 @@ CLASS Chain_saw : doomb_weapon_base replaces Chainsaw {
 			TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Ready.Blood");
 			TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Ready.BlueBlood");
 			TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"Ready.GreenBlood");
-			
-			
-			
-			TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute");
-			
 			TNT1 A 0 {invoker.doomb_show_effect("GunFireSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.6,0) );}
 			TNT1 A 0 A_PlaySound("DSSAWUP", 4);
 			TNT1 A 0 A_playsound("weapons/chainsaw/idle");
@@ -88,7 +83,8 @@ CLASS Chain_saw : doomb_weapon_base replaces Chainsaw {
 			CSWG B 2 A_weaponready;
 			CSWG A 2 A_weaponready;
 			CSWG B 2 A_weaponready;
-			goto ready+35;
+		goto ready+35;
+		
 		Fire:
 			TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"Fire.Blood");
 			TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"Fire.BlueBlood");

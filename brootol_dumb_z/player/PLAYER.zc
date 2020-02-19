@@ -77,7 +77,6 @@ States
 	Spawn:
 		MARN A 0 A_TakeInventory("IsInvisible", 1);
 		MARN A 0 A_TakeInventory("ChainguyguyContinue", 1);
-		MARN A 0 A_TakeInventory("HasInfrared", 1);
 		MARN D 1;
 		MARN A 0 doomb_destroy_fatality_camera();//Disable Camera.
 		MARN D 1;
@@ -151,9 +150,8 @@ States
 		tnt1 A 0 A_TakeInventory("Kicking",1);
 		Goto StandStill;
 		
-	Punch:
+	Punch://melee punch
 		PLA1 H 1;
-		tnt1 A 0 A_TakeInventory("Punching", 1);
 		tnt1 A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 		tnt1 A 0 A_JumpIfInventory("GotMeatShield", 1, "MeatShieldChecker");
 		tnt1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
@@ -177,7 +175,6 @@ States
 	FistTaunt:
 		tnt1 A 0;
 		tnt1 A 0 A_PlaySound("MTAUN", 2);
-		tnt1 A 0 A_TakeInventory("advtaunting", 1);
 		Goto StandStill;
 		
 		
@@ -225,69 +222,23 @@ States
 		tnt1 A 0 A_JumpIfInventory("HasImpShield", 1, "SeeImpShield");
 		tnt1 A 0 A_JumpIfInventory("HasZmanShield", 1, "SeeZmanShield");
 		tnt1 A 0 A_JumpIfInventory("HasSguyShield", 1, "SeeSguyShield");
-		tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
 		tnt1 A 0 A_JumpIfInventory("HasBarrel", 1, "BarrelStand");
-		tnt1 A 0 doomb_destroy_fatality_camera();
-		PLA1 B 5;
-		
-		tnt1 A 0 A_JumpIfInventory("advtaunting", 1, "FistTaunt");
-		
-		tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "FistsMove");
-		tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
-		tnt1 A 0 A_JumpIfInventory("Kicking", 1, "Kick");
-		tnt1 A 0 A_JumpIfInventory("HasBarrel", 1, "BarrelStand");
-		PLA1 B 5;
-		
-		tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "FistsMove");
-		tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
-		tnt1 A 0 A_JumpIfInventory("Kicking", 1, "Kick");
 		MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
-		PLA1 B 5;
+		tnt1 A 0 doomb_destroy_fatality_camera();
 		tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "FistsMove");
-		tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
-		tnt1 A 0 A_JumpIfInventory("Kicking", 1, "Kick");
 		PLA1 B 5;
-		tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "FistsMove");
-		tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
-		tnt1 A 0 A_JumpIfInventory("Kicking", 1, "Kick");
 	Goto StandStill;
 		
 		
 	FistsMove:
-		tnt1 A 0;
-		tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
-		tnt1 A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
-		tnt1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
-		tnt1 A 0 A_JumpIfInventory("GotMeatShield", 1, "MeatShieldChecker");
-		
 		tnt1 A 0 doomb_destroy_fatality_camera();
-		PLA1 A 5;
-		tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
-		tnt1 A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
-		tnt1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
-		tnt1 A 0 A_JumpIfInventory("GotMeatShield", 1, "MeatShieldCheckerMoving");
-		MARN A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
-		MARN A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
-		
-		PLA1 B 5 A_SpawnItemEx("FootstepStrong", 0, 0, 40, 0, 0);
 		tnt1 A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
 		tnt1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
 		tnt1 A 0 A_JumpIfInventory("GotMeatShield", 1, "MeatShieldChecker");
-		tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
-		PLA1 C 5;
-		tnt1 A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
-		tnt1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
-		tnt1 A 0 A_JumpIfInventory("GotMeatShield", 1, "MeatShieldChecker");
-		tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
-		PLA1 D 5 A_SpawnItemEx("FootstepStrong", 0, 0, 40, 0, 0);
-		tnt1 A 0 A_JumpIfInventory("GoFatality", 1, "FatalityChecker");
-		tnt1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
-		tnt1 A 0 A_JumpIfInventory("GotMeatShield", 1, "MeatShieldChecker");
-		tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
+		PLA1 ABCD 5;
 		tnt1 A 0 A_JumpIf (vel.xy == (0, 0), "FistsMove");
-		
-		Goto See;
+	Goto See;
 		
 		
 		
@@ -319,30 +270,14 @@ States
 		
 		
 	BarrelMove:
-		tnt1 A 0 A_TakeInventory("Punching", 1);
 		tnt1 A 0 A_JumpIf (vel.xy == (0, 0), "BarrelStand");
-		PBAR A 8;
-		
-		tnt1 A 0 A_JumpIfInventory("Kicking", 1, "Kick");
-		tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
-		PBAR B 8;
-		tnt1 A 0 A_JumpIfInventory("Kicking", 1, "Kick");
-		tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
+		PBAR AB 8;
 		tnt1 A 0 A_SpawnItemEx("FootstepStrong", 0, 0, 40, 0, 0);
-		PBAR C 8;
-		tnt1 A 0 A_JumpIfInventory("Kicking", 1, "Kick");
-		tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
-		PBAR B 8;
-		tnt1 A 0 A_JumpIfInventory("Kicking", 1, "Kick");
-		tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
-		tnt1 A 0 A_JumpIfInventory("HasBarrel", 1, "BarrelMove");
-		Goto See;
+		PBAR CB 8;
+	Goto See;
 		
 	BarrelStand:
-		tnt1 A 0 A_TakeInventory("Punching", 1);
 		PBAR A 1;
-		tnt1 A 0 A_JumpIfInventory("Kicking", 1, "Kick");
-		tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
 		tnt1 A 0 A_JumpIf (vel.xy != (0, 0), "BarrelMove");
 	Goto StandStill;
 		
@@ -2277,95 +2212,12 @@ Goto StandStill;
 	// STEALTH KILLS
 	
 	
-	StealthKillZombieman:
-		tnt1 A 0 doomb_init_fatality_camera();
-		//////////////////////////////////////////////////////
-		SFZM AB 8;
-		SFZM C 16;
-		tnt1 A 0 A_PlaySound("misc/xdeath4");
-		SFZM D 16;
-		
-		//////////////////////////////////////////////////////
-		tnt1 A 0 A_TakeInventory("SKZombieMan",1);
-		tnt1 A 0 A_TakeInventory("GoFatality", 1);
-		tnt1 A 0 A_SpawnItemEx("DeadZombieMan", 35, 0, 40, 0, 0);
-		MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	Goto StandStill;
 	
 	
-	StealthKillShotgunGuy:
-
-		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-		tnt1 A 0 doomb_init_fatality_camera();
-		//////////////////////////////////////////////////////
-		SFSZ A 8;
-		SFSZ B 8;
-		SFSZ C 16;
-		tnt1 A 0 A_PlaySound("misc/xdeath4");
-		SFSZ D 16;
-		
-		//////////////////////////////////////////////////////
-		tnt1 A 0 A_TakeInventory("SKShotgunGuy",1);
-		tnt1 A 0 A_TakeInventory("GoFatality", 1);
-		tnt1 A 0 A_SpawnItemEx("DeadShotgunGuy", 35, 0, 40, 0, 0);
-		MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-
-	Goto StandStill;
-	
-StealthKillChaingunGuy:
-
-	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-	tnt1 A 0 doomb_init_fatality_camera();
-	//////////////////////////////////////////////////////
-	SFCG A 8;
-	SFCG B 8;
-	tnt1 A 0 A_PlaySound("misc/xdeath4");
-	SFCG C 16;
-	
-	//////////////////////////////////////////////////////
-	tnt1 A 0 A_TakeInventory("SKChaingunGuy",1);
-	tnt1 A 0 A_TakeInventory("GoFatality", 1);
-	tnt1 A 0 A_SpawnItemEx("DeadChaingunGuy_KilledByMinorHead", 35, 0, 40, 0, 0);
-	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-
-	Goto StandStill;
 	
 	
-StealthKillImp:
-	tnt1 A 0 doomb_init_fatality_camera();
-	//////////////////////////////////////////////////////
-	SFIM A 8;
-	SFIM B 8;
-	tnt1 A 0 A_PlaySound("misc/xdeath4");
-	SFIM C 16;
-	SFIM D 16;
-	
-	//////////////////////////////////////////////////////
-	tnt1 A 0 A_TakeInventory("SKImp",1);
-	tnt1 A 0 A_TakeInventory("GoFatality", 1);
-	tnt1 A 0 A_SpawnItemEx("DeadImp", 35, 0, 40, 0, 0);
-	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-
-	Goto StandStill;
 	
 	
-StealthKillNazi:
-
-	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-	tnt1 A 0 doomb_init_fatality_camera();
-	//////////////////////////////////////////////////////
-	SFNZ A 8;
-	SFNZ B 8;
-	tnt1 A 0 A_PlaySound("misc/xdeath4");
-	SFNZ C 16;
-	
-	//////////////////////////////////////////////////////
-	tnt1 A 0 A_TakeInventory("SKNAzi",1);
-	tnt1 A 0 A_TakeInventory("GoFatality", 1);
-	tnt1 A 0 A_SpawnItemEx("DeadNazi", 35, 0, 40, 0, 0);
-	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-
-	Goto StandStill;
 	
 	
 	
@@ -2412,17 +2264,11 @@ GotImpShield:
 	tnt1 A 0 A_TakeInventory("MeatAmmo", 100);
 	tnt1 A 0 A_GiveInventory("ImpShield");
 	tnt1 A 0 A_SelectWeapon("ImpShield");
-	tnt1 A 0 A_TakeInventory("Punching", 1);
 	Goto SeeImpShield;
 	
 	
 SeeImpShield:
-	tnt1 A 0 A_TakeInventory("Punching", 1);
-	MAIS A 8;
-	tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
-	MAIS B 8;
-	tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
-	//Goto See
+	MAIS AB 8;
 	Loop;
 	
 	
@@ -2431,17 +2277,12 @@ GotZmanShield:
 	tnt1 A 0 A_TakeInventory("MeatAmmo", 100);
 	tnt1 A 0 A_GiveInventory("ZmanShield");
 	tnt1 A 0 A_SelectWeapon("ZmanShield");
-	tnt1 A 0 A_TakeInventory("Punching", 1);
 	Goto SeeZmanShield;
 	
 	
 SeeZmanShield:
-	tnt1 A 0 A_TakeInventory("Punching", 1);
 	MAZS A 8;
-	tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
 	MAZS B 8;
-	tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
-	//Goto See
 	Loop;
 	
 	
@@ -2449,16 +2290,11 @@ GotSguyShield:
 	tnt1 A 0 A_TakeInventory("MeatAmmo", 100);
 	tnt1 A 0 A_GiveInventory("SguyShield");
 	tnt1 A 0 A_SelectWeapon("SguyShield");
-	tnt1 A 0 A_TakeInventory("Punching", 1);
 	Goto SeeSGuyShield;
 	
 SeeSGuyShield:
-	tnt1 A 0 A_TakeInventory("Punching", 1);
 	MASS A 8;
-	tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
 	MASS B 8;
-	tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
-	//Goto See
 	Loop;
 	
 	
@@ -2469,13 +2305,11 @@ SeeSGuyShield:
 	
 	
 Salutes1:
-	tnt1 A 0 A_TakeInventory("Salute1",1);
 	tnt1 A 0 A_PlaySound ("DSSALUTE");
 	MWAV BCDEFEFDCB 7;
 	Goto StandStill;
 	
 Salutes2:
-	tnt1 A 0 A_TakeInventory("Salute2",1);
 	tnt1 A 0 A_PlaySound ("DSSALUTE");
 	MWAV IJK 4;
 	MWAV LMNNML 3;
@@ -2492,11 +2326,7 @@ Goto StandStill;
 SpecialChecker:
 	tnt1 A 1;
 	tnt1 A 0 A_TakeInventory("GoSpecial", 1);
-	tnt1 A 0 A_JumpIfInventory("Salute1", 1, "Salutes1");
-	tnt1 A 0 A_JumpIfInventory("Salute2", 1, "Salutes2");
-	tnt1 A 0 A_JumpIfInventory("advtaunting", 1, "AdvancedTaunt");
 	tnt1 A 0 A_JumpIfInventory("HasBarrel", 1, "BarrelStand");
-	tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
 	tnt1 A 0 A_JumpIfInventory("Kicking", 1, "RifleKick");
 	tnt1 A 0 A_JumpIfInventory("ADSMode", 1, "ADSStand");
 	tnt1 A 0 A_TakeInventory("GoSpecial", 1);
@@ -2507,11 +2337,7 @@ SpecialCheckerMoving:
 	tnt1 A 1;
 	tnt1 A 0 A_TakeInventory("GoSpecial", 1);
 	tnt1 A 0 A_JumpIfInventory("GotMeatShield", 1, "MeatShieldChecker");
-	tnt1 A 0 A_JumpIfInventory("Salute1", 1, "Salutes1");
-	tnt1 A 0 A_JumpIfInventory("Salute2", 1, "Salutes2");
-	tnt1 A 0 A_JumpIfInventory("advtaunting", 1, "AdvancedTaunt");
 	tnt1 A 0 A_JumpIfInventory("HasBarrel", 1, "BarrelMove");
-	tnt1 A 0 A_JumpIfInventory("Punching", 1, "Punch");
 	tnt1 A 0 A_JumpIfInventory("Kicking", 1, "RifleKick");
 	tnt1 A 0 A_JumpIfInventory("ADSMode", 1, "ADSMove");
 	tnt1 A 0 A_JumpIfInventory("HasImpShield", 1, "SeeImpShield");
@@ -2527,11 +2353,6 @@ FatalityChecker:
 	tnt1 A 0 A_JumpIfInventory("PVPFatality", 1, "FatalityPVP");
 	tnt1 A 0 A_JumpIfInventory("IsCurbstompingZombieman", 1, "CurbstompZombieman");
 	tnt1 A 0 A_JumpIfInventory("IsCurbstompingSergeant", 1, "CurbstompSergeant")       ;
-	tnt1 A 0 A_JumpIfInventory("SKZombieman", 1, "StealthKilLZombieMan");
-	tnt1 A 0 A_JumpIfInventory("SKShotgunGuy", 1, "StealthKilLShotgunGuy");
-	tnt1 A 0 A_JumpIfInventory("SKImp", 1, "StealthKilLImp");
-	tnt1 A 0 A_JumpIfInventory("SKNazi", 1, "StealthKilLNazi");
-	tnt1 A 0 A_JumpIfInventory("SKChaingunguy", 1, "StealthKilLChaingunguy");
 	tnt1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp");
 	tnt1 A 0 A_JumpIfInventory("ImpFatality2", 1, "FatalityImp2");
 	tnt1 A 0 A_JumpIfInventory("ImpFatality3", 1, "FatalityImp3");
@@ -3016,20 +2837,6 @@ Default {
 }
 }
 
-CLASS Salute1 : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-CLASS Salute2 : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
 CLASS PVPFatality : Inventory { 
 Default {
 	
@@ -3059,27 +2866,6 @@ Default {
 }
 }
 
-CLASS SKZombieman : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-CLASS SKShotgunguy : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-CLASS SKChaingunguy: Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
 CLASS SKImp : Inventory { 
 Default {
 	
@@ -3103,13 +2889,6 @@ Default {
 }
 
 CLASS HasSGuyShield : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-CLASS SKNazi : Inventory { 
 Default {
 	
 	inventory.maxamount 1;

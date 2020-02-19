@@ -34,7 +34,6 @@ protected void doomb_spherical_rail_attack(uint dist = 128)
 	//off = level.vec3diff(sphere.HitLocation, self.pos);
 	hit_offset = sphere.HitLocation - self.pos;
 
-
 	add = hit_offset / abs(dist);
 
 	from = add;

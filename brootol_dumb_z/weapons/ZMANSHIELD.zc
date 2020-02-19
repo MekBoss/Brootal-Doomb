@@ -48,15 +48,12 @@ CLASS ZMANShield : Rifle {
 			TNT1 A 0 A_TakeInventory("GoSpecial",1);
 			TNT1 A 0 A_TakeInventory("GotMeatShield", 1);
 			TNT1 A 0 A_TakeInventory("HasZmanShield",1);
-			TNT1 A 0 A_Giveinventory("Punching",1);
 			THEF B 4;
 			THEF C 4;
-			TNT1 A 0 A_Giveinventory("Punching",1);
 			THEF D 4;
 			TNT1 A 0 A_TakeInventory("GoSpecial",1);
 			TNT1 A 0 A_TakeInventory("GotMeatShield", 1);
 			TNT1 A 0 A_TakeInventory("HasZmanShield",1);
-			TNT1 A 0 A_Giveinventory("Punching",1);
 			TNT1 A 0 A_TakeInventory("ZmanShield",1);
 			TNT1 A 10;
 			Goto Ready;
@@ -71,7 +68,6 @@ CLASS ZMANShield : Rifle {
 			TNT1 A 0 A_TakeInventory("GoSpecial",1);
 			TNT1 A 0 A_TakeInventory("GotMeatShield", 1);
 			TNT1 A 0 A_TakeInventory("HasZManShield",1);
-			TNT1 A 0 A_Giveinventory("Punching",1);
 			TNT1 A 0 A_TakeInventory("ZManShield",1);
 			Goto Ready;
 			

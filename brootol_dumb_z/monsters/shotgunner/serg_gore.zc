@@ -834,7 +834,6 @@ CLASS DyingSergeant : doomb_body_base {
 			
 		Death.Headshot:
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
-			TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma");
 			TNT1 A 0 A_Jump(126, "headshot_1");
 			TNT1 A 0 A_SpawnItem("ShotgunguyHeadExplode", 0, 30);
 			TNT1 A 0 A_XScream;
@@ -2112,7 +2111,6 @@ CLASS SergeantLastStand2: DyingSergeant {
 			
 		Death.Headshot:
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
-			TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma");
 			TNT1 A 0 A_Jump(126, "headshot_1");
 			TNT1 A 0 A_SpawnItem("ShotgunguyHeadExplode", 0, 30);
 			TNT1 A 0 A_XScream;

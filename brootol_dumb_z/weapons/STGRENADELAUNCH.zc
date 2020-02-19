@@ -25,10 +25,6 @@ CLASS GrenadeLauncher : doomb_weapon_base {
 			TNT1 A 0 A_PlaySound("RLANDRAW");
 			GLSW ABC 1;
 			TNT1 AAAAA 0;
-			
-			
-			TNT1 A 0 A_JumpIfInventory("Salute2", 1, "Salute");
-			
 			GLAN A 1 A_WeaponReady(WRF_ALLOWRELOAD);
 			Goto Ready+7;
 		Deselect:

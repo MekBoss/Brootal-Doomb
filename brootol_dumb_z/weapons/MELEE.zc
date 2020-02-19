@@ -1,11 +1,4 @@
-CLASS Kicking : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-CLASS Punching : Inventory { 
+CLASS Kicking : Inventory {
 Default {
 	
 	inventory.maxamount 1;
@@ -237,7 +230,6 @@ States
 	PunchLeft:
 		PUNG BCD 1;
 		TNT1 A 0 A_PlaySound("skeleton/swing");
-		TNT1 A 0 A_Giveinventory("Punching",1);
 		PUNG A 0 A_FireProjectile("MeleeStrikeNormal", 0, 0, 0, -9);
 		
 		PUNG E 2;
@@ -259,7 +251,6 @@ States
 		PUP2 C 1;
 		PUN2 AC 1;
 		TNT1 A 0 A_PlaySound("skeleton/swing");
-		TNT1 A 0 A_Giveinventory("Punching",1);
 		PUNG A 0 A_FireProjectile("MeleeStrikeNormal", 0, 0, 0, -9);
 		//PUN2 A 0 A_Custompunch(25,1,1,"MeleePuff")
 		PUN2 DE 2;
@@ -292,7 +283,6 @@ States
 		TNT1 A 0 A_TakeInventory("PSeq2", 2);
 		PUN3 ABCDE 1;
 		TNT1 A 0 A_PlaySound("weapons/gswing");
-		TNT1 A 0 A_Giveinventory("Punching",1);
 		PUN3 F 1;
 		RIFF AA 0 A_FireProjectile("KickAttack", 0, 0, 0, -9);
 		PUN3 GHI 1;
@@ -309,7 +299,6 @@ States
 		TNT1 A 0 A_TakeInventory("PSeq2", 2);
 		PUN4 ABCDE 1;
 		TNT1 A 0 A_PlaySound("weapons/gswing");
-		TNT1 A 0 A_Giveinventory("Punching",1);
 		PUN4 F 1;
 		RIFF AA 0 A_FireProjectile("KickAttack", 0, 0, 0, -9);
 		PUN4 GHI 1;
@@ -327,7 +316,6 @@ States
 		TNT1 A 0 A_TakeInventory("PSeq2", 2);
 		PUN5 CDE 1;
 		TNT1 A 0 A_PlaySound("weapons/gswing");
-		TNT1 A 0 A_Giveinventory("Punching",1);
 		PUN5 F 1;
 		TNT1 A 0 A_GiveInventory("HeavyStrikeUpward", 1);
 		RIFF AA 0 A_FireProjectile("KickAttack", 0, 0, 0, 0);
@@ -351,7 +339,7 @@ States
 	PunchLeftFatality:
 		PUNG BCD 1;
 		TNT1 A 0 A_PlaySound("weapons/gswing");
-		TNT1 A 0 A_Giveinventory("Punching",1);
+		
 		PUNG A 0 A_FireProjectile("MeleeStrike1Fatality", 0, 0, 0, -9);
 		
 		PUNG E 4;
@@ -373,7 +361,7 @@ States
 		PUP2 C 1;
 		PUN2 AC 1;
 		TNT1 A 0 A_PlaySound("weapons/gswing");
-		TNT1 A 0 A_Giveinventory("Punching",1);
+		
 		PUNG A 0 A_FireProjectile("MeleeStrike1Fatality", 0, 0, 0, -9);
 		//PUN2 A 0 A_Custompunch(25,1,1,"MeleePuff")
 		PUN2 DD 2;
@@ -403,7 +391,7 @@ States
 		TNT1 A 0 A_TakeInventory("PSeq2", 2);
 		PUN3 ABCDE 1;
 		TNT1 A 0 A_PlaySound("weapons/gswing");
-		TNT1 A 0 A_Giveinventory("Punching",1);
+		
 		PUN3 F 1;
 		
 		TNT1 A 0 A_GiveInventory("HeavyStrikeLeft", 1);
@@ -424,7 +412,6 @@ States
 		TNT1 A 0 A_TakeInventory("PSeq2", 2);
 		PUN5 CDE 1;
 		TNT1 A 0 A_PlaySound("weapons/gswing");
-		TNT1 A 0 A_Giveinventory("Punching",1);
 		PUN5 F 1;
 		
 		TNT1 A 0 A_GiveInventory("HeavyStrikeUpward", 1);
@@ -444,7 +431,7 @@ States
 		TNT1 A 0 A_TakeInventory("PSeq2", 2);
 		PUN4 ABCDE 1;
 		TNT1 A 0 A_PlaySound("weapons/gswing");
-		TNT1 A 0 A_Giveinventory("Punching",1);
+		
 		PUN4 F 1;
 		TNT1 A 0 A_GiveInventory("HeavyStrikerIGHT", 1);
 		RIFF AAA 0 A_FireProjectile("SuperKickAttack", 0, 0, 0, -9);
@@ -461,7 +448,7 @@ States
 	KickRight:
 		KIK2 ABC 1;
 		TNT1 A 0 A_PlaySound("KICK");
-		TNT1 A 0 A_Giveinventory("Punching",1);
+		
 		TNT1 A 0 A_SetPitch(-6 + pitch);
 		KIK2 D 1;
 		PUN2 A 0 A_Custompunch(35,0,1,"MeleePuff");
@@ -474,7 +461,7 @@ States
 	KickLeft:
 		KIK1 ABC 1;
 		TNT1 A 0 A_PlaySound("KICK");
-		TNT1 A 0 A_Giveinventory("Punching",1);
+		
 		TNT1 A 0 A_SetPitch(-6 + pitch);
 		KIK1 D 1;
 		PUN2 A 0 A_Custompunch(35,0,1,"MeleePuff");
@@ -486,7 +473,7 @@ States
 	LSFire:
 		THEF A 4;
 		TNT1 A 0 A_PlaySound("skeleton/swing");
-		TNT1 A 0 A_Giveinventory("Punching",1);
+		
 		THEF B 4 A_FireProjectile("PoorLostSoul", 0, 1, 0, 0);
 		THEF CD 4;
 		TNT1 A 0 A_TakeInventory("LostSoulFatality",1);
@@ -496,7 +483,7 @@ States
 	ShotgunguyHeadFire:
 		PTG1 CDEFGHIJ 1;
 		TNT1 A 0 A_PlaySound("skeleton/swing");
-		TNT1 A 0 A_Giveinventory("Punching",1);
+		
 		PTG1 K 1 A_FireProjectile("SergeantHeadThrown", 0, 0, 0, 0);
 		PTG1 LMNOP 1;
 		TNT1 A 0 A_TakeInventory("ShotgunguyHead",1);
@@ -505,7 +492,7 @@ States
 	FireBarrel:
 		THRF A 3 A_FireProjectile("ThrowedBarrel", 0, 1, 0, 0);
 		TNT1 A 0 A_PlaySound("skeleton/swing");
-		TNT1 A 0 A_Giveinventory("Punching",1);
+		
 		
 		TNT1 A 1 {self.player.mo.speed = 1;}
 		THRF ABCDEF 3;
@@ -515,7 +502,7 @@ States
 		THRF A 0 A_SpawnItemEx ("ExplosiveBarrel",40,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 		TNT1 A 1 {self.player.mo.speed = 1;}
 		TNT1 A 0 A_PlaySound("skeleton/swing");
-		TNT1 A 0 A_Giveinventory("Punching",1);
+		
 		
 		PUNG A 5;
 		Goto ready_loop;
@@ -528,7 +515,7 @@ States
 	PunchLeftBerserkNoFatality:
 		PUNG BCD 1;
 		TNT1 A 0 A_PlaySound("weapons/gswing");
-		TNT1 A 0 A_Giveinventory("Punching",1);
+		
 		PUNG A 0 A_FireProjectile("MeleeStrike1Berserked", 0, 0, 0, -9);
 		
 		PUNG E 4;
@@ -545,12 +532,10 @@ States
 	PunchRightBerserkNoFatality:
 		TNT1 A 0;
 		TNT1 A 0 A_JumpIfInventory("HasBarrel",1,"AltFireBarrel");
-		
 		PUP2 B 1;
 		PUP2 C 1;
 		PUN2 AC 1;
 		TNT1 A 0 A_PlaySound("weapons/gswing");
-		TNT1 A 0 A_Giveinventory("Punching",1);
 		PUNG A 0 A_FireProjectile("MeleeStrike1Berserked", 0, 0, 0, -9);
 		//PUN2 A 0 A_Custompunch(25,1,1,"MeleePuff")
 		PUN2 DD 2;
@@ -829,14 +814,6 @@ Default {
 }
 
 
-CLASS MeleeStrike1FatalityGrab: MeleeStrike1 { 
-Default {
-	
-	Damagefunction (random(42,45));
-	DamageType "Fatality";
-}
-}
-
 CLASS MeleeStrike1Berserked: MeleeStrike1 { 
 Default {
 	
@@ -847,12 +824,6 @@ Default {
 
 
 
-CLASS MeleeStrike1Smash: MeleeStrike1 { 
-Default {
-	
-	Damagefunction (random(24,32));
-}
-}
 
 
 
@@ -930,61 +901,6 @@ States
 	Spawn:
 		TNT1 A 0;
 		TNT1 A 0 A_Explode(20,30, 0);
-		Stop;
-}
-}
-
-
-CLASS PLOFT4 : ACTOR { 
-Default {
-	
-	+NOTARGET;
-	Radius 10;
-	Height 10;
-	+NOGRAVITY;
-	+NOTELEPORT;
-	+NODAMAGETHRUST;
-	+THRUGHOST;
-	+NORADIUSDMG;
-	+NOEXTREMEDEATH;
-	PROJECTILE;
-	+DEHEXPLOSION;
-	+ACTIVATEMCROSS;
-	DamageType "Kick";
-}
-States
-{
-	Spawn:
-		TNT1 A 0;
-		TNT1 A 0 A_Explode(20,30, 0);
-		Stop;
-}
-}
-
-
-
-CLASS PLOFT5 : ACTOR { 
-Default {
-	
-	+NOTARGET;
-	Radius 10;
-	Height 10;
-	+NOGRAVITY;
-	+NOTELEPORT;
-	+NODAMAGETHRUST;
-	+THRUGHOST;
-	+NORADIUSDMG;
-	+NOEXTREMEDEATH;
-	PROJECTILE;
-	+DEHEXPLOSION;
-	+ACTIVATEMCROSS;
-	DamageType "Kick";
-}
-States
-{
-	Spawn:
-		TNT1 A 2;
-		TNT1 A 0 A_Explode(10,30, 0);
 		Stop;
 }
 }

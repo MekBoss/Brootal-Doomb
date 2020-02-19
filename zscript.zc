@@ -13,13 +13,6 @@ version "3.7.2"
 
 
 
-CLASS advtaunting: Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
 
 CLASS FallingHeight : Inventory { 
 	Default {

@@ -9,13 +9,6 @@ CLASS PlasmaAmmo : Ammo {
 	}
 }
 
-CLASS HasPlasmaWeapon: Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
 // --------------------------------------------------------------------------
 //
 // Plasma rifle

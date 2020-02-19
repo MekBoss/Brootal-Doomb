@@ -253,6 +253,26 @@ protected void doomb_monster_memory(statelabel idle_state = "idle")
 	}
 }
 
+protected void doomb_update_memory()
+{
+	memory_timer = 0;
+}
+
+protected bool is_backstab_kill()
+{
+	if(target && target.player)
+	{
+		vector3 vec_diff = pos - target.pos;
+		double rough_dist = self.radius + 64;//64 is a default doom fist attack distance
+
+		if(vec_diff dot vec_diff <= rough_dist * rough_dist && (target.player.readyweapon.getclassname() == "Melee_Attacks" || target.player.readyweapon.SlotNumber == doomb_melee_weapon_slot_number) )
+		{
+			return true;
+		}
+	}
+
+	return false;
+}
 
 protected double prev_z_vel;
 
@@ -399,10 +419,6 @@ override void tick()
 }
 
 
-protected void doomb_update_memory()
-{
-	memory_timer = 0;
-}
 
 
 
@@ -504,9 +520,54 @@ protected doomb_blood doomb_for_khorne(class<actor> it = null, vector3 off = (0,
 	return null;
 }
 
+protected playerinfo fatalizer;
+protected actor fatality_camera;
 
+protected void doomb_monster_fatality_camera(actor to_who)
+{
+	if(to_who && to_who.player)
+	{
+		fatalizer = to_who.player;
+	
+		if(fatality_camera)//dose not supossed to happens, but still
+			fatality_camera.destroy();
+
+		fatality_camera = spawn("fatality_camera", self.pos);
+		fatality_camera.tracer = self;
+		fatality_camera.master = fatalizer.mo;//handle turning of a camera
+
+		if(fatality_camera)
+		{
+			fatalizer.cheats |= (CF_GODMODE2);//|CF_FROZEN);
+			fatalizer.camera = fatality_camera;
+
+			fatalizer.mo.tics = -1;
+			fatalizer.mo.sprite = 0;
+
+			fatality_camera(fatality_camera).turn_on();
+		}
+	}
 }
 
+protected void doomb_destroy_monster_fatality_camera()
+{
+	if(fatalizer)
+	{
+		fatalizer.mo.setorigin(pos, false);
+
+		fatality_camera(fatality_camera).turn_off();
+		fatalizer.cheats &= ~(CF_GODMODE2);//|CF_FROZEN);
+		fatalizer.camera = fatalizer.mo;
+
+		fatalizer.mo.tics = 1;
+		//fatalizer.mo.sprite = -1;//just hope that player pawn jump to the next state with proper sprite
+
+
+		fatality_camera.destroy();
+	}
+}
+
+}
 
 /*
 |= for turn on

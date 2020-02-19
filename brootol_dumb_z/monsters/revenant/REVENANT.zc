@@ -272,7 +272,6 @@ States
 	Death.Headshot:
 		TNT1 A 0 A_XScream();
 		TNT1 A 0 A_Jump(126, "headshot_1");
-		TNT1 A 0 A_JumpIfInTargetInventory("HasPlasmaWeapon", 1, "Death.Plasma");
 		TNT1 AAAAA 0 A_SpawnProjectile ("Xdeath1", 72, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAAA 0 A_SpawnProjectile ("SmallLSPart1", 70, 0, random (0, 360), 2, random (0, 360));
 		TNT1 AAAA 0 A_SpawnProjectile ("SmallLSPart3", 70, 0, random (0, 360), 2, random (0, 360));

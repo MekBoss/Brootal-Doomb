@@ -30,48 +30,31 @@ CLASS Nazi : doomb_monster_base {
 	States
 	{
 		Spawn:
-			TNT1 A 0 A_GiveInventory("SKNazi", 1);
-			
 		Stand:
-			NAZI AAAAAAAAAA 10 A_Look;
-			Loop;
+			NAZI A 10 A_Look;
+		Loop;
+	
 		See:
-			TNT1 A 0 A_TakeInventory("SKNazi", 1);
 			TNT1 A 0 A_Jump(64, "See2");
 			TNT1 A 0 A_CheckSight("See2");
 			TNT1 A 0 A_Jump(32, "MissileWalkingFrontWard");
 			
 			TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 20, 0, 0);
 			
-			NAZW A 1 A_FaceTarget;
-			NAZW A 2 A_Recoil(-1);
-			NAZW A 0 A_Chase;
-			
-			
-			NAZW B 1 A_FaceTarget;
-			NAZW B 2 A_Recoil(-1);
-			NAZW A 0 A_Chase;
-			
-			TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 20, 0, 0);
-			
-			NAZW C 1 A_FaceTarget;
-			NAZW C 2 A_Recoil(-1);
-			NAZW A 0 A_Chase;
-			
-			
-			NAZW D 1 A_FaceTarget;
-			NAZW D 2 A_Recoil(-1);
-			NAZW A 0 A_Chase;
-			Loop;
+			NAZW ABCD 2
+			{
+				A_FaceTarget();
+				A_Recoil(-1);
+				A_Chase();
+			}
+		Loop;
 			
 		See2:
-			TNT1 A 0 A_TakeInventory("SKNazi", 1);
 			TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 20, 0, 0);
 			NAZI AAAABBBBCCCCBBBB 1 A_Chase();
 		Goto See;
 			
 		Missile:
-			TNT1 A 0 A_TakeInventory("SKNazi", 1);
 			TNT1 A 0 A_Jump(32, "MissileWalkingFrontWard");
 			TNT1 A 0 A_Jump(64, "MissileWalkingRight", "MissileWalkingLeft");
 			NAZI E 8 A_FaceTarget;
@@ -227,7 +210,6 @@ CLASS Nazi : doomb_monster_base {
 			
 		Pain:
 			TNT1 A 0 A_PlaySOund("nazi/pain");
-			TNT1 A 0 A_TakeInventory("SKNazi", 1);
 			NAZI G 3 A_Pain;
 			TNT1 A 0 A_Jump(128, "MissileWalkingRight", "MissileWalkingLeft");
 			NAZI G 3;
@@ -375,15 +357,36 @@ CLASS Nazi : doomb_monster_base {
 		POSS X -1;
 		Stop;
 		
-	death.back_stab:
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1);
-		TNT1 A 0 A_GiveToTarget("SKNazi", 1);
-		TNT1 A 1;
+	////////////////////////////////////////////////////////////
+	//			backstab from player
+	////////////////////////////////////////////////////////////
+	death.back_stab: 
+		TNT1 A 0
+		{
+			if(is_backstab_kill() )
+				setstate(curstate+1);
+		}
+	Goto Death;
+		tnt1 a 0
+		{
+			doomb_monster_fatality_camera(target);
+			vel = (0, 0, 0);
+		}
+		SFNZ AB 8;
+		tnt1 A 0 A_PlaySound("misc/xdeath4");
+		SFNZ C 16;
+		tnt1 A 1
+		{
+			A_SpawnItemEx("DeadNazi");
+			doomb_destroy_monster_fatality_camera();
+		}
 	Stop;
+
+
 }
 }
 
-
+//FIXME
 CLASS NaziChecker: Nazi { //Replaces WolfensteinSS
 	Default {
 	

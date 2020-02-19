@@ -1,12 +1,3 @@
-
-
-CLASS IsOverLava : Inventory { 
-	Default {
-		
-		inventory.maxamount 1;
-	}
-}
-
 //FIXME placeholders to shut modeldef parser
 class ShrapnelParticle : actor{}
 

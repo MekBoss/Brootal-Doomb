@@ -89,6 +89,20 @@ protected void doomb_spawn_bloodpool()
 	}
 }
 
+
+override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Flags,Double angle)
+{
+	//friendly marines cant harm player
+	if( (inflictor && inflictor is "doomb_marine_base") || (source && source is "doomb_marine_base") )
+	{
+		return 0;
+	}
+
+	return super.DamageMobj(inflictor, source, damage, mod, flags, angle);
+}
+
+
+
 //how much time player must left footprints
 protected uint footprint_time;
 protected string footprint_color;
@@ -201,6 +215,7 @@ protected void doomb_init_fatality_camera()
 	{
 		camera = spawn("fatality_camera", self.pos);
 		camera.master = self.player.mo;
+		camera.tracer = self.player.mo;
 	}
 
 	if(is_real_player() && camera)
@@ -261,6 +276,7 @@ protected actor doomb_for_khorne(class<actor> it = null, vector3 off = (0, 0, 0)
 
 }
 
+
 class fatality_camera : actor
 {
 private bool watch_fatality;
@@ -293,20 +309,10 @@ override void tick()
 
 		angle = master.angle;
 		pitch = pt;
-		setorigin(master.pos + ( (ang_x, ang_y, 0) * -100) + (0, 0, master.height/2), true);
+		setorigin(tracer.pos + ( (ang_x, ang_y, 0) * -100) + (0, 0, master.height/2), true);
 	}
 }
 
-override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Flags,Double angle)
-{
-	//friendly marines cant harm player
-	if( (inflictor && inflictor is "doomb_marine_base") || (source && source is "doomb_marine_base") )
-	{
-		return 0;
-	}
-
-	return super.DamageMobj(inflictor, source, damage, mod, flags, angle);
-}
 
 }
 

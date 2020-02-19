@@ -96,10 +96,7 @@ CLASS Shot_Gun : doomb_weapon_base Replaces Shotgun {
 			SHTG BCDEFG 1;
 			TNT1 A 0 A_FireProjectile("ShotCaseSpawn",0,0,-4,-4);
 			SHTG H 1 A_PlaySound("weapons/sgpump", 3);
-			SHTG IJ 1;
-			SHTG KL 1;
-			SHTG KJIH 1;
-			SHTG GFEDC 1 A_JumpIfInventory("Kicking",1,"DoKick");
+			SHTG IJKLKJIHGFEDC 1;
 		Goto ReadyToFireAgain;
 
 		//AltFire:  Slam Fire Mode. Never used
@@ -189,11 +186,8 @@ CLASS Shot_Gun : doomb_weapon_base Replaces Shotgun {
 			TNT1 A 0 A_ZoomFactor(1.0);
 			SHTG FG 1;
 			SHTG H 1 A_PlaySound("weapons/sgpump", 3);
-			SHTG IJ 1;
-			SHTG KL 1;
-			SHTG KJIH 1;
-			SHTG GFEDC 1 A_JumpIfInventory("Kicking",1,"DoKick");
-			Goto ReadyToFireAgain;
+			SHTG IJKLKJIHGFEDC 1;
+		Goto ReadyToFireAgain;
 			
 			
 		ReadyToFireAgain:
