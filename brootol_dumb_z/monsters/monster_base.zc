@@ -175,15 +175,14 @@ override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Fl
 				return super.DamageMobj(inflictor, source, new_damage, 'leg', flags ,angle);
 			}
 
-			if( (source is "Doomer") )
+			if( (source is "playerpawn") )
 			{
 				if(source.player.readyweapon.getclassname() == "Melee_Attacks" )
 				{
 					//backstab
-					if(self.LastHeard == null && self.lastenemy == null)
-					{
-							return super.DamageMobj(inflictor, source, self.health, 'back_stab', flags, angle);
-					}
+					if( /*self.LastHeard == null &&*/ self.target == null && !(source.player.cheats & CF_NOTARGET) )
+						return super.DamageMobj(inflictor, source, self.health, 'back_stab', flags, angle);
+					
 					//default fatality
 					else if(findstate("Death.Fatality") && (health - new_damage) < 0 )
 						return super.DamageMobj(inflictor, source, damage, 'Fatality', flags, angle);
@@ -561,6 +560,8 @@ protected void doomb_monster_fatality_camera(actor to_who)
 
 protected void doomb_destroy_monster_fatality_camera()
 {
+	vel = (0, 0, 0);
+
 	if(fatalizer)
 	{
 		fatalizer.mo.setorigin(pos, false);
