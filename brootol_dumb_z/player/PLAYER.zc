@@ -1573,52 +1573,7 @@ FatalityFatso:
 Goto StandStill;
 	
 	
-FatalityBaron:
 
-	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-	
-	tnt1 A 0 doomb_init_fatality_camera();
-	//////////////////////////////////////////////////////
-	BHF1 AAABCDEF 2;
-	BHF1 G 3 A_PlaySound("weapons/gswing");
-	BHF1 HIJKLLLMN 2;
-	BHF1 O 3 A_PlaySound("demon/pain");
-	tnt1 AAAAAAA 0 A_SpawnProjectile ("Blood", 35, 0, random (0, 180), 2, random (0, 180));
-	tnt1 A 0 A_PlaySound("misc/xdeath4");
-	BHF1 PQR 3 A_SpawnProjectile ("Blood", 35, 0, random (0, 360), 2, random (0, 160));
-	
-	tnt1 A 0 A_PlaySound("misc/xdeath4");
-	tnt1 A 0 A_PlaySound("misc/xdeath3");
-	tnt1 A 0 A_PlaySound("misc/xdeath2");
-	tnt1 A 0 A_PlaySound("misc/xdeath1");
-	XXXX A 0 Radius_Quake (4, 24, 0, 15, 0);
-	tnt1 AAAA 0 A_SpawnProjectile ("Blood", 35, 0, random (0, 360), 2, random (0, 160));
-	tnt1 A 0 ACS_Execute(580, 0, 0, 0, 0);
-	tnt1 A 0 ACS_Execute(581, 0, 0, 0, 0);
-	
-	BHF1 STUV 3 A_SpawnProjectile ("Blood", 35, 0, random (0, 360), 2, random (0, 160));
-	
-	
-	XXXX A 0 Radius_Quake (4, 24, 0, 15, 0);
-	
-	tnt1 A 0 ACS_Execute(582, 0, 0, 0, 0);
-	tnt1 A 0 ACS_Execute(583, 0, 0, 0, 0);
-	tnt1 AAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 40, 0, random (0, 360), 2, random (50, 130));
-	tnt1 AAAAAAAAA 0 A_SpawnProjectile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160));
-	tnt1 AAAAAAAAAAAAA 0 A_SpawnProjectile ("PlayerFlyingBlood", 50, 0, random (0, 360), 2, random (0, 160));
-	tnt1 A 0 A_SpawnItem ("MeatDeath", 30);
-	
-	
-	BHF1 WXYZZZZZZZZZZZZZZ 3;
-	
-	//////////////////////////////////////////////////////
-	tnt1 A 0 A_TakeInventory("GoFatality", 1);
-	tnt1 A 0 A_TakeInventory("BaronFatality",1);
-	tnt1 AAAA 0 A_GiveInventory("Medikit",1);
-	tnt1 A 0 A_SpawnItemEx("DeadBaronNoHead", 0, 1, 1, 1, 1);
-	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-
-Goto StandStill;
 	
 	
 	
@@ -2240,7 +2195,6 @@ FatalityChecker:
 	tnt1 A 0 A_JumpIfInventory("RevenantFatality", 1, "FatalityRevenant");
 	tnt1 A 0 A_JumpIfInventory("RevenantFatality2", 1, "FatalityRevenant2");
 	tnt1 A 0 A_JumpIfInventory("FatsoFatality", 1, "FatalityFatso");
-	tnt1 A 0 A_JumpIfInventory("BaronFatality", 1, "FatalityBaron");
 	tnt1 A 0 A_JumpIfInventory("HKFatality", 1, "FatalityHK");
 	tnt1 A 0 A_JumpIfInventory("HKFatality2", 1, "FatalityHK2");
 	tnt1 A 0 A_JumpIfInventory("HKFatality3", 1, "FatalityHK3");
@@ -2875,13 +2829,6 @@ Default {
 }
 
 CLASS FatsoFatality : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-CLASS BaronFatality : Inventory { 
 Default {
 	
 	inventory.maxamount 1;
