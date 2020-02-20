@@ -430,7 +430,7 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 				A_NoBlocking();
 				A_BossDeath();
 			}
-			TNT1 A 0 A_Jump(256, "knight_falatily_1", "knight_falatily_2", "knight_falatily_3");
+			TNT1 A 0 A_Jump(256, "knight_falatily_1", "knight_falatily_2");
 		Stop;
 		
 	knight_falatily_1:
@@ -511,31 +511,6 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 	stop;	
 	
 	
-	knight_falatily_3:
-		HKF2 AAB 6;
-		tnt1 A 0 A_PlaySound("PSXDPN", CHAN_AUTO, 1);
-		HKF2 DEFFGH 8;
-		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
-		tnt1 A 0 A_PlaySound("PSXDPN", CHAN_AUTO, 1);
-		HKF2 IJIJIJ 4;
-		tnt1 A 0 ACS_Execute(580, 0, 0, 0, 0);
-		tnt1 A 0 ACS_Execute(581, 0, 0, 0, 0);
-		tnt1 A 0 ACS_Execute(582, 0, 0, 0, 0);
-		tnt1 A 0 ACS_Execute(583, 0, 0, 0, 0);
-		tnt1 AAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 40, 0, random (0, 360), 2, random (50, 130));
-		tnt1 AAAAAAA 0 A_SpawnProjectile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160));
-		tnt1 AA 0 A_SpawnProjectile ("Blood", 10, 0, random (0, 360), 2, random (0, 160));
-		tnt1 AAAAAAAAAA 0 A_SpawnProjectile ("PlayerFlyingBlood", 50, 0, random (0, 360), 2, random (0, 160));
-		HKF2 KL 6;
-		tnt1 A 0 A_SpawnProjectile ("XDeathHellKnightHead", 64, 0, random (0, 360), 2, random (60, 120));
-		HKF2 MNNNNN 6;
-		tnt1 A 0 
-		{
-			A_Givetotarget("HealthBonus",10);
-			A_SpawnItemEx("OmgSoDeadHK", 0, 1, 1, 1, 1);
-			doomb_destroy_monster_fatality_camera();
-		}
-	stop;	
 }
 
 }
