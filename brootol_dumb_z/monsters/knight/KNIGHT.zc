@@ -538,7 +538,7 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight {
 	stop;	
 }
 
-}  
+}
 
 CLASS GreenPlasmaBall : doomb_boolet_base { 
 	Default {

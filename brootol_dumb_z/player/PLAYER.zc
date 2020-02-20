@@ -2265,14 +2265,6 @@ Default {
 }
 
 
-CLASS LostSoulFatality : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-
 CLASS RevenantFatality : Inventory { 
 Default {
 	
