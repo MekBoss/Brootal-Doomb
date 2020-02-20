@@ -204,13 +204,9 @@ override int doomb_get_aditional_death_sprite()
 			PLAM A 4 A_FaceTarget;
 			TNT1 A 0 A_Recoil(-4);
 			PLAM A 1 A_FaceTarget;
-			PLAM B 4 A_SpawnProjectile("MarinePunch",40,0,0,0);
+			PLAM B 4 doomb_marine_punch(80, random(20, 60), 'marine_punch');
 			PLAM B 2;
-			TNT1 A 0 A_JumpIfInventory("ZombiemanFatality3", 1, "FatalityZombieman");
-			TNT1 A 0 A_JumpIfInventory("ImpFatality3", 1, "FatalityImp");
-			TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant");
-			TNT1 A 0 A_JumpIfInventory("RevenantFatality", 1, "FatalityRevenant");
-			Goto See;
+		Goto See;
 			
 		Pain:
 			PL5S G 3;

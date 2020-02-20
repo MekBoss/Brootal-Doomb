@@ -1,6 +1,17 @@
 //contain all monster fatality states 
 class doomb_marine_base : doomb_monster_base
 {
+//direct copypaste of cheap_melee from monster base
+protected void doomb_marine_punch(double distance = 0, int dam = 0, name damage_type = "")
+{
+	actor a = doomb_cheap_melee_attack(distance, dam, damage_type);
+
+	if(a)
+		A_PlaySound("player/cyborg/fist");
+
+	else
+		A_PlaySound("skeleton/swing");
+}
 
 protected bool guarding;
 
@@ -879,38 +890,6 @@ states
     stop;
 		
 		
-	FatalityRevenant:
-		TNT1 A 0 {bshootable = false;}
-		TNT1 A 0 {binvulnerable = true;}
-
-		FREV ABABAB 3;
-		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
-		TNT1 AAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 40, 0, random (0, 360), 2, random (50, 130));
-		TNT1 AAAA 0 A_SpawnProjectile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("PlayerFlyingBlood", 50, 0, random (0, 360), 2, random (0, 160));
-		FREV C 4 A_PlaySound("skeleton/pain");
-		FREV D 4;
-		FREV EFGHIJJJKL 4;
-		FREV M 5 A_PlaySound("skeleton/sight");
-		FREV M 10;
-		FREV N 2;
-		FREV O 2;
-		
-		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
-		TNT1 AA 0 A_SpawnProjectile ("XDeath1", 50, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAA 0 A_SpawnProjectile ("XDeath2", 50, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAA 0 A_SpawnProjectile ("XDeath3", 50, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("XDeathRevenantHead", 45, 0, random (0, 360), 2, random (50, 130));
-		
-		FREV PQR 2;
-
-		TNT1 A 0 A_TakeInventory("GoFatality", 1);
-		TNT1 A 0 A_TakeInventory("RevenantFatality",1);
-		TNT1 A 0 A_SpawnItemEx("DyingRevenant", 0, 35, 35, 1, 1);
-		TNT1 A 0 SetPlayerProperty(0,0,0);
-		TNT1 A 0 {bshootable = true;}
-		TNT1 A 0 {binvulnerable = false;}
-		Goto Spawn;
 		
 		
 		
@@ -951,42 +930,6 @@ states
 
 
 
-CLASS MarinePunch : ACTOR { 
-	Default {
-		
-		Radius 10;
-		Height 18;
-		DamageType "HelperMarineFatallity";
-		Projectile;
-		+RANDOMIZE;
-		Damage 10;
-		+FORCEXYBILLBOARD;
-		+THRUGHOST;
-		+BLOODSPLATTER;
-		RenderStyle "Add";
-		Alpha 0.6;
-		HitObituary "$OB_IMPHIT";
-		Obituary "$OB_IMPHIT";
-		+DONTHARMCLASS;
-		
-		SeeSound "None";
-		DeathSound "none";
-		Decal "none";
-		Speed 20;
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_PlaySound("skeleton/swing");
-			TNT1 A 4 BRIGHT;
-			Stop;
-		Death:
-			TNT1 A 0 A_PlaySound("player/cyborg/fist");
-			TNT1 A 0 BRIGHT;
-			Stop;
-	}
-}
 
 
 

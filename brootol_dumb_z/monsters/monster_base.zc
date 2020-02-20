@@ -210,7 +210,7 @@ override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Fl
 }
 
 //can actually hit another actor(not monster target)
-protected void doomb_cheap_melee_attack(double distance = 0, int dam = 0, name damage_type = "")
+protected actor doomb_cheap_melee_attack(double distance = 0, int dam = 0, name damage_type = "")
 {
 	double new_pitch = AimLineAttack (angle, distance, null, 0., ALF_CHECK3D);
 	FLineTraceData punch;
@@ -223,6 +223,7 @@ protected void doomb_cheap_melee_attack(double distance = 0, int dam = 0, name d
 		punch.hitactor.damagemobj(self, self, dam, damage_type, 0, 0);
 	}
 
+	return punch.hitactor;
 }
 
 //handling of freeze death
