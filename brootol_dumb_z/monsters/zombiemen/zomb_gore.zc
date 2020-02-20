@@ -1178,6 +1178,16 @@ CLASS ZombieManDyingAfterFatality : doomb_body_base {
 	States
 	{
 	
+	Spawn:
+		ZZD5 E 1;
+		TNT1 A 0 A_PlaySound ("BURNZOM");
+		TNT1 A 0 doomb_spawn_bloodpool();
+	Suffer:
+		ZZD5 EEEEEFFFFF 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45));
+		tnt1 a 0 a_jump(220, "suffer");
+		tnt1 a 0 a_die();
+	stop;
+		
 	Death.cut:
 	Death.saw:
 		TNT1 A 0;
@@ -1206,15 +1216,6 @@ CLASS ZombieManDyingAfterFatality : doomb_body_base {
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 A_SpawnItem("BurningZombie");
 		Stop;
-		
-	Spawn:
-		ZZD5 E 1;
-		TNT1 A 0 A_PlaySound ("BURNZOM");
-		TNT1 A 0 doomb_spawn_bloodpool();
-	Suffer:
-		ZZD5 EEEEEFFFFF 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random(0, 360), 2, random (0, 45));
-		tnt1 a 0 a_jump(190, "suffer");
-		stop;
 		
 	Death.Headshot:
 		TNT1 A 0 A_Jump(126, "headshot_1");
@@ -1252,7 +1253,8 @@ CLASS ZombieManDyingAfterFatality : doomb_body_base {
 		ZZD5 HHH 2 A_SpawnProjectile ("Brutal_LiquidBlood", 35, 0, random (0, 360), 2, random (0, 90));
 		PP2X H 0 A_SpawnItem ("DeadZombieman_NoHeadFront");
 		Stop;
-		
+	
+	death:
 	Death.Shotgun:
 	Death.Kick:
 	Death.Punch:

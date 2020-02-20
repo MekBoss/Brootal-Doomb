@@ -309,7 +309,7 @@ override void tick()
 
 		angle = master.angle;
 		pitch = pt;
-		setorigin(tracer.pos + ( (ang_x, ang_y, 0) * -100) + (0, 0, master.height/2), true);
+		setorigin(tracer.pos + ( (ang_x, ang_y, 0) * -100) + (0, 0, master.default.height* 2/3), true);
 	}
 }
 
