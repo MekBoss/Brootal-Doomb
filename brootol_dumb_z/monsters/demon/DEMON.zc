@@ -541,7 +541,7 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 		FDEM J 5 A_PlaySound("demon/pain");
 		FDEM J 9;
 		FDEM K 7;
-		XXXX A 0 Radius_Quake (4, 24, 0, 15, 0);
+		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
 		tnt1 A 0 ACS_Execute(580, 0, 0, 0, 0);
 		tnt1 A 0 ACS_Execute(581, 0, 0, 0, 0);
 		tnt1 A 0 ACS_Execute(582, 0, 0, 0, 0);
@@ -570,7 +570,7 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 		FD2M B 3;
 		FD7M B 1;
 		FD2M C 3;
-		XXXX A 0 Radius_Quake (4, 24, 0, 15, 0);
+		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
 		tnt1 A 0 A_PlaySound("demon/pain");
 		tnt1 A 0 A_PlaySound("player/cyborg/fist", 1);
 		tnt1 A 0 A_SpawnItem("Blood", 0, 20);
@@ -581,14 +581,14 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 	loop;
 		
 		FD2M AD 3;
-		XXXX A 0 Radius_Quake (4, 24, 0, 15, 0);
+		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
 		tnt1 A 0 A_PlaySound("demon/pain");
 		tnt1 A 0 A_PlaySound("player/cyborg/fist", 1);
 		tnt1 A 0 A_SpawnItem("Blood", 0, 5);
 		FD2M E 4;
 		FD2M F 15;
 		FD2M GHHH 4;
-		XXXX A 0 Radius_Quake (4, 24, 0, 15, 0);
+		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
 		tnt1 AAA 0 A_SpawnItem("Blood", 0, 5);
 		tnt1 A 0 A_SpawnItem("MeatDeath", 0, 1);
 		FD2M IJJJJ 5;
