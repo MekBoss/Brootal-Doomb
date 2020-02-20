@@ -105,7 +105,7 @@ CLASS PainElemental1 : doomb_monster_base Replaces PainElemental {
 			
 		Pain.Taunt:
 			TNT1 A 0;
-			Goto Missile;
+		Goto Missile;
 
 
 
