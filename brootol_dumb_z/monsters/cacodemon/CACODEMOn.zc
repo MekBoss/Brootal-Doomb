@@ -334,7 +334,7 @@ States
 		CA2F I 20 A_SpawnProjectile ("RipCaco", 35, 0, random (0, 360), 2, random (0, 160));
 		tnt1 A 0
 		{
-			A_GiveInventory("HealthBonus",10);
+			A_Givetotarget("HealthBonus",10);
 			A_SpawnItem ("Dead_lower_caco_Half", 1);
 			doomb_destroy_monster_fatality_camera();
 		}
@@ -354,7 +354,7 @@ States
 		CACF KLMMM 4 A_SpawnProjectile ("Blue_Blood", 15, 0, random (0, 360), 2, random (0, 160));
 		tnt1 A 0
 		{
-			A_GiveInventory("HealthBonus",10);
+			A_Givetotarget("HealthBonus",10);
 			A_SpawnItem ("DeadCacoDemon", 1);
 			doomb_destroy_monster_fatality_camera();
 		}
