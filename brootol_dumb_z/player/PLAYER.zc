@@ -1248,145 +1248,7 @@ Goto StandStill;
 	
 	
 	
-	
-FatalityHK:
 
-	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-	
-	tnt1 A 0 doomb_init_fatality_camera();
-	//////////////////////////////////////////////////////
-	HKF1 A 1;
-	HKF1 AB 6;
-	tnt1 A 0 A_PlaySound("misc/xdeath4");
-	HKF1 C 6 A_PlaySound("PSXDPN");
-	tnt1 AAA 0 A_SpawnProjectile ("Blood", 45, 0, random (0, 360), 2, random (0, 160));
-	tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
-	HKF1 C 5;
-	tnt1 A 0 A_PlaySound("imp/melee");
-	HKF1 C 5;
-	tnt1 AAAAAAA 0 A_SpawnProjectile ("Blood", 55, 0, random (0, 180), 2, random (0, 180));
-	
-	tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
-	tnt1 A 0 ACS_Execute(580, 0, 0, 0, 0);
-	tnt1 A 0 ACS_Execute(581, 0, 0, 0, 0);
-	tnt1 A 0 ACS_Execute(582, 0, 0, 0, 0);
-	tnt1 A 0 ACS_Execute(583, 0, 0, 0, 0);
-	tnt1 AAAAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
-	tnt1 AAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 40, 0, random (0, 360), 2, random (50, 130));
-	tnt1 AAAAAAA 0 A_SpawnProjectile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160));
-	tnt1 AAAAA 0 A_SpawnProjectile ("XDeath2", 10, 0, random (0, 360), 2, random (0, 160));
-	tnt1 AAAAA 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (0, 160));
-	tnt1 AAAAAAAAAA 0 A_SpawnProjectile ("PlayerFlyingBlood", 50, 0, random (0, 360), 2, random (0, 160));
-	
-	
-	HKF1 CDE 6 A_SpawnItem ("Brutal_Blood", 30);
-	HKF1 FG 6 A_SpawnItem ("Brutal_Blood", 15);
-	HKF1 HHH 6;
-	
-	//////////////////////////////////////////////////////
-	tnt1 A 0 A_TakeInventory("GoFatality", 1);
-	tnt1 A 0 A_TakeInventory("HKFatality",1);
-	tnt1 A 0 A_GiveInventory("HealthBonus",10);
-	tnt1 A 0 A_SpawnItemEx("RapedHK", 0, 1, 1, 1, 1);
-	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-
-Goto StandStill;
-	
-	
-	
-FatalityHK3:
-
-	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-	
-	tnt1 A 0 doomb_init_fatality_camera();
-	//////////////////////////////////////////////////////
-	tnt1 A 0 A_PlaySound("weapons/gswing", 1);
-	tnt1 A 0 A_PlaySound("PSXDPN");
-	HKF3 A 1;
-	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-	HKF3 ABC 6;
-	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-
-	tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
-	tnt1 A 0 A_PlaySound("PSXDPN", 2);
-	HKF3 D 15;
-	tnt1 A 0 A_PlaySound("knight/death");
-	
-	tnt1 A 0 ACS_Execute(580, 0, 0, 0, 0);
-	tnt1 A 0 ACS_Execute(581, 0, 0, 0, 0);
-	tnt1 A 0 ACS_Execute(582, 0, 0, 0, 0);
-	tnt1 A 0 ACS_Execute(583, 0, 0, 0, 0);
-	tnt1 AAAAAAA 0 A_SpawnProjectile ("XDeath1", 50, 0, random (0, 360), 2, random (0, 160));
-	tnt1 AA 0 A_SpawnProjectile ("Blood", 50, 0, random (0, 360), 2, random (0, 160));
-	tnt1 AAAAAAAAAA 0 A_SpawnProjectile ("PlayerFlyingBlood", 50, 0, random (0, 360), 2, random (0, 160));
-	tnt1 A 0 A_SpawnProjectile ("XDeathHellKnightArm", 40, 0, 90, 2, random (0, 20));
-	HKF3 EFGG 7 A_SpawnProjectile ("Blood", 40, 0, random (0, 360), 2, random (0, 160));
-	
-	tnt1 A 0 A_PlaySound("PSXDPN");
-	HKF3 H 15;
-	
-	tnt1 A 0 ACS_Execute(580, 0, 0, 0, 0);
-	tnt1 A 0 ACS_Execute(581, 0, 0, 0, 0);
-	tnt1 A 0 ACS_Execute(582, 0, 0, 0, 0);
-	tnt1 A 0 ACS_Execute(583, 0, 0, 0, 0);
-	
-	tnt1 AAAAAAA 0 A_SpawnProjectile ("XDeath1", 60, 0, random (0, 360), 2, random (0, 160));
-	tnt1 AA 0 A_SpawnProjectile ("Blood", 60, 0, random (0, 360), 2, random (0, 160));
-	tnt1 AAAAAAAAAA 0 A_SpawnProjectile ("PlayerFlyingBlood", 60, 0, random (0, 360), 2, random (0, 160));
-	tnt1 A 0 A_SpawnProjectile ("XDeathHellKnightHead", 40, 0, 270, 2, random (0, 20));
-	HKF3 I 20;
-	//////////////////////////////////////////////////////
-	tnt1 A 0 A_TakeInventory("HKFatality3",1);
-	tnt1 A 0 A_TakeInventory("GoFatality", 1);
-	tnt1 A 0 A_GiveInventory("HealthBonus",10);
-	tnt1 A 0 A_SpawnItemEx("NoArmNoHeadFatalizedHK", 0, 1, 1, 1, 1);
-	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-
-Goto StandStill;
-	
-	
-FatalityHK2:
-
-	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-	
-	tnt1 A 0 doomb_init_fatality_camera();
-	//////////////////////////////////////////////////////
-	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-	HKF2 AAB 6;
-	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-
-	tnt1 A 0 A_PlaySound("PSXDPN");
-	
-	HKF2 DEFFGH 8;
-	
-	tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
-	tnt1 A 0 A_PlaySound("PSXDPN");
-	HKF2 IJIJIJ 4;
-	
-	
-	tnt1 A 0 ACS_Execute(580, 0, 0, 0, 0);
-	tnt1 A 0 ACS_Execute(581, 0, 0, 0, 0);
-	tnt1 A 0 ACS_Execute(582, 0, 0, 0, 0);
-	tnt1 A 0 ACS_Execute(583, 0, 0, 0, 0);
-	
-	tnt1 AAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 40, 0, random (0, 360), 2, random (50, 130));
-	tnt1 AAAAAAA 0 A_SpawnProjectile ("XDeath1", 10, 0, random (0, 360), 2, random (0, 160));
-	tnt1 AA 0 A_SpawnProjectile ("Blood", 10, 0, random (0, 360), 2, random (0, 160));
-	tnt1 AAAAAAAAAA 0 A_SpawnProjectile ("PlayerFlyingBlood", 50, 0, random (0, 360), 2, random (0, 160));
-	
-	
-	HKF2 KL 6;
-	tnt1 A 0 A_SpawnProjectile ("XDeathHellKnightHead", 64, 0, random (0, 360), 2, random (60, 120));
-	HKF2 MNNNNN 6;
-	
-	//////////////////////////////////////////////////////
-	tnt1 A 0 A_TakeInventory("HKFatality2",1);
-	tnt1 A 0 A_TakeInventory("GoFatality", 1);
-	tnt1 A 0 A_GiveInventory("HealthBonus",10);
-	tnt1 A 0 A_SpawnItemEx("OmgSoDeadHK", 0, 1, 1, 1, 1);
-	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-
-Goto StandStill;
 	
 	
 	
@@ -1857,9 +1719,6 @@ FatalityChecker:
 	tnt1 A 0 A_JumpIfInventory("RevenantFatality", 1, "FatalityRevenant");
 	tnt1 A 0 A_JumpIfInventory("RevenantFatality2", 1, "FatalityRevenant2");
 	tnt1 A 0 A_JumpIfInventory("FatsoFatality", 1, "FatalityFatso");
-	tnt1 A 0 A_JumpIfInventory("HKFatality", 1, "FatalityHK");
-	tnt1 A 0 A_JumpIfInventory("HKFatality2", 1, "FatalityHK2");
-	tnt1 A 0 A_JumpIfInventory("HKFatality3", 1, "FatalityHK3");
 	tnt1 A 0 A_JumpIfInventory("ArachnotronFatality", 1, "FatalityArachnotron");
 	tnt1 A 0 A_JumpIfInventory("ArachnotronFatality2", 1, "FatalityArachnotron2");
 	tnt1 A 0 A_JumpIfInventory("PEFatality", 1, "FatalityPE");
@@ -2442,26 +2301,6 @@ Default {
 }
 }
 
-CLASS HKFatality : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-CLASS HKFatality2 : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-CLASS HKFatality3 : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
 
 CLASS ArachnotronFatality : Inventory { 
 Default {
