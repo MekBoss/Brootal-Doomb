@@ -1407,56 +1407,10 @@ FatalityDemon3:
 	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
 Goto StandStill;
 	
-FatalityCacoDemon:
 
-	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-	tnt1 A 0 doomb_init_fatality_camera();
-	//////////////////////////////////////////////////////
-	CACF ABC 4;
-	CACF D 4 A_PlaySound("misc/xdeath4");
-	CACF E 4 A_PlaySound("demon/pain");
-	XXXX A 0 Radius_Quake (4, 24, 0, 15, 0);
-	tnt1 AAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Blue_FlyingBloodTrail", 45, 0, random (0, 180), 2, random (0, 180));
-	tnt1 AAAAAAAAAAAA 0 A_SpawnProjectile ("Blue_FlyingBloodTrail", 45, 0, random (0, 360), 2, random (0, 360));
-	tnt1 AAA 0 A_SpawnProjectile ("Blue_Blood", 45, 0, random (0, 360), 2, random (0, 160));
-	CACF EFGHII 4 A_SpawnProjectile ("Blue_Blood", 45, 0, random (0, 360), 2, random (0, 160));
-	CACF J 4 A_PlaySound("misc/xdeath2");
-	CACF KLMMM 4 A_SpawnProjectile ("Blue_Blood", 15, 0, random (0, 360), 2, random (0, 160));
-	//////////////////////////////////////////////////////
-	tnt1 A 0 A_TakeInventory("GoFatality", 1);
-	tnt1 A 0 A_TakeInventory("CacoDemonFatality",1);
-	tnt1 A 0 A_GiveInventory("HealthBonus",10);
-	tnt1 A 0 A_SpawnItemEx("DeadCacoDemon", 0, 1, 1, 1, 1);
-	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-
-Goto StandStill;
 	
 	
-FatalityCacoDemon2:
 
-	tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-	tnt1 A 0 doomb_init_fatality_camera();
-	CA2F AB 4;
-	tnt1 A 0 A_PlaySound("demon/pain");
-	CA2F BCDEE 4;
-	CA2F F 2;
-	tnt1 A 0 A_PlaySound("demon/pain");
-	XXXX A 0 Radius_Quake (4, 24, 0, 15, 0);
-	CA2F F 4;
-	tnt1 A 0 A_PlaySound("misc/xdeath2");
-	CA2F FFFF 2 A_SpawnProjectile ("Blue_Blood", 25, 0, random (0, 180), 2, random (0, 180));
-	tnt1 AAAAA 0 A_SpawnProjectile ("CacoXDeath7", 25, 0, random (0, 360), 2, random (0, 160));
-	CA2F GH 4;
-	tnt1 A 0 A_SpawnProjectile ("RipCaco", 35, 0, random (0, 360), 2, random (0, 160));
-	CA2F I 20;
-	tnt1 A 0 A_TakeInventory("GoFatality", 1);
-	tnt1 A 0 A_TakeInventory("CacoDemonFatality2",1);
-	tnt1 A 0 A_GiveInventory("HealthBonus",10);
-	tnt1 A 0 A_SpawnItem ("Dead_lower_caco_Half", 1);
-	MARN A 0 doomb_destroy_fatality_camera();//Stop Camera
-
-Goto StandStill;
 	
 	
 FatalityRevenant:
@@ -2190,8 +2144,6 @@ FatalityChecker:
 	tnt1 A 0 A_JumpIfInventory("DemonFatality", 1, "FatalityDemon");
 	tnt1 A 0 A_JumpIfInventory("DemonFatality2", 1, "FatalityDemon2");
 	tnt1 A 0 A_JumpIfInventory("DemonFatality3", 1, "FatalityDemon3");
-	tnt1 A 0 A_JumpIfInventory("CacoDemonFatality", 1, "FatalityCacoDemon");
-	tnt1 A 0 A_JumpIfInventory("CacoDemonFatality2", 1, "FatalityCacoDemon2");
 	tnt1 A 0 A_JumpIfInventory("RevenantFatality", 1, "FatalityRevenant");
 	tnt1 A 0 A_JumpIfInventory("RevenantFatality2", 1, "FatalityRevenant2");
 	tnt1 A 0 A_JumpIfInventory("FatsoFatality", 1, "FatalityFatso");
@@ -2787,20 +2739,6 @@ Default {
 }
 
 CLASS DemonFatality3 : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-CLASS CacoDemonFatality : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-CLASS CacoDemonFatality2 : Inventory { 
 Default {
 	
 	inventory.maxamount 1;
