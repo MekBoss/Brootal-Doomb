@@ -580,17 +580,12 @@ States
 		
 		
 	Death.Eat:
-		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 A_Scream;
-		TNT1 A 0 A_GiveToTarget("ZombieManFatality",1);
+		TNT1 A 1;
 	Stop;
 		
 	Death.BHFT:
 	Death.RVFT:
-		TNT1 A 1 A_Pain;
-		TNT1 A 0 A_Scream;
-		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 A_GiveToTarget("ZombieManFatality", 1);
+		TNT1 A 1;
 	Stop;
 		
 	Death.Headshot:
@@ -1264,35 +1259,6 @@ States
 }
 
 
-CLASS ZombieManFatality : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-CLASS ZombieManFatality2 : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-CLASS ZombieManFatality3 : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-CLASS ZombieManFatality4 : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-
 CLASS ZombiemanGrenade : doomb_boolet_base { 
 Default {
 	Radius 4;
@@ -1335,16 +1301,6 @@ Default {
 		
 		
 	Death:
-/*
-		"####" "#" 4
-		{
-			vel.z -= 4;
-			timer ++;
-			if(timer > 20)
-				setstatelabel("explosion");
-		}
-	loop;
-*/
 	explosion:
 		TNT1 a 0
 		{
@@ -1364,10 +1320,7 @@ Default {
 			for(uint i = 0; i < 30; i++)
 				doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(0.5, 1) ) );
 		}
-
-		//TNT1 AAAAAA 3 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(-0.5, 1) ) );
 	Stop;
 }
 
 }
-

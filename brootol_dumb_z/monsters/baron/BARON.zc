@@ -54,7 +54,6 @@ States
 	Spawn:
 		TNT1 A 0;
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
-		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman");
 		TNT1 A 0 A_JumpIfInventory("ImpFatality3", 1, "FatalityImp");
 		TNT1 A 0 A_JumpIfInventory("DemonFatality", 1, "FatalityDemon");
 	Stand:
@@ -69,7 +68,6 @@ States
 		TNT1 A 0 HealThing(200);
 	See2:
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
-		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman");
 		TNT1 A 0 A_JumpIfInventory("DemonFatality", 1, "FatalityDemon");
 		TNT1 A 0 A_JumpIfInventory("ImpFatality3", 1, "FatalityImp");
 	SeeNeverSeen:
@@ -110,11 +108,26 @@ States
 		BOSS E 1;
 		BOSS E 6 A_PlaySound("weapons/gswing");
 		BOSS F 6 A_FaceTarget;
-		BOSS G 6 doomb_cheap_melee_attack(120, random(36, 80), "BHFT");
+		BOSS G 6
+		{
+			actor a = doomb_cheap_melee_attack(120, random(36, 80), "BHFT");
+		
+			if(a && a.health <= 0)
+			{
+				name type = a.getclassname();
+
+				switch(type)
+				{
+					case 'doomb_zombie_Man':
+						a.destroy();
+						setstatelabel("FatalityZombieman");
+					break;
+
+					default: break;
+				}
+			}
+		}
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
-		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman");
-		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
-		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman");
 		TNT1 A 0 A_JumpIfInventory("DemonFatality", 1, "FatalityDemon");
 		TNT1 A 0 A_JumpIfInventory("ImpFatality3", 1, "FatalityImp");
 	Goto See2;
@@ -126,7 +139,6 @@ States
 		}
 		TNT1 A 0 A_TakeInventory("StopKickingMyBallsMotherFucker", 1);
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
-		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman");
 		TNT1 A 0 A_JumpIfInTargetInventory ("TypeZombieman", 1, "See2");
 		BOSS e 3 A_FaceTarget;
 
@@ -403,7 +415,6 @@ States
 		TNT1 A 0 A_SpawnProjectile ("XDeathZombieManHead", 65, 0, random (0, 360), 2, random (70, 120));
 		3HF1 F 30;
 		3HF1 G 10;
-		TNT1 A 0 A_TakeInventory("ZombieManFatality",1);
 		TNT1 A 0 A_UnSetInvulnerable;
 		3HF1 H 8 A_Chase;
 		BOSS E 8 A_FaceTarget;

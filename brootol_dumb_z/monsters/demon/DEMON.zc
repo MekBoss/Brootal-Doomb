@@ -80,7 +80,6 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 			
 		See:
 		SeeContinue:
-			TNT1 A 0 A_JumpIfInventory("ZombieManFatality", 1, "FatalityZombieman");
 			TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant");
 			TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp");
 			TNT1 A 0 A_JumpIfInventory("EatMe", 1, "Eat");
@@ -94,9 +93,26 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 			TNT1 A 0 A_JumpIfInTargetInventory("ComeEatMeDemon", 1, "MeleeDown");
 			SARG E 6 A_FaceTarget;
 			SARG F 6 A_FaceTarget;
-			SARG G 12 doomb_cheap_melee_attack(60, random(16, 40), "eat");
+			SARG G 12
+			{
+				actor a = doomb_cheap_melee_attack(60, random(16, 40), "eat");
 			
-			TNT1 A 0 A_JumpIfInventory("ZombieManFatality", 1, "FatalityZombieman");
+				if(a && a.health <= 0)
+				{
+					name type = a.getclassname();
+
+					switch(type)
+					{
+						case 'doomb_zombie_Man':
+							a.destroy();
+							setstatelabel("FatalityZombieman");
+						break;
+
+						default: break;
+					}
+				}
+			}
+
 			TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant");
 			TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp");
 			TNT1 A 0
@@ -117,8 +133,26 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 			
 		MeleeDown:
 			PDEV AB 6 A_FaceTarget;
-			PDEV C 12 doomb_cheap_melee_attack(60, random(16, 40), "eat");
-			TNT1 A 0 A_JumpIfInventory("ZombieManFatality", 1, "FatalityZombieman");
+			PDEV C 12 
+			{
+				actor a = doomb_cheap_melee_attack(60, random(16, 40), "eat");
+			
+				if(a && a.health <= 0)
+				{
+					name type = a.getclassname();
+
+					switch(type)
+					{
+						case 'doomb_zombie_Man':
+							a.destroy();
+							setstatelabel("FatalityZombieman");
+						break;
+
+						default: break;
+					}
+				}
+			}
+
 			TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant");
 			TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp");
 		Goto SeeContinue;
@@ -455,7 +489,6 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 			TNT1 A 0 A_SetInvulnerable;
 			SARK DEDEDEDEDE 10 A_SpawnProjectile ("MuchBlood", 45, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathHalfZombieManDown", 20, 0, random(0, 360), 2, random (0, 160));
-			TNT1 A 0 A_TakeInventory("ZombiemanFatality",1);
 			TNT1 A 0 A_UnSetInvulnerable;
 		Goto See;
 			

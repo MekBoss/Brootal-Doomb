@@ -89,9 +89,26 @@ States
 		SKEL G 1 A_FaceTarget();
 		SKEL G 6 A_SkelWhoosh();
 		SKEL H 6 A_FaceTarget();
-		TNT1 A 0 doomb_cheap_melee_attack(100, random(10, 60), "RVFT");
-		SKEL I 6;
-		TNT1 A 0 A_JumpIfInventory("ZombiemanFatality", 1, "FatalityZombieman");
+		SKEL I 6
+		{
+			actor a = doomb_cheap_melee_attack(100, random(10, 60), "RVFT");
+		
+			if(a && a.health <= 0)
+			{
+				name type = a.getclassname();
+
+				switch(type)
+				{
+					case 'doomb_zombie_Man':
+						a.destroy();
+						setstatelabel("FatalityZombieman");
+					break;
+
+					default: break;
+				}
+			}
+		}
+
 		TNT1 A 0 A_JumpIfInventory("SergeantFatality", 1, "FatalitySergeant");
 		TNT1 A 0 A_JumpIfInventory("ImpFatality", 1, "FatalityImp");
 	Goto See;
@@ -177,7 +194,6 @@ States
 
 		SKF1 I 1 A_Chase(null,null);
 		SKF1 I 10 A_FaceTarget();
-		TNT1 A 0 A_TakeInventory("ZombieManFatality",1);
 		TNT1 A 0 A_UnSetInvulnerable();
 		TNT1 A 0 {bSHOOTABLE = true;}
 		TNT1 A 0 A_SpawnProjectile("ThrowedZombieMan2", 64, 0, 0, 0);
