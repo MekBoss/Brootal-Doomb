@@ -1203,9 +1203,7 @@ States
 		FPZ4 JJJIH 2;
 		tnt1 a 0 a_jump(80, 1);
 	loop;
-
 		FPZ4 OOOMN 2;
-		
 	zombie_punch_loop_4_1:
 		FPZ4 NNM 2;
 		tnt1 A 0 ACS_Execute(580, 0, 0, 0, 0);

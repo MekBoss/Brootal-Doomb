@@ -3,27 +3,6 @@
 CLASS Tracer: doomb_boolet_base
 {
 
-override void Tick()
-{
-	if(target && target is "playerpawn")
-	{
-		if(random[monster_avoid](0,10) <= 1)
-		{
-			FLineTraceData avoider;
-
-			LineTrace(angle, speed, pitch, data: avoider);
-
-			if(avoider.hitactor && avoider.hitactor.health > 0 && avoider.hitactor.bcorpse == false && avoider.hitactor is "doomb_monster_base" && !(avoider.hitactor is "doomb_body_base") )
-			{
-				state neo = avoider.hitactor.findstate("avoid");
-				if(neo)
-					avoider.hitactor.setstate(neo);
-			}
-		}
-	}
-
-	super.tick();
-}
 
 	Default
 	{

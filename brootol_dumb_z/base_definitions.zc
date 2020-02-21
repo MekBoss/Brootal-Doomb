@@ -40,7 +40,6 @@ protected void doomb_spherical_rail_attack(uint dist = 128)
 
 	uint i = 0;
 
-
 	while(i < dist)
 	{
 		a_spawnparticle("33FF33", SPF_FULLBRIGHT, lifetime :16, size:5, xoff:from.x, yoff:from.y, zoff:from.z, sizestep:0.1);
@@ -53,6 +52,27 @@ protected void doomb_spherical_rail_attack(uint dist = 128)
 		sphere.hitactor.damagemobj(self, self.target, random(15, 25), 'Desintegrate', 0, 0);
 	}
 }
+
+
+override void Tick()
+{
+	if(random[monster_avoid](0,10) <= 1)
+	{
+		FLineTraceData avoider;
+
+		LineTrace(angle, speed, pitch, data: avoider);
+
+		if(avoider.hitactor && avoider.hitactor.health > 0 && avoider.hitactor.bcorpse == false && avoider.hitactor is "doomb_monster_base" && !(avoider.hitactor is "doomb_body_base") )
+		{
+			state neo = avoider.hitactor.findstate("avoid");
+			if(neo)
+				avoider.hitactor.setstate(neo);
+		}
+	}
+
+	super.tick();
+}
+
 
 default
 {

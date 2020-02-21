@@ -14,6 +14,11 @@ protected void doomb_marine_punch(double distance = 0, int dam = 0, name damage_
 }
 
 protected bool guarding;
+protected bool is_guarding() const
+{
+	return guarding;
+}
+
 
 protected playerpawn leader;
 
@@ -40,9 +45,14 @@ protected void doomb_set_leader()
 			}
 		}
 	}
+
+	if(leader)
+	{
+		translation = leader.translation;
+	}
 }
 
-protected double doomb_sqrt_distance_to_leader()
+protected double doomb_sqrd_distance_to_leader()
 {
 	if(leader)
 	{
@@ -59,18 +69,18 @@ protected void doomb_warp_to_leader()
 {
 	if(leader)
 	{
-		if(doomb_sqrt_distance_to_leader() > 300 * 300)
+		if(doomb_sqrd_distance_to_leader() > 300 * 300)
 		{
 			//spawns behind player, i.e. player wouldn see how marines pops out from empty space
-			vector3 offset = (( sin(leader.angle), cos(leader.angle) ) * -(self.radius + leader.radius + 1), leader.pos.z);
+			vector3 offset = (( cos(leader.angle), sin(leader.angle) ) * -(self.radius + leader.radius + 30), 0);
 			setorigin(leader.pos + offset, false);
 		}
 	}
 }
 
-protected void doomb_find_free_ammo()
+protected void doomb_try_share_ammo()
 {
-	if(random(0, 100) < 5)
+	if(random(0, 100) < 5 && doomb_sqrd_distance_to_leader() < 100 * 100)
 		setstatelabel("share_some_ammo");
 }
 
@@ -78,7 +88,7 @@ protected void doomb_give_leader_ammo()
 {
 	if(leader)
 	{
-		if(doomb_sqrt_distance_to_leader() < 100 * 100)
+		if(doomb_sqrd_distance_to_leader() < 100 * 100)
 		{
 			if(spare_ammo)
 			{
@@ -104,7 +114,7 @@ Default
     MaxStepHeight 52;
     MaxDropOffHeight 52;
     Mass 100;
-    Health 60;
+    Health 100;
     //this made enemy search waaaaaaay to slow
 	//MaxTargetRange 99999;
 
@@ -165,24 +175,32 @@ Default
     PainSound "*pain";
     SeeSound "None";
     Obituary "%o has been gunned down by a Marine.";
+
+	doomb_marine_base.spare_ammo "";
 }
 
-override void Activate (Actor activator)
+override bool Used (Actor user)
 {
     if(health > 0 && bcorpse == false)
     {
-        SetStateLabel("Active");
-        guarding = true;
-    }
-}
+        if(guarding)
+		{
+			SetStateLabel("follow_player");
+			guarding = false;
+			speed = default.speed;
+			return true;
+		}
 
-override void Deactivate (Actor activator)
-{
-    if(health > 0 && bcorpse == false)
-    {
-        SetStateLabel("Inactive");
-        guarding = false;
-    }
+		else
+		{
+        	SetStateLabel("guard_area");
+			guarding = true;
+			speed = 0;
+			return true;
+		}
+	}
+
+	return false;
 }
 
 virtual int doomb_get_aditional_death_sprite()
@@ -219,7 +237,7 @@ protected void doomb_trigger_monsters(sector square = null, bool original = true
 				{
 					vector3 p = level.vec3diff(self.pos, check.pos);
 
-					if(p dot p < 250000)
+					if(p dot p < 250000 && check != self)//can set self target to self otherwise
 						check.target = self;
 				}
 			}
