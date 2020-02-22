@@ -79,7 +79,7 @@ States
 				doomb_warp_to_leader();
 			}
 		}
-	Goto See;
+	loop;
 
 	minigunner_on_guard:
 		PL42 H 1 A_Stop();
@@ -132,8 +132,6 @@ States
 
 			doomb_trigger_monsters(cursector);
 			doomb_if_boss_retreat(target, "CheckRetreat");
-			bshootable = true;
-			bsolid = true;
 			A_PlaySound("MRNAT", 2);
 		}
 	Missile2:
@@ -214,8 +212,6 @@ States
 		PL42 E 2
 		{
 			A_FaceTarget();
-			bshootable = true;
-			bsolid = true;
 		}
 		PL42 F 1 BRIGHT
 		{
