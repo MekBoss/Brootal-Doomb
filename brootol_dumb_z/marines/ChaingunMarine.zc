@@ -1,5 +1,3 @@
-
-
 CLASS NumberOfAlliesMinigun : Inventory { 
 	Default {
 		
@@ -22,7 +20,6 @@ CLASS doomb_Marine_Minigun: doomb_marine_base Replaces MarineChaingun
 Default {
 	doomb_marine_base.spare_ammo "doomb_clip";
 	
-	Scale 1.05;
 	DropItem "MiniGun";
 }
 
@@ -51,11 +48,10 @@ States
 		tnt1 a 0
 		{
 			if(is_guarding() )
-				setstatelabel("see_guard");
+				setstatelabel("guard_see");
 		}
 		PL42 AABBCCDD 1
 		{
-			
 			if(target)
 			{
 				vector3 vec_dist = pos - target.pos;
@@ -75,11 +71,12 @@ States
 				A_Chase(null, "missile");
 				A_Recoil(-1);
 
-				if(doomb_sqrd_distance_to_leader() < 200 * 200)
+				double leader_dist = doomb_sqrd_distance_to_leader();
+
+				if(leader_dist < 200 * 200)
 					setstatelabel("minigunner_on_guard");
 			
-				else if(doomb_sqrd_distance_to_leader() > 1000 * 1000)
-					doomb_warp_to_leader();
+				doomb_warp_to_leader();
 			}
 		}
 	Goto See;
@@ -140,9 +137,7 @@ States
 			A_PlaySound("MRNAT", 2);
 		}
 	Missile2:
-		PL42 E 2
-		{
-		}
+		PL42 E 2 {}
 		PL42 F 1 BRIGHT
 		{
 			A_FaceTarget();
@@ -171,7 +166,7 @@ States
 		{
 			A_FaceTarget();
 			int i = randompick(90, -90);
-			vel.xy += (3 * sin(angle + i), 3 * cos(angle + i) );
+			vel.xy += (3 * cos(angle + i), 3 * sin(angle + i) );
 		}
 		tnt1 a 0
 		{
@@ -211,7 +206,7 @@ States
 	loop;
 
 
-	see_guard:
+	guard_see:
 		PL42 EEEEEEEEEEHHHHHHHHH 1 A_Chase(null, "guard_fire");
 	loop;
 
@@ -228,8 +223,8 @@ States
 			A_SpawnProjectile("MarineStrongTracer", 32, 0, random(-8, 8), CMF_OFFSETPITCH, frandom(-3, 3) );
 			A_SpawnItem ("RifleCaseSpawn", 0, 30,0);
 		}
-		tnt1 a 0 a_monsterrefire(200, "see_guard");
-	Goto guard_fire;
+		tnt1 a 0 a_monsterrefire(200, "guard_see");
+	loop;
 
 
 	follow_player:

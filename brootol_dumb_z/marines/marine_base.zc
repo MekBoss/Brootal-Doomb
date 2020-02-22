@@ -56,7 +56,7 @@ protected double doomb_sqrd_distance_to_leader()
 {
 	if(leader)
 	{
-		vector3 v = level.vec3diff(self.pos, leader.pos);
+		vector3 v = self.pos - leader.pos;
 
 		double d = (v dot v);
 		return d;
@@ -71,9 +71,24 @@ protected void doomb_warp_to_leader()
 	{
 		if(doomb_sqrd_distance_to_leader() > 300 * 300)
 		{
-			//spawns behind player, i.e. player wouldn see how marines pops out from empty space
-			vector3 offset = (( cos(leader.angle), sin(leader.angle) ) * -(self.radius + leader.radius + 30), 0);
-			setorigin(leader.pos + offset, false);
+			vector2 leader_view_dir =
+			(
+				cos(leader.angle),
+				sin(leader.angle)
+			);
+
+			vector2 dir_to_self = level.vec2diff(leader.pos.xy, self.pos.xy);
+			double scalar = leader_view_dir dot dir_to_self;
+
+			//view_dir already a unit vector by defenition
+			double angle_to_self = acos(scalar / dir_to_self.length() );
+
+			if(abs(angle_to_self) > (leader.player.fov / 2 + 5) )
+			{
+				//spawns behind player, i.e. player wouldnt see how marines pops out from empty space
+				vector3 offset = (( cos(leader.angle), sin(leader.angle) ) * -(self.radius + leader.radius + 30), 0);
+				setorigin(leader.pos + offset, false);
+			}
 		}
 	}
 }
@@ -109,7 +124,7 @@ Default
     Height 52;
     Speed 5;
     FastSpeed 22;
-    Scale 0.98;
+    Scale 1;
     MeleeRange 70;
     MaxStepHeight 52;
     MaxDropOffHeight 52;
