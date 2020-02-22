@@ -119,6 +119,7 @@ States
 		{
 			vel.xy = (10 * cos(angle), 10 * sin(angle) );
 		}
+		tnt1 a 0 {vel = (0, 0, 0);}
 	goto minigunner_on_guard;
 
 
@@ -143,7 +144,7 @@ States
 			A_SpawnProjectile("MarineStrongTracer", 32, 0, random(-8, 8), CMF_OFFSETPITCH, frandom(-3, 3) );
 			A_SpawnItem ("RifleCaseSpawn", 0, 30,0);
 		}
-		tnt1 a 0 a_jump(30, "see");
+		tnt1 a 0 a_monsterrefire(200, "see");
 	loop;
 		
 	Pain:
