@@ -42,8 +42,6 @@ States
 			A_Look();
 			doomb_set_leader();
 		}
-	Goto See;
-		
 	See:
 		tnt1 a 0
 		{
