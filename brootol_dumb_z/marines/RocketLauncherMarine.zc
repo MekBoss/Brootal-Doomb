@@ -199,7 +199,6 @@ override int doomb_get_aditional_death_sprite()
 		guard_fire:
 			TNT1 A 0 doomb_trigger_monsters(cursector);
 			TNT1 A 0 doomb_if_boss_retreat(target, "CheckRetreat");
-		Missile2:
 			PL5S EEE 5 A_FaceTarget;
 			TNT1 A 0 A_PlaySound ("DSRFIRE");
 			PL5S E 2 BRIGHT A_SpawnProjectile("Rocket",50,0,0,0);

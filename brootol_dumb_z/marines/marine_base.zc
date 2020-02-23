@@ -49,6 +49,21 @@ protected void doomb_set_leader()
 	if(leader)
 	{
 		translation = leader.translation;
+	
+		if(level.time > 0)
+		{
+			leader.a_giveinventory("doomb_player_marine_counter", 1);
+
+			inventory mark = inventory(leader.findinventory("doomb_player_marine_counter") );
+
+			if(mark)
+			{
+				doomb_player_marine_counter(mark).add_marine_type(self, getclassname() );
+			}
+
+			else
+				console.printf("no item");
+		}
 	}
 }
 
@@ -591,7 +606,11 @@ states
 }
 
 
-enum marine_types
+
+class doomb_player_marine_counter : doomb_inventory
+{
+
+enum marine_types_enum
 {
 	MTE_RIFLE_MARINE = 0,
 	MTE_SHOTGUN_MARINE = 1,
@@ -599,37 +618,84 @@ enum marine_types
 	MTE_MINIGUN_MARINE,
 	MTE_RL_MARINE,
 	MTE_PLASMA_MARINE,
-	MTE_BFG_MARINE
+	MTE_BFG_MARINE,
+	MTE_MAX_MARINE = MTE_BFG_MARINE + 1
 };
 
-class doomb_player_marine_counter : doomb_inventory
-{
 default
 {
-	Inventory.MaxAmount  1;
+	Inventory.MaxAmount 1;
+	Inventory.Amount 1;
 	+INVENTORY.UNTOSSABLE
 	+INVENTORY.UNCLEARABLE
 	+INVENTORY.UNDROPPABLE
 }
 
-private array<uint> marine_general_amount, marine_alive_amount;
+private array<string> marine_types;
 private vector2 owner_look_dir;
 
-void add_marine_type(marine_types n)
+void add_marine_type(doomb_marine_base caller = null, name n = "")
 {
-	if(!marine_general_amount[n])
-		marine_general_amount.resize(n);
-
-	marine_general_amount[n] ++;
+	if(caller && n != "" && level.time > 0)
+	{
+		marine_types.push(n);
+	}
 }
 
-void remove_marine_type(marine_types n)
+void remove_marine_type(name n)
 {
-	if(!marine_general_amount[n])
-		return;//how s that possible
+	if(n != "")
+	{
+		uint ni = marine_types.find(n);
 
-	if(marine_general_amount[n] > 0)
-		marine_general_amount[n]--;
+		if(ni < marine_types.size() )
+			marine_types.delete(ni);
+	}
 }
 
+private void doomb_owner_look_vector()
+{
+	if(owner)
+		owner_look_dir = (cos(owner.angle), sin(owner.angle) );
+}
+
+private void doomb_spawn_marines()
+{
+	doomb_owner_look_vector();
+
+	for(uint i = 0; i < marine_types.size(); i++)
+	{
+		if(marine_types[i] )
+		{
+			spawn(marine_types[i], pos: owner.pos + (owner_look_dir * owner. radius * -1) );
+		}
+	}
+}
+
+override void doeffect()
+{
+	if(level.time < 1)
+		doomb_spawn_marines();
+}
+
+}
+
+
+class every_marine_spawner : actor
+{
+
+States
+{
+	spawn:
+		tnt1 a 1 nodelay
+		{
+			spawn("doomb_Marine_PlasmaGun");
+			spawn("doomb_Marine_RocketL");
+			spawn("doomb_Marine_Shotgun");
+			spawn("doomb_Marine_bfg");
+			spawn("doomb_Marine_Rifle");
+			spawn("doomb_Marine_Minigun");
+		}
+	stop;
+}
 }

@@ -1,13 +1,3 @@
-CLASS MarinesMinigunDispenser : Inventory { 
-	Default {
-		
-		inventory.maxamount 5;
-	}
-}
-
-
-
-
 CLASS doomb_Marine_Minigun: doomb_marine_base Replaces MarineChaingun
 { 
 Default {

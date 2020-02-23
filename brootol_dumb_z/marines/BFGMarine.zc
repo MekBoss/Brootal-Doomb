@@ -1,10 +1,3 @@
-CLASS MarinesBFGDispenser : Inventory { 
-	Default {
-		
-		inventory.maxamount 5;
-	}
-}
-
 CLASS doomb_Marine_bfg: doomb_marine_base Replaces MarineBFG
 { 
 	Default {
@@ -99,8 +92,9 @@ override int doomb_get_aditional_death_sprite()
 			}
 			PLA7 AABBCCDDAABBCCDD 1
 			{
-				vel.xy = (8 * cos(angle), 8 * sin(angle) );
+				vel.xy = (7 * cos(angle), 7 * sin(angle) );
 			}
+			tnt1 a 0 a_stop();
 		goto bfg_on_guard;
 
 		share_some_ammo:

@@ -83,7 +83,7 @@ default
 
 
 
-class doomb_inventory : custominventory
+class doomb_custom_inventory : custominventory
 {
 protected eventhandler sfx;
 
@@ -102,3 +102,5 @@ protected visual_sfx doomb_show_effect(statelabel effect_name, vector3 offset = 
 		return null;
 }
 }
+
+class doomb_inventory : inventory {}

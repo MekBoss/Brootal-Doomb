@@ -34,8 +34,8 @@ override void worldthingspawned(worldevent e)
 	if(e.thing is "doomber")
 	    doomber(e.thing).set_sfx(self);
 
-	if(e.thing is "doomb_inventory")
-	    doomb_inventory(e.thing).set_sfx(self);
+	if(e.thing is "doomb_custom_inventory")
+	    doomb_custom_inventory(e.thing).set_sfx(self);
 		
 }
 

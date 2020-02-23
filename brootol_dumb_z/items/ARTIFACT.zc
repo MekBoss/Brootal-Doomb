@@ -25,7 +25,7 @@ CLASS InvulnerabilitySphere_  : PowerupGiver Replaces InvulnerabilitySphere {
 
 // Soulsphere --------------------------------------------------------------
 
-CLASS LifeSphere : doomb_inventory Replaces SoulSphere { 
+CLASS LifeSphere : doomb_custom_inventory Replaces SoulSphere { 
 	Default {
 		
 		+COUNTITEM;
@@ -58,7 +58,7 @@ CLASS SoulSphereHealth : Health	 {
 	}
 }
 
-CLASS EnergySphere : doomb_inventory Replaces Megasphere { 
+CLASS EnergySphere : doomb_custom_inventory Replaces Megasphere { 
 	Default {
 		
 		+COUNTITEM;
