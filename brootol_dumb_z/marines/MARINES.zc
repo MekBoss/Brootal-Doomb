@@ -16,7 +16,6 @@ CLASS doomb_Marine_Rifle : doomb_marine_base Replaces MarinePistol
 		}
 		TNT1 A 0 
 		{
-			A_GiveInventory("TargetIsAMarine");
 			A_Look();
 			doomb_set_leader();
 		}
@@ -236,3 +235,6 @@ CLASS doomb_Marine_Rifle : doomb_marine_base Replaces MarinePistol
 }
 
 }
+
+//STUB because melee marine would be too weak
+CLASS Marine_Fist : doomb_Marine_Rifle Replaces MarineFist { }

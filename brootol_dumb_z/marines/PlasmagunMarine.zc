@@ -21,7 +21,6 @@ States
 			if(is_guarding() )
 				setstatelabel("guard_see");
 		}
-		TNT1 A 0 A_GiveInventory("TargetIsAMarine");
 		PLA6 A 1 
 		{
 			A_Look();
