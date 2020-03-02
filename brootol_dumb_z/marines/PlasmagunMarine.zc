@@ -35,32 +35,7 @@ States
 		}
 		PLA6 AABBCCDD 1
 		{
-			if(target)
-			{
-				vector3 vec_dist = pos - target.pos;
-
-				if(vec_dist dot vec_dist > 100 * 100)
-				{
-					A_Chase("plasma_Melee", "missile");
-					A_Recoil(-1);
-				}
-
-				else
-					setstatelabel("Missile");
-			}
-
-			if(!target)
-			{
-				A_Chase(null, "missile");
-				A_Recoil(-1);
-
-				double leader_dist = doomb_sqrd_distance_to_leader();
-
-				if(leader_dist < 200 * 200)
-					setstatelabel("plasma_on_guard");
-			
-				doomb_warp_to_leader();
-			}
+			doomb_marine_chase("plasma_Melee", "missile", "plasma_on_guard");
 		}
 	loop;
 
@@ -87,6 +62,7 @@ States
 	loop;
 
 	wander_around:
+		PLA6 H 1 a_stop;
 		tnt1 a 0
 		{
 			if(leader)

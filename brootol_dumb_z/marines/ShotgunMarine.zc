@@ -1,214 +1,190 @@
 CLASS doomb_Marine_Shotgun: doomb_marine_base Replaces MarineShotgun
 { 
-	Default {
-		doomb_marine_base.spare_ammo "doomb_shell";
-		DropItem "Shot_Gun";
-	}
+Default {
+	doomb_marine_base.spare_ammo "doomb_shell";
+	DropItem "Shot_Gun";
+}
 
 override int doomb_get_aditional_death_sprite()
 {
 	return GetSpriteIndex("PLA3");
 }
 
-	States
-	{
-		Spawn:
-			tnt1 a 0
-			{
-				if(is_guarding() )
-					setstatelabel("guard_look");
-			}
-			PLA3 A 1
-			{
-				A_Look();
-				doomb_set_leader();
-			}
-		See:
-			tnt1 a 0
-			{
-				if(is_guarding() )
-					setstatelabel("guard_see");
-			}
-			PLA3 AABBCCDD 1
-			{
-				if(target)
-				{
-					vector3 vec_dist = pos - target.pos;
+States
+{
+	Spawn:
+		tnt1 a 0
+		{
+			if(is_guarding() )
+				setstatelabel("guard_look");
+		}
+		PLA3 A 1
+		{
+			A_Look();
+			doomb_set_leader();
+		}
+	See:
+		tnt1 a 0
+		{
+			if(is_guarding() )
+				setstatelabel("guard_see");
+		}
+		PLA3 AABBCCDD 1
+		{
+			doomb_marine_chase("shotgun_Melee", "missile", "shotgun_on_guard");
+		}
+	loop;
+		
+		
+	shotgun_on_guard:
+		PLA3 HE 8
+		{
+			a_look();
+			if(doomb_sqrd_distance_to_leader() > 300 * 300)
+				setstatelabel("see");
+		
+			//dont have sprites
+			//doomb_try_share_ammo();
+		}
+		tnt1 a 0
+		{
+			angle += randompick(-40, -80, 40, 80);
+		
+			if(random(0, 10) <= 1)
+				setstatelabel("wander_around");
+		}
+	loop;
 
-					if(vec_dist dot vec_dist > 100 * 100)
-					{
-						A_Chase("shotgun_Melee", "missile");
-						A_Recoil(-1);
-					}
-
-					else
-						setstatelabel("Missile");
-				}
-
-				if(!target)
-				{
-					A_Chase(null, "missile");
-					A_Recoil(-1);
-
-					double leader_dist = doomb_sqrd_distance_to_leader();
-
-					if(leader_dist < 200 * 200)
-						setstatelabel("shotgun_on_guard");
-				
-					doomb_warp_to_leader();
-				}
-			}
-		loop;
+	wander_around:
+		PLA3 H 1;
+		tnt1 a 0
+		{
+			if(leader)
+				a_face(leader);
 			
-			
-		shotgun_on_guard:
-			PLA3 HE 8
-			{
-				a_look();
-				if(doomb_sqrd_distance_to_leader() > 300 * 300)
-					setstatelabel("see");
-			
-				//dont have sprites
-				//doomb_try_share_ammo();
-			}
-			tnt1 a 0
-			{
-				angle += randompick(-40, -80, 40, 80);
-			
-				if(random(0, 10) <= 1)
-					setstatelabel("wander_around");
-			}
-		loop;
-
-		wander_around:
-			tnt1 a 0
-			{
-				if(leader)
-					a_face(leader);
-				
-				angle += random(-40, 40);
-				health ++;
-			}
-			PLA3 AABBCCDDAABBCCDD 1
-			{
-				vel.xy = (10 * cos(angle), 10 * sin(angle) );
-			}
-			tnt1 a 0 {vel = (0, 0, 0);}
-		goto shotgun_on_guard;
+			angle += random(-40, 40);
+			health ++;
+		}
+		PLA3 AABBCCDDAABBCCDD 1
+		{
+			vel.xy = (10 * cos(angle), 10 * sin(angle) );
+		}
+		tnt1 a 0 {vel = (0, 0, 0);}
+	goto shotgun_on_guard;
 
 
-		share_some_ammo:
-			PLA3 A 10 A_FaceTarget;
-			TNT1 A 0 A_PlaySound("MRNGI1");
-			PLA3 I 30 doomb_give_leader_ammo();
-		Goto shotgun_on_guard;
-			
-		Missile:
-			TNT1 A 0
-			{
-				if(is_guarding() )
-					setstatelabel("guard_fire");
+	share_some_ammo:
+		PLA3 A 10 A_FaceTarget;
+		TNT1 A 0 A_PlaySound("MRNGI1");
+		PLA3 I 30 doomb_give_leader_ammo();
+	Goto shotgun_on_guard;
+		
+	Missile:
+		TNT1 A 0
+		{
+			if(is_guarding() )
+				setstatelabel("guard_fire");
 
-				bnodropoff = true;
+			bnodropoff = true;
 
-				doomb_trigger_monsters(cursector);
-				doomb_if_boss_retreat(target, "CheckRetreat");
-				A_PlaySound("MRNAT", 2);
-			}
-			PLA3 E 6 A_FaceTarget;
-			TNT1 A 0 A_PlaySound("weapons/sg", 1);
-			TNT1 AAAAAAAA 0 A_SpawnProjectile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, frandom(-5, 5) );
-			PLA3 F 3 BRIGHT;
-			PLA3 E 6 A_FaceTarget;
-			PLA3 J 6 A_PlaySound("weapons/sgpump", 3);
-			PLA3 K 6 A_SpawnItem ("ShotCaseSpawn", 0, 30,0);
-			PLA3 J 6;
-		Goto See;
-			
-		shotgun_Melee:
-			TNT1 A 0;
-			PLAM A 4 A_FaceTarget;
-			TNT1 A 0 A_Recoil(-4);
-			PLAM A 1 A_FaceTarget;
-			PLAM B 4 doomb_marine_punch(80, random(20, 60), 'marine_punch');
-			PLAM B 2;
-		Goto See;
+			doomb_trigger_monsters(cursector);
+			doomb_if_boss_retreat(target, "CheckRetreat");
+			A_PlaySound("MRNAT", 2);
+		}
+		PLA3 E 6 A_FaceTarget;
+		TNT1 A 0 A_PlaySound("weapons/sg", 1);
+		TNT1 AAAAAAAA 0 A_SpawnProjectile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, frandom(-5, 5) );
+		PLA3 F 3 BRIGHT;
+		PLA3 E 6 A_FaceTarget;
+		PLA3 J 6 A_PlaySound("weapons/sgpump", 3);
+		PLA3 K 6 A_SpawnItem ("ShotCaseSpawn", 0, 30,0);
+		PLA3 J 6;
+	Goto See;
+		
+	shotgun_Melee:
+		PLAM A 4 A_FaceTarget;
+		TNT1 A 0 A_Recoil(-4);
+		PLAM A 1 A_FaceTarget;
+		PLAM B 4 doomb_marine_punch(80, random(20, 60), 'marine_punch');
+		PLAM B 2;
+	Goto See;
 
 
-		Pain:
-			PLA3 G 3;
-			PLA3 G 3 A_Pain;
-			TNT1 A 0 A_Jump(128, "Avoid");
-			tnt1 a 0
-			{
-				if(is_guarding() )
-					setstatelabel("guard_fire");
-			}
-		Goto See;
+	Pain:
+		PLA3 G 3;
+		PLA3 G 3 A_Pain;
+		TNT1 A 0 A_Jump(128, "Avoid");
+		tnt1 a 0
+		{
+			if(is_guarding() )
+				setstatelabel("guard_fire");
+		}
+	Goto See;
 
-		CheckRetreat:
-			TNT1 A 0 A_JumpIfCloser(500, "Retreat");
-		Avoid:
-			PLA3 ABCD 3
-			{
-				A_FaceTarget();
-				int i = randompick(90, -90);
-				vel.xy = (3 * cos(angle + i), 3 * sin(angle + i) );
-			}
-			tnt1 a 0
-			{
-				if(is_guarding() )
-					setstatelabel("guard_fire");
-			}
-		Goto Missile;
-	
-		Retreat:
-			PLA3 ABCD 3
-			{
-				A_FaceTarget();
-				A_Recoil(5);
-			}
-		Goto MIssile;
-			
-			
-			
-			
+	CheckRetreat:
+		TNT1 A 0 A_JumpIfCloser(500, "Retreat");
+	Avoid:
+		PLA3 ABCD 3
+		{
+			A_FaceTarget();
+			int i = randompick(90, -90);
+			vel.xy = (3 * cos(angle + i), 3 * sin(angle + i) );
+		}
+		tnt1 a 0
+		{
+			if(is_guarding() )
+				setstatelabel("guard_fire");
+		}
+	Goto Missile;
+
+	Retreat:
+		PLA3 ABCD 3
+		{
+			A_FaceTarget();
+			A_Recoil(5);
+		}
+	Goto MIssile;
+		
+		
+		
+		
 
 
 
 
 
 
-		follow_player:
-			TNT1 A 0 A_PlaySound("MarineFollow", 2);
-			TNT1 A 0 A_SpawnProjectile ("OrderTitle1", 50, 0, 0, 2, -90);
-			PLA3 A 3 {bnoclip = false;}
-		goto see;
-			
-		guard_area:
-			TNT1 A 0 {bnoclip = true;}
-			TNT1 A 0 A_PlaySound("MarineGuard", 2);
-			TNT1 A 0 A_SpawnProjectile ("OrderTitle2", 50, 0, 0, 2, -90);
-		guard_look:
-			PLA3 EEEEEEEEEEHHHHHHHHH 1
-			{
-				a_chase(null, "guard_fire");
-			}
-			tnt1 a 0 {angle += random(-80, 80);}
-		Loop;
+	follow_player:
+		TNT1 A 0 A_PlaySound("MarineFollow", 2);
+		TNT1 A 0 A_SpawnProjectile ("OrderTitle1", 50, 0, 0, 2, -90);
+		PLA3 A 3 {bnoclip = false;}
+	goto see;
+		
+	guard_area:
+		TNT1 A 0 {bnoclip = true;}
+		TNT1 A 0 A_PlaySound("MarineGuard", 2);
+		TNT1 A 0 A_SpawnProjectile ("OrderTitle2", 50, 0, 0, 2, -90);
+	guard_look:
+		PLA3 EEEEEEEEEEHHHHHHHHH 1
+		{
+			a_chase(null, "guard_fire");
+		}
+		tnt1 a 0 {angle += random(-80, 80);}
+	Loop;
 
-		guard_fire:
-			TNT1 A 0 doomb_trigger_monsters(cursector);
-			PLA3 E 6 A_FaceTarget;
-			TNT1 A 0 A_PlaySound("weapons/sg", 1);
-			TNT1 AAAAAAAA 0 A_SpawnProjectile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, frandom(-5, 5) );
-			PLA3 F 3 BRIGHT;
-			PLA3 E 6 A_FaceTarget;
-			PLA3 J 6 A_PlaySound("weapons/sgpump", 3);
-			PLA3 K 6 A_SpawnItem ("ShotCaseSpawn", 0, 30,0);
-			PLA3 J 6;
-		Goto guard_look;
-	}
+	guard_fire:
+		TNT1 A 0 doomb_trigger_monsters(cursector);
+		PLA3 E 6 A_FaceTarget;
+		TNT1 A 0 A_PlaySound("weapons/sg", 1);
+		TNT1 AAAAAAAA 0 A_SpawnProjectile("MarineShotgunTracer", 32, 0, random(-6, 6), CMF_OFFSETPITCH, frandom(-5, 5) );
+		PLA3 F 3 BRIGHT;
+		PLA3 E 6 A_FaceTarget;
+		PLA3 J 6 A_PlaySound("weapons/sgpump", 3);
+		PLA3 K 6 A_SpawnItem ("ShotCaseSpawn", 0, 30,0);
+		PLA3 J 6;
+	Goto guard_look;
+}
+
 }
 
 //STUB due to the lack of ssg marine spites

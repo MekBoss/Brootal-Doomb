@@ -167,7 +167,7 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 			CYBR M 5 A_NoBlocking;
 			CYBR NOP 5;
 			CYBR P -1 A_BossDeath;
-			Stop;
+		Stop;
 			
 		Death.headshot:
 			TNT1 A 0 A_SpawnProjectile ("XDeathCyberdemonHead", 120, 0, random (0, 360), 2, random (0, 180));
@@ -193,7 +193,7 @@ CLASS TheCyberdemon : doomb_monster_base Replaces Cyberdemon {
 			CYBR NOP 0;
 			CYBR P 120;
 			CYBR P -1 A_BossDeath;
-			Stop;
+		Stop;
 			
 		Crush:
 			TNT1 A 0 A_PlaySound("misc/xdeath4");

@@ -32,32 +32,7 @@ States
 		}
 		PL42 AABBCCDD 1
 		{
-			if(target)
-			{
-				vector3 vec_dist = pos - target.pos;
-
-				if(vec_dist dot vec_dist > 100 * 100)
-				{
-					A_Chase(null, "missile");
-					A_Recoil(-1);
-				}
-
-				else
-					setstatelabel("Missile");
-			}
-
-			if(!target)
-			{
-				A_Chase(null, "missile");
-				A_Recoil(-1);
-
-				double leader_dist = doomb_sqrd_distance_to_leader();
-
-				if(leader_dist < 200 * 200)
-					setstatelabel("minigunner_on_guard");
-			
-				doomb_warp_to_leader();
-			}
+			doomb_marine_chase(null, "missile", "minigunner_on_guard");
 		}
 	loop;
 

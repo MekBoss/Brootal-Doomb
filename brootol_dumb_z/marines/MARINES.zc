@@ -27,24 +27,7 @@ CLASS doomb_Marine_Rifle : doomb_marine_base Replaces MarinePistol
 		}
 		PLAY AABBCCDD 1
 		{
-			if(target)
-			{
-				A_Chase("melee", "missile");
-				A_Recoil(-1);
-			}
-
-			if(!target)
-			{
-				A_Chase(null, "missile");
-				A_Recoil(-1);
-
-				double leader_dist = doomb_sqrd_distance_to_leader();
-
-				if(leader_dist < 200 * 200)
-					setstatelabel("rifler_on_guard");
-			
-				doomb_warp_to_leader();
-			}
+			doomb_marine_chase("melee", "missile", "rifler_on_guard");
 		}
 	loop;
 

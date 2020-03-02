@@ -34,32 +34,7 @@ override int doomb_get_aditional_death_sprite()
 			}
 			PL5S AABBCCDD 1
 			{
-				if(target)
-				{
-					vector3 vec_dist = pos - target.pos;
-
-					if(vec_dist dot vec_dist > 100 * 100)
-					{
-						A_Chase("rl_Melee", "missile");
-						A_Recoil(-1);
-					}
-
-					else
-						setstatelabel("Missile");
-				}
-
-				if(!target)
-				{
-					A_Chase("rl_Melee", "missile");
-					A_Recoil(-1);
-
-					double leader_dist = doomb_sqrd_distance_to_leader();
-
-					if(leader_dist < 200 * 200)
-						setstatelabel("rl_on_guard");
-				
-					doomb_warp_to_leader();
-				}
+				doomb_marine_chase("rl_Melee", "missile", "rl_on_guard");
 			}
 		loop;
 
@@ -84,6 +59,7 @@ override int doomb_get_aditional_death_sprite()
 		loop;
 
 		wander_around:
+			PL5S E 1;
 			tnt1 a 0
 			{
 				if(leader)

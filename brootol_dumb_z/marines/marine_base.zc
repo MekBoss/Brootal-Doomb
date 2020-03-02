@@ -130,6 +130,41 @@ protected void doomb_give_leader_ammo()
 	}
 }
 
+protected void doomb_marine_chase(statelabel melee_state, statelabel missile_state, statelabel on_guard_state)
+{
+	if(missile_state && on_guard_state)
+	{
+		if(target)
+		{
+			vector3 vec_dist = pos - target.pos;
+
+			if(vec_dist dot vec_dist > 100 * 100)
+			{
+				A_Chase(melee_state, missile_state);
+				A_Recoil(-1);
+			}
+
+			else
+				setstatelabel(missile_state);
+		}
+
+		if(!target)
+		{
+			a_cleartarget();
+			A_Chase(null, missile_state);
+			A_Recoil(-1);
+
+			double leader_dist = doomb_sqrd_distance_to_leader();
+
+			if(leader_dist < 200 * 200)
+				setstatelabel(on_guard_state);
+		
+			doomb_warp_to_leader();
+		}
+	}
+
+}
+
 protected class<ammo> spare_ammo;
 property spare_ammo : spare_ammo;
 
@@ -194,7 +229,6 @@ Default
 	+MISSILEMORE
 	+MISSILEEVENMORE
     
-	Activation THINGSPEC_Activate;
 	doomb_marine_base.spare_ammo "";
     Species "Marines";
     Translation "112:127=117:127";
@@ -263,7 +297,7 @@ protected void doomb_trigger_monsters(sector square = null, bool original = true
 				if (check.bnoclip == true ||  check.bnoblockmap == true || check.bnointeraction == true || check.bkilled == true)
 					continue;
 				
-				if(check.bismonster == true && check.health > 0 && check.bcorpse == false && check != self && !(check is "doomb_marine_base") )
+				if(check.bismonster == true && check.health > 0 && check.bcorpse == false && check != self && !(check is "doomb_marine_base") && check.target == null )
 				{
 					vector3 p = level.vec3diff(self.pos, check.pos);
 
