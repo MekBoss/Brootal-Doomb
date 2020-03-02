@@ -212,6 +212,7 @@ override int DamageMobj(Actor inflictor, Actor source,int damage,Name mod,int Fl
 //can actually hit another actor(not monster target)
 protected actor doomb_cheap_melee_attack(double distance = 0, int dam = 0, name damage_type = "")
 {
+	a_facetarget();
 	double new_pitch = AimLineAttack (angle, distance, null, 0., ALF_CHECK3D);
 	FLineTraceData punch;
 	LineTrace(angle + frandom(-5, 5), distance, new_pitch + frandom (-5, 5),
@@ -406,7 +407,7 @@ override void tick()
 
 	if(limb_state &= DLF_FINAL_ABSOLUTION)
 	{
-		if(health <= 0)
+		if(health <= -default.health)
 		{
 			spawn("XDeath1", pos:self.pos + (0, 0, 7)).vel = (random(-3, 3), random(-3, 3), random(0, 3) );
 			spawn("XDeath2", pos:self.pos + (0, 0, 7)).vel = (random(-3, 3), random(-3, 3), random(0, 3) );

@@ -42,6 +42,3 @@ states
 }
 
 CLASS SmallBloodPool2 : doomb_red_blood_pool Replaces SmallBloodPool {}
-
-//FIXME placeholder to shut comppiler
-CLASS MediumBloodSpot : doomb_red_blood_pool { }
