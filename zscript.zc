@@ -28,6 +28,7 @@ CLASS FallingHeight : Inventory {
 //because gore base inherits from monster base
 #include "brootol_dumb_z/monsters/monster_base.zc"
 #include "brootol_dumb_z/weapons/weapon_base.zc"
+#include "brootol_dumb_z/weapons/weapon_dual_base.zc"
 
 #include "brootol_dumb_z/gore/bodies/gore_base.zc"
 

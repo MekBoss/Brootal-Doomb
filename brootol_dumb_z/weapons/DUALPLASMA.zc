@@ -1,4 +1,9 @@
-//FIXME mStateInfo.mPSPIndex can be used to return psprite index/layer
+//FIXME StateInfo.mPSPIndex can be used to return psprite index/layer
+
+/*
+if(StateInfo.mStateType == STATE_Psprite &&  StateInfo.mPSPIndex == lrft or right gun)
+
+*/
 CLASS DualPlasmaRifles: doomb_dual_weapon_base
 { 
 Default {
