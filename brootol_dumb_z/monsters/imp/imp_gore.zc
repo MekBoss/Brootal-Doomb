@@ -416,7 +416,7 @@ States
 		TNT1 A 0 A_SpawnProjectile ("XDeathImpHead", 12, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeathImpArm", 12, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeathHalfImpUpperPart32", 12, 0, random (0, 360), 2, random (10, 60));
-		TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10);
+		TNT1 A 0 doomb_Meat_Death_Small();
 		Stop;
 		
 }
@@ -551,7 +551,7 @@ Death:
 	TNT1 A 0 A_SpawnProjectile ("XDeathImpLeg", 5, 0, random (0, 360), 2, random (0, 160));
 	TNT1 A 0 A_SpawnItem ("DeadImp_NoLeg", 5);
 	TNT1 A 0 A_NoBlocking();
-	TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10);
+	TNT1 A 0 doomb_Meat_Death_Small();
 Stop;
 	
 Death.Plasma: Death.Plasma2:
@@ -609,8 +609,8 @@ Spawn:
 	
 	Death:
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnItem("RipGuts", 0, 10);
-		TNT1 AA 0 A_SpawnItem("MeatDeathSmall", 0, 10);
+		TNT1 A 0 doomb_Rip_Guts();
+		TNT1 AA 0 doomb_Meat_Death_Small();
 		TNT1 A 0 A_SpawnProjectile ("XDeathImpArm", 5, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnItem("DeadImp_Half");
 		Stop;
@@ -624,14 +624,18 @@ Health 200;
 }
 States
 {
-Spawn:
-	TR09 E -1;
+	Spawn:
+		TR09 E -1;
 	Stop;
 	Death:
-	TNT1 A 0 A_SpawnProjectile ("XDeathImpLeg", 5, 0, random (0, 360), 2, random (0, 160));
-	TNT1 A 0 A_SpawnItem ("RipImp", 5);
-	TNT1 A 0 A_NoBlocking;
-	TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10);
+		TNT1 A 0 A_SpawnProjectile ("XDeathImpLeg", 5, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_NoBlocking;
+		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("XDeathHalfImp", 40, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_Meat_Death_Small();
 	Stop;
 	
 }
@@ -651,7 +655,7 @@ Spawn:
 
 	Death:
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10);
+		TNT1 A 0 doomb_Meat_Death_Small();
 		TNT1 A 0 A_SpawnProjectile ("XDeathImpArm", 5, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnItem("DeadImp_NoArmNoHead");
 		Stop;
@@ -704,7 +708,7 @@ Spawn:
 	Stop;
 	Death:
 	TNT1 AA 0 A_SpawnProjectile ("XDeathImpLeg", 5, 0, random (0, 360), 2, random (0, 160));
-	TNT1 AA 0 A_SpawnItem("MeatDeathSmall", 0, 10);
+	TNT1 AA 0 doomb_Meat_Death_Small();
 	TNT1 A 0 A_NoBlocking;
 	Stop;
 	
@@ -724,10 +728,10 @@ Spawn:
 	
 	Death:
 	TNT1 A 0 A_NoBlocking;
-	TNT1 A 0 A_SpawnItem("RipGuts", 0, 10);
+	TNT1 A 0 doomb_Rip_Guts();
 	TNT1 A 0 A_SpawnProjectile ("XDeathImpArm", 5, 0, random (0, 360), 2, random (0, 160));
 	TNT1 A 0 A_SpawnProjectile ("XDeathHalfImpUpperPart32", 32, 0, random (0, 360), 2, random (10, 60));
-	TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10);
+	TNT1 A 0 doomb_Meat_Death_Small();
 	TNT1 A 0 A_SpawnItem("DeadImp_Half");
 	Stop;
 
@@ -819,7 +823,7 @@ Spawn:
 		TNT1 A 0 A_NoBlocking;
 		TNT1 AA 0 A_SpawnProjectile ("XDeathImpArm", 5, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 A_SpawnProjectile ("XDeathImpLeg", 5, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 A_SpawnItem("MeatDeathSmall", 0, 10);
+		TNT1 AA 0 doomb_Meat_Death_Small();
 		TNT1 A 0 A_SpawnItem("DeadImp_NoHead");
 	Stop;
 }
@@ -926,10 +930,14 @@ States
 		Stop;
 		
 	Death:
-		TNT1 A 0 A_SpawnItem("RipImp", 0, 10);
-		TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10);
+		TNT1 A 0 doomb_Meat_Death_Small();
 		TNT1 A 0 A_SpawnItem("DeadImp_Half");
 		TNT1 A 0 A_NoBlocking();
+		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("XDeathHalfImp", 40, 0, random (0, 360), 2, random (0, 160));
 		Stop;
 		
 }
@@ -948,10 +956,14 @@ States
 		Stop;
 		
 	Death:
-		TNT1 A 0 A_SpawnItem("RipImp", 0, 10);
-		TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10);
+		TNT1 A 0 doomb_Meat_Death_Small();
 		TNT1 A 0 A_SpawnItem("DeadImp_Half");
 		TNT1 A 0 A_NoBlocking();
+		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("XDeathHalfImp", 40, 0, random (0, 360), 2, random (0, 160));
 		Stop;
 }
 }	
@@ -969,7 +981,7 @@ States
 		
 	Death:
 		TNT1 A 0 A_SpawnProjectile ("XDeathHalfImpUpperPart32", 32, 0, random (0, 360), 2, random (10, 60));
-		TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10);
+		TNT1 A 0 doomb_Meat_Death_Small();
 		TNT1 A 0 A_SpawnItem("DeadImp_Half");
 		TNT1 A 0 A_NoBlocking();
 		Stop;
@@ -990,7 +1002,7 @@ States
 		
 	Death:
 		TNT1 A 0 A_SpawnProjectile ("XDeathHalfImpUpperPart32", 32, 0, random (0, 360), 2, random (10, 60));
-		TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10);
+		TNT1 A 0 doomb_Meat_Death_Small();
 		TNT1 A 0 A_SpawnItem("DeadImp_Half");
 		TNT1 A 0 A_NoBlocking();
 		Stop;
@@ -1023,9 +1035,9 @@ States
 		
 	Death:
 		TNT1 A 0 A_SpawnProjectile ("XDeathHalfImpUpperPart32", 32, 0, random (0, 360), 2, random (10, 60));
-		TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10);
+		TNT1 A 0 doomb_Meat_Death_Small();
 		TNT1 A 0 A_SpawnProjectile ("XDeathImpLeg", 5, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnItem("RipGuts", 0, 10);
+		TNT1 A 0 doomb_Rip_Guts();
 		TNT1 A 0 A_NoBlocking();
 		Stop;
 }
@@ -1042,9 +1054,9 @@ States
 		
 	Death:
 		TNT1 A 0 A_SpawnProjectile ("XDeathHalfImpUpperPart32", 32, 0, random (0, 360), 2, random (10, 60));
-		TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10);
+		TNT1 A 0 doomb_Meat_Death_Small();
 		TNT1 AA 0 A_SpawnProjectile ("XDeathImpLeg", 5, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnItem("RipGuts", 0, 10);
+		TNT1 A 0 doomb_Rip_Guts();
 		TNT1 A 0 A_NoBlocking();
 		Stop;
 }
@@ -1188,7 +1200,14 @@ Death.cutless:
 	TNT1 A 0 A_XScream();
 	TNT1 O 0 A_NoBlocking();
 	TNT1 A 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
-	TROG A 2 A_SpawnProjectile ("RipImp", 0, 0, random (0, 360), 2, random (0, 160));
+	TROG A 2;
+
+	TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160));
+	TNT1 AAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
+	TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
+	TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160));
+	TNT1 A 0 A_SpawnProjectile ("XDeathHalfImp", 40, 0, random (0, 360), 2, random (0, 160));
+
 	TROG AAA 4 doomb_spawn_big_blood(30);
 	TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
 	TROG BCDEFGH 8;
@@ -1951,10 +1970,14 @@ Spawn:
 	TROD J -1;
 	Stop;
 Death:
-	TNT1 A 0 A_SpawnItem("RipImp", 0, 10);
-	TNT1 A 0 A_SpawnItem("MeatDeathSmall", 0, 10);
+	TNT1 A 0 doomb_Meat_Death_Small();
 	TNT1 A 0 A_SpawnItem("DeadImp_Half");
 	TNT1 A 0 A_NoBlocking();
+	TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160));
+	TNT1 AAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
+	TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
+	TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160));
+	TNT1 A 0 A_SpawnProjectile ("XDeathHalfImp", 40, 0, random (0, 360), 2, random (0, 160));
 	Stop;
 }
 }		

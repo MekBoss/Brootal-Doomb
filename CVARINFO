@@ -6,7 +6,7 @@ server bool doomb_show_flares = true;
 server bool doomb_spawn_blood = true;
 server bool doomb_body_parts = true;
 server int doomb_melee_weapon_slot_number = 1;
-
+server noarchive bool doomb_torches_fire = true;
 
 
 server int bd_bloodamount	= 2;

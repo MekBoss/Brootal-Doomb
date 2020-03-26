@@ -124,44 +124,6 @@ CLASS SpiderDeath : doomb_body_base {
 }
 
 
-CLASS HalfManDeath : doomb_body_base { 
-	Default {
-		
-		Radius 1;
-		Height 1;
-		Scale 0.8;
-		Speed 0;
-		Mass 1;
-		
-		BounceFactor 0.5;
-		+DOOMBOUNCE;
-		+MISSILE;
-		+NOBLOCKMAP;
-		+NOTELEPORT;
-		+MOVEWITHSECTOR;
-		+NOGRAVITY;
-		+NOCLIP;
-		+DONTSPLASH;
-	}
-	States
-	{
-		Spawn:
-			tnt1 a 0 A_Explode(3,600, 0, 0, 0, 0, 0, "none", "blood");
-			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 35, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130));
-			TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
-			
-			TNT1 AA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeath3", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeath4", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
-		Death:
-			TNT1 A 0;
-			Stop;
-	}
-}
 
 CLASS MeatDeath : doomb_body_base { 
 	Default {
@@ -255,75 +217,6 @@ CLASS MuchMeatDeath : doomb_body_base {
 
 
 
-CLASS RipGuts : doomb_body_base { 
-	Default {
-		
-		Radius 1;
-		Height 1;
-		Scale 0.8;
-		Speed 0;
-		Mass 1;
-		
-		BounceFactor 0.5;
-		+DOOMBOUNCE;
-		+MISSILE;
-		+NOBLOCKMAP;
-		+NOTELEPORT;
-		+MOVEWITHSECTOR;
-		+NOGRAVITY;
-		+NOCLIP;
-		+DONTSPLASH;
-	}
-	States
-	{
-		Spawn:
-			TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160));
-		Death:
-			TNT1 A 0;
-			Stop;
-	}
-}
-
-
-
-
-
-CLASS RipImp : doomb_body_base { 
-	Default {
-		
-		
-		Radius 1;
-		Height 1;
-		Scale 0.8;
-		Speed 0;
-		Mass 1;
-		
-		BounceFactor 0.5;
-		+DOOMBOUNCE;
-		+MISSILE;
-		+NOBLOCKMAP;
-		+NOTELEPORT;
-		+MOVEWITHSECTOR;
-		+NOGRAVITY;
-		+NOCLIP;
-		+DONTSPLASH;
-	}
-	States
-	{
-		Spawn:
-			TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeathHalfImp", 40, 0, random (0, 360), 2, random (0, 160));
-		Death:
-			TNT1 A 0;
-			Stop;
-	}
-}
 
 
 
@@ -334,46 +227,10 @@ CLASS RipImp : doomb_body_base {
 
 
 
-CLASS NaziHeadExplode: doomb_body_base { 
-	Default {
-		
-		Radius 1;
-		Height 1;
-		Scale 0.8;
-		Speed 0;
-		Mass 1;
-		
-		BounceFactor 0.5;
-		+DOOMBOUNCE;
-		+MISSILE;
-		+NOBLOCKMAP;
-		+NOTELEPORT;
-		+MOVEWITHSECTOR;
-		+NOGRAVITY;
-		+NOCLIP;
-		+DONTSPLASH;
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_PlaySound("misc/xdeath4");
-			TNT1 AAAAA 0 A_SpawnProjectile ("Bloodmist", 0, 0, random (0, 360), 2, random (30, 90));
-			TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
-			TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("head_pieceBlonde", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("head_pieceBlondeBig", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
-			TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
-			TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 90));
-			TNT1 A 10;
-			Stop;
-	}
-}
+
+
+
+
 
 
 
@@ -403,21 +260,20 @@ CLASS ImpHeadExplode: doomb_body_base {
 	States
 	{
 		Spawn:
-			TNT1 A 0;
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			TNT1 AAAAA 0 A_SpawnProjectile ("Bloodmist", 0, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
 			TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("head_piece_dark", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("BrainsImpHeadPiece", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 			TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
 			TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 90));
-			TNT1 A 10;
+
+			TNT1 A 0 A_SpawnProjectile ("head_piece_dark", 0, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("BrainsImpHeadPiece", 0, 0, random (0, 360), 2, random (0, 160));
 			Stop;
 	}
 }
@@ -451,67 +307,22 @@ CLASS HellKnightHeadExplode: doomb_body_base {
 	States
 	{
 		Spawn:
-			TNT1 A 0;
+
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			TNT1 AAAAA 0 A_SpawnProjectile ("Bloodmist", 0, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
-			TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("HellKnightHeadPiece", 0, 0, random (0, 360), 2, random (50, 80));
-			TNT1 A 0 A_SpawnProjectile ("HellKnightHeadPiece2", 0, 0, random (0, 360), 2, random (50, 80));
+			TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 			TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
 			TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 80));
-			TNT1 A 10;
 			Stop;
 	}
 }
 
-
-
-
-CLASS HellKnightHeadExplodeHalf: doomb_body_base { 
-	Default {
-		
-		Radius 1;
-		Height 1;
-		Scale 0.8;
-		Speed 0;
-		Mass 1;
-		
-		BounceFactor 0.5;
-		+DOOMBOUNCE;
-		+MISSILE;
-		+NOBLOCKMAP;
-		+NOTELEPORT;
-		+MOVEWITHSECTOR;
-		+NOGRAVITY;
-		+NOCLIP;
-		+DONTSPLASH;
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_PlaySound("misc/xdeath4");
-			TNT1 AAAA 0 A_SpawnProjectile ("Bloodmist", 0, 0, random (0, 360), 2, random (30, 90));
-			TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
-			TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("HellKnightHeadPiece2", 0, 0, random (0, 360), 2, random (50, 80));
-			TNT1 AA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
-			TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
-			TNT1 AAAAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 80));
-			TNT1 A 10;
-			Stop;
-	}
-}
 
 
 
@@ -630,22 +441,5 @@ CLASS doomb_fatsoEyeballs : doomb_body_base { //Eyeballs
 		Death:
 			MANE Y 800;
 		stop;
-	}
-}
-
-
-CLASS MeatDeathSmall: ImpXDeath { 
-	States
-	{
-		Spawn:
-			TNT1 AA 0 A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("XDeath3", 5, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 10, 0, random (0, 360), 2, random (40, 90));
-			TNT1 A 0 A_SpawnProjectile ("XDeathSkinPiece2", 5, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAAAAAA 0 A_SpawnProjectile ("SmallSuperGore", 10, 0, random (0, 360), 2, random (10, 170));
-			TNT1 AAAA 0 A_SpawnProjectile ("BloodMistSmall", 35, 0, random (0, 360), 2, random (40, 90));
-		Stop;
 	}
 }

@@ -367,7 +367,7 @@ states
 		TNT1 A 0 A_SpawnProjectile ("XDeath2", 1, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath3", 1, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath4", 1, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("RipGuts", 50, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_Rip_Guts();
 		TNT1 A 0 A_SpawnProjectile ("XDeathHalfMarine", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
 		XPL2 A 10 A_XScream;

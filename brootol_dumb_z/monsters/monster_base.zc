@@ -593,6 +593,57 @@ protected void doomb_destroy_monster_fatality_camera()
 	}
 }
 
+
+protected void doomb_head_explosion(string main_piece  = "", string additional_piece = "")
+{
+	A_PlaySound("misc/xdeath4");
+
+	for(uint i = 0; i < 4; i++)
+	{
+		A_SpawnProjectile ("Bloodmist", 0, 0, random (0, 360), 2, random (30, 90));
+		A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
+		A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
+		A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
+		A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
+		A_SpawnProjectile ("head_piece_dark", 0, 0, random (0, 360), 2, random (0, 160));
+	}
+
+	A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 90));
+	A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
+
+	/*
+	HellKnightHeadPiece
+	HellKnightHeadPiece2
+
+doomb_fatsoEyeballs
+jawBig
+
+	*/
+
+}
+
+protected void doomb_Meat_Death_Small()
+{
+	A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeath3", 5, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("Brutal_FlyingBlood", 10, 0, random (0, 360), 2, random (40, 90));
+	A_SpawnProjectile ("XDeathSkinPiece2", 5, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("SmallSuperGore", 10, 0, random (0, 360), 2, random (10, 170));
+	A_SpawnProjectile ("BloodMistSmall", 35, 0, random (0, 360), 2, random (40, 90));
+}
+
+protected void doomb_Rip_Guts()
+{
+	A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160));
+}
+
 }
 
 /*

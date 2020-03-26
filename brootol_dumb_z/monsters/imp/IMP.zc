@@ -554,7 +554,13 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp {
 			TNT1 A 0 A_XScream;
 			TNT1 O 0 A_NoBlocking;
 			TNT1 A 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
-			TROG A 2 A_SpawnProjectile ("RipImp", 0, 0, random (0, 360), 2, random (0, 160));
+			TROG A 2;
+			TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("XDeathHalfImp", 40, 0, random (0, 360), 2, random (0, 160));
+
 			TROG AAA 4 doomb_spawn_big_blood(30);
 			TROG BCDEFGH 8;
 			TNT1 A 0 doomb_spawn_bloodpool();
@@ -718,7 +724,7 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp {
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 A_NoBlocking;
 		TROO KL 2;
-		TNT1 AA 0 A_SpawnItem("MeatDeathSmall");
+		TNT1 AA 0 doomb_Meat_Death_Small();
 		TNT1 AAA 0 bright A_SpawnProjectile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180));
 		TNT1 AAAA 0 bright A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180));
 		TNT1 AA 0 bright A_SpawnProjectile ("XDeath2", 55, 0, random (0, 360), 2, random (30, 180));
@@ -953,11 +959,15 @@ CLASS FireBall_ : doomb_boolet_base Replaces DoomImpBall {
 States
 {
 	Spawn:
-		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater");
-	Spawn1:
 		FR7X AB 1 BRIGHT
 		{
-			if(frame == 1)
+			if(waterlevel > 1)
+			{
+				A_SpawnItem("FireballFlare",0,0);
+				A_SpawnProjectile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180));
+			}
+
+			else if(frame == 1)
 			{
 				actor a = doomb_show_effect("FlameTrails", (prev-pos), (0, 0, frandom(0, 1) ), (0.35, 0) );
 				if(a)
@@ -971,20 +981,12 @@ States
 		}
 	Loop;
 
-	SpawnUnderwater:
-		FR7X AB 1 BRIGHT
-		{
-			A_SpawnItem("FireballFlare",0,0);
-			A_SpawnProjectile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180));
-		}
-	Goto Spawn1;
-		
 	Death:
 		TNT1 A 0 {if(waterlevel > 1) spawn("UnderwaterExplosion", pos:self.pos); }
 		EXPL AAAAAA 0 doomb_show_effect("SmallFireTrail", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
-		FRFX CDEFGHIJKLMNOP 1 BRIGHT {spawn("RedFlare", pos);}
 		TNT1 A 0 doomb_show_effect("TinyBurningPiece", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
 		TNT1 AAAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+		FRFX CDEFGHIJKLMNOP 1 BRIGHT {spawn("RedFlare", pos);}
 		TNT1 AAAA 19 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 	Stop;
 }
