@@ -3,7 +3,7 @@ version "3.7.2"
 // IF YOU WANT TO USE STUFF FROM THIS MOD, GIVE ME CREDITS
 
 //Ok
-//Change my mind after millions of "tnt1 a 0"
+//Change my mind after millions of "tnt1 aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa 0"
 //Or not
 
 
@@ -27,25 +27,23 @@ CLASS FallingHeight : Inventory {
 //monsters base must go before gore
 //because gore base inherits from monster base
 #include "brootol_dumb_z/monsters/monster_base.zc"
+#include "brootol_dumb_z/gore/bodies/gore_base.zc"
 #include "brootol_dumb_z/weapons/weapon_base.zc"
 #include "brootol_dumb_z/weapons/weapon_dual_base.zc"
-
-#include "brootol_dumb_z/gore/bodies/gore_base.zc"
 
 #include "brootol_dumb_z/sfx/sfx_main.zc"
 #include "brootol_dumb_z/sfx/sfx_base.zc"
 #include "brootol_dumb_z/sfx/sfx_states.zc"
 
 //sfx
-#include "brootol_dumb_z/sfx/SMOKE.zc"
-#include "brootol_dumb_z/sfx/CASING.zc"
-#include "brootol_dumb_z/sfx/FIRE.zc"
+#include "brootol_dumb_z/sfx/model_dummies.zc"
 #include "brootol_dumb_z/sfx/SPARKS.zc"
+
 #include "brootol_dumb_z/sfx/FLARES.zc"
 #include "brootol_dumb_z/sfx/PUFF.zc"
-
 #include "brootol_dumb_z/sfx/PARTICLES.zc"
 
+#include "brootol_dumb_z/sfx/CASING.zc"
 
 //Guns Guns Guns
 #include "brootol_dumb_z/weapons/MELEE.zc"
@@ -104,7 +102,9 @@ CLASS FallingHeight : Inventory {
 #include "brootol_dumb_z/decor/LAMPS.zc"
 #include "brootol_dumb_z/decor/NATURAL.zc"
 #include "brootol_dumb_z/decor/FIREWORKS.zc"
-#include "brootol_dumb_z/decor/TORCHES.zc"
+#include "brootol_dumb_z/decor/lighting/TORCHES.zc"
+#include "brootol_dumb_z/decor/lighting/barrels.zc"
+
 #include "brootol_dumb_z/decor/DEAD.zc"
 
 
@@ -160,6 +160,8 @@ CLASS FallingHeight : Inventory {
 #include "brootol_dumb_z/monsters/bosses/CYBERDEMON.zc"
 #include "brootol_dumb_z/monsters/bosses/cyber_gore.zc"
 #include "brootol_dumb_z/monsters/bosses/MASTERMIND.zc"
+#include "brootol_dumb_z/monsters/bosses/SpecialDoom1Boses.zc"
+
 #include "brootol_dumb_z/monsters/NAZIS.zc"
 #include "brootol_dumb_z/monsters/BELPHEGOR.zc"
 #include "brootol_dumb_z/monsters/JUGGERNAUT.zc"
@@ -192,7 +194,6 @@ set acsreturn value in sklil definition
 #include "brootol_dumb_z/actors_dump/bossbrain.zc"
 #include "brootol_dumb_z/actors_dump/bossbrain.zc"
 #include "brootol_dumb_z/actors_dump/epic2stuff.zc"
-#include "brootol_dumb_z/actors_dump/SpecialDoom1Boses.zc"
 #include "brootol_dumb_z/actors_dump/stealthmonsters.zc"
 #include "brootol_dumb_z/actors_dump/teleport.zc"
 #include "brootol_dumb_z/actors_dump/water.zc"

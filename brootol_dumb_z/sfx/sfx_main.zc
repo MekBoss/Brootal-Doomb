@@ -1,7 +1,9 @@
 class doomb_sfx_main : eventhandler
 {
+//store (almost) all effects here
 private array<visual_sfx> vis_sfx;
 
+//precache some effects
 override void worldloaded(worldevent e)
 {
 	for(uint i = 1; i < 100; i++)

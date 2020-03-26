@@ -1,0 +1,130 @@
+
+CLASS BurningBarrel1 : doomb_decoration_base replaces BurningBarrel { 
+Default {
+	+LOOKALLAROUND;
+	+SHOOTABLE;
+	+NOBLOOD;
+	+NOTARGET;
+	+FRIENDLY;
+	+SOLID;
+	+RANDOMIZE;
+	Radius 16;
+	height 40;
+	Health 30;
+	DamageFactor "kick", 5.0;
+	Damagefactor "punch", 5.0;
+}
+states
+{
+	Spawn:
+		TNT1 A 0 A_Playsound("BDFireplace", 1, 0.4, true);
+		TNT1 A 0 bright doomb_show_effect("BigBlackSmoke", (0, 0, 50),velocity:(frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0, 2) ), visual_size: (frandom(0.2, 0.4), 0) );
+		TNT1 A 0 bright doomb_show_effect("RealFlameTrailsSmall", (frandom(-2,2), frandom(-2,2), 35), (frandom(-1, 1), frandom(-1, 1), frandom(0.5, 2) ) );
+		BURB AAA 1 bright {Spawn("RedFlare", pos + (0, 0, 42));}
+	Loop;
+
+	death:
+	Pain.Kick:
+	Death.punch:
+	Death.Kick:
+		TNT1 A 0 A_StopSound(1);
+		TNT1 A 1 A_FaceTarget();
+		TNT1 A 0 A_NoBlocking();
+		TNT1 AAAAAAA 0 A_SpawnProjectile ("FlyingBurningFuel", 24, 0, random (150, 210), 2, - random (0, 40));
+		BARK DE 3;
+		BARK F -1;
+		Stop;
+		
+	Death.Explosive_Impact:
+		TNT1 A 0 A_NoBlocking();
+		TNT1 A 0 A_StopSound(1);
+		TNT1 AAAAAAAAAA 0 A_SpawnProjectile ("FlyingBurningFuel", 24, 0, random (0, 360), 2, - random (30, 80));
+		TNT1 A 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+		TNT1 A 0 A_Explode(160,200);
+		TNT1 AAAAAA 0
+		{
+			doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
+			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
+			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
+			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(0.9, 1.4), 0) );
+		}
+
+		TNT1 AAAAAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+		TNT1 AAA 0 A_SpawnProjectile ("BarrelShrapnel1", 25, 0, random (0, 360), 2, - random (30, 160));
+		TNT1 AAA 0 A_SpawnProjectile ("BarrelShrapnel2", 15, 0, random (0, 360), 2, - random (30, 160));
+		TNT1 AAA 0 A_SpawnProjectile ("BarrelShrapnel3", 5, 0, random (0, 360), 2, - random (30, 160));
+		TNT1 AAA 0 A_SpawnProjectile ("BarrelShrapnel4", 5, 0, random (0, 360), 2, - random (30, 160));
+		tnt1 a 0
+		{
+			a_setscale(3.0);
+			a_setrenderstyle(0.12, STYLE_add);
+			
+		}
+		SHWK ACEGIKMOQ 1 A_FadeOut(0.01);
+	Stop;
+}
+}
+
+
+CLASS FlyingBurningFuel : doomb_boolet_base
+{ 
+	Default {
+		
+		Radius 8;
+		Height 8;
+		Speed 10;
+		Scale 0.8;
+		Mass 1;
+		Damage 3;
+		DamageType "fire";
+		Decal "";
+		Mass 1;
+	}
+	States
+	{
+		F1RE ABCDEFGHzABCDEFGHy 1 bright;
+		F2RE ABCDEFGH 1 bright;
+		
+		Spawn:
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "Underwater");
+			tnt1 a 0 {vel *= frandom(0.8, 1.5);}
+		fly_loop:
+			TNT1 A 2
+			{
+				doomb_show_effect("FlameTrails", (0, 0, 25), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+				vel.z -= 1;
+			}
+		Loop;
+
+		Death:
+			TNT1 AAAAAA 0 doomb_show_effect("FlameTrails", (0, 0, 25), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
+			F1RE A 0 A_Playsound("props/redfire");
+			"####" ABCDEFGHzABCDEFGHyABCDEFGHzABCDEFGHyABCDEFGHzABCDEFGHyABCDEFGHzABCDEFGHy 1 bright light ("SMALLREDTORCH")
+			{
+				Spawn("RedFlareMedium", pos+(0, 0, 32) );
+				doomb_show_effect("ExplosionSmoke", (0, 0, 80), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
+				if(frame == 25)
+				{
+					sprite = getspriteindex("f2re");
+					tics = 0;
+				}
+				if(frame == 24)
+				{
+					sprite = getspriteindex("f1re");
+					tics = 0;
+					A_Explode(16, 80, 0);
+				}
+			}
+			TNT1 AAAAAAAAAAA 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+			TNT1 AAAAA 3 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
+			TNT1 AAA 8 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
+		Stop;
+		
+		Underwater:
+		Splash:
+			TNT1 A 0;
+			Stop;
+	}
+}	

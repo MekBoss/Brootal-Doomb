@@ -1,100 +1,8 @@
-CLASS Kicking : Inventory {
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-CLASS Berserker : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-CLASS KickAttackLow : ACTOR { 
-Default {
-	
-	+NOGRAVITY;
-}
-}
-
-CLASS NoFatality : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-CLASS KickHasHit : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-
-CLASS ShotgunguyHead: Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-
-CLASS HeavyStrikeRight : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-CLASS HeavyStrikeLeft : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-CLASS HeavyStrikeUpWard : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-
-
-
-CLASS PSeq1 : Inventory { 
-Default {
-	
-	inventory.maxamount 2;
-}
-}
-
-CLASS PSeq2 : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
-
-CLASS PSeq3 : Inventory { 
-Default {
-	
-	inventory.maxamount 1;
-}
-}
-
 // --------------------------------------------------------------------------
 //
 // Melee Weapons
 //
 // --------------------------------------------------------------------------
-
-
 CLASS Melee_Attacks : doomb_weapon_base Replaces Fist { 
 Default {
 	Weapon.SlotNumber 1;
@@ -137,7 +45,11 @@ States
 		THEA ABCDCD 7 BRIGHT
 		{
 			A_WeaponReady();
-			A_FireProjectile("LostSoulOnHandFireSpawner",40,0,0,5);
+			vector3 off = (AngleToVector(40, 5), self.pitch);
+			invoker.doomb_show_effect("SoulTrails", off, (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+			invoker.doomb_show_effect("SoulTrails", off, (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+			invoker.doomb_show_effect("SoulTrails", off, (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+			invoker.doomb_show_effect("SoulTrails", off, (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 		}
 	Goto ready_loop;
 
@@ -207,13 +119,6 @@ States
 		
 
 		
-	KillLS:
-		THEA E 8;
-		TNT1 A 0 A_FireProjectile("LSOHK",40,0,0,5);
-		THEA F 8;
-		THEA F 1 A_Lower;
-	Wait;
-		
 		////////////////////////////////////////////// Normal Attacks
 		
 	Fire:
@@ -247,7 +152,6 @@ States
 		PUN2 AC 1;
 		TNT1 A 0 A_PlaySound("skeleton/swing");
 		PUNG A 0 A_FireProjectile("MeleeStrikeNormal", 0, 0, 0, -9);
-		//PUN2 A 0 A_Custompunch(25,1,1,"MeleePuff")
 		PUN2 DE 2;
 		TNT1 A 0 A_TakeInventory("Kicking", 1);
 		TNT1 A 0 A_GiveInventory("PSeq2", 1);
@@ -356,7 +260,6 @@ States
 		TNT1 A 0 A_PlaySound("weapons/gswing");
 		
 		PUNG A 0 A_FireProjectile("MeleeStrike1Fatality", 0, 0, 0, -9);
-		//PUN2 A 0 A_Custompunch(25,1,1,"MeleePuff")
 		PUN2 DD 2;
 		TNT1 A 0 A_TakeInventory("Kicking", 1);
 		TNT1 A 0 A_GiveInventory("PSeq2", 1);
@@ -440,7 +343,6 @@ States
 	KickRight:
 		KIK2 ABC 1;
 		TNT1 A 0 A_PlaySound("KICK");
-		
 		TNT1 A 0 A_SetPitch(-6 + pitch);
 		KIK2 D 1;
 		PUN2 A 0 A_Custompunch(35,0,1,"MeleePuff");
@@ -453,7 +355,6 @@ States
 	KickLeft:
 		KIK1 ABC 1;
 		TNT1 A 0 A_PlaySound("KICK");
-		
 		TNT1 A 0 A_SetPitch(-6 + pitch);
 		KIK1 D 1;
 		PUN2 A 0 A_Custompunch(35,0,1,"MeleePuff");
@@ -527,7 +428,6 @@ States
 		PUN2 AC 1;
 		TNT1 A 0 A_PlaySound("weapons/gswing");
 		PUNG A 0 A_FireProjectile("MeleeStrike1Berserked", 0, 0, 0, -9);
-		//PUN2 A 0 A_Custompunch(25,1,1,"MeleePuff")
 		PUN2 DD 2;
 		TNT1 A 0 A_TakeInventory("Kicking", 1);
 		TNT1 A 0 A_GiveInventory("PSeq2", 1);
@@ -891,5 +791,96 @@ States
 		TNT1 A 0;
 		TNT1 A 0 A_Explode(20,30, 0);
 		Stop;
+}
+}
+
+
+CLASS Kicking : Inventory {
+Default {
+	
+	inventory.maxamount 1;
+}
+}
+
+CLASS Berserker : Inventory { 
+Default {
+	
+	inventory.maxamount 1;
+}
+}
+
+CLASS KickAttackLow : ACTOR { 
+Default {
+	
+	+NOGRAVITY;
+}
+}
+
+CLASS NoFatality : Inventory { 
+Default {
+	
+	inventory.maxamount 1;
+}
+}
+
+CLASS KickHasHit : Inventory { 
+Default {
+	
+	inventory.maxamount 1;
+}
+}
+
+
+CLASS ShotgunguyHead: Inventory { 
+Default {
+	
+	inventory.maxamount 1;
+}
+}
+
+
+CLASS HeavyStrikeRight : Inventory { 
+Default {
+	
+	inventory.maxamount 1;
+}
+}
+
+CLASS HeavyStrikeLeft : Inventory { 
+Default {
+	
+	inventory.maxamount 1;
+}
+}
+
+CLASS HeavyStrikeUpWard : Inventory { 
+Default {
+	
+	inventory.maxamount 1;
+}
+}
+
+
+
+
+CLASS PSeq1 : Inventory { 
+Default {
+	
+	inventory.maxamount 2;
+}
+}
+
+CLASS PSeq2 : Inventory { 
+Default {
+	
+	inventory.maxamount 1;
+}
+}
+
+
+CLASS PSeq3 : Inventory { 
+Default {
+	
+	inventory.maxamount 1;
 }
 }

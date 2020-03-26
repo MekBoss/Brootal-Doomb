@@ -324,28 +324,28 @@ protected visual_sfx doomb_show_effect(statelabel effect_name, vector3 offset = 
 	if(!sfx) return null;
 	if(!owner) return null;
 
-	vector3 o = 
+	vector3 off = 
 	(
 		cos(owner.angle) * cos(owner.pitch),//x
 		sin(owner.angle) * cos(owner.pitch),//y
 		-sin(owner.pitch)//z
 	);
 
-	vector3 oo = o;
-	oo *= 6;
-	oo.z += (owner.Player.viewz - owner.player.mo.pos.z - 3) * owner.player.crouchfactor;
+	vector3 off_primar = off;
+	off_primar *= 6;
+	off_primar.z += (owner.Player.viewz - owner.player.mo.pos.z - 3) * owner.player.crouchfactor;
 
-	offset.x *= o.x;
-	offset.y *= o.y;
-	offset.z *= o.z;
+	offset.x *= off.x;
+	offset.y *= off.y;
+	offset.z *= off.z;
 
-	oo += offset;
+	off_primar += offset;
 
-	vector3 v = o;
+	vector3 v = off;
 	if(velocity != (0, 0, 0))
 		v += (frandom(-0.1, 0.1), frandom(-0.1, 0.1), frandom(-0.1, 0.1) );
 
-	return (visual_sfx)(doomb_sfx_main(self.sfx).show_some_effect(owner, effect_name, oo, v, visual_size, translucency) );
+	return (visual_sfx)(doomb_sfx_main(self.sfx).show_some_effect(owner, effect_name, off_primar, v, visual_size, translucency) );
 }
 
 

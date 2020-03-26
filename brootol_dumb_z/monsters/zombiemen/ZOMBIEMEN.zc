@@ -1303,7 +1303,6 @@ Default {
 		TNT1 a 0
 		{
 			Radius_Quake (2, 8, 0, 15, 0);//(intensity, duration, damrad, tremrad, tid)
-			A_SpawnItem ("BigRicoChet", 0, -30);
 			if(waterlevel > 1)
 				spawn("UnderwaterExplosion", pos:self.pos);
 			

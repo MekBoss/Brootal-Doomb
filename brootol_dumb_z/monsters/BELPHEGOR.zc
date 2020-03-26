@@ -279,3 +279,37 @@ States
 	Stop;
 }
 }
+
+
+CLASS GreenExplosionFlameTrail: visual_sfx { 
+	Default {
+		Radius 1;
+		Height 1;
+		Speed 3;
+		Damage 0;
+		+NOBLOCKMAP;
+		+NOTELEPORT;
+		+DONTSPLASH;
+		+MISSILE;
+		+FORCEXYBILLBOARD;
+		+CLIENTSIDEONLY;
+		+NOINTERACTION;
+		+NOCLIP;
+		RenderStyle "Add";
+		DamageType "fire";
+		Scale 0.5;
+		Alpha 1;
+		Gravity 0;
+
+		Scale 2.2;
+		Speed 2;
+
+		Scale 0.5;
+	}
+	States
+	{
+		Spawn:
+			EXPG ABCDEFG 1 BRIGHT;
+			Stop;
+	}
+}

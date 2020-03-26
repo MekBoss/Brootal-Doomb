@@ -83,7 +83,6 @@ CLASS PEPart2 : doomb_body_base {
 
 		Death:
 			ID22 F 1 A_SpawnItem("Brutal_FlyingBlood",0,5,0,1);
-			TNT1 A 0 A_SpawnItemEx("BarrelExplosionSmokeColumn",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			TNT1 A 0 doomb_show_effect("SmallFireFocus24", (frandom(-0.5, 0.5), frandom(-0.5, 0.5), 0 ) );
 			ID22 F -1;
 		Stop;
