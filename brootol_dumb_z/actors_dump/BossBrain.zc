@@ -22,9 +22,6 @@ CLASS BossBrainReplacer : ACTOR Replaces BossBrain {
 			Stop;
 			
 		Spawn:
-			TNT1 A 0;
-			MARN A 0 ACS_ExecuteAlways(177, 0, 0, 0, 0);//Check if you are playing on an Wolfenstein level
-			TNT1 A 0 Thing_ChangeTID(0,748);
 			BBRN A 1;
 			
 		Spawn2:

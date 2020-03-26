@@ -374,7 +374,7 @@ CLASS CyberXDeath : doomb_body_base {
 			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistXXBig", 100, 0, random (0, 360), 2, random (20, 90));
 			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130));
 			TNT1 AAAAA 0 A_SpawnProjectile ("XDeathBrain1", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAAA 0 A_SpawnProjectile ("XDeathBrain2", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAAA 0 A_SpawnProjectile ("XDeathBrain1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAA 0 A_SpawnProjectile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAA 0 A_SpawnProjectile ("XDeath3", 32, 0, random (0, 360), 2, random (0, 160));

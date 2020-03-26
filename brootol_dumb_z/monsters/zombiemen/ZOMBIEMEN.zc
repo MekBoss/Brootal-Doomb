@@ -525,7 +525,7 @@ States
 		TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeathHalfZombieMan", 32, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAAAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, random (0, 360), 2, random (0, 40));
 		POSX AABCDE 9 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, random (0, 360), 2, random (0, 40));

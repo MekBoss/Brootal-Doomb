@@ -630,7 +630,7 @@ protected void doomb_Meat_Death_Small()
 	A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160));
 	A_SpawnProjectile ("XDeath3", 5, 0, random (0, 360), 2, random (0, 160));
 	A_SpawnProjectile ("Brutal_FlyingBlood", 10, 0, random (0, 360), 2, random (40, 90));
-	A_SpawnProjectile ("XDeathSkinPiece2", 5, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, random (0, 160));
 	A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, random (0, 160));
 	A_SpawnProjectile ("SmallSuperGore", 10, 0, random (0, 360), 2, random (10, 170));
 	A_SpawnProjectile ("BloodMistSmall", 35, 0, random (0, 360), 2, random (40, 90));
@@ -641,8 +641,14 @@ protected void doomb_Rip_Guts()
 	A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (0, 160));
 	A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
 	A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
-	A_SpawnProjectile ("XDeathOrgan2", 24, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
 }
+
+protected void doomb_monster_xdeath()
+{
+
+}
+
 
 }
 
