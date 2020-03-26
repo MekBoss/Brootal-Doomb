@@ -121,16 +121,17 @@ States
 {
 	Spawn:
 	Spawn1:
-		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater");
-		WYVB A 1 Bright A_SpawnItem("RedFlareSmall22",0,0);
-		TNT1 A 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
-		Loop;
-		
-	SpawnUnderwater:
-		WYVB A 1 Bright A_SpawnItem("YellowFlareSmall",0,0);
-		TNT1 A 0 A_SpawnProjectile ("BUBULZ", 0, 0, random (0, 360), 2, - random (0, 180));
-		Goto Spawn1;
-		
+		WYVB A 1 Bright
+		{
+			if(waterlevel > 1)
+				A_SpawnProjectile ("BUBULZ", 0, 0, random (0, 360), 2, - random (0, 180));
+			else
+			{
+				A_SpawnItem("RedFlareSmall22",0,0);
+				doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
+			}
+		}
+	Loop;
 		
 	Death:
 		EXPL A 0 Radius_Quake (2, 8, 0, 15, 0);//(intensity, duration, damrad, tremrad, tid)

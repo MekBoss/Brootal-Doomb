@@ -343,12 +343,12 @@ CLASS BigFireBall : doomb_boolet_base Replaces Fatshot {
 	States
 	{
 		Spawn:
-			MANF AB 1 BRIGHT
+			MANF AB 1 BRIGHT light ("IMPBALL")
 			{
 				if(frame == 1)
 				{
 					A_SpawnItem("RedFlare22");
-				actor a = doomb_show_effect("FlameTrails", (prev-pos), (0, 0, frandom(0, 1) ), (0.5, 0) );
+					actor a = doomb_show_effect("FlameTrails", (prev-pos), (0, 0, frandom(0, 1) ), (0.5, 0) );
 					if(a)
 					{
 						a.setstate(a.curstate+2);

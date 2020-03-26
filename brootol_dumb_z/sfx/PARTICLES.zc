@@ -1,6 +1,3 @@
-//FIXME placeholders to shut modeldef parser
-class ShrapnelParticle : actor{}
-
 CLASS WoodParticle : actor { 
 	Default {
 		

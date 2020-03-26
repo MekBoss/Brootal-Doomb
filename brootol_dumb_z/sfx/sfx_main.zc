@@ -51,8 +51,8 @@ private visual_sfx find_free_effect()
 			actor ss = actor.spawn("visual_sfx", pos:(double.infinity, double.infinity, double.infinity) );
 
 			visual_sfx(ss).set_event(self);
-			vis_sfx.push((visual_sfx)(ss) );
-			return (visual_sfx)(ss);
+			vis_sfx.push(visual_sfx(ss) );
+			return visual_sfx(ss);
 			break;
 		}
 
@@ -68,7 +68,7 @@ private visual_sfx find_free_effect()
 		{
 			if(visual_sfx(self.vis_sfx[i]).is_show_something() == false)
 			{
-				return (visual_sfx)(self.vis_sfx[i]);
+				return visual_sfx(self.vis_sfx[i]);
 				break; 
 			}
 		}

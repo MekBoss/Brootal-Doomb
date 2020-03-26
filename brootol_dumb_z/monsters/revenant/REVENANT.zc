@@ -464,28 +464,27 @@ States
 {
 	Spawn:
 	Spawn1:
-		TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater");
-		FATB AB 1 BRIGHT A_SpawnItem("RedFlareSmall",0,0);
-		TNT1 A 0 doomb_show_effect("FlameTrails", visual_size:(0.1, 0) );
-		TNT1 A 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
-		TNT1 A 0 A_SeekerMissile (4,8);
+		FATB AB 1 BRIGHT light ("ROCKETLIGHT")
+		{
+			A_SpawnItem("RedFlareSmall",0,0);
+			if(waterlevel > 1)
+				A_SpawnProjectile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180));
+			
+			else
+			{
+				doomb_show_effect("FlameTrails", visual_size:(0.1, 0) );
+				doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
+			}
+			A_SeekerMissile (4,8);
+		}
 	Loop;
-		
-		
-	SpawnUnderwater:
-		FATB A 1 BRIGHT A_SpawnItem("RedFlareSmall",0,0);
-		TNT1 A 0 A_SpawnProjectile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180));
-		FATB B 1 BRIGHT A_SpawnItem("RedFlareSmall",0,0);
-		TNT1 A 0 A_SpawnProjectile ("BUBULZ", 0, 0, random (0, 360), 2, random (0, 180));
-		TNT1 A 0 A_SeekerMissile (4,8);
-	loop;
 		
 		
 	Death:
 		EXPL A 0 Radius_Quake (2, 54, 0, 15, 0);
 		TNT1 A 0 A_SpawnItem("WhiteShockwaveSmall");
 		TNT1 A 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-			TNT1 A 0 {if(waterlevel > 1) spawn("UnderwaterExplosion", pos:self.pos); }
+		TNT1 A 0 {if(waterlevel > 1) spawn("UnderwaterExplosion", pos:self.pos); }
 		BFE1 A 0 Bright A_Explode(7, 120, 1);
 		TNT1 AAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 		EXPL A 0;
@@ -493,14 +492,8 @@ States
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 1;
 	Stop;
-
-
-
-
-
-
-
 }
+
 }
 
 CLASS RevenantMissile: RevenantBalls { 

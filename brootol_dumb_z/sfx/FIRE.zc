@@ -96,7 +96,7 @@ CLASS FlyingBurningFuel : visual_sfx {
 			TNT1 AAAAAA 0 doomb_show_effect("FlameTrails", (0, 0, 25), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 			TNT1 A 0 A_SpawnItemEx("BarrelExplosionSmokeColumn",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			F1RE A 0 A_Playsound("props/redfire");
-			"####" ABCDEFGHzABCDEFGHyABCDEFGHzABCDEFGHyABCDEFGHzABCDEFGHyABCDEFGHzABCDEFGHy 1 bright
+			"####" ABCDEFGHzABCDEFGHyABCDEFGHzABCDEFGHyABCDEFGHzABCDEFGHyABCDEFGHzABCDEFGHy 1 bright light ("SMALLREDTORCH")
 			{
 				Spawn("RedFlareMedium", pos+(0, 0, 32) );
 				doomb_show_effect("ExplosionSmoke", (0, 0, 80), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
@@ -215,14 +215,14 @@ CLASS FlamethrowerMissile : doomb_boolet_base
 	{
 		Spawn:
 			TNT1 A 0;
-			FIR3 ABDECGHI 1 BRIGHT
+			FIR3 ABDECGHI 1 BRIGHT light ("BIGREDTORCH128")
 			{
 				A_SpawnItem("RedFlareSmall", 0, 0);
 				doomb_show_effect("TinyBurningPiece", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
 				A_Explode(1, 70, 0);
+				A_SpawnProjectile ("FlamethrowerFireParticles", 6, 0, 0, 2, random (10, 20));
 			}
-			EXPL A 0 A_SpawnProjectile ("FlamethrowerFireParticles", 6, 0, 0, 2, random (10, 20));
-			FIR3 JKL 1 BRIGHT {Spawn("RedFlare", pos);}
+			FIR3 JKL 1 BRIGHT light ("BIGREDTORCH") {Spawn("RedFlare", pos);} 
 			TNT1 A 0 A_Explode(3, 150, 0);
 			EXPL A 0 A_SpawnProjectile ("FlamethrowerFireParticles", 6, 0, random (0, 360), 2, random (10, 90));
 		Stop;

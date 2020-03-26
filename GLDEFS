@@ -549,8 +549,6 @@ flickerlight TRACER_X3
 
 
 // Shadows
-
-
 pointlight GUNSHADOW
 {
     color 0.2 0.2 0.2
@@ -559,7 +557,6 @@ pointlight GUNSHADOW
     dontlightself 1
 
 }
-
 
 pointlight 2SHADOW
 {
@@ -773,48 +770,12 @@ pulselight BLUEITEM
 
 
 
-object FlyingBurningFuel
-{
-    frame F1RE{ light SMALLREDTORCH }
-    frame F2RE{ light SMALLREDTORCH }
-}
-
-
-object FlamethrowerMissile
-{
-    frame FIR3 { light BIGREDTORCH128 }
-	frame TNT1 { light BIGREDTORCH }
-	frame EXPL { light BIGREDTORCH }
-}
-
-
-object NewfagExplosionFlare
-{
-    frame L2NR { light EXPLOSIONFLASH }
-}
-
-object ROCKET2
-{
-    frame MISL { light ROCKETLIGHT }
-}
 
 object CyberBalls
 {
     frame WIVB { light ROCKETLIGHT }
 }
 
-object BigFireBallWithGravity
-{
-    frame MANFA { light IMPBALL   }
-    frame MANFB { light IMPBALL   }
-	frame F1RE { light IMPBALL   }
-	frame F2RE { light IMPBALL   }
-	frame FRFX { light ROCKETLIGHT }
-}
-object RevenantBalls
-{
-    frame FATB { light ROCKETLIGHT }
-}
 object RevenantBalls66
 {
     frame FATB { light ROCKETLIGHT }
