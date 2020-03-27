@@ -161,7 +161,9 @@ States
 		TNT1 A 0 A_SetFloorClip;
 		TNT1 A 0 A_Scream;
 		TNT1 O 0 A_NoBlocking;
-		CCD3 A 6 A_SpawnProjectile ("RipCaco", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("HalfCacoDemon", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath6", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath7", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem ("Dead_lower_caco_Half", 1);
 		CCD3 B -1;
@@ -174,7 +176,9 @@ States
 		TNT1 A 0 A_SetFloorClip;
 		TNT1 A 0 A_Scream;
 		TNT1 O 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnProjectile ("RipCaco", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("HalfCacoDemon", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath6", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath7", 0, 0, random (0, 360), 2, random (0, 160));
 		CCD3 A 6;
 		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem ("Dead_lower_caco_Half", 1);
@@ -330,8 +334,10 @@ States
 		CA2F FFFF 2 A_SpawnProjectile ("Blue_Blood", 25, 0, random (0, 180), 2, random (0, 180));
 		tnt1 AAAAA 0 A_SpawnProjectile ("CacoXDeath7", 25, 0, random (0, 360), 2, random (0, 160));
 		CA2F GH 4 ;
-		CA2F I 20 A_SpawnProjectile ("RipCaco", 35, 0, random (0, 360), 2, random (0, 160));
-		tnt1 A 0
+		TNT1 A 0 A_SpawnProjectile ("HalfCacoDemon", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath6", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath7", 0, 0, random (0, 360), 2, random (0, 160));
+		CA2F I 20
 		{
 			A_Givetotarget("HealthBonus",10);
 			A_SpawnItem ("Dead_lower_caco_Half", 1);
@@ -394,12 +400,20 @@ States
 	Loop;
 
 	Death:
-		TNT1 AAAA 0
+	red_explosion:
+		TNT1 "#" 0
 		{
-			A_SpawnProjectile ("Shoque", 3, 0, random (0, 360), 2, random (0, 360));
-			A_SpawnProjectile ("ShoqueAzul", 3, 0, random (0, 360), 2, random (0, 360));
+			if(frame == 1)
+			{
+				setstatelabel("blue_explosion");
+				return;
+			}
 		}
-		BAL2 CDEF 6 BRIGHT light ("CACOBALL_X2");
+		SHOQ ABCDEFG 2 BRIGHT light ("CACOBALL_X1");
+	stop;
+
+	blue_explosion:
+		SH1K ABCDEFG 2 BRIGHT light ("CACOBALL_X2");
 	Stop;
 }
 }
@@ -425,7 +439,7 @@ Default {
 States
 {
 	Spawn:
-		SHOQ ABCDEFG 1 BRIGHT;
+		
 	Stop;
 }
 }
@@ -451,7 +465,6 @@ Default {
 States
 {
 	Spawn:
-		TNT1 A 1;
 		SH1K ABCDEFG 2 BRIGHT;
 	Stop;
 }

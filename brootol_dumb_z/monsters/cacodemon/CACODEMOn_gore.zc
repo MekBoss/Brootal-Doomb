@@ -33,32 +33,10 @@ States
 	Death:
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Blue_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180));
 		TNT1 A 0 A_SpawnItem("Blue_BloodSpot",0,0,0,1);
-		CCP1 B 3500;
-	stop;
-}
-}
-
-
-CLASS CacoXdeath2: CacoXDeath1
-{ 
-Default
-{
-	SeeSound "misc/xdeath3";
-	DeathSound "misc/xdeath1";
-}
-
-States
-{
-	Spawn:
-		TNT1 AAAAAAAAAA 0 A_SpawnProjectile ("Blue_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180));
-		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
-		CCP1 A 4 A_SpawnProjectile("BlueBloodTrails",0,0,180,2);
-	Loop;
-
-	Death:
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Blue_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180));
-		TNT1 A 0 A_SpawnItem("Blue_BloodSpot",0,0,0,1);
-		CCP1 C 3500;
+		CCP1 B 3500
+		{
+			frame += random(0, 1);
+		}
 	stop;
 }
 }
@@ -84,17 +62,22 @@ States
 	Death:
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Blue_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180));
 		TNT1 A 0 A_SpawnItem("Blue_BloodSpot",0,0,0,1);
-		CCP2 B 3500;
+		CCP2 B 3500
+		{
+			frame += random(0, 1);
+		}
 	stop;
 }
+
 }
 
 CLASS CacoXdeath4: CacoXDeath1
 { 
-Default {
-SeeSound "misc/xdeath3";
-DeathSound "misc/xdeath1";
-Scale 0.9;
+Default
+{
+	SeeSound "misc/xdeath3";
+	DeathSound "misc/xdeath1";
+	Scale 0.9;
 }
 
 States
@@ -108,7 +91,7 @@ States
 	Death:
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Blue_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180));
 		TNT1 A 0 A_SpawnItem("Blue_BloodSpot",0,0,0,1);
-		CCP2 C 3500;
+		CCP2 B 3500;
 	stop;
 }
 }
@@ -131,7 +114,11 @@ States
 	Death:
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Blue_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180));
 		TNT1 A 0 A_SpawnItem("Blue_BloodSpot",0,0,0,1);
-		CCP3 B 3500;
+		CCP3 B 3500
+		{
+			frame += random(0, 1);
+		}
+
 	stop;
 }
 }
@@ -265,27 +252,33 @@ States
 
 	Death.cut:
 		TNT1 O 0 A_Jump(180, 2);
-		Goto Death;
+	Goto Death;
 		TNT1 A 0 A_SetFloorClip;
 		TNT1 A 0 A_SetFloorClip;
 		TNT1 A 0 A_Scream;
 		TNT1 O 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnProjectile ("RipCaco", 0, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("HalfCacoDemon", 0, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath6", 0, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath7", 0, 0, random (0, 360), 2, random (0, 160));
 		CACL A 1;
 		TNT1 A 0 A_SpawnItem ("Dead_lower_caco_Half", 3);
 	Stop;
 	Death.cutless:
 		TNT1 O 0 A_Jump(180, 2);
-		Goto Death;
+	Goto Death;
 		TNT1 A 0 A_SetFloorClip;
 		TNT1 A 0 A_SetFloorClip;
 		TNT1 A 0 A_Scream;
 		TNT1 O 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnProjectile ("RipCaco", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("HalfCacoDemon", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath6", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath7", 0, 0, random (0, 360), 2, random (0, 160));
 		CACL A 1;
 		TNT1 A 0 A_SpawnItem ("Dead_lower_caco_Half", 3);
 	Stop;
-	Death.Plasma: Death.Plasma2:
+
+	Death.Plasma:
+	Death.Plasma2:
 		TNT1 O 0 A_Jump(220, 2);
 		Goto Death;
 		TNT1 A 0;
@@ -420,23 +413,12 @@ States
 {
 	Spawn:
 		FZDC A 200;
-		FZDC A 2;
-		TNT1 A 0 A_PlaySound("ICEBRK1");
-		FZDC A 50;
-		FZDC B 2;
-		FZDC A 50;
-		FZDC B 2;
-		FZDC A 50;
-		FZDC B 2;
-		FZDC A 25;
-		FZDC B 2;
-		FZDC A 25;
-		FZDC B 2;
-		FZDC A 10;
-		FZDC B 2;
-		FZDC A 10;
-		FZDC B 2;
-		FZDC A 10;
+		FZDC A 2 A_PlaySound("ICEBRK1");
+		FZDC ABABABABABABABABABABAB 50
+		{
+			if(frame == 1)
+				tics = 3;
+		}
 		FZDC BABABA 2;
 	Death.Fire:
 		TNT1 A 0 A_NoBlocking;
@@ -486,47 +468,12 @@ CLASS CacoXDeath : doomb_body_base {
 			TNT1 AAAAA 0 A_SpawnProjectile ("BlueSuperGoreSpawner", 10, 0, random (0, 360), 2, random (0, 180));
 			TNT1 AAAAAAAAAA 0 A_SpawnProjectile ("BlueSuperGoreSpawner", 0, 0, random (0, 180), 2, random (0, 180));
 			TNT1 A 0 A_SpawnProjectile ("CacoXDeath1", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("CacoXDeath2", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("CacoXDeath3", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("CacoXDeath4", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("CacoXDeath5", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath6", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAAAAA 0 A_SpawnProjectile ("CacoXDeath7", 0, 0, random (0, 360), 2, random (0, 160));
-		Death:
-			TNT1 A 0;
-			Stop;
+		Stop;
 	}
 }
 
 
-CLASS RipCaco : doomb_body_base { 
-	Default {
-		
-		Radius 1;
-		Height 1;
-		Scale 0.8;
-		Speed 0;
-		Mass 1;
-		
-		BounceFactor 0.5;
-		+DOOMBOUNCE;
-		+MISSILE;
-		+NOBLOCKMAP;
-		+NOTELEPORT;
-		+MOVEWITHSECTOR;
-		+NOGRAVITY;
-		+NOCLIP;
-		+DONTSPLASH;
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_SpawnProjectile ("HalfCacoDemon", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath6", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath7", 0, 0, random (0, 360), 2, random (0, 160));
-		Death:
-			TNT1 A 0;
-			Stop;
-	}
-}

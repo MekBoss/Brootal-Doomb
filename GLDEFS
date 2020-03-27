@@ -380,7 +380,7 @@ flickerlight CACOBALL
 
 flickerlight CACOBALL_X1
 {
-    color 0.1 0.4 0.9
+    color 0.6 0.1 0.0
     size 72
     secondarySize 80
     chance 0.25
@@ -391,14 +391,6 @@ flickerlight CACOBALL_X2
     color 0.0 0.1 0.6
     size 88
     secondarySize 96
-    chance 0.25
-}
-
-flickerlight CACOBALL_X3
-{
-    color 0.0 0.0 0.3
-    size 104
-    secondarySize 112
     chance 0.25
 }
 
