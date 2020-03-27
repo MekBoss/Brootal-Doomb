@@ -1,4 +1,4 @@
-CLASS EvilMarine : doomb_monster_base Replaces WolfensteinSS { 
+CLASS doomb_evil_marine : doomb_monster_base Replaces WolfensteinSS { 
 	Default {
 		
 		Health 200;
@@ -10,7 +10,7 @@ CLASS EvilMarine : doomb_monster_base Replaces WolfensteinSS {
 		Monster;
 		+FLOORCLIP;
 		+QUICKTORETALIATE;
-		Species "EvilMarines";
+		Species "doomb_evil_marines";
 		damagefactor "shotgun", 0.6;
 		damagefactor "cutless", 0.6;
 		damagefactor "saw", 0.8;
@@ -23,9 +23,9 @@ CLASS EvilMarine : doomb_monster_base Replaces WolfensteinSS {
 
 		SeeSound "none";
 		AttackSound "grunt/attack";
-		PainSound "evilmarinepain";
-		DeathSound "evilmarinedeath";
-		ActiveSound "evilmarineactive";
+		PainSound "doomb_evil_marinepain";
+		DeathSound "doomb_evil_marinedeath";
+		ActiveSound "doomb_evil_marineactive";
 		Obituary "%o was eliminated by an evil marine.";
 		DropItem "PLasmaRifle";
 	Translation "112:127=[64,64,64]:[0,0,0]";
@@ -57,7 +57,7 @@ CLASS EvilMarine : doomb_monster_base Replaces WolfensteinSS {
 		Loop;
 	See:
 		TNT1 A 0;
-		TNT1 A 0 A_PlaySound("evilmarinesight", 2);
+		TNT1 A 0 A_PlaySound("doomb_evil_marinesight", 2);
 		Goto ChasePlayer;
 	ChasePlayer:
 		PLAY AAAABBBBCCCCDDDD 2

@@ -703,7 +703,7 @@ override void CheckReplacement(ReplaceEvent e)
 
 		else
 		{
-			e.Replacement == "evilmarine";
+			e.Replacement == "doomb_evil_marine";
 			e.isfinal = true;
 		}
 	}
