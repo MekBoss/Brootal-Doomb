@@ -708,6 +708,23 @@ override void CheckReplacement(ReplaceEvent e)
 		}
 	}
 
+	//also handle specific bfg replacer here
+	if(e.Replacee == "bfg9000")
+	{
+		if(level.levelnum == 31 || level.levelnum == 32)
+		{
+			e.Replacement == "HitlersBuzzsaw";
+			e.isfinal = true;
+		}
+
+		else
+		{
+			e.Replacement == "BIG_FUCKING_GUN";
+			e.isfinal = true;
+		}
+	}
+	
+
 	if(e.Replacee == "Archvile")
 	{
 		e.Replacement == "doomb_archvile";

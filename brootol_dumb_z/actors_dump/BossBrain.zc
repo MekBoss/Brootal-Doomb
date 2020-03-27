@@ -26,9 +26,8 @@ CLASS BossBrainReplacer : ACTOR Replaces BossBrain {
 			
 		Spawn2:
 			BBRN A 3;
-			TNT1 A 0 A_JumpIfInventory("AltEasyMarineVerification", 1, "IsPlayingAlt");
-			BBRN A 100;
-			Loop;
+		Loop;
+
 		Pain:
 			BBRN B 36 A_BrainPain();
 			Goto Spawn2;
@@ -37,63 +36,9 @@ CLASS BossBrainReplacer : ACTOR Replaces BossBrain {
 			BBRN AA 10;
 			BBRN A -1 A_BrainDie();
 			Stop;
-			
-		IsPlayingAlt:
-			TNT1 A 0  A_ChangeCountFlags(false);
-			TNT1 A 0 a_noblocking;
-			TNT1 A 0 A_SpawnItemEx("AltMap01Airplane", 0, 0, 28, 0, 0, 0, 0, SXF_TRANSFERPOINTERS | SXF_TRANSFERAMBUSHFLAG);
-			Stop;
 	}
 }
 
 
 
 
-
-CLASS AltMap01Airplane : ACTOR { 
-	Default {
-		
-		Health 250;
-		Mass 10000000;
-		PainChance 255;
-		+SOLID;
-		+SHOOTABLE;
-		+NOICEDEATH;
-		+OLDRADIUSDMG;
-		PainSound "brain/pain";
-		DeathSound "brain/death";
-		damagefactor "Blood", 0.0;
-		damagefactor "BlueBlood", 0.0;
-		damagefactor "GreenBlood", 0.0 ;
-	}
-	States
-	{
-		BrainExplode:
-			MISL BC 10 Bright;
-			MISL D 10 A_BrainExplode();
-			Stop;
-		Spawn:
-			TNT1 A 1;
-			TNT1 A 0 A_SetAngle(90);
-			TNT1 A 0 A_SpawnItemEx("AltMap01CloudSpawner", 1100, 0, 0);
-		Spawn2:
-			TNT1 A 0 A_PlaySound("AMBAIRP", 1, 1);
-			TNT1 A 10;
-			Loop;
-		Pain:
-			BBRN B 36 A_BrainPain();
-			Goto Spawn;
-		Death:
-			BBRN A 100 A_BrainScream();
-			BBRN AA 10;
-			BBRN A -1 A_BrainDie();
-			Stop;
-			
-		IsPlayingAlt:
-			TNT1 A 0;
-			TNT1 A 0  A_ChangeCountFlags(false);
-			TNT1 A 0 a_noblocking;
-			TNT1 A 0 A_SpawnItemEx("AltMap01Airplane", 0, 0, 28, 0, 0, 0, 0, SXF_TRANSFERPOINTERS | SXF_TRANSFERAMBUSHFLAG);
-			Stop;
-	}
-}
