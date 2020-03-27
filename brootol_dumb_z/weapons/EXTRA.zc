@@ -91,7 +91,7 @@ CLASS BigFireBallWithGravity: BigFireBall {
 		Death:
 			TNT1 A 0;
 			TNT1 A 0 A_Explode (90, 150);
-			Goto ExplosionEffect;
+			Goto burning_loop;
 	}
 }
 

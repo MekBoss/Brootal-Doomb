@@ -537,10 +537,9 @@ CLASS GreenPlasmaBall : doomb_boolet_base {
 	States
 	{
 		Spawn:
-			tnt1 A 0 nodelay {flare_general.doomb_attach_flare(self, "greenlensflarealtsmall", (0, 0, 32));}
-		Spawn1:
 			FRPG JK 1 BRIGHT light ("BARONBALL")
 			{
+				spawn("greenlensflarealtsmall", pos + (0, 0, 32));
 				doomb_show_effect("GreenFlameTrails");
 			}
 		Loop;
