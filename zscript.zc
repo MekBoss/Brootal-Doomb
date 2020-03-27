@@ -190,7 +190,6 @@ G_SkillPropertyInt(SKILLP_ACSReturn)
 set acsreturn value in sklil definition
 */
 
-#include "brootol_dumb_z/actors_dump/EXPLOSIVES.zc"
 #include "brootol_dumb_z/actors_dump/bossbrain.zc"
 #include "brootol_dumb_z/actors_dump/bossbrain.zc"
 #include "brootol_dumb_z/actors_dump/epic2stuff.zc"
@@ -198,6 +197,7 @@ set acsreturn value in sklil definition
 #include "brootol_dumb_z/actors_dump/teleport.zc"
 #include "brootol_dumb_z/actors_dump/water.zc"
 #include "brootol_dumb_z/actors_dump/TRACERS.zc"
+#include "brootol_dumb_z/actors_dump/BrutalChexQuest.zc"
 
 //third party dependencies
 //gutawewr zforms

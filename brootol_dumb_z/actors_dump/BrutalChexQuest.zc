@@ -99,9 +99,9 @@ CLASS Flemoid2 : doomb_monster_base Replaces FlemoidusBipedicus {
 			FLE2 A 10 A_Look();
 			Loop;
 		See:
-			FLE2 AAAA 1 A_CHase("","");
+			FLE2 AAAA 1 A_CHase(null, null);
 			FLE2 BBBB 1 A_Chase();
-			FLE2 CCCC 1 A_Chase("","");
+			FLE2 CCCC 1 A_Chase(null, null);
 			FLE2 DDDD 1 A_Chase();
 			Loop;
 		Missile:
@@ -110,7 +110,7 @@ CLASS Flemoid2 : doomb_monster_base Replaces FlemoidusBipedicus {
 			TNT1 A 0 A_SpawnProjectile("FlemoidAcidBall", 50, 0, random(-5, 5));
 			TNT1 A 0 A_SpawnProjectile("FlemoidAcidBall", 20, 12, random(-5, 5));
 			TNT1 A 0 A_SpawnProjectile("FlemoidAcidBall", 20, -12, random(-5, 5));
-			FLE2 F 6();
+			FLE2 F 6;
 			FLE2 E 6;
 			Goto See;
 		Pain:
@@ -160,8 +160,6 @@ CLASS Flemoid2 : doomb_monster_base Replaces FlemoidusBipedicus {
 
 CLASS Flemoid3 :  doomb_monster_base Replaces  ArmoredFlemoidusBipedicus { 
 	Default {
-		
-		Game Chex;
 		DropItem "";
 		Obituary "$OB_BIPEDICUS";
 		Health 200;
@@ -184,9 +182,9 @@ CLASS Flemoid3 :  doomb_monster_base Replaces  ArmoredFlemoidusBipedicus {
 			FLE3 A 10 A_Look();
 			Loop;
 		See:
-			FLE3 AAAA 1 A_CHase("","");
+			FLE3 AAAA 1 A_CHase(null, null);
 			FLE3 BBBB 1 A_Chase();
-			FLE3 CCCC 1 A_Chase("","");
+			FLE3 CCCC 1 A_Chase(null, null);
 			FLE3 DDDD 1 A_Chase();
 			Loop;
 		Missile:
@@ -194,7 +192,7 @@ CLASS Flemoid3 :  doomb_monster_base Replaces  ArmoredFlemoidusBipedicus {
 			FLE3 EE 6 A_FaceTarget();
 			TNT1 A 0 A_SpawnProjectile("FlemoidAcidBall", 20, 12, random(-5, 5));
 			TNT1 A 0 A_SpawnProjectile("FlemoidAcidBall", 20, -12, random(-5, 5));
-			FLE3 F 6();
+			FLE3 F 6;
 			FLE3 E 6;
 			Goto See;
 		Pain:
@@ -248,8 +246,6 @@ CLASS Flemoid3 :  doomb_monster_base Replaces  ArmoredFlemoidusBipedicus {
 
 CLASS Quadrumpus : doomb_monster_base { 
 	Default {
-		
-		Game Chex;
 		DropItem "";
 		Obituary "$OB_BIPEDICUS";
 		Health 400;
@@ -273,9 +269,9 @@ CLASS Quadrumpus : doomb_monster_base {
 			QUAD A 10 A_Look();
 			Loop;
 		See:
-			QUAD AAAA 1 A_CHase("","");
+			QUAD AAAA 1 A_CHase(null, null);
 			QUAD BBBB 1 A_Chase();
-			QUAD CCCC 1 A_Chase("","");
+			QUAD CCCC 1 A_Chase(null, null);
 			QUAD DDDD 1 A_Chase();
 			Loop;
 		Missile:
@@ -285,7 +281,7 @@ CLASS Quadrumpus : doomb_monster_base {
 			TNT1 A 0 A_SpawnProjectile("FlemoidAcidBall", 30, -22, random(-8, 8));
 			TNT1 A 0 A_SpawnProjectile("FlemoidAcidBall", 50, 22, random(-8, 8));
 			TNT1 A 0 A_SpawnProjectile("FlemoidAcidBall", 50, -22, random(-8, 8));
-			QUAD F 6();
+			QUAD F 6;
 			QUAD E 6;
 			Goto See;
 		Pain:
@@ -337,7 +333,7 @@ CLASS FlemoidAcidBall : doomb_boolet_base {
 		Height 2;
 		Speed 15;
 		FastSpeed 20;
-		Damage (random(10,15));
+		Damagefunction (random(10,15));
 		Projectile;
 		+RANDOMIZE;
 		RenderStyle "Add";
@@ -439,7 +435,7 @@ CLASS FlemoidGib1 : doomb_body_base {
 		+FLOORCLIP;
 		SeeSound "misc/xdeath4";
 		DeathSound "misc/xdeath1";
-		Decal BrutalBloodSplatGreen;
+		Decal "BrutalBloodSplatGreen";
 		Mass 1;
 	}
 	States
@@ -558,7 +554,7 @@ CLASS FlemoidEyes2: FlemoidGib1 {
 CLASS PropStool : ACTOR { 
 	Default {
 		
-		Game Chex;
+		
 		Radius 16;
 		Height 32;
 		Scale 0.7;
@@ -577,7 +573,7 @@ CLASS PropStool : ACTOR {
 CLASS PropHangingPlant1 : ACTOR { 
 	Default {
 		
-		Game Chex;
+		
 		Radius 20;
 		Height 64;
 		+NOGRAVITY;
@@ -594,7 +590,7 @@ CLASS PropHangingPlant1 : ACTOR {
 CLASS PropHangingPlant2 : ACTOR { 
 	Default {
 		
-		Game Chex;
+		
 		Radius 20;
 		Height 64;
 		+NOGRAVITY;
@@ -611,7 +607,7 @@ CLASS PropHangingPlant2 : ACTOR {
 CLASS PropHangingPots : ACTOR { 
 	Default {
 		
-		Game Chex;
+		
 		Radius 20;
 		Height 64;
 		+NOGRAVITY;
@@ -625,7 +621,8 @@ CLASS PropHangingPots : ACTOR {
 	}
 }
 
-CLASS ChexShotgunReplacer Replaces LargeZorcher : ACTOR { 
+CLASS ChexShotgunReplacer  : ACTOR Replaces LargeZorcher
+{ 
 	Default {
 		
 	}
@@ -639,7 +636,7 @@ CLASS ChexShotgunReplacer Replaces LargeZorcher : ACTOR {
 	}
 	
 }
-CLASS ChexMinigunReplacer Replaces RapidZorcher : ACTOR { 
+CLASS ChexMinigunReplacer : ACTOR Replaces RapidZorcher { 
 	Default {
 		
 	}
@@ -653,7 +650,7 @@ CLASS ChexMinigunReplacer Replaces RapidZorcher : ACTOR {
 	}
 	
 }
-CLASS ChexPlasmagunReplacer Replaces PhasingZorcher : ACTOR { 
+CLASS ChexPlasmagunReplacer  : ACTOR Replaces PhasingZorcher{ 
 	Default {
 		
 	}
@@ -667,7 +664,7 @@ CLASS ChexPlasmagunReplacer Replaces PhasingZorcher : ACTOR {
 	}
 	
 }
-CLASS ChexRocketReplacer Replaces ZorchPropulsor : ACTOR { 
+CLASS ChexRocketReplacer  : ACTOR Replaces ZorchPropulsor{ 
 	Default {
 		
 	}
@@ -681,7 +678,7 @@ CLASS ChexRocketReplacer Replaces ZorchPropulsor : ACTOR {
 	}
 	
 }
-CLASS ChexBFGReplacer Replaces LAZDevice : ACTOR { 
+CLASS ChexBFGReplacer : ACTOR Replaces LAZDevice { 
 	Default {
 		
 	}
@@ -715,7 +712,7 @@ CLASS XJunk1 : ACTOR {
 		+THRUGHOST;
 		+THRUACTORS;
 		+FLOORCLIP;
-		damagetype Blood;
+		damagetype "Blood";
 		Mass 1;
 		
 		
@@ -725,9 +722,9 @@ CLASS XJunk1 : ACTOR {
 		BounceFactor 0.5;
 		Speed 14;
 		Gravity 0.8;
-		DeathSound "none";
-		SeeSound "none";
-		Decal None;
+		DeathSound "";
+		SeeSound "";
+		Decal "";
 		Scale 1.0;
 	}
 	States
