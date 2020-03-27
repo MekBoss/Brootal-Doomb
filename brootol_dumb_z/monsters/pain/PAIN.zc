@@ -3,7 +3,8 @@
 // Pain Elemental
 //
 //===========================================================================
-CLASS PainElemental1 : doomb_monster_base Replaces PainElemental { 
+CLASS doomb_elemental : doomb_monster_base
+{ 
 	Default {
 		
 		Health 300;

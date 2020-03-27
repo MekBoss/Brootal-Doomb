@@ -1,4 +1,4 @@
-CLASS ArmlessDemon : Bulldemon
+CLASS ArmlessDemon : doomb_pinky
 { 
 	Default {
 		
@@ -120,7 +120,7 @@ CLASS DeadDemon1: CurbstompedMarine Replaces DeadDemon {
 		Raise:
 			SARG N 5;
 			SARG MLKJI 5;
-			TNT1 A 0 A_SpawnItem ("BullDemon", 3);
+			TNT1 A 0 A_SpawnItem ("doomb_pinky", 3);
 			Stop;
 		Death:
 			TNT1 A 0 A_FaceTarget;

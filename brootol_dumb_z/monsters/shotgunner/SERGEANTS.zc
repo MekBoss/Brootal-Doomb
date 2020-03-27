@@ -6,7 +6,8 @@ CLASS SergeantAmmo : Inventory {
 }
 
 
-CLASS doomb_shotgun_guy : doomb_monster_base Replaces ShotgunGuy { 
+CLASS doomb_shotgun_guy : doomb_monster_base
+{ 
 	Default {
 		
 		doomb_monster_base.headshot_multiplier 2;

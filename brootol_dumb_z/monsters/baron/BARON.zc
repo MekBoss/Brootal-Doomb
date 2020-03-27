@@ -1,5 +1,5 @@
 
-CLASS doomb_baron : doomb_monster_base Replaces BaronofHell
+CLASS doomb_baron : doomb_monster_base
 { 
 Default {
 	

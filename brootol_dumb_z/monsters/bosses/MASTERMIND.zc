@@ -3,7 +3,8 @@
 // Spider boss
 //
 //===========================================================================
-CLASS TheSpiderMastermind : doomb_monster_base Replaces SpiderMastermind{ 
+CLASS doomb_mind : doomb_monster_base
+{ 
 	Default {
 		damagefactor "BFG", 0.2;
 		damagefactor "HKFT", 0.05;

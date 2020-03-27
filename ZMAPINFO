@@ -8,7 +8,8 @@ gameinfo
    "weapon_actions",
    "debugger",
    "doom_player_movement",
-   "on_screen_blood_overlay"
+   "on_screen_blood_overlay",
+   "doomb_monster_spawner"
 }
 
 SpawnNums
@@ -25,11 +26,11 @@ SpawnNums
    119 = DemonStrengthRune
 
    1 = doomb_shotgun_guy
-   7 = TheSpiderMastermind
+   7 = doomb_mind
    153 = BigFireBall
    126 = CacodemonBall_
-   19 = doomb_cacodemon
-   111 = TehArchvile
+   19 = doomb_caco
+   111 = doomb_archvile
    139 = GrenadeBox
    11 = doomb_clip
    5 = doomb_Imp

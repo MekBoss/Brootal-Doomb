@@ -1,4 +1,4 @@
-class Spectro : BullDemon Replaces Spectre
+class doomb_spectrum : doomb_pinky
 {
 default
 {

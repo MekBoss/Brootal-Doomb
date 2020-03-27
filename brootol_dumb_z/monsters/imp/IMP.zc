@@ -3,7 +3,8 @@
 // Imp
 //
 //===========================================================================
-CLASS doomb_Imp : doomb_monster_base Replaces DoomImp { 
+CLASS doomb_Imp : doomb_monster_base Replaces DoomImp
+{ 
 	Default {
 		
 		doomb_monster_base.headshot_multiplier 2;

@@ -74,7 +74,7 @@ protected void doomb_spawn_bloodpool()
 
 		if(a)
 		{
-			if(self.getclassname() == "doomb_cacodemon")
+			if(self.getclassname() == "doomb_caco")
 			{
 				a.A_SetTranslation("red_to_blue");
 				doomb_red_blood_pool(a).color = "blue";

@@ -3,7 +3,8 @@
 // Chaingunner
 //
 //===========================================================================
-CLASS ChaingunGuy1 : doomb_monster_base Replaces ChaingunGuy { 
+CLASS doomb_commando : doomb_monster_base
+{ 
 	Default {
 		
 		doomb_monster_base.headshot_multiplier 2;
@@ -186,7 +187,7 @@ CLASS ChaingunGuy1 : doomb_monster_base Replaces ChaingunGuy {
 		CPOD B 6 A_NoBlocking;
 		CPOD CDEFG 6;
 		TNT1 A 0 doomb_spawn_bloodpool();
-		TNT1 A 1 A_SpawnItem ("DeadChaingunGuy1", 3);
+		TNT1 A 1 A_SpawnItem ("Deaddoomb_commando", 3);
 		Stop;
 		
 	Death.Rare:

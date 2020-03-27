@@ -11,7 +11,8 @@ CLASS EatMe : Inventory {
 	}
 }
 
-CLASS BullDemon : doomb_monster_base Replaces Demon { 
+CLASS doomb_pinky : doomb_monster_base
+{ 
 	Default {
 		
 		GibHealth 35;
@@ -122,7 +123,7 @@ CLASS BullDemon : doomb_monster_base Replaces Demon {
 					name tn = target.getclassname();
 					switch(tn)
 					{
-						case 'ChaingunGuy1': setstatelabel("FatalityComando"); break;
+						case 'doomb_commando': setstatelabel("FatalityComando"); break;
 
 						default: break;
 					}

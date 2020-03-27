@@ -3,7 +3,8 @@
 // Revenant
 //
 //===========================================================================
-CLASS doomb_Revenant : doomb_monster_base Replaces Revenant { 
+CLASS doomb_Revenant : doomb_monster_base
+{ 
 Default {
 	
 	doomb_monster_base.headshot_multiplier 2;

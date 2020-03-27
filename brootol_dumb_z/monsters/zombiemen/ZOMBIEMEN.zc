@@ -26,7 +26,8 @@ Default {
 }
 }
 
-CLASS doomb_zombie_Man : doomb_monster_base Replaces ZombieMan { 
+CLASS doomb_zombie_Man : doomb_monster_base
+{ 
 Default {
 	
 	Health 50;

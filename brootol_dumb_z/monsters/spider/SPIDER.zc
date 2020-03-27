@@ -3,7 +3,8 @@
 // Arachnotron
 //
 //===========================================================================
-CLASS Arachnotron1 : doomb_monster_base replaces Arachnotron { 
+CLASS doomb_arachnotron : doomb_monster_base
+{ 
 	Default {
 		Health 500;
 		Monster;

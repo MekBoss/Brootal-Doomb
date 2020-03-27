@@ -4,7 +4,8 @@
 //
 //===========================================================================
 
-CLASS TehArchvile : doomb_monster_base Replaces Archvile { 
+CLASS doomb_archvile : doomb_monster_base
+{ 
 Default {
 	
 	doomb_monster_base.headshot_multiplier 2;

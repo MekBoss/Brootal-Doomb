@@ -8,7 +8,7 @@ CLASS BrutalStealthArachnotron : Arachnotron Replaces StealthArachnotron {
 }
 
 
-CLASS BrutalStealthArchvile : TehArchvile Replaces StealthArchvile { 
+CLASS BrutalStealthArchvile : doomb_archvile Replaces StealthArchvile { 
 	Default {
 		
 		+STEALTH;
@@ -27,7 +27,7 @@ CLASS BrutalStealthBaron : doomb_baron Replaces StealthBaron {
 	}
 }
 
-CLASS BrutalStealthCacodemon : doomb_cacodemon Replaces StealthCacodemon { 
+CLASS BrutalStealthCacodemon : doomb_caco Replaces StealthCacodemon { 
 	Default {
 		
 		+STEALTH;
@@ -38,7 +38,7 @@ CLASS BrutalStealthCacodemon : doomb_cacodemon Replaces StealthCacodemon {
 
 
 
-CLASS BrutalStealthChaingunGuy : ChaingunGuy1 Replaces StealthChaingunGuy { 
+CLASS BrutalStealthChaingunGuy : doomb_commando Replaces StealthChaingunGuy { 
 	Default {
 		
 		+STEALTH;
@@ -47,7 +47,7 @@ CLASS BrutalStealthChaingunGuy : ChaingunGuy1 Replaces StealthChaingunGuy {
 	}
 }
 
-CLASS BrutalStealthDemon : BullDemon Replaces StealthDemon { 
+CLASS BrutalStealthDemon : doomb_pinky Replaces StealthDemon { 
 	Default {
 		
 		+STEALTH;
