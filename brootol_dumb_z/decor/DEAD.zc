@@ -17,48 +17,41 @@ CLASS VeryDeadMarine: doomb_body_base Replaces DeadMarine {
 			TNT1 AAAAA 0 A_SpawnProjectile ("WallRedBlood", 10, 0, random (0, 360), 2, - random (5, 40));
 			TNT1 AAAAAA 0 A_SpawnItemEx("Brutal_BloodSpot",random(64, -64),- random(64, -64));
 			TNT1 A 0 doomb_spawn_bloodpool();
-			TNT1 A 0 A_CheckSight("Spawn2");
-			TNT1 A 0;
-			TNT1 A 0 A_Jump(160,2);
-			TNT1 A 1 A_SpawnItem("CurbstompedMarine");
-			Goto Death;
-			TNT1 A 0 A_Jump(160,2);
-			TNT1 A 1 A_SpawnItem("AteMarine");
-			Goto Death;
-			TNT1 A 0 A_Jump(160,2);
-			TNT1 A 1 A_SpawnItem("DeadRippedOffMarine");
-			Goto Death;
-			TNT1 A 0 A_Jump(160,2);
-			TNT1 A 1 A_SpawnItem("FuckedMarine");
-			Goto Death;
-			TNT1 A 0 A_Jump(160,2);
-			TNT1 A 1 A_SpawnItem("ADoomedSpaceMarine2");
-			Goto Death;
-			TNT1 A 1 A_SpawnItem("ADoomedSpaceMarine");
-			Stop;
-			
-		Spawn2:
-			TNT1 A 0;
-			TNT1 A 0 A_Jump(160,2);
-			TNT1 A 1 A_SpawnItem("CurbstompedMarine");
-			Goto Death;
-			TNT1 A 0 A_Jump(160,2);
-			TNT1 A 1 A_SpawnItem("AteMarine");
-			Goto Death;
-			TNT1 A 0 A_Jump(160,2);
-			TNT1 A 1 A_SpawnItem("DeadRippedOffMarine");
-			Goto Death;
-			TNT1 A 0 A_Jump(160,2);
-			TNT1 A 1 A_SpawnItem("FuckedMarine");
-			Goto Death;
-			TNT1 A 0 A_Jump(160,2);
-			TNT1 A 1 A_SpawnItem("ADoomedSpaceMarine2");
-			Goto Death;
-			TNT1 A 1 A_SpawnItem("ADoomedSpaceMarine");
-			Stop;
-		Death:
-			TNT1 A 0;
-			Stop;
+			TNT1 A 1
+			{
+				uint choise = random(0, 5);
+
+				switch (choise)
+				{
+					case 0:
+						spawn("CurbstompedMarine", pos);
+					break;
+
+					case 1:
+						Spawn("AteMarine", pos);
+					break;
+
+					case 2:
+						Spawn("DeadRippedOffMarine", pos);
+					break;
+		
+					case 3:
+						Spawn("FuckedMarine", pos);
+					break;
+
+					case 4:
+						Spawn("ADoomedSpaceMarine2", pos);
+					break;
+
+					case 5:
+						Spawn("ADoomedSpaceMarine", pos);
+					break;
+
+					default:
+					break;
+				}
+			}
+		Stop;
 	}
 }
 
@@ -73,45 +66,33 @@ CLASS VeryVeryDeadMarine: doomb_body_base Replaces GibbedMarine {
 			TNT1 AAAAA 0 A_SpawnProjectile ("WallRedBlood", 10, 0, random (0, 360), 2, - random (5, 40));
 			TNT1 AAAAAAA 0 A_SpawnItemEx("Brutal_BloodSpot",random(64, -64),random(64, -64));
 			TNT1 A 0 doomb_spawn_bloodpool();
-			TNT1 A 0 A_CheckSight("Spawn2");
-			TNT1 A 0 A_Jump(160,2);
-			TNT1 A 1 A_SpawnItem("GibsZ");
-			Goto Death;
-			TNT1 A 0 A_Jump(160,2);
-			TNT1 A 1 A_SpawnItem("GibsZ");
-			Goto Death;
-			TNT1 A 0 A_Jump(160,2);
-			TNT1 A 1 A_SpawnItem("VeryDeadCivilian");
-			Goto Death;
-			TNT1 A 1 A_SpawnItem("GutsPile");
-			Stop;
-			
-		Spawn2:
-			TNT1 A 0;
-			
-			TNT1 A 0;
-			TNT1 A 0 A_Jump(160,2);
-			TNT1 A 1 A_SpawnItem("GibsZ");
-			Goto Death;
-			TNT1 A 0 A_Jump(160,2);
-			TNT1 A 1 A_SpawnItem("GibsZ");
-			Goto Death;
-			TNT1 A 0 A_Jump(160,2);
-			TNT1 A 1 A_SpawnItem("VeryDeadCivilian");
-			Goto Death;
-			TNT1 A 1 A_SpawnItem("GutsPile");
-			Stop;
-		Death:
-			TNT1 A 0;
-			Stop;
+			TNT1 A 1
+			{
+				uint choise = random(0, 2);
+
+				switch (choise)
+				{
+					case 0:
+						spawn("GibsZ", pos);
+					break;
+
+					case 1:
+						Spawn("VeryDeadCivilian", pos);
+					break;
+
+					case 2:
+						Spawn("GutsPile", pos);
+					break;
+		
+					default:
+					break;
+				}
+			}
+		Stop;
 	}
 }
 
-CLASS VeryVeryDeadMarine2 : VeryVeryDeadMarine Replaces GibbedMarineExtra { 
-	Default {
-		
-	}
-}
+CLASS VeryVeryDeadMarine2 : VeryVeryDeadMarine Replaces GibbedMarineExtra {}
 
 
 
@@ -293,9 +274,6 @@ CLASS DeadRippedOffMarine: CurbstompedMarine {
 }
 
 CLASS DeadRippedOffMarineRight: DeadRippedOffMarine { 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:
@@ -307,9 +285,6 @@ CLASS DeadRippedOffMarineRight: DeadRippedOffMarine {
 	
 }
 CLASS VeryDeadCivilian: CurbstompedMarine { 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:
@@ -320,14 +295,11 @@ CLASS VeryDeadCivilian: CurbstompedMarine {
 }
 
 CLASS MarineGotOwnedByImp: CurbstompedMarine { 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:
 			IPFP P -1;
-			stop;
+		stop;
 			
 		Death:
 			TNT1 A 0 A_Scream;
@@ -342,9 +314,6 @@ CLASS MarineGotOwnedByImp: CurbstompedMarine {
 	
 }	   
 CLASS ADoomedSpaceMarine: CurbstompedMarine { 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:
@@ -362,9 +331,6 @@ CLASS ADoomedSpaceMarine: CurbstompedMarine {
 	
 }	   
 CLASS ADoomedSpaceMarine2: CurbstompedMarine { 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:
@@ -385,9 +351,6 @@ CLASS ADoomedSpaceMarine2: CurbstompedMarine {
 	
 }
 CLASS DeadHalfMarine: CurbstompedMarine { 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:
@@ -398,7 +361,6 @@ CLASS DeadHalfMarine: CurbstompedMarine {
 }
 CLASS GutsPile : ACTOR { 
 	Default {
-		
 		Radius 1;
 		Height 1;
 	}
@@ -413,7 +375,6 @@ CLASS GutsPile : ACTOR {
 
 CLASS GoryAshes : doomb_body_base { 
 	Default {
-		
 		Radius 1;
 		Height 1;
 	}
@@ -437,35 +398,21 @@ CLASS GoryAshes : doomb_body_base {
 
 CLASS GibsZ : ACTOR { 
 	Default {
-		
 		Radius 1;
 		Height 1;
 	}
 	States
 	{
 		Spawn:
-			TNT1 A 1;
-			TNT1 A 0 A_Jump(255, "Death1", "Death2", "Death3", "Death4");
-			
-		Death1:
-			GIBS Z -1;
-			Stop;
-			
-		Death2:
-			GIBD A -1;
-			Stop;
-			
-		Death3:
-			GIBD B -1;
-			Stop;
-			
-		Death4:
-			GIBD C -1;
-			Stop;
+			GIBS Z -1
+			{
+				frame = randompick(0, 1, 2, 27);
+			}
+		Stop;
 	}
 	
-}// Dead on a stick ---------------
-
+}
+// Dead on a stick ---------------
 CLASS DeadDeadStick: doomb_body_base Replaces DeadStick { 
 	Default {
 		
@@ -818,31 +765,13 @@ CLASS Meat3C: DeadBloodyTwitchB {
 	}
 }
 
-CLASS NSHangingDeadGuyNoLeg : HangingDeadGuyNoLeg Replaces NonsolidMeat3 { 
-	Default {
-		
-		
-		
-	}
-}
+CLASS NSHangingDeadGuyNoLeg : HangingDeadGuyNoLeg Replaces NonsolidMeat3 { }
 
-CLASS NSHangingLeg : HangingLeg Replaces NonsolidMeat5 { 
-	Default {
-		
-		
-		
-	}
-}
+CLASS NSHangingLeg : HangingLeg Replaces NonsolidMeat5 { }
 
 // Nonsolid bloody twitch --------------------------------------------------
 
-CLASS DeadNonsolidTwitch : DeadBloodyTwitch Replaces NonsolidTwitch { 
-	Default {
-		
-		
-		
-	}
-}
+CLASS DeadNonsolidTwitch : DeadBloodyTwitch Replaces NonsolidTwitch { }
 
 // Hanging with no guts ----------------------------------------------------
 

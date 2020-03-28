@@ -217,7 +217,7 @@ CLASS CeilBloodLauncher: Brutal_FLyingBlood  {
 		Spawn:
 			tnt1 a 0 nodelay
 			{
-				if(pos.z + height < ceilingz || waterlevel > 1) destroy();
+				if( (pos.z + height) < ceilingz || waterlevel > 1) destroy();
 			}
 			TNT1 A 3 a_settics(random(3, 12) );
 		Stop;
