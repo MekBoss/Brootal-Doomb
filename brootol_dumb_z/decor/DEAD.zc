@@ -8,7 +8,6 @@ CLASS VeryDeadMarine: doomb_body_base Replaces DeadMarine {
 		+CLIENTSIDEONLY;
 		+FLOORCLIP;
 		Radius 0;
-		
 	}
 	States
 	{
