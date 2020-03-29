@@ -19,7 +19,7 @@ CLASS BurningZombie : doomb_body_base {
 		+DONTSPLASH;
 		
 		Gravity 0.7;
-		bloodtype "DeadBlood";
+		
 		Obituary "%o was near someone in flames.";
 		MaxDropOffHeight 6000;
 		
@@ -152,7 +152,7 @@ CLASS BurningZombieMan : doomb_body_base {
 		+NOBLOCKMONST;
 		
 		Gravity 0.7;
-		bloodtype "DeadBlood";
+		
 		Obituary "%o was near someone in flames.";
 		MaxDropOffHeight 6000;
 		
@@ -2269,7 +2269,7 @@ Default
 	Radius 16;
 	Height 50;
 	Health 300;
-	bloodtype "DeadBlood";
+	
 	PainSound "grunt/pain";
 	PainChance 255;
 	Mass 999999;

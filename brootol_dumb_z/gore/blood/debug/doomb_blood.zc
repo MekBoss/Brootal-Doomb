@@ -15,27 +15,6 @@
 
 
 
-CLASS DeadBlood  : doomb_blood { 
-	Default {
-		Decal "BrutalBloodSplat";
-		+FORCEXYBILLBOARD;
-		+GHOST;
-		+NOBLOCKMAP;
-		+NOGRAVITY;
-		+NOCLIP;
-		-DONTSPLASH;
-	}
-	states
-	{
-		Spawn:
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "null");
-		Spawn:
-			TNT1 A 0;
-			TNT1 AAAAAAAAAAAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			TNT1 A 0 A_SpawnItem ("BloodHit");
-		stop;
-	}
-}
 
 
 CLASS WallRedBlood : doomb_blood { 

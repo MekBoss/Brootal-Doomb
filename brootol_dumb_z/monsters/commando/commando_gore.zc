@@ -609,7 +609,7 @@ Default {
 		Radius 16;
 		Height 50;
 		Health 70;
-		bloodtype "DeadBlood";
+		
 		PainSound "grunt/pain";
 		PainChance 255;
 		Mass 999999;

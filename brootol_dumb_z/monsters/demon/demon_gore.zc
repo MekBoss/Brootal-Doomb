@@ -1000,7 +1000,7 @@ CLASS BurningDemon : doomb_body_base {
 	+DONTSPLASH;
 	
 	Gravity 0.7;
-	bloodtype "DeadBlood";
+	
 	Obituary "%o was near someone in flames.";
 	MaxDropOffHeight 6000;
 	

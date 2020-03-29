@@ -126,7 +126,6 @@ CLASS CurbstompedMarine : doomb_body_base {
 		damagefactor "BFG", 990.0;
 		damagefactor "Kick", 3.0;
 		damagefactor "punch", 2.0;
-		bloodtype "DeadBlood";
 	}
 	States
 	{
@@ -428,7 +427,7 @@ CLASS DeadDeadStick: doomb_body_base Replaces DeadStick {
 		DropItem "Stimpack", 128;
 		DropItem "Clip", 128;
 		DropItem "Shell", 128;
-		bloodtype "DeadBlood";
+		
 		damagefactor "Fire", 0.0;
 		damagefactor "Blood", 0.0;
 		damagefactor "GreenBlood", 0.0;
@@ -481,7 +480,7 @@ CLASS DeadLiveStick: doomb_body_base Replaces LiveStick {
 		damagefactor "Taunt", 0.0;
 		
 		damagefactor "Taunt", 0.0;
-		bloodtype "DeadBlood";
+		
 	}
 	States
 	{
@@ -525,7 +524,7 @@ CLASS DeadBloodyTwitch : doomb_body_base Replaces BloodyTwitch {
 		damagefactor "Taunt", 0.0;
 		
 		damagefactor "Taunt", 0.0;
-		bloodtype "DeadBlood";
+		
 		DropItem "HealthPlus", 128;
 		DropItem "HealthPlus", 128;
 		DropItem "ArmorShard", 128;
@@ -623,7 +622,7 @@ CLASS HangingBody: doomb_body_base Replaces Meat2 {
 		damagefactor "Taunt", 0.0;
 		
 		damagefactor "Taunt", 0.0;
-		bloodtype "DeadBlood";
+		
 	}
 	States
 	{
@@ -706,7 +705,7 @@ CLASS HangingDeadGuyNoLeg: doomb_body_base Replaces Meat3 {
 		damagefactor "Taunt", 0.0;
 		
 		damagefactor "Taunt", 0.0;
-		bloodtype "DeadBlood";
+		
 	}
 	States
 	{
@@ -792,7 +791,7 @@ CLASS DeadHangNoGuts: doomb_body_base Replaces HangNoGuts {
 		damagefactor "Taunt", 0.0;
 		
 		damagefactor "Taunt", 0.0;
-		bloodtype "DeadBlood";
+		
 	}
 	States
 	{
@@ -830,7 +829,7 @@ CLASS DeadHangBNoBrain: doomb_body_base Replaces HangBNoBrain {
 		damagefactor "Taunt", 0.0;
 		
 		damagefactor "Taunt", 0.0;
-		bloodtype "DeadBlood";
+		
 	}
 	States
 	{
@@ -879,7 +878,7 @@ CLASS DeadHangTLookingDown: doomb_body_base Replaces HangTLookingDown {
 		damagefactor "Taunt", 0.0;
 		
 		damagefactor "Taunt", 0.0;
-		bloodtype "DeadBlood";
+		
 	}
 	States
 	{
@@ -924,7 +923,7 @@ CLASS DeadHangTLookingUp: doomb_body_base Replaces HangTLookingUp {
 		damagefactor "Taunt", 0.0;
 		
 		damagefactor "Taunt", 0.0;
-		bloodtype "DeadBlood";
+		
 	}
 	States
 	{
@@ -969,7 +968,7 @@ CLASS DeadHangTSkull: doomb_body_base replaces HangTSkull {
 		damagefactor "Taunt", 0.0;
 		
 		damagefactor "Taunt", 0.0;
-		bloodtype "DeadBlood";
+		
 	}
 	States
 	{
@@ -1014,7 +1013,7 @@ CLASS DeadHangTNoBrain: doomb_body_base Replaces HangTNoBrain {
 		damagefactor "Taunt", 0.0;
 		
 		damagefactor "Taunt", 0.0;
-		bloodtype "DeadBlood";
+		
 	}
 	States
 	{
