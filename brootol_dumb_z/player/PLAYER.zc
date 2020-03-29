@@ -1001,54 +1001,7 @@ MeatShieldCheckerMoving:
 
 }
 
-CLASS Player_Blood : Brutal_Blood { 
-states
-{
-Spawn:
-	tnt1 AAAAAAAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-	tnt1 A 0 A_JumpIf(waterlevel > 1, "Splash");
-	tnt1 A 0 A_SpawnProjectile ("CeilBloodLauncher", -1, 0, random (0, 360), 2, random (50, 130));
-	tnt1 A 0 A_SpawnProjectile ("Brutal_FlyingBlood", 7, 0, random (0, 360), 2, random (0, 160));
-	stop;
-Splash:
-	tnt1 AAA 0 A_SpawnProjectile ("Underblood1", 7, 0, random (0, 360), 2, random (30, 150));
-	stop;
-	
-}
-}
 
-
-CLASS PlayerFlyingBlood : doomb_blood
-{ 
-Default {
-
-
-scale 0.75;
-speed 7;
-health 1;
-radius 8;
-height 1;
-
-+MISSILE;
-+CLIENTSIDEONLY;
-+NOTELEPORT;
-+NOBLOCKMAP;
-+FORCEXYBILLBOARD;
-+EXPLODEONWATER;
-}
-States
-{
-Spawn:
-	tnt1 A 0 A_JumpIf(waterlevel > 1, "null");
-	XDT1 ABCD 4 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-loop;
-
-Death:
-	tnt1 A 1 A_SpawnItem("Brutal_BloodSpot",0,0,0,1);
-	XDT1 EFGHIJKL 3;
-stop;
-}
-}
 
 
 CLASS BloodOnVisor : PowerupGiver{ 

@@ -1098,45 +1098,28 @@ CLASS Gib_SargeLeg: LimbBase {
 	}
 	
 }
-CLASS GibSargeLegPart: TinyGib { 
-	Default {
-		
-		Scale 1.1;
-	}
+CLASS GibSargeLegPart: TinyGib
+{
 	States
 	{
 		Spawn:
-			LEG2 Z 1;
-			Loop;
-		Death:
-			LEG2 Z 1;
-			Loop;
-			
+			LEG2 Z -11;
+		Loop;
 	}
-	
 }
 CLASS GibSargeBoot: TinyGib { 
-	Default {
-		
-		Scale 1.1;
-	}
 	States
 	{
 		Spawn:
-			LEG2 Y 1;
-			Loop;
-		Death:
-			LEG2 Y 1;
-			Loop;
+			LEG2 Y -1;
+		stop;
 			
 	}
-	
 }
 
 
 CLASS XDeathSargeLeg2: XDeathArm1 { 
-	Default {
-		
+Default {
 		Scale 1.1;
 		Speed 8;
 		Gravity 0.4;
@@ -2082,7 +2065,8 @@ CLASS SergeantLastStand2: DyingSergeant {
 		See:
 			ZSLS C 10 A_Chase;
 			TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, 90, 2, random (0, 45));
-			Loop;
+			tnt1 a 0 a_jump(10, "death");
+		Loop;
 			
 		Missile:
 			ZSLS CCCC 10
@@ -2107,6 +2091,6 @@ CLASS SergeantLastStand2: DyingSergeant {
 			SZD4 AAAAA 2 A_SpawnProjectile ("Brutal_LiquidBlood", 25, 0, random (0, 360), 2, random (30, 110));
 			SZD4 BBBBBBBBBBBBBBBBBBBBBBBBB 1 A_SpawnProjectile ("Brutal_LiquidBlood", 10, 0, random (0, 360), 2, random (30, 110));
 			SZD4 B -1 doomb_final_absolution(12, 12);
-			Stop;
+		Stop;
 	}
 }

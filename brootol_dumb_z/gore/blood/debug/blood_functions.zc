@@ -1,0 +1,146 @@
+extend class doomb_monster_base
+{
+
+protected void doomb_head_explosion(string main_piece  = "", string additional_piece = "")
+{
+	A_PlaySound("misc/xdeath4");
+
+	for(uint i = 0; i < 4; i++)
+	{
+		A_SpawnProjectile ("Bloodmist", 0, 0, random (0, 360), 2, random (30, 90));
+		A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
+		A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
+		A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
+		A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
+		A_SpawnProjectile ("head_piece_dark", 0, 0, random (0, 360), 2, random (0, 160));
+	}
+
+	A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 90));
+	A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
+
+	/*
+	HellKnightHeadPiece
+	HellKnightHeadPiece2
+
+	doomb_fatsoEyeballs
+	jaw_big
+
+	*/
+
+}
+
+protected void doomb_Meat_Death_Small()
+{
+	A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeath3", 5, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("Brutal_FlyingBlood", 10, 0, random (0, 360), 2, random (40, 90));
+	A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("SmallSuperGore", 10, 0, random (0, 360), 2, random (10, 170));
+	A_SpawnProjectile ("BloodMistSmall", 35, 0, random (0, 360), 2, random (40, 90));
+}
+
+protected void doomb_Rip_Guts()
+{
+	A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
+}
+
+protected void doomb_monster_xdeath(class<actor> type_1 = null, class<actor> type_2 = null)
+{
+	for(uint i = 0; i < 5; i++)
+	{
+		A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
+		A_SpawnProjectile ("Brutal_FlyingBlood", 35, 0, random (0, 360), 2, random (0, 160));
+		A_SpawnProjectile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180));
+		A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130));
+		A_SpawnProjectile ("BloodMistExtraBig", 30, 0, random (0, 360), 2, random (20, 90));
+	}
+
+	A_SpawnProjectile ("XDeath3", 15, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (0, 160));
+	doomb_spawn_bloodpool();
+	A_SpawnProjectile ("XDeathBrain1", 32, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeathBrain1", 32, 0, random (0, 360), 2, random (0, 160));
+	A_SpawnProjectile ("XDeath4", 32, 0, random (0, 360), 2, random (0, 160));
+
+}
+
+
+protected void doomb_spawn_big_blood(int spawn_height = 0)
+{
+	if(waterlevel < 1)
+    {
+		for(uint i = 0; i < 2 * bd_bloodamount; i++)
+		{
+			actor a = doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			a.setorigin(self.pos + (0, 0, spawn_height), false);
+
+			if( (i % 2) == 0)
+			{
+				a = doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+				a.setorigin(self.pos + (0, 0, spawn_height), false);
+			}
+		}
+	}
+}
+
+protected void doomb_spawn_burned_flesh()
+{
+	A_SpawnProjectile ("XDeathBurnedMeat3", 32, 0, random (0, 360), 2, - random (0, 160));
+	A_SpawnProjectile ("XDeathBurnedMeat2", 32, 0, random (0, 360), 2, - random (0, 160));
+	A_SpawnProjectile ("XDeathBurnedMeat", 32, 0, random (0, 360), 2, - random (0, 160));
+}
+
+protected void doomb_spawn_bloodpool()
+{
+	if(GetFloorTerrain().isLiquid == false)
+	{
+		bool inside_another_pool = false;
+
+		for (Actor check = cursector.thinglist; check != null; check = check.snext)
+		{
+			if (check is "doomb_blood_pool")
+			{
+				if(check.pos.x - check.radius < self.pos.x && check.pos.x + check.radius > self.pos.x)
+				{
+					if(check.pos.y - check.radius < self.pos.y && check.pos.y + check.radius > self.pos.y)
+					{
+						inside_another_pool = true;
+					}
+				}
+			}
+		}
+
+		if(inside_another_pool)
+			return;
+	
+		actor a = spawn("doomb_red_blood_pool", pos:self.pos);
+
+		if(a)
+		{
+			if(self.getclassname() == "doomb_caco")
+			{
+				a.A_SetTranslation("red_to_blue");
+				doomb_red_blood_pool(a).color = "blue";
+			}
+
+			if(self.getclassname() == "doomb_baron" || self.getclassname() == "doomb_knight")
+			{
+				a.A_SetTranslation("red_to_green");
+				doomb_red_blood_pool(a).color = "green";
+			}
+		}
+	}
+}
+
+
+}

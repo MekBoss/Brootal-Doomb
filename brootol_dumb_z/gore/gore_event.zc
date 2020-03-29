@@ -22,9 +22,9 @@ override void worldtick()
 
 private array<doomb_blood> blood_stains;
 
-private doomb_blood doomb_find_freash_blood(class<actor> type = null)
+private doomb_blood doomb_find_fresh_blood(class<actor> type = null)
 {
-    if(type)
+    if(type && type is "doomb_blood")
     {
         for(uint i = 0; i <= blood_stains.size(); i++)
         {
@@ -37,7 +37,7 @@ private doomb_blood doomb_find_freash_blood(class<actor> type = null)
 
             if(blood_stains[i] && blood_stains[i].getclass() == type && doomb_blood(blood_stains[i]).is_active() == false)
             {
-                return (doomb_blood)(blood_stains[i]);
+                return doomb_blood(blood_stains[i]);
             }
 
             else if (!blood_stains[i])
@@ -54,7 +54,7 @@ private doomb_blood doomb_find_freash_blood(class<actor> type = null)
 
 doomb_blood doomb_blood_bank(class<actor> type = null)
 {
-    return doomb_find_freash_blood(type);
+    return doomb_find_fresh_blood(type);
 }
 
 }

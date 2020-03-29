@@ -81,6 +81,8 @@ CLASS FallingHeight : Inventory {
 #include "brootol_dumb_z/gore/gore_fixed.zc"
 
 #include "brootol_dumb_z/gore/BLOOD/BLOOD_base.zc"
+#include "brootol_dumb_z/gore/BLOOD/blood_exported.zc"
+
 #include "brootol_dumb_z/gore/BLOOD/BLOOD.zc"
 
 #include "brootol_dumb_z/gore/GORE!!!.zc"
@@ -198,6 +200,9 @@ set acsreturn value in sklil definition
 #include "brootol_dumb_z/actors_dump/water.zc"
 #include "brootol_dumb_z/actors_dump/TRACERS.zc"
 #include "brootol_dumb_z/actors_dump/BrutalChexQuest.zc"
+
+#include "brootol_dumb_z/gore/blood/debug/doomb_blood.zc"
+
 
 //third party dependencies
 //gutawewr zforms

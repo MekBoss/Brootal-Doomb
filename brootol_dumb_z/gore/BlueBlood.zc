@@ -1,27 +1,4 @@
 
-CLASS Blue_Blood : Brutal_Blood { 
-	Default {
-		
-	translation "168:191=192:207","16:47=240:247";
-	Decal "BlueBloodSplat";
-	}
-}
-
-CLASS Blue_FlyingBlood: Brutal_FlyingBlood { 
-	Default {
- 
-translation "168:191=192:207","16:47=240:247";
-Decal "BlueBloodSplat";
-
-	}
-states
-{
-     Death:
-       TNT1 A 1 A_SpawnItem("Blue_BloodSpot",0,0,0,1);
-        XDT1 EFGHIJKL 3;
-       Stop;
-}
-}
 
 
 //FIXME jumps to forbiden state
@@ -47,25 +24,11 @@ translation "168:191=192:207","16:47=240:247";
 	}
 }
 
-CLASS Blue_BloodSpot: Brutal_BloodSpot { 
-	Default {
- 
-translation "168:191=192:207","16:47=240:247";
-Decal "BlueBloodSplat";
-	}
-}
 
 
 
 
 
-CLASS BlueBloodHit: BloodHit { 
-	Default {
- 
-translation "168:191=192:207","16:47=240:247";
-Decal "BlueBloodSplat";
-	}
-}
 
 
 

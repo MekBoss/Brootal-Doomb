@@ -492,7 +492,8 @@ States
 }
 
 
-CLASS DyingDemon : doomb_blood { 
+CLASS DyingDemon : doomb_body_base
+{ 
 	Default {
 	
 	Radius 8;

@@ -1,20 +1,4 @@
 
-CLASS Green_Blood : Brutal_Blood { 
-	Default {
-		
-translation "168:191=112:127", "16:47=123:127";
-	Decal "GreenBloodSplat";
-	}
- states
- {
-Spawn:
-	TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
-	TNT1 AAAA 0 A_SpawnProjectile ("Green_FlyingBloodTrail", 0, 0, random (0, 360), 2, random (0, 180));
-	TNT1 AAAAAAA 0 A_SpawnProjectile ("Green_FlyingBloodTrail", 0, 0, random (0, 180), 2, random (0, 180));
-	TNT1 A 0 A_SpawnProjectile ("Green_FlyingBlood", 7, 0, random (0, 360), 2, random (30, 150));
-	stop;
-}
-}
 
 CLASS Green_FlyingBlood: Brutal_FlyingBlood { 
 	Default {
@@ -40,13 +24,6 @@ translation "168:191=112:127", "16:47=123:127";
 	}
 }
 
-CLASS Green_BloodSpot: Brutal_BloodSpot { 
-	Default {
- 
-translation "168:191=112:127", "16:47=123:127";
-Decal "GreenBloodSplat";
-	}
-}
 
 
 
@@ -62,44 +39,6 @@ Decal "GreenBloodSplat";
 
 
 
-CLASS GreenBloodmist : Brutal_FlyingBlood { 
-	Default {
- 
-decal "BrutalBloodSuper";
-translation "168:191=112:127", "16:47=123:127";
-+missILE
-+NOTELEPORT
-+NOBLOCKMAP
-+NOBLOCKMONST
-+DONTSPLASH
-+CLIENTSIDEONLY
-+THRUACTORS
-		scale    0.8;
-		radius    2;
-		height    2;
-		speed    8;
-		Gravity 0.4;
-		RenderStyle    "Translucent";
-		alpha    0.9;
-	}
-	states
-	{
-		Spawn:
-			MSBL ABCDEFGH 1;
-			MSBL HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 1 A_FadeOut(0.005);
-			Stop;
-			
-		Death:
-			TNT1 A 0;
-			TNT1 A 0 A_CheckFloor("Disappear");
-			MSBL HHHHHHHH 1 A_FadeOut(0.1);
-			Stop;
-			
-		Disappear:
-			TNT1 A 2;
-			Stop;
-	}
-}
 
 
 CLASS GreenBloodmistBig : GreenBloodmist { 
