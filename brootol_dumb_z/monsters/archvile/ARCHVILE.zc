@@ -124,7 +124,7 @@ States
 	Death:
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 A_NoBlocking;
-		DIAB RSTUVWX 5 A_SpawnItem ("MuchBlood", 40);
+		DIAB RSTUVWX 5 doomb_much_blood(40);
 		TNT1 A 0 doomb_spawn_bloodpool();
 		DIAB X -1;
 	Stop;

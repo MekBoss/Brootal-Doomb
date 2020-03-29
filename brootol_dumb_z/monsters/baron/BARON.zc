@@ -268,7 +268,7 @@ States
 		TNT1 A 0 ThrustThingZ(0,35,0,1);
 		TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightLeg", 32, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAAAAA 0 A_SpawnProjectile ("XDeath1", 62, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAAAA 0 A_SpawnProjectile ("MuchBlood", 62, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_much_blood(62);
 		TNT1 A 0 A_Jump(255, "Death.Explosive_Impact1", "Death.Explosive_Impact2");
 	Death.Explosive_Impact1:
 		BOH3 A 8 A_Scream;
@@ -386,15 +386,16 @@ States
 		KNTF A 15;
 		TNT1 AAAA 0 A_SpawnProjectile ("XDeath2", 25, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAAA 0 A_SpawnProjectile ("XDeath3", 25, 0, random (0, 360), 2, random (0, 160));
-		KNTF BCD 8 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+		KNTF BCD 8 doomb_much_blood();
 		EXPL A 0 Radius_Quake (2, 24, 0, 15, 0);
-		TNT1 A 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_much_blood();
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAAAAAAA 0 A_SpawnProjectile ("PlayerFlyingBlood", 50, 0, random (0, 360), 2, random (0, 160));
-		KNTF DDDDDDDDDDDDDDDDDDD 8 A_SpawnProjectile ("MuchBlood", 25, 0, random (0, 360), 2, random (0, 160));
+		KNTF DDDDDDDDDDDDDDDDDDD 8 doomb_much_blood(25);
+
 		TNT1 A 0 doomb_Rip_Guts();
-		KNTF EEEFFFGGG 8 A_SpawnProjectile ("MuchBlood", 38, 0, random (0, 360), 2, random (0, 160));
-		KNTF GGGGGGGGGGG 8 A_SpawnProjectile ("MuchBlood", 25, 0, random (0, 360), 2, random (0, 160));
+		KNTF EEEFFFGGG 8 doomb_much_blood(38);
+		KNTF GGGGGGGGGGG 8 doomb_much_blood(25);
 		TNT1 A 0 A_TakeInventory("Curbstomp_Marine",1);
 		TNT1 A 0 A_UnSetInvulnerable;
 		TNT1 A 0 A_SpawnItem ("RappedMarine", 1);
@@ -408,7 +409,7 @@ States
 		3HF1 BC 5;
 		TNT1 AA 0 A_SpawnProjectile ("XDeath1", 55, 0, random (0, 360), 2, random (0, 160));
 		3HF1 BCBC 5 A_SpawnProjectile ("XDeath1", 55, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 A_SpawnProjectile ("MuchBlood", 55, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_much_blood(55);
 		3HF1 D 10;
 		3HF1 E 5;
 		TNT1 A 0 A_SpawnProjectile ("XDeathZombieManHead", 65, 0, random (0, 360), 2, random (70, 120));
@@ -449,7 +450,7 @@ States
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 45, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath2", 45, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath3", 55, 0, random (0, 360), 2, random (0, 160));
-		3HF1 OPQQQ 10 A_SpawnProjectile ("MuchBlood", 25, 0, random (0, 360), 2, random (0, 160));
+		3HF1 OPQQQ 10 doomb_much_blood(25);
 		TNT1 A 0 A_SpawnItem ("DeadDemonHalf", 1);
 		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_TakeInventory("DemonFatality",1);
@@ -461,7 +462,7 @@ States
 		TNT1 A 0 {bSHOOTABLE = false;}
 		TNT1 A 0 A_PlaySound("demon/pain");
 		3HF2 ABABAB 4;
-		TNT1 AAAAAA 0 A_SpawnItem("MuchBlood", 40);
+		TNT1 AAA 0 doomb_much_blood(40);
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 45, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 A_SpawnProjectile ("XDeath2", 45, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 A_SpawnProjectile ("XDeath3", 55, 0, random (0, 360), 2, random (0, 160));

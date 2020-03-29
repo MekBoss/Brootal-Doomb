@@ -80,7 +80,7 @@ CLASS CapturedMarine: doomb_marine_base Replaces Blursphere
 			
 		Death:
 		Death.Bullet:
-			TNT1 A 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood();
 			PLAY H 10 A_PlayerScream;
 			PLAY I 10 A_NoBlocking;
 			PLAY J 10 ;
@@ -92,7 +92,7 @@ CLASS CapturedMarine: doomb_marine_base Replaces Blursphere
 			TNT1 A 0 A_GiveToTarget("EatMe",1);
 			TNT1 A 0 A_SpawnProjectile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeath4", 1, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood();
 			XPL1 A 10 A_XScream;
 			XPL1 B 20 A_NoBlocking;
 			TNT1 A 0 ;
@@ -109,18 +109,16 @@ CLASS CapturedMarine: doomb_marine_base Replaces Blursphere
 			TNT1 A 0 A_SpawnProjectile ("XDeath4", 1, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 doomb_Rip_Guts();
 			TNT1 A 0 A_SpawnProjectile ("XDeathHalfMarine", 50, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood();
 			XPL2 A 10 A_XScream;
-			TNT1 AA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood();
 			XPL2 B 20 A_NoBlocking;
 			TNT1 A 0 ;
-			TNT1 AA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-			XPL2 C 10 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-			XPL2 DE 10 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood();
+			XPL2 CDE 10 doomb_much_blood();
 			TNT1 A 0 doomb_spawn_bloodpool();
 			XPL2 E -1;
-			Stop;
+		Stop;
 			
 		Death.Slime:
 			TNT1 A 0 A_NoBlocking;
@@ -140,38 +138,27 @@ CLASS CapturedMarine: doomb_marine_base Replaces Blursphere
 			TNT1 A 0 A_SpawnProjectile ("XDeath4", 1, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 doomb_Rip_Guts();
 			TNT1 A 0 A_SpawnProjectile ("XDeathHalfMarine", 50, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood();
 			XPL2 A 10 A_XScream;
 			TNT1 A 0 ;
-			TNT1 AA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood();
 			XPL2 B 20 A_NoBlocking;
-			TNT1 AA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-			XPL2 C 10 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-			XPL2 DE 10 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood();
+			XPL2 CDE 10 doomb_much_blood();
 			TNT1 A 0 doomb_spawn_bloodpool();
 			XPL2 E -1;
 			Stop;
 			
 		Death.Rip:
-			TNT1 AAAAAAAAAAA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood();
 			XPL3 A 10 A_XScream;
-			TNT1 AAAAA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood();
 			XPL3 B 20 A_NoBlocking;
-			TNT1 A 0 ;
-			TNT1 A 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-			XPL3 C 10 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-			XPL3 D 10 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-			XPL3 E 10 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-			XPL3 F 10 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-			XPL3 F 10 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood();
+			XPL3 CDEFF 10 doomb_much_blood();
 			TNT1 A 0 doomb_spawn_bloodpool();
 			XPL3 F -1;
-			Stop;
+		Stop;
 
 		XDeath:
 			TNT1 A 0 ThrustThingZ(0,60,0,1);
@@ -222,24 +209,16 @@ CLASS CapturedMarine: doomb_marine_base Replaces Blursphere
 			Stop;
 			
 		Death.Rape:
-			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood();
 			XPL4 A 20 A_XScream;
 			TNT1 A 0 A_SpawnProjectile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeath2", 1, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeath3", 1, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeath4", 1, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood();
 			XPL4 B 20 A_NoBlocking;
-			TNT1 A 0 ;
-			TNT1 AAA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-			XPL4 C 20;
-			TNT1 AAA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-			XPL4 D 20;
-			TNT1 AAAA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-			XPL4 E 20;
-			TNT1 AAA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
-			XPL4 F 20;
-			TNT1 AAAA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood();
+			XPL4 CDEF 20 doomb_much_blood();
 			TNT1 A 0 doomb_spawn_bloodpool();
 			XPL4 F -1;
 			Stop;

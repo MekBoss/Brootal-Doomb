@@ -284,7 +284,7 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp
 			TNT1 A 0 A_Recoil(13);
 			TNT1 A 0 ThrustThingZ(0,20,0,1);
 			TNT1 A 0 A_Scream;
-			TNT1 A 0 A_SpawnProjectile ("MuchBlood", 35, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood(35);
 			TNT1 AA 0 A_SpawnProjectile ("XDeath1", 35, 0, random (0, 360), 2, random (0, 160));
 			TR06 ABCDE 4 A_SpawnProjectile ("Brutal_LiquidBlood", 15, 0, random (0, 360), 2, random (0, 40));
 			TR06 FGHIJK 4 A_JumpIf((vel.Y == 0), "DSFStop");
@@ -305,7 +305,7 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp
 			TNT1 A 0 A_Scream;
 			TNT1 A 0 A_Recoil(13);
 			TNT1 A 0 ThrustThingZ(0,20,0,1);
-			TNT1 A 0 A_SpawnProjectile ("MuchBlood", 35, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood(35);
 			TNT1 AA 0 A_SpawnProjectile ("XDeath1", 35, 0, random (0, 360), 2, random (0, 160));
 			TR06 LMNO 4 A_SpawnProjectile ("Brutal_LiquidBlood", 15, 0, random (0, 360), 2, random (0, 40));
 			TR06 QRSTU 4 A_JumpIf((vel.Y == 0), "DSFStop2");
@@ -371,7 +371,7 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp
 			TNT1 A 0 A_SpawnProjectile ("XDeathImpArm", 35, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_Scream;
 			TNT1 A 0 A_NoBlocking;
-			TNT1 A 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood();
 			TR08 A 8 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnItemEx ("DyingImpNoArm",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
 			Stop;
@@ -381,7 +381,7 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp
 			TNT1 A 0 A_Jump(64, "DeathLeg2");
 			TNT1 A 0 A_JumpIfInventory("IsJumping", 1, "Death.LegInTheAir");
 			TNT1 A 0 A_SpawnProjectile ("XDeathImpLeg", 35, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood();
 			TR09 A 9;
 			TR09 A 3 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
 			TR09 B 3 A_Scream;
@@ -393,7 +393,7 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_Fall;
 			TNT1 A 0 A_SpawnProjectile ("XDeathImpLeg", 35, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood();
 			TNT1 A 0 A_SpawnItem("ImpSaciLol");
 			Stop;
 			
@@ -544,7 +544,7 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp
 			
 		Death.LegMassacre:
 			TNT1 A 0 A_SpawnProjectile ("XDeathImpLeg", 35, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood();
 			TR09 A 8 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
 			TR09 B 8 A_Scream;
 			TNT1 A 0 A_NoBlocking;
@@ -571,7 +571,7 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp
 		DeathNoGuts:
 			TNT1 AAAAA 0;
 			TNT1 AA 0 A_SpawnProjectile ("Instestin", 24, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("MuchBlood", 30, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood(30);
 			TNT1 AA 0 A_SpawnProjectile ("XDeath1", 30, 0, random (0, 360), 2, random (0, 160));
 			IMPC A 8 A_Scream;
 			IMPC B 8 A_NoBlocking;

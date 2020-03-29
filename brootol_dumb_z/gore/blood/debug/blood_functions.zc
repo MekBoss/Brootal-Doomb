@@ -142,5 +142,49 @@ protected void doomb_spawn_bloodpool()
 	}
 }
 
+protected void doomb_much_blood(double height_offset = 50, double side_offset = 0)
+{
+    if(waterlevel > 1)
+        return;
+
+    A_PlaySound("misc/xdeath4");
+	double relative_offset_x, relative_offset_y;
+	if(side_offset != 0)
+	{
+		relative_offset_x = cos(angle) *  side_offset;
+		relative_offset_y = sin(angle) *  side_offset;
+ 	}
+	for(uint i = 0; i < 20; i++)
+    {
+        doomb_for_khorne("Brutal_FlyingBloodTrail", (relative_offset_x, relative_offset_y, random(20, 30) + height_offset ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+    }
+    A_SpawnProjectile("BloodMistSmall", height_offset, side_offset, 180);
+    A_SpawnProjectile ("Brutal_FlyingBlood", height_offset, side_offset, random (0, 360), 2, - random (0, 160));
+}
+
+}
+
+extend class doomber
+{
+	
+protected void doomb_much_blood(double height_offset = 50, double side_offset = 0)
+{
+    if(waterlevel > 1)
+        return;
+
+    A_PlaySound("misc/xdeath4");
+	double relative_offset_x, relative_offset_y;
+	if(side_offset != 0)
+	{
+		relative_offset_x = cos(angle) *  side_offset;
+		relative_offset_y = sin(angle) *  side_offset;
+ 	}
+	for(uint i = 0; i < 20; i++)
+    {
+        doomb_for_khorne("Brutal_FlyingBloodTrail", (relative_offset_x, relative_offset_y, random(20, 30) + height_offset ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+    }
+    A_SpawnProjectile("BloodMistSmall", height_offset, side_offset, 180);
+    A_SpawnProjectile ("Brutal_FlyingBlood", height_offset, side_offset, random (0, 360), 2, - random (0, 160));
+}
 
 }

@@ -193,17 +193,17 @@ CLASS doomb_fatso : doomb_monster_base
 		Death.cutless:
 			TNT1 O 0 A_Jump(195, 1);
 		Goto Death;
-			TNT1 AAA 0 A_SpawnProjectile ("MuchBlood", 35, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood(35);
 			TNT1 A 0 A_Scream;
 			TNT1 O 0 A_NoBlocking;
-			FAT2 KL 5 A_SpawnProjectile ("MuchBlood", 75, 0, random (0, 360), 2, random (0, 160));
+			FAT2 KL 5 doomb_much_blood(75);
 			TNT1 A 0 doomb_Rip_Guts();
 			TNT1 AA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_BossDeath;
-			FAT2 MNOP 5 A_SpawnProjectile ("MuchBlood", 15, 0, random (0, 360), 2, random (0, 160));
+			FAT2 MNOP 5 doomb_much_blood(15);
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem ("NoGutsFatso", 1);
-			Stop;
+		Stop;
 			
 		Death.Plasma:
 		Death.Plasma2:
@@ -240,7 +240,7 @@ CLASS doomb_fatso : doomb_monster_base
 			TNT1 A 0 A_SpawnProjectile ("XDeathdoomb_fatsoHead", 20, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAA 0 A_SpawnProjectile ("XDeath2", 20, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAA 0 A_SpawnProjectile ("XDeath3", 20, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAA 0 A_SpawnProjectile ("MuchBlood", 50, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood();
 			XFBT A 6 A_Scream;
 			XFBT B 6 A_NoBlocking;
 			XFBT CDEF 6 A_BossDeath;

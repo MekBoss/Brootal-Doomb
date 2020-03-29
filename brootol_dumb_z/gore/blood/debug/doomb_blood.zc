@@ -15,36 +15,6 @@
 
 
 
-
-CLASS MuchBlood : doomb_blood
-{ 
-	Default {
-		
-		+NOBLOCKMAP;
-		+NOTELEPORT;
-		+ALLOWPARTICLES;
-	}
-	states
-	{
-		Spawn:
-			TNT1 A 0
-			{
-				if(waterlevel > 1)
-					return;
-				
-				A_PlaySound("misc/xdeath4");
-				for(uint i = 0; i < 20; i++)
-				{
-					doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-				}
-				A_SpawnProjectile("BloodMistSmall", 0, 0, 180);
-				A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, - random (0, 160));
-			}
-		stop;
-	}
-}
-
-
 CLASS DeadBlood  : doomb_blood { 
 	Default {
 		Decal "BrutalBloodSplat";

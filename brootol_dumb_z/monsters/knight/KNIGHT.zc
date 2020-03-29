@@ -205,7 +205,7 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight
 			Stop;
 		Death.Arm:
 			TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightArm", 55, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("MuchBlood", 55, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood(55);
 			TNT1 A 0 A_Fall;
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_SpawnItem("DyingHellKnight1");
@@ -331,7 +331,7 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight
 			TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightArm", 62, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightLeg", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAA 0 A_SpawnProjectile ("XDeath1", 62, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAA 0 A_SpawnProjectile ("MuchBlood", 62, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood(62);
 			TNT1 A 0 A_Jump(255, "Death.Explosive_Impact1", "Death.Explosive_Impact2");
 			
 		Death.Explosive_Impact1:
@@ -389,7 +389,7 @@ CLASS doomb_knight : doomb_monster_base Replaces HellKnight
 			TNT1 A 0 A_SpawnProjectile ("head_piece", 11, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("head_piece", 11, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAA 0 A_SpawnProjectile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAA 0 A_SpawnProjectile ("MuchBlood", 1, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_much_blood(0);
 			TNT1 A 0 doomb_spawn_bloodpool();
 			KTFP IJ 2;
 			KTFP KLLLLL 4;

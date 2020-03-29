@@ -847,7 +847,7 @@ States
 		TNT1 A 0;
 		TNT1 A 0 A_SpawnProjectile ("jaw", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 A_SpawnProjectile ("Teeth", 50, 0, random (0, 360), 2, random (0, 160));
-		ZZD5 A 6 A_SpawnProjectile ("MuchBlood", 40, 0, random (0, 360), 2, random (0, 160));
+		ZZD5 A 6 doomb_much_blood(48);
 	mini:
 		ZZD5 CBCB 12 A_PlaySound("grunt/pain", 3);
 		tnt1 a 0 doomb_random_death();
@@ -1039,7 +1039,7 @@ CLASS DyingZombiemanNoArm : doomb_body_base {
 		
 	Death.Kick:
 	Death.Punch:
-		TNT1 A 0 A_SpawnProjectile ("MuchBlood", 35, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_much_blood(35);
 		TNT1 A 0 A_PlaySound ("grunt/death");
 		TNT1 A 0 ThrustThingZ(0,30,0,1);
 		TNT1 A 0 A_NoBlocking;
@@ -1079,7 +1079,8 @@ CLASS DyingZombiemanNoArm : doomb_body_base {
 }
 }
 
-CLASS FrozenZombieman : ACTOR { 
+CLASS FrozenZombieman : doomb_body_base
+{ 
 	Default {
 	
 	Health 60;
@@ -1128,7 +1129,7 @@ CLASS FrozenZombieman : ACTOR {
 		TNT1 AA 0 A_SpawnProjectile ("XDeath2", 48, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 A_SpawnProjectile ("XDeath3", 48, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAAAAA 0 A_SpawnProjectile ("MuchBlood", 48, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_much_blood(48);
 		TNT1 A 0 A_SpawnItem("Rifle");
 		FZD1 C 300;
 		FZD1 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC 1 A_FadeOut(0.01);
@@ -1181,7 +1182,7 @@ CLASS ZombieManDyingAfterFatality : doomb_body_base {
 	Death.cut:
 	Death.saw:
 		TNT1 A 0;
-		TNT1 AA 0 A_SpawnProjectile ("MuchBlood", 35, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_much_blood(35);
 		TNT1 A 0 A_XScream;
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
 		TNT1 O 0 A_NoBlocking;
@@ -1247,7 +1248,7 @@ CLASS ZombieManDyingAfterFatality : doomb_body_base {
 	Death.Shotgun:
 	Death.Kick:
 	Death.Punch:
-		TNT1 A 0 A_SpawnProjectile ("MuchBlood", 35, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_much_blood(35);
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 ThrustThingZ(0,30,0,1);
 		TNT1 A 0 A_NoBlocking;
@@ -1433,7 +1434,7 @@ States
 	Death.Shotgun:
 	Death.Kick:
 	Death.Punch:
-		TNT1 A 0 A_SpawnProjectile ("MuchBlood", 35, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_much_blood(35);
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 ThrustThingZ(0,30,0,1);
 		TNT1 A 0 A_NoBlocking;
@@ -1702,21 +1703,20 @@ States
 
 CLASS DeadZombieMan_NoLeg: DeadZombieMan_NoArm { 
 	Default {
-	
 	Health 300;
 	}
 States
 {
 	Spawn:
 		POS7 D -1;
-		Stop;
+	Stop;
+	
 	Death:
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnItem("MuchBlood", 0, 10);
+		TNT1 A 0 doomb_much_blood(10);
 		TNT1 A 0 A_SpawnProjectile ("XDeathZombieLeg", 15, 0, random (0, 360), 2, random (0, 180));
 		POS8 D -1;//doomb_final_absolution(12, 12);
-		Stop;
-		
+	Stop;
 }
 
 }		 
@@ -2195,7 +2195,7 @@ CLASS DyingZombieman : doomb_body_base
 		Stop;
 		
 	Death.Trample:
-		TNT1 A 0 A_SpawnProjectile ("MuchBlood", 10, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_much_blood(10);
 		TNT1 AAAA 0 A_SpawnProjectile ("Brains1", 10, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("jaw", 10, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("eye", 10, 0, random (0, 360), 2, random (0, 160));
@@ -2224,7 +2224,7 @@ CLASS DyingZombieman : doomb_body_base
 		
 	Death.Shotgun:
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
-		TNT1 A 0 A_SpawnProjectile ("MuchBlood", 20, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_much_blood(20);
 		TNT1 AAAA 0 A_SpawnProjectile ("Brains1", 20, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("jaw", 20, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("eye", 20, 0, random (0, 360), 2, random (0, 160));
