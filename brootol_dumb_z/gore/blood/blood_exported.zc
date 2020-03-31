@@ -90,3 +90,38 @@ CLASS Brutal_FlyingBloodTrail : doomb_blood {
 		goto wait_in_beaker;
 	}
 }
+
+//SLOWDOWN ADRESSED
+//doomb_for_khorne("Intestine", (0, 0, 0), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+CLASS Intestine : doomb_blood
+{ 
+	Default {
+		Radius 8;
+		Height 12;
+		Speed 6;
+		Mass 1;
+		Renderstyle "Translucent";
+		Alpha 0.9;
+		Decal "BrutalBloodSplat";
+		Scale 1.1;
+		+missile;
+	}
+	States
+	{
+		Spawn:
+			tnt1 a 0 nodelay a_setrenderstyle(1, STYLE_Translucent);
+		spawn_loop:
+			GUTS ABCD 8 {vel.z --;}
+		Loop;
+		
+		Death:
+			GUTS E 600
+			{
+				frame = random(4, 5);
+				bmissile = true;
+				a_playsound("misc/xdeath1", 1, 1);
+			}
+		goto wait_in_beaker;
+	}
+}
+

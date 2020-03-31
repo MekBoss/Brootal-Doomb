@@ -180,21 +180,19 @@ CLASS DeadShotgunGuy_NoLegBoth: Deaddoomb_shotgun_guy  {
 	{
 		Spawn:
 			SPO3 K -1;
-			Stop;
+		Stop;
 			
 		Death:
 			TNT1 A 0 A_NoBlocking;
 			SPOS A 0 doomb_Meat_Death_Small();
 			TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 5, 0, random (0, 360), 2, random (0, 160));
-			
 			tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 			TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathHalfSergeant", 32, 0, random (0, 360), 2, random (0, 160));
-			
-			Stop;
+		Stop;
 	}
 }		
 
@@ -310,7 +308,7 @@ CLASS DeadShotgunguy_Slumped: CurbstompedMarine {
 			
 		Death:
 			TNT1 A 0 A_NoBlocking;
-			TNT1 AAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (150, 210), 2, random (0, 40));
+			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (150, 210), 2, random (0, 40));
 			TNT1 AAA 0 A_SpawnProjectile ("Xdeath3", 16, 0, random (170, 190), 2, random (0, 40));
 			TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
@@ -355,7 +353,7 @@ CLASS DeadShotgunguy_Slumped_NoHead: CurbstompedMarine {
 			Stop;
 		Death:
 			TNT1 A 0 A_NoBlocking;
-			TNT1 AAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (150, 210), 2, random (0, 40));
+			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (150, 210), 2, random (0, 40));
 			TNT1 AAA 0 A_SpawnProjectile ("Xdeath3", 16, 0, random (170, 190), 2, random (0, 40));
 			TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
@@ -429,7 +427,7 @@ CLASS DeadShotgunguySPO4J: Deaddoomb_shotgun_guy {
 			
 			tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 			TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathHalfSergeant", 32, 0, random (0, 360), 2, random (0, 160));
@@ -520,7 +518,7 @@ CLASS DyingShotgunguyHitInEye: doomb_body_base {
 			
 			tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 			TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathHalfSergeant", 32, 0, random (0, 360), 2, random (0, 160));
@@ -685,7 +683,7 @@ CLASS SargeXDeath : doomb_body_base {
 			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathHalfShotgunguyNoArmNoHead", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAAAAA 0 A_SpawnProjectile ("Instestin", 24, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 A 0 A_SpawnProjectile ("XDeathSargeLeg2", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("GibSargeBoot", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathSergeantHeadOnXDeath", 32, 0, random (0, 360), 2, random (0, 160));
@@ -1569,7 +1567,7 @@ States
 	Death:
 		TNT1 A 0 A_Recoil(2);
 		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
-	    TNT1 AAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
         TNT1 AAAA 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 A_SpawnProjectile ("XDeath3", 40, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath4", 40, 0, random (0, 360), 2, random (0, 160));
@@ -1664,7 +1662,7 @@ States
 		 TNT1 AA 0 doomb_Meat_Death_Small();
 		 TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
 		 TNT1 A 0 A_SpawnProjectile ("XDeathHalfShotgunguyNoArmNoHead", 32, 0, random (0, 360), 2, random (0, 160));
-		 TNT1 AAAAAAA 0 A_SpawnProjectile ("Instestin", 24, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		 TNT1 A 0 A_SpawnProjectile ("XDeathSargeLeg2", 32, 0, random (0, 360), 2, random (0, 160));
 		 TNT1 A 0 A_SpawnProjectile ("GibSargeBoot", 32, 0, random (0, 360), 2, random (0, 160));
 	Stop;
@@ -1690,7 +1688,7 @@ CLASS VeryFuckedUpBrutalizedSergeantLeg: CurbstompedMarine {
 			TNT1 AA 0 doomb_Meat_Death_Small();
 			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathHalfShotgunguyNoArmNoHead", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAAAAA 0 A_SpawnProjectile ("Instestin", 24, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 A 0 A_SpawnProjectile ("XDeathSargeLeg2", 32, 0, random (0, 360), 2, random (0, 160));
 		Stop;
 }
@@ -1983,13 +1981,12 @@ CLASS FrozenShotgunguy : doomb_body_base
 			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 48, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("XDeath2", 48, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("XDeath3", 48, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 A 0 doomb_much_blood(48);
 			TNT1 A 0 A_SpawnItem("Shotgun");
 			FZD2 C 300;
 			FZD2 CCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCCC 1 A_FadeOut(0.01);
-			Stop;
-			
+		Stop;
 	}
 }
 
