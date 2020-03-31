@@ -12,6 +12,7 @@ override void postbeginplay()
 Default
 {
 	+MISSILE;
+	-ALLOWPARTICLES;
 	-nogravity
 	+CLIENTSIDEONLY;
 	+NOTELEPORT;

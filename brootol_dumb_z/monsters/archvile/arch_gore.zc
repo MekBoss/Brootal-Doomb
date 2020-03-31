@@ -21,8 +21,10 @@ CLASS HalfArchVile1 : doomb_body_base
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
-			VIGP A 4 A_SpawnProjectile("BloodTrails",0,0,180,2);
-			Loop;
+			TNT1 AAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			VIGP A 4;
+		Loop;
+		
 		Death:
 			TNT1 AAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1);
@@ -58,7 +60,8 @@ CLASS HalfArchVile2 : doomb_body_base
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
-			VIGP C 4 A_SpawnProjectile("BloodTrails",0,0,180,2);
+			TNT1 AAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			VIGP C 4;
 			Loop;
 		Death:
 			TNT1 AAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
@@ -89,36 +92,6 @@ CLASS FatalizedArchVile1: CurbstompedMarine {
 	}
 }
 
-
-CLASS XDeathArchVile : ACTOR { 
-	Default {
-		
-		Radius 8;
-		Height 8;
-		Speed 12;
-		Mass 1;
-		BounceFactor 0.4;
-		+DOOMBOUNCE;
-		+NOBLOCKMAP;
-		+NOTELEPORT;
-		+MOVEWITHSECTOR;
-		+CLIENTSIDEONLY;
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			VILP A 4 A_SpawnProjectile("BloodTrails",0,0,180,2);
-			Goto Death;
-		Death:
-			VILP B 0;
-			VILP B 0 A_SpawnItem("GibArchVile",0,0,0,1);
-			Stop;
-		Raise:
-		stop;
-	}
-}
-
 CLASS GibArchVile: BigGibBase { 
 	Default {
 		
@@ -133,36 +106,6 @@ CLASS GibArchVile: BigGibBase {
 	}
 	
 }
-CLASS XDeathArchVileLeg : ACTOR { 
-	Default {
-		
-		Radius 8;
-		Height 8;
-		Speed 12;
-		Mass 1;
-		BounceFactor 0.4;
-		+DOOMBOUNCE;
-		+NOBLOCKMAP;
-		+NOTELEPORT;
-		+MOVEWITHSECTOR;
-		+CLIENTSIDEONLY;
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			VILP C 4 A_SpawnProjectile("BloodTrails",0,0,180,2);
-			Goto Death;
-		Death:
-			VILP C 1;
-			VILP C 9009;
-			Stop;
-		Raise:
-		stop;
-	}
-}
-
-
 CLASS Frozenarchvile : doomb_body_base { 
 	Default {
 		
