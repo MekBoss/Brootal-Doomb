@@ -255,8 +255,7 @@ CLASS doomb_commando : doomb_monster_base
 	Stop;
 		
 	TakeASit:
-		TNT1 AAAA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
-		TNT1 A 0;
+		tnt1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItemEx("DeadChaingunguy_Slumped", 10);
 	Stop;
@@ -313,7 +312,7 @@ CLASS doomb_commando : doomb_monster_base
 		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_Blood", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (0, 40));
 		TNT1 A 0 A_SpawnProjectile ("SmallBrainPiece", 50, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("WallRedBlood", 46, 0, random (170, 190), 2, random (0, 40));
+		tnt1 a 0 doomb_spray_decal("BrutalBloodSuper");
 		CPHM I 6;
 		CPHM J 6 A_Scream;
 		CPHM C 6 A_NoBlocking;
@@ -382,7 +381,7 @@ CLASS doomb_commando : doomb_monster_base
 	Death.Explosive_Impact:
 		TNT1 A 0 ThrustThingZ(0,40,0,1);
 		TNT1 AA 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 46, 0, random (170, 190), 2, random (0, 40));
+		tnt1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAAAAA 0 A_SpawnProjectile ("Bloodmist", 40, 0, random (0, 360), 2, random (20, 90));
 		TNT1 A 0 A_SpawnProjectile ("XDeathChainArm", 62, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeathChainLeg", 32, 0, random (0, 360), 2, random (0, 160));
@@ -528,7 +527,7 @@ CLASS doomb_commando : doomb_monster_base
 		TNT1 AAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAA 0 A_SpawnProjectile ("Instestin", 32, 0, random (0, 360), 2, random (0, 40));
-		TNT1 AAAAAAAA 0 A_SpawnProjectile ("WallRedBlood", 32, 0, random (170, 190), 2, random (0, 40));
+		tnt1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAA 0 A_SpawnProjectile ("Bloodmist", 40, 0, random (0, 360), 2, random (30, 90));
 		TNT1 A 0 A_SpawnProjectile ("XDeathChainArm", 62, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeathChaingunguyHeadOnXDeath", 62, 0, random (0, 360), 2, random (0, 160));

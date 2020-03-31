@@ -662,7 +662,7 @@ CLASS XDeathZombiemanHeadOnXDeath : XDeathZombieManHead {
 			TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 			TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
+			TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 			TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 90));
@@ -716,7 +716,7 @@ CLASS ZombiemanHead: LimbBase {
 			TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 			TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
+			TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 			TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 90));
@@ -797,8 +797,7 @@ CLASS ZombieXDeath : doomb_body_base {
 			TNT1 A 0 A_Pain;
 			TNT1 A 0 A_FaceTarget;
 			tnt1 a 0 A_Explode(3,600, 0, 0, 0, 0, 0, "none", "blood");
-			
-			TNT1 AAAAAAAAAAAAAAA 0 A_SpawnProjectile ("WallRedBlood", 40, 0, random (0, 360), 2, random (-15, 15));
+			TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130));
 			TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (0, 360), 2, random (0, 160));
@@ -875,7 +874,7 @@ States
 		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
+			TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 90));
@@ -912,7 +911,7 @@ States
 	stop;
 
 	TakeASit:
-		TNT1 AAAA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
+		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		POS4 U 5;
 		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItemEx("DeadZombieman_Slumped", 10);
@@ -1004,7 +1003,7 @@ CLASS DyingZombiemanNoArm : doomb_body_base {
 			TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 			TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
+			TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 			TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 90));
@@ -1220,7 +1219,7 @@ CLASS ZombieManDyingAfterFatality : doomb_body_base {
 		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
+		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 90));
@@ -1402,7 +1401,7 @@ States
 		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
+		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 90));
@@ -1537,7 +1536,7 @@ CLASS ZombiemanSaciLol: ZombiemanGotHisLegBlowed {
 		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
+		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 90));
@@ -1840,7 +1839,7 @@ CLASS DeadZombieMan_NoArmFront: DeadZombieMan_NoArm {
 		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
+		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 90));
@@ -1877,7 +1876,7 @@ CLASS DeadZombieMan_StomachExploded: DeadZombieman_NoHeadFront {
 		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
+		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 90));
@@ -1945,7 +1944,7 @@ States
 		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
+		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 90));
@@ -1975,7 +1974,7 @@ States
 		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
+		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 90));
@@ -2312,7 +2311,7 @@ States
 		TNT1 A 0 A_SpawnProjectile ("head_piece", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 		TNT1 AAAA 0 A_SpawnProjectile ("SmallBrainPiece", 50, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 46, 0, random (170, 190), 2, random (0, 40));
+		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAAAAAAA 0 A_SpawnProjectile ("Brutal_Blood", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_Recoil(4);
@@ -2406,8 +2405,7 @@ CLASS BrutalizedZombieManLeg: BrutalizedZombieMan1 {
 		TNT1 A 0 A_SpawnProjectile ("head_piece", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 		TNT1 AAAA 0 A_SpawnProjectile ("SmallBrainPiece", 50, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 46, 0, random (170, 190), 2, random (0, 40));
-		//TNT1 AAAAAAAA 0 A_SpawnProjectile ("Brutal_Blood", 50, 0, random (0, 360), 2, random (0, 160))
+		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 35, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 ThrustThingZ(0,30,0,1);
@@ -2462,7 +2460,7 @@ States
 		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
+		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 90));
@@ -2478,11 +2476,10 @@ States
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
-		TNT1 AAAA 0 A_SpawnProjectile ("WallRedBlood", 32, 0, random (170, 190), 2, random (0, 40));
+		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAA 0 A_SpawnProjectile ("Bloodmist", 40, 0, random (0, 360), 2, random (30, 90));
 		TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 40, 0, random (0, 360), 2, random (30, 90));
-		
-		TNT1 A 0;
+
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		TNT1 AAAAA 0 A_SpawnProjectile ("Bloodmist", 0, 0, random (0, 360), 2, random (30, 90));
 		TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
@@ -2492,7 +2489,7 @@ States
 		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
+		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 90));
@@ -2528,7 +2525,7 @@ States
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
-		TNT1 AAAA 0 A_SpawnProjectile ("WallRedBlood", 32, 0, random (170, 190), 2, random (0, 40));
+		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAA 0 A_SpawnProjectile ("Bloodmist", 40, 0, random (0, 360), 2, random (30, 90));
 		TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 40, 0, random (0, 360), 2, random (30, 90));
 		POSX E -1 doomb_final_absolution(12, 12);

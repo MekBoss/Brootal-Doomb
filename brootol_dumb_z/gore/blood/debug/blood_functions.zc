@@ -10,7 +10,7 @@ protected void doomb_head_explosion(string main_piece  = "", string additional_p
 		A_SpawnProjectile ("Bloodmist", 0, 0, random (0, 360), 2, random (30, 90));
 		A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
 		A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
-		A_SpawnProjectile ("WallRedBlood", 6, 0, random (170, 190), 2, random (0, 40));
+		doomb_spray_decal("BrutalBloodSuper");
 		A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		A_SpawnProjectile ("head_piece_dark", 0, 0, random (0, 360), 2, random (0, 160));
 	}
@@ -162,6 +162,42 @@ protected void doomb_much_blood(double height_offset = 50, double side_offset = 
     A_SpawnProjectile ("Brutal_FlyingBlood", height_offset, side_offset, random (0, 360), 2, - random (0, 160));
 }
 
+protected void doomb_spray_decal(string type = "", double distance = 128, vector3 direction = (0, 0, 0), uint times = 1, double angle_bias = 0)
+{
+	bool random_direction = false;
+
+	if(direction == (0, 0, 0) )
+	{
+		direction = (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) );
+		random_direction = true;
+	}
+
+	A_PlaySound("HEDBON");
+
+	double stored_angle = angle;
+	double stored_pitch = pitch;
+
+	angle = acos(direction.x / direction.xy.length() );
+	pitch = -asin(direction.z / direction.length() );
+
+	for(uint i = 0; i < times; i++)
+	{
+		a_spraydecal(type, distance);
+		if(!random_direction)
+		{
+			angle += frandom(-angle_bias, angle_bias);
+			pitch += frandom(-angle_bias, angle_bias);
+		}
+		else
+		{
+			direction = (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) );
+		}
+	}
+
+	angle = stored_angle;
+	pitch = stored_pitch;
+}
+
 }
 
 extend class doomber
@@ -187,4 +223,27 @@ protected void doomb_much_blood(double height_offset = 50, double side_offset = 
     A_SpawnProjectile ("Brutal_FlyingBlood", height_offset, side_offset, random (0, 360), 2, - random (0, 160));
 }
 
+protected void doomb_spray_decal(string type = "", double distance = 128, vector3 direction = (0, 0, 0), uint times = 1, double angle_bias = 0)
+{
+	if(direction == (0, 0, 0) )
+		direction = (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) );
+
+	double stored_angle = angle;
+	double stored_pitch = pitch;
+
+	angle = acos(direction.x / direction.xy.length() );
+	pitch = -asin(direction.z / direction.length() );
+
+	for(uint i = 0; i < times; i++)
+	{
+		a_spraydecal(type, distance);
+		angle += frandom(-angle_bias, angle_bias);
+		pitch += frandom(-angle_bias, angle_bias);
+	}
+
+	angle = stored_angle;
+	pitch = stored_pitch;
 }
+
+}
+class doomb_head_exlposion : doomb_body_base {}
