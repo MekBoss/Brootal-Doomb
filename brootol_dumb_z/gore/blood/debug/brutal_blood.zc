@@ -11,55 +11,13 @@ CLASS Brutal_Blood : doomb_blood Replaces Blood {
 	states
 	{
 		Spawn:
-			TNT1 A 0 nodelay doomb_spawn_blood();
-			tnt1 A 0 { vel = ( random(-3, 3), random(-3, 3), random(-3, 3));}
+			tnt1 A 0 nodelay { vel = ( random(-3, 3), random(-3, 3), random(-3, 3));}
 			BSP4 ABCDEFGHIJKLMNOPQRSTUVWXYZ 2;
 		stop;
 	}
 	
 }
 
-// Blood trails spawned by FlyingBlood
-//SLOWDOWN ADRESSED
-//doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-CLASS Brutal_FlyingBloodTrail : brutal_blood { 
-	Default
-	{
-		scale 0.70;
-		mass 1;
-		renderstyle "Translucent";
-		alpha 0.7;
-		Decal "BrutalBloodSplat";
-		+NOTELEPORT;
-		+NOCLIP;
-		+FORCEXYBILLBOARD;
-		+CLIENTSIDEONLY;
-		+DontSplash;
-		+MISSILE;
-		-NOGRAVITY;
-		Speed 2;
-	}
-	states
-	{
-		Spawn:
-			TNT1 A 0 nodelay A_JumpIf(waterlevel > 1, "null");
-			tnt1 a 0
-			{
-			 	gravity = frandom(0.5, 0.9);
-				a_setscale( frandom(0.7, 1.1) );
-				vel *= frandom(1, 2);
-				A_SetTranslucent(frandom(0.5, 0.7) );
-			}
-			BTRL ABCD 1;
-			BLOD ABCDEFFFFFF 4 A_JumpIf(waterlevel > 1, "null");
-			tnt1 a 0 {if(getclass() != "Brutal_FlyingBloodTrail") destroy();}
-		goto wait_in_beaker;
-			
-		Death:
-			tnt1 a 0 {if(getclass() != "Brutal_FlyingBloodTrail") destroy();}
-		goto wait_in_beaker;
-	}
-}
 
 CLASS Blue_Blood : Brutal_Blood { 
 	Default {
