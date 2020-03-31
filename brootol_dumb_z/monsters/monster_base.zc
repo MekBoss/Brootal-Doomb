@@ -553,17 +553,23 @@ class doomb_monster_spawner : eventhandler
 {
 override void CheckReplacement(ReplaceEvent e)
 {
+	if(e.Replacee == "Archvile")
+	{
+		e.Replacement = "doomb_archvile";
+		e.isfinal = true;
+	}
+
 	if(e.Replacee == "wolfensteinss")
 	{
 		if(level.levelnum == 31 || level.levelnum == 32)
 		{
-			e.Replacement == "nazi";
+			e.Replacement = "nazi";
 			e.isfinal = true;
 		}
 
 		else
 		{
-			e.Replacement == "doomb_evil_marine";
+			e.Replacement = "doomb_evil_marine";
 			e.isfinal = true;
 		}
 	}
@@ -573,122 +579,110 @@ override void CheckReplacement(ReplaceEvent e)
 	{
 		if(level.levelnum == 31 || level.levelnum == 32)
 		{
-			e.Replacement == "HitlersBuzzsaw";
+			e.Replacement = "HitlersBuzzsaw";
 			e.isfinal = true;
 		}
 
 		else
 		{
-			e.Replacement == "BIG_FUCKING_GUN";
+			e.Replacement = "BIG_FUCKING_GUN";
 			e.isfinal = true;
 		}
 	}
 	
 
-	if(e.Replacee == "Archvile")
-	{
-		e.Replacement == "doomb_archvile";
-		e.isfinal = true;
-	}
-
 	if(e.Replacee == "BaronofHell")
 	{
-		e.Replacement == "doomb_baron";
+		e.Replacement = "doomb_baron";
 		e.isfinal = true;
 	}
 	if(e.Replacee == "Cyberdemon")
 	{
-		e.Replacement == "doomb_cyberdemon";
+		e.Replacement = "doomb_cyberdemon";
 		e.isfinal = true;
 	}
 
 	if(e.Replacee == "SpiderMastermind")
 	{
-		e.Replacement == "doomb_mind";
+		e.Replacement = "doomb_mind";
 		e.isfinal = true;
 	}
 
 	if(e.Replacee == "Cacodemon")
 	{
-		e.Replacement == "doomb_caco";
+		e.Replacement = "doomb_caco";
 		e.isfinal = true;
 	}
 
 	if(e.Replacee == "ChaingunGuy")
 	{
-		e.Replacement == "doomb_commando";
+		e.Replacement = "doomb_commando";
 		e.isfinal = true;
 	}
 
 	if(e.Replacee == "Demon")
 	{
-		e.Replacement == "doomb_pinky";
+		e.Replacement = "doomb_pinky";
 		e.isfinal = true;
 	}
 
 	if(e.Replacee == "DoomImp")
 	{
-		e.Replacement == "doomb_Imp";
+		e.Replacement = "doomb_Imp";
 		e.isfinal = true;
 	}
 
 	if(e.Replacee == "HellKnight")
 	{
-		e.Replacement == "doomb_knight";
+		e.Replacement = "doomb_knight";
 		e.isfinal = true;
 	}
 
 	if(e.Replacee == "LostSoul")
 	{
-		e.Replacement == "doomb_lost_soul";
+		e.Replacement = "doomb_lost_soul";
 		e.isfinal = true;
 	}
 
 	if(e.Replacee == "Fatso")
 	{
-		e.Replacement == "doomb_fatso";
+		e.Replacement = "doomb_fatso";
 		e.isfinal = true;
 	}
 
 	if(e.Replacee == "PainElemental")
 	{
-		e.Replacement == "doomb_elemental";
+		e.Replacement = "doomb_elemental";
 		e.isfinal = true;
 	}
 
 	if(e.Replacee == "Revenant")
 	{
-		e.Replacement == "doomb_Revenant";
+		e.Replacement = "doomb_Revenant";
 		e.isfinal = true;
 	}
 
 	if(e.Replacee == "ShotgunGuy")
 	{
-		e.Replacement == "doomb_shotgun_guy";
+		e.Replacement = "doomb_shotgun_guy";
 		e.isfinal = true;
 	}
 
 	if(e.Replacee == "Arachnotron")
 	{
-		e.Replacement == "doomb_arachnotron";
-		e.isfinal = true;
-	}
-
-	if(e.Replacee == "")
-	{
-		e.Replacement == "";
+		e.Replacement = "doomb_arachnotron";
 		e.isfinal = true;
 	}
 
 	if(e.Replacee == "ZombieMan")
 	{
-		e.Replacement == "doomb_zombie_Man";
+		e.Replacement = "doomb_zombie_Man";
 		e.isfinal = true;
 	}
 
 	if(e.Replacee == "Spectre")
 	{
-		e.Replacement == "doomb_spectrum";
+		e.Replacement = "doomb_spectrum";
 		e.isfinal = true;
 	}
 
