@@ -135,103 +135,6 @@ Default
 
 
 
-CLASS CeilXDeath2: doomb_blood { 
-	Default {
-		
-		+MOVEWITHSECTOR;
-		+noclip
-		-DOOMBOUNCE;
-		+NOGRAVITY;
-		-missile;
-		+DontSplash;
-		Renderstyle "Normal";
-		Scale 1.1;
-		speed 0;
-	}
-	states
-	{
-		XME1 a 0;
-		XME2 a 0;
-		XME3 a 0;
-
-		Spawn:
-			tnt1 a 0 nodelay
-			{
-				uint i = random(0, 2);
-				switch(i)
-				{
-					case 0: sprite = getspriteindex("XME1"); break;
-					case 1: sprite = getspriteindex("XME2"); break;
-					case 2: sprite = getspriteindex("XME3"); break;
-					default: destroy(); break;
-				}
-				
-			}
-		spawn_loop:
-			"####" F 5 a_jump(5, "fall_down");
-		loop;
-		
-		fall_down:
-			"####" H 1 {vel.z -= 0.5;}
-			"####" H 1//or frames abcd
-			{
-				if(vel.z == 0)
-					setstatelabel("hit_ground");
-			}
-		loop;
-
-		death:
-		hit_ground:
-			"####" AAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			"####" A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1);
-			"####" E -1;
-		stop;
-	}
-}
-
-
-CLASS SuperGoreSpawner : doomb_blood { 
-	Default {
-		
-		Projectile;
-		+RANDOMIZE;
-		+MISSILE;
-		+FORCEXYBILLBOARD;
-		+THRUACTORS;
-		
-		damage 0;
-		radius 2;
-		height 0;
-		speed 10;
-		renderstyle "Add";
-		alpha 0.9;
-		scale .15;
-		gravity 0.7;
-		-NOGRAVITY;
-	}
-	states
-	{
-		Spawn:
-			TNT1 AAAAAAAA 3 A_SpawnItem("SuperGore");
-			Stop;
-		Death:
-			Stop;
-	}
-}
-
-
-CLASS UltraGoreSpawner: SuperGoreSpawner { 
-	Default {
-		
-		speed 60;
-	}
-	states
-	{
-		Spawn:
-			TNT1 AAAAAAAAAAAAAA 1 A_SpawnItem("SuperGore");
-			Stop;
-	}
-}
 
 CLASS SuperGore : doomb_blood { 
 	Default {
@@ -265,38 +168,6 @@ CLASS SuperGore : doomb_blood {
 }
 
 
-
-CLASS PlayerFlyingBlood : doomb_blood
-{ 
-Default {
-
-
-scale 0.75;
-speed 7;
-health 1;
-radius 8;
-height 1;
-
-+MISSILE;
-+CLIENTSIDEONLY;
-+NOTELEPORT;
-+NOBLOCKMAP;
-+FORCEXYBILLBOARD;
-+EXPLODEONWATER;
-}
-States
-{
-Spawn:
-	tnt1 A 0 A_JumpIf(waterlevel > 1, "null");
-	XDT1 ABCD 4 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-loop;
-
-Death:
-	tnt1 A 1 A_SpawnItem("Brutal_BloodSpot",0,0,0,1);
-	XDT1 EFGHIJKL 3;
-stop;
-}
-}
 
 
 
@@ -332,4 +203,36 @@ Decal "BloodSplat";
 	}
 }
 
+
+CLASS PlayerFlyingBlood : doomb_blood
+{ 
+Default {
+
+
+scale 0.75;
+speed 7;
+health 1;
+radius 8;
+height 1;
+
++MISSILE;
++CLIENTSIDEONLY;
++NOTELEPORT;
++NOBLOCKMAP;
++FORCEXYBILLBOARD;
++EXPLODEONWATER;
+}
+States
+{
+Spawn:
+	tnt1 A 0 A_JumpIf(waterlevel > 1, "null");
+	XDT1 ABCD 4 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+loop;
+
+Death:
+	tnt1 A 1 A_SpawnItem("Brutal_BloodSpot",0,0,0,1);
+	XDT1 EFGHIJKL 3;
+stop;
+}
+}
 

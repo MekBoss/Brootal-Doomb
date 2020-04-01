@@ -2210,7 +2210,7 @@ CLASS DyingZombieman : doomb_body_base
 		
 	Death.SSG:
 	XDeath:
-		TNT1 AAAAAA 0 bright A_SpawnProjectile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180));
+		TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 5), 6);
 		TNT1 AAAAAA 0 bright A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180));
 		TNT1 AA 0 bright A_SpawnProjectile ("XDeath2", 55, 0, random (0, 360), 2, random (30, 180));
 		TNT1 AA 0 bright A_SpawnProjectile ("XDeath3", 55, 0, random (0, 360), 2, random (30, 180));
@@ -2241,7 +2241,7 @@ CLASS DyingZombieman : doomb_body_base
 	Crush:
 	Death.Stomp:
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		TNT1 AAAAAA 0 bright A_SpawnProjectile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180));
+		TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 5), 6);
 		TNT1 AAAAAA 0 bright A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180));
 		TNT1 AA 0 bright A_SpawnProjectile ("XDeath2", 55, 0, random (0, 360), 2, random (30, 180));
 		TNT1 AA 0 bright A_SpawnProjectile ("XDeath3", 55, 0, random (0, 360), 2, random (30, 180));

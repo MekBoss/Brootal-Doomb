@@ -467,9 +467,9 @@ Goto StandStill;
 		tnt1 AAAAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		XDMG E 1;
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		tnt1 AAAAAA 0 bright A_SpawnProjectile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180));
+		TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 5), 6);
 		XDMG E -1;
-		Stop;
+	Stop;
 		
 	Death.punch:
 	Death.Blast:
@@ -485,7 +485,7 @@ Goto StandStill;
 		tnt1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		tnt1 A 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (170, 190), 2, random (0, 40));
-		tnt1 AAAA 0 A_SpawnProjectile ("SuperGoreSpawner", 22, 0, random (170, 190), 2, random (0, 15));
+		TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 22), 6);
 		XPL2 A 10 A_XScream;
 		tnt1 AA 0 doomb_spawn_big_blood (50);
 		XPL2 B 20 A_NoBlocking;
@@ -495,7 +495,7 @@ Goto StandStill;
 		XPL2 DE 10 doomb_spawn_big_blood( 20);
 		tnt1 A 0 doomb_spawn_bloodpool();
 		XPL2 E -1;
-		Stop;
+	Stop;
 		
 	Death.Rape:
 		tnt1 A 0 A_Jump (160, 1);
@@ -626,14 +626,14 @@ Death.Fire:
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath3", 30, 0, random (0, 360), 2, random (0, 90));
 		TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 24), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 A 0 doomb_spawn_bloodpool();
-		TNT1 A 0 A_SpawnProjectile ("SuperGoreSpawner", 30, 0, random (0, 360), 2, random (10, 90));
+		TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 35), 6);
 		ID50 ABCDEF 7;
 		ID50 GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 13 doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 		ID50 G -1;
 	Stop;
 	
 	Death.Stomp:
-		tnt1 AAAAAA 0 bright A_SpawnProjectile ("SuperGoreSpawner", 5, 0, random (0, 360), 2, random (30, 180));
+		TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 5), 6);
 		tnt1 AAAAAA 0 bright A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180));
 		tnt1 AA 0 bright A_SpawnProjectile ("XDeath2", 55, 0, random (0, 360), 2, random (30, 180));
 		tnt1 AA 0 bright A_SpawnProjectile ("XDeath3", 55, 0, random (0, 360), 2, random (30, 180));

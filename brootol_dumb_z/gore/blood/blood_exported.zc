@@ -67,26 +67,23 @@ CLASS Brutal_FlyingBloodTrail : doomb_blood {
 			{
 				If(waterlevel > 1)
 					destroy();
-			}
-			tnt1 a 0
-			{
+
 			 	gravity = frandom(0.5, 0.9);
 				a_setscale( frandom(0.7, 1.1) );
 				vel *= frandom(1, 2);
 				A_SetTranslucent(frandom(0.5, 0.7) );
 			}
-			BTRL ABCD 1;
-			BLOD ABCDEFFFFFF 4 
+			BLOD ABCDE 1
 			{
-				If(waterlevel > 1)
+				if(waterlevel > 1)
 					destroy();
 			}
-
-			tnt1 a 0 {if(getclass() != "Brutal_FlyingBloodTrail") destroy();}
-		goto wait_in_beaker;
-			
 		Death:
-			tnt1 a 0 {if(getclass() != "Brutal_FlyingBloodTrail") destroy();}
+			tnt1 a 0
+			{
+				if(!get_init_state() )
+					destroy();
+			}
 		goto wait_in_beaker;
 	}
 }
@@ -122,6 +119,65 @@ CLASS Intestine : doomb_blood
 				a_playsound("misc/xdeath1", 1, 1);
 			}
 		goto wait_in_beaker;
+	}
+}
+
+
+CLASS doomb_sticky_meat: doomb_blood
+{ 
+	Default
+	{
+		+MOVEWITHSECTOR;
+		+noclip
+		-DOOMBOUNCE;
+		+NOGRAVITY;
+		-missile;
+		+DontSplash;
+		Renderstyle "Normal";
+		Scale 1.1;
+		speed 0;
+	}
+	states
+	{
+		XME1 a 0;
+		XME2 a 0;
+		XME3 a 0;
+
+		Spawn:
+			tnt1 a 0 nodelay
+			{
+				if(pos.z + height < ceilingz)
+					destroy();
+
+				uint i = random(0, 2);
+				switch(i)
+				{
+					case 0: sprite = getspriteindex("XME1"); break;
+					case 1: sprite = getspriteindex("XME2"); break;
+					case 2: sprite = getspriteindex("XME3"); break;
+					default: destroy(); break;
+				}
+				
+			}
+		spawn_loop:
+			"####" F 5 a_jump(5, "fall_down");
+		loop;
+		
+		fall_down:
+			"####" H 1 {vel.z -= 0.5;}
+			"####" H 1//or frames abcd
+			{
+				if(vel.z == 0 || pos.z <= floorz)
+					setstatelabel("hit_ground");
+			}
+		loop;
+
+		death:
+		hit_ground:
+			"####" AAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			"####" A 0 A_SpawnItem("Brutal_BloodSpot",0,0,0,1);
+			"####" E -1 A_QueueCorpse();
+		stop;
 	}
 }
 

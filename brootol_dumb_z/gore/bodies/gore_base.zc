@@ -31,7 +31,7 @@ protected void doomb_meat_on_ceiling()
 
 	if (RemoteRay.HitType == TRACE_HitCeiling)
 	{
-		spawn("CeilXDeath2", pos:RemoteRay.HitLocation);
+		spawn("doomb_sticky_meat", pos:RemoteRay.HitLocation);
 	}
 }
 

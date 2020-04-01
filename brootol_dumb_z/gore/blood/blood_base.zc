@@ -2,6 +2,18 @@ class doomb_blood : actor abstract
 {
 
 private state in_beaker_state;
+private bool event_init;
+
+void set_init(bool b)
+{
+	if(GetAge() == 0)
+		event_init = b;
+}
+
+protected bool get_init_state() const
+{
+	return event_init;
+}
 
 override void postbeginplay()
 {

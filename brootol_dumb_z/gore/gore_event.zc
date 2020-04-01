@@ -31,6 +31,7 @@ private doomb_blood doomb_find_fresh_blood(class<actor> type = null)
             if(i == blood_stains.size() )
             {
                 doomb_blood b = doomb_blood(actor.spawn(type, (double.infinity, double.infinity, double.infinity)));
+                b.set_init(true);
                 blood_stains.push(b);
                 return b;
             }
