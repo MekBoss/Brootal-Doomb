@@ -94,13 +94,12 @@ CLASS blood_impact_splash : doomb_blood
 { 
 	Default {
 		decal "BrutalBloodSuper";
-		//+MISSILE +NOTELEPORT +NOBLOCKMAP +NOBLOCKMONST +DONTSPLASH +CLIENTSIDEONLY +THRUACTORS;
 		+nointeraction;
 		+rollsprite
+		+noclip
 		scale    0.8;
 		radius    2;
 		height    2;
-		//speed    8;
 		Gravity 0.4;
 		RenderStyle   "Translucent";
 		alpha    0.9;
@@ -110,12 +109,12 @@ CLASS blood_impact_splash : doomb_blood
 		Spawn:
 			TNT1 A 0 nodelay {scale *= frandom(0.8, 0.95); roll = random(-90, 90);}
 			MSBL ABCDEFG 1;
-			tnt1 a 40;
-		loop;
-			
-		Death:
-			TNT1 A 1 {bmissile = true;}
-		goto spawn;
+			tnt1 a 0
+			{
+				if(!get_init_state() )
+					destroy();
+			}
+		stop;
 	}
 }
 
