@@ -357,7 +357,7 @@ CLASS XDeathZombieLeg : doomb_body_base
 		Spawn:
 			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			LEG1 ABCDEFGH 5 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			LEG1 ABCDEFGH 5 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			Loop;
 		Death:
 			LEG1 E 1 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
@@ -405,7 +405,7 @@ CLASS Gib_ZombieLeg2: LimbBase {
 			TNT1 A 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160));
 			Stop;
 		Death:    
-			TNT1 AAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 A_SpawnProjectile ("GibZombieBoot", 0, 0, random (0, 180), 2, random (0, 180));
 			LEG1 Z -1;
 			stop;
@@ -599,7 +599,7 @@ CLASS XDeathHalfZombieman2 : doomb_body_base {
 		Spawn:
 			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			PP2X F 12 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			PP2X F 12 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		Loop;
 		Death:
 			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
@@ -723,7 +723,7 @@ CLASS ZombiemanHead: LimbBase {
 			
 			Stop;
 		Crush:
-			TNT1 AAAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			TNT1 AAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			CRS1 B 5;
 			CRS1 B 9009;
@@ -1589,7 +1589,7 @@ CLASS ZombiemanTorso: CurbstompedMarine {
 		GORX A -10;
 		stop;
 	Crush:
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		POSC A 5;
 		POSC A -1;
@@ -2240,7 +2240,7 @@ CLASS DyingZombieman : doomb_body_base
 		
 	Crush:
 	Death.Stomp:
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 5), 6);
 		TNT1 AAAAAA 0 bright A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180));
 		TNT1 AA 0 bright A_SpawnProjectile ("XDeath2", 55, 0, random (0, 360), 2, random (30, 180));
@@ -2474,7 +2474,7 @@ States
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (150, 210), 2, random (0, 40));
 		TNT1 AAA 0 A_SpawnProjectile ("Xdeath3", 16, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
-		TNT1 AAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAA 0 A_SpawnProjectile ("Bloodmist", 40, 0, random (0, 360), 2, random (30, 90));
@@ -2523,7 +2523,7 @@ States
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (150, 210), 2, random (0, 40));
 		TNT1 AAA 0 A_SpawnProjectile ("Xdeath3", 16, 0, random (170, 190), 2, random (0, 40));
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
-		TNT1 AAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAA 0 A_SpawnProjectile ("Bloodmist", 40, 0, random (0, 360), 2, random (30, 90));

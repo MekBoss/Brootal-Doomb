@@ -426,7 +426,7 @@ states
 		TNT1 A 0;
 		TNT1 A 0 {busespecial = false;}
 		TNT1 A 0 {bfriendly = false;}
-		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 A 0 doomb_gore_spawner(times:6);
 		TNT1 AAAAAA 0 bright A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180));
 		TNT1 AA 0 bright A_SpawnProjectile ("XDeath2", 55, 0, random (0, 360), 2, random (30, 180));
@@ -453,7 +453,7 @@ states
 		    A_SpawnProjectile ("XDeath2", 32, 0, random (170, 190), 2, random (0, 40));
 		    A_SpawnProjectile ("XDeath3", 32, 0, random (170, 190), 2, random (0, 40));
 		    A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
-		    doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		    doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		    A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
 			doomb_spray_decal("BrutalBloodSuper");
 		    A_SpawnProjectile ("XDeathArm1", 32, 0, random (170, 190), 2, random (0, 40));

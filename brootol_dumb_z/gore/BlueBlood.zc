@@ -2,7 +2,7 @@
 
 
 //FIXME jumps to forbiden state
-CLASS BlueBloodTrails: Brutal_FlyingBloodTrail { 
+CLASS BlueBloodTrails: doomb_red_blood_trail { 
 	Default {
  
 translation "168:191=192:207","16:47=240:247";
@@ -17,7 +17,7 @@ Loop;
 }
 
 //FIXME jumps to forbiden state
-CLASS Blue_FlyingBloodTrail: Brutal_FlyingBloodTrail { 
+CLASS Blue_FlyingBloodTrail: doomb_red_blood_trail { 
 	Default {
  
 translation "168:191=192:207","16:47=240:247";

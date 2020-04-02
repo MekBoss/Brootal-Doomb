@@ -17,7 +17,7 @@ states
 }
 
 //FIXME jump to forbidden state
-CLASS Green_FlyingBloodTrail: Brutal_FlyingBloodTrail { 
+CLASS Green_FlyingBloodTrail: doomb_red_blood_trail { 
 	Default {
  
 translation "168:191=112:127", "16:47=123:127";

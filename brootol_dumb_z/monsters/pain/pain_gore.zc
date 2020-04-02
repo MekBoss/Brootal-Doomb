@@ -28,8 +28,8 @@ CLASS PEPart1 : doomb_body_base {
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
 			ID22 ABCD 2
 			{
-				doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-				doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+				doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+				doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 				doomb_show_effect("FlameTrails", ( 0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );	
 			}
 			Loop;
@@ -74,7 +74,7 @@ CLASS PEPart2 : doomb_body_base {
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
 			ID22 ABCD 2
 			{
-				doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+				doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 				A_SpawnItem("YellowFlare",0,2);
 				doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 				doomb_show_effect("FlameTrails", ( 0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );	
@@ -128,7 +128,7 @@ CLASS XDeathPainElementalNew1 : doomb_body_base {
     {
 	Spawn:
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
-		CAGI ABCDEFGH 2 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		CAGI ABCDEFGH 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 	Loop;
 
 	Death:
@@ -163,7 +163,7 @@ CLASS XDeathPainElementalNew2: XDeathPainElementalNew1 {
     {
     Spawn:
 	    TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
-        CAGI IJKLMNOP 2 doomb_for_khorne("Brutal_FlyingBloodTrail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+        CAGI IJKLMNOP 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 	Loop;
 
     Death:
