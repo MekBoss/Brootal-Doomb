@@ -167,7 +167,7 @@ CLASS CurbstompedMarine : doomb_body_base {
 		Death.Stomp:
 			TNT1 AAAAA 0 A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, - random (0, 30));
 			TNT1 AA 0 A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, - random (0, 30));
-			TNT1 AAAA 0 A_SpawnProjectile ("BloodMist", 5, 0, random (0, 360), 2, - random (0, 30));
+			TNT1 AAAA 0 A_SpawnProjectile ("blood_impact_splash", 5, 0, random (0, 360), 2, - random (0, 30));
 			TNT1 AAAAAAA 0 A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, - random (10, 30));
 			TNT1 AAAA 0 A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, - random (10, 130));
 			TNT1 AAAA 0 A_SpawnProjectile ("SmallSuperGore", 10, 0, random (0, 360), 2, - random (10, 30));

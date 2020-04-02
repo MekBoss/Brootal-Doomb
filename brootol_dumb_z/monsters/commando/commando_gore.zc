@@ -157,7 +157,7 @@ CLASS DeadChaingunguy_Slumped: CurbstompedMarine {
 			TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
 			tnt1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-			TNT1 AAA 0 A_SpawnProjectile ("Bloodmist", 40, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAA 0 A_SpawnProjectile ("blood_impact_splash", 40, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AA 0 A_SpawnProjectile ("XDeathChainArm", 40, 0, random (0, 360), 2, random (30, 90));
 		Stop;
 			
@@ -231,7 +231,7 @@ CLASS DeadChaingunguy_Slumped_NoHead: CurbstompedMarine {
 			TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
 			tnt1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-			TNT1 AAA 0 A_SpawnProjectile ("Bloodmist", 40, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAA 0 A_SpawnProjectile ("blood_impact_splash", 40, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AA 0 A_SpawnProjectile ("XDeathChainArm", 40, 0, random (0, 360), 2, random (30, 90));
 		Stop;
 			
@@ -578,7 +578,7 @@ CLASS ChaingunguyHeadExplode: doomb_head_exlposion
 		Spawn:
 			TNT1 A 0;
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
-			TNT1 AAAAA 0 A_SpawnProjectile ("Bloodmist", 0, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAAAA 0 A_SpawnProjectile ("blood_impact_splash", 0, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
 			TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("head_piece_dark", 0, 0, random (0, 360), 2, random (0, 160));

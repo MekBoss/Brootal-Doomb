@@ -1,6 +1,6 @@
 
 //SLOWDOWN
-CLASS BloodmistSmall : Bloodmist { 
+CLASS BloodmistSmall : blood_impact_splash { 
 	Default {
 		
 		scale    0.45;
@@ -9,7 +9,7 @@ CLASS BloodmistSmall : Bloodmist {
 }
 
 
-CLASS BloodmistExtraBig : Bloodmist { 
+CLASS BloodmistExtraBig : blood_impact_splash { 
 	Default {
 		
 		scale    1.4;
@@ -17,7 +17,7 @@ CLASS BloodmistExtraBig : Bloodmist {
 }
 
 
-CLASS BloodmistXXBig : Bloodmist { 
+CLASS BloodmistXXBig : blood_impact_splash { 
 	Default {
 		
 		scale    2.2;

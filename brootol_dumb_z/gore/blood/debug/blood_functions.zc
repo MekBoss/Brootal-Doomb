@@ -7,7 +7,7 @@ protected void doomb_head_explosion(string main_piece  = "", string additional_p
 
 	for(uint i = 0; i < 4; i++)
 	{
-		A_SpawnProjectile ("Bloodmist", 0, 0, random (0, 360), 2, random (30, 90));
+		A_SpawnProjectile ("blood_impact_splash", 0, 0, random (0, 360), 2, random (30, 90));
 		A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
 		A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
 		doomb_spray_decal("BrutalBloodSuper");

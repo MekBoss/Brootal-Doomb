@@ -129,7 +129,7 @@ CLASS Belphegor : doomb_monster_base {
 			BS3F NM 4;
 			BS3F N 1 doomb_gore_spawner(times:6);
 			EXPL A 0 Radius_Quake (2, 24, 0, 15, 0);
-			TNT1 AAAA 0 A_SpawnProjectile ("Bloodmist", 10, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAAA 0 A_SpawnProjectile ("blood_impact_splash", 10, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AAA 0 A_SpawnProjectile ("Blood", 10, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 10, 0, random (0, 360), 2, random (30, 90));
 			BS3F NOPPP 3;
@@ -138,7 +138,7 @@ CLASS Belphegor : doomb_monster_base {
 			BS3F N 1;
 			TNT1 A 0 doomb_gore_spawner(times:6);
 			EXPL A 0 Radius_Quake (2, 24, 0, 15, 0);
-			TNT1 AAAA 0 A_SpawnProjectile ("Bloodmist", 10, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAAA 0 A_SpawnProjectile ("blood_impact_splash", 10, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AAA 0 A_SpawnProjectile ("Blood", 10, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 10, 0, random (0, 360), 2, random (30, 90));
 			BS3F NOPPP 3;
@@ -147,7 +147,7 @@ CLASS Belphegor : doomb_monster_base {
 			BS3F N 1;
 			TNT1 A 0 doomb_gore_spawner(times:6);
 			EXPL A 0 Radius_Quake (2, 24, 0, 15, 0);
-			TNT1 AAAA 0 A_SpawnProjectile ("Bloodmist", 10, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAAA 0 A_SpawnProjectile ("blood_impact_splash", 10, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AAA 0 A_SpawnProjectile ("Blood", 10, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 10, 0, random (0, 360), 2, random (30, 90));
 			BS3F NOPPP 3;
@@ -156,7 +156,7 @@ CLASS Belphegor : doomb_monster_base {
 			BS3F N 1;
 			TNT1 A 0 doomb_gore_spawner(times:6);
 			EXPL A 0 Radius_Quake (2, 24, 0, 15, 0);
-			TNT1 AAAA 0 A_SpawnProjectile ("Bloodmist", 10, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAAA 0 A_SpawnProjectile ("blood_impact_splash", 10, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AAA 0 A_SpawnProjectile ("Blood", 10, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 10, 0, random (0, 360), 2, random (30, 90));
 			BS3F NOPPP 3;
@@ -165,7 +165,7 @@ CLASS Belphegor : doomb_monster_base {
 			BS3F N 1;
 			TNT1 A 0 doomb_gore_spawner(times:6);
 			EXPL A 0 Radius_Quake (2, 24, 0, 15, 0);
-			TNT1 AAAA 0 A_SpawnProjectile ("Bloodmist", 10, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAAA 0 A_SpawnProjectile ("blood_impact_splash", 10, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AAA 0 A_SpawnProjectile ("Blood", 10, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 10, 0, random (0, 360), 2, random (30, 90));
 			BS3F NOPPP 3;

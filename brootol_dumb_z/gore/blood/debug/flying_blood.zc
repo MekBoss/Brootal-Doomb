@@ -138,32 +138,6 @@ CLASS Brutal_LiquidBloodTrail: Brutal_FlyingBlood  {
 
 
 
-CLASS Bloodmist : Brutal_FlyingBlood { 
-	Default {
-		decal "BrutalBloodSuper";
-		+MISSILE +NOTELEPORT +NOBLOCKMAP +NOBLOCKMONST +DONTSPLASH +CLIENTSIDEONLY +THRUACTORS;
-		scale    0.8;
-		radius    2;
-		height    2;
-		speed    8;
-		Gravity 0.4;
-		RenderStyle   "Translucent";
-		alpha    0.9;
-	}
-	states
-	{
-		Spawn:
-			TNT1 A 0 nodelay {scale *= frandom(0.8, 0.95);}
-			MSBL ABCDEFGH 1;
-			MSBL HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 1 A_FadeOut(0.005);
-			Stop;
-			
-		Death:
-			TNT1 A 0 A_CheckFloor("null");
-			MSBL HHHHHHHH 1 A_FadeOut(0.1);
-		Stop;
-	}
-}
 
 
 CLASS Blue_FlyingBlood: Brutal_FlyingBlood { 
