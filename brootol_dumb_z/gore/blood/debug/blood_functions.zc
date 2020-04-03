@@ -40,7 +40,11 @@ protected void doomb_Meat_Death_Small()
 	A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, random (0, 160));
 	A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, random (0, 160));
 	A_SpawnProjectile ("SmallSuperGore", 10, 0, random (0, 360), 2, random (10, 170));
-	A_SpawnProjectile ("BloodMistSmall", 35, 0, random (0, 360), 2, random (40, 90));
+	{
+		actor a = doomb_for_khorne("blood_impact_splash", (0, 0, 35 ) );
+		if(a)
+			a.scale = (0.45, 0.45);
+	}
 }
 
 protected void doomb_Rip_Guts()
@@ -158,7 +162,10 @@ protected void doomb_much_blood(double height_offset = 50, double side_offset = 
     {
         doomb_for_khorne("doomb_red_blood_trail", (relative_offset_x, relative_offset_y, random(20, 30) + height_offset ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
     }
-    A_SpawnProjectile("BloodMistSmall", height_offset, side_offset, 180);
+	actor a = doomb_for_khorne("blood_impact_splash", (relative_offset_x, relative_offset_y, height_offset) );
+	if(a)
+		a.scale = (0.45, 0.45);
+
     A_SpawnProjectile ("Brutal_FlyingBlood", height_offset, side_offset, random (0, 360), 2, - random (0, 160));
 }
 
@@ -239,7 +246,10 @@ protected void doomb_much_blood(double height_offset = 50, double side_offset = 
     {
         doomb_for_khorne("doomb_red_blood_trail", (relative_offset_x, relative_offset_y, random(20, 30) + height_offset ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
     }
-    A_SpawnProjectile("BloodMistSmall", height_offset, side_offset, 180);
+	actor a = doomb_for_khorne("blood_impact_splash", (relative_offset_x, relative_offset_y, height_offset) );
+	if(a)
+		a.scale = (0.45, 0.45);
+
     A_SpawnProjectile ("Brutal_FlyingBlood", height_offset, side_offset, random (0, 360), 2, - random (0, 160));
 }
 
