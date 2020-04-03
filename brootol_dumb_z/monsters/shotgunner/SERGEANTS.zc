@@ -592,7 +592,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base
 			TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
 			TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-			TNT1 AAA 0 A_SpawnProjectile ("blood_impact_splash", 40, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 40) );
 			ZXZ7 A 6 A_Stop;
 			TNT1 A 0 doomb_spawn_bloodpool();
 			ZXZ7 BBBBBBBBBB 3 A_SpawnProjectile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (30, 60));
@@ -612,7 +612,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base
 			TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
 			TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-			TNT1 AAAA 0 A_SpawnProjectile ("blood_impact_splash", 40, 0, random (0, 360), 2, random (30, 90));
+			TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 40) );
 			ZXZ6 A 6 A_Stop;
 			TNT1 A 0 doomb_spawn_bloodpool();
 			ZXZ6 BBBBBBBBBBBBBBBBBBB 3 A_SpawnProjectile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (30, 60));
@@ -733,7 +733,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base
 		TNT1 A 0 A_SpawnProjectile ("XDeath3", 40, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeathZombieLeg", 32, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAA 0 A_SpawnProjectile ("blood_impact_splash", 40, 0, random (0, 360), 2, random (20, 90));
+		TNT1 AAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 40) );
 		TNT1 A 0 ThrustThingZ(0,30,0,1);
 		TNT1 A 0 A_Xscream;
 		SXSX GHIJKLM 3 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, 0, 2, 90);
@@ -763,10 +763,10 @@ CLASS doomb_shotgun_guy : doomb_monster_base
 		TNT1 A 0 A_SpawnProjectile ("XDeath3", 40, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeathZombieLeg", 32, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAA 0 A_SpawnProjectile ("blood_impact_splash", 40, 0, random (0, 360), 2, random (20, 90));
+		TNT1 AAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 40) );
 		TNT1 A 0 ThrustThingZ(0,30,0,1);
 		TNT1 A 0 A_XScream;
-		TNT1 A 0 A_SpawnItemEx("blood_impact_splash", 0, 0, 50, vel.x, vel.y, vel.z, 0, SXF_ABSOLUTEvelOCITY);
+		TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 50) );
 		SXS2 GHIJKLM 3 A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, 0, 2, 90);
 		TNT1 A 0 A_CheckFloor("Land8472");
 		SXS2 GHIJKLMGHIJKLM 5 A_CheckFloor("Land8472");
@@ -794,7 +794,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base
 		TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 35, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath3", 40, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeathSargeLeg2", 32, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAAAAA 0 A_SpawnProjectile ("blood_impact_splash", 40, 0, random (0, 360), 2, random (20, 90));
+		TNT1 AAAAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 40) );
 		TNT1 AAAA 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 ThrustThingZ(0,30,0,1);
 		ID14 AB 5;
@@ -872,7 +872,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base
 		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
 		tnt1 A 0 A_PlaySound("misc/xdeath", 3);
 		tnt1 AAAA 0 A_SpawnProjectile ("XDeath1", 20, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAAAAA 0 A_SpawnProjectile ("blood_impact_splash", 30, 0, random (0, 360), 2, random (20, 90));
+		TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 30) );
 		FTYS FGHIIPPP 2 A_SpawnProjectile ("Blood", 1, 0, random (0, 360), 2, random (0, 160));
 		
 		FTYS QR 5;
@@ -907,7 +907,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base
 		tnt1 AAAA 0 A_SpawnProjectile ("XDeath1", 20, 0, random (0, 360), 2, random (0, 160));
 		tnt1 AA 0 A_SpawnProjectile ("XDeath2", 20, 0, random (0, 360), 2, random (0, 160));
 		tnt1 AA 0 A_SpawnProjectile ("XDeath3", 20, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAAAAAAAAAA 0 A_SpawnProjectile ("blood_impact_splash", 50, 0, random (0, 360), 2, random (20, 90));
+		TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 50) );
 		
 		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 		TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (0, 160));
@@ -955,7 +955,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base
 		tnt1 AAAAA 0 A_SpawnProjectile ("XDeath1", 70, 0, random (0, 360), 2, random (0, 160));
 		tnt1 AA 0 A_SpawnProjectile ("XDeath2", 70, 0, random (0, 360), 2, random (0, 160));
 		tnt1 AA 0 A_SpawnProjectile ("XDeath3", 70, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAAAAAAAAAA 0 A_SpawnProjectile ("blood_impact_splash", 80, 0, random (0, 360), 2, random (20, 90));
+		TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 80) );
 		tnt1 A 0 A_SpawnProjectile ("FlyingImpaledSergeant", 50, 0, random (0, 360), 2, random (70, 110));
 		FSP3 L 3 BRIGHT;
 		FSP3 K 3;

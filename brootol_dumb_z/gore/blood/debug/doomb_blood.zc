@@ -41,7 +41,7 @@ CLASS SawBlood : doomb_blood Replaces AxeBlood {
 			TNT1 A 0 Radius_Quake (4, 4, 0, 2, 0);
 			TNT1 A 0 A_PlaySOund("misc/xdeath4", 1);
 			TNT1 A 0 A_GiveToTarget("PowerBloodOnVisor", 1);
-			TNT1 A 0 A_SpawnProjectile ("blood_impact_splash", 0, 0, random (0, 360), 2, random (30, 90));
+			TNT1 A 0 doomb_for_khorne("blood_impact_splash");
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
 		Stop;
 		
@@ -89,9 +89,9 @@ CLASS Cyberdemon_Blood : doomb_blood {
 
 
 
-
+//doomb_for_khorne("blood_impact_splash", (0, 0, random(20, 30) ) );
 CLASS blood_impact_splash : doomb_blood
-{ 
+{
 	Default {
 		decal "BrutalBloodSuper";
 		+nointeraction;

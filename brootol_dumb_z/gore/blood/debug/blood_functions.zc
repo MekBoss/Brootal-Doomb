@@ -1,13 +1,13 @@
 extend class doomb_monster_base
 {
 
-protected void doomb_head_explosion(string main_piece  = "", string additional_piece = "")
+protected void doomb_head_explosion(string main_piece  = "", string additional_piece = "", vector3 offset = (0, 0, 0) )
 {
 	A_PlaySound("misc/xdeath4");
 
 	for(uint i = 0; i < 4; i++)
 	{
-		A_SpawnProjectile ("blood_impact_splash", 0, 0, random (0, 360), 2, random (30, 90));
+		doomb_for_khorne("blood_impact_splash", offset);
 		A_SpawnProjectile ("Brutal_FlyingBlood", 0, 0, random (0, 360), 2, random (30, 90));
 		A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
 		doomb_spray_decal("BrutalBloodSuper");
@@ -162,13 +162,13 @@ protected void doomb_much_blood(double height_offset = 50, double side_offset = 
     A_SpawnProjectile ("Brutal_FlyingBlood", height_offset, side_offset, random (0, 360), 2, - random (0, 160));
 }
 
-protected void doomb_spray_decal(string type = "", double distance = 128, vector3 direction = (0, 0, 0), uint times = 1, double angle_bias = 0)
+protected void doomb_spray_decal(string type = "BrutalBloodSuper", double distance = 128, vector3 direction = (0, 0, 0), uint times = 1, double angle_bias = 0)
 {
 	bool random_direction = false;
 
 	if(direction == (0, 0, 0) )
 	{
-		direction = (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) );
+		direction = (frandom(-1, 1), frandom(-1, 1), frandom(-0.5, 0.5) );
 		random_direction = true;
 	}
 
@@ -190,7 +190,7 @@ protected void doomb_spray_decal(string type = "", double distance = 128, vector
 		}
 		else
 		{
-			direction = (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) );
+			direction = (frandom(-1, 1), frandom(-1, 1), frandom(-0.5, 0.5) );
 		}
 	}
 
