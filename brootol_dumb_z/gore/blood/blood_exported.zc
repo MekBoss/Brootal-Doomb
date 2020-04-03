@@ -102,26 +102,47 @@ CLASS Intestine : doomb_blood
 		Decal "BrutalBloodSplat";
 		Scale 1.1;
 		+missile;
+		+rollsprite
 	}
 	States
 	{
 		Spawn:
 			tnt1 a 0 nodelay a_setrenderstyle(1, STYLE_Translucent);
 		spawn_loop:
-			GUTS ABCD 8 {vel.z --;}
+			GUTS A 2
+			{
+				vel.z --;
+				roll += 5;
+			}
 		Loop;
 		
 		Death:
 			GUTS E 600
 			{
+				roll = 0;
 				frame = random(4, 5);
 				bmissile = true;
+				bshootable = true;
 				a_playsound("misc/xdeath1", 1, 1);
 			}
 		goto wait_in_beaker;
 	}
 }
 
+class test : doomb_monster_base
+{
+states
+{
+	spawn:
+		tnt1 a 40
+		{
+			doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+		}
+	loop;
+
+}
+
+}
 
 CLASS doomb_sticky_meat: doomb_blood
 { 

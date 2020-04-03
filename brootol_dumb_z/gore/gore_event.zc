@@ -16,7 +16,7 @@ override void worldthingspawned(worldevent e)
 override void worldtick()
 {
     if(doomb_blood_debug)
-        console.printf("size %i", blood_stains.size() );
+        console.printf("blood array size %i", blood_stains.size() );
 }
 
 

@@ -1,15 +1,3 @@
-
-//SLOWDOWN
-
-
-CLASS BloodmistExtraBig : blood_impact_splash { 
-	Default {
-		
-		scale    1.4;
-	}
-}
-
-
 CLASS BloodmistXXBig : blood_impact_splash { 
 	Default {
 		

@@ -138,7 +138,7 @@ override void tick()
 	super.tick();
 
 	if(instatesequence(curstate, in_beaker_state ) )
-		self.active = false;
+		active = false;
 	else
 		active = true;
 }
@@ -150,7 +150,6 @@ states
 		{
 			vel = (0, 0, 0);
 			active = false;
-			bcorpse = false;
 			for(uint i = 0; i < 10; i++)
 				a_stopsound(i);
 
