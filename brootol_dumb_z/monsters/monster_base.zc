@@ -356,7 +356,7 @@ states
 			if(a)
 				a.scale = (0.45, 0.45);
 		}
-		TNT1 AA 0 A_SpawnProjectile ("XDeath1", 30, 0, random (0, 360), 2, random (0, 90));
+		TNT1 AA 0 A_SpawnProjectile ("doomb_internal_organs", 30, 0, random (0, 360), 2, random (0, 90));
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath2", 30, 0, random (0, 360), 2, random (0, 90));
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath3", 30, 0, random (0, 360), 2, random (0, 90));
 		TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
@@ -413,7 +413,7 @@ override void tick()
 	{
 		if(health <= -default.health)
 		{
-			spawn("XDeath1", pos:self.pos + (0, 0, 7)).vel = (random(-3, 3), random(-3, 3), random(0, 3) );
+			spawn("doomb_internal_organs", pos:self.pos + (0, 0, 7)).vel = (random(-3, 3), random(-3, 3), random(0, 3) );
 			spawn("XDeath2", pos:self.pos + (0, 0, 7)).vel = (random(-3, 3), random(-3, 3), random(0, 3) );
 			spawn("XDeath3", pos:self.pos + (0, 0, 7)).vel = (random(-3, 3), random(-3, 3), random(0, 3) );
 			spawn("XDeath4", pos:self.pos + (0, 0, 7)).vel = (random(-3, 3), random(-3, 3), random(0, 3) );

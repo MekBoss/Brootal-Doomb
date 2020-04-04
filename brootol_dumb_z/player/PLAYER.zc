@@ -369,7 +369,7 @@ Goto StandStill;
 	Death.Eat:
 		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 		tnt1 A 0 A_GiveToTarget("EatMe",1);
-		tnt1 A 0 A_SpawnProjectile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160));
+		tnt1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
 		tnt1 A 0 A_SpawnProjectile ("XDeath4", 1, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 doomb_much_blood();
 		XPL1 A 10 A_XScream;
@@ -383,7 +383,7 @@ Goto StandStill;
 	Death.Cut:
 	Death.Saw:
 		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-		tnt1 A 0 A_SpawnProjectile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160));
+		tnt1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
 		tnt1 A 0 A_SpawnProjectile ("XDeath2", 1, 0, random (0, 360), 2, random (0, 160));
 		tnt1 A 0 A_SpawnProjectile ("XDeath3", 1, 0, random (0, 360), 2, random (0, 160));
 		tnt1 A 0 A_SpawnProjectile ("XDeath4", 1, 0, random (0, 360), 2, random (0, 160));
@@ -477,7 +477,7 @@ Goto StandStill;
 		tnt1 A 0 A_Takeinventory("Kicking",1);
 		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 		POSS Q 2 A_FaceTarget;
-		tnt1 AAAA 0 A_SpawnProjectile ("XDeath1", 32, 0, random (170, 190), 2, random (0, 40));
+		tnt1 AAAA 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (170, 190), 2, random (0, 40));
 		tnt1 AAAA 0 A_SpawnProjectile ("XDeath2", 32, 0, random (170, 190), 2, random (0, 40));
 		tnt1 AAAA 0 A_SpawnProjectile ("XDeath3", 32, 0, random (170, 190), 2, random (0, 40));
 		tnt1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
@@ -503,7 +503,7 @@ Goto StandStill;
 		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 		TNT1 A 0 doomb_much_blood();
 		XPL4 A 20 A_XScream;
-		tnt1 A 0 A_SpawnProjectile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160));
+		tnt1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
 		tnt1 A 0 A_SpawnProjectile ("XDeath2", 1, 0, random (0, 360), 2, random (0, 160));
 		tnt1 A 0 A_SpawnProjectile ("XDeath3", 1, 0, random (0, 360), 2, random (0, 160));
 		tnt1 A 0 A_SpawnProjectile ("XDeath4", 1, 0, random (0, 360), 2, random (0, 160));
@@ -519,7 +519,7 @@ Goto StandStill;
 		tnt1 A 0 A_Takeinventory("Kicking",1);
 
 		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
-		tnt1 AA 0 A_SpawnProjectile ("XDeath1", 50, 0, random (0, 360), 2, random (0, 160));
+		tnt1 AA 0 A_SpawnProjectile ("doomb_internal_organs", 50, 0, random (0, 360), 2, random (0, 160));
 		tnt1 A 0 A_SpawnProjectile ("XDeathArm1", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 doomb_much_blood();
 		tnt1 A 0 A_Scream;
@@ -551,7 +551,7 @@ Goto StandStill;
 		tnt1 A 0 A_SpawnProjectile ("XDeathArm1", 35, 0, random (0, 360), 2, random (0, 160));
 		tnt1 A 0 A_SpawnProjectile ("XDeath3", 40, 0, random (0, 360), 2, random (0, 160));
 		PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
-		tnt1 AAAA 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
+		tnt1 AAAA 0 A_SpawnProjectile ("doomb_internal_organs", 40, 0, random (0, 360), 2, random (0, 160));
 		tnt1 A 0 A_XScream;
 		XPL6 A 5;
 		tnt1 A 0 A_NoBlocking;
@@ -626,7 +626,7 @@ Death.Fire:
 			if(a)
 				a.scale = (0.45, 0.45);
 		}
-		TNT1 AA 0 A_SpawnProjectile ("XDeath1", 30, 0, random (0, 360), 2, random (0, 90));
+		TNT1 AA 0 A_SpawnProjectile ("doomb_internal_organs", 30, 0, random (0, 360), 2, random (0, 90));
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath2", 30, 0, random (0, 360), 2, random (0, 90));
 		TNT1 AAA 0 A_SpawnProjectile ("XDeath3", 30, 0, random (0, 360), 2, random (0, 90));
 		TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 24), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
@@ -639,7 +639,7 @@ Death.Fire:
 	
 	Death.Stomp:
 		TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 5), 6);
-		tnt1 AAAAAA 0 bright A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180));
+		tnt1 AAAAAA 0 bright A_SpawnProjectile ("doomb_internal_organs", 5, 0, random (0, 360), 2, random (30, 180));
 		tnt1 AA 0 bright A_SpawnProjectile ("XDeath2", 55, 0, random (0, 360), 2, random (30, 180));
 		tnt1 AA 0 bright A_SpawnProjectile ("XDeath3", 55, 0, random (0, 360), 2, random (30, 180));
 		tnt1 A 0 A_SpawnItem ("CrushedRemains");
@@ -709,7 +709,7 @@ CurbstompZombieman:
 	TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 	TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
-	TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 0, 0, random (0, 360), 2, random (0, 160));
+	TNT1 AAA 0 A_SpawnProjectile ("doomb_internal_organs", 0, 0, random (0, 360), 2, random (0, 160));
 	TNT1 A 0 A_SpawnProjectile ("XDeath3", 10, 0, random (0, 360), 2, random (50, 90));
 	
 		TNT1 A 0 doomb_spawn_bloodpool();

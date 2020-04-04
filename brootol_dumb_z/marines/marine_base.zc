@@ -343,7 +343,7 @@ states
 		TNT1 A 0 {bfriendly = false;}
 		TNT1 A 0 {busespecial = false;}
 		TNT1 A 0 A_GiveToTarget("EatMe",1);
-		TNT1 A 0 A_SpawnProjectile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath4", 1, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 doomb_much_blood();
 		TNT1 A 0 ;
@@ -364,7 +364,7 @@ states
 	Death.Saw:
 		TNT1 A 0 {busespecial = false;}
 		TNT1 A 0 {bfriendly = false;}
-		TNT1 A 0 A_SpawnProjectile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath2", 1, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath3", 1, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath4", 1, 0, random (0, 360), 2, random (0, 160));
@@ -428,7 +428,7 @@ states
 		TNT1 A 0 {bfriendly = false;}
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 A 0 doomb_gore_spawner(times:6);
-		TNT1 AAAAAA 0 bright A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (30, 180));
+		TNT1 AAAAAA 0 bright A_SpawnProjectile ("doomb_internal_organs", 5, 0, random (0, 360), 2, random (30, 180));
 		TNT1 AA 0 bright A_SpawnProjectile ("XDeath2", 55, 0, random (0, 360), 2, random (30, 180));
 		TNT1 AA 0 bright A_SpawnProjectile ("XDeath3", 55, 0, random (0, 360), 2, random (30, 180));
 		TNT1 A 0 doomb_spawn_bloodpool();
@@ -449,7 +449,7 @@ states
             A_FaceTarget();
 		    {busespecial = false;}
 		    {bfriendly = false;}
-		    A_SpawnProjectile ("XDeath1", 32, 0, random (170, 190), 2, random (0, 40));
+		    A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (170, 190), 2, random (0, 40));
 		    A_SpawnProjectile ("XDeath2", 32, 0, random (170, 190), 2, random (0, 40));
 		    A_SpawnProjectile ("XDeath3", 32, 0, random (170, 190), 2, random (0, 40));
 		    A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
@@ -471,7 +471,7 @@ states
 		TNT1 A 0 {bfriendly = false;}
 		TNT1 A 0 doomb_much_blood();
 		XPL4 A 20 A_XScream;
-		TNT1 A 0 A_SpawnProjectile ("XDeath1", 1, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath2", 1, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath3", 1, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeath4", 1, 0, random (0, 360), 2, random (0, 160));
@@ -546,7 +546,7 @@ states
 		tnt1 A 0 A_SpawnProjectile ("XDeathArm1", 35, 0, random (0, 360), 2, random (0, 160));
 		tnt1 A 0 A_SpawnProjectile ("XDeath3", 40, 0, random (0, 360), 2, random (0, 160));
 		PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
-		tnt1 AAAA 0 A_SpawnProjectile ("XDeath1", 40, 0, random (0, 360), 2, random (0, 160));
+		tnt1 AAAA 0 A_SpawnProjectile ("doomb_internal_organs", 40, 0, random (0, 360), 2, random (0, 160));
 		tnt1 A 0 A_XScream;
 		XPL6 A 5;
 		tnt1 A 0 A_NoBlocking;

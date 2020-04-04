@@ -46,7 +46,7 @@ CLASS Frozendoomb_fatso : doomb_body_base {
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("XIceChunk1", 48, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("XIceChunk2", 48, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("XIceChunk3", 48, 0, random (0, 360), 2, random (40, 120));
-			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 48, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 A_SpawnProjectile ("doomb_internal_organs", 48, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("XDeath2", 48, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("XDeath3", 48, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
@@ -97,7 +97,7 @@ CLASS NoGutsFatso: CurbstompedMarine {
 		Death.Saw:
 			TNT1 A 0;
 			TNT1 A 0 A_SpawnProjectile ("XDeathdoomb_fatsoArm", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 A_SpawnProjectile ("doomb_internal_organs", 5, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnItem ("NoGutsFatso_RemovedWeapon", 1);
 			Stop;
@@ -165,7 +165,7 @@ States
 		TNT1 A 0 A_SpawnItemEx("GibsZ", -15, -15);
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 5), 6);
-		TNT1 AAAA 0 A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAAA 0 A_SpawnProjectile ("doomb_internal_organs", 5, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAAA 0 A_SpawnProjectile ("XDeath2", 25, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAAA 0 A_SpawnProjectile ("XDeath3", 25, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 30, 0, random (0, 360), 2, random (40, 90));
@@ -194,7 +194,7 @@ Death.Cut:
 Death.Saw:
 	TNT1 A 0;
 	TNT1 A 0 A_SpawnProjectile ("XDeathdoomb_fatsoArm", 0, 0, random (0, 360), 2, random (0, 160));
-	TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160));
+	TNT1 AAA 0 A_SpawnProjectile ("doomb_internal_organs", 5, 0, random (0, 360), 2, random (0, 160));
 	TNT1 AAA 0 A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160));
 	TNT1 A 0 A_SpawnItem ("DeadFatNoArm", 1);
 	
@@ -360,7 +360,7 @@ Spawn:
  Death.Saw:
 		TNT1 A 0;
 		TNT1 A 0 A_SpawnProjectile ("XDeathdoomb_fatsoArm", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAA 0 A_SpawnProjectile ("XDeath1", 5, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAA 0 A_SpawnProjectile ("doomb_internal_organs", 5, 0, random (0, 360), 2, random (0, 160));
 		 TNT1 AAA 0 A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnItem ("DeadFatNoHead_RemovedWeapon", 1);
 		Stop;
