@@ -1,7 +1,0 @@
-CLASS BloodmistXXBig : blood_impact_splash { 
-	Default {
-		
-		scale    2.2;
-		GRAVITY 0.2;
-	}
-}

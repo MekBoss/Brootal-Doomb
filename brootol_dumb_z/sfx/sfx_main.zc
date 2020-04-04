@@ -58,13 +58,6 @@ private visual_sfx find_free_effect()
 			break;
 		}
 
-		if (vis_sfx[i] == null)
-		{
-			uint g = vis_sfx.size() - 1;
-
-			vis_sfx[i] = vis_sfx[g];
-			vis_sfx.delete(g);
-		}
 
 		if(vis_sfx[i])
 		{
@@ -75,6 +68,13 @@ private visual_sfx find_free_effect()
 			}
 		}
 
+		else if (vis_sfx[i] == null)
+		{
+			uint g = vis_sfx.size() - 1;
+
+			vis_sfx[i] = vis_sfx[g];
+			vis_sfx.delete(g);
+		}
 	}
 
 	return null;

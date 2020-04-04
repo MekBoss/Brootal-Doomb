@@ -308,7 +308,12 @@ CLASS SuperMastermind : doomb_monster_base {
 				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			}
 			TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 110), 6);
-			TNT1 AAAAAAA 0 A_SpawnProjectile ("BloodMistXXBig", 90, 0, random (0, 360), 2, random (70, 90));
+			TNT1 AAAAAAA 0
+			{
+				actor a = doomb_for_khorne("blood_impact_splash", (0, 0, random(90, 100) ) );
+				if(a)
+					a.scale = (2.45, 2.45);
+			}
 			SPID K 10 A_NoBlocking;
 			TNT1 AAAA 0
 			{
@@ -319,7 +324,12 @@ CLASS SuperMastermind : doomb_monster_base {
 				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			}
 			TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 80), 6);
-			TNT1 AAAAAAA 0 A_SpawnProjectile ("BloodMistXXBig", 90, 0, random (0, 360), 2, random (70, 90));
+			TNT1 AAAAAAA 0
+			{
+				actor a = doomb_for_khorne("blood_impact_splash", (0, 0, random(90, 100) ) );
+				if(a)
+					a.scale = (2.45, 2.45);
+			}
 			SPID L 5;
 			TNT1 AAAA 0 A_SpawnProjectile ("MuchMeatDeath", 0, 0, random (0, 360), 2, random (0, 160));
 			EXPL AAAA 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
@@ -341,8 +351,12 @@ CLASS SuperMastermind : doomb_monster_base {
 			TNT1 AAA 0 A_SpawnItem("NewfagExplosionFlare");
 			TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile ("PEPart2SuperFast", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 30), 6);
-			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistXXBig", 30, 0, random (0, 360), 2, random (70, 90));
-			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistXXBig", 100, 0, random (0, 360), 2, random (20, 90));
+			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0
+			{
+				actor a = doomb_for_khorne("blood_impact_splash", (0, 0, random(30, 100) ) );
+				if(a)
+					a.scale = (2.45, 2.45);
+			}
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 300;
 			TNT1 A 0 A_BrainDie;
@@ -372,7 +386,12 @@ CLASS SuperMastermind : doomb_monster_base {
 				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			}
 			TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 110), 6);
-			TNT1 AAAAAAA 0 A_SpawnProjectile ("BloodMistXXBig", 90, 0, random (0, 360), 2, random (70, 90));
+			TNT1 AAAAAAA 0
+			{
+				actor a = doomb_for_khorne("blood_impact_splash", (0, 0, random(90, 100) ) );
+				if(a)
+					a.scale = (2.45, 2.45);
+			}
 			SPID K 10 A_NoBlocking;
 			TNT1 AAAA 0
 			{
@@ -383,7 +402,12 @@ CLASS SuperMastermind : doomb_monster_base {
 				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			}
 			TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 80), 6);
-			TNT1 AAAAAAA 0 A_SpawnProjectile ("BloodMistXXBig", 90, 0, random (0, 360), 2, random (70, 90));
+			TNT1 AAAAAAA 0
+			{
+				actor a = doomb_for_khorne("blood_impact_splash", (0, 0, random(90, 100) ) );
+				if(a)
+					a.scale = (2.45, 2.45);
+			}
 			SPID L 5;
 			TNT1 AAAA 0 A_SpawnProjectile ("MuchMeatDeath", 0, 0, random (0, 360), 2, random (0, 160));
 			EXPL AAAA 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
@@ -405,13 +429,17 @@ CLASS SuperMastermind : doomb_monster_base {
 			TNT1 AAA 0 A_SpawnItem("NewfagExplosionFlare");
 			TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile ("PEPart2SuperFast", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 30), 6);
-			TNT1 AAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistXXBig", 30, 0, random (0, 360), 2, random (70, 90));
-			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("BloodMistXXBig", 100, 0, random (0, 360), 2, random (20, 90));
+			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0
+			{
+				actor a = doomb_for_khorne("blood_impact_splash", (0, 0, random(30, 100) ) );
+				if(a)
+					a.scale = (2.45, 2.45);
+			}
 			TNT1 AAA 0 A_SpawnProjectile ("MastermindLeg", 30, 0, random (0, 360), 2, random (40, 90));
 			TNT1 A 0 A_SpawnProjectile ("MastermindLeg", 30, 0, 0, 2, 65);
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 300;
 			TNT1 A 0 A_BossDeath;
-			Stop;
+		Stop;
 	}
 }

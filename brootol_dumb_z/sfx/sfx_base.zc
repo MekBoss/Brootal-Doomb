@@ -16,7 +16,7 @@ protected visual_sfx doomb_show_effect(statelabel effect_name, vector3 offset = 
 
 void set_event(eventhandler en)
 {
-	if(en.getclassname() == "doomb_sfx_main" )
+	if(en.getclass() == 'doomb_sfx_main')
         sfx = en;
 }
 
