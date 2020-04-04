@@ -2022,9 +2022,9 @@ States
 		{
 			actor a = doomb_for_khorne("blood_impact_splash", (random(-20, 20), random(-20, 20), random(20, 30) ) );
 			if(a)
-				a.scale = (1.4, 1.4);
+				a.scale = (1.4, 1.4);				
 		}
 	Stop;
 }
-}
 
+}

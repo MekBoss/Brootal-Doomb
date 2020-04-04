@@ -111,7 +111,7 @@ CLASS blood_impact_splash : doomb_blood
 			MSBL ABCDEFG 1;
 			tnt1 a 0
 			{
-				if(!get_init_state() )
+				if(get_init_state() == false )
 					destroy();
 			}
 		stop;

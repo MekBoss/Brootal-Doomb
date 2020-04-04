@@ -23,7 +23,11 @@ CLASS TinyBlood : doomb_blood
 	States
 	{
 		Spawn:
-			tnt1 a 0 nodelay {a_setscale(frandom(0.8, 1.2) ); active = true;}
+			tnt1 a 0 nodelay
+			{
+				a_setscale(frandom(0.8, 1.2) ); active = true;
+				activate_blood();
+			}
 		mini:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
 			BLUD Z 1
@@ -72,6 +76,7 @@ CLASS doomb_red_blood_trail : doomb_blood {
 				a_setscale( frandom(0.7, 1.1) );
 				vel *= frandom(1, 2);
 				A_SetTranslucent(frandom(0.5, 0.7) );
+				activate_blood();
 			}
 			BLOD ABCDE 1
 			{
@@ -103,16 +108,22 @@ CLASS Intestine : doomb_blood
 		Scale 1.1;
 		+missile;
 		+rollsprite
+		+ROLLCENTER;
 	}
 	States
 	{
 		Spawn:
-			tnt1 a 0 nodelay a_setrenderstyle(1, STYLE_Translucent);
-		spawn_loop:
-			GUTS A 2
+			tnt1 a 0 nodelay
 			{
-				vel.z --;
-				roll += 5;
+				a_setrenderstyle(1, STYLE_Translucent);
+				bmissile = true;
+				activate_blood();
+			}
+		spawn_loop:
+			GUTS A 1
+			{
+				vel.z -= 0.3;
+				roll += 20;
 			}
 		Loop;
 		
@@ -120,8 +131,8 @@ CLASS Intestine : doomb_blood
 			GUTS E 600
 			{
 				roll = 0;
+				angle = random(0, 180);
 				frame = random(4, 5);
-				bmissile = true;
 				bshootable = true;
 				a_playsound("misc/xdeath1", 1, 1);
 			}
@@ -136,6 +147,8 @@ states
 	spawn:
 		tnt1 a 40
 		{
+			doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+			doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		}
 	loop;

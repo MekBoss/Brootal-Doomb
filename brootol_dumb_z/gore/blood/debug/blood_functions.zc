@@ -219,7 +219,7 @@ protected void doomb_gore_spawner(class<actor> type = 'SuperGore', vector3 offse
 		uint i = random(5, 15);
 		while(i > 0)
 		{
-			doomb_for_khorne(type, pos + dir + offset);
+			doomb_for_khorne(type, dir + offset);
 			dir += origin;
 			i--;
 		}
@@ -289,7 +289,7 @@ protected void doomb_gore_spawner(class<actor> type = 'SuperGore', vector3 offse
 		uint i = random(5, 15);
 		while(i > 0)
 		{
-			spawn(type, pos + dir + offset);
+			doomb_for_khorne(type, dir + offset);
 			dir += origin;
 			i--;
 		}

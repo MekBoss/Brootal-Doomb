@@ -1,7 +1,6 @@
 class doomb_blood : actor abstract
 {
 
-private state in_beaker_state;
 private bool event_init;
 
 void set_init(bool b)
@@ -15,11 +14,25 @@ protected bool get_init_state() const
 	return event_init;
 }
 
-override void postbeginplay()
+
+protected bool active;
+override void beginplay()
 {
-	in_beaker_state = findstate("wait_in_beaker");
-	super.postbeginplay();
+	active = true;
+	super.beginplay();
 }
+
+protected void activate_blood()
+{
+	active = true;
+}
+
+bool is_active() const
+{
+	return active;
+}
+
+
 
 Default
 {
@@ -99,17 +112,11 @@ protected void doomb_spawn_bloodpool()
 	}
 }
 
-protected bool active;
-bool is_active() const
-{
-	return active;
-}
-
 protected eventhandler blood_throne;
 
 void set_blood_throne(eventhandler e)
 {
-    if(e.getclassname() == "doomb_blood_god")
+    if(e.getclass() == 'doomb_blood_god')
         blood_throne = e;
 }
 
@@ -117,11 +124,13 @@ protected doomb_blood doomb_for_khorne(class<actor> it = null, vector3 off = (0,
 {
 	if(blood_throne && it)
 	{
-		if(it is "doomb_blood")
+		if(it is 'doomb_blood')
 		{
+			console.printf("trying to create %s", it.getclassname() );
 			doomb_blood b = doomb_blood_god(blood_throne).doomb_blood_bank(it);
 			if(b)
 			{
+				console.printf("sucessfully create %s", it.getclassname() );			
 				b.setorigin(pos + off, false);
 				b.vel = vel_dir;
 				b.setstate(b.findstate("spawn"));
@@ -131,16 +140,6 @@ protected doomb_blood doomb_for_khorne(class<actor> it = null, vector3 off = (0,
 	}
 
 	return null;
-}
-
-override void tick()
-{
-	super.tick();
-
-	if(instatesequence(curstate, in_beaker_state ) )
-		active = false;
-	else
-		active = true;
 }
 
 states
