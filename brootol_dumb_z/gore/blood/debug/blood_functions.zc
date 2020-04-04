@@ -39,7 +39,6 @@ protected void doomb_Meat_Death_Small()
 	A_SpawnProjectile ("Brutal_FlyingBlood", 10, 0, random (0, 360), 2, random (40, 90));
 	A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, random (0, 160));
 	A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, random (0, 160));
-	A_SpawnProjectile ("SmallSuperGore", 10, 0, random (0, 360), 2, random (10, 170));
 	{
 		actor a = doomb_for_khorne("blood_impact_splash", (0, 0, 35 ) );
 		if(a)
