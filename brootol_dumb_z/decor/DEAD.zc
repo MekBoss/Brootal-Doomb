@@ -142,8 +142,8 @@ CLASS CurbstompedMarine : doomb_body_base {
 			TNT1 A 0 A_SpawnItem("GibsZ");
 			TNT1 A 0 A_NoBlocking;
 			TNT1 AA 0 A_SpawnProjectile ("doomb_internal_organs", 5, 0, random (0, 360), 2, - random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, - random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("XDeath3", 5, 0, random (0, 360), 2, - random (0, 160));
+			TNT1 AA 0 A_SpawnProjectile ("doomb_internal_organs", 5, 0, random (0, 360), 2, - random (0, 160));
+			TNT1 AA 0 A_SpawnProjectile ("doomb_internal_organs", 5, 0, random (0, 360), 2, - random (0, 160));
 			TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 10, 0, random (0, 360), 2, - random (40, 90));
 			TNT1 AAAAAAA 0 A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, - random (0, 160));
 			TNT1 AAAA 0 A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, - random (0, 160));
@@ -170,7 +170,7 @@ CLASS CurbstompedMarine : doomb_body_base {
 		Death.Crush:
 		Death.Stomp:
 			TNT1 AAAAA 0 A_SpawnProjectile ("doomb_internal_organs", 5, 0, random (0, 360), 2, - random (0, 30));
-			TNT1 AA 0 A_SpawnProjectile ("XDeath2", 5, 0, random (0, 360), 2, - random (0, 30));
+			TNT1 AA 0 A_SpawnProjectile ("doomb_internal_organs", 5, 0, random (0, 360), 2, - random (0, 30));
 			TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 5) );
 			TNT1 AAAAAAA 0 A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, - random (10, 30));
 			TNT1 AAAA 0 A_SpawnProjectile ("XDeathSkinPiece1", 5, 0, random (0, 360), 2, - random (10, 130));
@@ -850,9 +850,9 @@ CLASS DeadHangBNoBrain: doomb_body_base Replaces HangBNoBrain {
 			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130));
 			TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeath3", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeath4", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAAAAAAAAA 0
 			{
@@ -901,9 +901,9 @@ CLASS DeadHangTLookingDown: doomb_body_base Replaces HangTLookingDown {
 			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130));
 			TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeath3", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeath4", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAAAAAAAAA 0
 			{
@@ -951,9 +951,9 @@ CLASS DeadHangTLookingUp: doomb_body_base Replaces HangTLookingUp {
 			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130));
 			TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeath3", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeath4", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAAAAAAAAA 0
 			{
@@ -1001,9 +1001,9 @@ CLASS DeadHangTSkull: doomb_body_base replaces HangTSkull {
 			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130));
 			TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeath3", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeath4", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAAAAAAAAA 0
 			{
@@ -1051,9 +1051,9 @@ CLASS DeadHangTNoBrain: doomb_body_base Replaces HangTNoBrain {
 			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130));
 			TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeath2", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeath3", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeath4", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAAAAAAAAA 0
 			{

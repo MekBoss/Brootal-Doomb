@@ -142,7 +142,7 @@ CLASS doomb_elemental : doomb_monster_base
 			tnt1 A 0 A_PlaySound("demon/pain", CHAN_AUTO, 1);
 			PA1F JKKKKL 3;
 			tnt1 AAAA 0 A_SpawnProjectile ("doomb_internal_organs", 10, 0, random (0, 360), 2, random (0, 160));
-			tnt1 AAA 0 A_SpawnProjectile ("XDeath2", 10, 0, random (0, 360), 2, random (0, 160));
+			tnt1 AAA 0 A_SpawnProjectile ("doomb_internal_organs", 10, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 doomb_much_blood(90);
 			tnt1 A 0 ACS_Execute(585, 0, 0, 0, 0);
 			tnt1 A 0 ACS_Execute(580, 0, 0, 0, 0);
@@ -153,7 +153,7 @@ CLASS doomb_elemental : doomb_monster_base
 			PA1F MNNNNNNNOPQR 3;
 		pain_elemental_punch_loop:
 			tnt1 AAAA 0 A_SpawnProjectile ("doomb_internal_organs", 10, 0, random (0, 360), 2, random (0, 160));
-			tnt1 AAA 0 A_SpawnProjectile ("XDeath2", 10, 0, random (0, 360), 2, random (0, 160));
+			tnt1 AAA 0 A_SpawnProjectile ("doomb_internal_organs", 10, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 doomb_much_blood(90);
 			tnt1 A 0 ACS_Execute(585, 0, 0, 0, 0);
 			tnt1 A 0 ACS_Execute(580, 0, 0, 0, 0);
