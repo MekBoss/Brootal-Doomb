@@ -90,8 +90,7 @@ CLASS CapturedMarine: doomb_marine_base Replaces Blursphere
 			
 		Death.Eat:
 			TNT1 A 0 A_GiveToTarget("EatMe",1);
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_much_blood();
 			XPL1 A 10 A_XScream;
 			XPL1 B 20 A_NoBlocking;
@@ -103,10 +102,7 @@ CLASS CapturedMarine: doomb_marine_base Replaces Blursphere
 			
 		Death.Cut:
 		Death.Saw:
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_Rip_Guts();
 			TNT1 A 0 A_SpawnProjectile ("XDeathHalfMarine", 50, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 doomb_much_blood();
@@ -132,10 +128,7 @@ CLASS CapturedMarine: doomb_marine_base Replaces Blursphere
 			TNT1 A 0 A_Jump (128, 3);
 			Goto Death;
 			TNT1 AAA 0;
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_Rip_Guts();
 			TNT1 A 0 A_SpawnProjectile ("XDeathHalfMarine", 50, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 doomb_much_blood();
@@ -178,9 +171,7 @@ CLASS CapturedMarine: doomb_marine_base Replaces Blursphere
 		Death.Stomp:
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 doomb_gore_spawner(times:6);
-			TNT1 AAAAAA 0 bright A_SpawnProjectile ("doomb_internal_organs", 5, 0, random (0, 360), 2, random (30, 180));
-			TNT1 AA 0 bright A_SpawnProjectile ("doomb_internal_organs", 55, 0, random (0, 360), 2, random (30, 180));
-			TNT1 AA 0 bright A_SpawnProjectile ("doomb_internal_organs", 55, 0, random (0, 360), 2, random (30, 180));
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem ("CrushedRemains");
 			TNT1 A 1;
@@ -191,9 +182,7 @@ CLASS CapturedMarine: doomb_marine_base Replaces Blursphere
 		Death.Blast:
 		Death.SSG:
 			PLAY O 2 A_FaceTarget;
-			TNT1 AAAA 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (170, 190), 2, random (0, 40));
-			TNT1 AAAA 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (170, 190), 2, random (0, 40));
-			TNT1 AAAA 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (170, 190), 2, random (0, 40));
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
 			TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 AAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 32, 0, random (170, 190), 2, random (0, 40));
@@ -210,10 +199,7 @@ CLASS CapturedMarine: doomb_marine_base Replaces Blursphere
 		Death.Rape:
 			TNT1 A 0 doomb_much_blood();
 			XPL4 A 20 A_XScream;
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 1, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_much_blood();
 			XPL4 B 20 A_NoBlocking;
 			TNT1 A 0 doomb_much_blood();
@@ -274,9 +260,8 @@ CLASS CapturedMarine: doomb_marine_base Replaces Blursphere
 			TNT1 AA 0 doomb_spray_decal("BrutalBloodSuper");
 			tnt1 AAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_Blood", 50, 0, random (0, 360), 2, random (0, 160));
 			tnt1 A 0 A_SpawnProjectile ("XDeathArm1", 35, 0, random (0, 360), 2, random (0, 160));
-			tnt1 A 0 A_SpawnProjectile ("doomb_internal_organs", 40, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
-			tnt1 AAAA 0 A_SpawnProjectile ("doomb_internal_organs", 40, 0, random (0, 360), 2, random (0, 160));
 			tnt1 A 0 A_XScream;
 			XPL6 A 5;
 			tnt1 A 0 A_NoBlocking;

@@ -57,10 +57,7 @@ CLASS DyingHellKnight1 : doomb_body_base {
 			TNT1 A 0 A_NoBlocking;
 			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightArm", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightHead", 32, 0, random (0, 360), 2, random (0, 160));
 			BBO1 AABCD 8;
 			TNT1 A 0 doomb_spawn_bloodpool();
@@ -119,9 +116,7 @@ CLASS FrozenHellKnight : doomb_body_base {
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("XIceChunk1", 48, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("XIceChunk2", 48, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("XIceChunk3", 48, 0, random (0, 360), 2, random (40, 120));
-			TNT1 AAA 0 A_SpawnProjectile ("doomb_internal_organs", 48, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("doomb_internal_organs", 48, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("doomb_internal_organs", 48, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 A 0 doomb_much_blood(48);
 			FZD6 C 300;
@@ -269,7 +264,7 @@ CLASS Gib_HellKnightArm: LimbBase {
 		Death:    
 			TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 AAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 0, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			Stop;
 	}
 	
@@ -313,7 +308,7 @@ CLASS Gib_HellKnightLeg: LimbBase {
 			Stop;
 		Death:    
 			TNT1 AAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 0, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			Stop;
 	}
 	
@@ -361,7 +356,7 @@ CLASS Gib_HellKnightTorso: LimbBase {
 			Stop;
 		Death:    
 			TNT1 AAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 0, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			Stop;
 	}
 	
@@ -698,7 +693,7 @@ CLASS DyingHellKnight : doomb_body_base
 			tnt1 A 0 ACS_Execute(582, 0, 0, 0, 0);
 			tnt1 A 0 ACS_Execute(583, 0, 0, 0, 0);
 			tnt1 AAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 40, 0, random (0, 360), 2, random (50, 130));
-			tnt1 AAAAAAA 0 A_SpawnProjectile ("doomb_internal_organs", 10, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			tnt1 AA 0 A_SpawnProjectile ("Blood", 10, 0, random (0, 360), 2, random (0, 160));
 			tnt1 AAAAAAAAAA 0 A_SpawnProjectile ("PlayerFlyingBlood", 50, 0, random (0, 360), 2, random (0, 160));
 			HKF2 KL 6;
@@ -734,9 +729,7 @@ CLASS DyingHellKnight : doomb_body_base
 		Death.SSG:
 		XDeath:
 			TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 5), 6);
-			TNT1 AAAAAA 0 bright A_SpawnProjectile ("doomb_internal_organs", 5, 0, random (0, 360), 2, random (30, 180));
-			TNT1 AA 0 bright A_SpawnProjectile ("doomb_internal_organs", 55, 0, random (0, 360), 2, random (30, 180));
-			TNT1 AA 0 bright A_SpawnProjectile ("doomb_internal_organs", 55, 0, random (0, 360), 2, random (30, 180));
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 A_SpawnItem ("CrushedRemains");
 			TNT1 A 1;
 			TNT1 A 1 A_XScream;
@@ -776,12 +769,7 @@ CLASS KnightXDeath : doomb_body_base {
 			TNT1 AA 0 A_SpawnProjectile ("XDeathHellKnightLeg", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("doomb_internal_organs", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAA 0 A_SpawnProjectile ("doomb_internal_organs", 15, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAA 0 A_SpawnProjectile ("doomb_internal_organs", 15, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightHead", 32, 0, random (0, 360), 2, random (0, 160));

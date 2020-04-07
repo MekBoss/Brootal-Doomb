@@ -632,7 +632,8 @@ CLASS XDeathSkinPiece1 : doomb_body_base {
 
 
 
-//SLOWDOWN or at least higly possible source
+//SLOWDOWN ADRESSED
+//			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 CLASS doomb_internal_organs : doomb_body_base { 
 	Default {
  
@@ -659,6 +660,13 @@ CLASS doomb_internal_organs : doomb_body_base {
 	Gravity 0.4;
 }
 
+private uint sprite_name;
+
+void set_sprite_type(uint i)
+{
+	sprite_name = i;
+}
+
 States
 {
 	xme1 a 0;
@@ -670,7 +678,7 @@ States
 	Spawn:
 		TNT1 A 0 nodelay
 		{
-			switch(random(0, 4))
+			switch(sprite_name)
 			{
 				case 0:
 				default:

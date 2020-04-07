@@ -140,23 +140,6 @@ CLASS Intestine : doomb_blood
 	}
 }
 
-class test : doomb_monster_base
-{
-states
-{
-	spawn:
-		tnt1 a 40
-		{
-			doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
-			doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
-			doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
-		}
-	loop;
-
-}
-
-}
-
 CLASS doomb_sticky_meat: doomb_blood
 { 
 	Default

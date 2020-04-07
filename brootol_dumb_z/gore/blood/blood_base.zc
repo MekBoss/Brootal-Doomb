@@ -126,11 +126,9 @@ protected doomb_blood doomb_for_khorne(class<actor> it = null, vector3 off = (0,
 	{
 		if(it is 'doomb_blood')
 		{
-			console.printf("trying to create %s", it.getclassname() );
 			doomb_blood b = doomb_blood_god(blood_throne).doomb_blood_bank(it);
 			if(b)
 			{
-				console.printf("sucessfully create %s", it.getclassname() );			
 				b.setorigin(pos + off, false);
 				b.vel = vel_dir;
 				b.setstate(b.findstate("spawn"));

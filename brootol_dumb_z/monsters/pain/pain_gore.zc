@@ -196,7 +196,8 @@ CLASS PEPart2SuperFast: PEPart2 {
 
 
 
-CLASS FatalizedPE : ACTOR { 
+CLASS FatalizedPE : doomb_body_base
+{ 
 	Default {
 		
 		Radius 12;
@@ -218,11 +219,8 @@ CLASS FatalizedPE : ACTOR {
 			PA1F U -1;
 			Stop;
 		Death:
-			TNT1 AAA 0 A_SpawnProjectile ("doomb_internal_organs", 5, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAA 0 A_SpawnProjectile ("doomb_internal_organs", 5, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAA 0 A_SpawnProjectile ("doomb_internal_organs", 5, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAA 0 A_SpawnProjectile ("doomb_internal_organs", 5, 0, random (0, 360), 2, random (0, 160));
-			Stop;
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		Stop;
 			
 	}
 	
