@@ -22,18 +22,24 @@ CLASS FallingHeight : Inventory {
 }
 
 
+#include "brootol_dumb_z/base_definitions.zc"
 
 
 //monsters base must go before gore
 //because gore base inherits from monster base
 #include "brootol_dumb_z/monsters/monster_base.zc"
-#include "brootol_dumb_z/gore/bodies/gore_base.zc"
+#include "brootol_dumb_z/gore/limbs/gore_base.zc"
+#include "brootol_dumb_z/gore/blood/blood_base.zc"
 #include "brootol_dumb_z/weapons/weapon_base.zc"
 #include "brootol_dumb_z/weapons/weapon_dual_base.zc"
 
 #include "brootol_dumb_z/sfx/sfx_main.zc"
 #include "brootol_dumb_z/sfx/sfx_base.zc"
 #include "brootol_dumb_z/sfx/sfx_states.zc"
+
+
+//Gore N' Blood
+#include "brootol_dumb_z/gore/gore_event.zc"
 
 //sfx
 #include "brootol_dumb_z/sfx/model_dummies.zc"
@@ -44,6 +50,8 @@ CLASS FallingHeight : Inventory {
 #include "brootol_dumb_z/sfx/PARTICLES.zc"
 
 #include "brootol_dumb_z/sfx/CASING.zc"
+
+
 
 //Guns Guns Guns
 #include "brootol_dumb_z/weapons/MELEE.zc"
@@ -75,26 +83,6 @@ CLASS FallingHeight : Inventory {
 #include "brootol_dumb_z/items/HEALTH2.zc"
 
 
-//Gore N' Blood
-#include "brootol_dumb_z/gore/gore_event.zc"
-#include "brootol_dumb_z/gore/gore_fixed.zc"
-
-#include "brootol_dumb_z/gore/BLOOD/BLOOD_base.zc"
-#include "brootol_dumb_z/gore/BLOOD/blood_exported.zc"
-
-#include "brootol_dumb_z/gore/BLOOD/BLOOD.zc"
-
-#include "brootol_dumb_z/gore/GORE!!!.zc"
-#include "brootol_dumb_z/gore/GORE!!!.zc"
-
-#include "brootol_dumb_z/gore/GORE!!!.zc"
-#include "brootol_dumb_z/gore/GORE2.zc"
-#include "brootol_dumb_z/gore/GORE3.zc"
-#include "brootol_dumb_z/gore/BLOOD/BLOOD.zc"
-#include "brootol_dumb_z/gore/BLOODSPLASH.zc"
-#include "brootol_dumb_z/gore/blueblood.zc"
-#include "brootol_dumb_z/gore/greenblood.zc"
-#include "brootol_dumb_z/gore/underwaterblood.zc"
 
 
 //DECORATIONS
@@ -112,7 +100,6 @@ CLASS FallingHeight : Inventory {
 #include "brootol_dumb_z/weapons/ammo/AMMO.zc"
 
 
-#include "brootol_dumb_z/base_definitions.zc"
 
 #include "brootol_dumb_z/monsters/ZOMBIEMEN/ZOMBIEMEN.zc"
 #include "brootol_dumb_z/monsters/ZOMBIEMEN/ZOMB_gore.zc"
@@ -200,11 +187,8 @@ set acsreturn value in sklil definition
 #include "brootol_dumb_z/actors_dump/TRACERS.zc"
 #include "brootol_dumb_z/actors_dump/BrutalChexQuest.zc"
 
-#include "brootol_dumb_z/gore/blood/debug/doomb_blood.zc"
-#include "brootol_dumb_z/gore/blood/debug/doomb_blood.zc"
 
 
-#include "brootol_dumb_z/gore/limbs/shared_parts.zc"
 
 
 //third party dependencies
@@ -239,19 +223,22 @@ override void worldthingdestroyed(worldevent e)
 uint timer;
 override void worldtick()
 {
+    if(!doomb_debug)
+        return;
+
     timer++;
 
     if(timer == 35)
     {
         timer = 0;
-        if(doomb_debug)
-            for(uint i = 0; i < destroyed.size(); i++)
-            {
-                console.printf("");
-                console.printf("%i %s was destroyed in last second", ammount[i], destroyed[i] );
-                ammount.delete(i);
-                destroyed.delete(i);
-            }
+
+        for(uint i = 0; i < destroyed.size(); i++)
+        {
+            console.printf("");
+            console.printf("%i %s was destroyed in last second", ammount[i], destroyed[i] );
+            ammount.delete(i);
+            destroyed.delete(i);
+        }
     }
 }
 

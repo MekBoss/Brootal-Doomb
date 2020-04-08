@@ -26,7 +26,11 @@ Default
 states
 {
     Spawn:
-		tnt1 a 0 nodelay {angle = random(0,360);}
+		tnt1 a 0 nodelay
+        {
+            angle = random(0,360);
+            setorigin( (pos.x, pos.y, floorz), false);
+        }
 		tnt1 a 0 a_jump(126, "no_scale");
 	scale:
         TNT5 AAAAAAAAAAAAAAAAAAAAAAA 5 {scale *= 1.03;}

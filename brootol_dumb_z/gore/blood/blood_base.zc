@@ -1,3 +1,21 @@
+//extend monster_base class here to temporaly dump all blood functions
+#include "brootol_dumb_z/gore/blood/blood_functions.zc"
+
+
+#include "brootol_dumb_z/gore/blood/brutal_blood.zc"
+#include "brootol_dumb_z/gore/blood/blood_hit.zc"
+#include "brootol_dumb_z/gore/blood/flying_blood.zc"
+#include "brootol_dumb_z/gore/blood/blood_spot.zc"
+#include "brootol_dumb_z/gore/blood/super_gore.zc"
+#include "brootol_dumb_z/gore/blood/blood_pools.zc"
+#include "brootol_dumb_z/gore/BLOOD/blood_exported.zc"
+#include "brootol_dumb_z/gore/BLOOD/blueblood.zc"
+#include "brootol_dumb_z/gore/BLOOD/greenblood.zc"
+#include "brootol_dumb_z/gore/BLOOD/underwaterblood.zc"
+#include "brootol_dumb_z/gore/blood/doomb_blood.zc"
+
+
+
 class doomb_blood : actor abstract
 {
 

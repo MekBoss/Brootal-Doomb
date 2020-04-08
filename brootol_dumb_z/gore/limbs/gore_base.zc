@@ -1,4 +1,11 @@
-//all base classes for blood related actors
+#include "brootol_dumb_z/gore/limbs/GORE!!!.zc"
+#include "brootol_dumb_z/gore/limbs/GORE2.zc"
+#include "brootol_dumb_z/gore/limbs/GORE3.zc"
+#include "brootol_dumb_z/gore/limbs/gore_fixed.zc"
+#include "brootol_dumb_z/gore/limbs/shared_parts.zc"
+
+
+//all base classes for body related actors
 class doomb_body_base : doomb_monster_base abstract
 {
 protected bool bleeding;
