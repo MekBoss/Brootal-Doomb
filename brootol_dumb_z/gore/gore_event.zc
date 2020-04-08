@@ -11,6 +11,8 @@ override void worldthingspawned(worldevent e)
 	if(e.thing is "doomb_blood")
 	    doomb_blood(e.thing).set_blood_throne(self);
 		
+	if(e.thing is "blood" || e.thing is "BloodSplatter" || e.thing is "axeblood")
+	    console.printf("blood spawned");
 }
 /* */
 override void worldtick()

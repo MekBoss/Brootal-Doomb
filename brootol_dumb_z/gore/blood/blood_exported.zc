@@ -197,4 +197,3 @@ CLASS doomb_sticky_meat: doomb_blood
 		stop;
 	}
 }
-

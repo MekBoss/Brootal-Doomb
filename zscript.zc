@@ -77,7 +77,6 @@ CLASS FallingHeight : Inventory {
 
 //Gore N' Blood
 #include "brootol_dumb_z/gore/gore_event.zc"
-#include "brootol_dumb_z/gore/blood_pools.zc"
 #include "brootol_dumb_z/gore/gore_fixed.zc"
 
 #include "brootol_dumb_z/gore/BLOOD/BLOOD_base.zc"
@@ -202,6 +201,10 @@ set acsreturn value in sklil definition
 #include "brootol_dumb_z/actors_dump/BrutalChexQuest.zc"
 
 #include "brootol_dumb_z/gore/blood/debug/doomb_blood.zc"
+#include "brootol_dumb_z/gore/blood/debug/doomb_blood.zc"
+
+
+#include "brootol_dumb_z/gore/limbs/shared_parts.zc"
 
 
 //third party dependencies

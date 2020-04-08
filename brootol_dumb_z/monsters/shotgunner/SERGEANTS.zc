@@ -327,15 +327,15 @@ CLASS doomb_shotgun_guy : doomb_monster_base
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_FaceTarget;
 			TNT1 A 0 A_Recoil (6);
-			SPO4 U 5 A_SpawnProjectile ("Brutal_LiquidBlood", 15, 0, random (0, 360), 2, random (0, 40));
+			SPO4 U 5 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 40));
 			TNT1 A 0 A_JumpIf((vel.Y == 0), "TakeASit");
-			SPO4 U 5 A_SpawnProjectile ("Brutal_LiquidBlood", 15, 0, random (0, 360), 2, random (0, 40));
+			SPO4 U 5 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 40));
 			TNT1 A 0 A_JumpIf((vel.Y == 0), "TakeASit");
-			SPO4 V 5 A_SpawnProjectile ("Brutal_LiquidBlood", 15, 0, random (0, 360), 2, random (0, 40));
+			SPO4 V 5 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 40));
 			TNT1 A 0 A_JumpIf((vel.Y == 0), "TakeASit");
-			SPO4 W 5 A_SpawnProjectile ("Brutal_LiquidBlood", 15, 0, random (0, 360), 2, random (0, 40));
-			SPO4 X 5 A_SpawnProjectile ("Brutal_LiquidBlood", 15, 0, random (0, 360), 2, random (0, 40));
-			SPO4 Y 5 A_SpawnProjectile ("Brutal_LiquidBlood", 15, 0, random (0, 360), 2, random (0, 40));
+			SPO4 W 5 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 40));
+			SPO4 X 5 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 40));
+			SPO4 Y 5 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 40));
 		TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem("Deaddoomb_shotgun_guy");
 			Stop;
@@ -442,10 +442,10 @@ CLASS doomb_shotgun_guy : doomb_monster_base
 			TNT1 A 0 A_SpawnProjectile ("eye", 50, 0, random (90, 110), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("head_piece", 50, 0, random (100, 130), 2, random (0, 160));
 			TNT1 A 0 A_Scream;
-			SPOS TTTTUU 2 A_SpawnProjectile ("Brutal_LiquidBlood", 40, 0, 120, 2, random (0, 60));
-			SPOS VVV 2 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, 120, 2, random (60, 120));
+			SPOS TTTTUU 2 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, 120, 2, random (0, 60));
+			SPOS VVV 2 A_SpawnProjectile ("Brutal_FlyingBlood", 30, 0, 120, 2, random (60, 120));
 			TNT1 A 0 A_NoBlocking;
-			SPOS XXXYYY 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random (0, 360), 2, random (60, 120));
+			SPOS XXXYYY 2 A_SpawnProjectile ("Brutal_FlyingBlood", 20, 0, random (0, 360), 2, random (60, 120));
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem("DeadShotgunGuy_NoBrain");
 			Stop;
@@ -482,9 +482,9 @@ CLASS doomb_shotgun_guy : doomb_monster_base
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_JumpIfInTargetInventory("HeavyStrikeUpward", 1, "HeavyHead");
 			TNT1 A 0 A_SpawnItem("ShotgunguyHeadExplode", 0, 50);
-			SPDH AAAAABBBBBBBBBBCCCCC 2 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, random (0, 360), 2, random (60, 120));
-			SPDH DDDDEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 10, 0, random (0, 360), 2, random (60, 120));
-			SPDH EEEEEEEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 5, 0, random (0, 360), 2, random (10, 40));
+			SPDH AAAAABBBBBBBBBBCCCCC 2 A_SpawnProjectile ("Brutal_FlyingBlood", 30, 0, random (0, 360), 2, random (60, 120));
+			SPDH DDDDEEEE 2 A_SpawnProjectile ("Brutal_FlyingBlood", 10, 0, random (0, 360), 2, random (60, 120));
+			SPDH EEEEEEEEEE 2 A_SpawnProjectile ("Brutal_FlyingBlood", 5, 0, random (0, 360), 2, random (10, 40));
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem("DeadShotgunGuy_NoHead");
 			Stop;
@@ -507,7 +507,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base
 			TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 			tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 			SOSL GHIJK 6;
-			SOSL LLLLLLLLLLLLLLLLLLL 4 A_SpawnProjectile ("Brutal_LiquidBlood", 10, 0, random (0, 360), 2, random (10, 40));
+			SOSL LLLLLLLLLLLLLLLLLLL 4 A_SpawnProjectile ("Brutal_FlyingBlood", 10, 0, random (0, 360), 2, random (10, 40));
 			SOSL L -1;
 			Stop;
 			
@@ -518,9 +518,9 @@ CLASS doomb_shotgun_guy : doomb_monster_base
 			TNT1 A 0 doomb_much_blood(40);
 			TNT1 A 0 A_XScream;
 			TNT1 A 0 A_NoBlocking;
-			SPDH AAAAABBBBBBBBBBCCCCC 2 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, random (0, 360), 2, random (60, 120));
-			SPDH DDDDDDEEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 10, 0, random (0, 360), 2, random (60, 120));
-			SPDH EEEEEEEEEEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 5, 0, random (0, 360), 2, random (10, 40));
+			SPDH AAAAABBBBBBBBBBCCCCC 2 A_SpawnProjectile ("Brutal_FlyingBlood", 30, 0, random (0, 360), 2, random (60, 120));
+			SPDH DDDDDDEEEEE 2 A_SpawnProjectile ("Brutal_FlyingBlood", 10, 0, random (0, 360), 2, random (60, 120));
+			SPDH EEEEEEEEEEEE 2 A_SpawnProjectile ("Brutal_FlyingBlood", 5, 0, random (0, 360), 2, random (10, 40));
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_SpawnItem("DeadShotgunGuy_NoHead");
 			Stop;
@@ -593,9 +593,9 @@ CLASS doomb_shotgun_guy : doomb_monster_base
 			TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 40) );
 			ZXZ7 A 6 A_Stop;
 			TNT1 A 0 doomb_spawn_bloodpool();
-			ZXZ7 BBBBBBBBBB 3 A_SpawnProjectile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (30, 60));
-			ZXZ7 CCC 3 A_SpawnProjectile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (10, 40));
-			ZXZ7 DD 3 A_SpawnProjectile ("Brutal_LiquidBlood", 6, 0, random (0, 360), 2, random (30, 60));
+			ZXZ7 BBBBBBBBBB 3 A_SpawnProjectile ("Brutal_FlyingBlood", 26, 0, random (0, 360), 2, random (30, 60));
+			ZXZ7 CCC 3 A_SpawnProjectile ("Brutal_FlyingBlood", 26, 0, random (0, 360), 2, random (10, 40));
+			ZXZ7 DD 3 A_SpawnProjectile ("Brutal_FlyingBlood", 6, 0, random (0, 360), 2, random (30, 60));
 			TNT1 A 0 A_SpawnItem("DeadShotgunguyZXZ7E");
 			Stop;
 			
@@ -611,9 +611,9 @@ CLASS doomb_shotgun_guy : doomb_monster_base
 			TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 40) );
 			ZXZ6 A 6 A_Stop;
 			TNT1 A 0 doomb_spawn_bloodpool();
-			ZXZ6 BBBBBBBBBBBBBBBBBBB 3 A_SpawnProjectile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (30, 60));
-			ZXZ6 CCC 3 A_SpawnProjectile ("Brutal_LiquidBlood", 26, 0, random (0, 360), 2, random (10, 40));
-			ZXZ6 DD 3 A_SpawnProjectile ("Brutal_LiquidBlood", 6, 0, random (0, 360), 2, random (30, 60));
+			ZXZ6 BBBBBBBBBBBBBBBBBBB 3 A_SpawnProjectile ("Brutal_FlyingBlood", 26, 0, random (0, 360), 2, random (30, 60));
+			ZXZ6 CCC 3 A_SpawnProjectile ("Brutal_FlyingBlood", 26, 0, random (0, 360), 2, random (10, 40));
+			ZXZ6 DD 3 A_SpawnProjectile ("Brutal_FlyingBlood", 6, 0, random (0, 360), 2, random (30, 60));
 			TNT1 A 0 A_SpawnItem("DeadShotgunguyZXZ6E");
 			Stop;
 			

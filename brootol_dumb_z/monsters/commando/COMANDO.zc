@@ -327,14 +327,14 @@ CLASS doomb_commando : doomb_monster_base
 		
 	Death.headExplode:
 		TNT1 A 0 A_SpawnItem("ChaingunguyHeadExplode", 0, 50);
-		CPHS AAA 2 A_SpawnProjectile ("Brutal_LiquidBlood", 50, 0, random (0, 360), 2, random (60, 120));
-		CPHS BBB 2 A_SpawnProjectile ("Brutal_LiquidBlood", 50, 0, random (0, 360), 2, random (60, 120));
+		CPHS AAA 2 A_SpawnProjectile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (60, 120));
+		CPHS BBB 2 A_SpawnProjectile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (60, 120));
 		TNT1 A 0 A_XScream;
-		CPHS CCC 2 A_SpawnProjectile ("Brutal_LiquidBlood", 40, 0, random (0, 360), 2, random (60, 120));
+		CPHS CCC 2 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (60, 120));
 		TNT1 A 0 A_NoBlocking;
-		CPHS DDDDDDDDDDDDEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, random (0, 360), 2, random (60, 120));
+		CPHS DDDDDDDDDDDDEEE 2 A_SpawnProjectile ("Brutal_FlyingBlood", 30, 0, random (0, 360), 2, random (60, 120));
 		TNT1 A 0 doomb_spawn_bloodpool();
-		CPHS FFFFFFFFFFFFFFF 2 A_SpawnProjectile ("Brutal_LiquidBlood", 5, 0, random (0, 360), 2, random (10, 40));
+		CPHS FFFFFFFFFFFFFFF 2 A_SpawnProjectile ("Brutal_FlyingBlood", 5, 0, random (0, 360), 2, random (10, 40));
 		TNT1 A 1 A_SpawnItem ("DeadChaingunGuy_NoHead", 3);
 	Stop;
 
@@ -342,14 +342,14 @@ CLASS doomb_commando : doomb_monster_base
 		TNT1 AAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Blood", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		TNT1 A 0 A_SpawnItemEx ("XDeathChaingunguyHeadBeheaded", 50, 0, random (0, 360), 2, random (40, 90));
-		CPHS AAA 2 A_SpawnProjectile ("Brutal_LiquidBlood", 50, 0, random (0, 360), 2, random (60, 120));
-		CPHS BBB 2 A_SpawnProjectile ("Brutal_LiquidBlood", 50, 0, random (0, 360), 2, random (60, 120));
+		CPHS AAA 2 A_SpawnProjectile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (60, 120));
+		CPHS BBB 2 A_SpawnProjectile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (60, 120));
 		TNT1 A 0 A_XScream;
-		CPHS CCC 2 A_SpawnProjectile ("Brutal_LiquidBlood", 40, 0, random (0, 360), 2, random (60, 120));
+		CPHS CCC 2 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (60, 120));
 		TNT1 A 0 A_NoBlocking;
-		CPHS DDDDDDDDDDDDEEE 2 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, random (0, 360), 2, random (60, 120));
+		CPHS DDDDDDDDDDDDEEE 2 A_SpawnProjectile ("Brutal_FlyingBlood", 30, 0, random (0, 360), 2, random (60, 120));
 		TNT1 A 0 doomb_spawn_bloodpool();
-		CPHS FFFFFFFFFFFFFFF 2 A_SpawnProjectile ("Brutal_LiquidBlood", 5, 0, random (0, 360), 2, random (10, 40));
+		CPHS FFFFFFFFFFFFFFF 2 A_SpawnProjectile ("Brutal_FlyingBlood", 5, 0, random (0, 360), 2, random (10, 40));
 		TNT1 A 1 A_SpawnItem ("DeadChaingunGuy_NoHead", 3);
 	Stop;
 
@@ -520,10 +520,10 @@ CLASS doomb_commando : doomb_monster_base
 		TNT1 A 0 A_SpawnProjectile ("XDeathChaingunguyHeadOnXDeath", 62, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_XScream;
 		TNT1 A 0 A_NoBlocking;
-		MPSD AAAA 6 A_SpawnProjectile ("Brutal_LiquidBlood", 64, 0, random (0, 360), 2, random (30, 60));
-		MPSD BBBBCCCC 2 A_SpawnProjectile ("Brutal_LiquidBlood", 34, 0, random (0, 60), 2, random (30, 60));
+		MPSD AAAA 6 A_SpawnProjectile ("Brutal_FlyingBlood", 64, 0, random (0, 360), 2, random (30, 60));
+		MPSD BBBBCCCC 2 A_SpawnProjectile ("Brutal_FlyingBlood", 34, 0, random (0, 60), 2, random (30, 60));
 		TNT1 A 0 doomb_spawn_bloodpool();
-		MPSD DDDDDDDDDDDDDDDDDDDDD 6 A_SpawnProjectile ("Brutal_LiquidBlood", 16, 0, random (0, 60), 2, random (30, 60));
+		MPSD DDDDDDDDDDDDDDDDDDDDD 6 A_SpawnProjectile ("Brutal_FlyingBlood", 16, 0, random (0, 60), 2, random (30, 60));
 		TNT1 A 0 A_SpawnItem("DeadChaingunguyMPSDD");
 	Stop;
 	

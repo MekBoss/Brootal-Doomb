@@ -243,7 +243,7 @@ States
 		TNT1 AAA 0 A_SpawnProjectile ("XDeathBrain1", 60, 0, random (0, 360), 2, random (0, 160));
 		BDSS PQRSTU 6;
 		TNT1 A 0 doomb_spawn_bloodpool();
-		BDSS VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 1 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random (0, 360), 2, random (30, 110));
+		BDSS VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 1 A_SpawnProjectile ("Brutal_FlyingBlood", 20, 0, random (0, 360), 2, random (30, 110));
 		BDSS V -1;
 	Stop;
 		

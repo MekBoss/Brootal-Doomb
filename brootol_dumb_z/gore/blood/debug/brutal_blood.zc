@@ -1,21 +1,26 @@
 //SLOWDOWN ADRESSED
-CLASS Brutal_Blood : doomb_blood Replaces Blood { 
+CLASS Brutal_Blood : doomb_blood Replaces Blood
+{
 	Default {
-		renderstyle "add";
+		renderstyle "normal";
 		+FORCEXYBILLBOARD;
 		+THRUACTORS;
 		+CLIENTSIDEONLY;
+		+nointeraction
 		Scale 0.5;
 		Speed 0;
 	}
 	states
 	{
 		Spawn:
-			tnt1 A 0 nodelay { vel = ( random(-3, 3), random(-3, 3), random(-3, 3));}
-			BSP4 ABCDEFGHIJKLMNOPQRSTUVWXYZ 2;
+			tnt1 A 0 nodelay
+			{
+				console.printf("brutal_blood spawned");
+				vel = ( random(-3, 3), random(-3, 3), random(-3, 3));
+			}
+			BSP4 ABCDEFGHIJKLMNOPQRSTUVWXYZ[] 2;
 		stop;
 	}
-	
 }
 
 

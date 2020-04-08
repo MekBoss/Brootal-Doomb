@@ -6,6 +6,8 @@
 #include "brootol_dumb_z/gore/blood/debug/blood_hit.zc"
 #include "brootol_dumb_z/gore/blood/debug/flying_blood.zc"
 #include "brootol_dumb_z/gore/blood/debug/blood_spot.zc"
+#include "brootol_dumb_z/gore/blood/debug/super_gore.zc"
+#include "brootol_dumb_z/gore/blood/blood_pools.zc"
 
 
 
@@ -129,36 +131,6 @@ CLASS blood_impact_splash : doomb_blood
 
 
 
-CLASS SuperGore : doomb_blood { 
-	Default {
-		
-		Decal "BloodSplat";
-		Alpha 0.6;
-		+FORCEXYBILLBOARD;
-		+GHOST;
-		+NOBLOCKMAP;
-		Gravity 0.05;
-		+DontSplash;
-		-EXPLODEONWATER;
-		-ALLOWPARTICLES;
-		+CLIENTSIDEONLY;
-		-NOGRAVITY;
-		+THRUACTORS;
-		Scale 1.0;
-	}
-	states
-	{
-		Spawn:
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "SpawnUnderwater");
-			BLER G 1 A_FadeOut(0.01);
-			wait;
-		SpawnUnderwater:
-			TNT1 A 0;
-			TNT1 AA 0 A_SpawnProjectile ("Underblood1", 32, 0, random (0, 360), 2, random (0, 160));
-			
-			Stop;
-	}
-}
 
 
 

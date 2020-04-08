@@ -36,6 +36,8 @@ CLASS Brutal_FlyingBlood : doomb_blood {
 		Spawn2:
 			BLOD "#" 1
 			{
+				A_SpawnItem("Brutal_LiquidBloodTrail");
+
 				if(waterlevel > 1)
 					destroy();
 			}
@@ -88,26 +90,6 @@ CLASS CeilBloodLauncher: Brutal_FLyingBlood  {
 	}
 }
 
-CLASS Brutal_LiquidBlood: Brutal_FlyingBlood  { 
-	Default {
-		
-		speed 3;
-		scale 0.2;
-		gravity 0.6;
-		
-	}
-	States
-	{
-		Spawn:
-			tnt1 a 0 nodelay {scale *= frandom(0.4, 0.6);}
-			BLOD A 1 A_SpawnItem("Brutal_LiquidBloodTrail");
-			Loop;
-		Death:
-			TNT1 A 0 A_PlaySound("blooddrop");
-			XDT1 FGHIJKL 2;
-			Stop;
-	}
-}
 
 
 

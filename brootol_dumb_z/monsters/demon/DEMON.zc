@@ -256,13 +256,13 @@ CLASS doomb_pinky : doomb_monster_base
 			TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 50) );
 			TNT1 A 0 A_SpawnProjectile ("BaronHeadPiece", 52, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
-			SARH AAAAAAA 2 A_SpawnProjectile ("Brutal_LiquidBlood", 40, 0, random (0, 360), 2, random (30, 110));
-			SARH BBBBBB 2 A_SpawnProjectile ("Brutal_LiquidBlood", 40, 0, random (0, 360), 2, random (30, 110));
+			SARH AAAAAAA 2 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (30, 110));
+			SARH BBBBBB 2 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (30, 110));
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_Scream;
-			SARH CCCCCC 2 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, random (0, 360), 2, random (30, 110));
+			SARH CCCCCC 2 A_SpawnProjectile ("Brutal_FlyingBlood", 30, 0, random (0, 360), 2, random (30, 110));
 			TNT1 A 0 doomb_spawn_bloodpool();
-			SARH DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random (0, 360), 2, random (30, 110));
+			SARH DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 2 A_SpawnProjectile ("Brutal_FlyingBlood", 20, 0, random (0, 360), 2, random (30, 110));
 			TNT1 A 0 A_SpawnItem("DeadDemonNoHead");
 			Stop;
 			
@@ -273,9 +273,9 @@ CLASS doomb_pinky : doomb_monster_base
 			SARG O 8;
 			SARG P 8 A_Scream;
 			SARG Q 4 A_NoBlocking;
-			SARG RRSSTT 2 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, random (0, 360), 2, random (30, 110));
+			SARG RRSSTT 2 A_SpawnProjectile ("Brutal_FlyingBlood", 30, 0, random (0, 360), 2, random (30, 110));
 			TNT1 A 0 doomb_spawn_bloodpool();
-			SARG TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random (0, 360), 2, random (30, 110));
+			SARG TTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTTT 2 A_SpawnProjectile ("Brutal_FlyingBlood", 20, 0, random (0, 360), 2, random (30, 110));
 			SARG T -1;
 			Stop;
 			
@@ -286,9 +286,9 @@ CLASS doomb_pinky : doomb_monster_base
 			TNT1 A 0 A_SpawnProjectile ("XDeathHalfDemon", 60, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathStomach", 60, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-			SARC AAABBBCCCDDD 3 A_SpawnProjectile ("Brutal_LiquidBlood", 35, 0, random (0, 360), 2, random (30, 110));
+			SARC AAABBBCCCDDD 3 A_SpawnProjectile ("Brutal_FlyingBlood", 35, 0, random (0, 360), 2, random (30, 110));
 			TNT1 A 0 doomb_spawn_bloodpool();
-			SARC DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 2 A_SpawnProjectile ("Brutal_LiquidBlood", 15, 0, random (0, 360), 2, random (30, 110));
+			SARC DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 2 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (30, 110));
 			SARC D 0 A_SpawnItem("DeadDemonHalf23");
 			Stop;
 			
@@ -310,9 +310,9 @@ CLASS doomb_pinky : doomb_monster_base
 			TNT1 AA 0 A_SpawnProjectile ("XDeathDemonArm", 32, 0, random (170, 190), 2, random (0, 40));
 			TNT1 A 0 A_XScream;
 			TNT1 A 0 A_NoBlocking;
-			SARC AAABBBCCCDDD 3 A_SpawnProjectile ("Brutal_LiquidBlood", 35, 0, random (0, 360), 2, random (30, 110));
+			SARC AAABBBCCCDDD 3 A_SpawnProjectile ("Brutal_FlyingBlood", 35, 0, random (0, 360), 2, random (30, 110));
 			TNT1 A 0 doomb_spawn_bloodpool();
-			SARC DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 2 A_SpawnProjectile ("Brutal_LiquidBlood", 15, 0, random (0, 360), 2, random (30, 110));
+			SARC DDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 2 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (30, 110));
 			SARC D 0 A_SpawnItem("DeadDemonHalf23");
 			Stop;
 			

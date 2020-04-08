@@ -26,7 +26,7 @@ CLASS ArmlessDemon : doomb_pinky
 			{
 				A_Look();
 				doomb_blood_loss();
-				A_SpawnProjectile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45));
+				A_SpawnProjectile ("Brutal_FlyingBlood", 42, 0, random (0, 360), 2, random (0, 45));
 			}
 		Loop;
 		
@@ -35,7 +35,7 @@ CLASS ArmlessDemon : doomb_pinky
 			{
 				A_Chase();
 				A_Recoil(-2);
-				A_SpawnProjectile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45));
+				A_SpawnProjectile ("Brutal_FlyingBlood", 42, 0, random (0, 360), 2, random (0, 45));
 			}
 			TNT1 A 0 doomb_blood_loss();
 		Loop;
@@ -43,15 +43,15 @@ CLASS ArmlessDemon : doomb_pinky
 		Melee:
 			TNT1 A 0 doomb_blood_loss();
 			SG1A E 3 A_FaceTarget;
-			TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45));
+			TNT1 A 0 A_SpawnProjectile ("Brutal_FlyingBlood", 42, 0, random (0, 360), 2, random (0, 45));
 			SG1A E 3 A_FaceTarget;
-			TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45));
+			TNT1 A 0 A_SpawnProjectile ("Brutal_FlyingBlood", 42, 0, random (0, 360), 2, random (0, 45));
 			SG1A F 3 A_FaceTarget;
-			TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45));
+			TNT1 A 0 A_SpawnProjectile ("Brutal_FlyingBlood", 42, 0, random (0, 360), 2, random (0, 45));
 			SG1A F 3 A_FaceTarget;
-			TNT1 A 0 A_SpawnProjectile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45));
+			TNT1 A 0 A_SpawnProjectile ("Brutal_FlyingBlood", 42, 0, random (0, 360), 2, random (0, 45));
 			SG1A G 3 doomb_cheap_melee_attack(60, random(16, 40), "eat");
-			SG1A GGG 3 A_SpawnProjectile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45));
+			SG1A GGG 3 A_SpawnProjectile ("Brutal_FlyingBlood", 42, 0, random (0, 360), 2, random (0, 45));
 			Goto See;
 			
 		Death.Shotgun:
@@ -66,12 +66,12 @@ CLASS ArmlessDemon : doomb_pinky
 			TNT1 A 0 A_SpawnProjectile ("BaronHeadPiece", 52, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, height/2) );
 			TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
-			SAAR GGGGGGG 2 A_SpawnProjectile ("Brutal_LiquidBlood", 40, 0, random (0, 360), 2, random (30, 110));
+			SAAR GGGGGGG 2 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (30, 110));
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_Scream;
-			SAAR HHHHHHHHH 2 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, random (0, 360), 2, random (30, 110));
+			SAAR HHHHHHHHH 2 A_SpawnProjectile ("Brutal_FlyingBlood", 30, 0, random (0, 360), 2, random (30, 110));
 			TNT1 A 0 doomb_spawn_bloodpool();
-			SAAR IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random (0, 360), 2, random (30, 110));
+			SAAR IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 2 A_SpawnProjectile ("Brutal_FlyingBlood", 20, 0, random (0, 360), 2, random (30, 110));
 			SAAR I 0 A_SpawnItem("DeadDemonSAARI");
 			Stop;
 			
@@ -371,13 +371,13 @@ States
 		SAAR J 1;
 		TNT1 A 0 A_Pain;
 		TNT1 A 0 A_Jump(32, "Colapse");
-		SAAR JJJJ 4 A_SpawnProjectile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45));
+		SAAR JJJJ 4 A_SpawnProjectile ("Brutal_FlyingBlood", 42, 0, random (0, 360), 2, random (0, 45));
 		TNT1 A 0 A_Jump(90, "PutAFight");
-		SAAR JJJJ 4 A_SpawnProjectile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45));
+		SAAR JJJJ 4 A_SpawnProjectile ("Brutal_FlyingBlood", 42, 0, random (0, 360), 2, random (0, 45));
 		TNT1 A 0 A_Pain;
-		SAAR JJJJJJJJ 4 A_SpawnProjectile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45));
+		SAAR JJJJJJJJ 4 A_SpawnProjectile ("Brutal_FlyingBlood", 42, 0, random (0, 360), 2, random (0, 45));
 		TNT1 A 0 A_Pain;
-		SAAR JJJ 4 A_SpawnProjectile ("Brutal_LiquidBlood", 42, 0, random (0, 360), 2, random (0, 45));
+		SAAR JJJ 4 A_SpawnProjectile ("Brutal_FlyingBlood", 42, 0, random (0, 360), 2, random (0, 45));
 		Goto Colapse;
 		
 	PutAFight:
@@ -399,13 +399,13 @@ States
 		TNT1 A 0 A_SpawnProjectile ("BaronHeadPiece", 52, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
 		TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 50) );
-		SAAR GGGGGGG 2 A_SpawnProjectile ("Brutal_LiquidBlood", 40, 0, random (0, 360), 2, random (30, 110));
+		SAAR GGGGGGG 2 A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (30, 110));
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
-		SAAR HHHHHHHHH 2 A_SpawnProjectile ("Brutal_LiquidBlood", 30, 0, random (0, 360), 2, random (30, 110));
+		SAAR HHHHHHHHH 2 A_SpawnProjectile ("Brutal_FlyingBlood", 30, 0, random (0, 360), 2, random (30, 110));
 		TNT1 A 0 doomb_spawn_bloodpool();
-		SAAR IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 2 A_SpawnProjectile ("Brutal_LiquidBlood", 20, 0, random (0, 360), 2, random (30, 110));
+		SAAR IIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 2 A_SpawnProjectile ("Brutal_FlyingBlood", 20, 0, random (0, 360), 2, random (30, 110));
 		TNT1 A 0 A_SpawnItem("DeadDemonSAARI");
 		Stop;
 		
