@@ -1,44 +1,42 @@
+CLASS doomb_body_piece_base : doomb_body_base
+{
+Default
+{
+	Radius 2;
+	Height 2;
+	Speed 6;
+	Mass 1;
+	Decal "BrutalBloodSplat";
+	-solid
+	+CLIENTSIDEONLY;
+	BounceFactor 0.4;
+	+DOOMBOUNCE;
+	+MISSILE;
+	+NOTELEPORT;
+	+DONTSPLASH;
+	+MOVEWITHSECTOR;
+	+FLOORCLIP;
+	Scale 0.6;
+}
+
+void set_appearance(body_pieces_types type = 0)
+{}
+
+States
+{
 
 
+	spawn:
+	stop;
 
+	death:
+	stop;
+}
 
-CLASS head_piece_base : doomb_body_base { 
-	Default {
-		Radius 2;
-		Height 2;
-		Speed 6;
-		Mass 1;
-		Decal "BrutalBloodSplat";
-		-solid
-		+CLIENTSIDEONLY;
-		BounceFactor 0.4;
-		+DOOMBOUNCE;
-		+MISSILE;
-		+NOTELEPORT;
-		+DONTSPLASH;
-		+MOVEWITHSECTOR;
-		+FLOORCLIP;
-		Scale 0.6;
-	}
 }
 
 
-CLASS Brains1 : head_piece_base { //Random bloody piece
-	States
-	{
-		Spawn:
-			XDT5 C 800;
-			XDT5 C 35 a_fadeout(0.05);
-			wait;
-			
-		Death:
-			"####" "#" 800;
-			"####" "#" 35 a_fadeout(0.05);
-		wait;
-	}
-}
-
-CLASS jaw : brains1 {
+CLASS jaw : doomb_body_piece_base {
 	States
 	{
 		Spawn:
@@ -55,7 +53,7 @@ CLASS jaw_big: jaw { //White skinned piece 1
 }
 
 
-CLASS eye : brains1 { //Eyeballs
+CLASS eye : doomb_body_piece_base { //Eyeballs
 	States
 	{
 		Spawn:
@@ -65,7 +63,7 @@ CLASS eye : brains1 { //Eyeballs
 	}
 }
 
-CLASS head_piece : brains1 { //White skinned piece 1
+CLASS head_piece : doomb_body_piece_base { //White skinned piece 1
 	States
 	{
 		Spawn:
@@ -76,7 +74,7 @@ CLASS head_piece : brains1 { //White skinned piece 1
 }
 
 
-CLASS head_piece_dark : brains1 { //Brown skinned piece
+CLASS head_piece_dark : doomb_body_piece_base { //Brown skinned piece
 	States
 	{
 		Spawn:

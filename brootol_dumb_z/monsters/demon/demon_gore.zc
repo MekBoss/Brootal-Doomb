@@ -808,7 +808,6 @@ CLASS PinkyDemonHead: LimbBase {
 		Death:
 			TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
-			TNT1 AAAA 0 A_SpawnProjectile ("Brains1", 5, 0, random (0, 360), 2, random (60, 140));
 			TNT1 A 0 A_SpawnProjectile ("jaw", 5, 0, random (0, 360), 2, random (60, 140));
 			TNT1 A 0 A_SpawnProjectile ("eye", 5, 0, random (0, 360), 2, random (60, 140));
 			TNT1 A 0 A_SpawnProjectile ("head_piece", 5, 0, random (0, 360), 2, random (60, 140));

@@ -1,35 +1,4 @@
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-CLASS doomb_fatsoEyeballs : doomb_body_base { //Eyeballs
+CLASS doomb_fatso_Eyeballs : doomb_body_base { //Eyeballs
 	Default {
 		Radius 2;
 		Height 2;

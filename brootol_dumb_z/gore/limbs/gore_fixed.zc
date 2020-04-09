@@ -7,7 +7,7 @@
 
 
 
-CLASS head_pieceGreen: Brains1 { //White skinned piece 1
+CLASS head_pieceGreen: doomb_body_piece_base { //White skinned piece 1
 	States
 	{
 		Spawn:
@@ -15,15 +15,14 @@ CLASS head_pieceGreen: Brains1 { //White skinned piece 1
 			BR7B IJKL 4 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			Loop;
 		Death:
-			BR7N D 1;
-			BR7N D 800;
-			BR7N D 35 a_fadeout(0.05);
+			"####" "#" 800;
+			"####" "#" 35 a_fadeout(0.05);
 			wait;
 	}
 }
 
 
-CLASS head_pieceGreenBig: Brains1 { //White skinned piece 1
+CLASS head_pieceGreenBig: doomb_body_piece_base { //White skinned piece 1
 	States
 	{
 		Spawn:
@@ -37,7 +36,7 @@ CLASS head_pieceGreenBig: Brains1 { //White skinned piece 1
 
 
 
-CLASS head_pieceBlonde: Brains1 { //White skinned piece 1
+CLASS head_pieceBlonde: doomb_body_piece_base { //White skinned piece 1
 	States
 	{
 		Spawn:
@@ -48,7 +47,7 @@ CLASS head_pieceBlonde: Brains1 { //White skinned piece 1
 }
 
 
-CLASS head_pieceBlondeBig: Brains1 { //White skinned piece 1
+CLASS head_pieceBlondeBig: doomb_body_piece_base { //White skinned piece 1
 	States
 	{
 		Spawn:
@@ -59,7 +58,7 @@ CLASS head_pieceBlondeBig: Brains1 { //White skinned piece 1
 }
 
 
-CLASS BrainsSergeantHeadPiece: Brains1 { //White skinned piece 1
+CLASS BrainsSergeantHeadPiece: doomb_body_piece_base { //White skinned piece 1
 	States
 	{
 		Spawn:
@@ -70,7 +69,7 @@ CLASS BrainsSergeantHeadPiece: Brains1 { //White skinned piece 1
 }
 
 
-CLASS BrainsImpHeadPiece: Brains1 { //White skinned piece 1
+CLASS BrainsImpHeadPiece: doomb_body_piece_base { //White skinned piece 1
 	States
 	{
 		Spawn:
@@ -89,7 +88,7 @@ CLASS BrainsImpHeadPiece: Brains1 { //White skinned piece 1
 
 
 
-CLASS PinkyJaw: Brains1 { 
+CLASS PinkyJaw: doomb_body_piece_base { 
 	States
 	{
 		Spawn:
@@ -101,7 +100,7 @@ CLASS PinkyJaw: Brains1 {
 
 
 
-CLASS HellKnightHeadPiece: Brains1 { 
+CLASS HellKnightHeadPiece: doomb_body_piece_base { 
 	States
 	{
 		Spawn:
@@ -111,7 +110,7 @@ CLASS HellKnightHeadPiece: Brains1 {
 	}
 }
 
-CLASS HellKnightHeadPiece2: head_piece_base { 
+CLASS HellKnightHeadPiece2: HellKnightHeadPiece { 
 	Default {
 		
 		XScale -1.0;

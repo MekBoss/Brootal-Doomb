@@ -1,3 +1,7 @@
+#include "brootol_dumb_z/gore/guro_functions.zc"
+
+
+
 class doomb_blood_god :eventhandler
 {
 

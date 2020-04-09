@@ -125,7 +125,6 @@ CLASS doomb_arachnotron : doomb_monster_base
 		Death.Plasma:
 		Death.Plasma2:
 			TNT1 A 0 A_BossDeath;
-			TNT1 A 0 A_BossDeath;
 			TNT1 A 0 A_Scream;
 			TNT1 A 0 A_NoBlocking;
 			TNT1 AAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 50, 0, random (0, 360), 2, random (0, 160));

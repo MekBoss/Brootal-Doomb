@@ -1,7 +1,4 @@
 //extend monster_base class here to temporaly dump all blood functions
-#include "brootol_dumb_z/gore/blood/blood_functions.zc"
-
-
 #include "brootol_dumb_z/gore/blood/brutal_blood.zc"
 #include "brootol_dumb_z/gore/blood/blood_hit.zc"
 #include "brootol_dumb_z/gore/blood/flying_blood.zc"

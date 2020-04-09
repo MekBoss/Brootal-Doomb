@@ -1,6 +1,13 @@
 extend class doomb_monster_base
 {
 
+enum body_pieces_types
+{
+	BPT_NONE = 0,
+	BPT_ = 1,
+}
+
+
 protected void doomb_head_explosion(string main_piece  = "", string additional_piece = "", vector3 offset = (0, 0, 0) )
 {
 	A_PlaySound("misc/xdeath4");
@@ -21,7 +28,7 @@ protected void doomb_head_explosion(string main_piece  = "", string additional_p
 	HellKnightHeadPiece
 	HellKnightHeadPiece2
 
-	doomb_fatsoEyeballs
+	doomb_fatso_Eyeballs
 	jaw_big
 
 	*/

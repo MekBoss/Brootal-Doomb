@@ -415,7 +415,7 @@ States
 
 
 
-CLASS BaronHeadPiece : head_piece_base { 
+CLASS BaronHeadPiece : doomb_body_base { 
 States
 {
 	Spawn:
