@@ -117,8 +117,12 @@ CLASS SmallBrainPiece : doomb_body_base {
 		Death:
 			"####" "#" 0 A_CheckFloor("on_floor");
 		stick:
-			XDB5 "#" 35 {vel = (0, 0, 0);}
-			XDB5 "#" 35
+			XDB5 "#########################################################################################" 1
+			{
+				vel = (0, 0, 0);
+				setorigin( (pos.xy, ceilingz - height), true);
+			}
+			XDB5 "#" 1
 			{
 				if(random(0, 10) > 1)
 					setstatelabel("stick");
