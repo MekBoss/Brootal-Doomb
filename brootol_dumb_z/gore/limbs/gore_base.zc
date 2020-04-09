@@ -3,6 +3,9 @@
 #include "brootol_dumb_z/gore/limbs/GORE3.zc"
 #include "brootol_dumb_z/gore/limbs/gore_fixed.zc"
 #include "brootol_dumb_z/gore/limbs/shared_parts.zc"
+#include "brootol_dumb_z/gore/limbs/xdeath_collection.zc"
+#include "brootol_dumb_z/gore/limbs/meat_death.zc"
+#include "brootol_dumb_z/gore/limbs/head_explosion.zc"
 
 
 //all base classes for body related actors

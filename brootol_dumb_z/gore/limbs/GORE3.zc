@@ -1,18 +1,23 @@
-CLASS XDeathBurnedLeg : doomb_body_base
+class doomb_generic_burned_limb : doomb_body_base abstract
+{
+Default {
+	Radius 8;
+	Height 8;
+	Speed 5;
+	Mass 6;
+	BounceFactor 0.5;
+	+DOOMBOUNCE;
+	+NOBLOCKMAP;
+	+MISSILE;
+	+NOTELEPORT;
+	+DONTSPLASH;
+	+MOVEWITHSECTOR;
+}
+
+}
+
+CLASS XDeathBurnedLeg : doomb_generic_burned_limb
 { 
-	Default {
-		Radius 8;
-		Height 8;
-		Speed 5;
-		Mass 6;
-		BounceFactor 0.5;
-		+DOOMBOUNCE;
-		+NOBLOCKMAP;
-		+MISSILE;
-		+NOTELEPORT;
-		+DONTSPLASH;
-		+MOVEWITHSECTOR;
-	}
 	States
 	{
 		Spawn:
@@ -26,20 +31,7 @@ CLASS XDeathBurnedLeg : doomb_body_base
 }
 
 
-CLASS XDeathBurnedSkull : doomb_body_base { 
-	Default {
-		Radius 8;
-		Height 8;
-		Speed 5;
-		Mass 6;
-		BounceFactor 0.5;
-		+DOOMBOUNCE;
-		+NOBLOCKMAP;
-		+MISSILE;
-		+NOTELEPORT;
-		+DONTSPLASH;
-		+MOVEWITHSECTOR;
-	}
+CLASS XDeathBurnedSkull : doomb_generic_burned_limb { 
 	States
 	{
 		Spawn:
@@ -52,21 +44,7 @@ CLASS XDeathBurnedSkull : doomb_body_base {
 	}
 }
 
-CLASS XDeathBurnedArm : doomb_body_base { 
-	Default {
-		
-		Radius 8;
-		Height 8;
-		Speed 5;
-		Mass 6;
-		BounceFactor 0.5;
-		+DOOMBOUNCE;
-		+NOBLOCKMAP;
-		+MISSILE;
-		+NOTELEPORT;
-		+DONTSPLASH;
-		+MOVEWITHSECTOR;
-	}
+CLASS XDeathBurnedArm : doomb_generic_burned_limb { 
 	States
 	{
 		Spawn:
@@ -80,20 +58,7 @@ CLASS XDeathBurnedArm : doomb_body_base {
 }
 
 
-CLASS XDeathBurnedImpArm : doomb_body_base { 
-	Default {
-		Radius 8;
-		Height 8;
-		Speed 5;
-		Mass 6;
-		BounceFactor 0.5;
-		+DOOMBOUNCE;
-		+NOBLOCKMAP;
-		+MISSILE;
-		+NOTELEPORT;
-		+DONTSPLASH;
-		+MOVEWITHSECTOR;
-	}
+CLASS XDeathBurnedImpArm : doomb_generic_burned_limb { 
 	States
 	{
 		Spawn:
@@ -106,21 +71,7 @@ CLASS XDeathBurnedImpArm : doomb_body_base {
 	}
 }
 
-CLASS XDeathBurnedDemonArm : doomb_body_base { 
-	Default {
-		
-		Radius 8;
-		Height 8;
-		Speed 5;
-		Mass 6;
-		BounceFactor 0.5;
-		+DOOMBOUNCE;
-		+NOBLOCKMAP;
-		+MISSILE;
-		+NOTELEPORT;
-		+DONTSPLASH;
-		+MOVEWITHSECTOR;
-	}
+CLASS XDeathBurnedDemonArm : doomb_generic_burned_limb { 
 	States
 	{
 		Spawn:
@@ -133,21 +84,7 @@ CLASS XDeathBurnedDemonArm : doomb_body_base {
 	}
 }
 
-CLASS XDeathBurnedDemonLeg : doomb_body_base { 
-	Default {
-		
-		Radius 8;
-		Height 8;
-		Speed 5;
-		Mass 6;
-		BounceFactor 0.5;
-		+DOOMBOUNCE;
-		+NOBLOCKMAP;
-		+MISSILE;
-		+NOTELEPORT;
-		+DONTSPLASH;
-		+MOVEWITHSECTOR;
-	}
+CLASS XDeathBurnedDemonLeg : doomb_generic_burned_limb { 
 	States
 	{
 		Spawn:
@@ -160,21 +97,7 @@ CLASS XDeathBurnedDemonLeg : doomb_body_base {
 	}
 }
 
-CLASS XDeathBurnedMeat : doomb_body_base { 
-	Default {
-		
-		Radius 8;
-		Height 8;
-		Speed 5;
-		Mass 6;
-		BounceFactor 0.5;
-		+DOOMBOUNCE;
-		+NOBLOCKMAP;
-		+MISSILE;
-		+NOTELEPORT;
-		+DONTSPLASH;
-		+MOVEWITHSECTOR;
-	}
+CLASS XDeathBurnedMeat : doomb_generic_burned_limb { 
 	States
 	{
 		Spawn:
@@ -187,20 +110,7 @@ CLASS XDeathBurnedMeat : doomb_body_base {
 	}
 }
 
-CLASS XDeathBurnedMeat2 : doomb_body_base { 
-	Default {
-		Radius 8;
-		Height 8;
-		Speed 5;
-		Mass 6;
-		BounceFactor 0.5;
-		+DOOMBOUNCE;
-		+NOBLOCKMAP;
-		+MISSILE;
-		+NOTELEPORT;
-		+DONTSPLASH;
-		+MOVEWITHSECTOR;
-	}
+CLASS XDeathBurnedMeat2 : doomb_generic_burned_limb { 
 	States
 	{
 		Spawn:
@@ -213,20 +123,7 @@ CLASS XDeathBurnedMeat2 : doomb_body_base {
 	}
 }
 
-CLASS XDeathBurnedMeat3 : doomb_body_base { 
-	Default {
-		Radius 8;
-		Height 8;
-		Speed 5;
-		Mass 6;
-		BounceFactor 0.5;
-		+DOOMBOUNCE;
-		+NOBLOCKMAP;
-		+MISSILE;
-		+NOTELEPORT;
-		+DONTSPLASH;
-		+MOVEWITHSECTOR;
-	}
+CLASS XDeathBurnedMeat3 : doomb_generic_burned_limb { 
 	States
 	{
 		Spawn:
@@ -239,21 +136,7 @@ CLASS XDeathBurnedMeat3 : doomb_body_base {
 	}
 }
 
-CLASS XDeathBurnedBlueMeat1 : doomb_body_base { 
-	Default {
-		
-		Radius 8;
-		Height 8;
-		Speed 5;
-		Mass 6;
-		BounceFactor 0.5;
-		+DOOMBOUNCE;
-		+NOBLOCKMAP;
-		+MISSILE;
-		+NOTELEPORT;
-		+DONTSPLASH;
-		+MOVEWITHSECTOR;
-	}
+CLASS XDeathBurnedBlueMeat1 : doomb_generic_burned_limb { 
 	States
 	{
 		Spawn:
@@ -266,21 +149,7 @@ CLASS XDeathBurnedBlueMeat1 : doomb_body_base {
 	}
 }
 
-CLASS XDeathBurnedBlueMeat2 : doomb_body_base { 
-	Default {
-		
-		Radius 8;
-		Height 8;
-		Speed 5;
-		Mass 6;
-		BounceFactor 0.5;
-		+DOOMBOUNCE;
-		+NOBLOCKMAP;
-		+MISSILE;
-		+NOTELEPORT;
-		+DONTSPLASH;
-		+MOVEWITHSECTOR;
-	}
+CLASS XDeathBurnedBlueMeat2 : doomb_generic_burned_limb { 
 	States
 	{
 		Spawn:
