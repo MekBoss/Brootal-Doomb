@@ -32,56 +32,6 @@ CLASS TinyGib : doomb_body_base {
 
 
 
-CLASS XDeathOrgan1 : doomb_body_base { 
-	Default {
-		Radius 8;
-		Height 8;
-		Speed 10;
-		Scale 1.2;
-		Mass 1;
-		+NOBLOCKMAP;
-		+MISSILE;
-		+NOTELEPORT;
-		+MOVEWITHSECTOR;
-		+CLIENTSIDEONLY;
-		+RIPPER;
-		+BLOODLESSIMPACT;
-		-DONTSPLASH;
-		+THRUGHOST;
-		+THRUACTORS;
-		+FLOORCLIP;
-		damagetype "Blood";
-		SeeSound "misc/xdeath4";
-		DeathSound "misc/xdeath1";
-		Decal "BrutalBloodSuper";
-		Mass 1;
-		SeeSound "misc/xdeath4";
-		DeathSound "misc/xdeath3";
-		Scale 0.9;
-		Speed 4;
-	}
-	private int frame_num;
-
-	States
-	{
-		Spawn:
-			tnt1 a 0 nodelay
-			{
-				frame_num = random(0, 1);
-			}
-		spawn_loop:
-			XME8 A 4
-			{
-				doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-				frame += frame_num;
-			}
-		Loop;
-		
-		Death:
-			XME8 "#" -1;
-			Stop;
-	}
-}
 
 
 
@@ -674,6 +624,8 @@ States
 	xme3 a 0;
 	xme4 a 0;
 	xme5 a 0;
+	xme7 a 0;
+	xme8 a 0;
 
 	Spawn:
 		TNT1 A 0 nodelay
@@ -699,6 +651,14 @@ States
 
 				case 4:
 					sprite = getspriteindex("XME5");
+				break;
+
+				case 5:
+					sprite = getspriteindex("XME7");
+				break;
+
+				case 6:
+					sprite = getspriteindex("XME8");
 				break;
 			}
 		}

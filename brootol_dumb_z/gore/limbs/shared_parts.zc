@@ -16,18 +16,61 @@ Default
 	+DONTSPLASH;
 	+MOVEWITHSECTOR;
 	+FLOORCLIP;
+	+ROLLCENTER;
+	+rollsprite
 	Scale 0.6;
 }
 
+private double roll_change;
+
 void set_appearance(body_pieces_types type = 0)
-{}
+{
+	roll_change = frandom(-15, 15);
+	switch(type)
+	{
+		case 0:
+		case BPT_NONE:
+		default:
+		break;
+	
+		case BPT_JAW:
+			//sprite = getspriteindex();
+		break;
+	}
+}
 
 States
 {
-
+	//head_pieceGreenBig
+	BR7B A 0;
+	//BrainsSergeantHeadPiece
+	BR7B E 0;
+	//head_pieceGreen
+	BR7B I 0;
+	//BrainsImpHeadPiece
+	BR7N E 0;
+	//jaw
+	BRIB a 0;
+	//eye
+	brib e 0;
+	//head_piece
+	brib i 0;
+	//head_piece_dark
+	brib o 0;
+	//unused
+	brin a 0;
+	brin d 0;
 
 	spawn:
-	stop;
+		"####" "#" 4
+		{
+			if(waterlevel > 1)
+				setstatelabel("death");
+
+			roll += roll_change;
+			doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		}
+	loop;
 
 	death:
 	stop;

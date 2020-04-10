@@ -4,7 +4,7 @@ extend class doomb_monster_base
 enum body_pieces_types
 {
 	BPT_NONE = 0,
-	BPT_ = 1,
+	BPT_JAW = 1,
 }
 
 
@@ -52,8 +52,7 @@ protected void doomb_Rip_Guts()
 {
 	A_SpawnProjectile ("Brutal_FlyingBlood", 40, 0, random (0, 360), 2, random (0, 160));
 	doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
-	A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
-	A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
+	doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 }
 
 protected void doomb_monster_xdeath(class<actor> type_1 = null, class<actor> type_2 = null)

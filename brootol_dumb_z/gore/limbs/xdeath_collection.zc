@@ -107,8 +107,7 @@ States
 		tnt1 a 0 A_Explode(3,600, 0, 0, 0, 0, 0, "none", "blood");
 		TNT1 A 0 A_SpawnProjectile ("XDeathBaronOfHellTorso", 32, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 A_SpawnProjectile ("XDeathHellKnightLeg", 32, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (0, 160));
@@ -271,8 +270,7 @@ States
 		TNT1 A 0 A_SpawnProjectile ("XDeathImpArm", 32, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeathHalfImpUpperPart32", 32, 0, random (0, 360), 2, random (10, 60));
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 24), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
@@ -320,8 +318,7 @@ CLASS KnightXDeath : doomb_body_base {
 			TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightArm", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightTorso", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("XDeathHellKnightLeg", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (0, 160));
@@ -402,8 +399,7 @@ CLASS SargeXDeath : doomb_body_base {
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 A_SpawnProjectile ("XDeathHalfShotgunguyNoArmNoHead", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 A 0 A_SpawnProjectile ("XDeathSargeLeg2", 32, 0, random (0, 360), 2, random (0, 160));
@@ -454,8 +450,7 @@ CLASS ZombieXDeath : doomb_body_base {
 			TNT1 A 0 A_SpawnProjectile ("XDeathHalfZombiemanNoArmNoHead", 48, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 A_SpawnProjectile ("XDeathSkinPiece1", 15, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 A 0 A_SpawnProjectile ("XDeathZombieLeg", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("GibZombieBoot", 32, 0, random (0, 360), 2, random (0, 160));

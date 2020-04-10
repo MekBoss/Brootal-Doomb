@@ -1,12 +1,22 @@
 //fixed means "improved and it cause less lags"
-
-
-
-
-
-
-
-
+CLASS head_pieceGreenBig: doomb_body_piece_base { //White skinned piece 1
+	States
+	{
+		Spawn:
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+			BR7B ABCD 4 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			Loop;
+	}
+}
+CLASS BrainsSergeantHeadPiece: doomb_body_piece_base { //White skinned piece 1
+	States
+	{
+		Spawn:
+			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+			BR7B EFGH 4 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		Loop;
+	}
+}
 CLASS head_pieceGreen: doomb_body_piece_base { //White skinned piece 1
 	States
 	{
@@ -22,15 +32,26 @@ CLASS head_pieceGreen: doomb_body_piece_base { //White skinned piece 1
 }
 
 
-CLASS head_pieceGreenBig: doomb_body_piece_base { //White skinned piece 1
-	States
-	{
-		Spawn:
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			BR7B ABCD 4 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			Loop;
-	}
-}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -58,15 +79,6 @@ CLASS head_pieceBlondeBig: doomb_body_piece_base { //White skinned piece 1
 }
 
 
-CLASS BrainsSergeantHeadPiece: doomb_body_piece_base { //White skinned piece 1
-	States
-	{
-		Spawn:
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			BR7B EFGH 4 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		Loop;
-	}
-}
 
 
 CLASS BrainsImpHeadPiece: doomb_body_piece_base { //White skinned piece 1

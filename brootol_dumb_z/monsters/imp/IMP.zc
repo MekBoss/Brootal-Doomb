@@ -557,8 +557,7 @@ CLASS doomb_Imp : doomb_monster_base Replaces DoomImp
 			TROG A 2;
 			TNT1 AAAAA 0 A_SpawnProjectile ("Brutal_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
-			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeathOrgan1", 24, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 A_SpawnProjectile ("XDeathHalfImp", 40, 0, random (0, 360), 2, random (0, 160));
 
 			TROG AAA 4 doomb_spawn_big_blood(30);

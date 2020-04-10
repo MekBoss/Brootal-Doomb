@@ -76,6 +76,7 @@ CLASS blood_impact_splash : doomb_blood
 	Default {
 		decal "BrutalBloodSuper";
 		+nointeraction;
+		+ROLLCENTER;
 		+rollsprite
 		+noclip
 		scale    0.8;
