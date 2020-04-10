@@ -305,7 +305,8 @@ CLASS doomb_arachnotron : doomb_monster_base
 	}
 }
 
-CLASS EnemyPlasmaBall : PlasmaBall75 Replaces PlasmaBall2 { 
+CLASS EnemyPlasmaBall : PlasmaBall75
+{
 	Default {
 		DamageFunction (random(10,15));
 		DamageType "Plasma";

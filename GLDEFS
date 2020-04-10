@@ -913,11 +913,6 @@ object ShortTorch_Blue
     frame STRB { light SMALLBLUETORCH }
 }
 
-object BurningBarrel1
-{
-    frame BURB { light FIREBARREL }
-}
-
 object TallTorch_Green
 {
     frame TTRB { light BIGGREENTORCH }

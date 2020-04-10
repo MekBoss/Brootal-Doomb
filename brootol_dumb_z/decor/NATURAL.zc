@@ -29,7 +29,8 @@ CLASS TreeBlood : ACTOR {
 
 // Trees ----------------------------------------------------------------
 
-CLASS half_burned_tree: doomb_decoration_base Replaces TorchTree { 
+CLASS half_burned_tree: doomb_decoration_base
+{ 
 	Default {
 		Radius 16;
 		Height 56;
@@ -96,7 +97,7 @@ CLASS half_burned_tree: doomb_decoration_base Replaces TorchTree {
 
 
 
-CLASS Big_Tree: doomb_decoration_base Replaces BigTree
+CLASS Big_Tree: doomb_decoration_base
 {
 	Default {
 		Radius 32;

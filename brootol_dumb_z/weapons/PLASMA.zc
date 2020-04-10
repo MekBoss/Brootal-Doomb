@@ -15,7 +15,8 @@ CLASS PlasmaAmmo : Ammo {
 //
 // --------------------------------------------------------------------------
 
-CLASS Plasma_Gun : doomb_weapon_base Replaces PlasmaRifle{ 
+CLASS Plasma_Gun : doomb_weapon_base
+{
 	Default {
 		
 		Weapon.SlotNumber 6;
@@ -209,7 +210,8 @@ CLASS Plasma_Gun : doomb_weapon_base Replaces PlasmaRifle{
 
 
 
-CLASS Plasma_Ball: doomb_boolet_base Replaces PlasmaBall { 
+CLASS Plasma_Ball: doomb_boolet_base
+{ 
 	Default {
 		Radius 10;
 		Height 2;

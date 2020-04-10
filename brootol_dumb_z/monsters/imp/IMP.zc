@@ -3,7 +3,7 @@
 // Imp
 //
 //===========================================================================
-CLASS doomb_Imp : doomb_monster_base Replaces DoomImp
+CLASS doomb_Imp : doomb_monster_base
 { 
 	Default {
 		
@@ -923,7 +923,8 @@ Default {
 		
 
 
-CLASS FireBall_ : doomb_boolet_base Replaces DoomImpBall { 
+CLASS FireBall_ : doomb_boolet_base
+{ 
 	Default {
 	DamageType "Fire";
 	Radius 4;

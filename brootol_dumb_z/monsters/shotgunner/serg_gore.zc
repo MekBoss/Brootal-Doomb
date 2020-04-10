@@ -98,7 +98,8 @@ CLASS GibHalfSergeant: BigGibBase {
 
 
 
-CLASS Deaddoomb_shotgun_guy: CurbstompedMarine Replaces DeadShotgunguy { 
+CLASS Deaddoomb_shotgun_guy: CurbstompedMarine
+{
 	Default {
 		
 		Radius 12;

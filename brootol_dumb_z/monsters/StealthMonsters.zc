@@ -1,4 +1,5 @@
-CLASS BrutalStealthArachnotron : Arachnotron Replaces StealthArachnotron { 
+CLASS BrutalStealthArachnotron : doomb_arachnotron
+{
 	Default {
 		
 		+STEALTH;
@@ -8,7 +9,8 @@ CLASS BrutalStealthArachnotron : Arachnotron Replaces StealthArachnotron {
 }
 
 
-CLASS BrutalStealthArchvile : doomb_archvile Replaces StealthArchvile { 
+CLASS BrutalStealthArchvile : doomb_archvile
+{ 
 	Default {
 		
 		+STEALTH;
@@ -18,7 +20,8 @@ CLASS BrutalStealthArchvile : doomb_archvile Replaces StealthArchvile {
 }
 
 
-CLASS BrutalStealthBaron : doomb_baron Replaces StealthBaron { 
+CLASS BrutalStealthBaron : doomb_baron
+{
 	Default {
 		
 		+STEALTH;
@@ -27,7 +30,8 @@ CLASS BrutalStealthBaron : doomb_baron Replaces StealthBaron {
 	}
 }
 
-CLASS BrutalStealthCacodemon : doomb_caco Replaces StealthCacodemon { 
+CLASS BrutalStealthCacodemon : doomb_caco
+{ 
 	Default {
 		
 		+STEALTH;
@@ -38,7 +42,8 @@ CLASS BrutalStealthCacodemon : doomb_caco Replaces StealthCacodemon {
 
 
 
-CLASS BrutalStealthChaingunGuy : doomb_commando Replaces StealthChaingunGuy { 
+CLASS BrutalStealthChaingunGuy : doomb_commando
+{ 
 	Default {
 		
 		+STEALTH;
@@ -47,7 +52,8 @@ CLASS BrutalStealthChaingunGuy : doomb_commando Replaces StealthChaingunGuy {
 	}
 }
 
-CLASS BrutalStealthDemon : doomb_pinky Replaces StealthDemon { 
+CLASS BrutalStealthDemon : doomb_pinky
+{
 	Default {
 		
 		+STEALTH;
@@ -56,7 +62,8 @@ CLASS BrutalStealthDemon : doomb_pinky Replaces StealthDemon {
 	}
 }
 
-CLASS BrutalStealthHellKnight : doomb_knight Replaces StealthHellKnight { 
+CLASS BrutalStealthHellKnight : doomb_knight
+{
 	Default {
 		
 		+STEALTH;
@@ -65,7 +72,8 @@ CLASS BrutalStealthHellKnight : doomb_knight Replaces StealthHellKnight {
 	}
 }
 
-CLASS BrutalStealthDoomImp : doomb_Imp Replaces StealthDoomImp { 
+CLASS BrutalStealthDoomImp : doomb_Imp
+{ 
 	Default {
 		
 		+STEALTH;
@@ -74,7 +82,8 @@ CLASS BrutalStealthDoomImp : doomb_Imp Replaces StealthDoomImp {
 	}
 }
 
-CLASS BrutalStealthFatso : doomb_fatso Replaces StealthFatso { 
+CLASS BrutalStealthFatso : doomb_fatso
+{
 	Default {
 		
 		+STEALTH;
@@ -83,7 +92,8 @@ CLASS BrutalStealthFatso : doomb_fatso Replaces StealthFatso {
 	}
 }
 
-CLASS BrutalStealthRevenant : doomb_Revenant Replaces StealthRevenant { 
+CLASS BrutalStealthRevenant : doomb_Revenant
+{ 
 	Default {
 		
 		+STEALTH;
@@ -92,7 +102,8 @@ CLASS BrutalStealthRevenant : doomb_Revenant Replaces StealthRevenant {
 	}
 }
 
-CLASS BrutalStealthShotgunGuy : doomb_shotgun_guy Replaces StealthShotgunGuy { 
+CLASS BrutalStealthShotgunGuy : doomb_shotgun_guy
+{
 	Default {
 		
 		+STEALTH;
@@ -101,7 +112,8 @@ CLASS BrutalStealthShotgunGuy : doomb_shotgun_guy Replaces StealthShotgunGuy {
 	}
 }
 
-CLASS BrutalStealthZombieMan : doomb_zombie_Man Replaces StealthZombieMan { 
+CLASS BrutalStealthZombieMan : doomb_zombie_Man
+{ 
 	Default {
 		
 		+STEALTH;

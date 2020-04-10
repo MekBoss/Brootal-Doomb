@@ -1,4 +1,4 @@
-CLASS doomb_Marine_Rifle : doomb_marine_base Replaces MarinePistol
+CLASS doomb_Marine_Rifle : doomb_marine_base
 {
 	Default 
 	{
@@ -218,6 +218,3 @@ CLASS doomb_Marine_Rifle : doomb_marine_base Replaces MarinePistol
 }
 
 }
-
-//STUB because melee marine would be too weak
-CLASS Marine_Fist : doomb_Marine_Rifle Replaces MarineFist { }

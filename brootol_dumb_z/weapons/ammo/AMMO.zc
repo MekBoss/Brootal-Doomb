@@ -1,6 +1,7 @@
 // Backpack ---------------------------------------------------------------
 
-CLASS AmmoSuply : backpack Replaces Backpack { 
+CLASS AmmoSuply : backpack
+{
 	Default {
 		
 		Height 26;
@@ -14,7 +15,7 @@ CLASS AmmoSuply : backpack Replaces Backpack {
 	}
 }
 
-class doomb_cells : ammo replaces cell
+class doomb_cells : ammo
 {
 	Default
 	{
@@ -34,7 +35,7 @@ class doomb_cells : ammo replaces cell
 	}
 }
 
-class doomb_cell_pack : doomb_cells replaces cellpack
+class doomb_cell_pack : doomb_cells
 {
 	Default
 	{
@@ -50,7 +51,7 @@ class doomb_cell_pack : doomb_cells replaces cellpack
 }
 
 
-class doomb_rockets_ammo : Ammo replaces RocketAmmo
+class doomb_rockets_ammo : Ammo
 {
 	Default
 	{
@@ -70,7 +71,7 @@ class doomb_rockets_ammo : Ammo replaces RocketAmmo
 	}
 }
 
-class doomb_rocket_box : doomb_rockets_ammo replaces rocketbox
+class doomb_rocket_box : doomb_rockets_ammo
 {
 	Default
 	{
@@ -86,7 +87,7 @@ class doomb_rocket_box : doomb_rockets_ammo replaces rocketbox
 }
 
 
-class doomb_shell : ammo replaces shell
+class doomb_shell : ammo
 {
 Default
 {
@@ -106,7 +107,7 @@ States
 
 }
 
-class doomb_shell_box : doomb_shell replaces shellbox
+class doomb_shell_box : doomb_shell
 {
 Default
 {
@@ -124,7 +125,8 @@ States
 }
 
 
-CLASS doomb_clip : Ammo Replaces Clip { 
+CLASS doomb_clip : Ammo
+{ 
 	Default {
 		
 		Inventory.PickupMessage "Picked up a Magazine.";
@@ -143,7 +145,8 @@ CLASS doomb_clip : Ammo Replaces Clip {
 }
 
 
-CLASS ClipBox2 : doomb_clip Replaces Clipbox { 
+CLASS ClipBox2 : doomb_clip
+{
 	Default {
 		
 		Inventory.PickupMessage "Picked up a box of rifle ammunition.";

@@ -1,4 +1,4 @@
-CLASS doomb_knight : doomb_monster_base Replaces HellKnight
+CLASS doomb_knight : doomb_monster_base
 { 
 	Default {
 		

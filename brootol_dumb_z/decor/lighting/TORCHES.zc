@@ -30,7 +30,7 @@ protected void doomb_torch_fire(statelabel type = null, double fire_height = 0)
 
 }
 
-CLASS TallTorch_Red : doomb_proto_torch_tall replaces RedTorch
+CLASS TallTorch_Red : doomb_proto_torch_tall
 { 
 states
 {
@@ -46,7 +46,7 @@ states
 
 }
 
-CLASS TallTorch_Blue : doomb_proto_torch_tall replaces BlueTorch
+CLASS TallTorch_Blue : doomb_proto_torch_tall
 { 
 states
 {
@@ -61,7 +61,7 @@ states
 }
 }
 
-CLASS TallTorch_Green : doomb_proto_torch_tall replaces GreenTorch
+CLASS TallTorch_Green : doomb_proto_torch_tall
 { 
 states
 {
@@ -88,7 +88,8 @@ Default
 
 }
 
-CLASS ShortTorch_Blue : doomb_proto_torch_short replaces ShortBlueTorch { 
+CLASS ShortTorch_Blue : doomb_proto_torch_short
+{ 
 states
 {
 	Spawn:
@@ -102,7 +103,8 @@ states
 }
 }
 
-CLASS ShortTorch_Red : doomb_proto_torch_short replaces ShortRedTorch { 
+CLASS ShortTorch_Red : doomb_proto_torch_short
+{ 
 states
 {
 	Spawn:
@@ -116,7 +118,8 @@ states
 }
 }
 
-CLASS ShortTorch_Green : doomb_proto_torch_short replaces ShortGreenTorch { 
+CLASS ShortTorch_Green : doomb_proto_torch_short
+{ 
 states
 {
 	Spawn:
@@ -137,7 +140,8 @@ states
 
 
 
-CLASS Candelabra1 : Candelabra replaces Candelabra { 
+CLASS Candelabra1 : Candelabra
+{ 
 Default {
 	+LOOKALLAROUND;
 	+INVULNERABLE;
@@ -164,7 +168,8 @@ states
 }
 }
 
-CLASS Candlestick1 : Candlestick replaces Candlestick { 
+CLASS Candlestick1 : Candlestick
+{ 
 Default {
 	+LOOKALLAROUND;
 	+RANDOMIZE;

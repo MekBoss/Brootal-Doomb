@@ -1,4 +1,4 @@
-CLASS doomb_Marine_bfg: doomb_marine_base Replaces MarineBFG
+CLASS doomb_Marine_bfg: doomb_marine_base
 { 
 	Default {
 		doomb_marine_base.spare_ammo "doomb_cells";

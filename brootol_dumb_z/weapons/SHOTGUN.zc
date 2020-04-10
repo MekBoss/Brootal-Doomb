@@ -19,7 +19,8 @@ CLASS UseShotgunStrap : Inventory {
 //
 // --------------------------------------------------------------------------
 
-CLASS Shot_Gun : doomb_weapon_base Replaces Shotgun { 
+CLASS Shot_Gun : doomb_weapon_base
+{ 
 	Default {
 		
 		Weapon.SlotNumber 3;

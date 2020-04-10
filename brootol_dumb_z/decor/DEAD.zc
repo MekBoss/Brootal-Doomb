@@ -1,4 +1,5 @@
-CLASS VeryDeadMarine: doomb_body_base Replaces DeadMarine { 
+CLASS doomb_dead_marine : doomb_body_base
+{ 
 	Default {
 		damagefactor "Blood", 0.0;
 		damagefactor "GreenBlood", 0.0;
@@ -53,7 +54,8 @@ CLASS VeryDeadMarine: doomb_body_base Replaces DeadMarine {
 	}
 }
 
-CLASS VeryVeryDeadMarine: doomb_body_base Replaces GibbedMarine { 
+CLASS doomb_gibbed_marine : doomb_body_base
+{ 
 	Default {
 		+CLIENTSIDEONLY;
 	}
@@ -89,7 +91,6 @@ CLASS VeryVeryDeadMarine: doomb_body_base Replaces GibbedMarine {
 	}
 }
 
-CLASS VeryVeryDeadMarine2 : VeryVeryDeadMarine Replaces GibbedMarineExtra {}
 
 
 
@@ -411,7 +412,8 @@ CLASS GibsZ : ACTOR {
 	
 }
 // Dead on a stick ---------------
-CLASS DeadDeadStick: doomb_body_base Replaces DeadStick { 
+CLASS DeadDeadStick: doomb_body_base
+{ 
 	Default {
 		
 		Health 200;
@@ -456,7 +458,8 @@ CLASS DeadDeadStick: doomb_body_base Replaces DeadStick {
 
 // Still alive on a stick --------------------------------------------------
 
-CLASS DeadLiveStick: doomb_body_base Replaces LiveStick { 
+CLASS doomb_living_stick : doomb_body_base
+{ 
 	Default {
 		
 		Health 200;
@@ -506,7 +509,8 @@ CLASS DeadLiveStick: doomb_body_base Replaces LiveStick {
 	}
 }
 
-CLASS DeadBloodyTwitch : doomb_body_base Replaces BloodyTwitch { 
+CLASS DeadBloodyTwitch : doomb_body_base
+{ 
 	Default {
 		
 		Radius 16;
@@ -599,7 +603,8 @@ CLASS DeadBloodyTwitchC: DeadBloodyTwitchB {
 
 // Meat 2 ------------------------------------------------------------------
 
-CLASS HangingBody: doomb_body_base Replaces Meat2 { 
+CLASS HangingBody: doomb_body_base
+{ 
 	Default {
 		Radius 16;
 		Height 84;
@@ -640,7 +645,8 @@ CLASS HangingBody: doomb_body_base Replaces Meat2 {
 	}
 }
 
-CLASS HangingPairOfLegs: DeadBloodyTwitchB Replaces Meat4 { 
+CLASS HangingPairOfLegs: DeadBloodyTwitchB
+{ 
 	Default {
 		
 		Health 100;
@@ -662,11 +668,9 @@ CLASS HangingPairOfLegs: DeadBloodyTwitchB Replaces Meat4 {
 	}
 }
 
-CLASS NSHangingBody : HangingBody Replaces NonsolidMeat2 { }
 
-CLASS NSHangingPairOfLegs : HangingPairOfLegs Replaces NonsolidMeat4 { }
-
-CLASS Meat2C: DeadBloodyTwitchB { 
+CLASS Meat2C: DeadBloodyTwitchB
+{ 
 	Default {
 		
 		-SHOOTABLE;
@@ -682,7 +686,8 @@ CLASS Meat2C: DeadBloodyTwitchB {
 
 // Meat 3 ------------------------------------------------------------------
 
-CLASS HangingDeadGuyNoLeg: doomb_body_base Replaces Meat3 { 
+CLASS HangingDeadGuyNoLeg: doomb_body_base
+{ 
 	Default {
 		
 		Radius 16;
@@ -723,7 +728,8 @@ CLASS HangingDeadGuyNoLeg: doomb_body_base Replaces Meat3 {
 			Stop;
 	}
 }
-CLASS HangingLeg: DeadBloodyTwitchB Replaces Meat5 { 
+CLASS HangingLeg: DeadBloodyTwitchB
+{
 	Default {
 		
 		Radius 16;
@@ -763,17 +769,11 @@ CLASS Meat3C: DeadBloodyTwitchB {
 	}
 }
 
-CLASS NSHangingDeadGuyNoLeg : HangingDeadGuyNoLeg Replaces NonsolidMeat3 { }
-
-CLASS NSHangingLeg : HangingLeg Replaces NonsolidMeat5 { }
-
-// Nonsolid bloody twitch --------------------------------------------------
-
-CLASS DeadNonsolidTwitch : DeadBloodyTwitch Replaces NonsolidTwitch { }
 
 // Hanging with no guts ----------------------------------------------------
 
-CLASS DeadHangNoGuts: doomb_body_base Replaces HangNoGuts { 
+CLASS DeadHangNoGuts: doomb_body_base
+{ 
 	Default {
 		Radius 20;
 		Height 90;
@@ -811,7 +811,8 @@ CLASS DeadHangNoGuts: doomb_body_base Replaces HangNoGuts {
 
 // Hanging from bottom with no brain ---------------------------------------
 
-CLASS DeadHangBNoBrain: doomb_body_base Replaces HangBNoBrain { 
+CLASS DeadHangBNoBrain: doomb_body_base
+{
 	Default {
 		Radius 16;
 		Height 88;
@@ -862,7 +863,8 @@ CLASS DeadHangBNoBrain: doomb_body_base Replaces HangBNoBrain {
 
 // Hanging from top, looking down ------------------------------------------
 
-CLASS DeadHangTLookingDown: doomb_body_base Replaces HangTLookingDown { 
+CLASS DeadHangTLookingDown: doomb_body_base
+{
 	Default {
 		Radius 16;
 		Height 64;
@@ -908,7 +910,8 @@ CLASS DeadHangTLookingDown: doomb_body_base Replaces HangTLookingDown {
 
 // Hanging from top, looking up --------------------------------------------
 
-CLASS DeadHangTLookingUp: doomb_body_base Replaces HangTLookingUp { 
+CLASS DeadHangTLookingUp: doomb_body_base
+{
 	Default {
 		
 		Radius 16;
@@ -955,7 +958,8 @@ CLASS DeadHangTLookingUp: doomb_body_base Replaces HangTLookingUp {
 
 // Hanging from top, skully ------------------------------------------------
 
-CLASS DeadHangTSkull: doomb_body_base replaces HangTSkull { 
+CLASS DeadHangTSkull: doomb_body_base
+{
 	Default {
 		
 		Radius 16;
@@ -1002,7 +1006,8 @@ CLASS DeadHangTSkull: doomb_body_base replaces HangTSkull {
 
 // Hanging from top without a brain ----------------------------------------
 
-CLASS DeadHangTNoBrain: doomb_body_base Replaces HangTNoBrain { 
+CLASS DeadHangTNoBrain: doomb_body_base
+{
 	Default {
 		
 		Radius 16;
@@ -1060,7 +1065,8 @@ CLASS DeadHangTNoBrain: doomb_body_base Replaces HangTNoBrain {
 
 
 
-CLASS ColonGibs2 : doomb_body_base Replaces ColonGibs { 
+CLASS ColonGibs2 : doomb_body_base
+{
 	Default {
 		
 		Radius 20;
@@ -1085,7 +1091,8 @@ CLASS ColonGibs2 : doomb_body_base Replaces ColonGibs {
 
 // brain stem lying on the ground ------------------------------------------
 
-CLASS BrainStem2 : doomb_body_base Replaces BrainStem { 
+CLASS BrainStem2 : doomb_body_base
+{
 	Default {
 		
 		Radius 20;
@@ -1103,7 +1110,8 @@ CLASS BrainStem2 : doomb_body_base Replaces BrainStem {
 }
 
 
-CLASS RealGibs2 : doomb_body_base Replaces RealGibs { 
+CLASS RealGibs2 : doomb_body_base
+{
 	Default {
 		
 		+DROPOFF;
@@ -1118,12 +1126,6 @@ CLASS RealGibs2 : doomb_body_base Replaces RealGibs {
 			TNT1 A 0 doomb_spawn_bloodpool();
 			POL5 A -1;
 			Stop;
-	}
-}
-
-CLASS Gibs2 : RealGibs2 Replaces Gibs { 
-	Default {
-		ClearFlags;
 	}
 }
 

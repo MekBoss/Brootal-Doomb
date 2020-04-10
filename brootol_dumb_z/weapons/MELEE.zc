@@ -3,7 +3,8 @@
 // Melee Weapons
 //
 // --------------------------------------------------------------------------
-CLASS Melee_Attacks : doomb_weapon_base Replaces Fist { 
+CLASS Melee_Attacks : doomb_weapon_base
+{
 Default {
 	Weapon.SlotNumber 1;
 	Weapon.SlotPriority 0;

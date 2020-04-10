@@ -9,15 +9,16 @@ gameinfo
    "debugger",
    "doom_player_movement",
    "on_screen_blood_overlay",
-   "doomb_monster_spawner"
+   "doomb_monster_spawner",
+   "chex_dedicated_event"
 }
 
 SpawnNums
 {
    147 = ColonGibs2
-   148 = SmallBloodPool2
+   148 = doomb_red_blood_pool
    150 = BrainStem2
-   146 = Gibs2
+   146 = RealGibs2
 
    133 = InvulnerabilitySphere_
    138 = NightVision

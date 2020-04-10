@@ -318,7 +318,8 @@ CLASS doomb_fatso : doomb_monster_base
 
 } 
 
-CLASS BigFireBall : doomb_boolet_base Replaces Fatshot { 
+CLASS BigFireBall : doomb_boolet_base
+{
 	Default {
 		Radius 6;
 		Height 8;

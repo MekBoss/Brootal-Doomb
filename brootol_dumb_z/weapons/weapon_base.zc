@@ -400,6 +400,219 @@ override void NetworkProcess(ConsoleEvent e)
 	}
 }
 
+
+
+
+override void CheckReplacement(ReplaceEvent e)
+{
+	if(e.Replacee == "Backpack")
+	{
+		e.Replacement = "AmmoSuply";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "SuperShotgun")
+	{
+		e.Replacement = "SSG";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Shotgun")
+	{
+		e.Replacement = "Shot_Gun";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Chainsaw")
+	{
+		e.Replacement = "Chain_saw";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Rocket")
+	{
+		e.Replacement = "Rocket2";
+		e.isfinal = true;
+	}
+ 
+	if(e.Replacee == "RocketLauncher")
+	{
+		e.Replacement = "Rocket_Launcher";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Pistol")
+	{
+		e.Replacement = "Rifle";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "PlasmaRifle")
+	{
+		e.Replacement = "Plasma_Gun";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "PlasmaBall")
+	{
+		e.Replacement = "Plasma_Ball";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Chaingun")
+	{
+		e.Replacement = "MiniGun";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Fist")
+	{
+		e.Replacement = "Melee_Attacks";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "BFGExtra")
+	{
+		e.Replacement = "SuperBFGExtra";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "BFGBall")
+	{
+		e.Replacement = "SuperBFGBall";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "bfg9000")
+	{
+		if(level.levelnum == 31 || level.levelnum == 32)
+		{
+			e.Replacement = "HitlersBuzzsaw";
+			e.isfinal = true;
+		}
+
+		else
+		{
+			e.Replacement = "BIG_FUCKING_GUN";
+			e.isfinal = true;
+		}
+	}
+	
+	if(e.Replacee == "Clipbox")
+	{
+		e.Replacement = "ClipBox2";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Clip")
+	{
+		e.Replacement = "doomb_clip";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "shellbox")
+	{
+		e.Replacement = "doomb_shell_box";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "shell")
+	{
+		e.Replacement = "doomb_shell";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "rocketbox")
+	{
+		e.Replacement = "doomb_rocket_box";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "RocketAmmo")
+	{
+		e.Replacement = "doomb_rockets_ammo";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "cellpack")
+	{
+		e.Replacement = "doomb_cell_pack";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "cell")
+	{
+		e.Replacement = "doomb_cells";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "BlueArmor")
+	{
+		e.Replacement = "HeavyArmor";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "GreenArmor")
+	{
+		e.Replacement = "LightArmor";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Medikit")
+	{
+		e.Replacement = "Medikit2";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Stimpack")
+	{
+		e.Replacement = "Stimpack2";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "ArmorBonus")
+	{
+		e.Replacement = "ArmorShard";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "HealthBonus")
+	{
+		e.Replacement = "HealthPlus";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "InfraRed")
+	{
+		e.Replacement = "NightVision";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Berserk")
+	{
+		e.Replacement = "Berserl1";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Megasphere")
+	{
+		e.Replacement = "EnergySphere";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "SoulSphere")
+	{
+		e.Replacement = "LifeSphere";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "InvulnerabilitySphere")
+	{
+		e.Replacement = "InvulnerabilitySphere_";
+		e.isfinal = true;
+	}
+}
+
 }
 
 

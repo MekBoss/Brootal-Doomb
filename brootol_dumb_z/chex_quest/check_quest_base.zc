@@ -1,0 +1,114 @@
+class doomb_chex_slime : doomb_monster_base abstract {}
+
+#include "brootol_dumb_z/chex_quest/common_flemoid.zc"
+#include "brootol_dumb_z/chex_quest/bipedal_flemoid.zc"
+#include "brootol_dumb_z/chex_quest/armored_flemoid.zc"
+#include "brootol_dumb_z/chex_quest/quadro_flemoid.zc"
+
+#include "brootol_dumb_z/chex_quest/flemoid_projectile.zc"
+
+#include "brootol_dumb_z/chex_quest/flemoid_parts.zc"
+
+#include "brootol_dumb_z/chex_quest/chex_props.zc"
+#include "brootol_dumb_z/chex_quest/chex_weapons.zc"
+
+class chex_dedicated_event : eventhandler
+{
+override void CheckReplacement(ReplaceEvent e)
+{
+	if(e.Replacee == "ArmoredFlemoidusBipedicus")
+	{
+		e.Replacement = "Flemoid3";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "FlemoidusCommonus")
+	{
+		e.Replacement = "Flemoid1";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "FlemoidusBipedicus")
+	{
+		e.Replacement = "Flemoid2";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "")
+	{
+		e.Replacement = "";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "")
+	{
+		e.Replacement = "";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "")
+	{
+		e.Replacement = "";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "")
+	{
+		e.Replacement = "";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "")
+	{
+		e.Replacement = "";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "")
+	{
+		e.Replacement = "";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "")
+	{
+		e.Replacement = "";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "")
+	{
+		e.Replacement = "";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "")
+	{
+		e.Replacement = "";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "")
+	{
+		e.Replacement = "";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "")
+	{
+		e.Replacement = "";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "")
+	{
+		e.Replacement = "";
+		e.isfinal = true;
+	}
+
+
+
+
+}
+
+}

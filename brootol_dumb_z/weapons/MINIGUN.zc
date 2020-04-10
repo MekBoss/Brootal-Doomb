@@ -11,7 +11,7 @@ Default {
 //
 // --------------------------------------------------------------------------
 
-CLASS MiniGun : doomb_weapon_base Replaces Chaingun
+CLASS MiniGun : doomb_weapon_base
 { 
 Default
 {

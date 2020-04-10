@@ -1,4 +1,4 @@
-CLASS doomb_Marine_Shotgun: doomb_marine_base Replaces MarineShotgun
+CLASS doomb_Marine_Shotgun: doomb_marine_base
 { 
 Default {
 	doomb_marine_base.spare_ammo "doomb_shell";
@@ -186,6 +186,3 @@ States
 }
 
 }
-
-//STUB due to the lack of ssg marine spites
-CLASS doomb_Marine_SSG: doomb_Marine_Shotgun Replaces MarineSSG { }

@@ -438,9 +438,10 @@ States
 }
 }
 
-CLASS RevenantBalls : doomb_boolet_base Replaces RevenantTracer { 
-Default {
-	
+CLASS RevenantBalls : doomb_boolet_base
+{
+Default
+{
 	Radius 10;
 	Height 4;
 	Speed 14;

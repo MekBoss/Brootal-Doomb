@@ -15,7 +15,8 @@ CLASS SSGAmmo : Ammo {
 // Super Shotgun
 //
 // --------------------------------------------------------------------------
-CLASS SSG : doomb_weapon_base Replaces SuperShotgun { 
+CLASS SSG : doomb_weapon_base
+{ 
 	Default {
 		
 		Weapon.SlotNumber 3;

@@ -130,6 +130,117 @@ visual_sfx show_some_effect(actor caller = null, statelabel effect_state = null,
 	return mikle_bay;
 }
 
+override void CheckReplacement(ReplaceEvent e)
+{
+	if(e.Replacee == "ExplosiveBarrel")
+	{
+		e.Replacement = "doomb_explosive_barrel";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "TeleportFog")
+	{
+		e.Replacement = "doomb_teleport_fog";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "BurningBarrel")
+	{
+		e.Replacement = "doomb_burning_barrel";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "TechLamp")
+	{
+		e.Replacement = "TechLamp1";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "RedTorch")
+	{
+		e.Replacement = "TallTorch_Red";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "BlueTorch")
+	{
+		e.Replacement = "TallTorch_Blue";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "GreenTorch")
+	{
+		e.Replacement = "TallTorch_Green";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "TechLamp2")
+	{
+		e.Replacement = "TechLamp21";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Column")
+	{
+		e.Replacement = "Column1";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "ShortBlueTorch")
+	{
+		e.Replacement = "ShortTorch_Blue";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "ShortRedTorch")
+	{
+		e.Replacement = "ShortTorch_Red";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "ShortGreenTorch")
+	{
+		e.Replacement = "ShortTorch_Green";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Candelabra")
+	{
+		e.Replacement = "Candelabra1";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Candlestick")
+	{
+		e.Replacement = "Candlestick1";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "TorchTree")
+	{
+		e.Replacement = "half_burned_tree";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "BigTree")
+	{
+		e.Replacement = "Big_Tree";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "BulletPuff")
+	{
+		e.Replacement = "HitPuff";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "")
+	{
+		e.Replacement = "";
+		e.isfinal = true;
+	}
+
+}
 
 }
 

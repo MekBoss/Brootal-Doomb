@@ -18,7 +18,7 @@ override void worldthingspawned(worldevent e)
 	if(e.thing is "blood" || e.thing is "BloodSplatter" || e.thing is "axeblood")
 	    console.printf("blood spawned");
 }
-/* */
+
 override void worldtick()
 {
     if(doomb_blood_debug && (level.time % 90) == 0)
@@ -62,6 +62,171 @@ private doomb_blood doomb_find_fresh_blood(class<actor> type = null)
 doomb_blood doomb_blood_bank(class<actor> type = null)
 {
     return doomb_find_fresh_blood(type);
+}
+
+
+
+
+
+override void CheckReplacement(ReplaceEvent e)
+{
+ 	if(e.Replacee == "DeadMarine")
+	{
+		e.Replacement = "doomb_dead_marine";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "GibbedMarine" || e.Replacee == "GibbedMarineExtra")
+	{
+		e.Replacement = "doomb_gibbed_marine";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "HeadsOnAStick")
+	{
+		e.Replacement = "doomb_skull_pillar";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "LiveStick")
+	{
+		e.Replacement = "doomb_living_stick";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "DeadStick")
+	{
+		e.Replacement = "DeadDeadStick";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "BloodyTwitch" || e.Replacee == "NonsolidTwitch")
+	{
+		e.Replacement = "DeadBloodyTwitch";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Meat2" || e.Replacee == "NonsolidMeat2")
+	{
+		e.Replacement = "HangingBody";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Meat4" || e.Replacee == "NonsolidMeat4")
+	{
+		e.Replacement = "HangingPairOfLegs";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Meat3" || e.Replacee == "NonsolidMeat3")
+	{
+		e.Replacement = "HangingDeadGuyNoLeg";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Meat5" || e.Replacee == "NonsolidMeat5")
+	{
+		e.Replacement = "HangingLeg";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "HangNoGuts")
+	{
+		e.Replacement = "DeadHangNoGuts";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "HangBNoBrain")
+	{
+		e.Replacement = "DeadHangBNoBrain";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "HangTLookingDown")
+	{
+		e.Replacement = "DeadHangTLookingDown";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "HangTLookingUp")
+	{
+		e.Replacement = "DeadHangTLookingUp";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "HangTSkull")
+	{
+		e.Replacement = "DeadHangTSkull";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "HangTNoBrain")
+	{
+		e.Replacement = "DeadHangTNoBrain";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "ColonGibs")
+	{
+		e.Replacement = "ColonGibs2";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "BrainStem")
+	{
+		e.Replacement = "BrainStem2";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "RealGibs" || e.Replacee == "Gibs")
+	{
+		e.Replacement = "RealGibs2";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "HeadsOnAStick")
+	{
+		e.Replacement = "doomb_skull_pillar";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "HeadOnAStick")
+	{
+		e.Replacement = "ImpaledHead";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "SmallBloodPool")
+	{
+		e.Replacement = "doomb_red_blood_pool";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "DeadZombieman")
+	{
+		e.Replacement = "DeadZombieman1";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "DeadShotgunguy")
+	{
+		e.Replacement = "Deaddoomb_shotgun_guy";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "DeadDoomImp")
+	{
+		e.Replacement = "DeadImp";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "DeadDemon")
+	{
+		e.Replacement = "DeadDemon1";
+		e.isfinal = true;
+	}
+
+
 }
 
 }

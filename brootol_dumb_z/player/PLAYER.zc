@@ -4,7 +4,7 @@
 // Player
 //
 //===========================================================================
-CLASS Doomer : doomber Replaces DoomPlayer
+CLASS Doomer : doomber
 {
 
 Default {

@@ -1,4 +1,5 @@
-CLASS TeleportationFog : visual_sfx Replaces TeleportFog { 
+CLASS doomb_teleport_fog : visual_sfx
+{ 
 	Default {
 		
 		+THRUACTORS;

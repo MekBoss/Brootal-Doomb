@@ -1,0 +1,71 @@
+
+CLASS ChexShotgunReplacer  : ACTOR Replaces LargeZorcher
+{ 
+	Default {
+		
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_SpawnItem("Shotgun");
+			Stop;
+			
+	}
+	
+}
+CLASS ChexMinigunReplacer : ACTOR Replaces RapidZorcher { 
+	Default {
+		
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_SpawnItem("Chaingun");
+			Stop;
+			
+	}
+	
+}
+CLASS ChexPlasmagunReplacer  : ACTOR Replaces PhasingZorcher{ 
+	Default {
+		
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_SpawnItem("PlasmaRifle");
+			Stop;
+			
+	}
+	
+}
+CLASS ChexRocketReplacer  : ACTOR Replaces ZorchPropulsor{ 
+	Default {
+		
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_SpawnItem("RocketLauncher");
+			Stop;
+			
+	}
+	
+}
+CLASS ChexBFGReplacer : ACTOR Replaces LAZDevice { 
+	Default {
+		
+	}
+	States
+	{
+		Spawn:
+			TNT1 A 0;
+			TNT1 A 0 A_SpawnItem("BFG9000");
+			Stop;
+			
+	}
+}

@@ -5,7 +5,8 @@
 //
 // --------------------------------------------------------------------------
 
-CLASS Rocket_Launcher : doomb_weapon_base Replaces RocketLauncher { 
+CLASS Rocket_Launcher : doomb_weapon_base
+{ 
 	Default {
 		
 		Weapon.SlotNumber 5;
@@ -97,7 +98,7 @@ CLASS Rocket_Launcher : doomb_weapon_base Replaces RocketLauncher {
 }
 
 
-CLASS Rocket2 : doomb_boolet_base Replaces Rocket
+CLASS Rocket2 : doomb_boolet_base
 {
 
 Default

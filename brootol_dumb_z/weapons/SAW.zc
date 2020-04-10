@@ -26,7 +26,8 @@ CLASS SawFireSeq2: Inventory {
 	}
 }
 
-CLASS Chain_saw : doomb_weapon_base replaces Chainsaw { 
+CLASS Chain_saw : doomb_weapon_base
+{ 
 	Default {
 		Inventory.PickupMessage "$GOTCHAINSAW";
 		Obituary "$OB_MPCHAINSAW";

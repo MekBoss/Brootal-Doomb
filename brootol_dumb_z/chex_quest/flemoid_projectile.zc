@@ -1,0 +1,85 @@
+
+CLASS FlemoidAcidBall : doomb_boolet_base { 
+	Default {
+		
+		Radius 6;
+		Height 2;
+		Speed 15;
+		FastSpeed 20;
+		Damagefunction (random(10,15));
+		Projectile;
+		+RANDOMIZE;
+		RenderStyle "Add";
+		Damagetype "Slime";
+		Alpha 1;
+		+THRUGHOST;
+		Scale 0.5;
+		SeeSound "baron/attack";
+		DeathSound "baron/shotx";
+		Decal "BaronScorch";
+	}
+	States
+	{
+		Spawn:
+			BAL7 AABB 1 BRIGHT A_SpawnItem("AcidBallTrails");
+		Loop;
+
+		Death:
+			TNT1 A 0 A_Explode(10, 60, 0);
+			TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile ("FlyingAcidParticles", 1, 0, random (0, 360), 2, random (10, 90));
+			TNT1 AAAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
+			BAL7 CDEF 1 BRIGHT;
+			TNT1 AAAAAAAA 9 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
+		Stop;
+	}
+}
+
+
+CLASS AcidBallTrails : visual_sfx { 
+	Default {
+		
+		+CLIENTSIDEONLY;
+		+THRUACTORS;
+		+NOGRAVITY;
+		
+		RenderStyle "Add";
+		Scale 0.3;
+	}
+	States
+	{
+		Spawn:
+			BAL7 CDDEEFF 1 BRIGHT;
+			Stop;
+	}
+}
+
+
+
+CLASS FlyingAcidParticles : visual_sfx
+{ 
+Default
+{
+	+CLIENTSIDEONLY;
+	+THRUACTORS;
+	+NOGRAVITY;
+	+MISSILE;
+	-NOGRAVITY;
+	+DOOMBOUNCE;
+	Radius 2;
+	Height 2;
+	BounceFactor 0.01;
+	Speed 6;
+	Gravity 0.4;
+	RenderStyle "Add";
+	Scale 0.6;
+}
+
+States
+{
+	Spawn:
+		BAL7 CDDEEFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 1 BRIGHT;
+		BAL7 FFFFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 1 A_FadeOut(0.01);
+	Stop;
+}
+
+}

@@ -1,4 +1,4 @@
-CLASS doomb_Marine_PlasmaGun: doomb_marine_base replaces MarinePlasma
+CLASS doomb_Marine_PlasmaGun: doomb_marine_base
 { 
 	Default {
 		doomb_marine_base.spare_ammo "doomb_cells";

@@ -373,7 +373,7 @@ States
 // Cacodemon plasma ball
 //
 //===========================================================================
-CLASS CacodemonBall_ : doomb_boolet_base Replaces CacodemonBall
+CLASS CacodemonBall_ : doomb_boolet_base
 { 
 Default
 {

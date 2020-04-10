@@ -1,6 +1,7 @@
 // Health bonus -------------------------------------------------------------
 
-CLASS HealthPlus : Health Replaces HealthBonus { 
+CLASS HealthPlus : Health
+{
 	Default {
 		
 		+COUNTITEM;
@@ -21,7 +22,8 @@ CLASS HealthPlus : Health Replaces HealthBonus {
 
 // Armor bonus --------------------------------------------------------------
 
-CLASS ArmorShard : BasicArmorBonus Replaces ArmorBonus { 
+CLASS ArmorShard : BasicArmorBonus
+{
 	Default {
 		
 		Radius 20;
@@ -49,7 +51,8 @@ CLASS ArmorShard : BasicArmorBonus Replaces ArmorBonus {
 
 
 
-CLASS Stimpack2 : Health Replaces Stimpack { 
+CLASS Stimpack2 : Health
+{
 	Default {
 		Inventory.Amount 10;
 		Inventory.PickupMessage "$GOTSTIM";
@@ -64,7 +67,8 @@ CLASS Stimpack2 : Health Replaces Stimpack {
 
 // Medikit -----------------------------------------------------------------
 
-CLASS Medikit2 : Health Replaces Medikit { 
+CLASS Medikit2 : Health
+{
 	Default {
 		
 		Inventory.Amount 25;
@@ -95,7 +99,8 @@ CLASS Medikit2 : Health Replaces Medikit {
 
 // Green armor --------------------------------------------------------------
 
-CLASS LightArmor : BasicArmorPickup Replaces GreenArmor { 
+CLASS LightArmor : BasicArmorPickup
+{ 
 	Default {
 		Scale 1.3;
 		Radius 20;
@@ -117,7 +122,8 @@ CLASS LightArmor : BasicArmorPickup Replaces GreenArmor {
 
 // Blue armor ---------------------------------------------------------------
 
-CLASS HeavyArmor : BasicArmorPickup Replaces BlueArmor { 
+CLASS HeavyArmor : BasicArmorPickup
+{ 
 	Default {
 		
 		Scale 1.3;

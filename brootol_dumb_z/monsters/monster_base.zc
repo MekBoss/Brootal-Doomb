@@ -549,9 +549,13 @@ enum doomb_monsters_limb_states
 
 class doomb_monster_spawner : eventhandler
 {
-	/*
+
 override void CheckReplacement(ReplaceEvent e)
 {
+	if(gameinfo.gametype != GAME_Doom)
+		return;
+
+
 	if(e.Replacee == "Archvile")
 	{
 		e.Replacement = "doomb_archvile";
@@ -572,23 +576,6 @@ override void CheckReplacement(ReplaceEvent e)
 			e.isfinal = true;
 		}
 	}
-
-	//also handle specific bfg replacer here
-	if(e.Replacee == "bfg9000")
-	{
-		if(level.levelnum == 31 || level.levelnum == 32)
-		{
-			e.Replacement = "HitlersBuzzsaw";
-			e.isfinal = true;
-		}
-
-		else
-		{
-			e.Replacement = "BIG_FUCKING_GUN";
-			e.isfinal = true;
-		}
-	}
-	
 
 	if(e.Replacee == "BaronofHell")
 	{
@@ -685,6 +672,164 @@ override void CheckReplacement(ReplaceEvent e)
 		e.isfinal = true;
 	}
 
+	if(e.Replacee == "RevenantTracer")
+	{
+		e.Replacement = "RevenantBalls";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "PlasmaBall2")
+	{
+		e.Replacement = "EnemyPlasmaBall";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Fatshot")
+	{
+		e.Replacement = "BigFireBall";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "DoomImpBall")
+	{
+		e.Replacement = "FireBall_";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "CacodemonBall")
+	{
+		e.Replacement = "CacodemonBall_";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Fatshot")
+	{
+		e.Replacement = "BigFireBall";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "Fatshot")
+	{
+		e.Replacement = "BigFireBall";
+		e.isfinal = true;
+	}
+
+
+
+	//marines
+	if(e.Replacee == "MarineSSG" || e.Replacee == "MarineShotgun")
+	{
+		e.Replacement = "doomb_Marine_Shotgun";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "MarineRocket")
+	{
+		e.Replacement = "doomb_Marine_RocketL";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "MarinePlasma")
+	{
+		e.Replacement = "doomb_Marine_PlasmaGun";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "MarinePistol" || e.Replacee == "MarineFist")
+	{
+		e.Replacement = "doomb_Marine_Rifle";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "MarineChaingun")
+	{
+		e.Replacement = "doomb_Marine_Minigun";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "MarineBFG")
+	{
+		e.Replacement = "doomb_Marine_bfg";
+		e.isfinal = true;
+	}
+
+
+
+
+
+	//stealth monsters
+	if(e.Replacee == "StealthZombieMan")
+	{
+		e.Replacement = "BrutalStealthZombieMan";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "StealthShotgunGuy")
+	{
+		e.Replacement = "BrutalStealthShotgunGuy";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "StealthRevenant")
+	{
+		e.Replacement = "BrutalStealthRevenant";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "StealthFatso")
+	{
+		e.Replacement = "BrutalStealthFatso";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "StealthDoomImp")
+	{
+		e.Replacement = "BrutalStealthDoomImp";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "StealthHellKnight")
+	{
+		e.Replacement = "BrutalStealthHellKnight";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "StealthDemon")
+	{
+		e.Replacement = "BrutalStealthDemon";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "StealthChaingunGuy")
+	{
+		e.Replacement = "BrutalStealthChaingunGuy";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "StealthCacodemon")
+	{
+		e.Replacement = "BrutalStealthCacodemon";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "StealthBaron")
+	{
+		e.Replacement = "BrutalStealthBaron";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "StealthArchvile")
+	{
+		e.Replacement = "BrutalStealthArchvile";
+		e.isfinal = true;
+	}
+
+	if(e.Replacee == "StealthArachnotron")
+	{
+		e.Replacement = "BrutalStealthArachnotron";
+		e.isfinal = true;
+	}
+
 }
-*/
+
 }

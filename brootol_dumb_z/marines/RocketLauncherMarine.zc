@@ -1,4 +1,4 @@
-CLASS doomb_Marine_RocketL: doomb_marine_base Replaces MarineRocket
+CLASS doomb_Marine_RocketL: doomb_marine_base
 { 
 	Default {
 		doomb_marine_base.spare_ammo "doomb_rockets_ammo";

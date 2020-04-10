@@ -1541,7 +1541,8 @@ CLASS ZombiemanTorso: CurbstompedMarine {
 }
 }
 
-CLASS DeadZombieman1: CurbstompedMarine Replaces DeadZombieman { 
+CLASS DeadZombieman1: CurbstompedMarine
+{
 	Default {
 	Radius 12;
 	Height 12;

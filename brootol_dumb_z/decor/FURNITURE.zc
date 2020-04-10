@@ -1,4 +1,5 @@
-CLASS ImpaledSkulls: HeadsOnAStick Replaces HeadsOnAStick { 
+CLASS doomb_skull_pillar : HeadsOnAStick
+{ 
 	Default {
 		
 		Radius 16;
@@ -85,7 +86,8 @@ CLASS DecorativeSkullD: DecorativeSkullA {
 }
 
 
-CLASS ImpaledHead: HeadOnAStick Replaces HeadOnAStick { 
+CLASS ImpaledHead: HeadOnAStick
+{
 	States
 	{
 		Spawn:

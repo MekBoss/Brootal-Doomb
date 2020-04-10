@@ -88,7 +88,8 @@ CLASS ArmlessDemon : doomb_pinky
 
 
 
-CLASS DeadDemon1: CurbstompedMarine Replaces DeadDemon { 
+CLASS DeadDemon1: CurbstompedMarine
+{
 	Default {
 		
 		Radius 18;

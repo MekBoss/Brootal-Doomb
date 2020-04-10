@@ -156,7 +156,7 @@ states
 
 }
 
-CLASS HitPuff : RicoChet Replaces BulletPuff
+CLASS HitPuff : RicoChet
 { 
 	Default {
 		renderstyle "Translucent";
