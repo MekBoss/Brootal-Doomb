@@ -1,9 +1,6 @@
 
 CLASS ChexShotgunReplacer  : ACTOR Replaces LargeZorcher
 { 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:
@@ -15,9 +12,6 @@ CLASS ChexShotgunReplacer  : ACTOR Replaces LargeZorcher
 	
 }
 CLASS ChexMinigunReplacer : ACTOR Replaces RapidZorcher { 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:
@@ -29,9 +23,6 @@ CLASS ChexMinigunReplacer : ACTOR Replaces RapidZorcher {
 	
 }
 CLASS ChexPlasmagunReplacer  : ACTOR Replaces PhasingZorcher{ 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:
@@ -43,9 +34,6 @@ CLASS ChexPlasmagunReplacer  : ACTOR Replaces PhasingZorcher{
 	
 }
 CLASS ChexRocketReplacer  : ACTOR Replaces ZorchPropulsor{ 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:
@@ -57,9 +45,6 @@ CLASS ChexRocketReplacer  : ACTOR Replaces ZorchPropulsor{
 	
 }
 CLASS ChexBFGReplacer : ACTOR Replaces LAZDevice { 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:

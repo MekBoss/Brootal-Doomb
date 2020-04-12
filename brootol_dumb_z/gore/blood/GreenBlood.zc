@@ -1,6 +1,6 @@
 
 
-CLASS Green_FlyingBlood: Brutal_FlyingBlood { 
+CLASS Green_FlyingBlood: doomb_red_blood_trail { 
 	Default {
  
 translation "168:191=112:127", "16:47=123:127";

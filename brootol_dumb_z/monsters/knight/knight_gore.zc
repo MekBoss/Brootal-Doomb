@@ -712,9 +712,8 @@ CLASS DyingHellKnight : doomb_body_base
 			Loop;
 		See:
 			BTC1 ABC 10 A_Chase;
-			TNT1 A 0 A_SpawnItemEx("Brutal_FlyingBlood", 0, 0, 10, 0, 0);
+			TNT1 A 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			BTC1 D 10 A_Pain;
-			TNT1 A 0 A_SpawnItemEx("Brutal_FlyingBlood", 0, 0, 10, 0, 0);
 			tnt1 a 0 a_jumpif(random(0, 10) < 1, "death");
 		Loop;
 			
