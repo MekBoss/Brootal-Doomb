@@ -1,27 +1,4 @@
 
-CLASS BaronAttack : doomb_boolet_base
-{ 
-Default {
-	Radius 24;
-	Height 16;
-	DamageType "BHFT";
-	Projectile;
-	+RANDOMIZE;
-	+FORCEXYBILLBOARD;
-	+THRUGHOST;
-	RenderStyle "Add";
-	Alpha 0.6;
-	Damage 16;
-	Speed 28;
-}
-States
-{
-	Spawn:
-		TNT1 A 4;
-	Stop;
-}
-}
-
 CLASS DeadBaron: CurbstompedMarine { 
 Default {
 	
@@ -129,15 +106,6 @@ States
 }
 
 
-
-
-
-CLASS BaronAttackOnbarrel: BaronAttack { 
-Default {
-	DamageType "BHFTOnBarrel";
-	Damage 1;
-}
-}
 
 
 
