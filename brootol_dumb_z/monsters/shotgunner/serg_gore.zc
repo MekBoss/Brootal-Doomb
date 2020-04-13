@@ -689,7 +689,7 @@ CLASS SergeantHead: LimbBase
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 ThrustThingZ(0,50,0,1);
 			XHE1 ABCDEFGH 3;
-			XDT5 I 0 A_SpawnItem("SergeantHead");
+			tnt1 a 0 A_SpawnItem("SergeantHead");
 			Stop;
 			
 			
@@ -1051,7 +1051,7 @@ CLASS Gib_SargeLeg: LimbBase {
 			TNT1 A 0;
 			TNT1 A 0 ThrustThingZ(0,30,0,1);
 			LEG2 ABCDEFGH 5;
-			XDT5 I 0 A_SpawnItem("Gib_SargeLeg");
+			tnt1 a 0 A_SpawnItem("Gib_SargeLeg");
 			Stop;
 			
 			

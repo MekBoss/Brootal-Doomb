@@ -163,7 +163,7 @@ CLASS SmallBrainPiece : doomb_body_base {
 			XDT5 O 800;
 		
 		Spawn:
-			XDB5 ABCDEFGH 3;
+			XDB5 ABCD 3;
 		Loop;
 	
 	

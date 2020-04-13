@@ -541,7 +541,7 @@ CLASS ChaingunguyHead: LimbBase {
 			TNT1 A 0;
 			TNT1 A 0 ThrustThingZ(0,50,0,1);
 			CHHE ABCDEFGH 3;
-			XDT5 I 0 A_SpawnItem("ChaingunguyHead");
+			tnt1 a 0 A_SpawnItem("ChaingunguyHead");
 			Stop;
 			
 			

@@ -71,6 +71,8 @@ CLASS XDeathArm1 : doomb_body_base {
 		+EXPLODEONWATER;
 		+SKYEXPLODE;
 		-DONTSPLASH;
+		+rollsprite
+		+rollcenter
 		seesound "bloood";
 		deathsound "bloood";
 	}
@@ -79,11 +81,16 @@ CLASS XDeathArm1 : doomb_body_base {
 		Spawn:
 			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			XARM AEBCFDG 5 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			Loop;
+			XARM A 5
+			{
+				roll += 15;
+				doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			}
+		Loop;
+
 		Death:
-			XDT5 I -1;
-			Stop;
+			XARM A -1;
+		Stop;
 	}
 }
 
@@ -180,37 +187,6 @@ CLASS XDeathHalfMarine : doomb_body_base {
 
 
 
-CLASS XDeathBrain1 : doomb_body_base { 
-	Default {
-		
-		Radius 8;
-		Height 8;
-		Scale 0.8;
-		Speed 13;
-		Mass 1;
-		BounceFactor 0.3;
-		+DOOMBOUNCE;
-		+NOBLOCKMAP;
-		+NOTELEPORT;
-		+MOVEWITHSECTOR;
-		+CLIENTSIDEONLY;
-		+MISSILE;
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			XDB5 ABCD 6;
-			Loop;
-		Death:
-			TNT1 A 0 A_Jump(128, "Death2");
-			XDT5 B 9009;
-			Stop;
-		Death2:
-			XDT5 O 9009;
-			Stop;
-	}
-}
 
 
 

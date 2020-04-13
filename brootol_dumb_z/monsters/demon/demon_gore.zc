@@ -59,8 +59,8 @@ CLASS ArmlessDemon : doomb_pinky
 			TNT1 A 0;
 			TNT1 A 0 A_FaceTarget;
 			tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
-			TNT1 AA 0 A_SpawnProjectile ("XDeathBrain1", 60, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("XDeathBrain1", 60, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 A_SpawnProjectile ("SmallBrainPiece", 60, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 A_SpawnProjectile ("SmallBrainPiece", 60, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_much_blood(60);
 			TNT1 A 0 A_SpawnProjectile ("BaronHeadPiece", 52, 0, random (0, 360), 2, random (0, 160));
@@ -127,8 +127,8 @@ CLASS DeadDemon1: CurbstompedMarine
 			TNT1 A 0 A_NoBlocking;
 			tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 			TNT1 A 0 doomb_Meat_Death_Small();
-			TNT1 AAA 0 A_SpawnProjectile ("XDeathBrain1", 20, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAA 0 A_SpawnProjectile ("XDeathBrain1", 20, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", 20, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", 20, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_much_blood(20);
 			TNT1 A 0 A_SpawnProjectile ("BaronHeadPiece", 22, 0, random (0, 360), 2, random (0, 160));
@@ -206,8 +206,8 @@ States
 		TNT1 AA 0 doomb_Meat_Death_Small();
 		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 		TNT1 A 0 doomb_Meat_Death_Small();
-		TNT1 AAA 0 A_SpawnProjectile ("XDeathBrain1", 20, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAA 0 A_SpawnProjectile ("XDeathBrain1", 20, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", 20, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", 20, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_much_blood(20);
 		TNT1 A 0 A_SpawnProjectile ("BaronHeadPiece", 22, 0, random (0, 360), 2, random (0, 160));
@@ -393,8 +393,8 @@ States
 	Death.Fatality:
 		TNT1 A 0 A_FaceTarget;
 		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
-		TNT1 AA 0 A_SpawnProjectile ("XDeathBrain1", 60, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 A_SpawnProjectile ("XDeathBrain1", 60, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AA 0 A_SpawnProjectile ("SmallBrainPiece", 60, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AA 0 A_SpawnProjectile ("SmallBrainPiece", 60, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_much_blood(60);
 		TNT1 A 0 A_SpawnProjectile ("BaronHeadPiece", 52, 0, random (0, 360), 2, random (0, 160));
@@ -577,7 +577,7 @@ CLASS Gib_DemonLeg: LimbBase {
 			TNT1 A 0 ThrustThingZ(0,30,0,1);
 			LEG8 A 5;
 			LEG8 ABCDEFGH 5;
-			XDT5 I 0 A_SpawnItem("Gib_DemonLeg");
+			tnt1 a 0 A_SpawnItem("Gib_DemonLeg");
 			Stop;
 	}
 	
@@ -729,7 +729,7 @@ CLASS Gib_DemonArm: LimbBase {
 			HND8 A 5;
 			HND8 ABCDEFGHABCDEFGHABCDEFGH 5 A_CheckFloor("Landz");
 		Landz:
-			XDT5 I 0 A_SpawnItem("Gib_DemonArm");
+			tnt1 a 0 A_SpawnItem("Gib_DemonArm");
 			Stop;
 			
 	}
@@ -956,8 +956,8 @@ CLASS Gib_DemonHead: LimbBase {
 		
 		Death:    
 			TNT1 A 0 doomb_Meat_Death_Small();
-			TNT1 AA 0 A_SpawnProjectile ("XDeathBrain1", 10, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("XDeathBrain1", 10, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 A_SpawnProjectile ("SmallBrainPiece", 10, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AA 0 A_SpawnProjectile ("SmallBrainPiece", 10, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 10) );
 			TNT1 AA 0 A_SpawnProjectile ("BaronHeadPiece", 12, 0, random (0, 360), 2, random (0, 160));

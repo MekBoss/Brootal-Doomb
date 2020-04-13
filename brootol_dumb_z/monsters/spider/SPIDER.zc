@@ -106,8 +106,8 @@ CLASS doomb_arachnotron : doomb_monster_base
 			BSPI J 8 A_Scream;
 			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130));
 			TNT1 AAAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
-			TNT1 AAAAA 0 A_SpawnProjectile ("XDeathBrain1", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAAA 0 A_SpawnProjectile ("XDeathBrain1", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 50) );
 			TNT1 AAA 0 A_SpawnProjectile ("XDeathSpiderNew1", 42, 0, random (0, 360), 2, random (60, 90));
 			TNT1 AA 0 A_SpawnProjectile ("XDeathSpiderNew2", 42, 0, random (0, 360), 2, random (60, 90));
@@ -186,8 +186,8 @@ CLASS doomb_arachnotron : doomb_monster_base
 			TNT1 AA 0 A_SpawnProjectile ("SpiderLeg", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("CeilBloodLauncher", 0, 0, random (0, 360), 2, random (50, 130));
 			TNT1 AAAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
-			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("XDeathBrain1", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAAAAAAAA 0 A_SpawnProjectile ("XDeathBrain1", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAAAAAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAAAAAA 0 A_SpawnProjectile ("SpiderPart1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAAA 0 A_SpawnProjectile ("XDeathSpiderNew1", 32, 0, random (0, 360), 2, random (60, 90));
 			TNT1 AAA 0 A_SpawnProjectile ("XDeathSpiderNew2", 32, 0, random (0, 360), 2, random (60, 90));

@@ -189,7 +189,7 @@ States
 		HND4 ABCDEFGHABCDEFGHABCDEFGH 5 A_CheckFloor("Landz");
 		Goto Landz;
 	Landz:
-		XDT5 I 0 A_SpawnItem("Gib_ImpArm");
+		tnt1 a 0 A_SpawnItem("Gib_ImpArm");
 		Stop;
 		
 }
@@ -326,7 +326,7 @@ States
 		LEG4 ABCDEFGHABCDEFGHABCDEFGH 5 A_CheckFloor("Landz");
 		Goto Landz;
 	Landz:
-		XDT5 I 0 A_SpawnItem("Gib_ImpLeg");
+		tnt1 a 0 A_SpawnItem("Gib_ImpLeg");
 		Stop;
 		
 }
@@ -1759,7 +1759,7 @@ States
 		TNT1 A 0;
 		TNT1 A 0 ThrustThingZ(0,50,0,1);
 		XHE4 ABCDEFGH 3;
-		XDT5 I 0 A_SpawnItem("ImpHead");
+		tnt1 a 0 A_SpawnItem("ImpHead");
 		Stop;
 }
 
