@@ -512,15 +512,16 @@ CLASS ChaingunguyHead: LimbBase {
 		Crush:
 			TNT1 AAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
-			CRS1 B 5;
 			CRS1 B 9009;
-			Stop;
+		Stop;
+
 		Death.plasma:
 			TNT1 A 0;
 			TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160));
 			EXPL A 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 			TNT1 A 0;
-			Stop;
+		Stop;
+
 		Death.punch:
 		Death.Kick:
 			CHHE EE 1 A_FaceTarget;

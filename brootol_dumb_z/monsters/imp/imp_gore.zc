@@ -89,10 +89,10 @@ States
 	FloatXDeath:
 		ID17 C 5 A_CheckFloor ("Dead.Explosive_Impact");
 		TNT1 A 0 A_SpawnProjectile ("Underblood1", 32, 0, random (0, 360), 2, random (0, 160));
-		BLUD C 0 ThrustThingZ (0,7,1,0);
+		tnt1 a 0 ThrustThingZ (0,7,1,0);
 		ID17 DEF 5 A_CheckFloor ("Dead.Explosive_Impact");
 		TNT1 A 0 A_SpawnProjectile ("Underblood1", 32, 0, random (0, 360), 2, random (0, 160));
-		BLUD C 0 ThrustThingZ (0,7,1,0);
+		tnt1 a 0 ThrustThingZ (0,7,1,0);
 		Loop;
 		
 	Dead.Explosive_Impact:
@@ -468,9 +468,9 @@ Default {
 States
 {
 	Spawn:
-		BLUD C 0 A_Recoil (3);
-		BLUD C 0 ThrustThing (random(0,255),random(1,5));
-		BLUD C 0 ThrustThingZ (0,random(0,50),random(0,1),0);
+		tnt1 a 0 A_Recoil (3);
+		tnt1 a 0 ThrustThing (random(0,255),random(1,5));
+		tnt1 a 0 ThrustThingZ (0,random(0,50),random(0,1),0);
 		TNT1 A 0 A_SetInvulnerable();
 		GORX B 10;
 		TNT1 A 0 A_UnSetInvulnerable();

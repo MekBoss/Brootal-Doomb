@@ -561,7 +561,6 @@ CLASS RevenantHead: LimbBase {
 		Crush:
 			TNT1 AAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
-			CRS1 B 5;
 			CRS1 B 9009;
 			Stop;
 		Death.plasma:
@@ -775,7 +774,6 @@ CLASS RoamingLegs : doomb_body_base {
 		Stop;
     Crush:
         TNT1 A 0 A_PlaySound("misc/xdeath4");
-        CRS2 A 5;
         CRS2 A -1;
         Stop;
 	}

@@ -1238,7 +1238,6 @@ CLASS DyingSergeantNoLegInFlames : doomb_body_base {
 			BRZ3 H -1;
 		Crush:
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
-			CRS2 A 5;
 			CRS2 A -1;
 			Stop;
 			

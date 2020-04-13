@@ -502,68 +502,6 @@ CLASS BasicMarineGib1: doomb_body_base {
 
 
 	   
-CLASS XDeathSkinPiece1 : doomb_body_base { 
-	Default {
-		
-		Radius 8;
-		Height 8;
-		Speed 10;
-		Scale 1.2;
-		Mass 1;
-		+NOBLOCKMAP;
-		+MISSILE;
-		+NOTELEPORT;
-		+MOVEWITHSECTOR;
-		+CLIENTSIDEONLY;
-		+RIPPER;
-		+BLOODLESSIMPACT;
-		-DONTSPLASH;
-		+THRUGHOST;
-		+THRUACTORS;
-		+FLOORCLIP;
-		damagetype "Blood";
-		SeeSound "misc/xdeath4";
-		DeathSound "misc/xdeath1";
-		Decal "BrutalBloodSuper";
-		Mass 1;
-		
-		Radius 2;
-		Height 2;
-		Speed 10;
-		Scale 1.0;
-		Mass 1;
-		SeeSound "";
-		DeathSound "";
-		Mass 1;
-	}
-
-	private int frame_num;
-	States
-	{
-		Spawn:
-			tnt1 a 0 nodelay
-			{
-				frame_num = random(0, 1);
-			}
-		spawn_loop:
-			XSKI A 4
-			{
-				if(waterlevel > 1)
-					destroy();
-
-				frame += frame_num;
-			}
-		Loop;
-
-		Death:
-			XSKI B -1
-			{
-				frame += frame_num;
-			}
-		Stop;
-	}
-}
-
 
 
 

@@ -194,7 +194,6 @@ CLASS doomb_cyberdemon : doomb_monster_base
 			
 		Crush:
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
-			CRS3 A 5;
 			CRS3 A -1;
 			Stop;
 			

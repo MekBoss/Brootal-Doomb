@@ -325,7 +325,6 @@ CLASS Nazi : doomb_monster_base {
 		Goto See;
 	Crush:
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
-		CRS1 A 5;
 		CRS1 A -1;
 		Stop;
 		
