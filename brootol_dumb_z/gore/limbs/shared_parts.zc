@@ -63,10 +63,17 @@ States
 	XDT5 B 800;
 	//SmallBrainPiece 2
 	XDT5 O 800;
+	//stomach with intestines (XDeathStomach)
+	XSTO a 0;
 
-	//unused
+	//unused sprites
+	//what is this?
 	brin a 0;
 	brin d 0;
+	//heart
+	xdt2 abcd 0;
+	//what?
+	xdt2 efghjklm 0;
 
 	spawn:
 		"####" "#" 4
@@ -82,6 +89,7 @@ States
 	death:
 		"####" "#" 800
 		{
+			//A_SpawnItem("Brutal_BloodSpot", 0, 1);
 			roll = 0;
 		}
 	stop;

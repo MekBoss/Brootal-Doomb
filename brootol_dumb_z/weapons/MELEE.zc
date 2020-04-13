@@ -522,7 +522,7 @@ States
 		TNT1 AAAAAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 		EXPL A 0 Radius_Quake (2, 24, 0, 15, 0);
-		BEXP B 0 BRIGHT A_Scream;
+		tnt1 B 0 BRIGHT A_Scream;
 		TNT1 A 0 A_PlaySound("FAREXPL", 3);
 		tnt1 a 0
 		{

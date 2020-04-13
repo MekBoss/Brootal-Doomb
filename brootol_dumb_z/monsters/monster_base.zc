@@ -431,7 +431,7 @@ void set_blood_throne(eventhandler e)
         blood_throne = e;
 }
 
-protected doomb_blood doomb_for_khorne(class<actor> it = null, vector3 off = (0, 0, 0), vector3 vel_dir = (0, 0, 0) )
+protected actor doomb_for_khorne(class<doomb_blood> it = null, vector3 off = (0, 0, 0), vector3 vel_dir = (0, 0, 0) )
 {
 	if(blood_throne && it)
 	{
@@ -450,6 +450,25 @@ protected doomb_blood doomb_for_khorne(class<actor> it = null, vector3 off = (0,
 
 	return null;
 }
+
+protected doomb_body_base doomb_severed_limb(class<doomb_body_base> it = null, vector3 offset = (0, 0, 0), vector3 vel_dir = (0, 0, 0) )
+{
+	if(blood_throne && it)
+	{
+		if(it is "doomb_body_base")
+		{
+			doomb_body_base b = doomb_body_base(spawn(it, pos + offset) );
+			if(b)
+			{
+				b.vel = vel_dir;
+				return b;
+			}
+		}
+	}
+
+	return null;
+}
+
 
 protected playerinfo fatalizer;
 protected actor fatality_camera, marine_fatalizer;
