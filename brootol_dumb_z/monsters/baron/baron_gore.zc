@@ -21,7 +21,8 @@ States
 {
 	Spawn:
 		BADD F -1;
-		Stop;
+	Stop;
+	
 	Raise:
 		TNT1 A 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 		TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60);
@@ -39,40 +40,23 @@ States
 	Death.Plasma:
 	Death.Plasma2:
 	Death.Fire:
-		TNT1 A 0;
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 A_NoBlocking;
 		EXPL AAAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 		BOSB ABCDE 9 doomb_show_effect("ExplosionSmoke", (0, 0, 24), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 		BOSB EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 8 doomb_show_effect("ExplosionSmoke", (0, 0, 11), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 		BOSB E -1;
-		Stop;
+	Stop;
 }
 
 }
+
+
 CLASS DeadBaronHalfDown: DeadBaron { 
 States
 {
 	Spawn:        
 		BBO2 D -1;
-	Stop;
-}
-
-}
-CLASS DeadBaronHalfUp: DeadBaron { 
-States
-{
-	Spawn:
-		BTO2 D -1;
-	Stop;
-}
-
-}
-CLASS DeadBaronNoHead: DeadBaron { 
-States
-{
-	Spawn:
-		BADH D -1;
 	Stop;
 }
 
@@ -100,39 +84,27 @@ States
 {
 	Spawn:
 		BTO2 AABBCC 4 A_SpawnProjectile("Blood",0,0,180,2);
-		HPLA A 0 A_SpawnItem("DeadBaronHalfUp",0,0,0,1);
-		Stop;
+	Stop;
+
+	death:
+		BTO2 D -1 doomb_final_absolution(12, 12);
+	stop;
 }
+
 }
 
-
-
-
-
-CLASS CallingTheBaronAFaggot : ACTOR { 
-Default {
-	Radius 4;
-	Height 4;
-	DamageType "CallingTheBaronAFaggot";
-	Projectile;
-	+RANDOMIZE;
-	+FORCEXYBILLBOARD;
-	+THRUGHOST;
-	RenderStyle "Add";
-	Alpha 0.6;
-	Damagefunction (random (2, 3));
-	Speed 32;
-	SeeSound "none";
-	DeathSound "none";
-	Decal "none";
-}
+CLASS DeadBaronNoHead: DeadBaron { 
 States
 {
 	Spawn:
-		TNT1 A 6;
+		BADH D -1;
 	Stop;
 }
+
 }
+
+
+
 
 
 CLASS DyingBaron1 : doomb_body_base
