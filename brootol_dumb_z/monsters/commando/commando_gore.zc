@@ -340,7 +340,7 @@ CLASS XDeathChainLeg: XDeathArm1 {
 	States
 	{
 		Spawn:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			LEG3 ABCDEFGH 5;
 			Loop;
@@ -355,7 +355,7 @@ CLASS Gib_ChainLeg: LimbBase {
 	States
 	{
 		Spawn:
-			LEG3 I 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			LEG3 I 1900 doomb_spawn_bloodpool(BPS_SMALL);
 			Loop;
 		Death.plasma:
 			TNT1 A 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160))   ;
@@ -383,7 +383,7 @@ CLASS XDeathChainArm: XDeathArm1 {
 	States
 	{
 		Spawn:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			HND3 ABCDEFGH 5;
 			Loop;
@@ -400,11 +400,11 @@ CLASS Gib_ChainARm: LimbBase {
 		Spawn:
 			TNT1 A 0;
 			TNT1 A 0 A_Jump (128, "Spawn2");
-			HND3 E 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			HND3 E 1900 doomb_spawn_bloodpool(BPS_SMALL);
 			HND3 E 9009;
 			Loop;
 		Spawn2:
-			HND3 A 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			HND3 A 1900 doomb_spawn_bloodpool(BPS_SMALL);
 			Loop;
 		Death.plasma:  
 			TNT1 A 0 A_SpawnProjectile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160))   ;
@@ -434,7 +434,7 @@ CLASS XDeathChaingunguyHead: XDeathBullArm1 {
 	{
 		Spawn:
 		Spawn1:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
 			CHHE AB 3;
@@ -498,10 +498,10 @@ CLASS ChaingunguyHead: LimbBase {
 			TNT1 A 0;
 			TNT1 A 0 A_Jump(256, "Spawn1", "SPawn2");
 		Spawn1:
-			CHHE A 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			CHHE A 1900 doomb_spawn_bloodpool(BPS_SMALL);
 			Loop;
 		Spawn2:  
-			CHHE E 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			CHHE E 1900 doomb_spawn_bloodpool(BPS_SMALL);
 			Loop;
 		Death:
 			TNT1 A 0;

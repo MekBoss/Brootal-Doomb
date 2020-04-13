@@ -138,9 +138,8 @@ States
 		
 	BrutalDeath:
 	Death.Desintegrate:
-		TNT1 A 0;
 		TNT1 A 0 A_Scream;
-			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AA 0 doomb_spray_decal("BrutalBloodSuper");
 		TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 40) );
 		TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
@@ -151,7 +150,7 @@ States
 		
 		
 	XDeath:
-			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		VIGI C 4 A_Scream;
 		VIGI D 4;
@@ -191,37 +190,35 @@ States
 		AVF1 A 1 A_PlaySound("vile/pain");
 		AVF1 A 20;
 		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
-			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		tnt1 AAAAAAAAAA 0 A_SpawnProjectile ("PlayerFlyingBlood", 60, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		tnt1 AAAAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", (0, 0, 60), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3) ) );
 		tnt1 A 0 ACS_Execute(580, 0, 0, 0, 0);
 		tnt1 A 0 ACS_Execute(581, 0, 0, 0, 0);
 		tnt1 A 0 ACS_Execute(582, 0, 0, 0, 0);
 		tnt1 A 0 ACS_Execute(583, 0, 0, 0, 0);
 		AVF1 A 1 A_PlaySound("vile/Death");
-		AVF1 BCDEEEFGHHH 5 A_SpawnProjectile ("PlayerFlyingBlood", 60, 0, random (0, 360), 2, random (0, 160));
+		AVF1 BCDEEEFGHHH 5 doomb_for_khorne("PlayerFlyingBlood", (0, 0, 60), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3) ) );
 		AVF1 IJKLM 2;
-			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		tnt1 AAAAAAAAAA 0 A_SpawnProjectile ("PlayerFlyingBlood", 20, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		tnt1 AAAAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", (0, 0, 60), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3) ) );
 		tnt1 A 0 ACS_Execute(580, 0, 0, 0, 0);
 		tnt1 A 0 ACS_Execute(581, 0, 0, 0, 0);
 		tnt1 A 0 ACS_Execute(582, 0, 0, 0, 0);
 		tnt1 A 0 ACS_Execute(583, 0, 0, 0, 0);
 		tnt1 A 0 A_PlaySound("CLAP");
-		tnt1 A 0 A_SpawnItemEx("FootStep", 0, 0, 40, 0, 0);
 		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
 		AVF1 N 30;
 		AVF1 OPQQR 3;
 		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
-			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		tnt1 AAAAAAAAAA 0 A_SpawnProjectile ("PlayerFlyingBlood", 50, 0, random (0, 360), 2, random (0, 160));
-		tnt1 A 0 A_SpawnItemEx("FootStep", 0, 0, 40, 0, 0);
+		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		tnt1 AAAAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", (0, 0, 60), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3) ) );
 		AVF1 STUUUUVVVV 2;
 		tnt1 A 0 A_PlaySound("TAUNT", 1, 1);
 		AVF1 VWXWXV 10;
 		tnt1 A 0
 		{
 			A_Givetotarget("HealthBonus",20);
-			A_SpawnItem("FatalizedArchvile1");
+			doomb_severed_limb("FatalizedArchvile1", limb_ignore_cvar: true);
 			doomb_destroy_monster_fatality_camera();
 		}
 	Stop;

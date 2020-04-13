@@ -1,5 +1,5 @@
 
-CLASS XDeathHalfShotgunguyNoArmNoHead : ACTOR { 
+CLASS XDeathHalfShotgunguyNoArmNoHead : doomb_body_base { 
 	Default {
 		
 		Radius 8;
@@ -22,11 +22,11 @@ CLASS XDeathHalfShotgunguyNoArmNoHead : ACTOR {
 	States
 	{
 		Spawn:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			SPSX GHIJKLMN 4;
 			Loop;
 		Death:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 AAA 0 A_SpawnItem("Blood", 0, 5);
 			SPSX O -1;//doomb_final_absolution(12, 12);
 			Stop;
@@ -58,14 +58,14 @@ CLASS XDeathHalfSergeant : doomb_body_base
 	States
 	{
 		Spawn:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			TNT1 AAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			SP2X F 12;
 		Loop;
 		
 		Death:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			SP2X G 0 A_SpawnItem("GibHalfSergeant",0,0,0,1);
 		Stop;
 	}
@@ -82,7 +82,7 @@ CLASS GibHalfSergeant: BigGibBase {
 	States
 	{
 		Spawn:
-			SP2X G 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			SP2X G 1900 doomb_spawn_bloodpool(BPS_SMALL);
 			Loop   ;
 			
 		Death:
@@ -608,7 +608,7 @@ CLASS XDeathSergeantHead: LimbBase {
 	{
 		Spawn:
 		Spawn1:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
 			XHE1 AB 3;
@@ -652,7 +652,7 @@ CLASS SergeantHead: LimbBase
 	{
 		Spawn:
 			TNT1 A 0;
-			TNT1 A 0 A_SpawnItem("Brutal_BloodSpot");
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_Jump(256, "Spawn1", "Spawn2", "Spawn3");
 		Spawn1:
 			XHE1 C -1;
@@ -1006,7 +1006,7 @@ CLASS XDeathSargeLeg1: XDeathArm1 {
 	States
 	{
 		Spawn:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			LEG2 ABCDEFGH 5 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			Loop;
@@ -1025,7 +1025,7 @@ CLASS Gib_SargeLeg: LimbBase {
 	States
 	{
 		Spawn:
-			LEG2 A 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			LEG2 A 1900 doomb_spawn_bloodpool(BPS_SMALL);
 			Loop;
 		Death.plasma:
 			TNT1 A 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160));
@@ -1265,7 +1265,7 @@ CLASS Gib_SargeLeg2: Gib_SargeLeg {
 	States
 	{
 		Spawn:
-			LEG2 E 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			LEG2 E 1900 doomb_spawn_bloodpool(BPS_SMALL);
 			Loop;
 		Death.plasma:
 			TNT1 A 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160));

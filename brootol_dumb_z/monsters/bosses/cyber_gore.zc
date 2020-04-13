@@ -11,13 +11,13 @@ CLASS XDeathCyberdemonHead: XDeathBullArm1 {
 	States
 	{
 		Spawn:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
 			XHE8 ABCDEFGH 3 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			Loop;
 		Death:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			XHE8 B 1;
 			XHE8 B 1 A_SpawnItem("CyberdemonHead",0,0,0,1);
 			Stop;
@@ -38,7 +38,7 @@ CLASS CyberdemonHead: LimbBase {
 	{
 		Spawn:
 			TNT1 A 0;
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			XHE8 C 1;
 			XHE8 C -1;
 			Loop;
@@ -81,13 +81,13 @@ CLASS XDeathCyberdemonTorso: XDeathBullArm1 {
 	States
 	{
 		Spawn:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
 			CYGT ABCDEFGH 3 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			Loop;
 		Death:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			CYGT B 1;
 			CYGT B 1 A_SpawnItem("CyberdemonTorso",0,0,0,1);
 			Stop;
@@ -147,13 +147,13 @@ CLASS XDeathCyberdemonPiece: XDeathBullArm1 {
 	States
 	{
 		Spawn:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
 			CYGP ABCDEFGH 3 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			Loop;
 		Death:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			CYGP B 1;
 			CYGP B 1 A_SpawnItem("CyberdemonPiece",0,0,0,1);
 			Stop;
@@ -215,13 +215,13 @@ CLASS XDeathCyberdemonARm: XDeathBullArm1 {
 	States
 	{
 		Spawn:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
 			CYGA ABCDEFGH 3 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			Loop;
 		Death:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			CYGA B 1;
 			CYGA B 1 A_SpawnItem("CyberdemonArm",0,0,0,1);
 			Stop;
@@ -282,13 +282,13 @@ CLASS XDeathCyberdemonGun: XDeathBullArm1 {
 	States
 	{
 		Spawn:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
 			CYGG ABCDEFGH 3;
 			Loop;
 		Death:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			CYGG B 1;
 			CYGG B 1 A_SpawnItem("CyberdemonGun",0,0,0,1);
 			Stop;

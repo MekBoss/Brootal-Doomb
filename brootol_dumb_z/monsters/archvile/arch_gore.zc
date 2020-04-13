@@ -27,7 +27,7 @@ CLASS HalfArchVile1 : doomb_body_base
 		
 		Death:
 			TNT1 AAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			VIGP B -1 doomb_for_khorne("Brutal_BloodSpot");
+			VIGP B -1 doomb_spawn_bloodpool(BPS_SMALL);
 		Splash:
 			TNT1 A 1;
 		Stop;
@@ -64,7 +64,7 @@ CLASS HalfArchVile2 : doomb_body_base
 			Loop;
 		Death:
 			TNT1 AAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			VIGP D -1 doomb_for_khorne("Brutal_BloodSpot");
+			VIGP D -1 doomb_spawn_bloodpool(BPS_SMALL);
 		Splash:
 			TNT1 A 1;
 			Stop;
@@ -79,7 +79,7 @@ CLASS FatalizedArchVile1: CurbstompedMarine
 	States
 	{
 		Spawn:
-			AVF1 Z 1 doomb_for_khorne("Brutal_BloodSpot");
+			AVF1 Z 1 doomb_spawn_bloodpool(BPS_SMALL);
 			AVF1 Z -1;
 		Stop;
 
@@ -92,7 +92,7 @@ CLASS GibArchVile: BigGibBase {
 	States
 	{
 		Spawn:
-			VILP B -1 doomb_for_khorne("Brutal_BloodSpot");
+			VILP B -1 doomb_spawn_bloodpool(BPS_SMALL);
 		stop;
 
 		Raise:

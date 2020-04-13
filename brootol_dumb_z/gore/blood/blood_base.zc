@@ -87,7 +87,7 @@ protected void doomb_spawn_big_blood(int spawn_height = 0)
 	}
 }
 
-protected void doomb_spawn_bloodpool()
+protected void doomb_spawn_bloodpool(blood_pool_size size = BPS_BIG)
 {
 	if(GetFloorTerrain().isLiquid == false)
 	{
@@ -109,21 +109,26 @@ protected void doomb_spawn_bloodpool()
 
 		if(inside_another_pool)
 			return;
-	
-		actor a = spawn("doomb_red_blood_pool", pos:self.pos);
+
+		actor a;
+		
+		if(size == BPS_BIG)
+			a = spawn("doomb_red_blood_pool", pos:self.pos);
+		else if(size == BPS_SMALL)
+			a = spawn("doomb_small_blood_pool", pos:self.pos);
 
 		if(a)
 		{
 			if(self.getclassname() == "doomb_caco")
 			{
 				a.A_SetTranslation("red_to_blue");
-				doomb_red_blood_pool(a).color = "blue";
+				doomb_blood_pool(a).color = "blue";
 			}
 
 			if(self.getclassname() == "doomb_baron" || self.getclassname() == "doomb_knight")
 			{
 				a.A_SetTranslation("red_to_green");
-				doomb_red_blood_pool(a).color = "green";
+				doomb_blood_pool(a).color = "green";
 			}
 		}
 	}

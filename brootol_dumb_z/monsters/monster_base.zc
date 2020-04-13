@@ -451,7 +451,7 @@ protected actor doomb_for_khorne(class<doomb_blood> it = null, vector3 off = (0,
 	return null;
 }
 
-protected doomb_body_base doomb_severed_limb(class<doomb_body_base> it = null, vector3 offset = (0, 0, 0), vector3 vel_dir = (0, 0, 0) )
+protected doomb_body_base doomb_severed_limb(class<doomb_body_base> it = null, vector3 offset = (0, 0, 0), vector3 vel_dir = (0, 0, 0), bool limb_ignore_cvar = false )
 {
 	if(blood_throne && it)
 	{

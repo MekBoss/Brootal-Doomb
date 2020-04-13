@@ -89,7 +89,7 @@ States
 	death:
 		"####" "#" 800
 		{
-			//A_SpawnItem("Brutal_BloodSpot", 0, 1);
+			doomb_spawn_bloodpool(BPS_SMALL);
 			roll = 0;
 		}
 	stop;

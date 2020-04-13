@@ -284,7 +284,7 @@ damagetype "Blood";
 	Loop;
     
 	Death:
-        ID22 E 1 A_SpawnItem("Brutal_BloodSpot",0,0,0,1);
+        ID22 E 1 doomb_spawn_bloodpool(BPS_SMALL);
         ID22 E -1;
 	Stop;
 
@@ -324,7 +324,7 @@ CLASS SpiderPart2 : doomb_body_base {
 			ID22 ABCD 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		Loop;
 		Death:
-			ID22 F 1 A_SpawnItem("Brutal_BloodSpot",0,0,0,1);
+			ID22 F 1 doomb_spawn_bloodpool(BPS_SMALL);
 			ID22 F -1;
 			Stop;
 			TNT1 A 1;

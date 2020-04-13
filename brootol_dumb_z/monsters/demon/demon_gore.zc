@@ -464,7 +464,7 @@ CLASS XDeathBullLeg12: XDeathArm1 {
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			LEG8 ABCDEFGH 4 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			Loop;
 		Death:
@@ -484,7 +484,7 @@ CLASS Gib_DemonLeg: LimbBase {
 		Spawn:
 			LEG8 GH 2;
 		Spawn1:
-			LEG8 I 4000 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			LEG8 I 4000 doomb_spawn_bloodpool(BPS_SMALL);
 			Loop;
 			
 			
@@ -576,11 +576,11 @@ CLASS XDeathDemonHead : doomb_body_base
 	States
 	{
 		Spawn:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			DEMH ABCDEF 7 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			Loop;
 		Death:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_SpawnItem("Gib_DemonHead");
 			Stop;
 	}
@@ -739,7 +739,7 @@ CLASS PinkyDemonHead: LimbBase {
 	States
 	{
 		Spawn:
-			DEMH I 4000 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			DEMH I 4000 doomb_spawn_bloodpool(BPS_SMALL);
 			Loop;
 			
 		Death:
@@ -794,7 +794,8 @@ CLASS PinkyDemonHead: LimbBase {
 }
 
 
-CLASS XDeathHalfDemon : ACTOR { 
+CLASS XDeathHalfDemon : doomb_body_base
+{
 	Default {
 		
 		Radius 8;
@@ -814,11 +815,11 @@ CLASS XDeathHalfDemon : ACTOR {
 	States
 	{
 		Spawn:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			SARC E 12;
 			Loop;
 		Death:
-			TNT1 A 0 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			SARC F 1 A_SpawnItem("Gib_HalfDemon",0,0,0,1);
 			TNT1 A 0;
 			Stop;
@@ -832,7 +833,7 @@ CLASS Gib_HalfDemon: BigGibBase {
 	States
 	{
 		Spawn:
-			SARC F 1900 A_SpawnItem ("Brutal_BloodSpot", 0, 1);
+			SARC F 1900 doomb_spawn_bloodpool(BPS_SMALL);
 			Loop   ;
 	}
 	
