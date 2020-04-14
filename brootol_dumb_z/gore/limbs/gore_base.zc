@@ -26,25 +26,6 @@ protected void doomb_random_death(name st = "")
 }
 
 
-protected void doomb_meat_on_ceiling()
-{
-	FLineTraceData RemoteRay;
-
-	LineTrace(
-		random( 0, 360),
-		60,
-		-frandom(85 , 90),//- because thank you randi
-		TRF_THRUACTORS | TRF_NOSKY,
-		height + 1,
-		data: RemoteRay
-	);
-
-	if (RemoteRay.HitType == TRACE_HitCeiling)
-	{
-		spawn("doomb_sticky_meat", pos:RemoteRay.HitLocation);
-	}
-}
-
 
 protected void doomb_blood_dying()
 {

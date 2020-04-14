@@ -153,6 +153,8 @@ CLASS doomb_sticky_meat: doomb_blood
 		+NOGRAVITY;
 		-missile;
 		+DontSplash;
+		+rollsprite
+		+rollcenter
 		Renderstyle "Normal";
 		Scale 1.1;
 		speed 0;

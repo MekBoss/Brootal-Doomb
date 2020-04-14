@@ -544,8 +544,8 @@ States
 	Death:
 		TNT1 AAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 A 0 A_CheckFloor("SpawnFloor");
-		TNT1 A 0 A_SpawnItemEx ("CeilBloodLauncher",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
-		TNT1 A 0 doomb_meat_on_ceiling();
+		TNT1 A 0 A_SpawnItemEx ("doomb_blood_dripping_ceiling",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+		TNT1 A 0 doomb_sticky_guro();
 	Stop;
 		
 	SpawnFloor:

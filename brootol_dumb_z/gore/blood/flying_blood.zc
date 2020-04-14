@@ -1,7 +1,6 @@
 //FIXME spawns at the sector floor, not ceiling
-CLASS CeilBloodLauncher: doomb_red_blood_trail  { 
+CLASS doomb_blood_dripping_ceiling: doomb_red_blood_trail  { 
 	Default {
-		+missile
 		+THRUACTORS;
 		+BLOODLESSIMPACT;
 		-DOOMBOUNCE;
@@ -17,19 +16,14 @@ CLASS CeilBloodLauncher: doomb_red_blood_trail  {
 			{
 				if( (pos.z + height) < ceilingz || waterlevel > 1) destroy();
 			}
-			TNT1 A 3 a_settics(random(3, 12) );
-		Stop;
-		
-		Death:
-			TNT1 A 0 {if( (pos.z + self.height) < ceilingz) self.destroy(); }
-			bpdl AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1
+			bpdl AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 10
 			{
 				a_settics(random(5, 24) );
-				doomb_for_khorne("TinyBlood", (0, 0, -10 ) );
+				doomb_for_khorne("TinyBlood", (frandom((-radius), (radius) ), frandom((-radius), (radius) ), -1) );
 			}
 			BPDL a 2000;
-			BPDL AAAAAAAAA 1 A_FadeOut(0.1);
-		stop;
+			BPDL A 1 A_FadeOut(0.1);
+		wait;
 	}
 }
 
