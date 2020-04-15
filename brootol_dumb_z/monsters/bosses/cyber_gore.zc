@@ -37,9 +37,6 @@ CLASS CyberdemonHead: LimbBase {
 	States
 	{
 		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-			XHE8 C 1;
 			XHE8 C -1;
 			Loop;
 			

@@ -29,7 +29,7 @@ SpawnNums
    1 = doomb_shotgun_guy
    7 = doomb_mind
    153 = BigFireBall
-   126 = CacodemonBall_
+   126 = doomb_caco_ball
    19 = doomb_caco
    111 = doomb_archvile
    139 = GrenadeBox

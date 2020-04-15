@@ -751,7 +751,7 @@ override void CheckReplacement(ReplaceEvent e)
 
 	if(e.Replacee == "CacodemonBall")
 	{
-		e.Replacement = "CacodemonBall_";
+		e.Replacement = "doomb_caco_ball";
 		e.isfinal = true;
 	}
 

@@ -72,9 +72,8 @@ States
 	Missile:
 		TNT1 A 0 doomb_update_memory();
 		TNT1 A 0 A_JumpIfCloser(140, "Melee");
-		TNT1 A 0 A_Jump (198, 3);
+		TNT1 A 0 A_Jump (198, 1);
 	Goto Avoid;
-		TNT1 AAA 0;
 		HEAD B 4 A_FaceTarget;
 		HEAD C 4 A_FaceTarget;
 		HEAD D 4 BRIGHT A_SpawnProjectile("CacodemonBall", 34, 0, 0, 0);
@@ -126,9 +125,15 @@ States
 	Death:
 		HEAD G 3 A_Scream;
 		HEAD H 3 A_NoBlocking;
-		HEAD IJK 4 A_SpawnProjectile ("Blue_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160));
+		HEAD IJK 4
+		{
+			actor a = doomb_for_khorne("PlayerFlyingBlood", (0, 0, 15), (random(-3,3), random(-3, 3), frandom(0, 3) ) );
+			if(a)
+				a.a_settranslation("red_to_blue");
+		}
+
 		TNT1 A 0 doomb_spawn_bloodpool();
-		TNT1 A 0 A_SpawnItem ("DeadCacoDemon1", 1);
+		TNT1 A 0 doomb_severed_limb("DeadCacoDemon1", limb_ignore_cvar: true);
 		HEAD L -1;
 	Stop;
 		
@@ -136,10 +141,16 @@ States
 		H3D2 A 6 A_Scream;
 		H3D2 B 6 A_NoBlocking;
 		H3D2 CD 6;
-		TNT1 AAAA 0 A_SpawnProjectile ("Blue_FlyingBlood", 15, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAAA 0
+		{
+			actor a = doomb_for_khorne("PlayerFlyingBlood", (0, 0, 15), (random(-3,3), random(-3, 3), frandom(0, 3) ) );
+			if(a)
+				a.a_settranslation("red_to_blue");
+		}
+
 		H3D2 E 6;
 		TNT1 A 0 doomb_spawn_bloodpool();
-		TNT1 A 0 A_SpawnItem ("DeadCacoDemon1", 1);
+		TNT1 A 0 doomb_severed_limb("DeadCacoDemon1", limb_ignore_cvar: true);
 		H3D2 F -1;
 	Stop;
 		
@@ -148,9 +159,15 @@ States
 		TNT1 A 0 A_SetFloorClip;
 		TNT1 A 0 A_Scream;
 		TNT1 O 0 A_NoBlocking;
-		TNT1 AAAAA 0 A_SpawnProjectile ("Blue_FlyingBlood", 47, 0, random (0, 360), 2, random (30, 150));
-		TNT1 A 0 A_SpawnProjectile ("CacoXDeath", 50, 0, random (0, 360), 2, random (20, 40));
-		HEDC AB 9 A_SpawnProjectile ("CacoXDeath7", 50, 0, random (0, 360), 2, - random (0, 160));
+		TNT1 AAAAA 0
+		{
+			actor a = doomb_for_khorne("PlayerFlyingBlood", (0, 0, 15), (random(-3,3), random(-3, 3), frandom(0, 3) ) );
+			if(a)
+				a.a_settranslation("red_to_blue");
+		}
+
+		TNT1 A 0 doomb_severed_limb("CacoXDeath", (0, 0, 50) );
+		HEDC AB 9 doomb_severed_limb("CacoXDeath7", (0, 0, 50), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)) );
 		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem ("SawedCacodemon", 1);
 		HEDC C -1;
@@ -162,11 +179,11 @@ States
 		TNT1 A 0 A_SetFloorClip;
 		TNT1 A 0 A_Scream;
 		TNT1 O 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnProjectile ("HalfCacoDemon", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath6", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath7", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("CacoXDeath7", (0, 0, 50), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)), true );
+		TNT1 AAAA 0 doomb_severed_limb("CacoXDeath6", (0, 0, 50), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)) );
+		TNT1 AAAA 0 doomb_severed_limb("CacoXDeath7", (0, 0, 50), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)) );
 		TNT1 A 0 doomb_spawn_bloodpool();
-		TNT1 A 0 A_SpawnItem ("Dead_lower_caco_Half", 1);
+		TNT1 A 0 doomb_severed_limb("Dead_lower_caco_Half", limb_ignore_cvar: true);
 		CCD3 B -1;
 	Stop;
 
@@ -177,12 +194,12 @@ States
 		TNT1 A 0 A_SetFloorClip;
 		TNT1 A 0 A_Scream;
 		TNT1 O 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnProjectile ("HalfCacoDemon", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath6", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath7", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("HalfCacoDemon", (0, 0, 50), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)), true );
+		TNT1 AAAA 0 doomb_severed_limb("CacoXDeath6", (0, 0, 50), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)) );
+		TNT1 AAAA 0 doomb_severed_limb("CacoXDeath7", (0, 0, 50), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)) );
 		CCD3 A 6;
 		TNT1 A 0 doomb_spawn_bloodpool();
-		TNT1 A 0 A_SpawnItem ("Dead_lower_caco_Half", 1);
+		TNT1 A 0 doomb_severed_limb("Dead_lower_caco_Half", limb_ignore_cvar: true);
 		CCD3 B -1;
 	Stop;
 		
@@ -191,9 +208,14 @@ States
 		TNT1 A 0 A_SetFloorClip;
 		TNT1 A 0 A_Scream;
 		TNT1 O 0 A_NoBlocking;
-		TNT1 AAAAA 0 A_SpawnProjectile ("Blue_FlyingBlood", 47, 0, random (0, 360), 2, random (30, 150));
-		TNT1 A 0 A_SpawnProjectile ("CacoXDeath", 50, 0, random (0, 360), 2, random (20, 40));
-		CCD1 A 0 A_SpawnItem("caco_with_head_hole");
+		TNT1 AAAAA 0
+		{
+			actor a = doomb_for_khorne("PlayerFlyingBlood", (0, 0, 15), (random(-3,3), random(-3, 3), frandom(0, 3) ) );
+			if(a)
+				a.a_settranslation("red_to_blue");
+		}
+		TNT1 AAAA 0 doomb_severed_limb("CacoXDeath", (0, 0, 50), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)) );
+		TNT1 A 0 doomb_severed_limb("caco_with_head_hole", limb_ignore_cvar: true);
 	Stop;
 		
 		
@@ -203,8 +225,9 @@ States
 		TNT1 A 0 A_NoBlocking;
 		EXPL AAAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 		CACB A 10 doomb_show_effect("ExplosionSmoke", (0, 0, 24), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
-		CACB A 0 A_SpawnProjectile ("XDeathBurnedBlueMeat1", 0, 0, random (0, 360), 2, random (0, 160));
-		CACB A 0 A_SpawnProjectile ("XDeathBurnedBlueMeat2", 0, 0, random (0, 360), 2, random (0, 160));
+		
+		tnt1 A 0 doomb_severed_limb("XDeathBurnedBlueMeat1", vel_dir: (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)) );
+		tnt1 A 0 doomb_severed_limb("XDeathBurnedBlueMeat2", vel_dir: (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)) );
 		CACB BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 8 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 		CACB B -1;
 	Stop;
@@ -217,7 +240,9 @@ States
 		tnt1 B 0
 		{
 			A_Explode(3,30, damagetype:"fire");
-			{Spawn("RedFlare", pos);}
+			//FIXME flare spawning
+			Spawn("RedFlare", pos);
+
 			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			doomb_show_effect("TinyBurningPiece", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
 		}
@@ -225,25 +250,28 @@ States
 		tnt1 B 0
 		{
 			A_Explode(3,30, damagetype:"fire");
-			{Spawn("RedFlare", pos);}
+			//FIXME flare spawning
+			Spawn("RedFlare", pos);
+
 			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			doomb_show_effect("TinyBurningPiece", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
 			doomb_show_effect("SmallFireTrail", (0, 0, 40), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
 			doomb_show_effect("ExplosionParticle2", (0, 0, 40), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (frandom(0.01, 0.04), 0) );
 		}
 	mini_fire:
-		HEAD EE 1 Bright A_Wander;
-		TNT1 A 0 A_Recoil(-1);
-		tnt1 B 0
+		HEAD E 1 Bright
 		{
+			A_Wander();
+			A_Recoil(-1);
 			A_Explode(3,30, damagetype:"fire");
-			{Spawn("RedFlare", pos);}
+			//FIXME flare spawning
+			Spawn("RedFlare", pos);
+
 			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			doomb_show_effect("TinyBurningPiece", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
 			doomb_show_effect("ExplosionParticle2", (0, 0, 40), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (frandom(0.01, 0.04), 0) );
 		}
-		TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 15, "Death_fire");
-		TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1);
+		TNT1 A 0 A_Jump(15, "Death_fire");
 	Loop;
 	
 	Death_fire:
@@ -260,15 +288,14 @@ States
 	XDeath:
 		TNT1 A 0 A_XScream;
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnProjectile ("CacoXDeath", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("CacoXDeath", (0, 0, 50), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)) );
 	Stop;
 	
 	Death.SSG:
-		TNT1 A 0;
 		CCD3 A 1 A_Pain;
 		TNT1 A 0 A_FaceTarget;
 		TNT1 A 0 A_Scream;
-		TNT1 A 0 A_SpawnProjectile ("CacoXDeath", 50, 0, random (0, 360), 2, random (20, 40));
+		TNT1 A 0 doomb_severed_limb("CacoXDeath", (0, 0, 50), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)) );
 		CCD3 A 6 A_NoBlocking;
 		TNT1 A 0 doomb_spawn_bloodpool();
 		CCD3 B -1;
@@ -290,10 +317,10 @@ States
 		CFPF ABCBCBCBC 10
 		{
 			doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-			A_SpawnProjectile ("Brutal_Blood", 25, 0, random (0, 360), 2, random (0, 160));
+			doomb_for_khorne("Brutal_Blood", (0, 0, 25), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)) );
 		}
 		TNT1 A 0 A_TakeInventory("Curbstomp_Marine",1);
-		TNT1 A 0 A_SpawnItem ("PlayerJustGotCutInHalf", 1);
+		TNT1 A 0 doomb_severed_limb("PlayerJustGotCutInHalf", limb_ignore_cvar:true);
 		TNT1 A 0 A_UnSetInvulnerable;
 	Goto See;
 
@@ -332,16 +359,16 @@ States
 		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
 		CA2F F 4;
 		tnt1 A 0 A_PlaySound("misc/xdeath2", CHAN_AUTO, 1);
-		CA2F FFFF 2 A_SpawnProjectile ("Blue_Blood", 25, 0, random (0, 180), 2, random (0, 180));
-		tnt1 AAAAA 0 A_SpawnProjectile ("CacoXDeath7", 25, 0, random (0, 360), 2, random (0, 160));
-		CA2F GH 4 ;
-		TNT1 A 0 A_SpawnProjectile ("HalfCacoDemon", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath6", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAAA 0 A_SpawnProjectile ("CacoXDeath7", 0, 0, random (0, 360), 2, random (0, 160));
+		CA2F FFFF 2 doomb_for_khorne("Blue_Blood", (0, 0, 25), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)) );
+		tnt1 AAAAA 0 doomb_severed_limb("CacoXDeath7", (0, 0, 25), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)) );
+		CA2F GH 4;
+		TNT1 A 0 doomb_severed_limb("HalfCacoDemon", (0, 0, 0), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3) ), true);
+		tnt1 AAAAA 0 doomb_severed_limb("CacoXDeath6", (0, 0, 25), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)) );
+		tnt1 AAAAA 0 doomb_severed_limb("CacoXDeath7", (0, 0, 25), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)) );
 		CA2F I 20
 		{
 			A_Givetotarget("HealthBonus",10);
-			A_SpawnItem ("Dead_lower_caco_Half", 1);
+			doomb_severed_limb("Dead_lower_caco_Half", limb_ignore_cvar: true);
 			doomb_destroy_monster_fatality_camera();
 		}
 	Stop;
@@ -352,20 +379,25 @@ States
 		CACF D 4 A_PlaySound("misc/xdeath4");
 		CACF E 4 A_PlaySound("demon/pain");
 		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
-		tnt1 AAAAAAAAAAAAAAAAA 0 A_SpawnProjectile ("Blue_FlyingBloodTrail", 45, 0, random (0, 180), 2, random (0, 180));
-		tnt1 AAAAAAAAAAAA 0 A_SpawnProjectile ("Blue_FlyingBloodTrail", 45, 0, random (0, 360), 2, random (0, 360));
-		tnt1 AAA 0 A_SpawnProjectile ("Blue_Blood", 45, 0, random (0, 360), 2, random (0, 160));
-		CACF EFGHII 4 A_SpawnProjectile ("Blue_Blood", 45, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0
+		{
+			actor a = doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(30, 40) ) );
+			if(a)
+				a.a_settranslation("red_to_blue");
+		}
+		tnt1 AAA 0 doomb_for_khorne("Blue_Blood", (0, 0, 25), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)) );
+		CACF EFGHII 4 doomb_for_khorne("Blue_Blood", (0, 0, 25), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)) );
 		CACF J 4 A_PlaySound("misc/xdeath2");
-		CACF KLMMM 4 A_SpawnProjectile ("Blue_Blood", 15, 0, random (0, 360), 2, random (0, 160));
+		CACF KLMMM 4 doomb_for_khorne("Blue_Blood", (0, 0, 25), (frandom(-3, 3), frandom(-3, 3), frandom(0, 3)) );
 		tnt1 A 0
 		{
 			A_Givetotarget("HealthBonus",10);
-			A_SpawnItem ("DeadCacoDemon", 1);
+			doomb_severed_limb("DeadCacoDemon1", limb_ignore_cvar: true);
 			doomb_destroy_monster_fatality_camera();
 		}
 	Stop;
 }
+
 }
 
 //===========================================================================
@@ -373,7 +405,7 @@ States
 // Cacodemon plasma ball
 //
 //===========================================================================
-CLASS CacodemonBall_ : doomb_boolet_base
+CLASS doomb_caco_ball : doomb_boolet_base
 { 
 Default
 {
