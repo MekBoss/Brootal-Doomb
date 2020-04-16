@@ -1,5 +1,5 @@
 //SLOWDOWN ADRESSED
-//doomb_for_khorne("TinyBlood", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+//doomb_for_khorne("TinyBlood", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 CLASS TinyBlood : doomb_blood
 { 
 	Default {
@@ -57,7 +57,7 @@ CLASS TinyBlood : doomb_blood
 
 // Blood trails spawned by FlyingBlood
 //SLOWDOWN ADRESSED
-//doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+//doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 CLASS doomb_red_blood_trail : doomb_blood { 
 	Default
 	{
@@ -196,7 +196,7 @@ CLASS doomb_sticky_meat: doomb_blood
 
 		death:
 		hit_ground:
-			"####" AAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			"####" AAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			"####" A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			"####" E -1 A_QueueCorpse();
 		stop;

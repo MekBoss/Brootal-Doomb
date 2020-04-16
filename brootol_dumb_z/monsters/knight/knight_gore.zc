@@ -168,7 +168,7 @@ CLASS XDeathHellKnightHeadKicked: XDeathHellKnightHead {
 }
 
 
-CLASS XDeathHellKnightHead: XDeathBullArm1 { 
+CLASS XDeathHellKnightHead: XDeathArm1 { 
 	Default {
 		
 		-CLIENTSIDEONLY;

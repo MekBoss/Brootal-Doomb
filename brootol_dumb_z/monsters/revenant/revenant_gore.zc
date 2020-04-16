@@ -462,7 +462,7 @@ CLASS DeadSkeleton: CurbstompedMarine {
 }
 
 
-CLASS XDeathRevenantHead: XDeathBullArm1 { 
+CLASS XDeathRevenantHead: XDeathArm1 { 
 	Default {
 		
 		-CLIENTSIDEONLY;

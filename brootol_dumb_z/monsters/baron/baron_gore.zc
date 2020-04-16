@@ -174,7 +174,7 @@ States
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 A_NoBlocking;
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 A 0 doomb_severed_limb("XDeathHalfBOH", (0, 0, 24), limb_ignore_cvar: true);
 		TNT1 A 0 a_givetotarget("CrueltyBonus5Health");
@@ -226,7 +226,7 @@ States
 	Spawn:
 		TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-		GORD ABCD 4 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		GORD ABCD 4 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
 	Loop;
 
 	Death:
@@ -255,7 +255,7 @@ States
 	Stop;
 		
 	Death:    
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 	Stop;
 }
@@ -312,7 +312,7 @@ States
 {
 	Spawn:
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-		XHE5 IJKL 4 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		XHE5 IJKL 4 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
 		Loop;
 	Death:
 		XHE5 I 800;
@@ -322,7 +322,7 @@ States
 }
 
 
-CLASS XDeathBaronHead5: XDeathBullArm1
+CLASS XDeathBaronHead5: XDeathArm1
 {
 Default
 {
@@ -381,7 +381,7 @@ States
 
 	Death.Trample:
 	Crush:
-		TNT1 AAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		CRS1 B 9009;
 	Stop;

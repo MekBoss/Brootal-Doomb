@@ -16,7 +16,7 @@ CLASS doomb_teleport_fog : visual_sfx
 	States
 	{
 		Spawn:
-			TNT1 AAAAAAAAAAAAAAA 0 doomb_show_effect("green_particle", velocity:(frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
+			TNT1 AAAAAAAAAAAAAAA 0 doomb_show_effect("green_particle", velocity: doomb_random_velocity(1, true) );
 			TNT1 A 2 A_PlaySound("DSTELEPT");
 			TFOG A 3 BRIGHT A_SpawnItem("PentagramSpawner");
 			TFOG BCDEFGHGFEDCBA 3 BRIGHT A_SpawnItem("YellowFlare",0,40);

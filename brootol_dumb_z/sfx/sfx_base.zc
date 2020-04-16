@@ -131,6 +131,7 @@ states
 }
 
 private string last_state_name;
+
 /*
 override void ondestroy()
 {
@@ -146,4 +147,32 @@ override void ondestroy()
 	super.ondestroy();
 }
 */
+
+protected vector3 doomb_random_velocity(double factor = 1, bool trully = false)
+{
+	vector3 v;
+	if(trully)
+		v = (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) );
+	
+	else
+		v = (frandom(-1, 1), frandom(-1, 1), frandom(0, 1) );
+
+	v *= factor;
+
+	return v;
+}
+
+
+static actor doomb_show_sfx(actor caller = null, class<actor> type = null, vector3 offset = (0, 0, 0), vector3 sfx_velocity = (0, 0, 0) )
+{
+	if(!caller || !type)
+		return null;
+
+	actor a = spawn(type, caller.pos + offset);
+	if(a)
+		a.vel = sfx_velocity;
+
+	return a;
+}
+
 }

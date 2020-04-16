@@ -589,7 +589,6 @@ CLASS XDeathDemonHead : doomb_body_base
 
 CLASS XDeathBullArm1: XDeathArm1 { 
 	Default {
-		
 		Scale 1.0;
 		Speed 10;
 		Gravity 0.4;
@@ -621,7 +620,7 @@ CLASS XDeathBullArm1: XDeathArm1 {
 }
 
 
-CLASS XDeathDemonArm: XDeathBullArm1 { 
+CLASS XDeathDemonArm: XDeathArm1 { 
 	Default {
 		
 		Scale 1.0;
@@ -672,7 +671,7 @@ CLASS Gib_DemonArm: LimbBase {
 	
 }
 
-CLASS XDeathBullArm1Kicked: XDeathBullArm1 { 
+CLASS XDeathBullArm1Kicked: XDeathArm1 { 
 	Default {
 		
 		+ACTIVATEMCROSS;
@@ -700,7 +699,7 @@ CLASS GibDemonArmPart: TinyGib {
 }
 
 
-CLASS XDeathPinkyDemonHead: XDeathBullArm1 { 
+CLASS XDeathPinkyDemonHead: XDeathArm1 { 
 	Default {
 		
 		-CLIENTSIDEONLY;

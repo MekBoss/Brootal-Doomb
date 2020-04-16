@@ -31,11 +31,11 @@ protected void doomb_blood_dying()
 {
 	if(waterlevel < 1)
 	{
-		doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+		doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+		doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		A_SpawnItem ("BloodHit", 0, 30);
-		doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 	}
 }
 
@@ -114,7 +114,7 @@ CLASS BigGibBase : doomb_body_base {
 		Stop;
 		
 		Death.Desintegrate:
-			TNT1 A 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			TNT1 A 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 AAAA 0
 			{
 				actor a = doomb_for_khorne("blood_impact_splash", (0, 0, 35 ) );
@@ -134,7 +134,7 @@ States
 	Loop;
 	
 	Death:
-		TNT1 AAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
 		TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 		XDT3 BCDEFGH 3;
 	Death.Crush:

@@ -152,7 +152,7 @@ States
 
 
 
-CLASS XDeathdoomb_fatsoHead: XDeathBullArm1 { 
+CLASS XDeathdoomb_fatsoHead: XDeathArm1 { 
 	Default {
 		
 		-CLIENTSIDEONLY;

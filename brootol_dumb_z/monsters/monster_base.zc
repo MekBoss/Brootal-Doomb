@@ -578,6 +578,19 @@ protected void doomb_sticky_guro(sticky_guro_type type = SGT_NONE)
 
 }
 
+protected vector3 doomb_random_velocity(double factor = 1, bool trully = false)
+{
+	vector3 v;
+	if(trully)
+		v = (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) );
+	
+	else
+		v = (frandom(-1, 1), frandom(-1, 1), frandom(0, 1) );
+
+	v *= factor;
+
+	return v;
+}
 
 }
 

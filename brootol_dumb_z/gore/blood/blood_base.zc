@@ -75,12 +75,12 @@ protected void doomb_spawn_big_blood(int spawn_height = 0)
     {
 		for(uint i = 0; i < 2 * bd_bloodamount; i++)
 		{
-			actor a = doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			actor a = doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			a.setorigin(self.pos + (0, 0, spawn_height), false);
 
 			if( (i % 2) == 0)
 			{
-				a = doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+				a = doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 				a.setorigin(self.pos + (0, 0, spawn_height), false);
 			}
 		}
@@ -176,6 +176,21 @@ states
 		}
 		tnt1 a -1;
 	stop;
+}
+
+
+protected vector3 doomb_random_velocity(double factor = 1, bool trully = false)
+{
+	vector3 v;
+	if(trully)
+		v = (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) );
+	
+	else
+		v = (frandom(-1, 1), frandom(-1, 1), frandom(0, 1) );
+
+	v *= factor;
+
+	return v;
 }
 
 }

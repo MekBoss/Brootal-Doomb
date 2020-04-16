@@ -14,7 +14,7 @@ protected void doomb_head_explosion(string main_piece  = "", string additional_p
 	for(uint i = 0; i < 4; i++)
 	{
 		doomb_for_khorne("blood_impact_splash", offset);
-		doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
 		doomb_spray_decal("BrutalBloodSuper");
 		A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
@@ -37,7 +37,7 @@ protected void doomb_head_explosion(string main_piece  = "", string additional_p
 protected void doomb_Meat_Death_Small()
 {
 	doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-	doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+	doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 	{
 		actor a = doomb_for_khorne("blood_impact_splash", (0, 0, 35 ) );
 		if(a)
@@ -47,7 +47,7 @@ protected void doomb_Meat_Death_Small()
 
 protected void doomb_Rip_Guts()
 {
-	doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+	doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 	doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 	doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 }
@@ -57,7 +57,7 @@ protected void doomb_monster_xdeath(class<actor> type_1 = null, class<actor> typ
 	for(uint i = 0; i < 5; i++)
 	{
 		doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
-		doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		doomb_gore_spawner();
 		A_SpawnProjectile ("doomb_blood_dripping_ceiling", 0, 0, random (0, 360), 2, random (50, 130));
 		actor a = doomb_for_khorne("blood_impact_splash", (random(-20, 20), random(-20, 20), random(20, 30) ) );
@@ -78,12 +78,12 @@ protected void doomb_spawn_big_blood(int spawn_height = 0)
     {
 		for(uint i = 0; i < 2 * bd_bloodamount; i++)
 		{
-			actor a = doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+			actor a = doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
 			a.setorigin(self.pos + (0, 0, spawn_height), false);
 
 			if( (i % 2) == 0)
 			{
-				a = doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+				a = doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
 				a.setorigin(self.pos + (0, 0, spawn_height), false);
 			}
 		}
@@ -179,13 +179,13 @@ protected void doomb_much_blood(double height_offset = 50, double side_offset = 
  	}
 	for(uint i = 0; i < 20; i++)
     {
-        doomb_for_khorne("doomb_red_blood_trail", (relative_offset_x, relative_offset_y, random(20, 30) + height_offset ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+        doomb_for_khorne("doomb_red_blood_trail", (relative_offset_x, relative_offset_y, random(20, 30) + height_offset ), doomb_random_velocity(5) );
     }
 	actor a = doomb_for_khorne("blood_impact_splash", (relative_offset_x, relative_offset_y, height_offset) );
 	if(a)
 		a.scale = (0.45, 0.45);
 
-    doomb_for_khorne("doomb_red_blood_trail", (relative_offset_x, relative_offset_y, height_offset ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+    doomb_for_khorne("doomb_red_blood_trail", (relative_offset_x, relative_offset_y, height_offset ), doomb_random_velocity(5) );
 }
 
 protected void doomb_spray_decal(string type = "BrutalBloodSuper", double distance = 128, vector3 direction = (0, 0, 0), uint times = 1, double angle_bias = 0)
@@ -268,7 +268,7 @@ protected void doomb_spawn_entrails(vector3 offset = (0, 0, 0) )
 	for(uint i = 0; i < 5; i++)
 	{
 		doomb_internal_organs a = doomb_internal_organs( spawn("doomb_internal_organs", pos + offset) );
-		a.vel = (frandom(-6, 6), frandom(-6, 6), frandom(0, 6));
+		a.vel = doomb_random_velocity(5);
 		a.set_sprite_type(i);
 	}
 }
