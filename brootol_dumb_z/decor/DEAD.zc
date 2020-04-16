@@ -841,7 +841,7 @@ CLASS DeadHangBNoBrain: doomb_body_base
 		Death:
 		XDeath:
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("doomb_blood_dripping_ceiling", 0, 0, random (0, 360), 2, random (50, 130));
+			TNT1 AAAAAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
 			TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AAAAAAAAAAAAAA 0
@@ -885,12 +885,12 @@ CLASS DeadHangTLookingDown: doomb_body_base
 			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
 			HDB3 A 1190;
 		loop;
-		
+
 		Death:
 		XDeath:
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 
-			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("doomb_blood_dripping_ceiling", 0, 0, random (0, 360), 2, random (50, 130));
+			TNT1 AAAAAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
 			TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AAAAAAAAAAAAAA 0
@@ -937,7 +937,7 @@ CLASS DeadHangTLookingUp: doomb_body_base
 		Death:
 		XDeath:
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("doomb_blood_dripping_ceiling", 0, 0, random (0, 360), 2, random (50, 130));
+			TNT1 AAAAAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
 			TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AAAAAAAAAAAAAA 0
@@ -983,7 +983,7 @@ CLASS DeadHangTSkull: doomb_body_base
 		Death:
 		XDeath:
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("doomb_blood_dripping_ceiling", 0, 0, random (0, 360), 2, random (50, 130));
+			TNT1 AAAAAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
 			TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AAAAAAAAAAAAAA 0
@@ -1030,7 +1030,7 @@ CLASS DeadHangTNoBrain: doomb_body_base
 		Death:
 		XDeath:
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-			TNT1 AAAAAAAAA 0 A_SpawnProjectile ("doomb_blood_dripping_ceiling", 0, 0, random (0, 360), 2, random (50, 130));
+			TNT1 AAAAAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
 			TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );

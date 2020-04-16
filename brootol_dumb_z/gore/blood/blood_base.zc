@@ -193,4 +193,40 @@ protected vector3 doomb_random_velocity(double factor = 1, bool trully = false)
 	return v;
 }
 
+
+enum sticky_guro_type
+{
+	SGT_NONE = 0,
+	SGT_BLOOD = 1,
+	SGT_MEAT = 2
+};
+
+protected void doomb_sticky_guro(sticky_guro_type type = SGT_NONE)
+{
+	if(type == SGT_NONE)
+		return;
+
+	FLineTraceData blood_ray;
+
+	LineTrace(
+		random( 0, 360),
+		60,
+		-frandom(70 , 90),//- because thank you randi
+		TRF_THRUACTORS | TRF_NOSKY,
+		height + 1,
+		data: blood_ray
+	);
+
+	if (blood_ray.HitType == TRACE_HitCeiling)
+	{
+		if(type == SGT_BLOOD)
+			doomb_for_khorne("doomb_blood_dripping_ceiling", blood_ray.HitLocation);
+
+		if (type == SGT_MEAT)
+			doomb_for_khorne("doomb_sticky_meat", blood_ray.HitLocation);
+	}
+
+}
+
+
 }
