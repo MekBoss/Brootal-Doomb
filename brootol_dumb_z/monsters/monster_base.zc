@@ -758,7 +758,7 @@ override void CheckReplacement(ReplaceEvent e)
 
 	if(e.Replacee == "DoomImpBall")
 	{
-		e.Replacement = "FireBall_";
+		e.Replacement = "doomb_imp_fireball";
 		e.isfinal = true;
 	}
 

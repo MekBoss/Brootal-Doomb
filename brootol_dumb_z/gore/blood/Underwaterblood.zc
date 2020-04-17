@@ -1,7 +1,5 @@
-CLASS Underblood1 : ACTOR { 
+CLASS Underblood1 : doomb_blood { 
 	Default {
-		
-		
 		scale 1.4;
 		speed 1;
 		health 1;

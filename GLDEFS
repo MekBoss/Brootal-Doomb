@@ -833,7 +833,7 @@ object BigFireBall
     frame MISLD { light ROCKET_X3 }
 }
 
-object FireBall_
+object doomb_imp_fireball
 {
     frame FR7X { light IMPBALL    }
     frame FRFXA { light IMPBALL    }
