@@ -209,11 +209,11 @@ CLASS doomb_Imp : doomb_monster_base
 		Loop;
 			
 		GetUp:
-			TNT1 A 0 {if(waterlevel > 1) A_SpawnItem("LargeMassWaterImpact");}
 			TNT1 A 0
 			{
 				if(waterlevel > 1)
 				{
+					A_SpawnItem("LargeMassWaterImpact");
 					spawn("UnderwaterExplosion", pos:self.pos);
 					setstatelabel("swim");
 				}
@@ -286,7 +286,7 @@ CLASS doomb_Imp : doomb_monster_base
 		DSFStop:
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-			TNT1 A 0 A_SpawnItem("DeadImpTR06K");
+			TNT1 A 0 doomb_severed_limb("DeadImpTR06K", limb_ignore_cvar: true);
 		Stop;
 
 		DeathShotgunontheface2:
@@ -690,8 +690,8 @@ CLASS doomb_Imp : doomb_monster_base
 		TNT1 A 0 A_PlaySound("DSFDTHE");
 		IPFP GHIJKHIJKLMNOLMNO 8
 		{
-			doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-			A_SpawnProjectile ("PlayerFlyingBlood", 25, 0, random (0, 360), 2, random (0, 160));
+			( (0, 0, random(30, 35) ) );
+			doomb_for_khorne("PlayerFlyingBlood", (0, 0, 25), doomb_random_velocity(5) );
 		}
 		TNT1 A 0 A_TakeInventory("Fatality_Marine",1);
 		TNT1 A 0 doomb_spawn_bloodpool();

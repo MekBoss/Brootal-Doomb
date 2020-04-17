@@ -52,14 +52,6 @@ CLASS doomb_knight : doomb_monster_base
 	}
 	States
 	{
-		Melee:
-			BOS2 E 6 A_FaceTarget;
-			TNT1 A 0 A_PlaySound("weapons/gswing");
-			BOS2 F 6 A_FaceTarget;
-			BOS2 G 6 {doomb_cheap_melee_attack(160, random(30, 60), "HKFT");}
-			TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
-		Goto See2;
-			
 		Spawn:
 			TNT1 A 0;
 			TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
@@ -67,13 +59,11 @@ CLASS doomb_knight : doomb_monster_base
 		Stand:
 			BOS2 B 10 A_Look;
 		Loop;
-			
-			
+
 		See: 
 			TNT1 A 0 A_CheckSight("See2");
 			BTS2 ABC 1;
-			BTS2 DEDF 2;
-			BTS2 DEDF 2;
+			BTS2 DEDFDEDF 2;
 			BTS2 CBA 1 A_FaceTarget;
 			TNT1 A 0 HealThing(200);
 			TNT1 A 0 A_Jump(96, "MissileInRage");
@@ -83,6 +73,14 @@ CLASS doomb_knight : doomb_monster_base
 			BOS2 AAAABBBBCCCCDDDD 2 A_Chase;
 			TNT1 A 0 doomb_monster_memory("LookingForPlayer");
 		Loop;
+
+		Melee:
+			BOS2 E 6 A_FaceTarget;
+			TNT1 A 0 A_PlaySound("weapons/gswing");
+			BOS2 F 6 A_FaceTarget;
+			BOS2 G 6 {doomb_cheap_melee_attack(160, random(30, 60), "HKFT");}
+			TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
+		Goto See2;
 			
 			
 		Idle:
@@ -192,7 +190,7 @@ CLASS doomb_knight : doomb_monster_base
 			TNT1 A 0;
 			TNT1 A 0 A_Jump(96, "Death.Arm");
 			TNT1 A 0 A_JumpIfCloser(250, "Death.Blast");
-			Goto Death;
+		Goto Death;
 			
 		Death:
 			TNT1 A 0;
@@ -201,15 +199,16 @@ CLASS doomb_knight : doomb_monster_base
 			HKDD B  10 A_Scream;
 			HKDD C  10;
 			HKDD D  0 A_NoBlocking;
-			TNT1 A 0 A_SpawnItem("DeadKnight");
-			Stop;
+			TNT1 A 0 doomb_severed_limb("DeadKnight", limb_ignore_cvar: true);
+		Stop;
+		
 		Death.Arm:
-			TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightArm", 55, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_severed_limb("XDeathHellKnightArm", (0, 0, 55), doomb_random_velocity(5) );
 			TNT1 A 0 doomb_much_blood(55);
 			TNT1 A 0 A_Fall;
 			TNT1 A 0 A_NoBlocking;
-			TNT1 A 0 A_SpawnItem("DyingHellKnight1");
-			Stop;
+			TNT1 A 0 doomb_severed_limb("DyingHellKnight1", limb_ignore_cvar: true);
+		Stop;
 			
 		Death.Blast:
 		Death.SSG:
@@ -218,7 +217,7 @@ CLASS doomb_knight : doomb_monster_base
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
-			TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", 60, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 60), doomb_random_velocity(5) );
 			BOS2 PQRSTU 3;
 			TNT1 A 0 doomb_spawn_bloodpool();
 			BOS2 VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
@@ -228,9 +227,11 @@ CLASS doomb_knight : doomb_monster_base
 		XDeath:
 			TNT1 A 0 A_XScream;
 			TNT1 A 0 A_NoBlocking;
-			TNT1 A 0 A_SpawnProjectile ("KnightXDeath", 0, 0, random (0, 360), 2, random (0, 160));
-			Stop;
+			TNT1 A 0 doomb_severed_limb("KnightXDeath", (0, 0, 20) );
+		Stop;
 			
+		Death.CutLess:
+			TNT1 A 0 A_Jump(192, "Death.Arm");
 		Death.Crush:
 		Death.Cut:
 		Death.Saw:
@@ -239,30 +240,17 @@ CLASS doomb_knight : doomb_monster_base
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
-			TNT1 A 0 A_SpawnProjectile ("XDeathHalfHK", 24, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_severed_limb("XDeathHalfHK", (0, 0, 24), doomb_random_velocity(3) );
 			BBO1 AAAAAAAAAABBBBBCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 doomb_spawn_bloodpool();
-			TNT1 A 0 A_SpawnItem ("DeadKnightHalfDown", 1);
-		Stop;
-			
-		Death.CutLess:
-			TNT1 A 0 A_Jump(192, "Death.Arm");
-			TNT1 A 0 A_Scream;
-			TNT1 A 0 A_NoBlocking;
-			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-			TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
-			TNT1 A 0 A_SpawnProjectile ("XDeathHalfHK", 24, 0, random (0, 360), 2, random (0, 160));
-			BBO1 AAAAAAAAAABBBBBCCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			TNT1 A 0 doomb_spawn_bloodpool();
-			TNT1 A 0 A_SpawnItem ("DeadKnightHalfDown", 1);
+			TNT1 A 0 doomb_severed_limb("DeadKnightHalfDown", limb_ignore_cvar: true);
 		Stop;
 			
 			
 		Death.Headshot:
 			TNT1 A 0 A_Jump(126, "headshot_1");
 			TNT1 A 0 A_JumpIfHealthLower(-80, "Death.HeadExplode");
-			TNT1 A 0 A_SpawnItem("HellKnightHeadExplode", 0, 62);
+			TNT1 A 0 doomb_severed_limb("HellKnightHeadExplode", (0, 0, 62) );
 		dead_headshot_loop:
 			TNT1 A 0 A_Pain;
 			BTN5 AABBAACC 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
@@ -272,31 +260,28 @@ CLASS doomb_knight : doomb_monster_base
 			BTN5 DDDEEEFFFFFFFFFFFFFFFFFFFFFFFFFFFFF 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 doomb_spawn_bloodpool();
-			TNT1 A 0 A_SPawnItem ("DeadKnightBTN5F");
+			TNT1 A 0 doomb_severed_limb("DeadKnightBTN5F", limb_ignore_cvar: true);
 		Stop;
 
+		Death.headExplode:
 		headshot_1:
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-			TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightHead", 62, 0, random (0, 360), 2, random (50, 130));
+			TNT1 A 0
+			{
+				if(random(0, 1) == 1)
+					doomb_severed_limb("HellKnightHeadExplode", (0, 0, 62) );
+				else
+					doomb_severed_limb("XDeathHellKnightHead", (0, 0, 62), doomb_random_velocity(5) );
+			}
 			BTN2 AAAAAAAAAAABBBBB 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 A_NoBlocking;
 			BTN2 CCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 doomb_spawn_bloodpool();
-			TNT1 A 0 A_SpawnItem("DeadKnightNoHead");
-		Stop;
-			
-		Death.headExplode:
-			TNT1 A 0 A_SpawnItem("HellKnightHeadExplode", 0, 62);
-			BTN2 AAAAAAAAAAABBBBB 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			TNT1 A 0 A_NoBlocking;
-			BTN2 CCCCCDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			TNT1 A 0 doomb_spawn_bloodpool();
-			TNT1 A 0 A_SpawnItem("DeadKnightNoHead");
+			TNT1 A 0 doomb_severed_limb("DeadKnightNoHead", limb_ignore_cvar: true);
 		Stop;
 
 		Death.Plasma:
 		Death.Plasma2:
-			TNT1 A 0;
 			TNT1 A 0 A_BossDeath;
 			TNT1 A 0 A_Scream;
 			TNT1 A 0 A_NoBlocking;
@@ -309,36 +294,30 @@ CLASS doomb_knight : doomb_monster_base
 			TNT1 A 0 doomb_spawn_bloodpool();
 			BOSB EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 8 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			BOSB E -1;
-			Stop;
+		Stop;
 			
 		Death.Explosive_Impact:
-			TNT1 A 0;
 			TNT1 A 0 ThrustThingZ(0,35,0,1);
-			TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightArm", 62, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeathHellKnightLeg", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_severed_limb("XDeathHellKnightArm", (0, 0, 62), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("XDeathHellKnightLeg", (0, 0, 32), doomb_random_velocity(5) );
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_much_blood(62);
 			TNT1 A 0 A_Jump(255, "Death.Explosive_Impact1", "Death.Explosive_Impact2");
 		Death.Explosive_Impact1:
-			BAH3 A  8 A_Scream;
-			BAH3 B  8 A_NoBlocking;
+			BAH3 A 8 A_Scream;
+			BAH3 B 8 A_NoBlocking;
 			BAH3 CCCCCC  8 A_CheckFloor("Land1");
-		Goto Land1;
-			
 		Land1:
-			TNT1 A 0 A_SpawnItem ("DeadKnightExplosive_Impact1", 1);
-			Stop;
+			TNT1 A 0 doomb_severed_limb("DeadKnightExplosive_Impact1");
+		Stop;
 			
 		Death.Explosive_Impact2:
-			BAH3 E  8 A_Scream;
-			BAH3 F  8 A_NoBlocking;
+			BAH3 E 8 A_Scream;
+			BAH3 F 8 A_NoBlocking;
 			BAH3 GGGGGG  8 A_CheckFloor("Land2");
-		Goto Land2;
-			
-			
 		Land2:
-			TNT1 A 0 A_SpawnItem ("DeadKnightExplosive_Impact2", 1);
-			Stop;
+			TNT1 A 0 doomb_severed_limb("DeadKnightExplosive_Impact2");
+		Stop;
 			
 			
 		Raise:
@@ -361,17 +340,15 @@ CLASS doomb_knight : doomb_monster_base
 			TNT1 A 0 A_SetInvulnerable;
 			KTFP AAAA 3;
 			KTFP BCDE 3;
-			TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 40, 0, 0);
 			EXPL A 0 Radius_Quake (2, 24, 0, 15, 0);
 			KTFP E 8;
 			KTFP F 24;
 			KTFP MGGGGG 3;
 			KTFP H 2;
 			EXPL A 0 Radius_Quake (2, 24, 0, 15, 0);
-			TNT1 A 0 A_SpawnProjectile ("jaw", 11, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("eye", 11, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("head_piece", 11, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("head_piece", 11, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 11), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("eye", (0, 0, 11), doomb_random_velocity(5) );
+			TNT1 AAA 0 doomb_severed_limb("head_piece", (0, 0, 11), doomb_random_velocity(5) );
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_much_blood(0);
 			TNT1 A 0 doomb_spawn_bloodpool();
@@ -379,7 +356,7 @@ CLASS doomb_knight : doomb_monster_base
 			KTFP KLLLLL 4;
 			TNT1 A 0 A_TakeInventory("Curbstomp_Marine",1);
 			TNT1 A 0 A_UnSetInvulnerable;
-			TNT1 A 0 A_SpawnItem ("CurbstompedMarine", 1);
+			TNT1 A 0 doomb_severed_limb("CurbstompedMarine", limb_ignore_cvar: true);
 		Goto See2;
 			
 			
@@ -395,7 +372,7 @@ CLASS doomb_knight : doomb_monster_base
 			TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 5), 6);
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_spawn_bloodpool();
-			TNT1 A 0 A_SpawnItem ("CrushedRemains");
+			TNT1 A 0 doomb_severed_limb("CrushedRemains");
 			TNT1 A 1;
 			TNT1 A 1 A_XScream;
 		Stop;
@@ -421,11 +398,11 @@ CLASS doomb_knight : doomb_monster_base
 		HKF1 AB 6;
 		tnt1 A 0 A_PlaySound("misc/xdeath4", CHAN_AUTO, 1);
 		HKF1 C 6 A_PlaySound("PSXDPN", CHAN_AUTO, 1);
-		tnt1 AAA 0 A_SpawnProjectile ("Blood", 45, 0, random (0, 360), 2, random (0, 160));
+		tnt1 AAA 0 doomb_for_khorne("brutal_Blood", (0, 0, 45), doomb_random_velocity(5) );
 		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
 		HKF1 C 5 A_PlaySound("imp/melee", CHAN_AUTO, 1);
 		HKF1 C 5;
-		tnt1 AAAAAAA 0 A_SpawnProjectile ("Blood", 55, 0, random (0, 180), 2, random (0, 180));
+		tnt1 AAA 0 doomb_for_khorne("brutal_Blood", (0, 0, 45), doomb_random_velocity(5) );
 		
 		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
 		tnt1 A 0 ACS_Execute(580, 0, 0, 0, 0);
@@ -435,13 +412,13 @@ CLASS doomb_knight : doomb_monster_base
 		TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		tnt1 AAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		tnt1 AAAAAAAAAA 0 A_SpawnProjectile ("PlayerFlyingBlood", 50, 0, random (0, 360), 2, random (0, 160));
-		HKF1 CDEFG 6 A_SpawnItem ("Brutal_Blood", 15);
-		HKF1 HHH 6;		
+		tnt1 AAAAAAAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", (0, 0, 45), doomb_random_velocity(5) );
+		HKF1 CDEFG 6 doomb_for_khorne("Brutal_Blood", (0, 0, 15) );
+		HKF1 H 18;
 		tnt1 A 0 
 		{
 			A_Givetotarget("HealthBonus",10);
-			A_SpawnItemEx("RapedHK", 0, 1, 1, 1, 1);
+			doomb_severed_limb("RapedHK", limb_ignore_cvar: true);
 			doomb_destroy_monster_fatality_camera();
 		}
 	stop;	
@@ -465,10 +442,11 @@ CLASS doomb_knight : doomb_monster_base
 		tnt1 A 0 ACS_Execute(582, 0, 0, 0, 0);
 		tnt1 A 0 ACS_Execute(583, 0, 0, 0, 0);
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		tnt1 AA 0 A_SpawnProjectile ("Blood", 50, 0, random (0, 360), 2, random (0, 160));
-		tnt1 AAAAAAAAAA 0 A_SpawnProjectile ("PlayerFlyingBlood", 50, 0, random (0, 360), 2, random (0, 160));
-		tnt1 A 0 A_SpawnProjectile ("XDeathHellKnightArm", 40, 0, 90, 2, random (0, 20));
-		HKF3 EFGG 7 A_SpawnProjectile ("Blood", 40, 0, random (0, 360), 2, random (0, 160));
+		tnt1 AAA 0 doomb_for_khorne("brutal_Blood", (0, 0, 45), doomb_random_velocity(5) );
+		tnt1 AAAAAAAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", (0, 0, 45), doomb_random_velocity(5) );
+
+		tnt1 A 0 doomb_severed_limb("XDeathHellKnightArm", (0, 0, 40), doomb_random_velocity(5) );
+		HKF3 EFGG 7 doomb_for_khorne("brutal_Blood", (0, 0, 45), doomb_random_velocity(5) );
 		
 		tnt1 A 0 A_PlaySound("PSXDPN", CHAN_AUTO, 1);
 		HKF3 H 15;
@@ -478,19 +456,17 @@ CLASS doomb_knight : doomb_monster_base
 		tnt1 A 0 ACS_Execute(582, 0, 0, 0, 0);
 		tnt1 A 0 ACS_Execute(583, 0, 0, 0, 0);
 		
-		tnt1 AA 0 A_SpawnProjectile ("Blood", 60, 0, random (0, 360), 2, random (0, 160));
-		tnt1 AAAAAAAAAA 0 A_SpawnProjectile ("PlayerFlyingBlood", 60, 0, random (0, 360), 2, random (0, 160));
-		tnt1 A 0 A_SpawnProjectile ("XDeathHellKnightHead", 40, 0, 270, 2, random (0, 20));
+		tnt1 AAA 0 doomb_for_khorne("brutal_Blood", (0, 0, 45), doomb_random_velocity(5) );
+		tnt1 AAAAAAAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", (0, 0, 45), doomb_random_velocity(5) );
+		tnt1 A 0 doomb_severed_limb("XDeathHellKnightHead", (0, 0, 40), doomb_random_velocity(5) );
 		HKF3 I 20;
 		tnt1 A 0 
 		{
 			A_Givetotarget("HealthBonus",10);
-			A_SpawnItemEx("NoArmNoHeadFatalizedHK", 0, 1, 1, 1, 1);
+			doomb_severed_limb("NoArmNoHeadFatalizedHK", limb_ignore_cvar: true);
 			doomb_destroy_monster_fatality_camera();
 		}
 	stop;	
-	
-	
 }
 
 }
@@ -512,7 +488,6 @@ CLASS GreenPlasmaBall : doomb_boolet_base {
 		SeeSound "baron/attack";
 		DeathSound "baron/shotx";
 		Decal "Scorch";
-		
 	}
 	States
 	{
