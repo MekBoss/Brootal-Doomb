@@ -17,10 +17,12 @@ CLASS NoGutsFatso: CurbstompedMarine {
 	{
 		Spawn:
 			FAT2 P -1;
-			Stop;
+		Stop;
+
 		Death:
-			TNT1 A 0 A_SpawnProjectile ("MuchMeatDeath", 2, 0, random (0, 360), 2, random (0, 160));
-			Stop;
+			TNT1 A 0 doomb_severed_limb("MuchMeatDeath");
+		Stop;
+
 		Death.Fire:
 		Death.Plasma:
 		Death.Plasma2:
@@ -32,12 +34,13 @@ CLASS NoGutsFatso: CurbstompedMarine {
 			EXPL AAAAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 			CARB LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL 10 doomb_show_effect("AltSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (1.5, 0) );
 			CARB L -1;
+		stop;
+
 		Death.Cut:
 		Death.Saw:
-			TNT1 A 0;
-			TNT1 A 0 A_SpawnProjectile ("XDeathdoomb_fatsoArm", 0, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_severed_limb("XDeathdoomb_fatsoArm", (0, 0, 15), doomb_random_velocity(5) );
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-			TNT1 A 0 A_SpawnItem ("NoGutsFatso_RemovedWeapon", 1);
+			TNT1 A 0 doomb_severed_limb("NoGutsFatso_RemovedWeapon", limb_ignore_cvar: true);
 		Stop;
 			
 		Raise:
@@ -48,24 +51,18 @@ CLASS NoGutsFatso: CurbstompedMarine {
 			TNT1 A 0 A_SpawnItem("TeleportFog");
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_SpawnItem ("doomb_fatso");
-			Stop;
+		Stop;
 	}
 }
 
 
-CLASS NoGutsFatso_RemovedWeapon: NoGutsFatso { 
-	Default {
-		
-		Health 200;
-	}
-	States
-	{
-		Spawn:
-			FAT2 Q -1;
-			Stop;
-	Death.Cutless: Death.Cut:
-	Death.Saw:
-		Goto Death;
+CLASS NoGutsFatso_RemovedWeapon: NoGutsFatso
+{
+States
+{
+	Spawn:
+		FAT2 Q -1;
+	Stop;
 }
 
 }
@@ -97,11 +94,11 @@ States
 	Death:
 	Death.Explosive_Impact:
 	Death.Shotgun:
-		TNT1 A 0 A_SpawnItem("GutsPile");
-		TNT1 A 0 A_SpawnItemEx("GibsZ", 15, 15);
-		TNT1 A 0 A_SpawnItemEx("GibsZ", 15, -15);
-		TNT1 A 0 A_SpawnItemEx("GibsZ", -15, 15);
-		TNT1 A 0 A_SpawnItemEx("GibsZ", -15, -15);
+		TNT1 A 0 doomb_severed_limb("GutsPile");
+		TNT1 A 0 doomb_severed_limb("GibsZ", (15, 15, 0) );
+		TNT1 A 0 doomb_severed_limb("GibsZ", (-15, 15, 0) );
+		TNT1 A 0 doomb_severed_limb("GibsZ", (-15, -15, 0) );
+		TNT1 A 0 doomb_severed_limb("GibsZ", (15, -15, 0) );
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 5), 6);
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
@@ -128,23 +125,19 @@ States
 
 	Death.Cut:
 	Death.Saw:
-		TNT1 A 0;
-		TNT1 A 0 A_SpawnProjectile ("XDeathdoomb_fatsoArm", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("XDeathdoomb_fatsoArm", vel_dir:doomb_random_velocity(5) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		TNT1 A 0 A_SpawnItem ("DeadFatNoArm", 1);
+		TNT1 A 0 doomb_severed_limb("DeadFatNoArm");
 	stop;
 
 	Raise:
 		TNT1 A 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 		TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60);
 		TNT1 A 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-		TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60);
 		TNT1 A 0 A_SpawnItem("TeleportFog");
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnItem ("doomb_fatso");
+		TNT1 A 0 A_SpawnItem("doomb_fatso");
 	Stop;
-	
-	
 }
 
 }		
@@ -154,7 +147,6 @@ States
 
 CLASS XDeathdoomb_fatsoHead: XDeathArm1 { 
 	Default {
-		
 		-CLIENTSIDEONLY;
 		Scale 0.9;
 	}
@@ -167,10 +159,9 @@ CLASS XDeathdoomb_fatsoHead: XDeathArm1 {
 			XHE7 ABCDEFGH 3;
 			Loop;
 		Death:
-			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-			XHE5 A 1;
-			XHE5 A 1 A_SpawnItem("doomb_fatsoHead",0,0,0,1);
-			Stop;
+			XHE5 A 1 doomb_spawn_bloodpool(BPS_SMALL);
+			XHE5 A 1 doomb_severed_limb("doomb_fatsoHead");
+		Stop;
 	}
 }
 
@@ -194,155 +185,110 @@ CLASS doomb_fatsoHead: LimbBase {
 			TNT1 A 0;
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_JUmp(128, "Spawn2");
-			
 		Spawn1:
 			XHE7 B 1900;
-			Loop;
+		Loop;
 			
 		Spawn2:
 			XHE7 G 1900;
-			Loop;
+		Loop;
 			
 		Death:
-			TNT1 A 0;
-			TNT1 A 0 A_SpawnItem("doomb_fatsoHeadExplode", 0, 10);
-			Stop;
+			TNT1 A 0 doomb_severed_limb("doomb_fatsoHeadExplode", (0, 0, 10) );
+		Stop;
+
 		Death.Trample:
 		Crush:
 			TNT1 AAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			CRS1 B 9009;
-			Stop;
+		Stop;
+
 		Death.plasma:
-			TNT1 A 0;
-			TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_severed_limb("XDeathBurnedSkull", (0, 0, 32), doomb_random_velocity(5) );
 			EXPL A 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-			TNT1 A 0;
-			Stop;
+		Stop;
+
 		Death.punch:
 		Death.Kick:
 			XHE7 A 1 A_Pain;
 			XHE7 A 1 A_FaceTarget;
 			TNT1 A 0 A_NoBlocking;
-			TNT1 A 0 A_SpawnProjectile ("XDeathdoomb_fatsoHeadKicked", 5, 0, random (170, 190), 2, random (20, 40));
+			TNT1 A 0 doomb_severed_limb("XDeathdoomb_fatsoHead", (0, 0, 5), doomb_random_velocity(5) );
 			TNT1 A 0 A_PlaySound("misc/xdeath4", 1);
 			TNT1 A 0 A_PlaySound("player/cyborg/fist", 3);
-			TNT1 A 20;
-			Stop;
+		Stop;
 			
 		Pain:
-			TNT1 A 0;
 			TNT1 A 0 ThrustThingZ(0,20,0,1);
 			XHE7 ABCDEFGH 2;
-			Goto Spawn;
+		Goto Spawn;
 			
 		Death.Explosive_Impact:
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 ThrustThingZ(0,50,0,1);
 			XHE7 ABCDEFGH 3;
-			XHE7 I 0 A_SpawnItem("doomb_fatsoHead");
-			Stop;
-			
-			
+			XHE7 I 0 doomb_severed_limb("doomb_fatsoHead");
+		Stop;
 	}
 	
 }
 
-
-CLASS XDeathdoomb_fatsoHeadKicked: XDeathdoomb_fatsoHead { 
-	Default {
-		
-		-BOUNCEONACTORS;
-		Damage 4;
-		Speed 13;
-		BounceFactor 0.4;
-	}
-}
 
 CLASS DeadFatNoArm: DeadFat { 
-	Default {
- 
-	}
 States
     {
-    Spawn:
-		FATK G -1;
+		Spawn:
+			FATK G -1;
         Stop;
-	
-	Death.Saw:
-	death.Cut:
-	TNT1 A 1;
-	Goto Death;
-    
 }
 
 }
 
 CLASS DeadFatNoHead: DeadFat { 
-	Default {
-Health 200;
-	}
 States
 {
 	Spawn:
 		FATT T -1;
 	Stop;
+
 	Death:
-		TNT1 A 0 A_SpawnProjectile ("XDeathdoomb_fatsoArm", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("XDeathdoomb_fatsoArm", (0, 0, 0), doomb_random_velocity(5) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		TNT1 A 0 A_SpawnItem ("DeadFatNoHead_RemovedWeapon", 1);
+		TNT1 A 0 doomb_severed_limb("DeadFatNoHead_RemovedWeapon");
 	Stop;
 }
 
 }
 
 CLASS DeadFatNoHead_RemovedWeapon: DeadFat { 
-Default
-{
-	Health 200;
-}
-
 States
 {
-Spawn:
+	Spawn:
 		FAT2 R -1;
-        Stop;
-       Death.Cutless: Death.Cut:	        Death.Saw:
-  	    TNT1 A 0;
-		 Goto Death;
+	Stop;
 }
 
 }
 CLASS XDeadFat: DeadFat { 
-	Default {
- 
-Health 200;
-	}
 States
 {
-Spawn:
+	Spawn:
 		XFBT F -1;
-        Stop    ;
-       Death.Cutless: Death.Cut:	       Death.Saw:
-  	    TNT1 A 0;
-		 Goto Death;
+	Stop    ;
 }
 
 }
 
 CLASS FatalizedFatso: DeadFat { 
-	Default {
- Scale 1.0;
-  Health 200;
-	}
 States
 {
 	Spawn:
 		FATF F 1 A_PlaySound("fatso/pain");
-        FATF FFEE 10 A_SpawnProjectile ("Blood", 35, 0, random (0, 360), 2, random (0, 160));
+        FATF FFEE 10 doomb_for_khorne("brutal_Blood", (0, 0, 35), doomb_random_velocity(5) );
 		tnt1 a 0 a_jump(200, "spawn");		
 		FATF E -1;
-        Stop ;
+	Stop ;
 	}
 }
 
@@ -362,11 +308,11 @@ CLASS XDeathdoomb_fatsoArm: XDeathArm1 {
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			MANA ABCDEFG 3;
-			Loop;
+		Loop;
+		
 		Death:
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-			HND8 A 0;
 			HND8 A 0 A_SpawnItem("FlameCannon",0,0,0,1);
-			Stop;
+		Stop;
 	}
 }

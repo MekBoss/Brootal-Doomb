@@ -768,19 +768,6 @@ override void CheckReplacement(ReplaceEvent e)
 		e.isfinal = true;
 	}
 
-	if(e.Replacee == "Fatshot")
-	{
-		e.Replacement = "BigFireBall";
-		e.isfinal = true;
-	}
-
-	if(e.Replacee == "Fatshot")
-	{
-		e.Replacement = "BigFireBall";
-		e.isfinal = true;
-	}
-
-
 
 	//marines
 	if(e.Replacee == "MarineSSG" || e.Replacee == "MarineShotgun")

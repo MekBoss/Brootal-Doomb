@@ -354,7 +354,8 @@ CLASS DeadHalfMarine: CurbstompedMarine {
 	}
 	
 }
-CLASS GutsPile : ACTOR { 
+CLASS GutsPile : doomb_body_base
+{ 
 	Default {
 		Radius 1;
 		Height 1;
