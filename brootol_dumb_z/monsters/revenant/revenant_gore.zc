@@ -1,9 +1,5 @@
-
-
-
-
-
-CLASS MetalShard1 : ACTOR { 
+CLASS MetalShard1 : doomb_body_base
+{ 
 	Default {
 		
 		Radius 8;
@@ -40,9 +36,6 @@ CLASS MetalShard1 : ACTOR {
 
 
 CLASS MetalShard2: MetalShard1 { 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:
@@ -58,9 +51,6 @@ CLASS MetalShard2: MetalShard1 {
 
 
 CLASS MetalShard3: MetalShard1 { 
-	Default {
-		
-	}
 	States
 	{
 		Spawn:
@@ -96,7 +86,6 @@ CLASS DyingRevenant : doomb_body_base
 	{
 		Spawn:
 			FRVX A 1;
-			Goto Suffer;
 		Suffer:
 			FRVX AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 4 doomb_spawn_big_blood(40);
 			Goto Death;
@@ -105,7 +94,7 @@ CLASS DyingRevenant : doomb_body_base
 			FRVX C -1;
 			Stop;
 		XDeath:
-			TNT1 A 0 A_SpawnProjectile ("SkeletonXDeath", 0, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_severed_limb("SkeletonXDeath");
 			Stop;
 	}
 }
@@ -120,7 +109,8 @@ CLASS DyingRevenant : doomb_body_base
 
 
 
-CLASS RevenantPiece : ACTOR { 
+CLASS RevenantPiece : doomb_body_base
+{ 
 	Default {
 		
 		Radius 2;
@@ -146,17 +136,16 @@ CLASS RevenantPiece : ACTOR {
 			TNT1 A 0 Thing_ChangeTID(0,394);
 			TNT1 A 0 A_Jump(128,9);
 			SPIC ABCDEFGH 2;
-			wait;
+		wait;
 			SPIC HGFEDCBA 2;
-			wait;
+		wait;
+		
 		Death:
-			TNT1 A 0;
 			TNT1 A 0 A_Jump(128,2);
 			SPIC A 401;
-			Stop;
-			SPIC E 1;
+		Stop;
 			SPIC E 401;
-			Stop;
+		Stop;
 	}
 }
 
@@ -209,17 +198,17 @@ CLASS RevenantBlood : doomb_body_base
 		Spawn:
 			TNT1 A 0;
 			TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			TNT1 AAA 0 A_SpawnProjectile ("RevenantDust", 0, 0, random (0, 360), 2, random (0, 360));
-			TNT1 AAA 0 A_SpawnProjectile ("RevenantDust2", 0, 0, random (0, 360), 2, random (0, 360));
+			TNT1 AAA 0 doomb_severed_limb("RevenantDust", vel_dir: doomb_random_velocity(5) );
+			TNT1 AAA 0 doomb_severed_limb("RevenantDust2", vel_dir: doomb_random_velocity(5) );
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
 			TNT1 A 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			TNT1 A 0 A_SpawnProjectile ("RevenantPiece", 7, 0, random (0, 360), 2, random (30, 150));
-			TNT1 A 0 A_SpawnItem ("BloodHit");
-			stop;
+			TNT1 AAA 0 doomb_severed_limb("RevenantPiece", vel_dir: doomb_random_velocity(5) );
+			TNT1 A 0 doomb_for_khorne("BloodHit");
+		stop;
 			
 		Splash:
-			TNT1 AAA 0 A_SpawnProjectile ("Underblood1", 7, 0, random (0, 360), 2, random (30, 150));
-			stop;
+			TNT1 AAA 0 doomb_for_khorne("Underblood1", (0, 0, 7), doomb_random_velocity(5) );
+		stop;
 	}
 }
 
@@ -316,7 +305,8 @@ CLASS RevenantTorso5: RevenantPiece {
 
 
 
-CLASS RevenantU : doomb_monster_base { 
+CLASS RevenantU : doomb_body_base
+{ 
 	Default {
 		GibHealth 45;
 		Health 150;
@@ -359,6 +349,7 @@ CLASS RevenantU : doomb_monster_base {
 			UKEL CDDD 2 A_Chase;
 			Loop;
 			
+		Pain.Taunt:
 		Missile:
 			UKEL E 10 A_FaceTarget;
 			UKEL F 10 A_SpawnProjectile("RevenantBalls",20,15,0,0);
@@ -372,26 +363,23 @@ CLASS RevenantU : doomb_monster_base {
 			
 			
 		Death:
-			TNT1 AAA 0 A_SpawnProjectile ("RevenantDust", 5, 0, random (0, 360), 2, random (0, 360));
-			TNT1 AAAA 0 A_SpawnProjectile ("RevenantDust2", 5, 0, random (0, 360), 2, random (0, 360));
-			TNT1 A 0 A_SpawnProjectile ("XDeathRevenantHead", 5, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAA 0 doomb_severed_limb("RevenantDust", vel_dir: doomb_random_velocity(5) );
+			TNT1 AAA 0 doomb_severed_limb("RevenantDust2", vel_dir: doomb_random_velocity(5) );
+
+			TNT1 AAA 0 doomb_severed_limb("XDeathRevenantHead", vel_dir: doomb_random_velocity(5) );
+			TNT1 AAA 0 doomb_severed_limb("RevenantBones", vel_dir: doomb_random_velocity(5) );
+			TNT1 AA 0 doomb_severed_limb("RevenantArm", vel_dir: doomb_random_velocity(5) );
+			TNT1 AA 0 doomb_severed_limb("MetalShard1", vel_dir: doomb_random_velocity(5) );
+			TNT1 AA 0 doomb_severed_limb("MetalShard2", vel_dir: doomb_random_velocity(5) );
+			TNT1 AAA 0 doomb_severed_limb("MetalShard3", vel_dir: doomb_random_velocity(5) );
+			TNT1 AAA 0 doomb_severed_limb("RevenantBonesFast", vel_dir: doomb_random_velocity(5) );
+			TNT1 AAA 0 doomb_severed_limb("RevenantPiece", vel_dir: doomb_random_velocity(5) );
+
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-			TNT1 AA 0 A_SpawnProjectile ("RevenantBones", 5, 0, random (0, 360), 2, random (30, 150));
-			TNT1 AA 0 A_SpawnProjectile ("RevenantArm", 5, 0, random (0, 360), 2, random (30, 150));
-			TNT1 AA 0 A_SpawnProjectile ("MetalShard1", 5, 0, random (0, 360), 2, random (30, 160));
-			TNT1 AA 0 A_SpawnProjectile ("MetalShard2", 5, 0, random (0, 360), 2, random (30, 160));
-			TNT1 AA 0 A_SpawnProjectile ("MetalShard3", 5, 0, random (0, 360), 2, random (30, 160));
-			TNT1 AAA 0 A_SpawnProjectile ("RevenantBonesFast", 5, 0, random (0, 360), 2, random (30, 150));
-			TNT1 AAA 0 A_SpawnProjectile ("RevenantPiece", 5, 0, random (0, 360), 2, random (30, 150));
 			TNT1 A 0 A_SpawnItem("HellishMissileLauncher");
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_Scream;
-			TNT1 A 10;
-			Stop;
-
-		Pain.Taunt:
-			TNT1 A 0;
-			Goto Missile;
+		Stop;
 	}
 }
 
@@ -433,16 +421,17 @@ CLASS DeadSkeleton: CurbstompedMarine {
 			TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60);
 			TNT1 A 0 A_SpawnItem("TeleportFog");
 			TNT1 A 0 A_NoBlocking;
-			TNT1 A 0 A_SpawnItem ("doomb_Revenant");
+			TNT1 A 0 A_SpawnItem("doomb_Revenant");
 			Stop;
 			
-		Death.Fire:
-	Death.Plasma: Death.Plasma2:
+	Death.Fire:
+	Death.Plasma:
+	Death.Plasma2:
 		TNT1 A 0;
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 A_NoBlocking;
 		TNT1 AAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAA 0 doomb_severed_limb("XDeathBurnedSkull", (0, 0, 32), doomb_random_velocity(5) );
 		EXPL AAAAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 		CARB NNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNN 10 doomb_show_effect("AltSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (1.5, 0) );
 		CARB N -1;
@@ -451,11 +440,11 @@ CLASS DeadSkeleton: CurbstompedMarine {
 	Death.Cut:
 	Death.Saw:
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		TNT1 AAA 0 A_SpawnProjectile ("RevenantBones", 7, 0, random (0, 360), 2, random (30, 150));
-		TNT1 AA 0 A_SpawnProjectile ("RevenantArm", 7, 0, random (0, 360), 2, random (30, 150));
-		TNT1 A 0 A_SpawnProjectile ("XDeathHalfSkeleton", 32, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnItem ("XDeadSkeleton", 1);
-		Stop;
+		TNT1 AAA 0 doomb_severed_limb("RevenantBones", (0, 0, 32), doomb_random_velocity(5) );
+		TNT1 AAA 0 doomb_severed_limb("RevenantArm", (0, 0, 32), doomb_random_velocity(5) );
+		TNT1 AAA 0 doomb_severed_limb("XDeathHalfSkeleton", (0, 0, 32), doomb_random_velocity(5) );
+		TNT1 AAA 0 doomb_severed_limb("XDeadSkeleton");
+	Stop;
 		
 }
 
@@ -477,8 +466,8 @@ CLASS XDeathRevenantHead: XDeathArm1 {
 			Loop;
 		Death:
 			XHE6 A 1;
-			XHE6 A 1 A_SpawnItem("RevenantHead",0,0,0,1);
-			Stop;
+			TNT1 AAA 0 doomb_severed_limb("RevenantHead");
+		Stop;
 	}
 }
 
@@ -511,25 +500,23 @@ CLASS RevenantHead: LimbBase {
 			CRS1 B 9009;
 			Stop;
 		Death.plasma:
-			TNT1 A 0;
-			TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_severed_limb("XDeathBurnedSkull", (0, 0, 32), doomb_random_velocity(5) );
 			EXPL A 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-			TNT1 A 0;
-			Stop;
+		Stop;
+		
 		Death:
 		Death.punch:
 		Death.Kick:
 			XHE6 A 1 A_Pain;
 			XHE6 A 1 A_FaceTarget;
 			TNT1 A 0 A_NoBlocking;
-			TNT1 A 0 A_SpawnProjectile ("XDeathRevenantHeadKicked", 5, 0, random (170, 190), 2, random (20, 40));
-			Stop;
+			TNT1 A 0 doomb_severed_limb("XDeathRevenantHeadKicked", (0, 0, 32), doomb_random_velocity(5) );
+		Stop;
 			
 		Pain:
-			TNT1 A 0;
 			TNT1 A 0 ThrustThingZ(0,20,0,1);
 			XHE6 ABCD 3;
-			Goto Spawn;
+		Goto Spawn;
 			
 		Death.Explosive_Impact:
 			TNT1 A 0 A_NoBlocking;
@@ -540,8 +527,8 @@ CLASS RevenantHead: LimbBase {
 			TNT1 A 0 A_JumpIf(vel.z == 0, "Land293");
 			
 		Land293:
-			XHE6 I 0 A_SpawnItem("XDeathRevenantHead");
-			Stop;
+			TNT1 a 0 doomb_severed_limb("XDeathRevenantHead");
+		Stop;
 			
 			
 	}
@@ -597,8 +584,8 @@ CLASS XDeathHalfSkeleton : doomb_body_base
 			Loop;
 		Death:
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-			SKEX F 0 A_SpawnItem("GibHalfSkeleton",0,0,0,1);
-			Stop;
+			TNT1 A 0 doomb_severed_limb("GibHalfSkeleton");
+		Stop;
 	}
 }
 
@@ -615,7 +602,8 @@ CLASS GibHalfSkeleton: BigGibBase {
 	{
 		Spawn:
 			SKEX F 1900 doomb_spawn_bloodpool(BPS_SMALL);
-			Loop   ;
+		Loop;
+		
 		Death.Trample:
 		Death:
 			TNT1 A 0 A_SpawnItem("HellishMissileLauncher");
@@ -643,8 +631,7 @@ States
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 A_fall;
 		TNT1 A 0 A_SpawnItem ("doomb_Revenant", 3);
-		Stop;
-		
+	Stop;
 }
 
 }
@@ -670,9 +657,10 @@ States
 }
 
 CLASS XDeadSkeleton: DeadSkeleton { 
-	Default {
+Default {
 	Health 200;
-	}
+}
+
 States
 {
 	Spawn:
@@ -711,18 +699,20 @@ CLASS RoamingLegs : doomb_body_base {
 		Death:
 		TNT1 A 0 A_NoBlocking;
 		DKEL EFGHI 4;
-		TNT1 A 0 A_SpawnItem ("XDeadSkeleton", 1);
-		Stop;
+		TNT1 AAA 0 doomb_severed_limb("XDeadSkeleton");
+	Stop;
+
 	Death.Shotgun:
 	Death.Cutless:
 	XDeath:
-	TNT1 AAAA 0 A_SpawnProjectile ("RevenantBones", 37, 0, random (0, 360), 2, random (30, 150));
-		TNT1 AAAAAAA 0 A_SpawnProjectile ("RevenantPiece", 37, 0, random (0, 360), 2, random (30, 150));
-		Stop;
+		TNT1 AAA 0 doomb_severed_limb("RevenantBones", (0, 0, 32), doomb_random_velocity(5) );
+		TNT1 AAA 0 doomb_severed_limb("RevenantPiece", (0, 0, 32), doomb_random_velocity(5) );
+	Stop;
+
     Crush:
         TNT1 A 0 A_PlaySound("misc/xdeath4");
         CRS2 A -1;
-        Stop;
+	Stop;
 	}
 }
 
@@ -731,8 +721,8 @@ CLASS VeryFuckedUpRevenant: CurbstompedMarine {
     States
     {
     Spawn:
-	REVH L 1900 ;
-       Loop    ;
+		REVH L 1900;
+	Loop;
 }
 
 }	   
@@ -740,7 +730,7 @@ CLASS MarineFatalizedByRevenant: CurbstompedMarine {
     States
     {
     Spawn:
-REFP K 1900;
+		REFP K 1900;
        Loop;
 }
 

@@ -128,7 +128,8 @@ CLASS doomb_lost_soul : doomb_monster_base
 ////// LOSTSOUL BODY PARTS //////
 
 
-CLASS LSPart1 : ACTOR { 
+CLASS LSPart1 : doomb_body_base
+{ 
 	Default {
 		
 		Radius 2;
