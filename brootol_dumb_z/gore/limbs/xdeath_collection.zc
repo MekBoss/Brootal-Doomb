@@ -389,7 +389,7 @@ CLASS SargeXDeath : doomb_body_base {
 			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 A 0 A_SpawnProjectile ("XDeathSargeLeg2", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("GibSargeBoot", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeathSergeantHeadOnXDeath", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("XDeathSergeantHead", 32, 0, random (0, 360), 2, random (0, 160));
 			tnt1 a 0 doomb_spawn_bloodpool();
 			TNT1 AAAAAAAAAAAAAA 0
 			{

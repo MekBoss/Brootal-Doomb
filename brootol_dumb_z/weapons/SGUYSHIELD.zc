@@ -99,9 +99,8 @@ CLASS ThrowedSguy : doomb_body_base
 			
 		Death:
 			TNT1 AAA 0 doomb_much_blood(0);
-			TNT1 A 0 A_SpawnItem("DeadShotgunguy");
-			TNT1 A 3;
-			Stop;
+			TNT1 A 0 A_SpawnItem("doomb_dead_shotgunner");
+		Stop;
 	}
 }
 

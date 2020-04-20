@@ -203,7 +203,7 @@ override void CheckReplacement(ReplaceEvent e)
 		e.isfinal = true;
 	}
 
-	if(e.Replacee == "DeadShotgunguy")
+	if(e.Replacee == "doomb_dead_shotgunner")
 	{
 		e.Replacement = "Deaddoomb_shotgun_guy";
 		e.isfinal = true;

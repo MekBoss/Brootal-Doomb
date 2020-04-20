@@ -275,7 +275,7 @@ States
 {
 	Spawn:
 		XFBT F -1;
-	Stop    ;
+	Stop;
 }
 
 }

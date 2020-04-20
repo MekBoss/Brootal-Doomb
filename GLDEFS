@@ -768,11 +768,6 @@ object CyberBalls
     frame WIVB { light ROCKETLIGHT }
 }
 
-object RevenantBalls66
-{
-    frame FATB { light ROCKETLIGHT }
-}
-
 object HealthPlus
 {
     frame BON1 { light BLUEITEM  }
