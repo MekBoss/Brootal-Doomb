@@ -21,8 +21,10 @@ protected void doomb_head_explosion(string main_piece  = "", string additional_p
 		A_SpawnProjectile ("head_piece_dark", 0, 0, random (0, 360), 2, random (0, 160));
 	}
 
-	A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
-	A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
+	doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
+	doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
+	doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
+	doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
 	/*
 	HellKnightHeadPiece
 	HellKnightHeadPiece2

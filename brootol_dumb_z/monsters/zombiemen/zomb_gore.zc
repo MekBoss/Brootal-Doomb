@@ -47,14 +47,12 @@ CLASS BurningZombie : doomb_body_base {
 				doomb_show_effect("ExplosionParticle2", (0, 0, 40), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (frandom(0.01, 0.04), 0) );
 			}
 
-			TNT1 A 0 A_GiveInventory("PoorGuyBurningLife", 1);
-			TNT1 A 0 A_JumpIfInventory("PoorGuyBurningLife", 12, "Death");
+			TNT1 A 0 doomb_random_death();
 		Loop;
 			
 		Death.Explosive_Impact:
-			TNT1 A 0;
 			TNT1 A 0 ThrustThingZ(0,60,0,1);
-			TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
+			TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
 			TNT1 A 0;
 		Looping:
 			BDT3 AAAABBBBCCCCDDDD 1 Bright light("BIGREDTORCH")
@@ -111,24 +109,15 @@ CLASS BurningZombie : doomb_body_base {
 		XDEATH:
 		DEATH.SSG:
 			TNT1 A 0 A_PlaySound("misc/xdeath");
-			TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("MuchMeatDeath", 35, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAAA 0 A_SpawnProjectile ("BurningFlyingMeatPiece", 64, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
-			Stop;
+			TNT1 AA 0 doomb_severed_limb("XDeathBurnedArm", (0, 0, 32), doomb_random_velocity(5) );
+			TNT1 AA 0 doomb_severed_limb("XDeathBurnedLeg", (0, 0, 32), doomb_random_velocity(5) );
+			TNT1 AA 0 doomb_severed_limb("XDeathBurnedSkull", (0, 0, 32), doomb_random_velocity(5) );
+			TNT1 AA 0 doomb_severed_limb("MuchMeatDeath", (0, 0, 32), doomb_random_velocity(5) );
+			TNT1 AA 0 doomb_severed_limb("BurningFlyingMeatPiece", (0, 0, 32), doomb_random_velocity(5) );
+			TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
+		Stop;
 	}
 }
-
-
-CLASS PoorGuyBurningLife : Inventory { 
-	Default {
-		
-		inventory.maxamount 20;
-	}
-}
-
 
 
 
@@ -185,9 +174,8 @@ CLASS BurningZombieMan : doomb_body_base {
 		Loop;
 			
 		Death.Explosive_Impact:
-			TNT1 A 0;
 			TNT1 A 0 ThrustThingZ(0,60,0,1);
-			TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
+			TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
 			TNT1 A 0;
 		Looping:
 			BDT3 AAAABBBBCCCCDDDD 1 Bright light("BIGREDTORCH")
@@ -219,7 +207,7 @@ CLASS BurningZombieMan : doomb_body_base {
 			TNT1 A 0 A_Jump(256, "Death1", "Death2", "Death3");
 		Death1:
 			TNT1 A 0 A_PlaySound("BURNZOM");
-			BRZ3 DDEEFF 3 light("BIGREDTORCH")
+			BRZ3 DDEEFFGGFFGGFFGGFFGGFFGGFFGGFFGGFFGGFFHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 3 light("BIGREDTORCH")
 			{
 				A_Explode(3,30, damagetype:"fire");
 				{Spawn("RedFlare", pos);}
@@ -227,26 +215,11 @@ CLASS BurningZombieMan : doomb_body_base {
 				doomb_show_effect("SmallFireTrail", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
 			}
 
-			BRZ3 GGFFGGFFGGFFGGFFGGFFGGFFGGFFGGFF 3 light("BIGREDTORCH")
-			{
-				A_Explode(3,30, damagetype:"fire");
-				{Spawn("RedFlare", pos);}
-				doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
-				doomb_show_effect("SmallFireTrail", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
-				A_Wander();
-			}
-
-			BRZ3 HHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 3 light("BIGREDTORCH")
-			{
-				A_Explode(3,30, damagetype:"fire");
-				{Spawn("RedFlare", pos);}
-				doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
-				doomb_show_effect("SmallFireTrail", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
-			}
 			TNT1 A 0 doomb_show_effect("SmallFireFocus24", (frandom(-0.5, 0.5), frandom(-0.5, 0.5), 0 ) );
 			BRZ3 HHHHHHHHHHHHHHHHHHHHHHHH 10 doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			BRZ3 H -1;
-			Stop;
+		Stop;
+
 		Death2:
 			TNT1 A 0 A_PlaySound("BURNZOM");
 			BRZ3 DDEEFFGGFFGGFFGGFFGGFFIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIIII 3 light("BIGREDTORCH")
@@ -263,14 +236,7 @@ CLASS BurningZombieMan : doomb_body_base {
 			
 		Death3:
 			TNT1 A 0 A_PlaySound("BURNZOM");
-			BRZ3 DDEEFF 3 light("BIGREDTORCH")
-			{
-				A_Explode(3,30, damagetype:"fire");
-				{Spawn("RedFlare", pos);}
-				doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
-				doomb_show_effect("SmallFireTrail", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
-			}
-			BRZ3 GGFFGGFFGGFFGGFF 3 Bright light("BIGREDTORCH")
+			BRZ3 DDEEFFGGFFGGFFGGFFGGFF 3 light("BIGREDTORCH")
 			{
 				A_Explode(3,30, damagetype:"fire");
 				{Spawn("RedFlare", pos);}
@@ -292,7 +258,7 @@ CLASS BurningZombieMan : doomb_body_base {
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			tnt1 a 0 a_jumpif(random(0, 10) < 1, "death_fire");
 		Loop;
-			
+
 		Death_fire:
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_Scream;
@@ -312,20 +278,21 @@ CLASS BurningZombieMan : doomb_body_base {
 		DEATH.SSG:
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_PlaySound("misc/xdeath");
-			TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AA 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("MuchMeatDeath", 35, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAAAA 0 A_SpawnProjectile ("BurningFlyingMeatPiece", 64, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 a_spawnitemex ("CrueltyBonus5Health");
-			Stop;
+			TNT1 AA 0 doomb_severed_limb("XDeathBurnedArm", (0, 0, 32), doomb_random_velocity(5) );
+			TNT1 AA 0 doomb_severed_limb("XDeathBurnedLeg", (0, 0, 32), doomb_random_velocity(5) );
+			TNT1 AA 0 doomb_severed_limb("XDeathBurnedSkull", (0, 0, 32), doomb_random_velocity(5) );
+			TNT1 AA 0 doomb_severed_limb("MuchMeatDeath", (0, 0, 32), doomb_random_velocity(5) );
+			TNT1 AA 0 doomb_severed_limb("BurningFlyingMeatPiece", (0, 0, 32), doomb_random_velocity(5) );
+			TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
+		Stop;
 	}
 }
 
 
 CLASS XDeathZombieLeg : doomb_body_base
 { 
-	Default {
+	Default
+	{
 		Radius 8;
 		Height 8;
 		Scale 1.1;
@@ -336,6 +303,7 @@ CLASS XDeathZombieLeg : doomb_body_base
 		BounceFactor 0.2;
 		wallbouncefactor 0.2;
 		BounceCount 3;
+
 		+DOOMBOUNCE;
 		+MOVEWITHSECTOR;
 		+CLIENTSIDEONLY;
@@ -358,11 +326,12 @@ CLASS XDeathZombieLeg : doomb_body_base
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			LEG1 ABCDEFGH 5 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
-			Loop;
+		Loop;
+		
 		Death:
 			LEG1 E 1 doomb_spawn_bloodpool(BPS_SMALL);
 			LEG1 E -1;
-			stop;
+		stop;
 	}
 }
 
@@ -376,63 +345,58 @@ CLASS XDeathZombieLegKicked: XDeathZombieLeg {
 
 
 
-CLASS GibZombieBoot: TinyGib { 
-	Default {
-		
-		Scale 1.1;
-	}
-	States
-	{
-		Spawn:
-			LEG1 Y -1;
-			stop;
-	}
+CLASS GibZombieBoot: TinyGib
+{
+States
+{
+	Spawn:
+		LEG1 Y -1;
+	stop;
+}
+
 }
 
 
 
 
-CLASS Gib_ZombieLeg2: LimbBase { 
-	Default {
-		
-	}
-	States
-	{
+CLASS Gib_ZombieLeg2: LimbBase
+{
+States
+{
 		Spawn:
 			LEG1 A 1900 doomb_spawn_bloodpool(BPS_SMALL);
-			Loop;
+		Loop;
+
 		Death.plasma:
-			TNT1 A 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160));
-			Stop;
+			TNT1 A 0 doomb_severed_limb("XDeathBurnedLeg", (0, 0, 32), doomb_random_velocity(5) );
+		Stop;
+
 		Death:    
 			TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
-			TNT1 A 0 A_SpawnProjectile ("GibZombieBoot", 0, 0, random (0, 180), 2, random (0, 180));
+			TNT1 A 0 doomb_severed_limb("GibZombieBoot", vel_dir:doomb_random_velocity(5) );
 			LEG1 Z -1;
-			stop;
-			
+		stop;
+
 		Death.Kick:
 		Death.Punch:
 			LEG1 AA 1 A_FaceTarget;
-			TNT1 A 0 A_SpawnProjectile ("XDeathZombieLegKicked", 5, 0, random (170, 190), 2, random (20, 40));
-			Stop;
-			
+			TNT1 A 0 doomb_severed_limb("XDeathZombieLegKicked");
+		Stop;
+
 		Pain:
-			TNT1 A 0;
 			TNT1 A 0 ThrustThingZ(0,20,0,1);
 			LEG1 ABCDEFGH 2;
-			Goto Spawn;
-			
+		Goto Spawn;
+
 		Death.Explosive_Impact:
 			TNT1 A 0 A_NoBlocking;
-			TNT1 A 0;
 			TNT1 A 0 ThrustThingZ(0,30,0,1);
 			LEG1 A 5;
 			LEG1 ABCDEFGHABCDEFGHABCDEFGH 5 A_CheckFloor("Landz");
 		Landz:
 			LEG1 E 1 doomb_spawn_bloodpool(BPS_SMALL);
 			LEG1 E -1;
-			stop;
-			
+		stop;
 	}
 	
 }
@@ -441,8 +405,8 @@ CLASS Gib_ZombieLeg2: LimbBase {
 
 
 CLASS XDeathHalfZombieman : doomb_body_base { 
-	Default {
-		
+	Default
+	{
 		Radius 8;
 		Height 8;
 		Scale 1.0;
@@ -462,39 +426,37 @@ CLASS XDeathHalfZombieman : doomb_body_base {
 		Spawn:
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			POSX F 12;
-			Loop;
+		Loop;
+
 		Death:
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-			POSX F 1 A_SpawnItem("Gib_HalfZombieman",0,0,0,1);
-			TNT1 A 0;
-			Stop;
+			POSX F 1 doomb_severed_limb("Gib_HalfZombieman", limb_ignore_cvar: true);
+		Stop;
 	}
 }
 
-CLASS Gib_HalfZombieMan: BigGibBase { 
-	Default {
-		
-	}
+CLASS Gib_HalfZombieMan: BigGibBase
+{
 	States
 	{
 		Spawn:
 			POSX F 1900 doomb_spawn_bloodpool(BPS_SMALL);
-			Loop;
-			
+		Loop;
+
 		Death:
 			TNT1 A 0 A_NoBlocking;
-			TNT1 A 0 A_SpawnProjectile ("XDeathZombiemanHead", 15, 0, random (0, 360), 2, random (0, 180));
+			TNT1 A 0 doomb_severed_limb("XDeathZombiemanHead", (0, 0, 15), doomb_random_velocity(5) );
 			TNT1 A 0 doomb_Meat_Death_Small();
-			TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 6, 0, random (0, 360), 2, random (0, 90));
-			Stop;
-			
+			TNT1 AA 0 doomb_severed_limb("XDeathArm1");
+		Stop;
 	}
 	
 }	   
 
-CLASS XDeathHalfZombiemanNoArmNoHead : doomb_body_base { 
-	Default {
-		
+CLASS XDeathHalfZombiemanNoArmNoHead : doomb_body_base
+{
+	Default
+	{
 		Radius 8;
 		Height 8;
 		
@@ -514,40 +476,36 @@ CLASS XDeathHalfZombiemanNoArmNoHead : doomb_body_base {
 	States
 	{
 		Spawn:
-			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
+			TNT1 A 0 nodelay doomb_spawn_bloodpool(BPS_SMALL);
 			POSX GHIJKLMN 4;
-			Loop;
+		Loop;
+		
 		Death:
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-			TNT1 AAA 0 A_SpawnItem("Blood", 0, 5);
-			TNT1 A 0 A_SpawnItem("Gib_HalfZombiemanNoArmNoHead",0,0,0,1);
-			Stop;
+			TNT1 A 0 doomb_severed_limb("Gib_HalfZombiemanNoArmNoHead");
+		Stop;
 	}
 }
 
-CLASS Gib_HalfZombieManNoArmNoHead: BigGibBase { 
-	Default {
-		
-		Scale 1.3;
-	}
+CLASS Gib_HalfZombieManNoArmNoHead: BigGibBase
+{
 	States
 	{
 		Spawn:
 			POSX O -1;
-			Stop ;
+		Stop;
 			
 		Death:
-			TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_severed_limb("XDeathArm1", (0, 0, 32), doomb_random_velocity(5) );
 			TNT1 A 0 doomb_Meat_Death_Small();
-			Stop;
-			
+		Stop;
 	}
 }	 
 
 
 CLASS XDeathHalfZombiemanDown : doomb_body_base { 
-	Default {
-		
+	Default
+	{
 		Radius 8;
 		Height 8;
 		Scale 1.1;
@@ -567,51 +525,56 @@ CLASS XDeathHalfZombiemanDown : doomb_body_base {
 		Spawn:
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			POSX D 12;
-			Loop;
+		Loop;
+
 		Death:
 			POSX E 1900 doomb_spawn_bloodpool(BPS_SMALL);
-			Loop   ;
+		Loop;
 	}
 }
 
 
 
 
-CLASS XDeathHalfZombieman2 : doomb_body_base { 
-	Default {
-		
-		Radius 8;
-		Height 8;
-		Speed 7;
-		Mass 8;
-		BounceFactor 0.2;
-		+DOOMBOUNCE;
-		+NOBLOCKMAP;
-		+MISSILE;
-		+NOTELEPORT;
-		+DONTSPLASH;
-		+MOVEWITHSECTOR;
-		DeathSound "misc/xdeath1";
-		Decal "BrutalBloodSplat";
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			PP2X F 12 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		Loop;
-		Death:
-			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-			PP2X G -1;
-			Stop;
-	}
+CLASS XDeathHalfZombieman2 : doomb_body_base
+{
+Default
+{
+	Radius 8;
+	Height 8;
+	Speed 7;
+	Mass 8;
+	BounceFactor 0.2;
+	+DOOMBOUNCE;
+	+NOBLOCKMAP;
+	+MISSILE;
+	+NOTELEPORT;
+	+DONTSPLASH;
+	+MOVEWITHSECTOR;
+	DeathSound "misc/xdeath1";
+	Decal "BrutalBloodSplat";
+}
+
+States
+{
+	Spawn:
+		TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
+		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
+		PP2X F 12 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+	Loop;
+
+	Death:
+		TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
+		PP2X G -1;
+	Stop;
+}
+
 }
 
 
 CLASS XDeathZombieManHead: LimbBase { 
-	Default {
-		
+	Default
+	{
 		-CLIENTSIDEONLY;
 		Radius 10;
 		Scale 1.0;
@@ -619,23 +582,22 @@ CLASS XDeathZombieManHead: LimbBase {
 	States
 	{
 		Spawn:
-		Spawn1:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
-			XHE2 AB 3;
-			XHE2 CDEFGH 3;
-			Loop;
+			XHE2 ABCDEFGH 3;
+		Loop;
+
 		Death:
-			XHE2 E 1;
-			XHE2 E 1 A_SpawnItem("ZombieManHead",0,0,0,1);
-			Stop;
+			XHE2 E 1 doomb_severed_limb("ZombieManHead");
+		Stop;
 	}
 }
 
 
-CLASS XDeathZombiemanHeadBeheaded : XDeathZombieManHead { 
-	Default {
-		
+CLASS XDeathZombiemanHeadBeheaded : XDeathZombieManHead
+{
+	Default
+	{
 		Speed 5;
 		Gravity 0.5;
 	}
@@ -646,32 +608,27 @@ CLASS XDeathZombiemanHeadOnXDeath : XDeathZombieManHead {
 	States
 	{
 		Spawn:
-			TNT1 A 1;
 			TNT1 A 0 A_jump(96, "ExplodeOnAir");
-			Goto Spawn1;
 		ExplodeOnAir:
-			TNT1 A 0;
-			
-			TNT1 A 0;
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			TNT1 AAAAA 0 doomb_for_khorne("blood_impact_splash");
 			TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-			TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("head_pieceGreen", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
-			TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
+
+			TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("Teeth", (0, 0, 50), doomb_random_velocity(5) );
+
 			TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-			TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		Stop;
 	}
 }
 
-CLASS ZombiemanHead: LimbBase { 
+CLASS ZombiemanHead: LimbBase
+{
 	Default {
-		
 		damagefactor "Kick", 99.0;
 		damagefactor "Melee", 99.0;
 		-CLIENTSIDEONLY;
@@ -687,20 +644,17 @@ CLASS ZombiemanHead: LimbBase {
 	States
 	{
 		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_Jump(256, "Spawn1", "Spawn2", "Spawn3");
-		Spawn1:
-			XHE2 C 1;
+			TNT1 A 0 nodelay A_Jump(256, "Spawn1", "Spawn2", "Spawn3");
 			XHE2 C -1;
-			Stop;
+		Stop;
+
 		Spawn2:
-			XHE2 G 1;
 			XHE2 G -1;
-			Stop;
+		Stop;
+
 		Spawn3:
-			XHE2 H 1;
 			XHE2 H -1;
-			Stop;
+		Stop;
 			
 		Death.Trample:
 		Death.Stomp:
@@ -708,14 +662,13 @@ CLASS ZombiemanHead: LimbBase {
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			TNT1 AAAAA 0 doomb_for_khorne("blood_impact_splash");
 			TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-			TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("head_pieceGreen", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
-			TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("Teeth", (0, 0, 50), doomb_random_velocity(5) );
+
 			TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-			TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );			
 		Stop;
 
@@ -726,36 +679,29 @@ CLASS ZombiemanHead: LimbBase {
 		Stop;
 
 		Death.plasma:
-			TNT1 A 0;
-			TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_severed_limb ("XDeathBurnedSkull", (0, 0, 32), doomb_random_velocity(5) );
 			EXPL A 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-			TNT1 A 0;
 		Stop;
 
 		Death.Punch:
 		Death.Kick:
 			XHE2 EE 1 A_FaceTarget;
-			TNT1 AAAA 0 A_SpawnItemEx("Blood", 0, 0, 10);
 			TNT1 A 0 A_PlaySound("misc/xdeath4", 1);
 			TNT1 A 0 A_PlaySound("player/cyborg/fist", 3);
-			TNT1 A 0 A_SpawnProjectile ("XDeathZombieManHeadKicked", 5, 0, random (170, 190), 2, random (20, 30));
-			Stop;
+			TNT1 A 0 doomb_severed_limb("XDeathZombieManHeadKicked");
+		Stop;
 			
 		Pain:
-			TNT1 A 0;
 			TNT1 A 0 ThrustThingZ(0,20,0,1);
 			XHE2 ABCDEFGH 2;
-			Goto Spawn;
+		Goto Spawn;
 			
 		Death.Explosive_Impact:
-			TNT1 A 0;
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 ThrustThingZ(0,50,0,1);
 			XHE2 ABCD 6;
-			tnt1 a 0 A_SpawnItem("ZombiemanHead");
-			Stop;
-			
-			
+			tnt1 a 0 doomb_severed_limb("ZombiemanHead");
+		Stop;
 	}
 	
 }
@@ -777,7 +723,7 @@ CLASS DyingZombiemanLostTeeth : doomb_body_base
 Default {
 	
 	Radius 12;
-	Height 32+15;
+	Height 45;
 	doomb_monster_base.head_starting_position 32;
 
 	Speed 0;
@@ -792,9 +738,11 @@ States
 {
 	Spawn:
 	SEE:
-		TNT1 A 0;
-		TNT1 A 0 A_SpawnProjectile ("jaw", 50, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 A_SpawnProjectile ("Teeth", 50, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("Teeth", (0, 0, 50), doomb_random_velocity(5) );
 		ZZD5 A 6 doomb_much_blood(48);
 	mini:
 		ZZD5 CBCB 12 A_PlaySound("grunt/pain", 3);
@@ -808,23 +756,21 @@ States
 			A_Scream();
 			doomb_spawn_bloodpool();
 		}
-		TNT1 A 0 A_SpawnItem("DeadZombieManFacingFront");
+		TNT1 A 0 doomb_severed_limb("DeadZombieManFacingFront");
 	Stop;
 		
 	Death.Headshot:
-		TNT1 A 0 A_SpawnItem("CrueltyBonus1Health");
+		TNT1 A 0 A_Givetotarget("CrueltyBonus1Health");
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		TNT1 AAAAA 0 doomb_for_khorne("blood_impact_splash");
 		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreen", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
-		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("Teeth", (0, 0, 50), doomb_random_velocity(5) );
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		ZMAD B 0 A_XScream;
 		tnt1 a 0 A_Explode(3,200, damagetype:"blood");
@@ -833,7 +779,7 @@ States
 		TNT1 A 0 A_Jump(32, "Deathchickenhead");
 		ZMAD AAAAABBBBBBBBBBCCCCCDDDDEEEEEEEEEEEEEEEE 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		TNT1 A 0 doomb_spawn_bloodpool();
-		TNT1 A 0 A_SpawnItem ("DeadZombieman_NoHeadFront");
+		TNT1 A 0 doomb_severed_limb("DeadZombieman_NoHeadFront");
 	stop;
 
 	Death.Shotgun:
@@ -854,14 +800,14 @@ States
 		POS4 X 5 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		POS4 Y 5 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		TNT1 A 0 doomb_spawn_bloodpool();
-		TNT1 A 0 A_SpawnItem("DeadZombieman1");
+		TNT1 A 0 doomb_severed_limb("DeadZombieman1");
 	stop;
 
 	TakeASit:
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		POS4 U 5;
 		TNT1 A 0 doomb_spawn_bloodpool();
-		TNT1 A 0 A_SpawnItemEx("DeadZombieman_Slumped", 10);
+		TNT1 A 0 doomb_severed_limb("DeadZombieman_Slumped");
 	Stop;
 }
 
@@ -911,7 +857,7 @@ CLASS DyingZombiemanNoArm : doomb_body_base {
 			ZZD2 EEEEEBBBBB 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 A 0 A_FaceTarget;
 			TNT1 A 0 A_Jump(32, "LastStand");
-			tnt1 a 0 a_jumpif(random(0, 10) < 1, "death");
+			tnt1 a 0 doomb_random_death();
 		loop;
 
 		Death.Fatality:
@@ -922,11 +868,11 @@ CLASS DyingZombiemanNoArm : doomb_body_base {
 			Stop;
 			
 		Death.fire:
-			TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
+			TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
 			TNT1 A 0 A_Scream;
 			TNT1 A 0 A_NoBlocking;
-			TNT1 A 0 A_SpawnItem("BurningZombie");
-			Stop;
+			TNT1 A 0 doomb_severed_limb("BurningZombie");
+		Stop;
 			
 
 		Death.Cut:
@@ -937,26 +883,24 @@ CLASS DyingZombiemanNoArm : doomb_body_base {
 			TNT1 A 0 A_PlaySound ("grunt/death");
 			TNT1 A 0 A_FaceTarget;
 			ZZD3 DDDDDDDDDDDDDDDDDDDDDDDDDDDDDD 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-			TNT1 A 0 A_SpawnItem ("DeadZombieman_NoArmFront");
+			TNT1 A 0 doomb_severed_limb("DeadZombieman_NoArmFront");
 		Stop;
 			
 		Death.Headshot:
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			TNT1 AAAAA 0 doomb_for_khorne("blood_impact_splash");
 			TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-			TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("head_pieceGreen", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
-			TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
+			TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("Teeth", (0, 0, 50), doomb_random_velocity(5) );
 			TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-			TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 A_XScream;
-			TNT1 AAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_Blood", 37, 0, random (0, 360), 2, random (0, 160));
+			TNT1 AAAAAAAAAAA 0 doomb_for_khorne("Brutal_Blood", (0, 0, 37), doomb_random_velocity(5) );
 			TNT1 A 0 A_NoBlocking;
-			TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
+			TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
 			ZZD3 GGGGHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHHH 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			ZZD3 H -1 doomb_final_absolution(12, 12);
 		Stop;
@@ -966,18 +910,23 @@ CLASS DyingZombiemanNoArm : doomb_body_base {
 		TNT1 A 0 A_XScream;
 		TNT1 A 0 A_NoBlocking;
 		XBRN AA 2 BRIGHT A_SpawnItem("BlueFlare",0,43);
-		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160));
-		
-		TNT1 A 0 A_SpawnProjectile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAAAAAAAAAA 0 doomb_for_khorne("Brutal_Blood", (0, 0, 37), doomb_random_velocity(5) );
+		TNT1 AA 0 doomb_severed_limb("XDeathBurnedArm", (0, 0, 32), doomb_random_velocity(5) );
+		TNT1 AA 0 doomb_severed_limb("XDeathBurnedLeg", (0, 0, 32), doomb_random_velocity(5) );
+		TNT1 AA 0 doomb_severed_limb("XDeathBurnedSkull", (0, 0, 32), doomb_random_velocity(5) );
+		TNT1 AA 0 doomb_severed_limb("MuchMeatDeath", (0, 0, 32), doomb_random_velocity(5) );
+		TNT1 AA 0 doomb_severed_limb("BurningFlyingMeatPiece", (0, 0, 32), doomb_random_velocity(5) );
 		TNT1 A 0 doomb_spawn_burned_flesh;
-		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor");
-		XBRN BB 2 BRIGHT A_SpawnItem("BlueFlare",0,43);
-		TNT1 A 0 A_SpawnProjectile ("Brutal_Blood", 30, 0, random (0, 360), 2, random (0, 160));
-		XBRN CC 2 BRIGHT A_SpawnItem("BlueFlare",0,43);
-		TNT1 AAAAA 0 doomb_show_effect("PlasmaParticleX", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
-		TNT1 AAA 0 doomb_show_effect("PlasmaParticleX", (0, 0, 42), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ), (frandom(1.8, 2.2), 0) );
+		TNT1 A 0 A_Givetotarget("CrueltyBonus5Armor");
+		XBRN BBCCDDEE 2 BRIGHT
+		{
+			A_SpawnItem("BlueFlare",0,43);
+			doomb_for_khorne("Brutal_Blood", (0, 0, 37), doomb_random_velocity(5) );
+			doomb_show_effect("PlasmaParticleX", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
+			doomb_show_effect("PlasmaParticleX", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
+			doomb_show_effect("PlasmaParticleX", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
+			doomb_show_effect("PlasmaParticleX", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
+		}
 	Stop;
 		
 	Death.Kick:
@@ -987,8 +936,8 @@ CLASS DyingZombiemanNoArm : doomb_body_base {
 		TNT1 A 0 ThrustThingZ(0,30,0,1);
 		TNT1 A 0 A_NoBlocking;
 		ID11 EF 15;
-		TNT1 A 0 A_SpawnItem ("DeadZombieman_NoArm");
-		Stop;
+		TNT1 A 0 doomb_severed_limb("DeadZombieman_NoArm");
+	Stop;
 		
 	Death.Fatality:
 		TNT1 A 0 A_NoBlocking;
@@ -1008,14 +957,14 @@ CLASS DyingZombiemanNoArm : doomb_body_base {
 		TNT1 A 0 A_FaceTarget;
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 30) );
-		TNT1 A 0 A_SpawnProjectile ("ZombieXDeath", 2, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("ZombieXDeath");
 		Stop;
 		
 	LastStand:
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 A_Pain;
-		TNT1 A 0 A_SpawnItem ("ZombiemanLastStand2");
-		Stop;
+		TNT1 A 0 doomb_severed_limb("ZombiemanLastStand2");
+	Stop;
 }
 }
 
@@ -1064,10 +1013,9 @@ CLASS ZombieManDyingAfterFatality : doomb_body_base {
 		
 	Death.cut:
 	Death.saw:
-		TNT1 A 0;
 		TNT1 A 0 doomb_much_blood(35);
 		TNT1 A 0 A_XScream;
-		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
+		TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
 		TNT1 O 0 A_NoBlocking;
 		
 		TNT1 AAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
@@ -1084,11 +1032,11 @@ CLASS ZombieManDyingAfterFatality : doomb_body_base {
 		
 		
 	Death.fire:
-		TNT1 AA 0 A_SpawnItem ("CrueltyBonus5Health");
+		TNT1 AA 0 A_Givetotarget("CrueltyBonus5Health");
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnItem("BurningZombie");
-		Stop;
+		TNT1 A 0 doomb_severed_limb("BurningZombie");
+	Stop;
 		
 	Death.Headshot:
 		TNT1 A 0 A_Jump(126, "headshot_1");
@@ -1096,34 +1044,32 @@ CLASS ZombieManDyingAfterFatality : doomb_body_base {
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		TNT1 AAAAA 0 doomb_for_khorne("blood_impact_splash");
 		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreen", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
-		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("Teeth", (0, 0, 50), doomb_random_velocity(5) );
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 A_XScream;
-		TNT1 AAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_Blood", 37, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAAAAAAAAAA 0 doomb_for_khorne("Brutal_Blood", (0, 0, 37), doomb_random_velocity(5) );
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
+		TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
 		ZZD5 HHHHIIII 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		PP2X H 0 A_SpawnItem ("DeadZombieman_NoHeadFront");
+		PP2X H 0 doomb_severed_limb("DeadZombieman_NoHeadFront");
 	Stop;
 		
 		
 	headshot_1:
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
-		TNT1 A 0 A_SpawnProjectile ("XDeathZombiemanHead", 35, 0, random (0, 360), 2, random (30, 110));
+		TNT1 A 0 doomb_severed_limb("XDeathZombiemanHead", (0, 0, 35), doomb_random_velocity(5) );
 		TNT1 A 0 A_XScream;
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
+		TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
 		ZZD5 HHH 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		PP2X H 0 A_SpawnItem ("DeadZombieman_NoHeadFront");
-		Stop;
+		PP2X H 0 doomb_severed_limb("DeadZombieman_NoHeadFront");
+	Stop;
 	
 	death:
 	Death.Shotgun:
@@ -1134,13 +1080,13 @@ CLASS ZombieManDyingAfterFatality : doomb_body_base {
 		TNT1 A 0 ThrustThingZ(0,30,0,1);
 		TNT1 A 0 A_NoBlocking;
 		ID11 EF 15;
-		TNT1 A 0 A_SpawnItem ("DeadZombieman1");
-		Stop;
+		TNT1 A 0 doomb_severed_limb("DeadZombieman1");
+	Stop;
 		
 	Death.Fatality:
-		stop;
-		
+	stop;
 }
+
 }
 
 CLASS ZombiemanLastStand2 : ZombiemanLastStand1 { 
@@ -1208,7 +1154,7 @@ CLASS ZombiemanGotHisLegBlowed : doomb_body_base {
 	Default {
 	
 	Radius 16;
-	Height 28 + 18;
+	Height 45;
 	doomb_monster_base.head_starting_position 30;
 
 	Health 50;
@@ -1255,52 +1201,50 @@ States
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 A_PlaySound ("grunt/death");
-		TNT1 A 0 A_SpawnItem ("DeadZombieman_NoLeg");
-		Stop;
+		TNT1 A 0 doomb_severed_limb("DeadZombieman_NoLeg");
+	Stop;
 		
 	LEaveCrawling:
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 A_PlaySound ("grunt/death");
-		TNT1 A 0 A_SpawnItem ("DyingZombieMan");
-		Stop;
+		TNT1 A 0 doomb_severed_limb("DyingZombieMan");
+	Stop;
 		
 	LastStand:
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 A_Pain;
-		TNT1 A 0 A_SpawnItem ("ZombiemanLastStand1");
+		TNT1 A 0 doomb_severed_limb("ZombiemanLastStand1");
 		Stop;
 		
 	Death.Headshot:
-			TNT1 A 0 A_Jump(126, "headshot_1");
+		TNT1 A 0 A_Jump(126, "headshot_1");
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		TNT1 AAAAA 0 doomb_for_khorne("blood_impact_splash");
 		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreen", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
-		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("Teeth", (0, 0, 50), doomb_random_velocity(5) );
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 A_NoBlocking;
 		POS7 GHI 6;
-		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
-		TNT1 A 0 A_SpawnItem ("DeadZombieman_NoLeg", 1);
+		TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
+		TNT1 A 0 doomb_severed_limb("DeadZombieman_NoLeg");
 	Stop;
 		
 	headshot_1:
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
-		TNT1 AA 0 A_SpawnProjectile ("SmallBrainPiece", 32, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("XDeathZombieManHead", 32, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("XDeathZombieManHead", (0, 0, 50), doomb_random_velocity(5) );
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 A_NoBlocking;
 		POS7 GHI 6;
-		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
-		TNT1 A 0 A_SpawnItem ("DeadZombieman_NoLeg", 1);
-		Stop;
+		TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
+		TNT1 A 0 doomb_severed_limb("DeadZombieman_NoLeg");
+	Stop;
 		
 	Death.Fatality:
 		TNT1 A 0 A_NoBlocking;
@@ -1316,16 +1260,16 @@ States
 		TNT1 A 0 ThrustThingZ(0,30,0,1);
 		TNT1 A 0 A_NoBlocking;
 		ID11 KL 15;
-		TNT1 A 0 A_SpawnItem ("DeadZombieman_NoLeg");
-		Stop;
-		
-		
-}
+		TNT1 A 0 doomb_severed_limb("DeadZombieman_NoLeg");
+	Stop;
 }
 
-CLASS ZombiemanLastStand1: ZombiemanGotHisLegBlowed { 
-	Default {
-	
+}
+
+CLASS ZombiemanLastStand1: ZombiemanGotHisLegBlowed
+{
+Default
+{
 	Speed 0;
 	MONSTER;
 	+MISSILEMORE;
@@ -1335,9 +1279,10 @@ CLASS ZombiemanLastStand1: ZombiemanGotHisLegBlowed {
 	+THRUGHOST;
 	-SOLID;
 	BloodType "Brutal_Blood",  "SawBlood";
-	}
+}
+
 States
-	{
+{
 	Spawn:
 		ZBLS A 1 A_Look;
 	Loop;
@@ -1355,14 +1300,15 @@ States
 		
 	Death.headshot:
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
-		TNT1 AA 0 A_SpawnProjectile ("SmallBrainPiece", 32, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AA 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 32), doomb_random_velocity(5) );
 		TNT1 A 0 A_Scream;
-		TNT1 AAAA 0 A_SpawnProjectile ("Brutal_Blood", 37, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAAA 0 doomb_for_khorne("Brutal_Blood", (0, 0, 37), doomb_random_velocity(5) );
 		TNT1 A 0 A_NoBlocking;
 		POS7 GHI 6;
-		TNT1 A 0 A_SpawnItem ("DeadZombieman_NoLeg", 1);
+		TNT1 A 0 doomb_severed_limb("DeadZombieman_NoLeg");
 	Stop;
 }
+
 }	
 
 
@@ -1376,23 +1322,19 @@ States
 
 
 CLASS ZombiemanSaciLol: ZombiemanGotHisLegBlowed { 
-	Default {
-	
-	//MONSTER
+Default
+{
 	+GHOST;
 	+THRUGHOST;
 	-COUNTKILL;
 	Speed 4;
 	Height 48;
-	}
-	States
-	{
-	
+}
+States
+{
 	Spawn:
 		TNT1 A 0;
 		TNT1 A 0 A_PlaySound ("BURNZOM");
-		Goto Suffer;
-		
 	Suffer:
 		ZL1E ABC 3;
 		TNT1 A 0 doomb_blood_dying();
@@ -1401,36 +1343,35 @@ CLASS ZombiemanSaciLol: ZombiemanGotHisLegBlowed {
 		
 		TNT1 A 0 A_PlaySound ("none");
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnItem ("ZombiemanGotHisLegBlowed");
+		TNT1 A 0 doomb_show_effect("ZombiemanGotHisLegBlowed");
 	Stop;
 
 	Death.Headshot:
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		TNT1 AAAAA 0 doomb_for_khorne("blood_impact_splash");
 		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreen", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
-		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("Teeth", (0, 0, 50), doomb_random_velocity(5) );
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		ZMAD B 0 A_PlaySound("misc/xdeath");
 		ZMAD C 0 A_NoBlocking;
 	FallHead:
 		ZL1E EFG 6;
-		TNT1 A 0 A_SpawnItem ("DeadZombieman_NoLeg");
+		TNT1 A 0 doomb_severed_limb("DeadZombieman_NoLeg");
 	Stop;
 		
 	Death:
 		TNT1 A 0;
 		TNT1 A 0 A_PlaySound("grunt/death");
 		ZL1E HI 6;
-		TNT1 A 0 A_SpawnItem ("DeadZombieman_NoLeg");
-		Stop;
+		TNT1 A 0 doomb_severed_limb("DeadZombieman_NoLeg");
+	Stop;
 }
+
 }
 
 
@@ -1441,8 +1382,8 @@ CLASS ZombiemanSaciLol: ZombiemanGotHisLegBlowed {
 
 
 CLASS ZombiemanTorso: CurbstompedMarine { 
-	Default {
-	
+Default
+{
 	Radius 12;
 	Height 12;
 	Scale 0.98;
@@ -1453,9 +1394,10 @@ CLASS ZombiemanTorso: CurbstompedMarine {
 	//+NORADIUSDMG
 	+NOPAIN;
 	+CORPSE;
-	}
-    States
-    {
+}
+
+States
+{
 	Spawn:
 		tnt1 a 0 A_Recoil (3);
 		tnt1 a 0 ThrustThing (random(0,255),random(1,5));
@@ -1471,21 +1413,21 @@ CLASS ZombiemanTorso: CurbstompedMarine {
 	Stop;
 		
 	Raise:
-			TNT1 A 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+		TNT1 A 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 		TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60);
-			TNT1 A 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-		TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60);
+		TNT1 A 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 		TNT1 A 0 A_SpawnItem("TeleportFog");
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnItem ("doomb_zombie_Man");
-		Stop;
-		
+		TNT1 A 0 spawn("doomb_zombie_Man", pos);
+	Stop;
 }
+
 }
 
 CLASS DeadZombieman1: CurbstompedMarine
 {
-	Default {
+Default
+{
 	Radius 12;
 	Height 12;
 	+SHOOTABLE;
@@ -1507,24 +1449,24 @@ CLASS DeadZombieman1: CurbstompedMarine
 	damagefactor "punch", 2.0;
 	Painchance 256;
 	Scale 0.98;
-	}
+}
+
 States
-    {
+{
 	Spawn:
 		POSS L -1;
-		Stop;
+	Stop;
+
 	Raise:
-		
-			TNT1 A 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+		TNT1 A 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 		TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60);
-			TNT1 A 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-		TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60);
-			TNT1 A 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+		TNT1 A 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+		TNT1 A 2 doomb_show_effect("RealFlameTrailsSmall", (0, 0, 5), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 		TNT1 A 0 A_SpawnItem("PentagramSpawner", 0, 60);
 		TNT1 A 0 A_SpawnItem("TeleportFog");
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 A_SpawnItem ("doomb_zombie_Man");
-		Stop;
+	Stop;
 		
 	Death:
 		TNT1 A 0 A_NoBlocking;
@@ -1540,13 +1482,13 @@ States
 			{
 				case 0:
 				default:
-					A_SpawnProjectile ("XDeathArm1", 15, 0, random (0, 360), 2, random (0, 180));
-					A_SpawnItem ("DeadZombieMan_NoArm");
+					doomb_severed_limb("XDeathArm1", (0, 0, 15), doomb_random_velocity(5) );
+					doomb_severed_limb("DeadZombieMan_NoArm");
 				break;
 
 				case 1:
-					A_SpawnProjectile ("XDeathZombieLeg", 15, 0, random (0, 360), 2, random (0, 180));
-					A_SpawnItem ("DeadZombieMan_NoLeg");
+					doomb_severed_limb("XDeathZombieLeg", (0, 0, 15), doomb_random_velocity(5) );
+					doomb_severed_limb("DeadZombieMan_NoLeg");
 				break;
 			}
 		}
@@ -1559,35 +1501,29 @@ States
 
 
 
-CLASS DeadZombieMan_NoArm: ZombiemanTorso { 
-	Default {
-	
-	Health 300;
-	}
+CLASS DeadZombieMan_NoArm: ZombiemanTorso
+{
 States
 {
 	Spawn:
 		POS3 E -1;
-		Stop;
+	Stop;
 		
 	Death:
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 doomb_Rip_Guts();
-		TNT1 A 0 A_SpawnProjectile ("XDeathZombiemanHead", 15, 0, random (0, 360), 2, random (0, 180));
+		TNT1 A 0 doomb_severed_limb("XDeathZombiemanHead", (0, 0, 15), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("XDeathZombieLeg", (0, 0, 15), doomb_random_velocity(5) );
 		TNT1 A 0 doomb_Meat_Death_Small();
-		TNT1 AA 0 A_SpawnProjectile ("XDeathZombieLeg", 6, 0, random (0, 360), 2, random (0, 90));
 		PXSX O -1;//doomb_final_absolution(12, 12);
-		Stop;
-		
+	Stop;
 }
 
 }		
 
 
-CLASS DeadZombieMan_NoLeg: DeadZombieMan_NoArm { 
-	Default {
-	Health 300;
-	}
+CLASS DeadZombieMan_NoLeg: DeadZombieMan_NoArm
+{
 States
 {
 	Spawn:
@@ -1597,23 +1533,20 @@ States
 	Death:
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 doomb_much_blood(10);
-		TNT1 A 0 A_SpawnProjectile ("XDeathZombieLeg", 15, 0, random (0, 360), 2, random (0, 180));
+		TNT1 A 0 doomb_severed_limb("XDeathZombieLeg", (0, 0, 15), doomb_random_velocity(5) );
 		POS8 D -1;//doomb_final_absolution(12, 12);
 	Stop;
 }
 
 }		 
 		 
-CLASS DeadZombieMan_NoLegBoth: DeadZombieMan_NoArm { 
-	Default {
-	
-	Health 300;
-	}
+CLASS DeadZombieMan_NoLegBoth: DeadZombieMan_NoArm
+{
 States
 {
 	Spawn:
 		POS8 D -1;//doomb_final_absolution(12, 12);
-		Stop;
+	Stop;
 		
 	Death:
 		TNT1 A 0 A_NoBlocking;
@@ -1622,7 +1555,6 @@ States
 		TNT1 A 0 A_SpawnProjectile ("XDeathHalfZombieMan", 32, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AAAAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
-		
 		TNT1 A 0 doomb_Meat_Death_Small();
 	Stop;
 		
@@ -1632,17 +1564,14 @@ States
 
 
 
-CLASS DeadZombieMan_NoHeadFront: DeadZombieMan_NoArm { 
-	Default {
-	
-	Health 300;
-	}
+CLASS DeadZombieMan_NoHeadFront: DeadZombieMan_NoArm
+{
 States
 {
 	
 	Spawn:
 		ZMAD E -1;
-		Stop;
+	Stop;
 		
 	Death:
 		TNT1 A 0 A_NoBlocking;
@@ -1650,7 +1579,7 @@ States
 		TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 15, 0, random (0, 360), 2, random (0, 180));
 		TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 15) );
 		ZZD3 H -1;//doomb_final_absolution(12, 12);
-		Stop;
+	Stop;
 		
 }
 
@@ -1658,12 +1587,8 @@ States
 
 
 
-CLASS VeryFuckedUpBrutalizedZombiemanLeg: CurbstompedMarine { 
-	Default {
-	
-	Health 200;
-	DamageFactor "Explosive_Impact", 10.0;
-	}
+CLASS VeryFuckedUpBrutalizedZombiemanLeg: CurbstompedMarine
+{
 States
 {
 	Spawn:
@@ -1676,33 +1601,16 @@ States
 	Death.Explosive_Impact:
 		TNT1 A 0 ThrustThingZ(0,30,0,1);
 		ID13 ABCDEF 5;
-		TNT1 A 0 A_SpawnItem ("VeryFuckedUpBrutalizedZombiemanLeg");
+		TNT1 A 0 doomb_severed_limb("VeryFuckedUpBrutalizedZombiemanLeg");
 	Stop;
 }
 
 }
 
-CLASS StompedZombieman: DeadZombieman_NoHeadfront { 
-	Default {
-	
-	Health 300;
-	}
-States
-{
-	Pain:
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		01CB F -1;//doomb_final_absolution(12, 12);
-		Stop;
-}
-
-}		  
 
 
 
 CLASS DeadZombieMan_NoArmFront: DeadZombieMan_NoArm { 
-	Default {
-	
-	}
 	States
 	{	
 	Spawn:
@@ -1716,93 +1624,74 @@ CLASS DeadZombieMan_NoArmFront: DeadZombieMan_NoArm {
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		TNT1 AAAAA 0 doomb_for_khorne("blood_impact_splash");
 		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreen", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
-		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("Teeth", (0, 0, 50), doomb_random_velocity(5) );
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		
 		ZZD3 H -1;//doomb_final_absolution(12, 12);
-		Stop;
-		
-		
+	Stop;
 }
-		}	
+
+}	
 		
 		
 
 CLASS DeadZombieMan_StomachExploded: DeadZombieman_NoHeadFront { 
-	Default {
-	
-	}
 	States
 	{	
 	Spawn:
 		ZXZ1 E -1;
-		Stop ;
-		
+	Stop;
+
 	Death:
 		TNT1 A 0 A_NoBlocking;
-		
-		TNT1 A 0;
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		TNT1 AAAAA 0 doomb_for_khorne("blood_impact_splash");
 		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreen", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
-		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("Teeth", (0, 0, 50), doomb_random_velocity(5) );
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		
-		TNT1 A 0 A_SpawnItem ("DeadZombieman_NoHeadFront");
-		Stop;
-		
-		
+		TNT1 A 0 doomb_severed_limb("DeadZombieman_NoHeadFront");
+	Stop;
 }
-		}	
+
+}	
 		
 
 CLASS DeadZombieMan_Blasted: DeadZombieMan_NoHeadFront { 
-	Default {
-	
-	}
-	States
-	{	
+States
+{
 	Spawn:
 		ZXZ2 E -1;
-		Stop ;
+	Stop;
 		
 	Death:
 		TNT1 A 0 A_NoBlocking;
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 15, 0, random (0, 360), 2, random (0, 180));
+		TNT1 A 0 doomb_severed_limb("XDeathArm1", (0, 0, 15), doomb_random_velocity(5));
 		TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 15) );
 		ZZD3 H -1;//doomb_final_absolution(12, 12);
 		Stop;
-		
-		
 }
-		}			
+
+}			
 		
 CLASS DeadZombieManFacingFront: DeadZombieMan_NoArmFront { 
-	Default {
-	
-	}
 States
 {
 	Spawn:
 		FPZ2 J -1;
-		Stop  ;
+	Stop;
 		
 	Death:
 		TNT1 A 0;
@@ -1810,34 +1699,30 @@ States
 	Death1:
 		TNT1 A 0 A_NoBlocking;
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 15, 0, random (0, 360), 2, random (0, 180));
+		TNT1 A 0 doomb_severed_limb("XDeathArm1", (0, 0, 15), doomb_random_velocity(5));
 		TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 15) );
-		TNT1 A 0 A_SpawnItem ("DeadZombieMan_NoArmFront");
-		Stop;
+		TNT1 A 0 doomb_severed_limb("DeadZombieMan_NoArmFront");
+	Stop;
+
 	Death2:
 		TNT1 A 0 A_NoBlocking;
-		
-		TNT1 A 0;
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		TNT1 AAAAA 0 doomb_for_khorne("blood_impact_splash");
 		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreen", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
-		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("Teeth", (0, 0, 50), doomb_random_velocity(5) );
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		
-		TNT1 A 0 A_SpawnItem ("DeadZombieMan_NoHeadFront");
-		Stop;
-		
+		TNT1 A 0 doomb_severed_limb("DeadZombieMan_NoHeadFront");
+	Stop;
 }
 
 }		
+
 CLASS DeadZombieManFacingFrontMinorHead: DeadZombieManFacingFront { 
 States
 {
@@ -1851,48 +1736,42 @@ States
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		TNT1 AAAAA 0 doomb_for_khorne("blood_impact_splash");
 		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreen", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
-		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("Teeth", (0, 0, 50), doomb_random_velocity(5) );
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		
-		TNT1 A 0 A_SpawnItem ("DeadZombieMan_NoHeadFront");
-		Stop;
-}
+		TNT1 A 0 doomb_severed_limb("DeadZombieMan_NoHeadFront");
+	Stop;
 }
 
-CLASS zombie_fatalized_body: ZombiemanTorso { 
-	Default {
-	
-	}
+}
+
+CLASS zombie_fatalized_body: ZombiemanTorso
+{
 States
 {
 	Spawn:
 		FPZ3 S -1;//doomb_final_absolution(12, 12);
-		Stop  ;
+	Stop;
 }
-		}		
+
+}		
 		
 CLASS DeadZombiemanShotguntotheFace1: DeadZombieman1 { 
-	Default {
-	
-	}
 States
 {
 	Spawn:
 		POS4 J -1;
-		Stop;
+	Stop;
+
 	Death:
 		TNT1 A 0 A_NoBlocking;
-		
 		TNT1 AAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		TNT1 A 0 A_SpawnProjectile ("XDeathHalfZombieMan", 32, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("XDeathHalfZombieMan", (0, 0, 32), doomb_random_velocity(5) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AAAAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		
@@ -1905,51 +1784,46 @@ States
 }
 
 CLASS DeadZombiemanShotguntotheFace2: DeadZombieman1 { 
-	Default {
-	
-	}
 States
 {
 	Spawn:
 		POS4 T -1;
-		Stop;
+	Stop;
 		
 	Death:
 		TNT1 A 0 A_NoBlocking;
 		
 		TNT1 AAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		TNT1 A 0 A_SpawnProjectile ("XDeathHalfZombieMan", 32, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("XDeathHalfZombieMan", (0, 0, 32), doomb_random_velocity(5) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AAAAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		
 		TNT1 A 0 doomb_Meat_Death_Small();
 		ZZD1 H -1;//doomb_final_absolution(12, 12);
-		Stop;
-		
+	Stop;
 }
 
 }
 
-CLASS DeadZombiemanLikeInActionMovie: DeadZombieman1 { 
-	Default {
-	
-	}
+CLASS DeadZombiemanLikeInActionMovie: DeadZombieman1
+{
 States
 {
 	Spawn:
 		12DG I -1;
-		Stop;
+	Stop;
+
 	Death:
 		TNT1 A 0 A_NoBlocking;
 		
 		TNT1 AAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		TNT1 A 0 A_SpawnProjectile ("XDeathHalfZombieMan", 32, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("XDeathHalfZombieMan", (0, 0, 32), doomb_random_velocity(5) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AAAAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		
 		TNT1 A 0 doomb_Meat_Death_Small();
 		ZZD1 H -1;//doomb_final_absolution(12, 12);
-		Stop;
+	Stop;
 }
 
 }		
@@ -1988,9 +1862,9 @@ CLASS DyingZombieman : doomb_body_base
     {
 	
 	Pain.Kick:
-		TNT1 A 0 A_SpawnProjectile ("Teeth", 30, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("Blood", 30, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnItem("CrueltyBonus1health");
+		TNT1 A 0 doomb_severed_limb("Teeth", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_for_khorne("brutal_Blood", (0, 0, 30), doomb_random_velocity(5));
+		TNT1 A 0 A_Givetotarget("CrueltyBonus1health");
 		TNT1 A 0 A_Pain;
 		TNT1 A 0 A_FaceTarget;
 		ZMAK ABA 4;
@@ -2028,14 +1902,12 @@ CLASS DyingZombieman : doomb_body_base
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		TNT1 AAAAA 0 doomb_for_khorne("blood_impact_splash");
 		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreen", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
-		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("Teeth", (0, 0, 50), doomb_random_velocity(5) );
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 	
 		TNT1 A 0 doomb_spawn_bloodpool();
@@ -2043,15 +1915,13 @@ CLASS DyingZombieman : doomb_body_base
 		tnt1 a 0
 		{
 			A_Givetotarget("HealthBonus",15);
-			A_SpawnProjectile ("StompedZombieman", 1, 0, random (0, 360), 2, random (0, 160));		
+			doomb_severed_limb("DeadZombieman_NoHeadfront");
 			A_Givetotarget("HealthBonus",15);
 			doomb_destroy_monster_fatality_camera();
 		}
 	Stop;
 		
 	Spawn:
-		TNT1 A 0;
-		TNT1 A 0 A_GiveInventory("IsCrawling", 1);
 		ZMAM A 1 A_Look;
 		Loop;
 	See:
@@ -2060,24 +1930,24 @@ CLASS DyingZombieman : doomb_body_base
 		TNT1 A 0 A_Jump(12, "LastStand");
 		TNT1 A 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		
-			tnt1 a 0 a_jumpif(random(0, 10) < 1, "death");
-		Loop;
+		tnt1 a 0 doomb_random_death();
+	Loop;
 		
 	Death:
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 A_Pain;
 		POSH Z -1;//doomb_final_absolution(12, 12);
-		Stop;
+	Stop;
 		
 	LastStand:
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 A_Pain;
-		TNT1 A 0 A_SpawnItem ("ZombiemanLastStand1");
-		Stop;
+		TNT1 A 0 doomb_severed_limb ("ZombiemanLastStand1");
+	Stop;
 		
 	Death.Fire:
-		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Armor");
-		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
+		TNT1 A 0 A_Givetotarget("CrueltyBonus5Armor");
+		TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
 		
 	mini_fire:
 		TNT1 A 0 A_Playsound("BurnZom");
@@ -2112,10 +1982,10 @@ CLASS DyingZombieman : doomb_body_base
 		
 	Death.Trample:
 		TNT1 A 0 doomb_much_blood(10);
-			TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
-			TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
-			TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
-			TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
 		TNT1 A 0 A_Givetotarget("CrueltyBonus5Armor");
 		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		01CB F -1;//doomb_final_absolution(12, 12);
@@ -2128,12 +1998,12 @@ CLASS DyingZombieman : doomb_body_base
 		TNT1 AAAAAA 0 bright doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AA 0 bright doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AA 0 bright doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		TNT1 A 0 A_SpawnItem ("CrushedRemains");
+		TNT1 A 0 doomb_severed_limb("CrushedRemains");
 		TNT1 A 1;
 		TNT1 A 1 A_XScream;
 		TNT1 A 1 A_NoBlocking;
-		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
-		Stop;
+		TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
+	Stop;
 		
 	Death.Shotgun:
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
@@ -2145,10 +2015,10 @@ CLASS DyingZombieman : doomb_body_base
 		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
 		
 		ZMAD B 0 A_XScream;
-		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
+		TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
 		ZMAD C 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnItem("DeadZombieman_Noheadfront");
-		Stop;
+		TNT1 A 0 doomb_severed_limb("DeadZombieman_Noheadfront");
+	Stop;
 		
 	Crush:
 	Death.Stomp:
@@ -2158,21 +2028,19 @@ CLASS DyingZombieman : doomb_body_base
 		TNT1 AA 0 bright doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AA 0 bright doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_spawn_bloodpool();
-		TNT1 A 0 A_SpawnItem ("CrushedRemains");
+		TNT1 A 0 doomb_severed_limb("CrushedRemains");
 		TNT1 A 1;
 		TNT1 A 1 A_XScream;
 		TNT1 A 1 A_NoBlocking;
-		Stop;
+	Stop;
 }
+
 }
 
 
 //////////////////////////////////////////////////////////////////////////////////////////////////////
 //zombieman minigun fatality
 //////////////////////////////////////////////////////////////////////////////////////////////////////
-
-
-
 CLASS BrutalizedZombieMan1 : doomb_body_base
 {
 Default
@@ -2201,28 +2069,27 @@ Default
 States
 {
 	Spawn:
-		TNT1 A 0;
 		TNT1 A 0 A_Recoil(2);
-		TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 35, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("XDeathArm1", (0, 0, 35), doomb_random_velocity(5));
 		TNT1 AAAA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		ZZD1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 1
 		{
 			if(health <= 200)
 				setstatelabel("no_head");
 		}
-		TNT1 A 0 A_SpawnItem ("BrutalizedZombieManStop");
+		TNT1 A 0 doomb_severed_limb("BrutalizedZombieManStop");
 	Stop;
 
 		
 	//BrutalizedZombieMan2
 	no_head:
-			TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
-			TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
-			TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
-			TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
 
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAAAAAAA 0 A_SpawnProjectile ("Brutal_Blood", 50, 0, random (0, 360), 2, random (0, 160));
+		TNT1 AAAAAAAA 0 doomb_for_khorne("Brutal_Blood", (0, 0, 50), doomb_random_velocity(5));
 		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 A_Recoil(4);
 		ZZD1 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1
@@ -2230,7 +2097,7 @@ States
 			if(health <= 100)
 				setstatelabel("just_torso");
 		}
-		TNT1 A 0 A_SpawnItem ("BrutalizedZombieManStop2");
+		TNT1 A 0 doomb_severed_limb("BrutalizedZombieManStop2");
 	Stop;
 
 	just_torso:
@@ -2239,7 +2106,6 @@ States
 	Stop;
 		
 	Death:
-		TNT1 A 0;
 		TNT1 A 0 A_Recoil(2);
 		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 		TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
@@ -2248,7 +2114,7 @@ States
 		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		TNT1 A 0 A_SpawnItem ("CrueltyBonus5Health");
+		TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
 		ZZD1 EFG 6;
 		ZZD1 H -1 doomb_final_absolution(12, 12);
 	Stop;
@@ -2259,7 +2125,7 @@ States
 	XDeath:
 		TNT1 A 0 A_XScream;
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnProjectile ("ZombieXDeath", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("ZombieXDeath");
 	Stop;
 
 	Death.Fatality:
@@ -2277,20 +2143,19 @@ CLASS BrutalizedZombieManStop: CurbstompedMarine {
     {
 	Spawn:
 		ZZD2 ABCD 5 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		ZZD3 D 0;
-		TNT1 A 0 A_SpawnItem("DeadZombieMan_NoArmFront");
-		Stop   ;
+		TNT1 A 0 doomb_severed_limb("DeadZombieMan_NoArmFront");
+	Stop;
 }
 
 }
 
 CLASS BrutalizedZombieManStop2: CurbstompedMarine { 
-    States
-    {
+States
+{
 	Spawn:
 		ZZD4 AB 6 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		ZZD3 H -1 doomb_final_absolution(12, 12);
-		Stop;
+	Stop;
 }
 
 }
@@ -2301,24 +2166,23 @@ CLASS BrutalizedZombieManLeg: BrutalizedZombieMan1 {
 	{
 	Spawn:
 		POS7 ABCD 5;
-		TNT1 A 0 A_SpawnItem ("DeadZombieman_NoLeg");
-		Stop;
+		TNT1 A 0 doomb_severed_limb("DeadZombieman_NoLeg");
+	Stop;
 		
 	Death:
 		TNT1 A 0 A_Recoil(4);
-			TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
-			TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
-			TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
-			TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("XDeathArm1", (0, 0, 50), doomb_random_velocity(5) );
 
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 35, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 ThrustThingZ(0,30,0,1);
 		ID13 ABCDEF 5;
-		TNT1 A 0 A_SpawnItem ("VeryFuckedUpBrutalizedZombiemanLeg");
-		Stop;
-		
+		TNT1 A 0 doomb_severed_limb("VeryFuckedUpBrutalizedZombiemanLeg");
+	Stop;
 }
 
 }
@@ -2326,53 +2190,47 @@ CLASS BrutalizedZombieManLeg: BrutalizedZombieMan1 {
 		
 
 CLASS DeadZombieman_Slumped: ZombiemanTorso { 
-	Default {
-	
+Default
+{
 	+NOPAIN;
 	Health 200;
-	Height 22+15;
+	Height 40;
 	doomb_monster_base.head_starting_position 22;
 	Radius 6;
-	}
+}
 States
 {
 	Spawn:
-		TNT1 A 0;
 		TNT1 A 0 A_Recoil(6);
 		BR92 A 6;
 		TNT1 A 0 A_JumpIf(vel.x == 0 && vel.y ==0, "LayDown");
 		BR92 A 16;
 	LayDown:
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnItem("DeadZombieman1");
+		TNT1 A 0 doomb_severed_limb("DeadZombieman1");
 	Stop;
 	
 	XDeath:
 	Death.Explosive_Impact:
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnItem("ZombieXDeath");
-		Stop;
+		TNT1 A 0 doomb_severed_limb("ZombieXDeath");
+	Stop;
 		
 	Death.Headshot:
 		TNT1 A 0 A_NoBlocking;
-		
-		TNT1 A 0;
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		TNT1 AAAAA 0 doomb_for_khorne("blood_impact_splash");
 		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreen", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
-		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("Teeth", (0, 0, 50), doomb_random_velocity(5) );
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		
-		TNT1 A 0 A_SpawnItem("DeadZombieman_Slumped_NoHead");
-		Stop;
+		TNT1 A 0 doomb_severed_limb("DeadZombieman_Slumped_NoHead");
+	Stop;
 		
 	Death:
 		TNT1 A 0 A_NoBlocking;
@@ -2384,25 +2242,22 @@ States
 		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 40) );
-		TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 40, 0, random (0, 360), 2, random (30, 90));
+		TNT1 AA 0 doomb_severed_limb("XDeathArm1", (0, 0, 40), doomb_random_velocity(5));
 
 		TNT1 A 0 A_PlaySound("misc/xdeath4");
 		TNT1 AAAAA 0 doomb_for_khorne("blood_impact_splash");
 		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		TNT1 A 0 A_SpawnProjectile ("jaw", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("eye", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreen", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 A 0 A_SpawnProjectile ("head_pieceGreenBig", 0, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AAA 0 A_SpawnProjectile ("SmallBrainPiece", random (45, 55), random (5, -5), random (170, 190), 2, random (-10, 10));
-		TNT1 AAAAA 0 A_SpawnProjectile ("SmallBrainPiece", 0, 0, random (0, 360), 2, random (0, 160));
+		TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("Teeth", (0, 0, 50), doomb_random_velocity(5) );
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 		TNT1 AAA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		
 		POSX E -1;//doomb_final_absolution(12, 12);
-		Stop;
-		
+	Stop;
 }
 
 }		
@@ -2417,12 +2272,14 @@ States
 {
 	Spawn:
 		BR92 B -1;
-		stop;
+	stop;
+	
 	XDeath:
 	Death.Explosive_Impact:
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 A_SpawnItem("ZombieXDeath");
-		Stop;
+		TNT1 A 0 doomb_severed_limb("ZombieXDeath");
+	Stop;
+	
 	Death:
 		TNT1 A 0 A_NoBlocking;
 		TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
@@ -2433,10 +2290,9 @@ States
 		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 40) );
-		TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 40, 0, random (0, 360), 2, random (30, 90));
+		TNT1 AA 0 doomb_severed_limb("XDeathArm1", (0, 0, 40), doomb_random_velocity(5));
 		POSX E -1 doomb_final_absolution(12, 12);
 	Stop;
 }
 
 }
-

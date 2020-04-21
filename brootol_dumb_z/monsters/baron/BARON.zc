@@ -140,7 +140,6 @@ States
 		}
 		TNT1 A 0 A_TakeInventory("StopKickingMyBallsMotherFucker", 1);
 		TNT1 A 0 A_JumpIfInventory("Curbstomp_Marine", 1, "CurbstompMarine");
-		TNT1 A 0 A_JumpIfInTargetInventory ("TypeZombieman", 1, "See2");
 		BOSS e 3 A_FaceTarget;
 
 		TNT1 A 0 A_Jump (64, "SpecialAttack");
