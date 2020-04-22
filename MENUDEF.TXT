@@ -1,79 +1,3 @@
-OptionMenu "OptionsMenu"
-{
-	Title "OPTIONS"
-	Submenu "Brutal Doom Options",			"BrutalOptions"
-	Submenu "Brootal Doomb Options",			"doomb_options"
-
-	StaticText " "
-	Submenu "Customize Controls",		"CustomizeControls"
-	Submenu "Mouse options",			"MouseOptions"
-	Submenu "Joystick options",			"JoystickOptions"
-	StaticText " "
-	Submenu "Player Setup",				"PlayerMenu"
-	Submenu "Gameplay Options",			"GameplayOptions"
-	Submenu "Compatibility Options",	"CompatibilityOptions"
-	Submenu "Automap Options",			"AutomapOptions"
-	Submenu "HUD Options",				"HUDOptions"
-	Submenu "Miscellaneous Options",	"MiscOptions"
-	Submenu "Sound Options",			"SoundOptions"
-	Submenu "Display Options",			"VideoOptions"
-	Submenu "Set video mode",			"VideoModeMenu"
-	StaticText " "
-	SafeCommand "Reset to defaults",	"reset2defaults"
-	SafeCommand	"Reset to last saved",	"reset2saved"
-	Command "Go to console",			"menuconsole"
-}
-
-OptionMenu "BrutalOptions"
-{
-
-  
-  
-  Title "GZDoom Brutal Doom Options"
-	StaticText " "
-
-  Option "Enable Brutal Doom Options", "isrunningzandronum", "YesOrNoFalse"
-  StaticText " "
-  StaticText " "
-  
-  StaticText "===== Client Options ====="
-  Option "Blood Amount", "zdoombrutalblood", "BrutalBlood"
-  StaticText "How much blood you want to see?"
-  StaticText " "
-  
-  
-  
-  Option "Enable Janitor", "zdoombrutaljanitor", "YesOrNo"
-  StaticText "Makes gibs disappear after 30 seconds."
-  StaticText " "
-  
-  Option "Enable Shotgun Strap Physics", "zdoombd_shotgunstrap", "YesNo"
-  StaticText " "
-  
-  StaticText "===== Server options ====="
-  StaticText "(Requires map restart to take effect)"
-  Option "Vanilla Monsters", "bd_classicmonsters", "YesOrNo"
-  StaticText "Disables new enemy AI and new attacks."
-  StaticText " "
-  
-  
-  Option "Enable Bullet Penetration", "bd_nobulletpenetration", "YesOrNoFalse"
-  StaticText "Makes bullets and rockets penetrate thin walls and doors."
-  StaticText " "
-  
-  Option "Disable Advanced Decorative Objects", "bd_disabledecorations", "YesNo"
-  StaticText " "
-}
-
-OptionValue "BrutalBlood"
-{
-	1, "Realistic"
-	2, "Brutal (Default)"
-	3, "Edgy As Fuck"
-	4, "Japanese Cartoon"
-	666, "Overdrawn at Blood Bank"
-}
-
 OptionMenu "doomb_options"
 {
 	Title "Brootal Doomb Options"
@@ -84,6 +8,12 @@ OptionMenu "doomb_options"
 
 	Option "Show effects", "doomb_sfx_effects", "YesNo"
 	StaticText "Disable ALL effects like smoke/sparks/fire/etc."
+
+	Option "Show blood", "doomb_blood_spawner", "YesNo"
+	StaticText "Disable blood spawning."
+
+	Option "Spawn limbs", "doomb_body_parts", "YesNo"
+	StaticText "Disable spawning of all limbs (arms, legs, torsos, etc)."
 
 }
 

@@ -73,16 +73,9 @@ protected void doomb_spawn_big_blood(int spawn_height = 0)
 {
 	if(waterlevel < 1)
     {
-		for(uint i = 0; i < 2 * bd_bloodamount; i++)
+		for(uint i = 0; i < 2 * doomb_blood_multiplier; i++)
 		{
-			actor a = doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-			a.setorigin(self.pos + (0, 0, spawn_height), false);
-
-			if( (i % 2) == 0)
-			{
-				a = doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-				a.setorigin(self.pos + (0, 0, spawn_height), false);
-			}
+			actor a = doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ) + (0, 0, spawn_height), doomb_random_velocity(5) );
 		}
 	}
 }
@@ -165,7 +158,7 @@ protected doomb_blood doomb_for_khorne(class<actor> it = null, vector3 off = (0,
 states
 {
 	wait_in_beaker:
-		tnt1 a 2
+		tnt1 a 0
 		{
 			vel = (0, 0, 0);
 			active = false;

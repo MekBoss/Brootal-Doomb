@@ -51,7 +51,6 @@ Default {
 	damagefactor "Blood", 0.0;
 	damagefactor "BlueBlood", 0.0;
 	damagefactor "GreenBlood", 0.0;
-	damagefactor "Explosive_Impact", 0.6;
 	Obituary "%o has been gunned down by a Zombie Soldier.";
 }
 States
@@ -1187,7 +1186,7 @@ States
 			if(waterlevel > 1)
 				spawn("UnderwaterExplosion", pos:self.pos);
 			
-			A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			{doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
 			doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(0.5, 1) ) );
 			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(-0.5, 1) ) );
 			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ), (frandom(0.9, 1.4), 0) );

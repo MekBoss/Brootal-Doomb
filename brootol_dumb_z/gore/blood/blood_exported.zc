@@ -29,10 +29,9 @@ CLASS TinyBlood : doomb_blood
 				activate_blood();
 			}
 		mini:
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
 			BLUD Z 1
 			{
-				if(pos.z <= floorz)
+				if(pos.z <= floorz || waterlevel > 1)
 					setstatelabel("death");
 				
 				vel.z -= 2;

@@ -81,7 +81,9 @@ protected void doomb_check_floor_pic()
 			giveinventory("IsOverGrass", 1);
 	}
 }
-Default {
+
+Default
+{
 	renderstyle "Add";
 	alpha 1.0;
 	-COUNTKILL;
@@ -91,6 +93,8 @@ Default {
 	+FORCEXYBILLBOARD;
 	+THRUACTORS;
 	+NOGRAVITY;
+	+rollsprite
+	+rollcenter
 	Obituary "%o ate bullet shrapnel.";
 	Scale 0.09;
 	Speed 0;
@@ -110,6 +114,7 @@ states
 		
 		TNT1 A 0
 		{
+			roll = frandom(0, 90);
 			frame = random(0, 3);
 		}
 		

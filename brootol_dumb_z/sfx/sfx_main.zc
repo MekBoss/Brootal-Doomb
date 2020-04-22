@@ -158,19 +158,19 @@ override void CheckReplacement(ReplaceEvent e)
 
 	if(e.Replacee == "RedTorch")
 	{
-		e.Replacement = "TallTorch_Red";
+		e.Replacement = "doomb_torch_red_tall";
 		e.isfinal = true;
 	}
 
 	if(e.Replacee == "BlueTorch")
 	{
-		e.Replacement = "TallTorch_Blue";
+		e.Replacement = "doomb_torch_blue_tall";
 		e.isfinal = true;
 	}
 
 	if(e.Replacee == "GreenTorch")
 	{
-		e.Replacement = "TallTorch_Green";
+		e.Replacement = "doomb_torch_green_tall";
 		e.isfinal = true;
 	}
 
@@ -188,19 +188,19 @@ override void CheckReplacement(ReplaceEvent e)
 
 	if(e.Replacee == "ShortBlueTorch")
 	{
-		e.Replacement = "ShortTorch_Blue";
+		e.Replacement = "doomb_torch_blue_short";
 		e.isfinal = true;
 	}
 
 	if(e.Replacee == "ShortRedTorch")
 	{
-		e.Replacement = "ShortTorch_Red";
+		e.Replacement = "doomb_torch_red_short";
 		e.isfinal = true;
 	}
 
 	if(e.Replacee == "ShortGreenTorch")
 	{
-		e.Replacement = "ShortTorch_Green";
+		e.Replacement = "doomb_torch_green_short";
 		e.isfinal = true;
 	}
 

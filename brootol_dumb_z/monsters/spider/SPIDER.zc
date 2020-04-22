@@ -166,7 +166,7 @@ CLASS doomb_arachnotron : doomb_monster_base
 		Death.Crush:
 		XDeath:
 			BSPI J 4;
-			TNT1 A 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+			TNT1 A 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
 			TNT1 AAAAAA 0
 			{
 				doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );

@@ -455,7 +455,6 @@ Goto StandStill;
 		tnt1 A 0 ACS_Execute(585, 0, 0, 0, 0);
 		MHEA A 0 A_XScream;
 		MHEA B 0 A_NoBlocking;
-		MHEA CD 0;
 		//MHEA E -1
 		tnt1 A 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 90));
 		tnt1 a 0 doomb_spawn_bloodpool();

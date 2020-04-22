@@ -48,13 +48,11 @@ Default {
 States
 {
 	Spawn:
-		tnt1 A 0 nodelay {flare_general.doomb_attach_flare(self, "greenlensflarealtsmall", (0, 0, 32));}
+		tnt1 A 0 nodelay {doomb_flare_base.doomb_attach_flare(self, "greenlensflarealtsmall", (0, 0, 32));}
+	Pain:
 	Stay:
 		BAR1 ABCDEEFGHIIJKLM 4 light("GREENGOOZ");
 	Loop;
-		
-	Pain:
-	Goto Stay;
 		
 	Pain.Blood:
 	bloody_barrel:
@@ -75,11 +73,11 @@ States
 	Death:
 		BEXP AB 2;
 		TNT1 A 0 A_SpawnItem("WhiteShockwaveBig");
-		TNT1 A 0 A_Explode(160,200);
+		TNT1 A 0 doomb_barrel_explode();
 		BEXP CD 2 BRIGHT light ("ROCKET_X1");
 		TNT1 A 0 A_NoBlocking();
 		TNT1 A 0 A_Fall();
-		TNT1 A 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+		TNT1 A 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
 		TNT1 A 0 A_SpawnItem("WhiteShockwaveBig");
 		TNT1 A 0 A_Explode(160,200, damagetype: "explosive_impact");
 		TNT1 AAAAAA 0
@@ -125,6 +123,36 @@ States
 	Stop;
 }
 
+private void doomb_barrel_explode()
+{
+	BlockThingsIterator it = BlockThingsIterator.Create(self, 300);
+	while (it.Next() )
+	{
+		if(it.thing == self)
+			return;
+		
+		if(it.thing.getclass() == getclass() )//check only for barrels
+		{
+			vector3 vec_dist = it.thing.pos - pos;
+
+			if( (vec_dist dot vec_dist) <= 10)//means there are a barrel inside each other, like in deus vult 2 map01
+			{
+				it.thing.destroy();
+			}
+
+/*
+			else if ( (vec_dist dot vec_dist) <= 200 * 200)//explode all barrels simultaneously
+			{
+				it.thing.a_die();
+			}
+*/
+		}
+	}
+
+	A_Explode(160,200);
+}
+
+
 }
 
 
@@ -167,8 +195,9 @@ States
 		TNT1 A 0;
 		BRPT I 300;
 		BRPT IIIIIIIII 2 A_FadeOut(0.1);
-		Stop;
+	Stop;
 }
+
 }
 
 
@@ -196,12 +225,8 @@ States
 
 
 
-CLASS SpawnedExplosionRepeat : visual_sfx { 
-Default {
-	
-	+NOCLIP;
-	+NOGRAVITY;
-}
+CLASS SpawnedExplosionRepeat : visual_sfx
+{
 states
 {
 	Spawn:
@@ -209,7 +234,7 @@ states
 		TNT1 A 2 A_PlaySound("FAREXPL");
 		EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 		EXPL A 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-		TNT1 A 0 A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+		TNT1 A 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
 		TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 		TNT1 A 3;
 		TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
@@ -223,6 +248,7 @@ states
 		TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(3, 3.4), 0) );
 		TNT1 A 3;
 		TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(3, 3.4), 0) );
-		Stop;
+	Stop;
 }
+
 }

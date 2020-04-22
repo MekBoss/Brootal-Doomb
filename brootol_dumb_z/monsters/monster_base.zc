@@ -433,7 +433,7 @@ void set_blood_throne(eventhandler e)
 
 protected actor doomb_for_khorne(class<doomb_blood> it = null, vector3 off = (0, 0, 1), vector3 vel_dir = (0, 0, 0) )
 {
-	if(blood_throne && it)
+	if(blood_throne && it && doomb_blood_spawner)
 	{
 		if(it is "doomb_blood")
 		{
@@ -453,7 +453,7 @@ protected actor doomb_for_khorne(class<doomb_blood> it = null, vector3 off = (0,
 
 protected doomb_body_base doomb_severed_limb(class<doomb_body_base> it = null, vector3 offset = (0, 0, 1), vector3 vel_dir = (0, 0, 0), bool limb_ignore_cvar = false )
 {
-	if(blood_throne && it)
+	if(blood_throne && it && (doomb_body_parts == true || limb_ignore_cvar == true) )
 	{
 		if(it is "doomb_body_base")
 		{
@@ -469,7 +469,9 @@ protected doomb_body_base doomb_severed_limb(class<doomb_body_base> it = null, v
 	return null;
 }
 
-
+/////////////////////////////////////////////////////////////////////////////////
+//fatality camera handlings
+/////////////////////////////////////////////////////////////////////////////////
 protected playerinfo fatalizer;
 protected actor fatality_camera, marine_fatalizer;
 //set camera for player and also handle marines fatality
@@ -543,40 +545,6 @@ protected void doomb_destroy_monster_fatality_camera()
 }
 
 
-
-enum sticky_guro_type
-{
-	SGT_NONE = 0,
-	SGT_BLOOD = 1,
-	SGT_MEAT = 2
-};
-
-protected void doomb_sticky_guro(sticky_guro_type type = SGT_NONE)
-{
-	if(type == SGT_NONE)
-		return;
-
-	FLineTraceData blood_ray;
-
-	LineTrace(
-		random( 0, 360),
-		60,
-		-frandom(70 , 90),//- because thank you randi
-		TRF_THRUACTORS | TRF_NOSKY,
-		height + 1,
-		data: blood_ray
-	);
-
-	if (blood_ray.HitType == TRACE_HitCeiling)
-	{
-		if(type == SGT_BLOOD)
-			doomb_for_khorne("doomb_blood_dripping_ceiling", blood_ray.HitLocation);
-
-		if (type == SGT_MEAT)
-			doomb_for_khorne("doomb_sticky_meat", blood_ray.HitLocation);
-	}
-
-}
 
 protected vector3 doomb_random_velocity(double factor = 1, bool trully = false)
 {

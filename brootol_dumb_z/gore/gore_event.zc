@@ -21,6 +21,10 @@ override void worldtick()
 }
 
 
+
+//////////////////////////////////////////////////////////////
+//handling for spawning blood
+//////////////////////////////////////////////////////////////
 private array<doomb_blood> blood_stains;
 
 private doomb_blood doomb_find_fresh_blood(class<actor> type = null)
@@ -35,11 +39,13 @@ private doomb_blood doomb_find_fresh_blood(class<actor> type = null)
                 b.set_init(true);
                 blood_stains.push(b);
                 return b;
+				break;
             }
 
             if(blood_stains[i] && blood_stains[i].getclass() == type && doomb_blood(blood_stains[i]).is_active() == false)
             {
                 return doomb_blood(blood_stains[i]);
+				break;
             }
 
             else if (!blood_stains[i])
@@ -58,6 +64,9 @@ doomb_blood doomb_blood_bank(class<actor> type = null)
 {
     return doomb_find_fresh_blood(type);
 }
+//////////////////////////////////////////////////////////////
+//ends here
+//////////////////////////////////////////////////////////////
 
 
 
@@ -220,8 +229,6 @@ override void CheckReplacement(ReplaceEvent e)
 		e.Replacement = "DeadDemon1";
 		e.isfinal = true;
 	}
-
-
 }
 
 }

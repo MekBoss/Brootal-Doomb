@@ -893,33 +893,33 @@ object LifeSphere
 
 
 
-object ShortTorch_Green
+object doomb_torch_green_short
 {
     frame STRB { light SMALLGREENTORCH }
 }
-object ShortTorch_Red
+object doomb_torch_red_short
 {
     frame STRB { light SMALLREDTORCH }
 }
 
 
-object ShortTorch_Blue
+object doomb_torch_blue_short
 {
     frame STRB { light SMALLBLUETORCH }
 }
 
-object TallTorch_Green
+object doomb_torch_green_tall
 {
     frame TTRB { light BIGGREENTORCH }
 }
 
 
-object TallTorch_Blue
+object doomb_torch_blue_tall
 {
     frame TTRB { light BIGBLUETORCH }
 }
 
-object TallTorch_Red
+object doomb_torch_red_tall
 {
     frame TTRB { light BIGREDTORCH }
 }

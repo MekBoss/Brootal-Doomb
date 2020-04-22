@@ -218,7 +218,7 @@ CLASS Hectebus : doomb_fatso
 				A_PlaySound("FAREXPL");
 				doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 				doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-				A_SpawnItemEx ("NewfagExplosionFlare",0,0,0,0,0,0,0,SXF_NOCHECKPOSITION,0);
+				{doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
 				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			}
 			TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 90), 6);

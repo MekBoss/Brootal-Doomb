@@ -12,7 +12,6 @@ Default
 	+GHOST;
 	+RANDOMIZE;
 	+DONTTHRUST
-	Mass 900000;
 	scale .5;
 }
 
@@ -30,7 +29,7 @@ protected void doomb_torch_fire(statelabel type = null, double fire_height = 0)
 
 }
 
-CLASS TallTorch_Red : doomb_proto_torch_tall
+CLASS doomb_torch_red_tall : doomb_proto_torch_tall
 { 
 states
 {
@@ -46,7 +45,7 @@ states
 
 }
 
-CLASS TallTorch_Blue : doomb_proto_torch_tall
+CLASS doomb_torch_blue_tall : doomb_proto_torch_tall
 { 
 states
 {
@@ -61,7 +60,7 @@ states
 }
 }
 
-CLASS TallTorch_Green : doomb_proto_torch_tall
+CLASS doomb_torch_green_tall : doomb_proto_torch_tall
 { 
 states
 {
@@ -88,7 +87,7 @@ Default
 
 }
 
-CLASS ShortTorch_Blue : doomb_proto_torch_short
+CLASS doomb_torch_blue_short : doomb_proto_torch_short
 { 
 states
 {
@@ -103,7 +102,7 @@ states
 }
 }
 
-CLASS ShortTorch_Red : doomb_proto_torch_short
+CLASS doomb_torch_red_short : doomb_proto_torch_short
 { 
 states
 {
@@ -118,7 +117,7 @@ states
 }
 }
 
-CLASS ShortTorch_Green : doomb_proto_torch_short
+CLASS doomb_torch_green_short : doomb_proto_torch_short
 { 
 states
 {

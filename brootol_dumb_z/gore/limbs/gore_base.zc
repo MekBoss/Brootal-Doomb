@@ -17,6 +17,7 @@ default
 {
     -ismonster
 	-countkill
+	-solid
 }
 
 protected void doomb_random_death(name st = "")
@@ -34,7 +35,7 @@ protected void doomb_blood_dying()
 		doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		A_SpawnItem ("BloodHit", 0, 30);
+		doomb_for_khorne("BloodHit", (0, 0, 30) );
 		doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 	}
 }
