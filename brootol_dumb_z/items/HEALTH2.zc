@@ -13,7 +13,7 @@ CLASS HealthPlus : Health
 	States
 	{
 		Spawn:
-			tnt1 A 0 nodelay {doomb_flare_base.doomb_attach_flare(self, "BlueFlareSmall", (0, 0, 7));}
+			tnt1 A 0 nodelay {doomb_flare_base.doomb_attach_flare(self, "BlueFlare", (0, 0, 5), visual_size:0.15);}
 		mini:
 			BON1 ABCDCB 2;
 		Loop;
@@ -39,9 +39,7 @@ CLASS ArmorShard : BasicArmorBonus
 	States
 	{
 		Spawn:
-			tnt1 A 0 nodelay {doomb_flare_base.doomb_attach_flare(self, "greenlensflarealtsmall", (0, 0, 7));}
-		mini:
-			BON2 AAABCDB 2;
+			BON2 AAABCDB 2 {doomb_flare_base.doomb_attach_flare(self, "lens_flare_green", (0, 0, 7));}
 		Loop;
 	}
 }
@@ -115,7 +113,7 @@ CLASS LightArmor : BasicArmorPickup
 	{
 		Spawn:
 			ARM1 A 10;
-			ARM1 B 10 bright {Spawn("GreenFlareMedium", pos + (0, 0, 10) );}
+			ARM1 B 10 bright {doomb_flare_base.doomb_attach_flare(self, "GreenFlare", (0, 0, 10), visual_size:0.25);}
 		loop;
 	}
 }
@@ -139,7 +137,7 @@ CLASS HeavyArmor : BasicArmorPickup
 	{
 		Spawn:
 			ARM2 A 10;
-			ARM2 B 10 bright {Spawn("BlueFlareMedium3", pos + (0, 0, 10) );}
+			ARM2 B 10 bright {doomb_flare_base.doomb_attach_flare(self, "BlueFlare", (0, 0, 10), visual_size:0.35);}
 		loop;
 	}
 }

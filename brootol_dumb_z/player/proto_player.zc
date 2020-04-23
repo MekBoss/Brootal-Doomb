@@ -55,22 +55,7 @@ protected void doomb_spawn_bloodpool()
 {
 	if(GetFloorTerrain().isLiquid == false)
 	{
-		actor a = spawn("doomb_red_blood_pool", pos:self.pos);
-
-		if(a)
-		{
-			if(self.getclassname() == "doomb_caco")
-			{
-				a.A_SetTranslation("red_to_blue");
-				doomb_red_blood_pool(a).color = "blue";
-			}
-
-			if(self.getclassname() == "doomb_baron" || self.getclassname() == "doomb_knight")
-			{
-				a.A_SetTranslation("red_to_green");
-				doomb_red_blood_pool(a).color = "green";
-			}
-		}
+		spawn("doomb_red_blood_pool", pos:self.pos);
 	}
 }
 

@@ -86,7 +86,6 @@ CLASS MP40 : doomb_weapon_base
 			TNT1 A 0 A_PlaySound("MP40");
 			TNT1 A 0 A_Takeinventory("MP40Ammo",1);
 			TNT1 A 0 {invoker.doomb_show_effect("GunFireSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );}
-			TNT1 A 0 A_FireProjectile("YellowFlareSpawn",-5,0,0,0);
 			MP40 B 1 BRIGHT A_AlertMonsters;
 			MP40 C 1 A_FireBullets (4, 3, -1, 12, "HitPuff");
 			TNT1 A 0 A_SetPitch(-1.2 + pitch);
@@ -104,7 +103,6 @@ CLASS MP40 : doomb_weapon_base
 			TNT1 A 0 A_PlaySound("MP40");
 			TNT1 A 0 A_Takeinventory("MP40Ammo",1);
 			TNT1 A 0 {invoker.doomb_show_effect("GunFireSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );}
-			TNT1 A 0 A_FireProjectile("YellowFlareSpawn",-5,0,0,0);
 			MP41 F 1 BRIGHT A_AlertMonsters;
 			TNT1 A 0 A_FireBullets (1.5, 1.5, -1, 12, "HitPuff");
 			MP41 C 1 A_SetPitch(-1.2 + pitch);

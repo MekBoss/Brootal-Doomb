@@ -84,9 +84,10 @@ CLASS doomb_small_blood_pool : doomb_blood_pool
 
 
 CLASS Green_BloodSpot: doomb_small_blood_pool { 
-	Default {
- 
-translation "168:191=112:127", "16:47=123:127";
-Decal "GreenBloodSplat";
-	}
+Default
+{
+	translation "168:191=112:127", "16:47=123:127";
+	Decal "GreenBloodSplat";
+}
+
 }

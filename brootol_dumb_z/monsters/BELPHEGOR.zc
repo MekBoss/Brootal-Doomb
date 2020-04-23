@@ -255,7 +255,7 @@ CLASS BelphegorGreenPlasmaBall : doomb_boolet_base {
 States
 {
 	Spawn:
-		TNT1 A 0 A_SpawnItem("GreenFlare22",0,0);
+		TNT1 A 0 {doomb_flare_base.doomb_attach_flare(self, "GreenFlare");}
 		FRPG K 1 BRIGHT A_SpawnItemEx("GreenExplosionFlameTrail", 0, 0, 0, 0, 0, 0, 0, 128);
 	Loop;
 	

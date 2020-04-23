@@ -340,7 +340,7 @@ states
 		TNT1 A 0 doomb_spawn_burned_flesh;
 		
 		EXPL AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_show_effect("GreenFlameTrails", (0, 0, 50), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-		XBRN AAAA 2 BRIGHT A_SpawnItem("GreenFlare",0,43);
+		XBRN AAAA 2 BRIGHT {doomb_flare_base.doomb_attach_flare(self, "GreenFlare", (0, 0, 43) );}
 	Stop;
 
 

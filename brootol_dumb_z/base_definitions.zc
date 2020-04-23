@@ -56,6 +56,11 @@ protected void doomb_spherical_rail_attack(uint dist = 128)
 
 override void Tick()
 {
+	super.tick();
+
+	if(!doomb_monster_avoid_projectiles)
+		return;
+
 	if(random[monster_avoid](0,10) <= 1)
 	{
 		FLineTraceData avoider;
@@ -70,7 +75,6 @@ override void Tick()
 		}
 	}
 
-	super.tick();
 }
 
 

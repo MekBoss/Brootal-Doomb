@@ -89,7 +89,6 @@ CLASS doomb_Marine_Rifle : doomb_marine_base
 		PLAY F 3 BRIGHT
 		{
 			A_FaceTarget();
-			A_SpawnProjectile("MarineMuzzle1", 34);
 			A_PlaySound("weapons/rifle");
 			A_SpawnProjectile("MarineTracer", 40, 0, 0, 0);
 			A_SpawnItem ("RifleCaseSpawn", 0, 30,0);
@@ -112,7 +111,6 @@ CLASS doomb_Marine_Rifle : doomb_marine_base
 		}
 		MARN B 2 BRIGHT
 		{
-			A_SpawnProjectile("MarineMuzzle1", 34);
 			A_PlaySound("weapons/rifle");
 			A_SpawnProjectile("MarineTracer", 42, 0, 0, 0);
 			A_SpawnItem ("RifleCaseSpawn", 0, 30,0);
@@ -135,7 +133,6 @@ CLASS doomb_Marine_Rifle : doomb_marine_base
 		{
 			A_FaceTarget();
 			A_Recoil(5);
-			A_SpawnProjectile("MarineMuzzle1", 34);
 			A_PlaySound("weapons/rifle");
 			A_SpawnProjectile("MarineTracer", 42, 0, 0, 0);
 			A_SpawnItem ("RifleCaseSpawn", 0, 30,0);
@@ -201,7 +198,6 @@ CLASS doomb_Marine_Rifle : doomb_marine_base
 		PLAY F 2 BRIGHT
 		{
 			A_FaceTarget();
-			A_SpawnProjectile("MarineMuzzle1", 34);
 			A_PlaySound("weapons/rifle");
 			A_SpawnProjectile("MarineTracer", 40, 0, 0, 0);
 			A_SpawnItem ("RifleCaseSpawn", 0, 30,0);

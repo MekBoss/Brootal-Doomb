@@ -1,19 +1,34 @@
+OptionMenu "OptionsMenu"
+{
+	Title "OPTIONS"
+	Submenu "Brootal Doomb Options",			"doomb_options"
+}
+
 OptionMenu "doomb_options"
 {
 	Title "Brootal Doomb Options"
 	StaticText " "
 
-	Option "Show flares around light sources ", "doomb_show_flares", "YesNo"
-	StaticText "Its eat performance like crazy, disable in the first place if you have FPS problems"
+	Option "Show flares", "doomb_show_flares", "YesNo"
+	StaticText "Disable flare effect around light sources"
+	StaticText " "
 
 	Option "Show effects", "doomb_sfx_effects", "YesNo"
-	StaticText "Disable ALL effects like smoke/sparks/fire/etc."
+	StaticText "Controls showing of ALL effects (smoke/sparks/fire/etc)"
+	StaticText " "
 
 	Option "Show blood", "doomb_blood_spawner", "YesNo"
-	StaticText "Disable blood spawning."
+	StaticText "Control blood spawning."
+	StaticText " "
 
 	Option "Spawn limbs", "doomb_body_parts", "YesNo"
 	StaticText "Disable spawning of all limbs (arms, legs, torsos, etc)."
+	StaticText "This include bodys from executions"
+	StaticText " "
+	
+	Option "Monsters evasion", "doomb_monster_avoid_projectiles", "YesNo"
+	StaticText "Some monsters will try to evade projectile attacks"
+	StaticText "Impact on performance directly depends from amount of shooting chaingunners", GOLD
 
 }
 

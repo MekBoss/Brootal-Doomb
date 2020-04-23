@@ -156,39 +156,42 @@ protected void doomb_spawn_bloodpool(blood_pool_size size = BPS_BIG, blood_color
 		else if(size == BPS_SMALL)
 			a = doomb_for_khorne("doomb_small_blood_pool");
 
-		if(a && color == BCF_NONE)
+		if(a)
 		{
-			if(self.getclassname() == "doomb_caco")
+			if(color == BCF_NONE)
 			{
-				a.A_SetTranslation("red_to_blue");
-				doomb_blood_pool(a).color = "blue";
-			}
-
-			if(self.getclassname() == "doomb_baron" || self.getclassname() == "doomb_knight")
-			{
-				a.A_SetTranslation("red_to_green");
-				doomb_blood_pool(a).color = "green";
-			}
-		}
-
-		else
-		{
-			switch(color)
-			{
-				case BCF_RED:
-					a.A_SetTranslation("normal");
-				break;
-
-				case BCF_GREEN:
-					a.A_SetTranslation("red_to_green");
-				break;
-				
-				case BCF_BLUE:
+				if(self.getclassname() == "doomb_caco")
+				{
 					a.A_SetTranslation("red_to_blue");
-				break;
+					doomb_blood_pool(a).color = "blue";
+				}
 
-				default:
-				break;
+				if(self.getclassname() == "doomb_baron" || self.getclassname() == "doomb_knight")
+				{
+					a.A_SetTranslation("red_to_green");
+					doomb_blood_pool(a).color = "green";
+				}
+			}
+
+			else
+			{
+				switch(color)
+				{
+					case BCF_RED:
+						a.A_SetTranslation("normal");
+					break;
+
+					case BCF_GREEN:
+						a.A_SetTranslation("red_to_green");
+					break;
+					
+					case BCF_BLUE:
+						a.A_SetTranslation("red_to_blue");
+					break;
+
+					default:
+					break;
+				}
 			}
 		}
 	}

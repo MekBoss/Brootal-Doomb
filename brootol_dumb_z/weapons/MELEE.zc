@@ -464,7 +464,7 @@ States
 {
 	Spawn:
 		TNT1 A 0 doomb_show_effect("FlameTrails", (0, 0, 25), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-		LSOL B 2 BRIGHT {Spawn("RedFlare", pos + (0, 0, 24));}
+		LSOL B 2 BRIGHT {doomb_flare_base.doomb_attach_flare(self, "RedFlare", (0, 0, 24));}
 		Loop;
 	Death:
 		

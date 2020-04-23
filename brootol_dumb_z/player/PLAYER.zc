@@ -582,7 +582,7 @@ Goto StandStill;
 		BUR2 AABBCCDDEEFFGGHHIIJJKKLLMMNNOOPPQQ 3 BRIGHT light("BIGREDTORCH")
 		{
 			A_Explode(3,30, damagetype:"fire");
-			{Spawn("RedFlare", pos);}
+			{doomb_flare_base.doomb_attach_flare(self, "RedFlare");}
 			doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			doomb_show_effect("SmallFireTrail", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
 		}
@@ -590,7 +590,7 @@ Goto StandStill;
 		BURN RRSSTTSSRRSSTTSSRRSSTTRRSSTTSSRRSSTTSSRRSSTTSSTTUU 3 BRIGHT light("BIGREDTORCH")
 		{
 				A_Explode(3,30, damagetype:"fire");
-				{Spawn("RedFlare", pos);}
+				{doomb_flare_base.doomb_attach_flare(self, "RedFlare");}
 				doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 				doomb_show_effect("SmallFireTrail", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
 		}

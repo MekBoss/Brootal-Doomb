@@ -39,7 +39,7 @@ states
 			doomb_torch_sound();
 			doomb_torch_fire("RealFlameTrailsSmall", 58);
 		}
-		TTRB AC 2 A_SpawnItem("RedFlare22",0,59);
+		TTRB AC 2 {doomb_flare_base.doomb_attach_flare(self, "RedFlare22", (0, 0, 59) );}
 	Loop;
 }
 
@@ -55,7 +55,7 @@ states
 			doomb_torch_fire("RealFlameTrailsBlue", 58);
 			doomb_torch_sound();
 		}
-		TTRB AC 2 A_SpawnItem("BlueFlare22",0,59);
+		TTRB AC 2 {doomb_flare_base.doomb_attach_flare(self, "BlueFlare", (0, 0, 60) );}
 	Loop;
 }
 }
@@ -70,7 +70,7 @@ states
 			doomb_torch_fire("RealFlameTrailsGreen", 58);
 			doomb_torch_sound();
 		}
-		TTRB AC 2 A_SpawnItem("GreenFlare22",0,59);
+		TTRB AC 2 {doomb_flare_base.doomb_attach_flare(self, "GreenFlare", (0, 0, 60) );}
 	Loop;
 }
 }
@@ -97,7 +97,7 @@ states
 			doomb_torch_fire("RealFlameTrailsBlue", 30);
 			doomb_torch_sound();
 		}
-		STRB AA 2 A_SpawnItem("BlueFlare22",0,30);
+		STRB AA 2 {doomb_flare_base.doomb_attach_flare(self, "BlueFlare", (0, 0, 30));}
 	Loop;
 }
 }
@@ -112,7 +112,7 @@ states
 			doomb_torch_fire("RealFlameTrailsSmall", 30);
 			doomb_torch_sound();
 		}
-		STRB AA 2 A_SpawnItem("RedFlare22",0,30);
+		STRB AA 2 {doomb_flare_base.doomb_attach_flare(self, "RedFlare22", (0, 0, 30));}
 	Loop;
 }
 }
@@ -127,7 +127,7 @@ states
 			doomb_torch_fire("RealFlameTrailsGreen", 30);
 			doomb_torch_sound();
 		}
-		STRB AA 2 A_SpawnItem("GreenFlare22",0,30);
+		STRB AA 2 {doomb_flare_base.doomb_attach_flare(self, "GreenFlare", (0, 0, 30) );}
 	Loop;
 }
 }
@@ -141,7 +141,8 @@ states
 
 CLASS Candelabra1 : Candelabra
 { 
-Default {
+Default
+{
 	+LOOKALLAROUND;
 	+INVULNERABLE;
 	+NOBLOOD;
@@ -151,39 +152,44 @@ Default {
 	Mass 900000;
 	scale 0.7;
 }
+
 states
 {
 	Spawn:
 	Stay:
-		TNT1 A 0 bright A_SpawnItem("YellowFlare22",0,61);
+		TNT1 A 0 bright {doomb_flare_base.doomb_attach_flare(self, "YellowFlare", (0, 0, 60));}
 		CBRA CC 1 bright light("BIGREDTORCH");
-		TNT1 A 0 bright A_SpawnItem("YellowFlare22",0,61);
+		TNT1 A 0 bright {doomb_flare_base.doomb_attach_flare(self, "YellowFlare", (0, 0, 60));}
 		CBRA BC 1 bright light("BIGREDTORCH");
-		TNT1 A 0 bright A_SpawnItem("YellowFlare22",0,61);
+		TNT1 A 0 bright {doomb_flare_base.doomb_attach_flare(self, "YellowFlare", (0, 0, 60));}
 		CBRA BC 1 bright light("BIGREDTORCH");
-		TNT1 A 0 bright A_SpawnItem("YellowFlare22",0,61);
+		TNT1 A 0 bright {doomb_flare_base.doomb_attach_flare(self, "YellowFlare", (0, 0, 60));}
 		CBRA BB 1 bright light("BIGREDTORCH");
 	Loop;
 }
+
 }
 
 CLASS Candlestick1 : Candlestick
 { 
-Default {
+Default
+{
 	+LOOKALLAROUND;
 	+RANDOMIZE;
 	scale .7;
 }
+
 states
 {
 	Spawn:
 		TNT1 A 1;
 		
 	Stay:
-		TNT1 A 0 bright A_SpawnItem("YellowFlareSmall22Long",0,16);
+		TNT1 A 0 bright {doomb_flare_base.doomb_attach_flare(self, "YellowFlare", (0, 0, 16), visual_size:0.15);}
 		CAND CCCB 1 bright light("SMALLREDTORCH");
-		TNT1 A 0 bright A_SpawnItem("YellowFlareSmall22Long",0,16);
+		TNT1 A 0 bright  {doomb_flare_base.doomb_attach_flare(self, "YellowFlare", (0, 0, 16), visual_size:0.15);}
 		CAND BCBB 1 bright light("SMALLREDTORCH");
 	Loop;
 }
+
 }

@@ -161,11 +161,12 @@ states
 		tnt1 a 0
 		{
 			vel = (0, 0, 0);
+			setorigin((double.infinity, double.infinity, double.infinity), false);
 			active = false;
+			A_SetTranslation("normal");
+
 			for(uint i = 0; i < 10; i++)
 				a_stopsound(i);
-
-			setorigin((double.infinity, double.infinity, double.infinity), false);
 		}
 		tnt1 a -1;
 	stop;

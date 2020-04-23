@@ -65,7 +65,7 @@ states
             if(visual_sfx_state_debug != 0) last_state_name = "FireBallExplosion";
             doomb_set_appearance( (frandom(1.4, 1.8), 0), frandom(0.7, 0.9), frandom(2, 3) );
         }
-        FX98 ABCDEFGHIJKL 1 BRIGHT A_SpawnItem("YellowFlare",0,0);
+        FX98 ABCDEFGHIJKL 1 BRIGHT {doomb_flare_base.doomb_attach_flare(self, "YellowFlare");}
         FX98 MNOPQ 1;
     goto reset_condition;
 
@@ -76,7 +76,7 @@ states
             if(visual_sfx_state_debug != 0) last_state_name = "ExplosionFlames";
             doomb_set_appearance( (frandom(2, 2.6), 0), frandom(0.7, 0.9), frandom(2, 3) );
         }
-        EXPL AA 3 BRIGHT {Spawn("RedFlare", pos);}
+        EXPL AA 3 BRIGHT {doomb_flare_base.doomb_attach_flare(self, "RedFlare");}
         EXPL BCDFGHII 3 BRIGHT doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
     goto reset_condition;
     
@@ -131,7 +131,7 @@ states
         FLME ABCDEFGHIJKLMNABCDEFGHIJKLMNABCDEFGHIJKLMNABCDEFGHIJKLMNABCDEFGHIJKLMNABCDEFGHIJKLMN 1 BRIGHT light ("SMALLREDTORCH")
         {
             doomb_show_effect("RealFlameTrailsSmall", (0, 0, 24), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
-            A_SpawnItem("RedFlareSmall", 0, 15);
+            {doomb_flare_base.doomb_attach_flare(self, "RedFlare", visual_size: 0.15);}
         }
 		TNT1 AAAAA 3 BRIGHT doomb_show_effect("RealFlameTrailsSmall", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
 		TNT1 AAA 8 BRIGHT doomb_show_effect("RealFlameTrailsSmall", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ) );
@@ -200,7 +200,7 @@ states
             if(visual_sfx_state_debug != 0) last_state_name = "BurnParticles";
             doomb_set_appearance( speed_scale:frandom(3, 7) );
             A_Explode(3,30, damagetype:"fire");
-            {Spawn("RedFlare", pos);}
+            {doomb_flare_base.doomb_attach_flare(self, "RedFlare");}
             doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
             doomb_show_effect("SmallFireTrail", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
             doomb_show_effect("FlameTrails", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );

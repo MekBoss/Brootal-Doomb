@@ -268,3 +268,12 @@ override void RenderOverlay(RenderEvent e)
 }
 
 }
+
+
+
+enum sfx_type_flags
+{
+	STF_NONE = 0,
+	STF_SFX = 1,
+	STF_FLARE = 2,
+};

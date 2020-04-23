@@ -87,7 +87,7 @@ CLASS half_burned_tree: doomb_decoration_base
 			TRE1 CCC 3 bright light ("FIREBARREL")
 			{
 				doomb_show_effect("GunFireSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (1.2, 0) );
-				Spawn("RedFlare", pos + (0, 0, 32));
+				{doomb_flare_base.doomb_attach_flare(self, "RedFlare", (0, 0, 32) );}
 				doomb_show_effect("RealFlameTrailsSmall", (0, 0, 0), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ), (frandom(1, 1.2), 0) );
 			}
 		Loop;
@@ -153,7 +153,7 @@ CLASS Big_Tree: doomb_decoration_base
 			TRE2 NNNNNNNNNN 1 bright light ("FIREBARREL")
 			{
 				doomb_show_effect("RealFlameTrailsSmall", (0, 0, 40), (frandom(-0.3, 0.3), frandom(-0.3, 0.3), frandom(0.5, 1) ), (frandom(1, 1.2), 0) );
-				Spawn("RedFlare", pos + (0, 0, random(60, 90)) );
+				{doomb_flare_base.doomb_attach_flare(self, "RedFlare", (0, 0, 80));}
 			}
 
 			TNT1 A 0

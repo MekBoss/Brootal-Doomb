@@ -113,7 +113,6 @@ States
 			A_Recoil(0.1);
 			Radius_Quake (1, 4, 0, 1, 0);
 			{invoker.doomb_show_effect("GunFireSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 1) ) );}
-			A_SpawnItemEx("PlayerMuzzle2",30,5,27);
 			A_FireProjectile("MinigunTracer", random(-1,1), 0, -1, -12, 0, random(-1,1));
 			A_FireProjectile("fifteen_CaseSpawn",0,0,-12,-18);
 		}
@@ -121,7 +120,6 @@ States
 		CHAF J 1 BRIGHT
 		{
 			A_FireBullets(4, 4, 1, 9, "MachineGunBulletPuff", 1);
-			A_SpawnItemEx("PlayerMuzzle2",30,5,27);
 			A_FireProjectile("MinigunTracer", random(-3,3), 0, -1, -12, 0, random(-3,3));
 			A_PlaySound("CHGNSHOT", 1);
 			A_PlaySOund("DISTFMG");
@@ -165,7 +163,6 @@ States
 			A_PlaySound("CHGNSHOT", 1);
 			A_Recoil(0.1);
 			Radius_Quake (1, 4, 0, 1, 0);
-			A_SpawnItemEx("PlayerMuzzle2",30,5,27);
 			A_PlaySOund("DISTFMG", 4);
 			A_FireProjectile("MinigunTracer", random(-3,3), 0, -1, -12, 0, random(-3,3));
 			A_FireProjectile("fifteen_CaseSpawn",0,0,-12,-18);
@@ -183,7 +180,6 @@ States
 		CHAF J 1 BRIGHT
 		{
 			A_FireBullets(4, 4, 1, 9, "MachineGunBulletPuff", 1);
-			A_SpawnItemEx("PlayerMuzzle2",30,5,27);
 			A_PlaySOund("DISTFMG", 4);
 			A_FireProjectile("MinigunTracer", random(-3,3), 0, -1, -12, 0, random(-3,3));
 			A_FireProjectile("fifteen_CaseSpawn",0,0,-12,-18);

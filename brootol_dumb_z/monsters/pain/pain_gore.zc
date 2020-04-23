@@ -73,7 +73,7 @@ CLASS PEPart2 : doomb_body_base {
 			ID22 ABCD 2
 			{
 				doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-				A_SpawnItem("YellowFlare",0,2);
+				{doomb_flare_base.doomb_attach_flare(self, "YellowFlare");}
 				doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 				doomb_show_effect("FlameTrails", ( 0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );	
 			}

@@ -15,12 +15,3 @@ CLASS BloodHit : doomb_blood {
 			Stop;
 	}
 }
-
-CLASS BlueBloodHit: BloodHit { 
-	Default {
- 
-translation "168:191=192:207","16:47=240:247";
-Decal "BlueBloodSplat";
-	}
-}
-

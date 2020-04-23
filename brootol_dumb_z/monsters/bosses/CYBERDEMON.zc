@@ -247,7 +247,7 @@ States
 				A_SpawnProjectile ("BUBULZ", 0, 0, random (0, 360), 2, - random (0, 180));
 			else
 			{
-				A_SpawnItem("RedFlareSmall22",0,0);
+				{doomb_flare_base.doomb_attach_flare(self, "RedFlare", visual_size: 0.15);}
 				doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
 			}
 		}

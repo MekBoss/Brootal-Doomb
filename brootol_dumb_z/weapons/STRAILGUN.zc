@@ -153,7 +153,7 @@ CLASS RailGunPuff2: doomb_boolet_base {
 			TNT1 A 0;
 			TNT1 AAAA 0 doomb_show_effect("green_particle", velocity:(frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
 			TNT1 AAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
-			TNT1 ABCDE 2 BRIGHT A_SpawnItem("BlueFlare" ,0);
+			TNT1 ABCDE 2 BRIGHT {doomb_flare_base.doomb_attach_flare(self, "BlueFlare");}
 			Stop;
 	}
 }
@@ -173,11 +173,11 @@ CLASS RailgunPuff: visual_sfx {
 	states
 	{
 		Spawn:
-			PBEX A 0 BRIGHT;// A_SpawnItem("BlueFlare",0,0)
+			PBEX A 0 BRIGHT;
 			TNT1 AA 0 doomb_show_effect("PlasmaParticleX", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
 			TNT1 AAAA 0 doomb_show_effect("green_particle", velocity:(frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
 			TNT1 AAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 32), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
-			PLSE ABCDE 2 BRIGHT A_SpawnItem("BlueFlare" ,0);
+			PLSE ABCDE 2 BRIGHT {doomb_flare_base.doomb_attach_flare(self, "BlueFlare" );}
 			stop;
 	}
 }

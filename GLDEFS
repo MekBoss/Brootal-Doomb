@@ -843,34 +843,10 @@ object doomb_imp_fireball
 }
 
 
-object YellowFlareSmallB
-{
-    frame LENY { light HUEHUE }
-}
 
 
 
 
-object PlayerMuzzle1
-{
-    frame PLMZ { light HUEHUE }
-}
-
-object PlayerMuzzle2
-{
-    frame PLMZ { light HUEHUEHUEHUE }
-}
-
-
-object MarineMuzzle1
-{
-    frame PLMZ { light HUEHUE }
-}
-
-object OrangeLensFlareAlt
-{
-    frame LEYS { light HUEHUE }
-}
 object doomb_zombie_Man
 {
     frame POSSF { light ZOMBIEATK }

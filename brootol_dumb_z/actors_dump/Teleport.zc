@@ -19,7 +19,7 @@ CLASS doomb_teleport_fog : visual_sfx
 			TNT1 AAAAAAAAAAAAAAA 0 doomb_show_effect("green_particle", velocity: doomb_random_velocity(1, true) );
 			TNT1 A 2 A_PlaySound("DSTELEPT");
 			TFOG A 3 BRIGHT A_SpawnItem("PentagramSpawner");
-			TFOG BCDEFGHGFEDCBA 3 BRIGHT A_SpawnItem("YellowFlare",0,40);
+			TFOG BCDEFGHGFEDCBA 3 BRIGHT {doomb_flare_base.doomb_attach_flare(self, "YellowFlare", (0, 0, 40) );}
 			TNT1 A 0 A_NoBlocking();
 			Stop;
 		Death:

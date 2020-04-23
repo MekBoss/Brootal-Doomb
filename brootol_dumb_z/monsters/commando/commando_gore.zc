@@ -279,7 +279,7 @@ States
 			if(health <= 200)
 				setstatelabel("no_hand");
 			if(random(0, 10) == 10)
-				doomb_for_khorne("TinyBlood", (0, 0, 23), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+				doomb_for_khorne("PlayerFlyingBlood", (0, 0, 23), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		}
 		CPOD K 6
 		{
@@ -299,7 +299,7 @@ States
 			if(health <= 100)
 				setstatelabel("just_torso");
 			if(random(0, 10) == 10)
-				doomb_for_khorne("TinyBlood", (0, 0, 23), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+				doomb_for_khorne("PlayerFlyingBlood", (0, 0, 23), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		}
 		CPOD O 5
 		{

@@ -92,7 +92,6 @@ CLASS Plasma_Gun : doomb_weapon_base
 			Goto Reload;
 			TNT1 AAAA 0;
 			TNT1 A 0 A_PlaySound("PLSM9", CHAN_WEAPON);
-			TNT1 A 0 A_FireProjectile("PlasmaFlareSpawn", 0, 0, 0, 0);
 			RIFF A 0 {invoker.doomb_show_effect("GunFireSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 1) ) );}
 			PLSF A 1 BRIGHT A_FireProjectile("Plasma_Ball", 0, 1, 0, 0);
 			TNT1 A 0 Radius_Quake (1, 4, 0, 1, 0);
@@ -122,11 +121,8 @@ CLASS Plasma_Gun : doomb_weapon_base
 
 			PLSA ABCDABCDABCDABCDABCDABCDABCDABCDABCDABCD 1 BRIGHT
 			{
-				A_FireProjectile("PlasmaFlareSpawn",0,0,0,0);
 				if(frame == 3)
 					A_Takeinventory("PlasmaAmmo",1);
-				if(frame == 1)
-					A_FireProjectile("PlasmaFlareSpawn",0,0,0,0);
 			}
 
 			TNT1 A 0 A_PlaySound("PLSFULL", 6, 0.8, 1);
@@ -134,15 +130,13 @@ CLASS Plasma_Gun : doomb_weapon_base
 		AltHold:
 			TNT1 A 0
 			{
-				A_FireProjectile("PlasmaFlareSpawn",0,0,0,0);
 				if(invoker.reloading == true)
 					return resolvestate("Cancel");
 
 				return resolvestate(null);
 			}
-			PLFA A 1 BRIGHT offset (0, 32) A_FireProjectile("PlasmaFlareSpawn",0,0,0,0);
-			PLFA C 1 BRIGHT offset (0, 33)  A_FireProjectile("PlasmaFlareSpawn",0,0,0,0);
-			PLFA A 1 BRIGHT offset (1, 32) A_FireProjectile("PlasmaFlareSpawn",0,0,0,0);
+			PLFA AC 1 BRIGHT offset (0, 32);
+			PLFA A 1 BRIGHT offset (1, 32);
 			PLFA C 1 BRIGHT offset (-1, 32) A_ReFire("AltHold");
 			
 			// Let Fly --------------------------------------------------------------------------
@@ -152,7 +146,6 @@ CLASS Plasma_Gun : doomb_weapon_base
 			PLSF B 2 BRIGHT A_Recoil(3);
 			TNT1 AAAAAAAAAAAAA 0 {invoker.doomb_show_effect("GunFireSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 1) ) );}
 			TNT1 AAAAAAAAAAAAA 0 A_FireProjectile("PlasmaBall75", random(-6,6), 0, -1, 0, 0, random(-4,4));
-			TNT1 A 0 A_FireProjectile("PlasmaFlareSpawn",-5,0,0,0);
 			TNT1 A 0 Radius_Quake (8, 6, 0, 1, 0);
 			PLSG J 1;
 			PLSG KLKJ 1;
@@ -176,9 +169,7 @@ CLASS Plasma_Gun : doomb_weapon_base
 			PLSA D 1 BRIGHT A_PlaySound("plscool", 7);
 			PLSA ABCDABCDABCDABCDABCDABCDABCDABCDABCDABCD 1 BRIGHT
 			{
-				A_FireProjectile("PlasmaFlareSpawn",0,0,0,0);
 				if(frame == 2) A_Giveinventory("PlasmaAmmo",1);
-				A_FireProjectile("PlasmaFlareSpawn",0,0,0,0);
 			}
 		Goto Ready_loop;
 			
@@ -245,7 +236,7 @@ CLASS Plasma_Ball: doomb_boolet_base
 	States
 	{
 		Spawn:
-			PBAL C 1 BRIGHT light("PLASMABALLSMALL") A_SpawnItem("PlasmaFlare",0,0);
+			PBAL C 1 BRIGHT light("PLASMABALLSMALL");
 		Loop;
 			
 		Death:

@@ -48,10 +48,9 @@ Default {
 States
 {
 	Spawn:
-		tnt1 A 0 nodelay {doomb_flare_base.doomb_attach_flare(self, "greenlensflarealtsmall", (0, 0, 32));}
 	Pain:
 	Stay:
-		BAR1 ABCDEEFGHIIJKLM 4 light("GREENGOOZ");
+		BAR1 ABCDEEFGHIIJKLM 4 light("GREENGOOZ") {doomb_flare_base.doomb_attach_flare(self, "lens_flare_green", (0, 0, 32));}
 	Loop;
 		
 	Pain.Blood:

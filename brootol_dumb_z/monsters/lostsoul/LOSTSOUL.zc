@@ -50,10 +50,10 @@ CLASS doomb_lost_soul : doomb_monster_base
 		Goto Missile;
 			
 		Spawn:
-			tnt1 a 0 nodelay {doomb_flare_base.doomb_attach_flare(self, "RedFlareMedium", (0, 0, 24) );}
 		idle:
 			LSOL A 2 BRIGHT
 			{
+				{doomb_flare_base.doomb_attach_flare(self, "YellowFlare", (0, 0, 24), visual_size:0.15);}
 				A_Look();
 				doomb_show_effect("SoulTrails", (0, 0, 24), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			}
@@ -79,7 +79,7 @@ CLASS doomb_lost_soul : doomb_monster_base
 			LSOL BBBBBBBBBBBBBBBBBBBB 3 BRIGHT
 			{
 				A_FaceTarget();
-				{Spawn("RedFlare", pos + (0, 0, 24));}
+				{doomb_flare_base.doomb_attach_flare(self, "RedFlare", (0, 0, 24));}
 				bNOPAIN = true;
 				doomb_show_effect("SoulTrails", (0, 0, 24), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			}

@@ -15,7 +15,6 @@ CLASS doomb_dead_marine : doomb_body_base
 		Spawn:
 			TNT1 AAAAA 0 doomb_spray_decal("BrutalBloodSuper");
 			TNT1 a 0 doomb_spawn_bloodpool();
-			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 1
 			{
 				uint choise = random(0, 5);
@@ -64,7 +63,6 @@ CLASS doomb_gibbed_marine : doomb_body_base
 		Spawn:
 			TNT1 AAAAA 0 doomb_spray_decal("BrutalBloodSuper");
 			TNT1 a 0 doomb_spawn_bloodpool();
-			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 1
 			{
 				uint choise = random(0, 2);
@@ -130,12 +128,12 @@ CLASS CurbstompedMarine : doomb_body_base {
 	{
 		Spawn:
 			PLDH A 3000;
-			Loop;
+		Loop;
 			
 		Death.Fire:
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_SpawnItem("doomb_half_burned_body");
-			Stop;
+		Stop;
 			
 		Death:
 		Death.Stomp:
@@ -153,15 +151,13 @@ CLASS CurbstompedMarine : doomb_body_base {
 		Stop;
 			
 		Death.plasma:
-			TNT1 A 0;
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_XScream;
 			TNT1 A 0 A_NoBlocking;
 			TNT1 AAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 A 0 doomb_spawn_burned_flesh;
 			EXPL AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-			TNT1 A 0;
-			Stop;
+		Stop;
 			
 		Death.Trample: 
 		Death.Crush:
@@ -381,7 +377,7 @@ CLASS doomb_half_burned_body : doomb_body_base {
 			GIBD SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 6 light("BIGREDTORCH")
 			{
 				A_Explode(3,30, damagetype:"fire");
-				Spawn("RedFlare", pos);
+				{doomb_flare_base.doomb_attach_flare(self, "RedFlare");}
 				doomb_show_effect("ExplosionSmoke", (0, 0, 20), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 				doomb_show_effect("TinyBurningPiece", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
 			}
@@ -442,7 +438,7 @@ CLASS DeadDeadStick: doomb_body_base
 		Spawn:
 			TNT1 A 0 doomb_spawn_bloodpool();
 		Stand:
-			POL1 A 60 doomb_for_khorne("TinyBlood", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			POL1 A 600 doomb_for_khorne("TinyBlood", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		Loop;
 
 		Death:
@@ -538,8 +534,7 @@ CLASS DeadBloodyTwitch : doomb_body_base
 		Spawn:
 			GOR1 A 1;
 		Stand:
-			GOR1 A 10;
-			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
+			GOR1 A 100 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
 		Stand2:
 			GOR1 B 15;
 			GOR1 C 8;
@@ -572,8 +567,7 @@ CLASS DeadBloodyTwitchB: DeadBloodyTwitch {
 	States
 	{
 		Spawn:
-			GOR1 D 15 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
-			GOR1 D 100;
+			GOR1 D 150 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
 		loop;
 
 		Death:
@@ -630,8 +624,7 @@ CLASS HangingBody: doomb_body_base
 	States
 	{
 		Spawn:
-			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
-			GOR2 A 11100;
+			GOR2 A 1110 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
 		loop;
 
 		Death:
@@ -653,8 +646,7 @@ CLASS HangingPairOfLegs: DeadBloodyTwitchB
 	States
 	{
 		Spawn:
-			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
-			GOR2 B 1283;
+			GOR2 B 1283 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
 		loop;
 		
 		Death:
