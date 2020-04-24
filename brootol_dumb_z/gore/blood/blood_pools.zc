@@ -51,20 +51,6 @@ CLASS doomb_small_blood_pool : doomb_blood_pool
 		radius 2;
 		height 2;
 		mass 1;
-		Health 300;
-		+NOTELEPORT;
-		+CLIENTSIDEONLY;
-		+FORCEXYBILLBOARD;
-		+MOVEWITHSECTOR;
-		+FLOORCLIP;
-		+NOTARGET;
-		-SHOOTABLE;
-		+NOBLOOD;
-		-DONTSPLASH;
-		-SOLID;
-		+THRUACTORS;
-		Alpha 0.9;
-		Mass 99999999;
 		Scale 0.5;
 	}
 	states

@@ -2,12 +2,11 @@
 #include "brootol_dumb_z/gore/blood/brutal_blood.zc"
 #include "brootol_dumb_z/gore/blood/blood_hit.zc"
 #include "brootol_dumb_z/gore/blood/flying_blood.zc"
-#include "brootol_dumb_z/gore/blood/blood_spot.zc"
 #include "brootol_dumb_z/gore/blood/super_gore.zc"
 #include "brootol_dumb_z/gore/blood/blood_pools.zc"
 #include "brootol_dumb_z/gore/BLOOD/blood_exported.zc"
 #include "brootol_dumb_z/gore/BLOOD/blueblood.zc"
-#include "brootol_dumb_z/gore/BLOOD/greenblood.zc"
+#include "brootol_dumb_z/gore/BLOOD/non_interactive_blood.zc"
 #include "brootol_dumb_z/gore/BLOOD/underwaterblood.zc"
 #include "brootol_dumb_z/gore/blood/doomb_blood.zc"
 
@@ -51,14 +50,13 @@ bool is_active() const
 
 Default
 {
-	/*
 	+MISSILE;
 	-ALLOWPARTICLES;
 	-nogravity
 	+CLIENTSIDEONLY;
 	+NOTELEPORT;
 	+THRUACTORS;
-	//+BLOODLESSIMPACT;
+	+BLOODLESSIMPACT;
 	+FORCEXYBILLBOARD;
 	+NODAMAGETHRUST;
 	+MOVEWITHSECTOR;
@@ -66,7 +64,7 @@ Default
 	-DONTSPLASH;
 	Decal "BrutalBloodSplat";
 	damage 0;
-	*/
+
 }
 
 protected void doomb_spawn_big_blood(int spawn_height = 0)
@@ -162,8 +160,10 @@ states
 		{
 			vel = (0, 0, 0);
 			setorigin((double.infinity, double.infinity, double.infinity), false);
+			a_fadeto(1, 1, false);
 			active = false;
 			A_SetTranslation("normal");
+			roll = 0;
 
 			for(uint i = 0; i < 10; i++)
 				a_stopsound(i);
@@ -187,13 +187,6 @@ protected vector3 doomb_random_velocity(double factor = 1, bool trully = false)
 	return v;
 }
 
-
-enum sticky_guro_type
-{
-	SGT_NONE = 0,
-	SGT_BLOOD = 1,
-	SGT_MEAT = 2
-};
 
 protected void doomb_sticky_guro(sticky_guro_type type = SGT_NONE)
 {

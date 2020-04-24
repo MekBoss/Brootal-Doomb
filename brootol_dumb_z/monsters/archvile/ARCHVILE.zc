@@ -142,7 +142,7 @@ States
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AA 0 doomb_spray_decal("BrutalBloodSuper");
 		TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 40) );
-		TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		XVIL ABCDEFGHIJKLMNOPQ 2 A_NoBlocking;
 		TNT1 A 0 doomb_spawn_bloodpool();
 		XVIL Q -1;
@@ -151,7 +151,7 @@ States
 		
 	XDeath:
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		VIGI C 4 A_Scream;
 		VIGI D 4;
 		VIGI E 4 A_NoBlocking;

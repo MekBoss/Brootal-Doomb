@@ -23,7 +23,7 @@ Default
 
 private double roll_change;
 
-void set_appearance(body_pieces_types type = 0)
+void set_appearance(shared_body_pieces_types type = 0)
 {
 	roll_change = frandom(-15, 15);
 	roll = random(0, 90);
@@ -43,20 +43,16 @@ void set_appearance(body_pieces_types type = 0)
 
 States
 {
-	//head_pieceGreenBig
-	BR7B A 0;
-	//BrainsSergeantHeadPiece
-	BR7B E 0;
-	//head_pieceGreen
-	BR7B I 0;
-	//BrainsImpHeadPiece
-	BR7N E 0;
 	//jaw
 	BRIB a 0;
 	//eye
 	brib e 0;
 	//head_piece
 	brib i 0;
+	//head_pieceGreenBig
+	BR7B A 0;
+	//head_pieceGreen
+	BR7B I 0;
 	//head_piece_dark
 	brib o 0;
 	//SmallBrainPiece 1
@@ -66,14 +62,18 @@ States
 	//stomach with intestines (XDeathStomach)
 	XSTO a 0;
 
+	//BrainsSergeantHeadPiece
+	BR7B E 0;
+	//BrainsImpHeadPiece
+	BR7N E 0;
+
 	//unused sprites
 	//what is this?
 	brin a 0;
 	brin d 0;
+	xdt2 efghjklm 0;
 	//heart
 	xdt2 abcd 0;
-	//what?
-	xdt2 efghjklm 0;
 
 	spawn:
 		"####" "#" 4

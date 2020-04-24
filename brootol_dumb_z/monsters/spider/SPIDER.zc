@@ -103,7 +103,7 @@ CLASS doomb_arachnotron : doomb_monster_base
 		Death:
 			BSPI J 8 A_Scream;
 			TNT1 AAAAAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
-			TNT1 AAAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+			TNT1 AAAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 AAAAAAAAAA 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 32), doomb_random_velocity(5) );
 			TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 50) );
 			BSPI K 6 A_NoBlocking;
@@ -148,7 +148,7 @@ CLASS doomb_arachnotron : doomb_monster_base
 
 		Death.Cut:
 		Death.Saw:
-			TNT1 AAAAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+			TNT1 AAAAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 AAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AAAAAAAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", (0, 0, 50), doomb_random_velocity(5) );
@@ -175,7 +175,7 @@ CLASS doomb_arachnotron : doomb_monster_base
 			TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, random(30, 50) ), 6);
 			TNT1 AA 0 doomb_severed_limb("SpiderLeg", (0, 0, 32), doomb_random_velocity(5) );
 			TNT1 AAAAAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
-			TNT1 AAAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+			TNT1 AAAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 AAAAAAAAAAAAAAAAAAA 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 32), doomb_random_velocity(5) );
 			TNT1 AAAAAAAA 0 doomb_severed_limb("SpiderPart1", (0, 0, 32), doomb_random_velocity(5) );
 			TNT1 AAAAAAAA 0 doomb_severed_limb("SpiderPart2", (0, 0, 32), doomb_random_velocity(5) );
@@ -246,7 +246,7 @@ CLASS doomb_arachnotron : doomb_monster_base
 			tnt1 A 0 ACS_Execute(581, 0, 0, 0, 0);
 			tnt1 A 0 ACS_Execute(582, 0, 0, 0, 0);
 			tnt1 A 0 ACS_Execute(583, 0, 0, 0, 0);
-			tnt1 AAAAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+			tnt1 AAAAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			tnt1 AAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			tnt1 AAAAAAAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", (0, 0, 50), doomb_random_velocity(5) );
@@ -273,7 +273,7 @@ CLASS doomb_arachnotron : doomb_monster_base
 			tnt1 A 0 ACS_Execute(581, 0, 0, 0, 0);
 			tnt1 A 0 ACS_Execute(582, 0, 0, 0, 0);
 			tnt1 A 0 ACS_Execute(583, 0, 0, 0, 0);
-			tnt1 AAAAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+			tnt1 AAAAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			tnt1 AAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			tnt1 AAAAAAAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", (0, 0, 50), doomb_random_velocity(5) );

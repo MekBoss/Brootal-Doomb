@@ -1,79 +1,10 @@
 CLASS MeatDeath : doomb_body_base { 
-	Default {
-		
-		Radius 1;
-		Height 1;
-		Scale 0.8;
-		Speed 0;
-		Mass 1;
-		
-		BounceFactor 0.5;
-		+DOOMBOUNCE;
-		+MISSILE;
-		+NOBLOCKMAP;
-		+NOTELEPORT;
-		+MOVEWITHSECTOR;
-		+NOGRAVITY;
-		+NOCLIP;
-		+DONTSPLASH;
-	}
 	States
 	{
 		Spawn:
 			TNT1 AAAAAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
+			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-			TNT1 AAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-			TNT1 AAAAAAAAAAAAAA 0
-			{
-				actor a = doomb_for_khorne("blood_impact_splash", (random(-20, 20), random(-20, 20), random(20, 30) ) );
-				if(a)
-					a.scale = (1.4, 1.4);
-			}
-			Stop;
-	}
-}
-
-
-CLASS SmalllMeatDeath: MeatDeath { 
-	States
-	{
-		Spawn:
-			TNT1 AAA 0 doomb_sticky_guro(SGT_BLOOD);
-			TNT1 AAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-			TNT1 AAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		Death:
-			TNT1 A 0;
-			Stop;
-	}
-}
-
-CLASS MuchMeatDeath : doomb_body_base { 
-	Default {
-		
-		Radius 1;
-		Height 1;
-		Scale 0.8;
-		Speed 0;
-		Mass 1;
-		
-		BounceFactor 0.5;
-		+DOOMBOUNCE;
-		+MISSILE;
-		+NOBLOCKMAP;
-		+NOTELEPORT;
-		+MOVEWITHSECTOR;
-		+NOGRAVITY;
-		+NOCLIP;
-		+DONTSPLASH;
-	}
-	States
-	{
-		Spawn:
-			TNT1 AAAAAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
-			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-			TNT1 AAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 AAAAAAAAAAAAAA 0
 			{
 				actor a = doomb_for_khorne("blood_impact_splash", (random(-20, 20), random(-20, 20), random(20, 30) ) );

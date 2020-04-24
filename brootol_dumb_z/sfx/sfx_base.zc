@@ -34,7 +34,7 @@ override int SpecialMissileHit (Actor victim)
 //sets if apperance was set outside of actor, overriding actor "defaults"
 private uint changed_fields;
 
-enum fields_flags
+enum sfx_fields_flags
 {
     CF_NONE = 0,
     CF_SCALE = 1,

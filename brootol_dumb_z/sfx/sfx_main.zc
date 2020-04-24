@@ -248,14 +248,6 @@ override void CheckReplacement(ReplaceEvent e)
 class on_screen_blood_overlay : eventhandler
 {
 
-enum efffect_type
-{
-	SOF_CRACK = 1,
-	SOF_BLUE_BLOOD = 1 <<1,
-	SOF_RED_BLOOD = 1 <<1,
-	SOF_GREEN_BLOOD = 1 <<1,
-};
-
 
 override void RenderOverlay(RenderEvent e)
 {
@@ -271,9 +263,3 @@ override void RenderOverlay(RenderEvent e)
 
 
 
-enum sfx_type_flags
-{
-	STF_NONE = 0,
-	STF_SFX = 1,
-	STF_FLARE = 2,
-};

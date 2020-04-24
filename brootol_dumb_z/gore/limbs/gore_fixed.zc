@@ -128,3 +128,50 @@ CLASS HellKnightHeadPiece2: HellKnightHeadPiece {
 		XScale -1.0;
 	}
 }
+
+
+//SLOWDOWN ADRESSED
+//doomb_severed_limb("Intestine", (0, 0, 0), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+CLASS Intestine : doomb_body_base
+{ 
+	Default {
+		Radius 8;
+		Height 12;
+		Speed 6;
+		Mass 1;
+		Renderstyle "Translucent";
+		Alpha 0.9;
+		Decal "BrutalBloodSplat";
+		Scale 1.1;
+		+missile;
+		+rollsprite
+		+ROLLCENTER;
+	}
+	States
+	{
+		Spawn:
+			tnt1 a 0 nodelay
+			{
+				a_setrenderstyle(1, STYLE_Translucent);
+				bmissile = true;
+			}
+		spawn_loop:
+			GUTS A 1
+			{
+				vel.z -= 0.3;
+				roll += 20;
+			}
+		Loop;
+		
+		Death:
+			GUTS E 600
+			{
+				roll = 0;
+				angle = random(0, 180);
+				frame = random(4, 5);
+				bshootable = true;
+				a_playsound("misc/xdeath1", 1, 1);
+			}
+		stop;
+	}
+}

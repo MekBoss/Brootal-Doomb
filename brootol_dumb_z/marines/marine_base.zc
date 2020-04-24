@@ -611,18 +611,6 @@ states
 class doomb_player_marine_counter : doomb_inventory
 {
 
-enum marine_types_enum
-{
-	MTE_RIFLE_MARINE = 0,
-	MTE_SHOTGUN_MARINE = 1,
-	MTE_SSG_MARINE,
-	MTE_MINIGUN_MARINE,
-	MTE_RL_MARINE,
-	MTE_PLASMA_MARINE,
-	MTE_BFG_MARINE,
-	MTE_MAX_MARINE = MTE_BFG_MARINE + 1
-};
-
 default
 {
 	Inventory.MaxAmount 1;

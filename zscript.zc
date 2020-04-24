@@ -23,6 +23,7 @@ CLASS FallingHeight : Inventory {
 
 
 #include "brootol_dumb_z/base_definitions.zc"
+#include "brootol_dumb_z/constants.zc"
 
 
 //monsters base must go before gore

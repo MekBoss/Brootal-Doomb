@@ -472,7 +472,7 @@ States
 		TNT1 AAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		TNT1 A 0 doomb_severed_limb ("XDeathHalfZombieMan", (0, 0, 32), doomb_random_velocity(5) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		TNT1 AAAAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+		TNT1 AAAAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		POSX AABCDE 9 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		TNT1 A 0 doomb_spawn_bloodpool();
@@ -514,7 +514,7 @@ States
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 		TNT1 AAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		TNT1 AAAAAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+		TNT1 AAAAAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 A 0 doomb_severed_limb("XDeathHalfZombieman2", (0, 0, 32), doomb_random_velocity(5) );
 		PP2X BBCD 8 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		TNT1 A 0 doomb_spawn_bloodpool();
@@ -676,7 +676,7 @@ States
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 A_Jump(128, "Death.Blast2");
 		TNT1 A 0 A_Scream;
-		TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AAA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
@@ -693,7 +693,7 @@ States
 	Death.Blast2:
 		TNT1 A 0 A_XScream;
 		TNT1 A 0 doomb_severed_limb("XDeathArm1", (0, 0, 42), doomb_random_velocity(5) );
-		TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AAA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
@@ -714,7 +714,7 @@ States
 		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 35), 6);
-		TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
 		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
@@ -734,7 +734,7 @@ States
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 		TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 35), 6);
-		TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
 		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
@@ -932,7 +932,7 @@ States
 		tnt1 A 0 doomb_severed_limb("XDeathHalfZombieMan", (0, 0, 60), doomb_random_velocity(5));
 		tnt1 A 0 doomb_severed_limb("XDeathHalfZombieManDown", (0, 0, 60), doomb_random_velocity(5));
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 50), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 50), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		tnt1 AAAAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", (0, 0, 60), doomb_random_velocity(5));
 		FTYZ K 2;
 		FTYZ L 15;
@@ -957,7 +957,7 @@ States
 		FPZ2 C 10;
 		tnt1 A 0 A_PlaySound("imp/melee");
 		FPZ2 D 10;
-		tnt1 AAAAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+		tnt1 AAAAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		tnt1 AAAAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", (0, 0, 60), doomb_random_velocity(5));
 		tnt1 A 0 ACS_Execute(580, 0, 0, 0, 0);
@@ -972,7 +972,7 @@ States
 			A_Givetotarget("HealthBonus",15);
 			doomb_severed_limb("ZombieManDyingAfterFatality", limb_ignore_cvar: true);
 			doomb_destroy_monster_fatality_camera();
-			doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+			doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		}
 	stop;
 	
@@ -1049,7 +1049,7 @@ States
 			A_Givetotarget("HealthBonus",15);
 			doomb_severed_limb("zombie_fatalized_body", limb_ignore_cvar: true);
 			doomb_destroy_monster_fatality_camera();
-			doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+			doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		}
 	stop;
 	
@@ -1127,7 +1127,7 @@ States
 			A_Givetotarget("HealthBonus",15);
 			doomb_severed_limb("zombie_fatalized_body", limb_ignore_cvar: true);
 			doomb_destroy_monster_fatality_camera();
-			doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+			doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		}
 	stop;
 }

@@ -43,10 +43,8 @@ CLASS SawBlood : doomb_blood Replaces AxeBlood {
 
 
 
-CLASS Cyberdemon_Blood : doomb_blood { 
-	Default {
-		Speed 3;
-	}
+CLASS Cyberdemon_Blood : doomb_blood
+{
 	states
 	{
 		Spawn:

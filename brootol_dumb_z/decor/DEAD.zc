@@ -794,7 +794,7 @@ CLASS DeadHangNoGuts: doomb_body_base
 			TNT1 A 0 A_SpawnItem ("DeadHangNoGuts");
 			Stop;
 		XDeath:
-			TNT1 A 0 A_SpawnProjectile ("MuchMeatDeath", 0, 0, random (0, 360), 2, - random (0, 160));
+			TNT1 A 0 A_SpawnProjectile ("MeatDeath", 0, 0, random (0, 360), 2, - random (0, 160));
 			Stop;
 	}
 }

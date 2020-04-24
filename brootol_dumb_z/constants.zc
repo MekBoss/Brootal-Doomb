@@ -1,0 +1,83 @@
+enum sticky_guro_type
+{
+	SGT_NONE = 0,
+	SGT_BLOOD = 1,
+	SGT_MEAT = 2
+};
+
+enum shared_body_pieces_types
+{
+	BPT_NONE = 0,
+	BPT_JAW = 1,
+	BPT_EYE = 2,
+	BPT_HEAD_PIECE = 3,
+	BPT_HEAD_PIECE_GREEN = 4,
+}
+
+enum blood_pool_size
+{
+	BPS_NONE = 0,
+	BPS_SMALL = 1,
+	BPS_BIG = 2
+}
+
+enum blood_color_flags
+{
+	BCF_NONE = 0,
+	BCF_GREEN = 1,
+	BCF_BLUE = 2,
+	BCF_RED = 3
+};
+
+enum marine_types_enum
+{
+	MTE_RIFLE_MARINE = 0,
+	MTE_SHOTGUN_MARINE = 1,
+	MTE_SSG_MARINE,
+	MTE_MINIGUN_MARINE,
+	MTE_RL_MARINE,
+	MTE_PLASMA_MARINE,
+	MTE_BFG_MARINE,
+	MTE_MAX_MARINE = MTE_BFG_MARINE + 1
+};
+
+
+enum doomb_monsters_limb_states
+{
+	DLF_NO_HEAD = 1,//1
+
+	DLF_NO_RIGHT_HAND = 1<<1,//2 -> 10
+	DLF_NO_LEFT_HAND = 1<<2,//4 -> 100
+	
+	DLF_NO_RIGHT_LEG = 1<<3,//8 -> 1000
+	DLF_NO_LEFT_LEG = 1<<4,//and so on
+
+	DLF_FINAL_ABSOLUTION = 1<<10//
+};
+
+enum efffect_type
+{
+	SOF_CRACK = 1,
+	SOF_BLUE_BLOOD = 1 << 1,
+	SOF_RED_BLOOD = 1 << 2,
+	SOF_GREEN_BLOOD = 1 << 3,
+};
+
+enum sfx_type_flags
+{
+	STF_NONE = 0,
+	STF_SFX = 1,
+	STF_FLARE = 2,
+};
+
+enum doomb_weapon_flags
+{
+    DWF_NONE = 0,
+    DWF_KICK = 1,
+    DWF_GRENADE,
+    DWF_DUALWIELD,
+    DWF_UNLOAD,
+    DWF_TAUNT,
+    DWF_SALUTE
+};
+

@@ -351,17 +351,6 @@ protected visual_sfx doomb_show_effect(statelabel effect_name, vector3 offset = 
 }
 
 
-enum DOOMB_WEAPON_FLAGS
-{
-    DWF_NONE = 0,
-    DWF_KICK = 1,
-    DWF_GRENADE,
-    DWF_DUALWIELD,
-    DWF_UNLOAD,
-    DWF_TAUNT,
-    DWF_SALUTE
-};
-
 
 class weapon_actions : eventhandler
 {

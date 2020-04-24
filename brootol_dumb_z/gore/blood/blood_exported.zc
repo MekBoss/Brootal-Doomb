@@ -40,52 +40,6 @@ CLASS doomb_red_blood_trail : doomb_blood {
 	}
 }
 
-//SLOWDOWN ADRESSED
-//doomb_for_khorne("Intestine", (0, 0, 0), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
-CLASS Intestine : doomb_blood
-{ 
-	Default {
-		Radius 8;
-		Height 12;
-		Speed 6;
-		Mass 1;
-		Renderstyle "Translucent";
-		Alpha 0.9;
-		Decal "BrutalBloodSplat";
-		Scale 1.1;
-		+missile;
-		+rollsprite
-		+ROLLCENTER;
-	}
-	States
-	{
-		Spawn:
-			tnt1 a 0 nodelay
-			{
-				a_setrenderstyle(1, STYLE_Translucent);
-				bmissile = true;
-				activate_blood();
-			}
-		spawn_loop:
-			GUTS A 1
-			{
-				vel.z -= 0.3;
-				roll += 20;
-			}
-		Loop;
-		
-		Death:
-			GUTS E 600
-			{
-				roll = 0;
-				angle = random(0, 180);
-				frame = random(4, 5);
-				bshootable = true;
-				a_playsound("misc/xdeath1", 1, 1);
-			}
-		goto wait_in_beaker;
-	}
-}
 
 CLASS doomb_sticky_meat: doomb_blood
 { 

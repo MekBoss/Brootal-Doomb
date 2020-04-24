@@ -534,7 +534,7 @@ CLASS doomb_Imp : doomb_monster_base
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TROG A 2;
 			TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+			TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_severed_limb("XDeathHalfImp", (0, 0, 40), doomb_random_velocity(5) );
 			TROG AAA 4 doomb_spawn_big_blood(30);
@@ -544,7 +544,7 @@ CLASS doomb_Imp : doomb_monster_base
 		Stop;
 
 		DeathNoGuts:
-			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 24), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+			TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 24), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 A 0 doomb_much_blood(30);
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			IMPC A 8 A_Scream;
@@ -572,7 +572,7 @@ CLASS doomb_Imp : doomb_monster_base
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_Jump(128, "Death.Blast2");
 			TNT1 A 0 A_XScream;
-			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+			TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_severed_limb("XDeathImpArm", (0, 0, 35), doomb_random_velocity(5) );
 			TNT1 A 0 doomb_severed_limb("XDeathImpHead", (0, 0, 35), doomb_random_velocity(5) );
@@ -608,7 +608,7 @@ CLASS doomb_Imp : doomb_monster_base
 			tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 			TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 35), 6);
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-			TNT1 AAA 0 doomb_for_khorne("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+			TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );

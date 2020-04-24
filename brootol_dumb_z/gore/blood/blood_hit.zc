@@ -1,17 +1,12 @@
-CLASS BloodHit : doomb_blood { 
+CLASS BloodHit : doomb_blood
+{
 	Default {
-		height 8;
-		radius 4;
-		+NOBLOCKMAP;
-		+NOGRAVITY;
-		+NOCLIP;
-		+CLIENTSIDEONLY;
 		Scale 0.7;
 	}
 	states
 	{
 		Spawn:
 			BLHT ABCDE 1;
-			Stop;
+		Stop;
 	}
 }
