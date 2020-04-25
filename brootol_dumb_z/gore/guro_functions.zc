@@ -80,7 +80,7 @@ protected void doomb_monster_xdeath(class<actor> type_1 = null, class<actor> typ
 	{
 		doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		doomb_gore_spawner();
+		doomb_blood_mist();
 		doomb_sticky_guro(SGT_BLOOD);
 		actor a = doomb_for_khorne("blood_impact_splash", (random(-20, 20), random(-20, 20), random(20, 30) ) );
 		if(a)
@@ -243,7 +243,7 @@ protected void doomb_spray_decal(string type = "BrutalBloodSuper", double distan
 	pitch = stored_pitch;
 }
 
-protected void doomb_gore_spawner(class<doomb_blood> type = 'blood_mist', vector3 offset = (0, 0, 5), uint times = 1, blood_color_flags color = BCF_NONE)
+protected void doomb_blood_mist(class<doomb_blood> type = 'blood_mist', vector3 offset = (0, 0, 5), uint times = 1, blood_color_flags color = BCF_NONE)
 {
 	for(uint tick = 0; tick < times; tick++)
 	{
@@ -346,7 +346,7 @@ protected void doomb_spray_decal(string type = "", double distance = 128, vector
 	pitch = stored_pitch;
 }
 
-protected void doomb_gore_spawner(class<actor> type = 'blood_mist', vector3 offset = (0, 0, 5), uint times = 1)
+protected void doomb_blood_mist(class<actor> type = 'blood_mist', vector3 offset = (0, 0, 5), uint times = 1)
 {
 	for(uint tick = 0; tick < times; tick++)
 	{

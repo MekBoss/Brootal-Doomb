@@ -649,7 +649,7 @@ CLASS DyingHellKnight : doomb_body_base
 		Death.Stomp:
 		Death.SSG:
 		XDeath:
-			TNT1 A 0 doomb_gore_spawner(null, (0, 0, 5), 6);
+			TNT1 A 0 doomb_blood_mist(null, (0, 0, 5), 6);
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 a 0 A_Givetotarget("CrueltyBonus5Health");
 			TNT1 A 0 doomb_severed_limb("CrushedRemains");
