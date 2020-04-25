@@ -238,7 +238,7 @@ CLASS doomb_evil_marine : doomb_monster_base
 	Crush:
 	Death.Stomp:
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		TNT1 A 0 doomb_gore_spawner('SuperGore', times:6);
+		TNT1 A 0 doomb_gore_spawner('blood_mist', times:6);
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem ("CrushedRemains");

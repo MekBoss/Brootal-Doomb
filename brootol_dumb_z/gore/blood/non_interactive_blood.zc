@@ -4,7 +4,7 @@ private uint frame_number;
 
 states
 {
-    //supergore
+    //blood_mist
     blood_mist:
         BLER G 1
         {

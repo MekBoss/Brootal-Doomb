@@ -352,14 +352,10 @@ CLASS DeadHalfMarine: CurbstompedMarine {
 }
 CLASS GutsPile : doomb_body_base
 { 
-	Default {
-		Radius 1;
-		Height 1;
-	}
 	States
 	{
 		Spawn:
-			GUTS P -1;
+			GUTS j -1;
 			Stop;
 	}
 	
@@ -390,10 +386,6 @@ CLASS doomb_half_burned_body : doomb_body_base {
 
 CLASS GibsZ : doomb_body_base
 { 
-	Default {
-		Radius 1;
-		Height 1;
-	}
 	States
 	{
 		Spawn:

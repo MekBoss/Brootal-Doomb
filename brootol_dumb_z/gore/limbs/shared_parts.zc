@@ -43,10 +43,6 @@ void set_appearance(shared_body_pieces_types type = 0)
 
 States
 {
-	//jaw
-	BRIB a 0;
-	//eye
-	brib e 0;
 	//head_piece
 	brib i 0;
 	//head_pieceGreenBig
@@ -60,7 +56,7 @@ States
 	//SmallBrainPiece 2
 	XDT5 O 800;
 	//stomach with intestines (XDeathStomach)
-	XSTO a 0;
+	guts k 0;
 
 	//BrainsSergeantHeadPiece
 	BR7B E 0;
@@ -103,7 +99,7 @@ CLASS jaw : doomb_body_piece_base {
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			BRIB ABCDG 4 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
+			GIBD H 4 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
 		Loop;
 	}
 }
@@ -120,7 +116,7 @@ CLASS eye : doomb_body_piece_base { //Eyeballs
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			BRIB EFGH 4 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
+			GIBD J 4 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
 		Loop;
 	}
 }
@@ -205,4 +201,134 @@ CLASS SmallBrainPiece : doomb_body_base {
 			XDT5 "#" 35 a_fadeout(0.05);
 		wait;
 	}
+}
+
+
+
+
+class doomb_generic_internal_organ : doomb_body_base
+{
+Default
+{
+	Radius 2;
+	Height 2;
+	Speed 6;
+	Mass 1;
+	Decal "BrutalBloodSplat";
+	-solid
+	+CLIENTSIDEONLY;
+	BounceFactor 0.4;
+	+MISSILE;
+	+NOTELEPORT;
+	+DONTSPLASH;
+	+MOVEWITHSECTOR;
+	+FLOORCLIP;
+	+ROLLCENTER;
+	+rollsprite
+	Scale 0.8;
+}
+
+void set_gib_appearance()
+{
+	scale.x *= randompick(-1, 1);
+}
+
+States
+{
+	//generic gibs
+	gib_1:
+		gibd a 1;
+	stop;
+
+	gib_2:
+		gibd b 2;
+	stop;
+	
+	gib_3:
+		gibd c 2;
+	stop;
+
+	gib_4:
+		gibd d 2;
+	stop;
+
+	gib_5:
+		gibd e 2;
+	stop;
+
+	gib_6:
+		gibd f 2;
+	stop;
+
+	gib_6:
+		gibd g 2;
+	stop;
+
+
+	jaw:
+		GIBD H 1;
+	stop;
+
+	eye:
+		GIBD J 1;
+	stop;
+
+
+
+
+
+
+
+
+	//organs
+	heart:
+		guts a 1;
+	stop;
+
+	//itenstines
+	intestine_1:
+		guts b 1;
+	stop;
+		
+	intestine_2:
+		guts c 1;
+	stop;
+
+	stomach_1:
+		guts d 1;
+	stop;
+
+	stomach_2:
+		guts e 1;
+	stop;
+
+	stomach_3:
+		guts f 1;
+	stop;
+
+	stomach_4:
+		guts g 1;
+	stop;
+
+	stomach_5:
+		guts h 1;
+	stop;
+
+
+
+	//specific intestines
+	guts_pile:
+		guts h 1;
+	stop;
+
+	guts_pile_1_flying:
+		guts k 1;
+	stop;
+
+	guts_pile_1_lying:
+		guts l 1;
+	stop;
+
+}
+
 }

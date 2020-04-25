@@ -134,13 +134,13 @@ CLASS XDeathStomach: XDeathArm1 {
 	{
 		Spawn:
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-			XSTO A 24 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
+			guts k 24 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
 			Loop;
 		Death:
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			tnt1 EEEEEEEEE 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-			XSTO E 9009;
-			Stop;
+			guts l 9009;
+		Stop;
 	}
 }
 
@@ -260,7 +260,7 @@ CLASS BurningFlyingMeatPiece : doomb_body_base {
 		Loop;
 
 		Death:
-			XME1 E 1 doomb_spawn_bloodpool(BPS_SMALL);
+			tnt1 a 1 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 AAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			XME1 EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 7 doomb_show_effect("FlameTrails", velocity: (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			XME1 E 9009;
@@ -493,7 +493,6 @@ States
 	xme1 a 0;
 	xme2 a 0;
 	xme3 a 0;
-	xme4 a 0;
 	xme5 a 0;
 	xme7 a 0;
 	xme8 a 0;
@@ -517,7 +516,7 @@ States
 				break;
 
 				case 3:
-					sprite = getspriteindex("XME4");
+					sprite = getspriteindex("XME8");
 				break;
 
 				case 4:
@@ -526,10 +525,6 @@ States
 
 				case 5:
 					sprite = getspriteindex("XME7");
-				break;
-
-				case 6:
-					sprite = getspriteindex("XME8");
 				break;
 			}
 		}

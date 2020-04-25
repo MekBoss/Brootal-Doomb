@@ -358,7 +358,7 @@ states
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 A 0 doomb_spawn_bloodpool();
-		TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 30), 6);
+		TNT1 A 0 doomb_gore_spawner(null, (0, 0, 30), times:6);
 		ID50 ABCDEF 7;
 		ID50 GGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGGG 13 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 		ID50 G -1;

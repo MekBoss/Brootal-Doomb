@@ -243,10 +243,13 @@ protected void doomb_spray_decal(string type = "BrutalBloodSuper", double distan
 	pitch = stored_pitch;
 }
 
-protected void doomb_gore_spawner(class<doomb_blood> type = 'SuperGore', vector3 offset = (0, 0, 5), uint times = 1, blood_color_flags color = BCF_NONE)
+protected void doomb_gore_spawner(class<doomb_blood> type = 'blood_mist', vector3 offset = (0, 0, 5), uint times = 1, blood_color_flags color = BCF_NONE)
 {
 	for(uint tick = 0; tick < times; tick++)
 	{
+		if(type == null)
+			type = 'blood_mist';
+
 		vector3 origin = (frandom(-1, 1), frandom(-1, 1), frandom(-0.1, 1) );
 		origin *= 10;
 		
@@ -343,7 +346,7 @@ protected void doomb_spray_decal(string type = "", double distance = 128, vector
 	pitch = stored_pitch;
 }
 
-protected void doomb_gore_spawner(class<actor> type = 'SuperGore', vector3 offset = (0, 0, 5), uint times = 1)
+protected void doomb_gore_spawner(class<actor> type = 'blood_mist', vector3 offset = (0, 0, 5), uint times = 1)
 {
 	for(uint tick = 0; tick < times; tick++)
 	{

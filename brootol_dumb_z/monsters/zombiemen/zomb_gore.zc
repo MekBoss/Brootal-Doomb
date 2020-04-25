@@ -1996,7 +1996,7 @@ CLASS DyingZombieman : doomb_body_base
 		
 	Death.SSG:
 	XDeath:
-		TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 5), 6);
+		TNT1 A 0 doomb_gore_spawner(null, (0, 0, 5), 6);
 		TNT1 AAAAAA 0 bright doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AA 0 bright doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AA 0 bright doomb_spawn_entrails( (0, 0, random(30, 35) ) );
@@ -2025,7 +2025,7 @@ CLASS DyingZombieman : doomb_body_base
 	Crush:
 	Death.Stomp:
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
-		TNT1 A 0 doomb_gore_spawner('SuperGore', (0, 0, 5), 6);
+		TNT1 A 0 doomb_gore_spawner(null, (0, 0, 5), 6);
 		TNT1 AAAAAA 0 bright doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AA 0 bright doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AA 0 bright doomb_spawn_entrails( (0, 0, random(30, 35) ) );
