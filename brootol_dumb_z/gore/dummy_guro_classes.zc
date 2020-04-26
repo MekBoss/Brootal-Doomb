@@ -1,0 +1,30 @@
+//this excist because zscript dosent not have overloading feature for custom functions
+//basically it just collections of a classes each of which contain information which represent specific guro actor
+//this information then used to "spawn" it specific reusable copy
+class doomb_guro_placeholder : actor abstract
+{
+uint actor_type;
+
+property actor_type : actor_type;
+
+default
+{
+    doomb_guro_placeholder.actor_type 0;
+}
+
+}
+
+class blood_mist : doomb_guro_placeholder
+{default{doomb_guro_placeholder.actor_type DGF_BLOOD_MIST;}}
+
+class TinyBlood : doomb_guro_placeholder
+{default{doomb_guro_placeholder.actor_type DGF_BLOOD_DROPLET;}}
+
+class blood_impact_splash : doomb_guro_placeholder
+{default{doomb_guro_placeholder.actor_type DGF_BLOOD_DROPLET;}}
+
+class BloodHit : doomb_guro_placeholder
+{default{doomb_guro_placeholder.actor_type DGF_BLOOD_HIT;}}
+
+class doomb_red_blood_trail : doomb_guro_placeholder
+{default{doomb_guro_placeholder.actor_type DGF_RED_BLOOD_TRAIL;}}

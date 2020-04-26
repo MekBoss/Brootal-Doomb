@@ -86,4 +86,8 @@ enum doomb_dummy_guro
 {
 	DGF_NONE = 0,
 	DGF_BLOOD_MIST = 1,
+	DGF_BLOOD_DROPLET = 2,
+	DGF_BLOOD_IMPACT_SPLASH = 3,
+	DGF_BLOOD_HIT = 4,
+	DGF_RED_BLOOD_TRAIL = 5,
 };

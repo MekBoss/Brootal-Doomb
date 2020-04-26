@@ -68,48 +68,6 @@ CLASS Cyberdemon_Blood : doomb_blood
 
 
 
-//doomb_for_khorne("blood_impact_splash", (0, 0, random(20, 30) ) );
-CLASS blood_impact_splash : doomb_blood
-{
-	Default {
-		decal "BrutalBloodSuper";
-		+nointeraction;
-		+ROLLCENTER;
-		+rollsprite
-		+noclip
-		scale    0.8;
-		radius    2;
-		height    2;
-		Gravity 0.4;
-		RenderStyle   "Translucent";
-		alpha    0.9;
-	}
-
-	private uint frame_number;
-
-	states
-	{
-		Spawn:
-			TNT1 A 0 nodelay
-			{
-				scale *= frandom(0.8, 1.2);
-				roll = random(-90, 90);
-				frame_number = randompick(0, 7);
-				activate_blood();
-			}
-			MSBL ABCDEFG 1
-			{
-				frame = frame_number;
-				frame_number ++;
-			}
-			tnt1 a 0
-			{
-				if(get_init_state() == false )
-					destroy();
-			}
-		goto wait_in_beaker;
-	}
-}
 
 
 

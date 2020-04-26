@@ -59,6 +59,20 @@ protected class<actor> weapon_type;
 
 Property weapon_type : weapon_type;
 
+default
+{
+	doomb_monster_base.headshot_multiplier 1;
+	doomb_monster_base.head_starting_position -1;//so that if someone forgot to define this number monster dont get headshot from every attack
+	doomb_monster_base.legs_height_max -1;//same for legs
+	monster;
+	
+	doomb_monster_base.blood_color "";//by default it "null", empty string
+	doomb_monster_base.blood_size "";//same for size
+
+	doomb_monster_base.weapon_type '';//weapon type must be defined in 'final' monster definition
+}
+
+
 //true weapon, false ammo
 protected bool chose_what_spawn()
 {
@@ -85,6 +99,19 @@ protected void spawn_reward()
 }
 
 protected bool called_die;
+default
+{
+	doomb_monster_base.headshot_multiplier 1;
+	doomb_monster_base.head_starting_position -1;//so that if someone forgot to define this number monster dont get headshot from every attack
+	doomb_monster_base.legs_height_max -1;//same for legs
+	monster;
+	
+	doomb_monster_base.blood_color "";//by default it "null", empty string
+	doomb_monster_base.blood_size "";//same for size
+
+	doomb_monster_base.weapon_type '';//weapon type must be defined in 'final' monster definition
+}
+
 
 override void Die(Actor source, Actor inflictor, int dmgflags, Name MeansOfDeath)
 {
@@ -108,6 +135,19 @@ override void OnDestroy()
 	super.ondestroy();
 }
 */
+default
+{
+	doomb_monster_base.headshot_multiplier 1;
+	doomb_monster_base.head_starting_position -1;//so that if someone forgot to define this number monster dont get headshot from every attack
+	doomb_monster_base.legs_height_max -1;//same for legs
+	monster;
+	
+	doomb_monster_base.blood_color "";//by default it "null", empty string
+	doomb_monster_base.blood_size "";//same for size
+
+	doomb_monster_base.weapon_type '';//weapon type must be defined in 'final' monster definition
+}
+
 
 protected void doomb_if_boss_retreat(actor who = null, statelabel retereat_to = null)
 {
@@ -431,20 +471,20 @@ void set_blood_throne(eventhandler e)
         blood_throne = e;
 }
 
-protected actor doomb_for_khorne(class<doomb_blood> it = null, vector3 off = (0, 0, 1), vector3 vel_dir = (0, 0, 0) )
+protected actor doomb_for_khorne(class<actor> it = null, vector3 off = (0, 0, 1), vector3 vel_dir = (0, 0, 0) )
 {
 	if(blood_throne && it && doomb_blood_spawner && waterlevel < 1)
 	{
-		if(it is "doomb_blood")
+		if(it is 'doomb_blood' || it is 'doomb_guro_placeholder')
 		{
 			doomb_blood b = doomb_blood_god(blood_throne).doomb_blood_bank(it);
-			if(b)
-			{
-				b.setorigin(pos + off, false);
-				b.vel = vel_dir;
-				b.setstate(b.findstate("spawn"));
-				return b;
-			}
+			
+			if(!b)
+				return null;
+	
+			b.setorigin(pos + off, false);
+			b.vel = vel_dir;
+			return b;
 		}
 	}
 
@@ -455,14 +495,15 @@ protected doomb_body_base doomb_severed_limb(class<doomb_body_base> it = null, v
 {
 	if(blood_throne && it && (doomb_body_parts == true || limb_ignore_cvar == true) )
 	{
-		if(it is "doomb_body_base")
+		if(it is "doomb_body_base" || it is 'doomb_guro_placeholder')
 		{
-			doomb_body_base b = doomb_body_base(spawn(it, pos + offset) );
-			if(b)
-			{
-				b.vel = vel_dir;
-				return b;
-			}
+			doomb_body_base b = doomb_blood_god(blood_throne).doomb_butcher(it);
+			if(!b)
+				return null;
+
+			b.setorigin(pos + offset, false);
+			b.vel = vel_dir;
+			return b;
 		}
 	}
 

@@ -1,4 +1,7 @@
 #include "brootol_dumb_z/gore/guro_functions.zc"
+#include "brootol_dumb_z/gore/dummy_guro_classes.zc"
+
+
 
 class doomb_blood_god :eventhandler
 {
@@ -27,36 +30,115 @@ override void worldtick()
 //////////////////////////////////////////////////////////////
 private array<doomb_blood> blood_stains;
 
+private array<doomb_non_interactive_blood> non_interactive_blood;//silly, I know
+
+
 private doomb_blood doomb_find_fresh_blood(class<actor> type = null)
 {
-    if(type && type is "doomb_blood")
-    {
-        for(uint i = 0; i <= blood_stains.size(); i++)
-        {
-            if(i == blood_stains.size() )
-            {
-                doomb_blood b = doomb_blood(actor.spawn(type, (double.infinity, double.infinity, double.infinity)));
-                b.set_init(true);
-                blood_stains.push(b);
-                return b;
+    if(type)
+	{
+		if(type is "doomb_blood")
+		{
+			for(uint i = 0; i <= blood_stains.size(); i++)
+			{
+				if(i == blood_stains.size() )
+				{
+					doomb_blood b = doomb_blood(actor.spawn(type, (double.infinity, double.infinity, double.infinity)));
+					b.set_init(true);
+					blood_stains.push(b);
+					b.setstatelabel("spawn");
+					return b;
+					break;
+				}
+
+				if(blood_stains[i] && blood_stains[i].getclass() == type && doomb_blood(blood_stains[i]).is_active() == false)
+				{
+					doomb_blood b = doomb_blood(actor.spawn(type, (double.infinity, double.infinity, double.infinity)));
+					b.setstatelabel("spawn");
+					return b;
+					break;
+				}
+
+				else if (!blood_stains[i])
+				{
+					blood_stains.delete(i);
+					i--;
+				}
+			}
+		}
+	
+
+		//ultra hack here
+		//because zscript dont have function overloading
+		//it read dummy actors field and "spawn" specific which decrease performance impact
+		else if(type is 'doomb_guro_placeholder')
+		{
+			actor b = null;
+
+			for(uint i = 0; i <= non_interactive_blood.size(); i++)
+			{
+				if(i == non_interactive_blood.size() )
+				{
+					b = doomb_non_interactive_blood(actor.spawn('doomb_non_interactive_blood', (double.infinity, double.infinity, double.infinity)));
+					doomb_non_interactive_blood(b).set_init(true);
+					non_interactive_blood.push(doomb_non_interactive_blood(b) );
+					break;
+				}
+
+				if(non_interactive_blood[i] && non_interactive_blood[i].getclass() == type && doomb_blood(non_interactive_blood[i]).is_active() == false)
+				{
+					b = doomb_blood(non_interactive_blood[i]);
+					b.setstatelabel("spawn");
+					break;
+				}
+
+				else if (!non_interactive_blood[i])
+				{
+					non_interactive_blood.delete(i);
+					i--;
+				}
+			}
+
+			if(!b)
+				return null;
+
+			let temp = GetDefaultByType(type);
+
+			statelabel test = null;
+
+			switch(doomb_guro_placeholder(temp).actor_type)
+			{
+				case 0:
+				case DGF_NONE:
+				default:
+					console.printf("no states for non interactive blood");
 				break;
-            }
 
-            if(blood_stains[i] && blood_stains[i].getclass() == type && doomb_blood(blood_stains[i]).is_active() == false)
-            {
-                return doomb_blood(blood_stains[i]);
+
+				case DGF_BLOOD_MIST:
+					b.setstatelabel('blood_mist');
 				break;
-            }
 
-            else if (!blood_stains[i])
-            {
-                blood_stains.delete(i);
-                i--;
-            }
-        }
+				case DGF_BLOOD_DROPLET:
+					b.setstatelabel('blood_droplets');
+				break;
+		
+				case DGF_BLOOD_IMPACT_SPLASH:
+					b.setstatelabel('blood_impact_splash');
+				break;
 
-    }
+				case DGF_BLOOD_HIT:
+					b.setstatelabel('blood_hit');
+				break;
 
+				case DGF_RED_BLOOD_TRAIL:
+					b.setstatelabel('red_blood_trail');
+				break;
+			}
+
+			return doomb_blood(b);
+		}
+	}
     return null;
 }
 
@@ -66,6 +148,116 @@ doomb_blood doomb_blood_bank(class<actor> type = null)
 }
 //////////////////////////////////////////////////////////////
 //ends here
+//////////////////////////////////////////////////////////////
+
+
+
+
+
+
+//////////////////////////////////////////////////////////////
+//handling of gibs/intestines/internals/etc.
+//////////////////////////////////////////////////////////////
+private array<doomb_body_base> common_gibs;
+
+
+private doomb_body_base doomb_butcher_shop(class<actor> type = null)
+{
+    if(type)
+	{
+		if(type is "doomb_body_base")
+		{
+			for(uint i = 0; i <= common_gibs.size(); i++)
+			{
+				if(i == common_gibs.size() )
+				{
+					doomb_body_base g = doomb_body_base(actor.spawn(type, (double.infinity, double.infinity, double.infinity)));
+					g.event_initialization(self);
+					common_gibs.push(g);
+					g.setstatelabel("spawn");
+					return g;
+					break;
+				}
+
+				if(common_gibs[i] && common_gibs[i].getclass() == type && doomb_body_base(common_gibs[i]).is_busy() == false)
+				{
+					doomb_body_base g = doomb_body_base(actor.spawn(type, (double.infinity, double.infinity, double.infinity)));
+					g.setstatelabel("spawn");
+					return g;
+					break;
+				}
+
+				else if (!common_gibs[i])
+				{
+					common_gibs.delete(i);
+					i--;
+				}
+			}
+		}
+/*
+
+		//ultra hack here
+		//because zscript dont have function overloading
+		//it read dummy actors field and "spawn" specific which decrease performance impact
+		else if(type is 'doomb_guro_placeholder')
+		{
+			actor g = null;
+
+			for(uint i = 0; i <= common_gibs.size(); i++)
+			{
+				if(i == common_gibs.size() )
+				{
+					g = doomb_non_interactive_blood(actor.spawn('doomb_non_interactive_blood', (double.infinity, double.infinity, double.infinity)));
+					doomb_non_interactive_blood(g).set_init(true);
+					common_gibs.push(doomb_non_interactive_blood(g) );
+					break;
+				}
+
+				if(common_gibs[i] && common_gibs[i].getclass() == type && doomb_blood(common_gibs[i]).is_active() == false)
+				{
+					g = doomb_blood(common_gibs[i]);
+					break;
+				}
+
+				else if (!common_gibs[i])
+				{
+					common_gibs.delete(i);
+					i--;
+				}
+			}
+
+			if(!g)
+				return null;
+
+			let temp = GetDefaultByType(type);
+
+			statelabel test = null;
+
+			switch(doomb_guro_placeholder(temp).actor_type)
+			{
+				case 0:
+				case DGF_NONE:
+				default:
+				break;
+
+
+				case DGF_BLOOD_MIST:
+					g.setstatelabel('blood_mist');
+				break;
+			}
+			return doomb_body_base(g);
+		}
+*/
+	}
+    return null;
+}
+
+doomb_body_base doomb_butcher(class<actor> type = null)
+{
+    return doomb_butcher_shop(type);
+}
+//////////////////////////////////////////////////////////////
+//end here
 //////////////////////////////////////////////////////////////
 
 

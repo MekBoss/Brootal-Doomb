@@ -1,5 +1,6 @@
 //FIXME spawns at the sector floor, not ceiling
-CLASS doomb_blood_dripping_ceiling: doomb_red_blood_trail  { 
+CLASS doomb_blood_dripping_ceiling: doomb_blood
+{ 
 	Default {
 		+THRUACTORS;
 		+BLOODLESSIMPACT;
@@ -24,60 +25,5 @@ CLASS doomb_blood_dripping_ceiling: doomb_red_blood_trail  {
 			BPDL a 2000;
 			BPDL A 1 A_FadeOut(0.1);
 		wait;
-	}
-}
-
-//SLOWDOWN ADRESSED
-//doomb_for_khorne("TinyBlood", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-CLASS TinyBlood : doomb_blood
-{ 
-	Default {
-		scale 0.2;
-		speed 7;
-		radius 8;
-		height 1;
-		Gravity 0.7;
-		XScale 0.4;
-		YScale 0.8;
-		+DontSplash;
-		+MISSILE;
-		+CLIENTSIDEONLY;
-		+NOTELEPORT;
-		+NOBLOCKMAP;
-		+FORCEXYBILLBOARD;
-		-EXPLODEONWATER;
-		+DOOMBOUNCE;
-	}
-	States
-	{
-		Spawn:
-			tnt1 a 0 nodelay
-			{
-				a_setscale(frandom(0.8, 1.2) );
-				activate_blood();
-			}
-		mini:
-			BLUD Z 1
-			{
-				if(pos.z <= floorz || waterlevel > 1)
-					setstatelabel("death");
-				
-				vel.z -= 2;
-			}
-		loop;
-
-		Splash:
-			TNT1 A 0 A_SpawnProjectile ("Underblood1", 7, 0, random (0, 360), 2, - random (30, 150));
-		goto wait_in_beaker;
-
-		Death:
-			tnt1 a 0
-			{
-				vel = (0, 0, 0);
-				A_PlaySound("blooddrop3");
-			}
-			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-			XDT1 EFGHIJKL 2;
-		goto wait_in_beaker;
 	}
 }
