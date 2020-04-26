@@ -81,3 +81,9 @@ enum doomb_weapon_flags
     DWF_SALUTE
 };
 
+
+enum doomb_dummy_guro
+{
+	DGF_NONE = 0,
+	DGF_BLOOD_MIST = 1,
+};
