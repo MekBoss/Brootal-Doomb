@@ -1,6 +1,5 @@
 extend class doomb_monster_base
 {
-	
 protected void doomb_sticky_guro(sticky_guro_type type = SGT_NONE)
 {
 	if(type == SGT_NONE)
@@ -285,15 +284,25 @@ protected void doomb_blood_mist(class<actor> type = 'blood_mist', vector3 offset
 	}
 }
 
-protected void doomb_spawn_entrails(vector3 offset = (0, 0, 0) )
+protected void doomb_spawn_entrails(vector3 offset = (0, 0, 0), blood_color_flags color = BCF_NONE)
 {
 	for(uint i = 0; i < 5; i++)
 	{
-		doomb_internal_organs a = doomb_internal_organs( doomb_severed_limb("doomb_internal_organs", offset, doomb_random_velocity(5) ) );
+		doomb_internal_organ a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", offset, doomb_random_velocity(5) ) );
 
 		if(a)
-			a.set_sprite_type(i);
+			a.set_gib_appearance(0, DIT_GIB, color);
+
+		a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", offset, doomb_random_velocity(5) ) );
+
+		if(a)
+			a.set_gib_appearance(0, DIT_INTESTINE, color);
 	}
+
+	doomb_internal_organ a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", offset, doomb_random_velocity(5) ) );
+
+	if(a)
+		a.set_gib_appearance(0, DIT_STOMACH, color);
 }
 
 }
@@ -365,12 +374,14 @@ protected void doomb_blood_mist(class<actor> type = 'blood_mist', vector3 offset
 	}
 }
 
-protected void doomb_spawn_entrails(vector3 offset = (0, 0, 0) )
+protected void doomb_spawn_entrails(vector3 offset = (0, 0, 0), doomb_internals_type type = DIT_GIB, blood_color_flags color = BCF_NONE)
 {
 	for(uint i = 0; i < 5; i++)
 	{
-		doomb_internal_organs a = doomb_internal_organs( doomb_severed_limb("doomb_internal_organs", offset, doomb_random_velocity(6) ) );
-		a.set_sprite_type(i);
+		doomb_internal_organ a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", offset, doomb_random_velocity(5) ) );
+
+		if(a)
+			a.set_gib_appearance(0, type, color);
 	}
 }
 

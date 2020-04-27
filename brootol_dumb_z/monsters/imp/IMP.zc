@@ -150,21 +150,6 @@ CLASS doomb_Imp : doomb_monster_base
 			TROO I 4;
 		Goto SeeContinue;
 			
-		Death.Eat:
-			TNT1 A 0 A_NoBlocking;
-			TNT1 A 0 A_Scream;
-			TNT1 A 0 A_GiveToTarget("ImpFatality",1);
-		Stop;
-
-		Death.HelperMarineFatallity:
-		Death.RVFT:
-			TNT1 A 1 A_Pain;
-			TNT1 A 0 A_Scream;
-			TNT1 A 0 A_NoBlocking;
-			TNT1 A 0 A_GiveToTarget("ImpFatality3", 1);
-			TNT1 A 0 A_GiveToTarget("ImpFatality", 1);
-		Stop;
-
 		Pain:
 			TNT1 A 0 A_JumpIfInventory("IsDown", 1, "Pain.IsDown");
 			TROO H 3;
@@ -253,11 +238,23 @@ CLASS doomb_Imp : doomb_monster_base
 		Goto Death.Explosive_Impact+1;
 			
 			
-		PainHurt:
-			TROO H 1;
-			TROO H 1 A_Pain;
-			Goto SeeContinue;
-			
+		Death.Eat:
+			TNT1 A 0 A_NoBlocking;
+			TNT1 A 0 A_Scream;
+			TNT1 A 0 A_GiveToTarget("ImpFatality",1);
+		Stop;
+
+		Death.HelperMarineFatallity:
+		Death.RVFT:
+			TNT1 A 1 A_Pain;
+			TNT1 A 0 A_Scream;
+			TNT1 A 0 A_NoBlocking;
+			TNT1 A 0 A_GiveToTarget("ImpFatality3", 1);
+			TNT1 A 0 A_GiveToTarget("ImpFatality", 1);
+		Stop;
+
+
+
 		Death.Shotgun:
 			TNT1 A 0 {bSLIDESONWALLS = false;}
 			TNT1 A 0 A_Jump(42, "Death.Shotgunontheface");
@@ -271,14 +268,17 @@ CLASS doomb_Imp : doomb_monster_base
 			TNT1 A 0 A_Jump(128, "DeathJump");
 			TNT1 A 0 A_Jump(32, "Death.ARm");
 			TNT1 A 0 A_Jump(96, "DeathNoGuts");
-			TNT1 A 0 A_Jump(128, "DeathShotgunontheface2");
-			TNT1 A 0 A_Pain;
 			TROO H 1 A_FaceTarget;
 			TNT1 A 0 A_Recoil(13);
 			TNT1 A 0 ThrustThingZ(0,20,0,1);
 			TNT1 A 0 A_Scream;
 			TNT1 A 0 doomb_much_blood(35);
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+			TNT1 A 0
+			{
+				if(random(0, 1) == 1)
+				scale.x *= -1;
+			}
 			TR06 ABCDE 4 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TR06 FGHIJK 4 A_JumpIf(vel == (0, 0, 0), "DSFStop");
 		Goto DSFStop+1;
@@ -286,28 +286,15 @@ CLASS doomb_Imp : doomb_monster_base
 		DSFStop:
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-			TNT1 A 0 doomb_severed_limb("DeadImpTR06K", limb_ignore_cvar: true);
+			TNT1 A 0
+			{
+				actor a = doomb_severed_limb("DeadImpTR06K", limb_ignore_cvar: true);
+				if(a && scale.x == -1)
+					a.scale.x *= -1;
+			}
 		Stop;
 
-		DeathShotgunontheface2:
-			TNT1 A 0 A_NoBlocking;
-			TNT1 A 0 A_Stop;
-			TNT1 A 0 A_Pain;
-			TROO H 1 A_FaceTarget;
-			TNT1 A 0 A_Scream;
-			TNT1 A 0 A_Recoil(13);
-			TNT1 A 0 ThrustThingZ(0,20,0,1);
-			TNT1 A 0 doomb_much_blood(35);
-			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-			TR06 LMNO 4 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			TR06 QRSTU 4 A_JumpIf((vel.Y == 0), "DSFStop2");
-		Goto DSFStop2+1;
 			
-		DSFStop2:
-			TNT1 A 0 doomb_spawn_bloodpool();
-			TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-			TNT1 A 0 doomb_severed_limb("DeadImpTR06V", limb_ignore_cvar: true);
-		Stop;
 			
 		Death.MinorLeg:
 			TNT1 A 0 A_Jump(48, "Death.Leg");
@@ -346,8 +333,8 @@ CLASS doomb_Imp : doomb_monster_base
 			
 		Death20alt:
 			TNT1 A 0 A_Scream;
-			TROD ABCD 6;
 			TNT1 A 0 A_NoBlocking;
+			TROD ABCD 6;
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 doomb_severed_limb("ImpDyingOfBloodLoss", limb_ignore_cvar: true);
 		Stop;
@@ -406,8 +393,7 @@ CLASS doomb_Imp : doomb_monster_base
 		Stop;
 			
 		TakeASit:
-			TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-			ID11 B 5;
+			ID11 B 5 doomb_spray_decal("BrutalBloodSuper", times: 5);
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 doomb_severed_limb("DeadImp_Slumped", limb_ignore_cvar: true);
 		Stop;
@@ -473,10 +459,7 @@ CLASS doomb_Imp : doomb_monster_base
 			
 			
 		DeathMirror:
-			TROO V 9;
-			TROO W 9 A_Scream;
-			TROO X 8 A_NoBlocking;
-			TROO Y 8;
+			TROO VWXY 9;
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 doomb_severed_limb("DeadImpMinorHeadShot", limb_ignore_cvar: true);
 		Stop;
@@ -485,10 +468,8 @@ CLASS doomb_Imp : doomb_monster_base
 			TNT1 AAAAAAAAA 0 doomb_for_khorne("brutal_Blood", (0, 0, 50), doomb_random_velocity(5) );
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			TNT1 A 0 doomb_severed_limb("XDeathImpHead", (0, 0, 50), doomb_random_velocity(5) );
-			TROH A 9;
-			TROH B 9 A_XScream;
-			TROH C 8 A_NoBlocking;
-			TROH DE 8;
+			TROH A 9 a_screamandunblock;
+			TROH BCDE 8;
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 doomb_severed_limb("DeadImp_NoHead", limb_ignore_cvar: true);
 		Stop;

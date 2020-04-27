@@ -1,5 +1,5 @@
 //SLOWDOWN ADRESSED
-CLASS Brutal_Blood : doomb_blood Replaces Blood
+CLASS Brutal_Blood : doomb_blood// Replaces Blood
 {
 	Default {
 		renderstyle "normal";

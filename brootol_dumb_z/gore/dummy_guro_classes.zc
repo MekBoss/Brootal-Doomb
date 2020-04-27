@@ -28,3 +28,4 @@ class BloodHit : doomb_guro_placeholder
 
 class doomb_red_blood_trail : doomb_guro_placeholder
 {default{doomb_guro_placeholder.actor_type DGF_RED_BLOOD_TRAIL;}}
+

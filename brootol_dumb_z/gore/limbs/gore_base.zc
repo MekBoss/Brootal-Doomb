@@ -15,6 +15,8 @@ protected bool bleeding;
 
 default
 {
+	radius 5;
+	height 10;
     -ismonster
 	-countkill
 	-solid
@@ -35,6 +37,11 @@ void event_initialization(eventhandler who = null)
 
 protected bool busy;
 
+protected void set_busy()
+{
+	busy = true;
+}
+
 clearscope bool is_busy() const
 {
 	return busy;
@@ -50,6 +57,19 @@ protected void doomb_blood_dying()
 		doomb_for_khorne("BloodHit", (0, 0, 30) );
 		doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 	}
+}
+
+States
+{
+	reset_self_state:
+		tnt1 a -1
+		{
+			roll = 0;
+			a_settranslation('normal');
+			setorigin((double.infinity, double.infinity, double.infinity), false);
+			busy = false;
+		}
+	stop;
 }
 
 }

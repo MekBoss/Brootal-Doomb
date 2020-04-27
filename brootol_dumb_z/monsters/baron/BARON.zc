@@ -210,11 +210,12 @@ States
 	Goto See2;
 		
 	Death:
-		BOSS I 8;
-		BOSS J 8 A_Scream;
-		BOSS K 8 A_BossDeath;
-		BOSS L 8 A_NoBlocking;
-		BOSS MN 8;
+		BOSS I 8
+		{
+			A_Screamandunblock();
+			A_BossDeath();
+		}
+		BOSS JKLMN 8;
 		BOSS O -1;
 	Stop;
 		
@@ -231,7 +232,7 @@ States
 	Death.SSG:
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 A_NoBlocking;
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ), BCF_GREEN);
 		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 AAA 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 60) );
@@ -256,10 +257,9 @@ States
 	Goto Missile;
 		
 	Death.Explosive_Impact:
-		TNT1 A 0;
 		TNT1 A 0 ThrustThingZ(0,35,0,1);
 		TNT1 A 0 doomb_severed_limb("XDeathHellKnightLeg", (0, 0, 32), limb_ignore_cvar: true);
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ), BCF_GREEN);
 		TNT1 A 0 doomb_much_blood(62);
 		TNT1 A 0 A_Jump(255, "Death.Explosive_Impact1", "Death.Explosive_Impact2");
 	Death.Explosive_Impact1:
@@ -297,7 +297,7 @@ States
 	Death.Crush:
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 A_NoBlocking;
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ), BCF_GREEN);
 		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 A 0 doomb_severed_limb("XDeathHalfBOH", (0, 0, 24), limb_ignore_cvar: true);
@@ -328,7 +328,7 @@ States
 			switch(random(0, 3))
 			{
 				case 0:
-					doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+					doomb_spawn_entrails( (0, 0, random(30, 35) ), BCF_GREEN);
 					doomb_severed_limb("XDeathBaronHead5", (0, 0, 62), limb_ignore_cvar: true);
 				break;
 
@@ -348,7 +348,6 @@ States
 
 	Death.Plasma:
 	Death.Plasma2:
-		TNT1 A 0;
 		TNT1 A 0 A_BossDeath;
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 A_NoBlocking;
@@ -364,7 +363,6 @@ States
 	Stop;
 	
 	Death.Fire:
-		TNT1 A 0;
 		TNT1 A 0 A_BossDeath;
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 A_NoBlocking;
@@ -377,9 +375,8 @@ States
 
 	
 	CurbstompMarine:
-		TNT1 A 0 A_SetInvulnerable;
-		KNTF A 15;
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		KNTF A 15 A_SetInvulnerable;
+		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ), BCF_GREEN);
 		KNTF BCD 8 doomb_much_blood();
 		EXPL A 0 Radius_Quake (2, 24, 0, 15, 0);
 		TNT1 A 0 doomb_much_blood();
@@ -400,7 +397,7 @@ States
 		3HF1 A 20;
 		TNT1 A 0 A_PlaySound("grunt/death");
 		3HF1 BC 5;
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ), BCF_GREEN);
 		3HF1 BCBC 5;
 		TNT1 A 0 doomb_much_blood(55);
 		3HF1 D 10;
@@ -421,7 +418,7 @@ States
 		TNT1 A 0 A_PlaySound("grunt/death");
 		3HF1 I 5;
 		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ), BCF_GREEN);
 		TNT1 A 0 doomb_severed_limb("SergeantFatalizedByBaron", (0, 0, 65) , (random(-3, 3), random (-3, 3), frandom(0, 3) ) );
 		3HF1 J 10;
 		3HF1 KLM 15;
@@ -438,7 +435,7 @@ States
 		TNT1 A 0 A_PlaySound("demon/pain");
 		3HF1 N 20;
 		TNT1 A 0 doomb_severed_limb("XDeathStomach", (0, 0, 65) , (random(-3, 3), random (-3, 3), frandom(0, 3) ) );
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ), BCF_GREEN);
 		3HF1 OPQQQ 10 doomb_much_blood(25);
 		TNT1 A 0 doomb_severed_limb("DeadDemonHalf", limb_ignore_cvar: true);
 		TNT1 A 0 doomb_spawn_bloodpool();
@@ -452,7 +449,7 @@ States
 		TNT1 A 0 A_PlaySound("demon/pain");
 		3HF2 ABABAB 4;
 		TNT1 AAA 0 doomb_much_blood(40);
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ), BCF_GREEN);
 		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 42), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		3HF2 CDE 6;
 		3HF2 F 1 A_Chase(null,null);
@@ -477,7 +474,7 @@ States
 		BOSS JKL 2;
 		TNT1 AA 0 doomb_Meat_Death_Small();
 		TNT1 A 0 doomb_blood_mist(times:6);
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ), BCF_GREEN);
 		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 doomb_severed_limb("CrushedRemains", limb_ignore_cvar: true);
 	Stop;
@@ -510,7 +507,7 @@ States
 		tnt1 A 0 ACS_Execute(582, 0, 0, 0, 0);
 		tnt1 A 0 ACS_Execute(583, 0, 0, 0, 0);
 		tnt1 AAAAAA 0 doomb_sticky_guro(SGT_MEAT);
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ), BCF_GREEN);
 		tnt1 AAAAAAAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", (0, 0, 50), (random(-3, 3), random(-3, 3), frandom(0, 3) ) );
 		tnt1 A 0 doomb_severed_limb("MeatDeath", (0, 0, random(30, 40) ) );
 		BHF1 WXYZZZZZZZZZZZZZZ 3;

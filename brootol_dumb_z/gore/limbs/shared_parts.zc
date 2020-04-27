@@ -206,19 +206,14 @@ CLASS SmallBrainPiece : doomb_body_base {
 
 
 
-class doomb_generic_internal_organ : doomb_body_base
+class doomb_internal_organ : doomb_body_base
 {
 Default
 {
-	Radius 2;
-	Height 2;
-	Speed 6;
-	Mass 1;
 	Decal "BrutalBloodSplat";
 	-solid
 	+CLIENTSIDEONLY;
 	BounceFactor 0.4;
-	+MISSILE;
 	+NOTELEPORT;
 	+DONTSPLASH;
 	+MOVEWITHSECTOR;
@@ -228,107 +223,149 @@ Default
 	Scale 0.8;
 }
 
-void set_gib_appearance()
+private double rolling;
+private spriteid sprite_type;
+private uint frame_number;
+
+void set_gib_appearance(double angling = 0, doomb_internals_type gut_type = DIT_GIB, blood_color_flags guro_color = BCF_NONE)
 {
 	scale.x *= randompick(-1, 1);
+	rolling = angling;
+	if(angling == 0)
+		rolling = frandom(-90, 90);
+
+	else
+		rolling = angling;
+
+	switch (gut_type)
+	{
+		case 0:
+		case DIT_NONE:
+		default:
+			sprite_type = 0;
+			frame_number = 0;
+		break;
+
+		case DIT_GIB:
+			sprite_type = getspriteindex('gibd');
+			frame_number = random(0, 9);
+		break;
+
+		case DIT_INTESTINE:
+			sprite_type = getspriteindex('guts');
+			frame_number = random(1, 2);
+		break;
+
+		case DIT_STOMACH:
+			sprite_type = getspriteindex('guts');
+			frame_number = random(3, 7);
+		break;
+
+		case DIT_GUTS_PILE:
+			sprite_type = getspriteindex('guts');
+			frame_number = 8;
+		break;
+
+		case DIT_GUT_PILE_FLYING:
+			sprite_type = getspriteindex('guts');
+			frame_number = 9;
+		break;
+	}
+
+	switch (guro_color)
+	{
+		case 0:
+		case BCF_NONE:
+		case BCF_RED:
+		default:
+			a_settranslation("normal");
+		break;
+
+		case BCF_GREEN:
+			A_SetTranslation("red_to_green");
+		break;
+		
+		case BCF_BLUE:
+			A_SetTranslation("red_to_blue");
+		break;
+	}
+
 }
 
 States
 {
 	//generic gibs
-	gib_1:
 		gibd a 1;
-	stop;
-
-	gib_2:
 		gibd b 2;
-	stop;
-	
-	gib_3:
 		gibd c 2;
-	stop;
-
-	gib_4:
 		gibd d 2;
-	stop;
-
-	gib_5:
 		gibd e 2;
-	stop;
-
-	gib_6:
 		gibd f 2;
-	stop;
-
-	gib_6:
 		gibd g 2;
-	stop;
-
-
-	jaw:
 		GIBD H 1;
-	stop;
-
-	eye:
 		GIBD J 1;
-	stop;
-
-
-
-
-
-
-
-
-	//organs
-	heart:
+	//heart
 		guts a 1;
-	stop;
-
 	//itenstines
-	intestine_1:
 		guts b 1;
-	stop;
-		
-	intestine_2:
 		guts c 1;
-	stop;
-
-	stomach_1:
+	//stomaches
 		guts d 1;
-	stop;
-
-	stomach_2:
 		guts e 1;
-	stop;
-
-	stomach_3:
 		guts f 1;
-	stop;
-
-	stomach_4:
 		guts g 1;
-	stop;
-
-	stomach_5:
 		guts h 1;
-	stop;
-
-
 
 	//specific intestines
-	guts_pile:
+	//guts_pile:
 		guts h 1;
-	stop;
-
-	guts_pile_1_flying:
+	//guts_pile_1_flying:
 		guts k 1;
-	stop;
-
-	guts_pile_1_lying:
+	//guts_pile_1_lying:
 		guts l 1;
-	stop;
 
+
+	spawn:
+		tnt1 a 0 nodelay
+		{
+			set_busy();
+			sprite = sprite_type;
+			frame = frame_number;
+		}
+	spawn_loop:
+		"####" "#" 2
+		{
+			roll += rolling;
+			vel.z --;
+			doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
+		
+			if(random[blood_spawn](0, 10) <= 1)
+			{
+				actor a = doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
+				if(a)
+					a.translation = translation;
+			}
+
+			if(pos.z <= floorz)
+			{
+				setstatelabel("death");
+				return;
+			}
+			
+			else if (vel == (0, 0, 0))
+			{
+				//doomb_sticky_guro(SGT_BLOOD);
+			}
+		}
+	loop;
+
+	death:
+		"####" "#" 800
+		{
+			roll = 0;
+			doomb_spawn_bloodpool(BPS_SMALL);
+		}
+	goto reset_self_state;
 }
 
 }

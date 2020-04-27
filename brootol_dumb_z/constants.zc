@@ -91,3 +91,13 @@ enum doomb_dummy_guro
 	DGF_BLOOD_HIT = 4,
 	DGF_RED_BLOOD_TRAIL = 5,
 };
+
+enum doomb_internals_type
+{
+	DIT_NONE = 0,
+	DIT_GIB = 1,
+	DIT_INTESTINE = 2,
+	DIT_STOMACH = 3,
+	DIT_GUTS_PILE = 4,
+	DIT_GUT_PILE_FLYING = 5
+};
