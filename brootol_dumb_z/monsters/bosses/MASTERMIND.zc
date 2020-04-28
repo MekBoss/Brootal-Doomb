@@ -101,10 +101,10 @@ CLASS doomb_mind : doomb_monster_base
 				{doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
 				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			}
-			TNT1 A 0 doomb_blood_mist(null, (0, 0, 110), 6);
+			TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 110), 6);
 			TNT1 AAAAAAAAAAAAAAAAAA 0
 			{
-				actor a = doomb_for_khorne("blood_impact_splash", (0, 0, random(90, 100) ) );
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, random(90, 100) ) );
 				if(a)
 					a.scale = (2.45, 2.45);
 			}
@@ -117,10 +117,10 @@ CLASS doomb_mind : doomb_monster_base
 				{doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
 				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			}
-			TNT1 A 0 doomb_blood_mist(null, (0, 0, 110), 6);
+			TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 110), 6);
 			TNT1 AAAAAAA 0
 			{
-				actor a = doomb_for_khorne("blood_impact_splash", (0, 0, random(90, 100) ) );
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, random(90, 100) ) );
 				if(a)
 					a.scale = (2.45, 2.45);
 			}
@@ -144,10 +144,10 @@ CLASS doomb_mind : doomb_monster_base
 			TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(9, 9.4), 0) );
 			TNT1 AAA 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
 			TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile ("PEPart2", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 doomb_blood_mist(null, (0, 0, 30), 6);
+			TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 30), 6);
 			TNT1 AAAAAAAAAAAAAA 0
 			{
-				actor a = doomb_for_khorne("blood_impact_splash", (0, 0, random(30, 100) ) );
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, random(30, 100) ) );
 				if(a)
 					a.scale = (2.45, 2.45);
 			}
@@ -171,10 +171,10 @@ CLASS doomb_mind : doomb_monster_base
 			{doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
 			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 		}
-			TNT1 A 0 doomb_blood_mist(null, (0, 0, 110), 6);
+			TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 110), 6);
 			TNT1 AAAAAAA 0
 			{
-				actor a = doomb_for_khorne("blood_impact_splash", (0, 0, random(90, 100) ) );
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, random(90, 100) ) );
 				if(a)
 					a.scale = (2.45, 2.45);
 			}
@@ -187,10 +187,10 @@ CLASS doomb_mind : doomb_monster_base
 			{doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
 			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 		}
-			TNT1 A 0 doomb_blood_mist(null, (0, 0, 80), 6);
+			TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 80), 6);
 			TNT1 AAAAAAA 0
 			{
-				actor a = doomb_for_khorne("blood_impact_splash", (0, 0, random(90, 100) ) );
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, random(90, 100) ) );
 				if(a)
 					a.scale = (2.45, 2.45);
 			}
@@ -214,10 +214,10 @@ CLASS doomb_mind : doomb_monster_base
 		TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(9, 9.4), 0) );
 		TNT1 AAA 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
 			TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile ("PEPart2", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 doomb_blood_mist(null, (0, 0, 30), 6);
+			TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 30), 6);
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0
 			{
-				actor a = doomb_for_khorne("blood_impact_splash", (0, 0, random(30, 100) ) );
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, random(30, 100) ) );
 				if(a)
 					a.scale = (2.45, 2.45);
 			}
@@ -252,10 +252,10 @@ CLASS doomb_mind : doomb_monster_base
 			{doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
 			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 		}
-			TNT1 A 0 doomb_blood_mist(null, (0, 0, 110), 6);
+			TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 110), 6);
 			TNT1 AAAAAAA 0
 			{
-				actor a = doomb_for_khorne("blood_impact_splash", (0, 0, random(90, 100) ) );
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, random(90, 100) ) );
 				if(a)
 					a.scale = (2.45, 2.45);
 			}
@@ -268,10 +268,10 @@ CLASS doomb_mind : doomb_monster_base
 			{doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
 			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 		}
-			TNT1 A 0 doomb_blood_mist(null, (0, 0, 80), 6);
+			TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 80), 6);
 			TNT1 AAAAAAA 0
 			{
-				actor a = doomb_for_khorne("blood_impact_splash", (0, 0, random(90, 100) ) );
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, random(90, 100) ) );
 				if(a)
 					a.scale = (2.45, 2.45);
 			}
@@ -295,10 +295,10 @@ CLASS doomb_mind : doomb_monster_base
 		TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(9, 9.4), 0) );
 		TNT1 AAA 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
 			TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile ("PEPart2", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 doomb_blood_mist(null, (0, 0, 30), 6);
+			TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 30), 6);
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0
 			{
-				actor a = doomb_for_khorne("blood_impact_splash", (0, 0, random(30, 100) ) );
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, random(30, 100) ) );
 				if(a)
 					a.scale = (2.45, 2.45);
 			}
@@ -339,7 +339,7 @@ CLASS XSpiderMastermindCuttedBrain : doomb_body_base
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
-			SPIP ABCDEFGH 3 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
+			SPIP ABCDEFGH 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
 			Loop;
 		Death:
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);

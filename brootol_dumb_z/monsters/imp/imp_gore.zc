@@ -77,18 +77,18 @@ States
 		TNT1 AAAAAA 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
 
 		tnt1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAAAAAA 0 doomb_for_khorne("Brutal_Blood", (0, 0, 50), doomb_random_velocity(5) );
-		TNT1 A 0 doomb_blood_mist(null, times:6);
+		TNT1 AAAAAAA 0 doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', times:6);
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_severed_limb("XDeathImpArm", (0, 0, 32), doomb_random_velocity(5) );
 		TNT1 A 0 doomb_severed_limb("XDeathImpLeg", (0, 0, 32), doomb_random_velocity(5) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 	FloatXDeath:
 		ID17 C 5 A_CheckFloor ("Dead.Explosive_Impact");
-		TNT1 A 0 doomb_for_khorne("Underblood1", (0, 0, 32), doomb_random_velocity(5));
+		TNT1 A 0 doomb_for_khorne("Underblood1", "spawn", (0, 0, 32), doomb_random_velocity(5));
 		tnt1 a 0 ThrustThingZ (0,7,1,0);
 		ID17 DEF 5 A_CheckFloor ("Dead.Explosive_Impact");
-		TNT1 A 0 doomb_for_khorne("Underblood1", (0, 0, 32), doomb_random_velocity(5));
+		TNT1 A 0 doomb_for_khorne("Underblood1", "spawn", (0, 0, 32), doomb_random_velocity(5));
 		tnt1 a 0 ThrustThingZ (0,7,1,0);
 	Loop;
 		
@@ -113,7 +113,7 @@ States
 	Loop;
 		
 	Deadz:
-		TROO YYYYYYY 8 doomb_for_khorne("Underblood1", (0, 0, 32), doomb_random_velocity(5));
+		TROO YYYYYYY 8 doomb_for_khorne("Underblood1", "spawn", (0, 0, 32), doomb_random_velocity(5));
 		TROO Y -1;
 	Loop;
 }
@@ -133,7 +133,7 @@ States
 	Spawn:
 		TNT1 A 0;
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-		HND4 ABCDEFGH 4 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		HND4 ABCDEFGH 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 	Loop;
 	
 	Death.plasma:
@@ -160,7 +160,7 @@ States
 	Stop;
 	
 	Death:    
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 A 0 doomb_severed_limb("GibImpHand", (0, 0, 2), doomb_random_velocity(3) );
 		TNT1 A 0 doomb_severed_limb("GibImpArmPart", (0, 0, 2), doomb_random_velocity(3) );
 	Stop;
@@ -239,12 +239,12 @@ Default
 States
 {
 	Spawn:
-		HND4 IJKLMNOPQ 3 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		HND4 IJKLMNOPQ 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 	Loop;
 	
 	Death:
 		TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-		TNT1 AAA 0 doomb_for_khorne("brutal_Blood", (0, 0, 10) );
+		TNT1 AAA 0 doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 10) );
 		HND4 Q -1;
 	Stop;
 }
@@ -266,7 +266,7 @@ States
 	Spawn:
 		TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-		LEG4 ABCDEFGH 5 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		LEG4 ABCDEFGH 5 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		Loop;
 	Death:
 		LEG4 I 1;
@@ -290,7 +290,7 @@ States
 	Stop;
 	
 	Death:    
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 A 0 doomb_severed_limb("GibImpPaw", (0, 0, 2), doomb_random_velocity(3) );
 		TNT1 A 0 doomb_severed_limb("GibImpLegPart", (0, 0, 2), doomb_random_velocity(3) );
 	Stop;
@@ -375,7 +375,7 @@ States
 	Spawn:
 		TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-		TROG K 12 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TROG K 12 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 	Loop;
 	
 	Death:
@@ -467,7 +467,7 @@ States
 		TNT1 A 0;
 		TNT1 A 0 A_XScream();
 		TNT1 A 0 A_NoBlocking();
-		TNT1 AAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 A 0 doomb_spawn_burned_flesh();
 		EXPL AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 	Stop;
@@ -536,7 +536,7 @@ States
 	Death.Plasma: Death.Plasma2:
 		TNT1 A 0 A_XScream();
 		TNT1 A 0 A_NoBlocking();
-		TNT1 AAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 A 0 doomb_spawn_burned_flesh();
 		EXPL AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 	Stop;
@@ -593,7 +593,7 @@ States
 
 	Death:
 		TNT1 A 0 doomb_severed_limb("XDeathImpLeg", (0, 0, 2), doomb_random_velocity(3) );
-		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_severed_limb("XDeathHalfImp", (0, 0, 40), doomb_random_velocity(3) );
@@ -795,11 +795,11 @@ States
 	Death:
 		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		tnt1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 40) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 40) );
 		TNT1 AA 0 doomb_severed_limb("XDeathImpArm", (0, 0, 40), doomb_random_velocity(3) );
 		TNT1 A 0 doomb_severed_limb("ImpHeadExplode", (0, 0, 22) );
 	Stop;
@@ -830,11 +830,11 @@ States
 	Death:
 		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		tnt1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 40) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 40) );
 		TNT1 AA 0 doomb_severed_limb("XDeathImpArm", (0, 0, 44), doomb_random_velocity(3) );
 	Stop;
 }
@@ -853,7 +853,7 @@ States
 	Death:
 		TNT1 A 0 doomb_Meat_Death_Small();
 		TNT1 A 0 doomb_severed_limb("DeadImp_Half");
-		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_severed_limb("XDeathHalfImp", (0, 0, 40), doomb_random_velocity(3) );
@@ -971,7 +971,7 @@ States
 {
 	Spawn:
 	Suffer:
-		TRO2 DDDDDDEEEEE 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TRO2 DDDDDDEEEEE 2 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TRO2 E 2 A_Pain();
 		tnt1 a 0 a_jump(180, "spawn");
 	Death:
@@ -984,10 +984,10 @@ States
 		TNT1 A 0 doomb_severed_limb("ImpHeadExplode", (0, 0, 30) );
 		TNT1 A 0 A_XScream();
 		TNT1 A 0 A_NoBlocking();
-		IMPC JJJJJJJJJJJJJJJJJJJ 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		IMPC KKKK 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		IMPC JJJJJJJJJJJJJJJJJJJ 2 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		IMPC KKKK 2 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 A 0 a_givetotarget("CrueltyBonus5Health");
-		IMPC LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		IMPC LLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLLL 2 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 A 0 doomb_severed_limb("DeadImp_NoStomachNoHead");
 	Stop;
 		
@@ -1000,10 +1000,10 @@ States
 		XBRN AABBCC 2 BRIGHT
 		{
 			doomb_flare_base.doomb_attach_flare(self, "BlueFlare", (0, 0, 43) );
-			doomb_for_khorne("Brutal_Blood", (0, 0, 30), doomb_random_velocity(5) );
+			doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 30), doomb_random_velocity(5) );
 		}
 		TNT1 A 0 doomb_spawn_burned_flesh();
-		TNT1 A 0 doomb_for_khorne("Brutal_Blood", (0, 0, 30), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 30), doomb_random_velocity(5) );
 		XBRN DEF 4 BRIGHT;
 	Stop;
 
@@ -1027,7 +1027,7 @@ States
 		TNT1 O 0 A_NoBlocking();
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TROG A 2;
-		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_severed_limb("XDeathHalfImp", (0, 0, 42), doomb_random_velocity(3) );
@@ -1042,13 +1042,13 @@ States
 	Death.SSG:
 		TNT1 A 0 a_givetotarget("CrueltyBonus5Health");
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		tnt1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AA 0 doomb_severed_limb("XDeathImpArm", (0, 0, 32), doomb_random_velocity(3) );
 		TNT1 A 0 doomb_severed_limb("XDeathImpHead", (0, 0, 32), doomb_random_velocity(3) );
-		TNT1 A 0 doomb_blood_mist(null, times:6);
+		TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', times:6);
 		TNT1 A 0 A_XScream();
 		TNT1 A 0 A_NoBlocking();
 		IZD1 EFGH 6;
@@ -1072,16 +1072,16 @@ States
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AA 0 doomb_severed_limb("XDeathImpArm", (0, 0, 32), doomb_random_velocity(3) );
 		TNT1 A 0 doomb_severed_limb("XDeathImpHead", (0, 0, 32), doomb_random_velocity(3) );
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		tnt1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 40) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 40) );
 		TRO3 A 6 A_Stop();
 		TNT1 A 0 doomb_spawn_bloodpool();
-		TRO3 BBBBBBBBBB 3 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		TRO3 CCC 3 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		TRO3 DD 3 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TRO3 BBBBBBBBBB 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TRO3 CCC 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TRO3 DD 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TRO3 E -1;
 	Stop;
 }
@@ -1209,7 +1209,7 @@ States
 		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(3) );
 		
 		tnt1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAAAAAAAAAA 0 doomb_for_khorne("Brutal_Blood", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 AAAAAAAAAAA 0 doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 50), doomb_random_velocity(5) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 A_Recoil(2);
 		IZD1 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1
@@ -1231,7 +1231,7 @@ States
 		TNT1 A 0 A_Recoil(2);
 		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		TNT1 AAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 A 0 doomb_spawn_bloodpool();
 		IZD1 EFGH 6;
 		TNT1 A 0 a_givetotarget("CrueltyBonus5Health");
@@ -1272,7 +1272,7 @@ Default
 States
 {
 	Spawn:
-		IZD2 ABC 5 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		IZD2 ABC 5 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 A 0 doomb_severed_limb("DeadImpIZD3D");
 	Stop;
 	
@@ -1391,7 +1391,7 @@ States
 		TNT1 A 0 doomb_severed_limb("head_piece_dark", (0, 0, 50), doomb_random_velocity(3) );
 		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(3) );
 		tnt1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAAAAAA 0 doomb_for_khorne("Brutal_Blood", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 AAAAAAA 0 doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 50), doomb_random_velocity(5) );
 		TNT1 A 0 doomb_severed_limb("XDeathImpArm", (0, 0, 35), doomb_random_velocity(3) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_severed_limb("XDeathImpLeg", (0, 0, 35), doomb_random_velocity(3) );
@@ -1435,7 +1435,7 @@ States
 	Spawn:
 		TR08 B 1;
 	Suffer:
-		TR08 BBBCC 4 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TR08 BBBCC 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TR08 C 5 A_Pain();
 		tnt1 a 0 a_jump(222, "suffer");
 		tnt1 a 0 a_die();
@@ -1474,15 +1474,15 @@ States
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_severed_limb("XDeathImpHead", (0, 0, 32), doomb_random_velocity(3) );
 		TNT1 A 0 doomb_severed_limb("XDeathImpArm", (0, 0, 32), doomb_random_velocity(3) );
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 40) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 40) );
 		TROG A 6 A_Stop();
 		TNT1 A 0 doomb_spawn_bloodpool();
-		TROG BBBBBBBBBB 3 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		TROG CCC 3 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-		TROG DD 3 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TROG BBBBBBBBBB 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TROG CCC 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TROG DD 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 A 0 doomb_severed_limb("DeadImp_Half");
 	Stop;
 }
@@ -1591,7 +1591,7 @@ States
 		IMPC E 1;
 		TNT1 A 0 A_Jump(32, "Colapse");
 	Suffer:
-		TR09 DDDFFF 4 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TR09 DDDFFF 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		tnt1 a 0 A_Pain();
 		tnt1 a 0 a_jump(50, "death");
 	loop;
@@ -1714,7 +1714,7 @@ States
 		TNT1 A 0 doomb_Meat_Death_Small();
 		TNT1 A 0 doomb_severed_limb("DeadImp_Half");
 		TNT1 A 0 A_NoBlocking();
-		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+		TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_severed_limb("XDeathHalfImp", (0, 0, 42), doomb_random_velocity(3) );

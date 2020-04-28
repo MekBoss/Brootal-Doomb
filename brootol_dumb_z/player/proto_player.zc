@@ -35,7 +35,7 @@ protected void doomb_spawn_big_blood(int spawn_height = 0)
 		{
 			for(uint i = 0; i < 2 * doomb_blood_multiplier; i++)
 			{
-				actor a = doomb_for_khorne("doomb_red_blood_trail", (0, 0, spawn_height), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, spawn_height), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			}
 		}
 	}
@@ -224,20 +224,20 @@ void set_blood_throne(eventhandler e)
         blood_throne = e;
 }
 
-protected actor doomb_for_khorne(class<actor> it = null, vector3 off = (0, 0, 0), vector3 vel_dir = (0, 0, 0) )
+protected actor doomb_for_khorne(class<doomb_blood> it = null, statelabel st = 'spawn', vector3 off = (0, 0, 1), vector3 vel_dir = (0, 0, 0) )
 {
-	if(blood_throne && it)
+	if(blood_throne && it && doomb_blood_spawner && waterlevel < 1)
 	{
-		if(it is "doomb_blood")
+		if(it is 'doomb_blood')
 		{
-			doomb_blood b = doomb_blood_god(blood_throne).doomb_blood_bank(it);
-			if(b)
-			{
-				b.setorigin(pos + off, false);
-				b.vel = vel_dir;
-				b.setstate(b.findstate("spawn"));
-				return b;
-			}
+			doomb_blood b = doomb_blood_god(blood_throne).doomb_blood_bank(it, st);
+			
+			if(!b)
+				return null;
+	
+			b.setorigin(pos + off, false);
+			b.vel = vel_dir;
+			return b;
 		}
 	}
 

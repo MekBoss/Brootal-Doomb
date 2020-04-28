@@ -233,12 +233,12 @@ States
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 A_NoBlocking;
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ), BCF_GREEN);
-		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+		TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 AAA 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 60) );
 		BDSS PQRSTU 6;
 		TNT1 A 0 doomb_spawn_bloodpool();
-		BDSS VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 1 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+		BDSS VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 1 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		BDSS V -1;
 	Stop;
 		
@@ -298,7 +298,7 @@ States
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 A_NoBlocking;
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ), BCF_GREEN);
-		TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+		TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 A 0 doomb_severed_limb("XDeathHalfBOH", (0, 0, 24), limb_ignore_cvar: true);
 		BBO2 AABCD 10;
@@ -380,7 +380,7 @@ States
 		KNTF BCD 8 doomb_much_blood();
 		EXPL A 0 Radius_Quake (2, 24, 0, 15, 0);
 		TNT1 A 0 doomb_much_blood();
-		TNT1 AAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", (0, 0, 50), (random(-3,3), random(-3, 3), frandom(0, 3) ) );
+		TNT1 AAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", "spawn", (0, 0, 50), (random(-3,3), random(-3, 3), frandom(0, 3) ) );
 		KNTF DDDDDDDDDDDDDDDDDDD 8 doomb_much_blood(25);
 
 		TNT1 A 0 doomb_Rip_Guts();
@@ -491,24 +491,24 @@ States
 		BHF1 G 3 A_PlaySound("weapons/gswing");
 		BHF1 HIJKLLLMN 2;
 		BHF1 O 3 A_PlaySound("demon/pain");
-		tnt1 AAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", (0, 0, 35), (random(-3, 3), random(-3, 3), frandom(0, 3) ) );
+		tnt1 AAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", "spawn", (0, 0, 35), (random(-3, 3), random(-3, 3), frandom(0, 3) ) );
 		tnt1 A 0 A_PlaySound("misc/xdeath4", CHAN_AUTO, 1);
-		BHF1 PQR 3 doomb_for_khorne("PlayerFlyingBlood", (0, 0, 35), (random(-3, 3), random(-3, 3), frandom(0, 3) ) );
+		BHF1 PQR 3 doomb_for_khorne("PlayerFlyingBlood", "spawn", (0, 0, 35), (random(-3, 3), random(-3, 3), frandom(0, 3) ) );
 		tnt1 A 0 A_PlaySound("misc/xdeath4", CHAN_AUTO, 1);
 		tnt1 A 0 A_PlaySound("misc/xdeath3", CHAN_AUTO, 1);
 		tnt1 A 0 A_PlaySound("misc/xdeath2", CHAN_AUTO, 1);
 		tnt1 A 0 A_PlaySound("misc/xdeath1", CHAN_AUTO, 1);
 		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
-		tnt1 AAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", (0, 0, 35), (random(-3, 3), random(-3, 3), frandom(0, 3) ) );
+		tnt1 AAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", "spawn", (0, 0, 35), (random(-3, 3), random(-3, 3), frandom(0, 3) ) );
 		tnt1 A 0 ACS_Execute(580, 0, 0, 0, 0);
 		tnt1 A 0 ACS_Execute(581, 0, 0, 0, 0);
-		BHF1 STUV 3 doomb_for_khorne("PlayerFlyingBlood", (0, 0, 35), (random(-3, 3), random(-3, 3), frandom(0, 3) ) );
+		BHF1 STUV 3 doomb_for_khorne("PlayerFlyingBlood", "spawn", (0, 0, 35), (random(-3, 3), random(-3, 3), frandom(0, 3) ) );
 		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
 		tnt1 A 0 ACS_Execute(582, 0, 0, 0, 0);
 		tnt1 A 0 ACS_Execute(583, 0, 0, 0, 0);
 		tnt1 AAAAAA 0 doomb_sticky_guro(SGT_MEAT);
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ), BCF_GREEN);
-		tnt1 AAAAAAAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", (0, 0, 50), (random(-3, 3), random(-3, 3), frandom(0, 3) ) );
+		tnt1 AAAAAAAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", "spawn", (0, 0, 50), (random(-3, 3), random(-3, 3), frandom(0, 3) ) );
 		tnt1 A 0 doomb_severed_limb("MeatDeath", (0, 0, random(30, 40) ) );
 		BHF1 WXYZZZZZZZZZZZZZZ 3;
 		tnt1 A 0

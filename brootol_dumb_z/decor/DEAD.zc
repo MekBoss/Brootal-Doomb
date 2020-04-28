@@ -141,10 +141,10 @@ CLASS CurbstompedMarine : doomb_body_base {
 			TNT1 A 0 A_SpawnItem("GibsZ");
 			TNT1 A 0 A_NoBlocking;
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(5, 15) ) );
-			TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 AAAA 0
 			{
-				actor a = doomb_for_khorne("blood_impact_splash", (0, 0, 35 ) );
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 35 ) );
 				if(a)
 					a.scale = (0.45, 0.45);
 			}
@@ -154,7 +154,7 @@ CLASS CurbstompedMarine : doomb_body_base {
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_XScream;
 			TNT1 A 0 A_NoBlocking;
-			TNT1 AAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 A 0 doomb_spawn_burned_flesh;
 			EXPL AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 		Stop;
@@ -163,16 +163,16 @@ CLASS CurbstompedMarine : doomb_body_base {
 		Death.Crush:
 		Death.Stomp:
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(5, 15) ) );
-			TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 5) );
+			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 5) );
 			TNT1 A 0 doomb_spawn_bloodpool();
 			XME2 L -1;
 			Stop;
 			
 		Death.Desintegrate:
-			TNT1 A 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 AAAA 0
 			{
-				actor a = doomb_for_khorne("blood_impact_splash", (0, 0, 5 ) );
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 5 ) );
 				if(a)
 					a.scale = (0.45, 0.45);
 			}
@@ -430,7 +430,7 @@ CLASS DeadDeadStick: doomb_body_base
 		Spawn:
 			TNT1 A 0 doomb_spawn_bloodpool();
 		Stand:
-			POL1 A 600 doomb_for_khorne("TinyBlood", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			POL1 A 600 doomb_for_khorne("doomb_non_interactive_blood", "blood_droplet", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		Loop;
 
 		Death:
@@ -526,7 +526,7 @@ CLASS DeadBloodyTwitch : doomb_body_base
 		Spawn:
 			GOR1 A 1;
 		Stand:
-			GOR1 A 100 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
+			GOR1 A 100 doomb_for_khorne("doomb_non_interactive_blood", "blood_droplet", (0, 0, 15 ), doomb_random_velocity(5) );
 		Stand2:
 			GOR1 B 15;
 			GOR1 C 8;
@@ -559,7 +559,7 @@ CLASS DeadBloodyTwitchB: DeadBloodyTwitch {
 	States
 	{
 		Spawn:
-			GOR1 D 150 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
+			GOR1 D 150 doomb_for_khorne("doomb_non_interactive_blood", "blood_droplet", (0, 0, 15 ), doomb_random_velocity(5) );
 		loop;
 
 		Death:
@@ -616,7 +616,7 @@ CLASS HangingBody: doomb_body_base
 	States
 	{
 		Spawn:
-			GOR2 A 1110 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
+			GOR2 A 1110 doomb_for_khorne("doomb_non_interactive_blood", "blood_droplet", (0, 0, 15 ), doomb_random_velocity(5) );
 		loop;
 
 		Death:
@@ -638,7 +638,7 @@ CLASS HangingPairOfLegs: DeadBloodyTwitchB
 	States
 	{
 		Spawn:
-			GOR2 B 1283 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
+			GOR2 B 1283 doomb_for_khorne("doomb_non_interactive_blood", "blood_droplet", (0, 0, 15 ), doomb_random_velocity(5) );
 		loop;
 		
 		Death:
@@ -698,7 +698,7 @@ CLASS HangingDeadGuyNoLeg: doomb_body_base
 	{
 		
 		Spawn:
-			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_droplet", (0, 0, 15 ), doomb_random_velocity(5) );
 			GOR3 A 1100;
 		loop;
 			
@@ -722,7 +722,7 @@ CLASS HangingLeg: DeadBloodyTwitchB
 	States
 	{
 		Spawn:
-			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_droplet", (0, 0, 15 ), doomb_random_velocity(5) );
 			GOR3 B 1100;
 		loop;
 			
@@ -778,7 +778,7 @@ CLASS DeadHangNoGuts: doomb_body_base
 	States
 	{
 		Spawn:
-			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_droplet", (0, 0, 15 ), doomb_random_velocity(5) );
 			HDB1 A 1190;
 		loop;
 		
@@ -820,19 +820,19 @@ CLASS DeadHangBNoBrain: doomb_body_base
 			HDB2 A 1
 			{
 				if(random(0, 20) >= 20 )
-					doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
+					doomb_for_khorne("doomb_non_interactive_blood", "blood_droplet", (0, 0, 15 ), doomb_random_velocity(5) );
 			}
 		loop;
 			
 		Death:
 		XDeath:
-			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 AAAAAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
 			TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AAAAAAAAAAAAAA 0
 			{
-				actor a = doomb_for_khorne("blood_impact_splash", (random(-20, 20), random(-20, 20), random(20, 30) ) );
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (random(-20, 20), random(-20, 20), random(20, 30) ) );
 				if(a)
 					a.scale = (1.4, 1.4);
 			}
@@ -868,20 +868,20 @@ CLASS DeadHangTLookingDown: doomb_body_base
 	States
 	{
 		Spawn:
-			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_droplet", (0, 0, 15 ), doomb_random_velocity(5) );
 			HDB3 A 1190;
 		loop;
 
 		Death:
 		XDeath:
-			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 
 			TNT1 AAAAAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
 			TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AAAAAAAAAAAAAA 0
 			{
-				actor a = doomb_for_khorne("blood_impact_splash", (random(-20, 20), random(-20, 20), random(20, 30) ) );
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (random(-20, 20), random(-20, 20), random(20, 30) ) );
 				if(a)
 					a.scale = (1.4, 1.4);
 			}
@@ -916,19 +916,19 @@ CLASS DeadHangTLookingUp: doomb_body_base
 	States
 	{
 		Spawn:
-			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_droplet", (0, 0, 15 ), doomb_random_velocity(5) );
 			HDB5 A 1190;
 		loop;
 		
 		Death:
 		XDeath:
-			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 AAAAAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
 			TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AAAAAAAAAAAAAA 0
 			{
-				actor a = doomb_for_khorne("blood_impact_splash", (random(-20, 20), random(-20, 20), random(20, 30) ) );
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (random(-20, 20), random(-20, 20), random(20, 30) ) );
 				if(a)
 					a.scale = (1.4, 1.4);
 			}
@@ -962,19 +962,19 @@ CLASS DeadHangTSkull: doomb_body_base
 	States
 	{
 		Spawn:
-			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_droplet", (0, 0, 15 ), doomb_random_velocity(5) );
 			HDB4 A 1190;
 		loop;
 		
 		Death:
 		XDeath:
-			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 AAAAAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
 			TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AAAAAAAAAAAAAA 0
 			{
-				actor a = doomb_for_khorne("blood_impact_splash", (random(-20, 20), random(-20, 20), random(20, 30) ) );
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (random(-20, 20), random(-20, 20), random(20, 30) ) );
 				if(a)
 					a.scale = (1.4, 1.4);
 			}
@@ -1009,20 +1009,20 @@ CLASS DeadHangTNoBrain: doomb_body_base
 	States
 	{
 		Spawn:
-			TNT1 A 0 doomb_for_khorne("TinyBlood", (0, 0, 15 ), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_droplet", (0, 0, 15 ), doomb_random_velocity(5) );
 			HDB6 A 1190;
 		loop;
 		
 		Death:
 		XDeath:
-			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 AAAAAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
 			TNT1 AA 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-			TNT1 AAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 AAAAAAAAAAAAAA 0
 			{
-				actor a = doomb_for_khorne("blood_impact_splash", (random(-20, 20), random(-20, 20), random(20, 30) ) );
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (random(-20, 20), random(-20, 20), random(20, 30) ) );
 				if(a)
 					a.scale = (1.4, 1.4);
 			}

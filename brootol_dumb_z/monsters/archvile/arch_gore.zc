@@ -21,12 +21,12 @@ CLASS HalfArchVile1 : doomb_body_base
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
-			TNT1 AAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			VIGP A 4;
 		Loop;
 		
 		Death:
-			TNT1 AAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
+			TNT1 AAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
 			VIGP B -1 doomb_spawn_bloodpool(BPS_SMALL);
 		Splash:
 			TNT1 A 1;
@@ -59,11 +59,11 @@ CLASS HalfArchVile2 : doomb_body_base
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
-			TNT1 AAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			VIGP C 4;
 			Loop;
 		Death:
-			TNT1 AAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
+			TNT1 AAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
 			VIGP D -1 doomb_spawn_bloodpool(BPS_SMALL);
 		Splash:
 			TNT1 A 1;

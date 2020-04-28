@@ -4,10 +4,10 @@ CLASS MeatDeath : doomb_body_base {
 		Spawn:
 			TNT1 AAAAAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 AAAAAAAAAAAAAA 0
 			{
-				actor a = doomb_for_khorne("blood_impact_splash", (random(-20, 20), random(-20, 20), random(20, 30) ) );
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (random(-20, 20), random(-20, 20), random(20, 30) ) );
 				if(a)
 					a.scale = (1.4, 1.4);
 			}

@@ -19,10 +19,10 @@ protected void doomb_sticky_guro(sticky_guro_type type = SGT_NONE)
 	if (blood_ray.HitType == TRACE_HitCeiling)
 	{
 		if(type == SGT_BLOOD)
-			doomb_for_khorne("doomb_blood_dripping_ceiling", blood_ray.HitLocation);
+			doomb_for_khorne("doomb_blood_dripping_ceiling", "spawn", blood_ray.HitLocation);
 
 		if (type == SGT_MEAT)
-			doomb_for_khorne("doomb_sticky_meat", blood_ray.HitLocation);
+			doomb_for_khorne("doomb_sticky_meat", "spawn", blood_ray.HitLocation);
 	}
 }
 
@@ -33,8 +33,8 @@ protected void doomb_head_explosion(string main_piece  = "", string additional_p
 
 	for(uint i = 0; i < 4; i++)
 	{
-		doomb_for_khorne("blood_impact_splash", offset, doomb_random_velocity(5) );
-		doomb_for_khorne("doomb_red_blood_trail", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
+		doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", offset, doomb_random_velocity(5) );
+		doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
 		doomb_severed_limb("SmallBrainPiece", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
 		doomb_severed_limb("Teeth", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
 		doomb_severed_limb("head_piece_dark", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
@@ -60,15 +60,15 @@ protected void doomb_head_explosion(string main_piece  = "", string additional_p
 protected void doomb_Meat_Death_Small()
 {
 	doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-	doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-	actor a = doomb_for_khorne("blood_impact_splash", (0, 0, 35 ) );
+	doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+	actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 35 ) );
 	if(a)
 		a.scale = (0.45, 0.45);
 }
 
 protected void doomb_Rip_Guts()
 {
-	doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+	doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 	doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 	doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 }
@@ -78,10 +78,10 @@ protected void doomb_monster_xdeath(class<actor> type_1 = null, class<actor> typ
 	for(uint i = 0; i < 5; i++)
 	{
 		doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
-		doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+		doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		doomb_blood_mist();
 		doomb_sticky_guro(SGT_BLOOD);
-		actor a = doomb_for_khorne("blood_impact_splash", (random(-20, 20), random(-20, 20), random(20, 30) ) );
+		actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (random(-20, 20), random(-20, 20), random(20, 30) ) );
 		if(a)
 			a.scale = (1.4, 1.4);
 	}
@@ -100,7 +100,7 @@ protected void doomb_spawn_big_blood(int spawn_height = 0)
     {
 		for(uint i = 0; i < 2 * doomb_blood_multiplier; i++)
 		{
-			doomb_for_khorne("doomb_red_blood_trail", (0, 0, spawn_height), doomb_random_velocity(5) );
+			doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, spawn_height), doomb_random_velocity(5) );
 		}
 	}
 }
@@ -197,13 +197,13 @@ protected void doomb_much_blood(double height_offset = 50, double side_offset = 
  	}
 	for(uint i = 0; i < 20; i++)
     {
-        doomb_for_khorne("doomb_red_blood_trail", (relative_offset_x, relative_offset_y, random(20, 30) + height_offset ), doomb_random_velocity(5) );
+        doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (relative_offset_x, relative_offset_y, random(20, 30) + height_offset ), doomb_random_velocity(5) );
     }
-	actor a = doomb_for_khorne("blood_impact_splash", (relative_offset_x, relative_offset_y, height_offset) );
+	actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (relative_offset_x, relative_offset_y, height_offset) );
 	if(a)
 		a.scale = (0.45, 0.45);
 
-    doomb_for_khorne("doomb_red_blood_trail", (relative_offset_x, relative_offset_y, height_offset ), doomb_random_velocity(5) );
+    doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (relative_offset_x, relative_offset_y, height_offset ), doomb_random_velocity(5) );
 }
 
 protected void doomb_spray_decal(string type = "BrutalBloodSuper", double distance = 128, vector3 direction = (0, 0, 0), uint times = 1, double angle_bias = 0)
@@ -242,12 +242,12 @@ protected void doomb_spray_decal(string type = "BrutalBloodSuper", double distan
 	pitch = stored_pitch;
 }
 
-protected void doomb_blood_mist(class<actor> type = 'blood_mist', vector3 offset = (0, 0, 5), uint times = 1, blood_color_flags color = BCF_NONE)
+protected void doomb_blood_mist(class<doomb_blood> type = 'doomb_non_interactive_blood', statelabel stat = 'blood_mist', vector3 offset = (0, 0, 5), uint times = 1, blood_color_flags color = BCF_NONE)
 {
 	for(uint tick = 0; tick < times; tick++)
 	{
 		if(type == null)
-			type = 'blood_mist';
+			type = 'doomb_non_interactive_blood';
 
 		vector3 origin = (frandom(-1, 1), frandom(-1, 1), frandom(-0.1, 1) );
 		origin *= 10;
@@ -257,7 +257,7 @@ protected void doomb_blood_mist(class<actor> type = 'blood_mist', vector3 offset
 		uint i = random(5, 15);
 		while(i > 0)
 		{
-			actor a = doomb_for_khorne(type, dir + offset);
+			actor a = doomb_for_khorne(type, stat, dir + offset);
 			if(a)
 			{
 				switch(color)
@@ -324,13 +324,13 @@ protected void doomb_much_blood(double height_offset = 50, double side_offset = 
  	}
 	for(uint i = 0; i < 20; i++)
     {
-        doomb_for_khorne("doomb_red_blood_trail", (relative_offset_x, relative_offset_y, random(20, 30) + height_offset ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+        doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (relative_offset_x, relative_offset_y, random(20, 30) + height_offset ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
     }
-	actor a = doomb_for_khorne("blood_impact_splash", (relative_offset_x, relative_offset_y, height_offset) );
+	actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (relative_offset_x, relative_offset_y, height_offset) );
 	if(a)
 		a.scale = (0.45, 0.45);
 
-    doomb_for_khorne("doomb_red_blood_trail", (relative_offset_x, relative_offset_y, height_offset ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
+    doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (relative_offset_x, relative_offset_y, height_offset ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 }
 
 protected void doomb_spray_decal(string type = "", double distance = 128, vector3 direction = (0, 0, 0), uint times = 1, double angle_bias = 0)
@@ -355,10 +355,13 @@ protected void doomb_spray_decal(string type = "", double distance = 128, vector
 	pitch = stored_pitch;
 }
 
-protected void doomb_blood_mist(class<actor> type = 'blood_mist', vector3 offset = (0, 0, 5), uint times = 1)
+protected void doomb_blood_mist(class<doomb_blood> type = 'doomb_non_interactive_blood', statelabel stat = 'blood_mist', vector3 offset = (0, 0, 5), uint times = 1, blood_color_flags color = BCF_NONE)
 {
 	for(uint tick = 0; tick < times; tick++)
 	{
+		if(type == null)
+			type = 'doomb_non_interactive_blood';
+
 		vector3 origin = (frandom(-1, 1), frandom(-1, 1), frandom(-0.1, 1) );
 		origin *= 10;
 		
@@ -367,7 +370,7 @@ protected void doomb_blood_mist(class<actor> type = 'blood_mist', vector3 offset
 		uint i = random(5, 15);
 		while(i > 0)
 		{
-			doomb_for_khorne(type, dir + offset);
+			doomb_for_khorne(type, stat, dir + offset);
 			dir += origin;
 			i--;
 		}

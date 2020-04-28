@@ -28,7 +28,7 @@ CLASS XDeathHalfShotgunguyNoArmNoHead : doomb_body_base {
 
 		Death:
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-			TNT1 AAA 0 doomb_for_khorne("brutal_Blood", vel_dir: doomb_random_velocity(5) );
+			TNT1 AAA 0 doomb_for_khorne("brutal_Blood", "spawn", vel_dir: doomb_random_velocity(5) );
 			SPSX O -1;//doomb_final_absolution(12, 12);
 		Stop;
 	}
@@ -60,7 +60,7 @@ CLASS XDeathHalfSergeant : doomb_body_base
 		Spawn:
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			TNT1 AAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			SP2X F 12;
 		Loop;
 		
@@ -136,7 +136,7 @@ CLASS Deaddoomb_shotgun_guy: CurbstompedMarine
 		Death.Plasma2:
 			TNT1 A 0 A_XScream;
 			TNT1 A 0 A_NoBlocking;
-			TNT1 AAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 A 0 doomb_spawn_burned_flesh;
 			EXPL AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 		Stop;
@@ -176,7 +176,7 @@ CLASS DeadShotgunGuy_NoLegBoth: Deaddoomb_shotgun_guy
 			SPOS A 0 doomb_Meat_Death_Small();
 			TNT1 A 0 doomb_severed_limb("XDeathArm1", vel_dir: doomb_random_velocity(5) );
 			tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
-			TNT1 AAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_severed_limb("XDeathHalfSergeant", (0, 0, 32), doomb_random_velocity(5) );
@@ -288,9 +288,9 @@ CLASS DeadShotgunguy_Slumped: CurbstompedMarine {
 			TNT1 A 0 A_NoBlocking;
 			TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-			TNT1 AAAAAAAAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAAAAAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-			TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 40) );
+			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 40) );
 			TNT1 A 0 doomb_severed_limb("XDeathArm1", (0, 0, 5), doomb_random_velocity(5) );
 			TNT1 A 0 doomb_severed_limb("ShotgunguyHeadExplode", (0, 0, 22) );
 		Stop;
@@ -330,11 +330,11 @@ CLASS DeadShotgunguy_Slumped_NoHead: CurbstompedMarine {
 			TNT1 A 0 A_NoBlocking;
 			TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-			TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-			TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
-			TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
+			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-			TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 40) );
+			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 40) );
 			TNT1 A 0 doomb_severed_limb("XDeathArm1", (0, 0, 5), doomb_random_velocity(5) );
 		Stop;
 	}
@@ -392,7 +392,7 @@ CLASS DeadShotgunguySPO4J: Deaddoomb_shotgun_guy {
 			TNT1 A 0 doomb_Meat_Death_Small();
 			
 			tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
-			TNT1 AAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_severed_limb("XDeathHalfSergeant", (0, 0, 32), doomb_random_velocity(5) );
@@ -420,7 +420,7 @@ CLASS DyingShotgunguyHitInEye: doomb_body_base {
 	States
 	{
 		Spawn:
-			TNT1 AAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 50 ), doomb_random_velocity(5) );
+			TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 50 ), doomb_random_velocity(5) );
 			TNT1 AA 0 doomb_severed_limb("SmallBrainPiece", (0, 0, random (45, 55) ), doomb_random_velocity(5) );
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AA 0 doomb_severed_limb("eye", (0, 0, random (45, 55) ), doomb_random_velocity(5) );
@@ -443,8 +443,8 @@ CLASS DyingShotgunguyHitInEye: doomb_body_base {
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_JumpIfInTargetInventory("HeavyStrikeUpward", 1, "HeavyHead");
 			TNT1 A 0 doomb_severed_limb("ShotgunguyHeadExplode", (0, 0, 50) );
-			SPDH AAAAABBBBBBBBBBCCCCC 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-			SPDH DDDDEEEEEEEEEEEEEE 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			SPDH AAAAABBBBBBBBBBCCCCC 2 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			SPDH DDDDEEEEEEEEEEEEEE 2 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 doomb_severed_limb("DeadShotgunGuy_NoHead");
 		Stop;
@@ -459,7 +459,7 @@ CLASS DyingShotgunguyHitInEye: doomb_body_base {
 			TNT1 A 0 A_Recoil (6);
 			SPO4 UUVWXY 5
 			{
-				doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+				doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 				if(vel == (0, 0, 0) )
 				{
 					setstatelabel("TakeASit");
@@ -478,7 +478,7 @@ CLASS DyingShotgunguyHitInEye: doomb_body_base {
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			
 			tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
-			TNT1 AAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_severed_limb("XDeathHalfSergeant", (0, 0, 32), doomb_random_velocity(5) );
@@ -614,7 +614,7 @@ CLASS SergeantHead: LimbBase
 		Death.Punch:
 		Death.Kick:
 			XHE2 EE 1 A_FaceTarget;
-			TNT1 AAAA 0 doomb_for_khorne("brutal_Blood", vel_dir: doomb_random_velocity(5) );
+			TNT1 AAAA 0 doomb_for_khorne("brutal_Blood", "spawn", vel_dir: doomb_random_velocity(5) );
 			TNT1 A 0 doomb_severed_limb("XDeathSergeantHead", vel_dir: doomb_random_velocity(5) );
 			TNT1 A 0 A_PlaySound("misc/xdeath4", 1);
 			TNT1 A 0 A_PlaySound("player/cyborg/fist", 3);
@@ -683,10 +683,10 @@ CLASS DyingSergeant : doomb_body_base {
 			TNT1 A 0 A_FaceTarget;
 			TNT1 A 0 doomb_spawn_bloodpool();
 			TNT1 A 0 A_PlaySound ("BURNZOM");
-			SPO5 AAAAA 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			SPO5 AAAAA 2 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 A 0 A_Jump(16, "Death");
 		Suffer:
-			SPO5 BBBBBCCCCC 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			SPO5 BBBBBCCCCC 2 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 A 0 A_Jump(12, "LastStand") ;
 			TNT1 A 0
 			{
@@ -735,8 +735,8 @@ CLASS DyingSergeant : doomb_body_base {
 			}
 			TNT1 A 0 A_XScream;
 			TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
-			TNT1 AAAAAAAAAAA 0 doomb_for_khorne("Brutal_Blood", (0, 0, 37), doomb_random_velocity(5) );
-			SZD4 AAAAABBBBBBBBBBBBBBBBBBBBBBBBB 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAAAAAAAAA 0 doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 37), doomb_random_velocity(5) );
+			SZD4 AAAAABBBBBBBBBBBBBBBBBBBBBBBBB 2 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			SZD4 B -1 doomb_final_absolution(12, 12);
 		Stop;
 
@@ -744,13 +744,13 @@ CLASS DyingSergeant : doomb_body_base {
 			TNT1 A 0 A_XScream;
 			TNT1 A 0 A_NoBlocking;
 			XBRN AABBCCDD 2 BRIGHT {doomb_flare_base.doomb_attach_flare(self, "BlueFlare", (0, 0, 43) );}
-			TNT1 AAAA 0 doomb_for_khorne("Brutal_Blood", (0, 0, 30), doomb_random_velocity(5) );
+			TNT1 AAAA 0 doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 30), doomb_random_velocity(5) );
 			TNT1 A 0 doomb_severed_limb("XDeathBurnedArm", doomb_random_velocity(5));
 			TNT1 A 0 doomb_severed_limb("XDeathBurnedLeg", doomb_random_velocity(5));
 			TNT1 A 0 doomb_severed_limb("XDeathBurnedSkull", doomb_random_velocity(5));
 			TNT1 A 0 doomb_spawn_burned_flesh;
 			TNT1 A 0 A_Givetotarget("CrueltyBonus5Armor");
-			TNT1 A 0 doomb_for_khorne("Brutal_Blood", (0, 0, 30), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 30), doomb_random_velocity(5) );
 			TNT1 AAAAA 0 doomb_show_effect("PlasmaParticleX", (0, 0, 0), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
 			TNT1 AAA 0 doomb_show_effect("PlasmaParticleX", (0, 0, 42), (frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ), (frandom(1.8, 2.2), 0) );
 			TNT1 A 0;
@@ -763,10 +763,10 @@ CLASS DyingSergeant : doomb_body_base {
 		Death.Shotgun:
 			TNT1 A 0 A_Givetotarget("CrueltyBonus10Armor");
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-			TNT1 AAAA 0 doomb_for_khorne("blood_impact_splash", (0, 0, 40) );
-			TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
-			TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-			TNT1 A 0 doomb_for_khorne("Brutal_Blood", (0, 0, 30), doomb_random_velocity(5) );
+			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 40) );
+			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
+			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 30), doomb_random_velocity(5) );
 			TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 			TNT1 A 0 doomb_severed_limb("XDeathSergeantHead", (0, 0, 32), doomb_random_velocity(5) );
 			TNT1 A 0 A_XScream;
@@ -820,7 +820,7 @@ Default
 	See:
 		SMAM ABAB 10 A_Wander;
 		SMAM A 9 A_Pain;
-		TNT1 A 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		TNT1 A 0 A_Jump(12, "LastStand");
 		tnt1 a 0 doomb_random_death();
 	Loop;
@@ -852,7 +852,7 @@ Default
 		XBRN AABBCC 2 BRIGHT
 		{
 			{doomb_flare_base.doomb_attach_flare(self, "BlueFlare", (0, 0, 43) );}
-			doomb_for_khorne("Brutal_Blood", (0, 0, 30), doomb_random_velocity(5) );
+			doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 30), doomb_random_velocity(5) );
 		}
 		TNT1 A 0 doomb_severed_limb("XDeathBurnedArm", doomb_random_velocity(5));
 		TNT1 A 0 doomb_severed_limb("XDeathBurnedLeg", doomb_random_velocity(5));
@@ -933,7 +933,7 @@ CLASS XDeathSargeLeg1: XDeathArm1 {
 		Spawn:
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			LEG2 ABCDEFGH 5 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
+			LEG2 ABCDEFGH 5 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
 			Loop;
 		Death:
 			LEG2 A 1;
@@ -955,7 +955,7 @@ CLASS Gib_SargeLeg: LimbBase
 		Stop;
 
 		Death:    
-			TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
+			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
 			TNT1 A 0 doomb_severed_limb("GibSargeLegPart", vel_dir: doomb_random_velocity(5));
 			TNT1 A 0 doomb_severed_limb("GibSargeBoot", vel_dir: doomb_random_velocity(5));
 			Stop;
@@ -1010,7 +1010,7 @@ Default {
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			LEG2 ABCDEFGH 5 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
+			LEG2 ABCDEFGH 5 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
 		Loop;
 		
 		Death:
@@ -1164,7 +1164,7 @@ CLASS DyingSergeantNoLegInFlames : doomb_body_base {
 		Death.Stomp:
 		Death.SSG:
 		XDeath:
-			TNT1 A 0 doomb_blood_mist(null, (0, 0, 5), 6);
+			TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 5), 6);
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_severed_limb("CrushedRemains");
 			TNT1 A 1 A_XScream;
@@ -1184,7 +1184,7 @@ CLASS Gib_SargeLeg2: Gib_SargeLeg {
 			TNT1 A 0 doomb_severed_limb("XDeathBurnedLeg", doomb_random_velocity(5));
 			Stop;
 		Death:    
-			TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
+			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
 			TNT1 A 0 doomb_severed_limb("GibSargeLegPart", vel_dir:doomb_random_velocity(5) );
 			TNT1 A 0 doomb_severed_limb("GibSargeBoot", vel_dir:doomb_random_velocity(5) );
 		stop;
@@ -1222,10 +1222,10 @@ Default
 		Spawn:
 			TNT1 A 0 nodelay doomb_spawn_bloodpool();
 			TNT1 A 0 A_PlaySound ("BURNZOM");
-			SPO3 CCCCC 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			SPO3 CCCCC 2 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 A 0 A_Jump(16, "Death");
 		Suffer:
-			SPO3 DDDDDEEEEE 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			SPO3 DDDDDEEEEE 2 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 A 0 doomb_blood_dying();
 			TNT1 A 0 A_Jump(12, "LastStand");
 			TNT1 A 0 doomb_random_death();
@@ -1250,7 +1250,7 @@ Default
 			TNT1 A 0 doomb_severed_limb("ShotgunguyHeadExplode", (0, 0, 30) );
 			TNT1 A 0 A_XScream;
 			TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
-			TNT1 AAAAAAAAAAA 0 doomb_for_khorne("Brutal_Blood", (0, 0, 37), doomb_random_velocity(5) );
+			TNT1 AAAAAAAAAAA 0 doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 37), doomb_random_velocity(5) );
 			TNT1 A 0 A_NoBlocking;
 			SPO3 IJ 6;
 			TNT1 A 0 doomb_severed_limb("DeadShotgunguy_NoLeg");
@@ -1271,9 +1271,9 @@ Default
 	Death.Blast:
 	Death.SSG:
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
-		TNT1 AAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
+		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 A 0 doomb_severed_limb("XDeathArm1", (0, 0, 5), doomb_random_velocity(5) );
 		TNT1 A 0 doomb_severed_limb("XDeathZombieManHead", (0, 0, 32), doomb_random_velocity(5));
@@ -1323,7 +1323,7 @@ States
 				setstatelabel("no_head");
 		}
 		
-		SZD2 ABCD 5 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+		SZD2 ABCD 5 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		SPO5 E -1 doomb_final_absolution(12, 12);
 	Stop;
 		
@@ -1335,7 +1335,7 @@ States
 		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 10), doomb_random_velocity(5) );
 
 		TNT1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
-		TNT1 AAAAAAAAAAA 0 doomb_for_khorne("Brutal_Blood", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 AAAAAAAAAAA 0 doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 50), doomb_random_velocity(5) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 A_Recoil(2);
 		SZD1 BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1
@@ -1343,7 +1343,7 @@ States
 			if(health <= 100)
 				setstatelabel("just_torso");
 		}
-		SZD4 AB 6 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+		SZD4 AB 6 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		SZD4 B -1 doomb_final_absolution(12, 12);
 	Stop;
 	
@@ -1355,7 +1355,7 @@ States
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 	//BrutalizedSergeant3
 		SZD1 C 35;
-		SZD3 ABC 6 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+		SZD3 ABC 6 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		TNT1 A 0 doomb_spawn_bloodpool();
 		SZD3 C -1 doomb_final_absolution(12, 12);
 	Stop;
@@ -1365,7 +1365,7 @@ States
 		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		TNT1 AAAAAA 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+		TNT1 AAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
 		SZD1 EFGH 6;
 		TNT1 A 0 doomb_spawn_bloodpool();
@@ -1418,7 +1418,7 @@ States
 		TNT1 A 0 A_XScream;
 		TNT1 A 0 A_NoBlocking;
 		XBRN AABBCC 2 BRIGHT {doomb_flare_base.doomb_attach_flare(self, "BlueFlare", (0, 0, 43) );}
-		TNT1 AAAA 0 doomb_for_khorne("Brutal_Blood", (0, 0, 30), doomb_random_velocity(5) );
+		TNT1 AAAA 0 doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 30), doomb_random_velocity(5) );
 		
 		TNT1 A 0 doomb_severed_limb("XDeathBurnedArm", doomb_random_velocity(5));
 		TNT1 A 0 doomb_severed_limb("XDeathBurnedLeg", doomb_random_velocity(5));
@@ -1581,7 +1581,7 @@ Default
 			SPO3 D 1 A_PlaySound ("BURNZOM");
 			TNT1 A 0 doomb_spawn_bloodpool();
 		Suffer:
-			SPO3 DDDDDEEEEE 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			SPO3 DDDDDEEEEE 2 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 A 0 A_Jump(32, "LeaveCrawling");
 			TNT1 A 0 A_Jump(16, "LastStand");
 		Loop;
@@ -1608,7 +1608,7 @@ Default
 					doomb_severed_limb("XDeathSergeantHead", (0, 0, 32), doomb_random_velocity(5) );
 			}
 			TNT1 A 0 A_Scream;
-			TNT1 AAAAAAAAAAA 0 doomb_for_khorne("Brutal_Blood", (0, 0, 37), doomb_random_velocity(5) );
+			TNT1 AAAAAAAAAAA 0 doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 37), doomb_random_velocity(5) );
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
 			SPO3 IJ 5;
@@ -1681,10 +1681,10 @@ CLASS FlyingImpaledSergeant : doomb_body_base
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "null");
-			ID18 AA 3 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
-			ID11 GG 3 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
+			ID18 AA 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
+			ID11 GG 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
 		Fall:
-			ID11 H 3 doomb_for_khorne("doomb_red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
+			ID11 H 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 32 ), doomb_random_velocity(5) );
 		Loop;
 		
 		Death:
@@ -1731,7 +1731,7 @@ CLASS SergeantLastStand1: DyingSergeantNoLeg {
 			ZSLS AAAA 10
 			{
 				A_FaceTarget();
-				doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+				doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			}
 			ZSLS B 6 BRIGHT
 			{
@@ -1748,7 +1748,7 @@ CLASS SergeantLastStand1: DyingSergeantNoLeg {
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			TNT1 AA 0 doomb_severed_limb("SmallBrainPiece", vel_dir:doomb_random_velocity(5));
 			TNT1 A 0 A_Scream;
-			TNT1 AAAA 0 doomb_for_khorne("Brutal_Blood", (0, 0, 37), doomb_random_velocity(5) );
+			TNT1 AAAA 0 doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 37), doomb_random_velocity(5) );
 			TNT1 A 0 A_NoBlocking;
 			POS7 GHI 6;
 			TNT1 A 0 doomb_severed_limb("DeadShotgunguy_NoLeg");
@@ -1778,7 +1778,7 @@ CLASS SergeantLastStand2: SergeantLastStand1
 			ZSLS C 1 A_Look;
 		See:
 			ZSLS C 10 A_Chase;
-			TNT1 A 0 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			tnt1 a 0 a_jump(10, "death");
 		Loop;
 			
@@ -1786,7 +1786,7 @@ CLASS SergeantLastStand2: SergeantLastStand1
 			ZSLS CCCC 10
 			{
 				A_FaceTarget();
-				doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+				doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			}			
 			TNT1 A 0 A_PlaySOund("DISTFRRIFLE");
 			TNT1 A 0 {doomb_flare_base.doomb_attach_flare(self, "lens_flare_orange", (0, 0, 24));}
@@ -1802,8 +1802,8 @@ CLASS SergeantLastStand2: SergeantLastStand1
 			TNT1 A 0 doomb_severed_limb("ShotgunguyHeadExplode", (0, 0, 30) );
 			TNT1 A 0 A_XScream;
 			TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
-			TNT1 AAAA 0 doomb_for_khorne("Brutal_Blood", (0, 0, 37), doomb_random_velocity(5) );
-			SZD4 AAAAABBBBBBBBBBBBBBBBBBBBBBBBB 2 doomb_for_khorne("doomb_red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAA 0 doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 37), doomb_random_velocity(5) );
+			SZD4 AAAAABBBBBBBBBBBBBBBBBBBBBBBBB 2 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			SZD4 B -1 doomb_final_absolution(12, 12);
 		Stop;
 	}

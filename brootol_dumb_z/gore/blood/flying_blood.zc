@@ -20,7 +20,7 @@ CLASS doomb_blood_dripping_ceiling: doomb_blood
 			bpdl AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 10
 			{
 				a_settics(random(5, 24) );
-				doomb_for_khorne("TinyBlood", (frandom((-radius), (radius) ), frandom((-radius), (radius) ), -1) );
+				doomb_for_khorne("doomb_non_interactive_blood", "blood_droplet", (frandom((-radius), (radius) ), frandom((-radius), (radius) ), -1) );
 			}
 			BPDL a 2000;
 			BPDL A 1 A_FadeOut(0.1);
