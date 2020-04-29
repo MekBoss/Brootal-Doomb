@@ -55,8 +55,6 @@ States
 	XDT5 B 800;
 	//SmallBrainPiece 2
 	XDT5 O 800;
-	//stomach with intestines (XDeathStomach)
-	guts k 0;
 
 	//BrainsSergeantHeadPiece
 	BR7B E 0;

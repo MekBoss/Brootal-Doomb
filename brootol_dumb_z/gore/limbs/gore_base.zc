@@ -15,45 +15,22 @@ default
 {
 	radius 5;
 	height 10;
-    -ismonster
+ 	Mass 1000;
+	Health 300;
+	
+	-ismonster
 	-countkill
 	-solid
+	+NOTELEPORT;
+	+MOVEWITHSECTOR;
+	+DONTSPLASH;
+	+NOBLOCKMONST;
+	+THRUACTORS;
+	+FLOORCLIP;
+	+FORCEXYBILLBOARD;
+	+SHOOTABLE;
 
-		Radius 10;
-		Height 10;
-		Mass 1000;
-		Health 100;
-
-		+NOTELEPORT;
-		+MOVEWITHSECTOR;
-		+DONTSPLASH;
-		+NOBLOCKMONST;
-		-NOBLOCKMAP;
-		+GHOST;
-		+THRUACTORS;
-		+FLOORCLIP;
-		+SLIDESONWALLS;
-		+FORCEXYBILLBOARD;
-		-SOLID;
-		+SHOOTABLE;
-		DeathSound "misc/xdeath4";
-	
-		painchance 255;
-		painchance "Fire", 0;
-
-		damagefactor "Crush", 50.0;
-		damagefactor "Blood", 0.0;
-		damagefactor "GreenBlood", 0.0;
-		damagefactor "BlueBlood", 0.0 ;
-		damagefactor "Taunt", 0.0 ;
-		damagefactor "Taunt", 0.0;
-		damagefactor "Trample", 2.0;
-		damagefactor "Kick", 9.0;
-		damagefactor "punch", 2.0;
-		damagefactor "Explosive_Impact", 9.1;
-		damagefactor "Melee", 9.0;
-		damagefactor "Plasma", 20.0;
-
+	DeathSound "misc/xdeath4";	
 }
 
 protected void doomb_random_death(name st = "")

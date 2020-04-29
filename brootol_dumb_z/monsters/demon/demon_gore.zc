@@ -261,7 +261,13 @@ States
 
 	Death:
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 doomb_severed_limb("XDeathStomach", "spawn", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0
+		{
+			doomb_internal_organ a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", "spawn", (0, 0, 30), doomb_random_velocity(5) ) );
+
+			if(a)
+				a.set_gib_appearance(0, DIT_GUT_PILE_FLYING);
+		}
 		TNT1 AA 0 doomb_severed_limb("XDeathDemonArm", "spawn", (0, 0, 35), doomb_random_velocity(5) );
 		TNT1 A 0 doomb_severed_limb("PinkyJaw", "spawn", (0, 0, 35), doomb_random_velocity(5) );
 		TNT1 AA 0 doomb_Meat_Death_Small();
@@ -311,7 +317,13 @@ States
 
 	Death:
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 doomb_severed_limb("XDeathStomach", "spawn", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0
+		{
+			doomb_internal_organ a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", "spawn", (0, 0, 30), doomb_random_velocity(5) ) );
+
+			if(a)
+				a.set_gib_appearance(0, DIT_GUT_PILE_FLYING);
+		}
 		TNT1 A 0 doomb_severed_limb("XDeathDemonArm", "spawn", (0, 0, 35), doomb_random_velocity(5) );
 		TNT1 A 0 doomb_severed_limb("XDeathBullLeg12", "spawn", (0, 0, 35), doomb_random_velocity(5) );
 		TNT1 AA 0 doomb_Meat_Death_Small();
@@ -345,7 +357,13 @@ States
 		
 	Death:
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 doomb_severed_limb("XDeathStomach", "spawn", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0
+		{
+			doomb_internal_organ a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", "spawn", (0, 0, 30), doomb_random_velocity(5) ) );
+
+			if(a)
+				a.set_gib_appearance(0, DIT_GUT_PILE_FLYING);
+		}
 		TNT1 A 0 doomb_severed_limb("XDeathDemonArm", "spawn", (0, 0, 35), doomb_random_velocity(5) );
 		TNT1 A 0 doomb_severed_limb("PinkyJaw", "spawn", (0, 0, 35), doomb_random_velocity(5) );
 		TNT1 A 0 A_SpawnProjectile ("", 22, 0, random (0, 360), 2, random (0, 160));

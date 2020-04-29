@@ -121,30 +121,6 @@ States
 //////////////
 //GUTS
 //////////////
-
-
-CLASS XDeathStomach: XDeathArm1 { 
-	Default {
-		
-		-DOOMBOUNCE;
-		BounceFactor 0.0;
-		Speed 2;
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-			guts k 24 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
-			Loop;
-		Death:
-			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-			tnt1 EEEEEEEEE 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-			guts l 9009;
-		Stop;
-	}
-}
-
-
 CLASS XDeathHalfMarine : doomb_body_base { 
 	Default {
 		

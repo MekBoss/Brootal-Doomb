@@ -1,6 +1,7 @@
 class doomb_generic_burned_limb : doomb_body_base abstract
 {
-Default {
+Default
+{
 	Radius 8;
 	Height 8;
 	Speed 5;
@@ -12,16 +13,55 @@ Default {
 	+NOTELEPORT;
 	+DONTSPLASH;
 	+MOVEWITHSECTOR;
+	+rollsprite
+	+rollcenter
+}
+
+virtual void doomb_set_burned_sprite(uint i) {}
+
+protected double roll_change;
+
+States
+{
+	spawn:
+		"####" "#" 10
+		{
+			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
+			roll += roll_change;
+		}
+	loop;
+
+	death:
+		"####" "#" 10
+		{
+			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
+			roll = 0;
+			if(random[smoking_limb](0, 20) <= 1)
+				setstate(curstate+1);
+		}
+	loop;
+		"####" "#" -1
+		{
+			busy = false;
+		}
+	stop;
+	
 }
 
 }
+
+
+class doomb_burned_leg : doomb_generic_burned_limb{}
+class doomb_burned_hand : doomb_generic_burned_limb{}
+class doomb_burned_head : doomb_generic_burned_limb{}
+
 
 CLASS XDeathBurnedLeg : doomb_generic_burned_limb
 { 
 	States
 	{
 		Spawn:
-			CARB E 10 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
+			CARB E 10;
 			Loop;
 		Death:
 			CARB EEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE 14 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
@@ -31,18 +71,6 @@ CLASS XDeathBurnedLeg : doomb_generic_burned_limb
 }
 
 
-CLASS XDeathBurnedSkull : doomb_generic_burned_limb { 
-	States
-	{
-		Spawn:
-			BURN B 10 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
-			Loop;
-		Death:
-			BURN BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 14 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
-			BURN B -1;
-			Stop;
-	}
-}
 
 CLASS XDeathBurnedArm : doomb_generic_burned_limb { 
 	States
@@ -56,6 +84,9 @@ CLASS XDeathBurnedArm : doomb_generic_burned_limb {
 			Stop;
 	}
 }
+
+
+
 
 
 CLASS XDeathBurnedImpArm : doomb_generic_burned_limb { 
@@ -158,6 +189,25 @@ CLASS XDeathBurnedBlueMeat2 : doomb_generic_burned_limb {
 		Death:
 			CACB QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ 15 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			BURN D -1;
+			Stop;
+	}
+}
+
+
+
+
+
+
+
+CLASS XDeathBurnedSkull : doomb_generic_burned_limb { 
+	States
+	{
+		Spawn:
+			BURN B 10 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
+			Loop;
+		Death:
+			BURN BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 14 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
+			BURN B -1;
 			Stop;
 	}
 }

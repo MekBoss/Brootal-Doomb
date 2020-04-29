@@ -21,7 +21,8 @@ CLASS doomb_fatso_Eyeballs : doomb_body_base { //Eyeballs
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			MANE Y 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
-			Loop;
+		Loop;
+		
 		Death:
 			MANE Y 800;
 		stop;

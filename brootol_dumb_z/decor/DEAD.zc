@@ -132,7 +132,7 @@ CLASS CurbstompedMarine : doomb_body_base {
 			
 		Death.Fire:
 			TNT1 A 0 A_NoBlocking;
-			TNT1 A 0 A_SpawnItem("doomb_half_burned_body");
+			TNT1 A 0 doomb_severed_limb("doomb_half_burned_body");
 		Stop;
 			
 		Death:

@@ -377,16 +377,27 @@ protected void doomb_blood_mist(class<doomb_blood> type = 'doomb_non_interactive
 	}
 }
 
-protected void doomb_spawn_entrails(vector3 offset = (0, 0, 0), doomb_internals_type type = DIT_GIB, blood_color_flags color = BCF_NONE)
+protected void doomb_spawn_entrails(vector3 offset = (0, 0, 0), blood_color_flags color = BCF_NONE)
 {
 	for(uint i = 0; i < 5; i++)
 	{
 		doomb_internal_organ a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", "spawn", offset, doomb_random_velocity(5) ) );
 
 		if(a)
-			a.set_gib_appearance(0, type, color);
+			a.set_gib_appearance(0, DIT_GIB, color);
+
+		a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", "spawn", offset, doomb_random_velocity(5) ) );
+
+		if(a)
+			a.set_gib_appearance(0, DIT_INTESTINE, color);
 	}
+
+	doomb_internal_organ a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", "spawn", offset, doomb_random_velocity(5) ) );
+
+	if(a)
+		a.set_gib_appearance(0, DIT_STOMACH, color);
 }
+
 
 protected doomb_body_base doomb_severed_limb(class<doomb_body_base> it = null, statelabel limb_state = "spawn", vector3 offset = (0, 0, 1), vector3 vel_dir = (0, 0, 0), bool limb_ignore_cvar = false )
 {
