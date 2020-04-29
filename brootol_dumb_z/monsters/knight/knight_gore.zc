@@ -36,6 +36,7 @@ CLASS DyingHellKnight1 : doomb_body_base {
 		Death.Headshot:
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_Fall;
+			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			TNT1 A 0 doomb_severed_limb("HellKnightHeadExplode", "spawn", (0, 0, 62) );
 			BTN4 ABCD 6;
 			TNT1 A 0 A_Givetotarget("CrueltyBonus5Health");
@@ -115,6 +116,7 @@ CLASS HellKnightHead: LimbBase {
 		Loop;
 		
 		Death:
+			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			TNT1 A 0 doomb_severed_limb("HellKnightHeadExplode", "spawn", (0, 0, 40) );
 		Stop;
 

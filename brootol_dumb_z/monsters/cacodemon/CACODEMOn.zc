@@ -35,6 +35,7 @@ Default
 	damagefactor "Blood", 0.0;
 	damagefactor "BlueBlood", 0.0;
 	damagefactor "GreenBlood", 0.0;
+	species 'caco';
 }
 States
 {

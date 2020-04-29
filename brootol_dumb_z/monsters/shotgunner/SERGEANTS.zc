@@ -25,6 +25,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base
 		damagefactor "Crush", 5.0;
 		PainChance "Taunt", 255;
 		damagefactor "SSG", 50.0;
+		species 'shotgunner';
 
 		DropItem "GrenadeAmmo", 15;
 		damagetype "Melee";

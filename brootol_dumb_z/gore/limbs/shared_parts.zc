@@ -202,7 +202,6 @@ CLASS SmallBrainPiece : doomb_body_base {
 }
 
 
-
 //implemented
 class doomb_internal_organ : doomb_body_base
 {
@@ -210,6 +209,7 @@ Default
 {
 	Decal "BrutalBloodSplat";
 	-solid
+	-shootable
 	+CLIENTSIDEONLY;
 	BounceFactor 0.4;
 	+NOTELEPORT;

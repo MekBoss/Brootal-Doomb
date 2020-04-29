@@ -43,6 +43,7 @@ Default {
 	PainChance "HelperMarineFatality", 255;
 	Obituary "$OB_UNDEAD";
 	DropItem "DemonStrengthRune", 5;
+	species 'skeleton';
 }
 States
 {

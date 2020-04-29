@@ -21,20 +21,21 @@ CLASS ImpHeadExplode: doomb_body_base {
 	States
 	{
 		Spawn:
+			tnt1 a 0;
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash");
 			TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		TNT1 A 0 doomb_severed_limb("eye", "spawn", (0, 0, 50), doomb_random_velocity(5) );
-		TNT1 A 0 doomb_severed_limb("head_piece", "spawn", (0, 0, 50), doomb_random_velocity(5) );
-		TNT1 A 0 doomb_severed_limb("jaw", "spawn", (0, 0, 50), doomb_random_velocity(5) );
-		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", "spawn", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("eye", "spawn", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("head_piece", "spawn", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("jaw", "spawn", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("SmallBrainPiece", "spawn", (0, 0, 50), doomb_random_velocity(5) );
 			TNT1 AA 0 doomb_spray_decal("BrutalBloodSuper");
 			TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 
 			TNT1 A 0 A_SpawnProjectile ("head_piece_dark", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("BrainsImpHeadPiece", 0, 0, random (0, 360), 2, random (0, 160));
-			Stop;
+		Stop;
 	}
 }
 
@@ -67,18 +68,16 @@ CLASS HellKnightHeadExplode: doomb_body_base {
 	States
 	{
 		Spawn:
-
-			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash");
 			TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		TNT1 A 0 doomb_severed_limb("eye", "spawn", (0, 0, 50), doomb_random_velocity(5) );
-		TNT1 A 0 doomb_severed_limb("head_piece", "spawn", (0, 0, 50), doomb_random_velocity(5) );
-		TNT1 A 0 doomb_severed_limb("jaw", "spawn", (0, 0, 50), doomb_random_velocity(5) );
-		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", "spawn", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("eye", "spawn", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("head_piece", "spawn", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("jaw", "spawn", (0, 0, 50), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("SmallBrainPiece", "spawn", (0, 0, 50), doomb_random_velocity(5) );
 			TNT1 AA 0 doomb_spray_decal("BrutalBloodSuper");
 			TNT1 AAA 0 A_SpawnProjectile ("Teeth", 0, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ), BCF_GREEN );
-			Stop;
+		Stop;
 	}
 }
 

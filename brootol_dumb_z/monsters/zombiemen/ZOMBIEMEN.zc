@@ -52,7 +52,9 @@ Default {
 	damagefactor "BlueBlood", 0.0;
 	damagefactor "GreenBlood", 0.0;
 	Obituary "%o has been gunned down by a Zombie Soldier.";
+	species 'posessed';
 }
+
 States
 {
 	Spawn:
@@ -138,12 +140,12 @@ States
 			{
 				A_SpawnProjectile("ZombieManTracer", 32, 0, random(-8, 8), 1, random(-3, 3));
 				A_SpawnItem ("RifleCaseSpawn", 0, 30,0);
-				A_PlaySound("weapons/rifle");
+				A_PlaySound("weapons/rifle", CHAN_AUTO , 1);
 				ammo_amount --;
+				A_PlaySOund("DISTFRRIFLE", CHAN_AUTO , 2);
+				{doomb_flare_base.doomb_attach_flare(self, "lens_flare_orange", (0, 0, 36) );}
 			}
 			A_FaceTarget();
-			A_PlaySOund("DISTFRRIFLE");
-			{doomb_flare_base.doomb_attach_flare(self, "lens_flare_orange", (0, 0, 36) );}
 		}
 		TNT1 A 0 A_jump(96, "Missile");
 		

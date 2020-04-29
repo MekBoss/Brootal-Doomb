@@ -51,6 +51,7 @@ Default
 	AttackSound "weapons/minigunfire";
 	damagefactor "Explosive_Impact", 2.0;
 	Obituary "%o has been mowed down by a Zombie Commando.";
+	species 'minigunner';
 }
 
 States
@@ -94,7 +95,7 @@ States
 		MPOS F 1 BRIGHT
 		{
 			A_SpawnProjectile("MonsterMinigunTracer", 38, 0, random(-9, 9), 1, random(-2, 2));
-			A_PlaySOund("DISTFRRIFLE");
+			A_PlaySOund("DISTFRRIFLE", CHAN_AUTO, 1);
 
 			{doomb_flare_base.doomb_attach_flare(self, "lens_flare_orange", (0, 0, 34) );}
 			A_SpawnItem ("RifleCaseSpawn", 0, 30,0);

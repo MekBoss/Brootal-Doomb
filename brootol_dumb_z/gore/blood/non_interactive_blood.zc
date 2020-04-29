@@ -78,6 +78,7 @@ states
     blood_hit:
         TNT1 A 0
         {
+            activate_blood();
             scale *= 0.8;
         }
         BLHT ABCDE 1;

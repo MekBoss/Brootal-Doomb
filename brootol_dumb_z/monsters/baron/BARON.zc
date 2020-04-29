@@ -45,6 +45,7 @@ Default {
 	ActiveSound "baron/active";
 	HitObituary "$OB_BARONHIT";
 	Tag "$FN_BARON";
+	species 'bruiser';
 	
 }
 States

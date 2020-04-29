@@ -36,7 +36,35 @@ private doomb_blood doomb_find_fresh_blood(class<actor> type = null)
 {
     if(type)
 	{
-		if(type is "doomb_blood")
+		if(type is 'doomb_non_interactive_blood')
+		{
+			for(uint i = 0; i <= non_interactive_blood.size(); i++)
+			{
+				if(i == non_interactive_blood.size() )
+				{
+					doomb_blood b = doomb_blood(actor.spawn(type, (double.infinity, double.infinity, double.infinity)));
+					b.set_init(true);
+					non_interactive_blood.push(doomb_non_interactive_blood(b) );
+					return b;
+					break;
+				}
+
+				if(non_interactive_blood[i] && non_interactive_blood[i].getclass() == type && doomb_blood(non_interactive_blood[i]).is_active() == false)
+				{
+					doomb_blood b = non_interactive_blood[i];
+					return b;
+					break;
+				}
+
+				else if (!non_interactive_blood[i])
+				{
+					non_interactive_blood.delete(i);
+					i--;
+				}
+			}
+		}
+
+		else if(type is "doomb_blood")
 		{
 			for(uint i = 0; i <= blood_stains.size(); i++)
 			{
@@ -51,7 +79,7 @@ private doomb_blood doomb_find_fresh_blood(class<actor> type = null)
 
 				if(blood_stains[i] && blood_stains[i].getclass() == type && doomb_blood(blood_stains[i]).is_active() == false)
 				{
-					doomb_blood b = doomb_blood(actor.spawn(type, (double.infinity, double.infinity, double.infinity)));
+					doomb_blood b = blood_stains[i];
 					return b;
 					break;
 				}
@@ -98,18 +126,16 @@ private doomb_body_base doomb_butcher_shop(class<actor> type = null)
 			{
 				if(i == common_gibs.size() )
 				{
-					doomb_body_base g = doomb_body_base(actor.spawn(type, (double.infinity, double.infinity, double.infinity)));
+					doomb_body_base g = doomb_body_base(actor.spawn(type, (0, 0, 0) ) );
 					g.event_initialization(self);
 					common_gibs.push(g);
-					g.setstatelabel("spawn");
 					return g;
 					break;
 				}
 
 				if(common_gibs[i] && common_gibs[i].getclass() == type && doomb_body_base(common_gibs[i]).is_busy() == false)
 				{
-					doomb_body_base g = doomb_body_base(actor.spawn(type, (double.infinity, double.infinity, double.infinity)));
-					g.setstatelabel("spawn");
+					doomb_body_base g = common_gibs[i];
 					return g;
 					break;
 				}

@@ -50,6 +50,7 @@ CLASS doomb_mind : doomb_monster_base
 		Obituary "%o was destroyed by a Mastermind.";
 		ActiveSound "spider/active";
 		obituary "$OB_SPIDER";
+		species 'mastermind';
 	}
 	States
 	{
@@ -89,6 +90,7 @@ CLASS doomb_mind : doomb_monster_base
 
 
 
+		Death.Telefrag:
 		Death:
 			SPID J 20 A_Scream();
 			tnt1 a 0 A_FaceTarget();
@@ -102,7 +104,7 @@ CLASS doomb_mind : doomb_monster_base
 				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
 			}
 			TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 110), 6);
-			TNT1 AAAAAAAAAAAAAAAAAA 0
+			TNT1 AAAA 0
 			{
 				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, random(90, 100) ) );
 				if(a)
@@ -125,17 +127,14 @@ CLASS doomb_mind : doomb_monster_base
 					a.scale = (2.45, 2.45);
 			}
 			SPID L 5;
-			TNT1 AAAA 0 A_SpawnProjectile ("MeatDeath", 0, 0, random (0, 360), 2, random (0, 160));
-			EXPL AAAA 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
+			TNT1 A 0 A_SpawnProjectile ("MeatDeath", 0, 0, random (0, 360), 2, random (0, 160));
+			EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
 			TNT1 AAAAA 0 A_SpawnItem("SpawnedExplosionRepeat");
 			EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
 			TNT1 A 0 A_PlaySound("FAREXPL");
 			EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (frandom(2.3, 2.7), 0), 0.5 );
-			EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 			TNT1 A 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
-			TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(6, 6.4), 0) );
-			TNT1 A 0;
-			TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(6, 6.4), 0) );
+			TNT1 A 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(6, 6.4), 0) );
 			TNT1 A 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
 			TNT1 A 0 A_PlaySound("FAREXPL");
 			EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
@@ -145,7 +144,7 @@ CLASS doomb_mind : doomb_monster_base
 			TNT1 AAA 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
 			TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile ("PEPart2", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 30), 6);
-			TNT1 AAAAAAAAAAAAAA 0
+			TNT1 AAAAAAAAAAA 0
 			{
 				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, random(30, 100) ) );
 				if(a)
@@ -155,80 +154,9 @@ CLASS doomb_mind : doomb_monster_base
 			TNT1 A 0 A_SpawnProjectile ("MastermindLeg", 30, 0, 0, 2, 65);
 			TNT1 A 0 doomb_spawn_bloodpool();
 			SPID S 300;
-			SPID S 1 A_BossDeath();
-			SPID S -1;
+			SPID S -1 A_BossDeath();
 		Stop;
-			
-		Death.Telefrag:
-			SPID J 20 A_Scream();
-			tnt1 a 0 A_FaceTarget();
-			EXPL A 0 Radius_Quake (8, 100, 0, 22, 0);
-		TNT1 AAAA 0
-		{
-			A_PlaySound("FAREXPL");
-			doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-			{doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
-			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-		}
-			TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 110), 6);
-			TNT1 AAAAAAA 0
-			{
-				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, random(90, 100) ) );
-				if(a)
-					a.scale = (2.45, 2.45);
-			}
-			SPID K 10 A_NoBlocking();
-		TNT1 AAAA 0
-		{
-			A_PlaySound("FAREXPL");
-			doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-			{doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
-			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-		}
-			TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 80), 6);
-			TNT1 AAAAAAA 0
-			{
-				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, random(90, 100) ) );
-				if(a)
-					a.scale = (2.45, 2.45);
-			}
-			SPID L 5;
-			TNT1 AAAA 0 A_SpawnProjectile ("MeatDeath", 0, 0, random (0, 360), 2, random (0, 160));
-		EXPL AAAA 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
-		TNT1 AAAAA 0 A_SpawnItem("SpawnedExplosionRepeat");
-		EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
-		TNT1 A 0 A_PlaySound("FAREXPL");
-		EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (frandom(2.3, 2.7), 0), 0.5 );
-		EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-		TNT1 A 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
-		TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(6, 6.4), 0) );
-		TNT1 A 0;
-		TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(6, 6.4), 0) );
-		TNT1 A 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
-		TNT1 A 0 A_PlaySound("FAREXPL");
-		EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
-		EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
-		TNT1 A 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
-		TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(9, 9.4), 0) );
-		TNT1 AAA 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
-			TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile ("PEPart2", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 30), 6);
-			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0
-			{
-				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, random(30, 100) ) );
-				if(a)
-					a.scale = (2.45, 2.45);
-			}
-			TNT1 AAA 0 A_SpawnProjectile ("MastermindLeg", 30, 0, random (0, 360), 2, random (40, 90));
-			TNT1 A 0 A_SpawnProjectile ("MastermindLeg", 30, 0, 0, 2, 65);
-			TNT1 A 0 doomb_spawn_bloodpool();
-			TNT1 A 300;
-			TNT1 A 1 A_BossDeath();
-			TNT1 A -1;
-			Stop;
-			
+	
 		Crush:
 			CRS3 A 5 A_PlaySound("misc/xdeath4");
 			CRS3 A -1;
@@ -238,20 +166,18 @@ CLASS doomb_mind : doomb_monster_base
 		Death.Cut:
 		Death.Saw:
 		Death.headshot:
-			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(100, 135) ) );
+			TNT1 A 0 doomb_spawn_entrails( (0, 0, random(100, 135) ) );
 			TNT1 A 0 A_SpawnProjectile ("XSpiderMastermindCuttedBrain", 120, 0, random (0, 360), 2, random (50, 130));
 			SPIY AAAAAAAAAAA 8 doomb_much_blood(120);
-
-			
 			EXPL A 0 Radius_Quake (8, 100, 0, 22, 0);
-		TNT1 AAAA 0
-		{
-			A_PlaySound("FAREXPL");
-			doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-			{doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
-			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-		}
+			TNT1 AAAA 0
+			{
+				A_PlaySound("FAREXPL");
+				doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+				doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
+				{doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
+				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+			}
 			TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 110), 6);
 			TNT1 AAAAAAA 0
 			{
@@ -260,14 +186,14 @@ CLASS doomb_mind : doomb_monster_base
 					a.scale = (2.45, 2.45);
 			}
 			SPID K 10 A_NoBlocking();
-		TNT1 AAAA 0
-		{
-			A_PlaySound("FAREXPL");
-			doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-			doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-			{doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
-			doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-		}
+			TNT1 AAAA 0
+			{
+				A_PlaySound("FAREXPL");
+				doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
+				doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
+				{doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
+				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+			}
 			TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 80), 6);
 			TNT1 AAAAAAA 0
 			{
@@ -276,38 +202,28 @@ CLASS doomb_mind : doomb_monster_base
 					a.scale = (2.45, 2.45);
 			}
 			SPID L 5;
-			TNT1 AAAA 0 A_SpawnProjectile ("MeatDeath", 0, 0, random (0, 360), 2, random (0, 160));
-		EXPL AAAA 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
-		TNT1 AAAAA 0 A_SpawnItem("SpawnedExplosionRepeat");
-		EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
-		TNT1 A 0 A_PlaySound("FAREXPL");
-		EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (frandom(2.3, 2.7), 0), 0.5 );
-		EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
-		TNT1 A 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
-		TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(6, 6.4), 0) );
-		TNT1 A 0;
-		TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(6, 6.4), 0) );
-		TNT1 A 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
-		TNT1 A 0 A_PlaySound("FAREXPL");
-		EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
-		EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
-		TNT1 A 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
-		TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(9, 9.4), 0) );
-		TNT1 AAA 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
+			TNT1 A 0 A_SpawnProjectile ("MeatDeath", 0, 0, random (0, 360), 2, random (0, 160));
+			EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
+			TNT1 A 0 A_SpawnItem("SpawnedExplosionRepeat");
+			TNT1 A 0 A_PlaySound("FAREXPL");
+			TNT1 A 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
+			TNT1 A 0 A_PlaySound("FAREXPL");
+			EXPL A 0 doomb_show_effect("HeavyExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (5, 0), 0.5 );
+			TNT1 A 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
+			TNT1 AAAA 0 doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (frandom(9, 9.4), 0) );
+			TNT1 AAA 0 {doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");}
 			TNT1 AAAAAAAAAAAA 0 A_SpawnProjectile ("PEPart2", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 30), 6);
-			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0
+			TNT1 AAAAAAAAAAAA 0
 			{
 				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, random(30, 100) ) );
 				if(a)
 					a.scale = (2.45, 2.45);
 			}
 			TNT1 AAA 0 A_SpawnProjectile ("MastermindLeg", 30, 0, random (0, 360), 2, random (40, 90));
-			TNT1 A 0 A_SpawnProjectile ("MastermindLeg", 30, 0, 0, 2, 65);
 			TNT1 A 0 doomb_spawn_bloodpool();
-			TNT1 A 300;
 			TNT1 A 0 A_BossDeath();
-			Stop;
+		Stop;
 	}
 }
 
@@ -414,18 +330,6 @@ CLASS MastermindStep : visual_sfx {
 	States
 	{
 		Spawn:
-			
-			tnt1 A 0 A_SpawnProjectile("FootstepStrong", 0, 0, 150);
-			tnt1 A 0 A_SpawnProjectile("FootstepStrong", 0, 0, -150);
-			tnt1 A 0 A_SpawnProjectile("FootstepStrong", 0, 0, -30);
-			tnt1 A 0 A_SpawnProjectile("FootstepStrong", 0, 0, 30);
-			tnt1 A 0 A_SpawnProjectile("FootstepStrong", 0, 0, -60);
-			tnt1 A 0 A_SpawnProjectile("FootstepStrong", 0, 0, 60);
-			tnt1 A 0 A_SpawnProjectile("FootstepStrong", 0, 0, -90);
-			tnt1 A 0 A_SpawnProjectile("FootstepStrong", 0, 0, 90);
-			tnt1 A 0 A_SpawnProjectile("FootstepStrong", 0, 0, -120);
-			tnt1 A 0 A_SpawnProjectile("FootstepStrong", 0, 0, 120);
-			TNT1 A 0 A_SpawnItemEx("FootStep", 0, 0, 40, 0, 0);
 			EXPL AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 			
 			EXPL A 0 A_Explode(30, 50, damagetype:"stomp");

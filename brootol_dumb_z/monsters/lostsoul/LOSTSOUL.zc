@@ -31,6 +31,7 @@ CLASS doomb_lost_soul : doomb_monster_base
 		ActiveSound "skull/active";
 		Obituary "$OB_SKULL";
 		BloodType "LostSoulBlood";
+		species 'soul';
 		Alpha 1;
 	}
 	States

@@ -44,6 +44,7 @@ CLASS doomb_fatso : doomb_monster_base
 		Tag "Mancubus";
 		BloodType "Brutal_Blood",  "SawBlood";
 		DropItem "DemonStrengthRune", 5;
+		species 'fatso';
 	}
 	States
 	{

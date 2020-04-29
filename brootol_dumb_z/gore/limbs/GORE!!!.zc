@@ -95,24 +95,6 @@ CLASS XDeathArm1 : doomb_body_base {
 }
 
 
-CLASS GibArmPart: TinyGib { 
-States
-{
-	Spawn:
-		XDT5 Z -1;
-		stop;
-}
-
-}
-CLASS GibHand: TinyGib { 
-States
-{
-	Spawn:
-		XDT5 Y -1;
-	stop;	
-}
-	
-}
 
 
 

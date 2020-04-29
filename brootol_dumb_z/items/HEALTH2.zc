@@ -39,7 +39,7 @@ CLASS ArmorShard : BasicArmorBonus
 	States
 	{
 		Spawn:
-			BON2 AAABCDB 2 {doomb_flare_base.doomb_attach_flare(self, "lens_flare_green", (0, 0, 7));}
+			BON2 AAABCDB 2 {doomb_flare_base.doomb_attach_flare(self, "GreenFlare", (0, 0, 7));}
 		Loop;
 	}
 }

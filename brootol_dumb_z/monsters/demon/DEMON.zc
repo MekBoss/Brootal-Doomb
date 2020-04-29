@@ -50,6 +50,7 @@ CLASS doomb_pinky : doomb_monster_base
 		DropItem "DemonStrengthRune", 2;
 		damagefactor "cut", 0.7;
 		damagefactor "saw", 0.7;
+		species 'pinky';
 	}
 	States
 	{

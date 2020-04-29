@@ -23,12 +23,12 @@ CLASS doomb_Imp : doomb_monster_base
 		PainChance "Melee", 255;
 		PainChance "Fatality", 255;
 		PainChance "HelperMarineFatality", 255;
-		
-
 		PainChance "Explosive_Impact", 255;
 		damagefactor "Trample", 1.5;
 		damagefactor "SSG", 50.0;
 		damagefactor "Crush", 10.0;
+		
+
 		Monster;
 		Species "Imps";
 		damagefactor "Blood", 0.0;

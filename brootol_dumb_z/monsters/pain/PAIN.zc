@@ -28,6 +28,8 @@ CLASS doomb_elemental : doomb_monster_base
 		damagefactor "BlueBlood", 0.0;
 		damagefactor "GreenBlood", 0.0;
 		damagetype "fire";
+		species 'pain';
+
 	}
 	States
 	{

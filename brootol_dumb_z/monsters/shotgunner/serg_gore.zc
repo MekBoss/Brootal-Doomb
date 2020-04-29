@@ -1578,8 +1578,8 @@ Default
 	States
 	{
 		Spawn:
-			SPO3 D 1 A_PlaySound ("BURNZOM");
 			TNT1 A 0 doomb_spawn_bloodpool();
+			SPO3 D 1 A_PlaySound ("BURNZOM");
 		Suffer:
 			SPO3 DDDDDEEEEE 2 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 A 0 A_Jump(32, "LeaveCrawling");
@@ -1699,7 +1699,7 @@ class doomb_dead_shotgunner : doomb_body_base
 States
 {
 	spawn:
-		SPOS U -1;
+		SPOS Z -1;
 	stop;
 }
 

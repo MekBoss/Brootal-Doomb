@@ -156,6 +156,9 @@ states
 	wait_in_beaker:
 		tnt1 a 0
 		{
+			if(!event_init)
+				destroy();
+
 			vel = (0, 0, 0);
 			setorigin((double.infinity, double.infinity, double.infinity), false);
 			a_fadeto(1, 1, false);
