@@ -396,7 +396,7 @@ states
 				a.scale = (0.45, 0.45);
 		}
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+		TNT1 AAA 0 doomb_severed_limb("Intestine", "spawn", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 30), times:6);
 		ID50 ABCDEF 7;
@@ -491,13 +491,13 @@ protected actor doomb_for_khorne(class<doomb_blood> it = null, statelabel st = '
 	return null;
 }
 
-protected doomb_body_base doomb_severed_limb(class<doomb_body_base> it = null, vector3 offset = (0, 0, 1), vector3 vel_dir = (0, 0, 0), bool limb_ignore_cvar = false )
+protected doomb_body_base doomb_severed_limb(class<doomb_body_base> it = null, statelabel limb_state = "spawn", vector3 offset = (0, 0, 1), vector3 vel_dir = (0, 0, 0), bool limb_ignore_cvar = false )
 {
 	if(blood_throne && it && (doomb_body_parts == true || limb_ignore_cvar == true) )
 	{
 		if(it is "doomb_body_base")
 		{
-			doomb_body_base b = doomb_blood_god(blood_throne).doomb_butcher(it);
+			doomb_body_base b = doomb_blood_god(blood_throne).doomb_butcher(it, limb_state);
 			if(!b)
 				return null;
 

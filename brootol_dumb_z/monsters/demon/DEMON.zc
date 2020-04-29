@@ -197,7 +197,7 @@ CLASS doomb_pinky : doomb_monster_base
 
 		death_1:
 			TNT1 A 0 doomb_much_blood();
-			TNT1 A 0 doomb_severed_limb("XDeathDemonArm", (0, 0, 35), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("XDeathDemonArm", "spawn", (0, 0, 35), doomb_random_velocity(5) );
 			SAAR A 8 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			SAAR B 8 A_Scream;
 			TNT1 A 0 A_NoBlocking;
@@ -238,11 +238,11 @@ CLASS doomb_pinky : doomb_monster_base
 			TNT1 A 0 A_Jump(128, "DeathRemoveArm");
 			TNT1 A 0 A_FaceTarget;
 			tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
-			TNT1 AAAAAAAAA 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 60), doomb_random_velocity(5)) ;
+			TNT1 AAAAAAAAA 0 doomb_severed_limb("SmallBrainPiece", "spawn", (0, 0, 60), doomb_random_velocity(5)) ;
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_much_blood(60);
 			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 50) );
-			TNT1 A 0 doomb_severed_limb("BaronHeadPiece", (0, 0, 52), doomb_random_velocity(5)) ;
+			TNT1 A 0 doomb_severed_limb("BaronHeadPiece", "spawn", (0, 0, 52), doomb_random_velocity(5)) ;
 			SARH AAAAAAA 2 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			SARH BBBBBB 2 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 A_NoBlocking;
@@ -255,7 +255,7 @@ CLASS doomb_pinky : doomb_monster_base
 			
 		Death.Saw:
 			TNT1 A 0 A_Jump(32, "Death");
-			TNT1 A 0 doomb_severed_limb("XDeathStomach", (0, 0, 60), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("XDeathStomach", "spawn", (0, 0, 60), doomb_random_velocity(5) );
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			SARG O 8;
 			SARG P 8 A_Scream;
@@ -270,8 +270,8 @@ CLASS doomb_pinky : doomb_monster_base
 			TNT1 A 0 A_Scream;
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_Jump(32, "Death");
-			TNT1 A 0 doomb_severed_limb("XDeathHalfDemon", (0, 0, 60), doomb_random_velocity(5) );
-			TNT1 A 0 doomb_severed_limb("XDeathStomach", (0, 0, 60), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("XDeathHalfDemon", "spawn", (0, 0, 60), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("XDeathStomach", "spawn", (0, 0, 60), doomb_random_velocity(5) );
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			SARC AAABBBCCCDDD 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			TNT1 A 0 doomb_spawn_bloodpool();
@@ -292,9 +292,9 @@ CLASS doomb_pinky : doomb_monster_base
 			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 			tnt1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 42) );
-			TNT1 A 0 doomb_severed_limb("BaronHeadPiece", (0, 0, 52), doomb_random_velocity(5)) ;
-			TNT1 A 0 doomb_severed_limb("PinkyJaw", (0, 0, 5), doomb_random_velocity(5) );
-			TNT1 A 0 doomb_severed_limb("XDeathDemonArm", (0, 0, 35), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("BaronHeadPiece", "spawn", (0, 0, 52), doomb_random_velocity(5)) ;
+			TNT1 A 0 doomb_severed_limb("PinkyJaw", "spawn", (0, 0, 5), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("XDeathDemonArm", "spawn", (0, 0, 35), doomb_random_velocity(5) );
 			TNT1 A 0 A_XScream;
 			TNT1 A 0 A_NoBlocking;
 			SARC AAABBBCCCDDD 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
@@ -335,7 +335,7 @@ CLASS doomb_pinky : doomb_monster_base
 			TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', times:6);
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_spawn_bloodpool();
-			TNT1 A 0 doomb_severed_limb("CrushedRemains", limb_ignore_cvar: true);
+			TNT1 A 0 doomb_severed_limb("CrushedRemains", "spawn", limb_ignore_cvar: true);
 			TNT1 A 1 A_XScream;
 		Stop;
 			
@@ -347,10 +347,10 @@ CLASS doomb_pinky : doomb_monster_base
 			TNT1 A 0 A_XScream;
 			TNT1 A 0 A_NoBlocking;
 			
-			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_severed_limb("Ashes1", (0, 0, 32), doomb_random_velocity(5) );
+			TNT1 AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_severed_limb("Ashes1", "spawn", (0, 0, 32), doomb_random_velocity(5) );
 			TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
-			TNT1 A 0 doomb_severed_limb("XDeathBurnedDemonArm", (0, 0, 32), doomb_random_velocity(5) );
-			TNT1 A 0 doomb_severed_limb("XDeathBurnedDemonLeg", (0, 0,32), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("XDeathBurnedDemonArm", "spawn", (0, 0, 32), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("XDeathBurnedDemonLeg", "spawn", (0, 0,32), doomb_random_velocity(5) );
 			TNT1 A 0 doomb_spawn_burned_flesh;
 			SPRG ABCDEF 6;
 			CARB JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ 10 doomb_show_effect("AltSmoke", (0, 0, 25), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (1.5, 0) );
@@ -394,11 +394,11 @@ CLASS doomb_pinky : doomb_monster_base
 		Blown_Away:
 			TNT1 A 0 A_NoBlocking;
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-			TNT1 A 0 doomb_severed_limb("XDeathStomach", (0, 0, 52), doomb_random_velocity(5)) ;
-			TNT1 A 0 doomb_severed_limb("PinkyJaw", (0, 0, 5), doomb_random_velocity(5) );
-			TNT1 A 0 doomb_severed_limb("XDeathDemonArm", (0, 0, 35), doomb_random_velocity(5) );
-			TNT1 A 0 doomb_severed_limb("XDeathBullLeg12", (0, 0, 35), doomb_random_velocity(5) );
-			TNT1 A 0 doomb_severed_limb("XDeathPinkyDemonHead", (0, 0, 35), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("XDeathStomach", "spawn", (0, 0, 52), doomb_random_velocity(5)) ;
+			TNT1 A 0 doomb_severed_limb("PinkyJaw", "spawn", (0, 0, 5), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("XDeathDemonArm", "spawn", (0, 0, 35), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("XDeathBullLeg12", "spawn", (0, 0, 35), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("XDeathPinkyDemonHead", "spawn", (0, 0, 35), doomb_random_velocity(5) );
 			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 40) );
 			TNT1 A 0 ThrustThingZ(0,randompick(-30, 30),0,1);
 			TNT1 A 0
@@ -437,7 +437,7 @@ CLASS doomb_pinky : doomb_monster_base
 		FatalityZombieman:
 			TNT1 A 0 A_SetInvulnerable;
 			SARK DEDEDEDEDE 10 doomb_much_blood(45);
-			TNT1 A 0 doomb_severed_limb("XDeathHalfZombieManDown", (0, 0, 20) );
+			TNT1 A 0 doomb_severed_limb("XDeathHalfZombieManDown", "spawn", (0, 0, 20) );
 			TNT1 A 0 A_UnSetInvulnerable;
 		Goto See;
 			
@@ -445,7 +445,7 @@ CLASS doomb_pinky : doomb_monster_base
 		FatalitySergeant:
 			TNT1 A 0 A_SetInvulnerable;
 			SARK FGFGFGFGFG 10 doomb_much_blood(45);
-			TNT1 A 0 doomb_severed_limb("XDeathHalfZombieManDown", (0, 0, 20) );
+			TNT1 A 0 doomb_severed_limb("XDeathHalfZombieManDown", "spawn", (0, 0, 20) );
 			TNT1 A 0 A_TakeInventory("SergeantFatality",1);
 			TNT1 A 0 A_UnSetInvulnerable;
 		Goto See;
@@ -507,7 +507,7 @@ CLASS doomb_pinky : doomb_monster_base
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			tnt1 AAAAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", "spawn", (0, 0, 50), doomb_random_velocity(5) );
 			FDEM EFGHI 3 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-			tnt1 A 0 doomb_severed_limb("XDeathDemonHead", (0, 0, 32), doomb_random_velocity(5) );
+			tnt1 A 0 doomb_severed_limb("XDeathDemonHead", "spawn", (0, 0, 32), doomb_random_velocity(5) );
 			tnt1 A 0
 			{
 				A_Givetotarget("HealthBonus",10);
@@ -529,7 +529,7 @@ CLASS doomb_pinky : doomb_monster_base
 		tnt1 AAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		tnt1 AAAAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", "spawn", (0, 0, 50), doomb_random_velocity(5) );
-		tnt1 A 0 doomb_severed_limb("XDeathStomach", (0, 0, 32), doomb_random_velocity(5) );
+		tnt1 A 0 doomb_severed_limb("XDeathStomach", "spawn", (0, 0, 32), doomb_random_velocity(5) );
 		FDEM LMNO 6;
 		tnt1 A 0
 		{

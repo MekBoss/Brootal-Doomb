@@ -259,7 +259,7 @@ States
 		TNT1 A 0 A_SpawnProjectile ("XDeathImpArm", 32, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeathHalfImpUpperPart32", 32, 0, random (0, 360), 2, random (10, 60));
 		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
-		TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 24), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+		TNT1 AAA 0 doomb_severed_limb("Intestine", "spawn", (0, 0, 24), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 A 0 A_SpawnProjectile ("XDeathImpLeg", 32, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeathImpHead", 32, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 doomb_spawn_bloodpool();
@@ -342,7 +342,7 @@ CLASS SkeletonXDeath : doomb_body_base
 			tnt1 a 0 A_Explode(3,600, 0, 0, 0, 0, 0, "none", "blood");
 			TNT1 AAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 			TNT1 AAAAAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
-			TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+			TNT1 AAA 0 doomb_severed_limb("Intestine", "spawn", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 A 0 A_SpawnProjectile ("XDeathHalfSkeleton", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_spawn_bloodpool();
@@ -379,7 +379,7 @@ CLASS SargeXDeath : doomb_body_base {
 			TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 A_SpawnProjectile ("XDeathHalfShotgunguyNoArmNoHead", 32, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+			TNT1 AAA 0 doomb_severed_limb("Intestine", "spawn", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 A 0 A_SpawnProjectile ("XDeathSargeLeg2", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("GibSargeBoot", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("XDeathSergeantHead", 32, 0, random (0, 360), 2, random (0, 160));
@@ -426,7 +426,7 @@ CLASS ZombieXDeath : doomb_body_base {
 			TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 A_SpawnProjectile ("XDeathHalfZombiemanNoArmNoHead", 48, 0, random (0, 360), 2, random (0, 160));
-			TNT1 AAA 0 doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+			TNT1 AAA 0 doomb_severed_limb("Intestine", "spawn", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 			TNT1 A 0 A_SpawnProjectile ("XDeathZombieLeg", 32, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 A_SpawnProjectile ("GibZombieBoot", 32, 0, random (0, 360), 2, random (0, 160));
 			tnt1 a 0 doomb_spawn_bloodpool();

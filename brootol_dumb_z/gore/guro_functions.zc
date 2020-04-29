@@ -35,17 +35,17 @@ protected void doomb_head_explosion(string main_piece  = "", string additional_p
 	{
 		doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", offset, doomb_random_velocity(5) );
 		doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
-		doomb_severed_limb("SmallBrainPiece", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
-		doomb_severed_limb("Teeth", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
-		doomb_severed_limb("head_piece_dark", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
+		doomb_severed_limb("SmallBrainPiece", "spawn", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
+		doomb_severed_limb("Teeth", "spawn", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
+		doomb_severed_limb("head_piece_dark", "spawn", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
 
 		doomb_spray_decal("BrutalBloodSuper");
 	}
 
-	doomb_severed_limb("eye", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
-	doomb_severed_limb("head_piece", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
-	doomb_severed_limb("jaw", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
-	doomb_severed_limb("SmallBrainPiece", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
+	doomb_severed_limb("eye", "spawn", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
+	doomb_severed_limb("head_piece", "spawn", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
+	doomb_severed_limb("jaw", "spawn", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
+	doomb_severed_limb("SmallBrainPiece", "spawn", offset + (0, 0, random(-10, 10) ), doomb_random_velocity(5) );
 	/*
 	HellKnightHeadPiece
 	HellKnightHeadPiece2
@@ -69,7 +69,7 @@ protected void doomb_Meat_Death_Small()
 protected void doomb_Rip_Guts()
 {
 	doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-	doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+	doomb_severed_limb("Intestine", "spawn", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 	doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 }
 
@@ -77,7 +77,7 @@ protected void doomb_monster_xdeath(class<actor> type_1 = null, class<actor> typ
 {
 	for(uint i = 0; i < 5; i++)
 	{
-		doomb_severed_limb("Intestine", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+		doomb_severed_limb("Intestine", "spawn", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 		doomb_blood_mist();
 		doomb_sticky_guro(SGT_BLOOD);
@@ -89,8 +89,8 @@ protected void doomb_monster_xdeath(class<actor> type_1 = null, class<actor> typ
 	doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 	doomb_spawn_bloodpool();
 
-	doomb_severed_limb("SmallBrainPiece", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-	doomb_severed_limb("SmallBrainPiece", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+	doomb_severed_limb("SmallBrainPiece", "spawn", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+	doomb_severed_limb("SmallBrainPiece", "spawn", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
 }
 
 
@@ -107,9 +107,9 @@ protected void doomb_spawn_big_blood(int spawn_height = 0)
 
 protected void doomb_spawn_burned_flesh()
 {
-	doomb_severed_limb("XDeathBurnedMeat3", (0, 0, height/2), doomb_random_velocity(5) );
-	doomb_severed_limb("XDeathBurnedMeat2", (0, 0, height/2), doomb_random_velocity(5) );
-	doomb_severed_limb("XDeathBurnedMeat", (0, 0, height/2), doomb_random_velocity(5) );
+	doomb_severed_limb("XDeathBurnedMeat3", "spawn", (0, 0, height/2), doomb_random_velocity(5) );
+	doomb_severed_limb("XDeathBurnedMeat2", "spawn", (0, 0, height/2), doomb_random_velocity(5) );
+	doomb_severed_limb("XDeathBurnedMeat", "spawn", (0, 0, height/2), doomb_random_velocity(5) );
 }
 
 protected void doomb_spawn_bloodpool(blood_pool_size size = BPS_BIG, blood_color_flags color = BCF_NONE)
@@ -288,18 +288,18 @@ protected void doomb_spawn_entrails(vector3 offset = (0, 0, 0), blood_color_flag
 {
 	for(uint i = 0; i < 5; i++)
 	{
-		doomb_internal_organ a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", offset, doomb_random_velocity(5) ) );
+		doomb_internal_organ a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", "spawn", offset, doomb_random_velocity(5) ) );
 
 		if(a)
 			a.set_gib_appearance(0, DIT_GIB, color);
 
-		a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", offset, doomb_random_velocity(5) ) );
+		a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", "spawn", offset, doomb_random_velocity(5) ) );
 
 		if(a)
 			a.set_gib_appearance(0, DIT_INTESTINE, color);
 	}
 
-	doomb_internal_organ a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", offset, doomb_random_velocity(5) ) );
+	doomb_internal_organ a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", "spawn", offset, doomb_random_velocity(5) ) );
 
 	if(a)
 		a.set_gib_appearance(0, DIT_STOMACH, color);
@@ -381,25 +381,26 @@ protected void doomb_spawn_entrails(vector3 offset = (0, 0, 0), doomb_internals_
 {
 	for(uint i = 0; i < 5; i++)
 	{
-		doomb_internal_organ a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", offset, doomb_random_velocity(5) ) );
+		doomb_internal_organ a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", "spawn", offset, doomb_random_velocity(5) ) );
 
 		if(a)
 			a.set_gib_appearance(0, type, color);
 	}
 }
 
-protected doomb_body_base doomb_severed_limb(class<doomb_body_base> it = null, vector3 offset = (0, 0, 1), vector3 vel_dir = (0, 0, 0), bool limb_ignore_cvar = false )
+protected doomb_body_base doomb_severed_limb(class<doomb_body_base> it = null, statelabel limb_state = "spawn", vector3 offset = (0, 0, 1), vector3 vel_dir = (0, 0, 0), bool limb_ignore_cvar = false )
 {
-	if(blood_throne && it)
+	if(blood_throne && it && (doomb_body_parts == true || limb_ignore_cvar == true) )
 	{
 		if(it is "doomb_body_base")
 		{
-			doomb_body_base b = doomb_body_base(spawn(it, pos + offset) );
-			if(b)
-			{
-				b.vel = vel_dir;
-				return b;
-			}
+			doomb_body_base b = doomb_blood_god(blood_throne).doomb_butcher(it, limb_state);
+			if(!b)
+				return null;
+
+			b.setorigin(pos + offset, false);
+			b.vel = vel_dir;
+			return b;
 		}
 	}
 

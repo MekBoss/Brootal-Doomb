@@ -319,10 +319,10 @@ CLASS doomb_evil_marine : doomb_monster_base
 		
 		
 	Death.Explosive_Impact:
-		TNT1 A 0 doomb_severed_limb("eye", (0, 0, 50), doomb_random_velocity(5) );
-		TNT1 A 0 doomb_severed_limb("head_piece", (0, 0, 50), doomb_random_velocity(5) );
-		TNT1 A 0 doomb_severed_limb("jaw", (0, 0, 50), doomb_random_velocity(5) );
-		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("eye", "spawn", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("head_piece", "spawn", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("jaw", "spawn", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", "spawn", (0, 0, 50), doomb_random_velocity(5) );
 		tnt1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		tnt1 AAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_Blood", 50, 0, random (0, 360), 2, random (0, 160));
 		tnt1 A 0 A_SpawnProjectile ("XDeathArm1", 35, 0, random (0, 360), 2, random (0, 160));

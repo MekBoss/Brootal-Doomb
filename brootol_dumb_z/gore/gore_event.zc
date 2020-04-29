@@ -125,9 +125,11 @@ private doomb_body_base doomb_butcher_shop(class<actor> type = null)
     return null;
 }
 
-doomb_body_base doomb_butcher(class<actor> type = null, statelabel type = null)
+doomb_body_base doomb_butcher(class<actor> type = null, statelabel state_type = null)
 {
-    return doomb_butcher_shop(type);
+	doomb_body_base b = doomb_butcher_shop(type);
+	b.setstatelabel(state_type);
+    return b;
 }
 //////////////////////////////////////////////////////////////
 //end here

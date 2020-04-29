@@ -132,7 +132,7 @@ CLASS HellKnightHeadPiece2: HellKnightHeadPiece {
 
 
 //SLOWDOWN ADRESSED
-//doomb_severed_limb("Intestine", (0, 0, 0), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
+//doomb_severed_limb("Intestine", "spawn", (0, 0, 0), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 CLASS Intestine : doomb_body_base
 { 
 	Default {
