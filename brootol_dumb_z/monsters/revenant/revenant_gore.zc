@@ -589,7 +589,7 @@ CLASS XDeathHalfSkeleton : doomb_body_base
 	}
 }
 
-CLASS GibHalfSkeleton: BigGibBase { 
+CLASS GibHalfSkeleton: doomb_body_base { 
 	Default {
 		
 		Radius 8;

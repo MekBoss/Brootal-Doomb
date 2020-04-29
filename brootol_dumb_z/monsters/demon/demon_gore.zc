@@ -803,7 +803,7 @@ CLASS XDeathHalfDemon : doomb_body_base
 	}
 }
 
-CLASS Gib_HalfDemon: BigGibBase
+CLASS Gib_HalfDemon: doomb_body_base
 {
 States
 {

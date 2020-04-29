@@ -74,7 +74,7 @@ CLASS XDeathHalfSergeant : doomb_body_base
 
 
 
-CLASS GibHalfSergeant: BigGibBase
+CLASS GibHalfSergeant: doomb_body_base
 {
 	States
 	{

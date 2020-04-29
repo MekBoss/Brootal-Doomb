@@ -386,7 +386,7 @@ States
 }
 
 
-CLASS HalfImpGib: BigGibBase
+CLASS HalfImpGib: doomb_body_base
 {
 States
 {

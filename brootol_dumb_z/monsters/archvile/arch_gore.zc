@@ -88,7 +88,7 @@ CLASS FatalizedArchVile1: CurbstompedMarine
 	}
 }
 
-CLASS GibArchVile: BigGibBase { 
+CLASS GibArchVile: doomb_body_base { 
 	States
 	{
 		Spawn:
