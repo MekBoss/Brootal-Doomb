@@ -9,6 +9,10 @@ OptionMenu "doomb_options"
 	Title "Brootal Doomb Options"
 	StaticText " "
 
+	Option "Activate light", "doomb_activate_light", "YesNo"
+	StaticText "Disable light sources on certain actors"
+	StaticText " "
+
 	Option "Show flares", "doomb_show_flares", "YesNo"
 	StaticText "Disable flare effect around light sources"
 	StaticText " "

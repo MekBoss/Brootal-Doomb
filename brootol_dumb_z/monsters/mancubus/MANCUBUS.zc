@@ -337,6 +337,7 @@ CLASS BigFireBall : doomb_boolet_base
 		Spawn:
 			MANF AB 1 BRIGHT light ("IMPBALL")
 			{
+				doomb_handle_light_def('one', 'IMPBALL');
 				if(frame == 1)
 				{
 					{doomb_flare_base.doomb_attach_flare(self, "RedFlare22");}
@@ -361,6 +362,8 @@ CLASS BigFireBall : doomb_boolet_base
 		burning_loop:
 			FIR3 ABCDEFGHIJKLMNOP 1 bright
 			{
+				doomb_handle_light_def('one', 'IMPBALL');
+			
 				doomb_show_effect("BigBlackSmoke", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ), visual_size: (frandom(0.2, 0.4), 0) );
 				doomb_show_effect("TinyBurningPiece", velocity:(frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0, 2) ) );
 				A_Explode(1, 90);

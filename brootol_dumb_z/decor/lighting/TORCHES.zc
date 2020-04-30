@@ -36,6 +36,7 @@ states
 	Spawn:
 		TNT1 A 0
 		{
+			doomb_handle_light_def('one', 'BIGREDTORCH');
 			doomb_torch_sound();
 			doomb_torch_fire("RealFlameTrailsSmall", 58);
 		}
@@ -52,6 +53,7 @@ states
 	Spawn:
 		TNT1 A 0
 		{
+			doomb_handle_light_def('one', 'BIGBLUETORCH');
 			doomb_torch_fire("RealFlameTrailsBlue", 58);
 			doomb_torch_sound();
 		}
@@ -67,6 +69,7 @@ states
 	Spawn:
 		TNT1 A 0
 		{
+			doomb_handle_light_def('one', 'BIGGREENTORCH');
 			doomb_torch_fire("RealFlameTrailsGreen", 58);
 			doomb_torch_sound();
 		}
@@ -94,6 +97,7 @@ states
 	Spawn:
 		TNT1 A 0
 		{
+			doomb_handle_light_def('one', 'SMALLBLUETORCH');
 			doomb_torch_fire("RealFlameTrailsBlue", 30);
 			doomb_torch_sound();
 		}
@@ -109,6 +113,7 @@ states
 	Spawn:
 		TNT1 A 0
 		{
+			doomb_handle_light_def('one', 'SMALLREDTORCH');
 			doomb_torch_fire("RealFlameTrailsSmall", 30);
 			doomb_torch_sound();
 		}
@@ -124,6 +129,7 @@ states
 	Spawn:
 		TNT1 A 0
 		{
+			doomb_handle_light_def('one', 'SMALLGREENTORCH');
 			doomb_torch_fire("RealFlameTrailsGreen", 30);
 			doomb_torch_sound();
 		}

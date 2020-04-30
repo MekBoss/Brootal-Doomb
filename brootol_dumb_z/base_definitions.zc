@@ -83,6 +83,18 @@ default
 	projectile;
 }
 
+protected void doomb_handle_light_def(name id = '', name light = '', bool attach = true)
+{
+	if(id)
+	{
+		if(doomb_activate_light && light && attach)
+			a_AttachLightDef(id, light);
+
+		else
+			a_RemoveLight(id);
+	}
+}
+
 }
 
 

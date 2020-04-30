@@ -244,6 +244,8 @@ States
 	Spawn1:
 		WYVB A 1 Bright
 		{
+			doomb_handle_light_def('one', 'ROCKETLIGHT');
+
 			if(waterlevel > 1)
 				A_SpawnProjectile ("BUBULZ", 0, 0, random (0, 360), 2, - random (0, 180));
 			else

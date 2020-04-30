@@ -1,3 +1,4 @@
+//for debugging effect states
 const visual_sfx_state_debug = 0;
 
 extend class visual_sfx

@@ -763,11 +763,6 @@ pulselight BLUEITEM
 
 
 
-object CyberBalls
-{
-    frame WIVB { light ROCKETLIGHT }
-}
-
 object HealthPlus
 {
     frame BON1 { light BLUEITEM  }
@@ -811,36 +806,7 @@ object doomb_lost_soul
 
 
 
-object BigFireBall
-{
-    frame MANFA { light IMPBALL   }
-    frame MANFB { light IMPBALL   }
-	frame F1RE { light IMPBALL   }
-	frame F2RE { light IMPBALL   }
-	frame FRFX { light ROCKETLIGHT }
-	
-	
-	
-	
 
-    frame MISLB { light ROCKET_X1 }
-    frame MISLC { light ROCKET_X2 }
-    frame MISLD { light ROCKET_X3 }
-}
-
-object doomb_imp_fireball
-{
-    frame FR7X { light IMPBALL    }
-    frame FRFXA { light IMPBALL    }
-    frame FRFXB { light IMPBALL    }
-    frame FRFXC { light IMPBALL    }
-    frame FRFXD { light IMPBALL    }
-    frame FRFXE { light IMPBALL_X2    }
-    frame FRFXF { light IMPBALL_X2    }
-    frame FRFXG { light IMPBALL_X2    }
-    frame FRFXH { light IMPBALL_X3    }
-    frame FRFXI { light IMPBALL_X3    }
-}
 
 
 
@@ -865,52 +831,4 @@ object HealthBonus
 object LifeSphere
 {
     frame SOUL { light SOULSPHERE }
-}
-
-
-
-object doomb_torch_green_short
-{
-    frame STRB { light SMALLGREENTORCH }
-}
-object doomb_torch_red_short
-{
-    frame STRB { light SMALLREDTORCH }
-}
-
-
-object doomb_torch_blue_short
-{
-    frame STRB { light SMALLBLUETORCH }
-}
-
-object doomb_torch_green_tall
-{
-    frame TTRB { light BIGGREENTORCH }
-}
-
-
-object doomb_torch_blue_tall
-{
-    frame TTRB { light BIGBLUETORCH }
-}
-
-object doomb_torch_red_tall
-{
-    frame TTRB { light BIGREDTORCH }
-}
-
-object TechLamp1
-{
-    frame TLMPA { light BIGLAMP }
-    frame TLMPB { light BIGLAMP }
-    frame TLMPC { light BIGLAMP }
-    frame TLMPD { light BIGLAMP }
-}
-object TechLamp21
-{
-    frame TLP2A { light SMALLLAMP }
-    frame TLP2B { light SMALLLAMP }
-    frame TLP2C { light SMALLLAMP }
-    frame TLP2D { light SMALLLAMP }
 }

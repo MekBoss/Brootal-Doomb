@@ -13,11 +13,14 @@ CLASS Brutal_Blood : doomb_blood// Replaces Blood
 	states
 	{
 		Spawn:
-			tnt1 A 0 nodelay
+			tnt1 A 1 nodelay
 			{
-				vel = ( random(-3, 3), random(-3, 3), random(-3, 3));
+				doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (random(-10, 10), random(-10, 10), random(-10, 10) ), doomb_random_velocity(5) );
+				doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (random(-10, 10), random(-10, 10), random(-10, 10) ), doomb_random_velocity(5) );
+				doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (random(-10, 10), random(-10, 10), random(-10, 10) ), doomb_random_velocity(5) );
+				doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (random(-10, 10), random(-10, 10), random(-10, 10) ), doomb_random_velocity(5) );
+				doomb_for_khorne("doomb_non_interactive_blood", "blood_hit", (0, 0, 30) );
 			}
-			BSP4 ABCDEFGHIJKLMNOPQRSTUVWXYZ[] 2;
 		stop;
 	}
 }

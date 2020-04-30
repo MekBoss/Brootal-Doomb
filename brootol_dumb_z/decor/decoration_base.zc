@@ -15,4 +15,17 @@ protected visual_sfx doomb_show_effect(statelabel effect_name, vector3 offset = 
         return null;
 }
 
+protected void doomb_handle_light_def(name id = '', name light = '', bool attach = true)
+{
+	if(id)
+	{
+		if(doomb_activate_light && light && attach)
+			a_AttachLightDef(id, light);
+
+		else
+			a_RemoveLight(id);
+	}
+}
+
+
 }
