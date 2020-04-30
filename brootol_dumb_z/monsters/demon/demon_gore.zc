@@ -58,7 +58,7 @@ CLASS ArmlessDemon : doomb_pinky
 			TNT1 A 0 A_FaceTarget;
 			tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 			TNT1 AAAA 0 doomb_severed_limb("SmallBrainPiece", "spawn", (0, 0, 60), doomb_random_velocity(5) );
-			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+			TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 doomb_much_blood(60);
 			TNT1 A 0 doomb_severed_limb("BaronHeadPiece", "spawn", (0, 0, 52), doomb_random_velocity(5) );
 			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, height/2) );
@@ -128,7 +128,7 @@ States
 		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 		TNT1 A 0 doomb_Meat_Death_Small();
 		TNT1 AAAAAA 0 doomb_severed_limb("SmallBrainPiece", "spawn", (0, 0, 20), doomb_random_velocity(5) );
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_much_blood(20);
 		TNT1 A 0 doomb_severed_limb("BaronHeadPiece", "spawn", (0, 0, 22), doomb_random_velocity(5) );
 		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 20) );
@@ -212,7 +212,7 @@ States
 		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 		TNT1 A 0 doomb_Meat_Death_Small();
 		TNT1 AAAAAA 0 doomb_severed_limb("SmallBrainPiece", "spawn", (0, 0, 20), doomb_random_velocity(5) );
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_much_blood(20);
 		TNT1 A 0 doomb_severed_limb("BaronHeadPiece", "spawn", (0, 0, 22), doomb_random_velocity(5) );
 		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 20) );
@@ -407,7 +407,7 @@ States
 		TNT1 A 0 A_FaceTarget;
 		tnt1 a 0 A_Explode(3,200, 0, 0, 0, 0, 0, "none", "blood");
 		TNT1 AAAAAA 0 doomb_severed_limb("SmallBrainPiece", "spawn", (0, 0, 20), doomb_random_velocity(5) );
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_much_blood(60);
 		TNT1 A 0 doomb_severed_limb("BaronHeadPiece", "spawn", (0, 0, 52), doomb_random_velocity(5) );
 		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 50) );
@@ -864,7 +864,7 @@ CLASS Gib_DemonHead: LimbBase
 		Death:    
 			TNT1 A 0 doomb_Meat_Death_Small();
 		TNT1 AAAAAA 0 doomb_severed_limb("SmallBrainPiece", "spawn", (0, 0, 20), doomb_random_velocity(5) );
-			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+			TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 10) );
 			TNT1 A 0 doomb_severed_limb("BaronHeadPiece", "spawn", (0, 0, 52), doomb_random_velocity(5) );
 			TNT1 A 0 doomb_severed_limb("PinkyJaw", "spawn", (0, 0, 5), doomb_random_velocity(5) );

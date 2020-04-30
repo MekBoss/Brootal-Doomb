@@ -395,7 +395,7 @@ states
 			if(a)
 				a.scale = (0.45, 0.45);
 		}
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AAA 0 doomb_severed_limb("Intestine", "spawn", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
 		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', (0, 0, 30), times:6);

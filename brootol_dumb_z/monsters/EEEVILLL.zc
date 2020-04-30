@@ -160,7 +160,7 @@ CLASS doomb_evil_marine : doomb_monster_base
 	Death.SSG:
 	Death.Eat:
 		TNT1 A 0 A_GiveToTarget("EatMe",1);
-			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+			TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_much_blood();
 		XPL1 A 10 A_XScream;
 		XPL1 B 20 A_NoBlocking;
@@ -172,7 +172,7 @@ CLASS doomb_evil_marine : doomb_monster_base
 		
 	Death.Cut:
 	Death.Saw:
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_Rip_Guts();
 		TNT1 A 0 A_SpawnProjectile ("XDeathHalfMarine", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 doomb_much_blood();
@@ -198,7 +198,7 @@ CLASS doomb_evil_marine : doomb_monster_base
 		TNT1 A 0 A_Jump (128, 3);
 	Goto Death;
 		TNT1 AAA 0;
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_Rip_Guts();
 		TNT1 A 0 A_SpawnProjectile ("XDeathHalfMarine", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 doomb_much_blood();
@@ -239,7 +239,7 @@ CLASS doomb_evil_marine : doomb_monster_base
 	Death.Stomp:
 		TNT1 AAAAAAAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 A 0 doomb_blood_mist('doomb_non_interactive_blood', 'blood_mist', times:6);
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_spawn_bloodpool();
 		TNT1 A 0 A_SpawnItem ("CrushedRemains");
 		TNT1 A 1;
@@ -251,7 +251,7 @@ CLASS doomb_evil_marine : doomb_monster_base
 	Death.punch:
 	Death.SSG:
 		PLAY O 2 A_FaceTarget;
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 32 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
@@ -268,7 +268,7 @@ CLASS doomb_evil_marine : doomb_monster_base
 	Death.Rape:
 		TNT1 AAAAAAAAAAAAAA 0 doomb_much_blood();
 		XPL4 A 20 A_XScream;
-			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+			TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AAAA 0 doomb_much_blood();
 		XPL4 B 20 A_NoBlocking;
 		TNT1 A 0 doomb_much_blood();
@@ -326,7 +326,7 @@ CLASS doomb_evil_marine : doomb_monster_base
 		tnt1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		tnt1 AAAAAAAAAAA 0 A_SpawnProjectile ("Brutal_Blood", 50, 0, random (0, 360), 2, random (0, 160));
 		tnt1 A 0 A_SpawnProjectile ("XDeathArm1", 35, 0, random (0, 360), 2, random (0, 160));
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
 		tnt1 A 0 A_XScream;
 		XPL6 A 5;

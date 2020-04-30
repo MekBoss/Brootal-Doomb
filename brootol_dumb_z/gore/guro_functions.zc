@@ -291,12 +291,7 @@ protected void doomb_spawn_entrails(vector3 offset = (0, 0, 0), blood_color_flag
 		doomb_internal_organ a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", "spawn", offset, doomb_random_velocity(5) ) );
 
 		if(a)
-			a.set_gib_appearance(0, DIT_GIB, color);
-
-		a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", "spawn", offset, doomb_random_velocity(5) ) );
-
-		if(a)
-			a.set_gib_appearance(0, DIT_INTESTINE, color);
+			a.set_gib_appearance(0, randompick(DIT_GIB, DIT_INTESTINE), color);
 	}
 
 	doomb_internal_organ a = doomb_internal_organ( doomb_severed_limb("doomb_internal_organ", "spawn", offset, doomb_random_velocity(5) ) );

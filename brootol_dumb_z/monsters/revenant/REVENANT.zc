@@ -161,13 +161,13 @@ States
 		TNT1 A 0 A_PlaySound("DSFDTHE");
 		REFP A 30;
 		EXPL A 0 Radius_Quake (2, 24, 0, 15, 0);
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_much_blood();
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		REFP BCDE 8;
 		REFP F 40;
 		REFP GHI 4;
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		REFP J 20;
 		TNT1 A 0 A_TakeInventory("Curbstomp_Marine",1);
 		TNT1 A 0 A_UnSetInvulnerable();
@@ -269,7 +269,7 @@ States
 	Death.Headshot:
 		TNT1 A 0 A_XScream();
 		TNT1 A 0 A_Jump(126, "headshot_1");
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AAA 0 doomb_severed_limb("SmallLSPart1", "spawn", (0, 0, 70), doomb_random_velocity(5) );
 		TNT1 AAA 0 doomb_severed_limb("SmallLSPart3", "spawn", (0, 0, 70), doomb_random_velocity(5) );
 		TNT1 AAA 0 doomb_severed_limb("LSpart1", "spawn", (0, 0, 70), doomb_random_velocity(5) );
@@ -283,7 +283,7 @@ States
 	Stop;
 		
 	headshot_1:
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 A 0 doomb_severed_limb("XDeathRevenantHead", "spawn", (0, 0, 70), doomb_random_velocity(5) );
 		REVH A 24;
 		REVH B 8 A_NoBlocking();
@@ -303,7 +303,7 @@ States
 	Death.Saw:
 	Death.SSG:
 	SpecialDeath:
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AAA 0 doomb_severed_limb("RevenantDust", "spawn", (0, 0, 70), doomb_random_velocity(5) );
 		TNT1 AAA 0 doomb_severed_limb("RevenantDust2", "spawn", (0, 0, 70), doomb_random_velocity(5) );
 		TNT1 AAA 0 doomb_severed_limb("BigLSPart1", "spawn", (0, 0, 70), doomb_random_velocity(5) );
@@ -341,7 +341,7 @@ States
 		Stop;
 		
 	XDeath:
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AAA 0 doomb_severed_limb("RevenantDust", "spawn", (0, 0, 70), doomb_random_velocity(5) );
 		TNT1 AAA 0 doomb_severed_limb("RevenantDust2", "spawn", (0, 0, 70), doomb_random_velocity(5) );
 		TNT1 AAA 0 doomb_severed_limb("BigLSPart1", "spawn", (0, 0, 70), doomb_random_velocity(5) );
@@ -388,7 +388,7 @@ States
 		FREV ABABAB 3;
 		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
 		tnt1 AAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		tnt1 AAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", "spawn", (0, 0, 70), doomb_random_velocity(5) );
 		tnt1 A 0 ACS_Execute(580, 0, 0, 0, 0);
 		tnt1 A 0 ACS_Execute(581, 0, 0, 0, 0);
@@ -401,7 +401,7 @@ States
 		FREV NO 2;
 		
 		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AAA 0 doomb_severed_limb("XDeathRevenantHeadKicked2", "spawn", (0, 0, 70), doomb_random_velocity(5) );
 		tnt1 A 0 ACS_Execute(580, 0, 0, 0, 0);
 		tnt1 A 0 ACS_Execute(581, 0, 0, 0, 0);
@@ -424,7 +424,7 @@ States
 		FRE2 A 5;
 		tnt1 a 0 Radius_Quake (4, 24, 0, 15, 0);
 		tnt1 AAAAAA 0 doomb_sticky_guro(SGT_BLOOD);
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		tnt1 AAAAAAAAAAAAAAAAAAAA 0 doomb_for_khorne("PlayerFlyingBlood", "spawn", (0, 0, 70), doomb_random_velocity(5) );
 		FRE2 BCDEFGGGGG 6;
 		tnt1 A 0

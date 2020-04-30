@@ -377,7 +377,7 @@ CLASS RevenantU : doomb_body_base
 			TNT1 AAA 0 doomb_severed_limb("RevenantBonesFast", "spawn", vel_dir: doomb_random_velocity(5) );
 			TNT1 AAA 0 doomb_severed_limb("RevenantPiece", "spawn", vel_dir: doomb_random_velocity(5) );
 
-			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+			TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 A_SpawnItem("HellishMissileLauncher");
 		Stop;
 	}
@@ -439,7 +439,7 @@ CLASS DeadSkeleton: CurbstompedMarine {
 		
 	Death.Cut:
 	Death.Saw:
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		TNT1 AAA 0 doomb_severed_limb("RevenantBones", "spawn", (0, 0, 32), doomb_random_velocity(5) );
 		TNT1 AAA 0 doomb_severed_limb("RevenantArm", "spawn", (0, 0, 32), doomb_random_velocity(5) );
 		TNT1 AAA 0 doomb_severed_limb("XDeathHalfSkeleton", "spawn", (0, 0, 32), doomb_random_velocity(5) );
@@ -607,7 +607,7 @@ CLASS GibHalfSkeleton: doomb_body_base {
 		Death.Trample:
 		Death:
 			TNT1 A 0 A_SpawnItem("HellishMissileLauncher");
-			TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+			TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		Stop;
 	}
 	
@@ -670,7 +670,7 @@ States
 	Death.Cutless:
 	Death.Cut:
 	Death: Death.Saw:
-		TNT1 AA 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
+		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 	Stop;
 }
 
