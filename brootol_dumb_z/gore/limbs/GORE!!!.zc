@@ -37,69 +37,6 @@ CLASS TinyGib : doomb_body_base {
 
 
 
-
-
-
-
-
-
-
-/////////////////
-//ARMS
-/////////////////
-
-
-CLASS XDeathArm1 : doomb_body_base { 
-	Default {
-		
-		Radius 8;
-		Height 8;
-		Scale 1.1;
-		Speed 8;
-		Mass 1;
-		gravity 0.5;
-		Decal "BrutalBloodSplat";
-		BounceFactor 0.2;
-		wallbouncefactor 0.2;
-		BounceCount 3;
-		+DOOMBOUNCE;
-		+MOVEWITHSECTOR;
-		+CLIENTSIDEONLY;
-		+NOBLOCKMAP;
-		+NOTELEPORT;
-		+MISSILE;
-		+EXPLODEONWATER;
-		+SKYEXPLODE;
-		-DONTSPLASH;
-		+rollsprite
-		+rollcenter
-		seesound "bloood";
-		deathsound "bloood";
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			XARM A 5
-			{
-				roll += 15;
-				doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
-			}
-		Loop;
-
-		Death:
-			XARM A -1;
-		Stop;
-	}
-}
-
-
-
-
-
-
-
 //////////////
 //GUTS
 //////////////
@@ -138,44 +75,6 @@ CLASS XDeathHalfMarine : doomb_body_base {
 
 
 	   
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

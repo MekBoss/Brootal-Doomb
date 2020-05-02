@@ -759,8 +759,7 @@ CLASS doomb_shotgun_guy : doomb_monster_base
 			doomb_monster_fatality_camera(target);
 			vel = (0, 0, 0);
 		}
-		SFSZ AB 8;
-		SFSZ C 16;
+		SFSZ ABCC 8;
 		tnt1 A 0 A_PlaySound("misc/xdeath4");
 		SFSZ D 16;
 		tnt1 A 1
@@ -778,7 +777,6 @@ CLASS doomb_shotgun_guy : doomb_monster_base
 			A_Pain();
 			A_NoBlocking();
 		}
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1);
 		TNT1 A 0 A_Jump(256, "sergeant_fatality_1", "sergeant_fatality_2", "sergeant_fatality_3");
 		
 	sergeant_fatality_1:

@@ -11,6 +11,9 @@ gameinfo
    "on_screen_blood_overlay",
    "doomb_monster_spawner",
    "chex_dedicated_event"
+
+
+	statusbarclass = "doomb_status_bar"
 }
 
 SpawnNums

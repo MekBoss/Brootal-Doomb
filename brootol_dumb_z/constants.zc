@@ -101,3 +101,8 @@ enum doomb_internals_type
 	DIT_GUTS_PILE = 4,
 	DIT_GUT_PILE_FLYING = 5
 };
+
+enum doomb_limb_type
+{
+	
+}

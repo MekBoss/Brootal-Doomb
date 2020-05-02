@@ -491,7 +491,6 @@ States
 			A_Pain();
 			A_NoBlocking();
 		}
-		TNT1 A 0 A_GiveToTarget("GoFatality", 1);
 		TNT1 A 0 A_Jump(256,"comando_fatality_1", "comando_fatality_2");
 
 	comando_fatality_1:

@@ -97,8 +97,9 @@ default
 	+nogravity;
 	+notonautomap;
 	+thruactors
-	radius 1;
-	height 1;
+	+invisible
+	radius 0;
+	height 0;
 	RenderStyle "Add";
 	gravity 1;
 }

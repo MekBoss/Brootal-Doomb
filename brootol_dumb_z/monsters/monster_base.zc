@@ -534,8 +534,7 @@ protected void doomb_monster_fatality_camera(actor to_who)
 			fatalizer.cheats |= (CF_GODMODE2);//|CF_FROZEN);
 			fatalizer.camera = fatality_camera;
 
-			fatalizer.mo.tics = -1;
-			fatalizer.mo.sprite = 0;
+			fatalizer.mo.setorigin((double.infinity, double.infinity, double.infinity) , false);
 
 			fatality_camera(fatality_camera).turn_on();
 		}
@@ -563,10 +562,6 @@ protected void doomb_destroy_monster_fatality_camera()
 		fatality_camera(fatality_camera).turn_off();
 		fatalizer.cheats &= ~(CF_GODMODE2);//|CF_FROZEN);
 		fatalizer.camera = fatalizer.mo;
-
-		fatalizer.mo.tics = 1;
-		//fatalizer.mo.sprite = -1;//just hope that player pawn jump to the next state with proper sprite
-
 
 		fatality_camera.destroy();
 	}
@@ -601,7 +596,22 @@ protected vector3 doomb_random_velocity(double factor = 1, bool trully = false)
 	return v;
 }
 
+
+protected actor doomb_shoot_boolet(double spawnheight, double xy_offset, double additional_angle, int projectile_flags, double additional_pitch)
+{
+	actor a = A_SpawnProjectile ("MonsterMinigunTracer", spawnheight, xy_offset, additional_angle, projectile_flags, additional_pitch);
+	if(a)
+	{
+		//a.
+	}
+
+	return null;
 }
+
+}
+
+
+
 
 /*
 |= for turn on

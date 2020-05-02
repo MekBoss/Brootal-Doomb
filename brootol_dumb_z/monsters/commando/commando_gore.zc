@@ -334,26 +334,6 @@ States
 }
 
 
-CLASS XDeathChainLeg: XDeathArm1 { 
-	Default
-	{
-		Speed 8;
-		Gravity 0.4;
-		BounceFactor 0.4;
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			LEG3 ABCDEFGH 5;
-			Loop;
-		Death:
-			LEG3 A 1;
-			LEG3 A 0 doomb_severed_limb("Gib_ChainLeg");
-			Stop;
-	}
-}
 
 CLASS Gib_ChainLeg: LimbBase
 {
@@ -381,28 +361,6 @@ CLASS Gib_ChainLeg: LimbBase
 }
 
 
-CLASS XDeathChainArm: XDeathArm1
-{
-	Default
-	{
-		Speed 8;
-		Gravity 0.4;
-		BounceFactor 0.4;
-	}
-	States
-	{
-		Spawn:
-			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			HND3 ABCDEFGH 5;
-		Loop;
-		
-		Death:
-			HND3 A 1;
-			HND3 A 0 doomb_severed_limb("Gib_ChainArm");
-		Stop;
-	}
-}
 
 CLASS Gib_ChainARm: LimbBase
 {
@@ -436,39 +394,6 @@ CLASS Gib_ChainARm: LimbBase
 }
 
 
-
-CLASS XDeathChaingunguyHead: XDeathArm1
-{
-	Default
-	{
-		-CLIENTSIDEONLY;
-		BounceCount 3;
-		Scale 1.0;
-	}
-	States
-	{
-		Spawn:
-			tnt1 a 0 nodelay
-			{
-				if(random(0, 10) <= 1)
-				{
-					A_SpawnItem("ChaingunguyHeadExplode");
-					destroy();
-				}
-			}
-		Spawn1:
-			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
-			CHHE AB 3;
-			CHHE CDEFGH 3;
-		Loop;
-		
-		Death:
-			tnt1 a 0  doomb_severed_limb("ChaingunguyHead");
-		Stop;
-	}
-}
 
 
 

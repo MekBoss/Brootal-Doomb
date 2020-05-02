@@ -1,5 +1,11 @@
 extend class doomb_monster_base
 {
+protected actor doomb_throw_limb(doomb_limb_type type = 0, vector3 offset = (0, 0, 0), vector3 direction = (0, 0, 0) )
+{
+
+	return null;
+}
+
 protected void doomb_sticky_guro(sticky_guro_type type = SGT_NONE)
 {
 	if(type == SGT_NONE)

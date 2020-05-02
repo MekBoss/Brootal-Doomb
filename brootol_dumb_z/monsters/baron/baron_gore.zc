@@ -262,46 +262,6 @@ States
 
 }
 
-//FIXME unused class
-CLASS XDeathBaronArm : doomb_body_base
-{ 
-Default
-{
-	Radius 8;
-	Height 8;
-	Speed 8;
-	Mass 6;
-	BounceFactor 0.5;
-
-	+DOOMBOUNCE;
-	+NOBLOCKMAP;
-	+MISSILE;
-	+NOTELEPORT;
-	+DONTSPLASH;
-	+MOVEWITHSECTOR;
-
-	DeathSound "misc/xdeath1";
-	Decal "GreenBloodSuper";	
-}
-
-States
-{
-	Spawn:
-		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-		GORB A 8
-		{
-			actor a = doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail");
-			if(a)
-				a.a_settranslation("red_to_green");
-		}
-	Loop;
-	
-	Death:
-		GORB A -1;
-	Stop;
-}
-
-}
 
 
 
@@ -328,30 +288,6 @@ States
 }
 
 
-CLASS XDeathBaronHead5: XDeathArm1
-{
-Default
-{
-	-CLIENTSIDEONLY;
-	Scale 1.2;
-}
-
-States
-{
-	Spawn:
-		TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-		TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
-		XHE5 ABCDEFGH 3;
-	Loop;
-
-	Death:
-		XHE5 A 1 doomb_spawn_bloodpool(BPS_SMALL);
-		XHE5 A 1 A_SpawnItem("BaronHead",0,0,0,1);
-	Stop;
-}
-
-}
 
 
 

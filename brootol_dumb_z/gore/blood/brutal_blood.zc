@@ -18,7 +18,6 @@ CLASS Brutal_Blood : doomb_blood// Replaces Blood
 				doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (random(-10, 10), random(-10, 10), random(-10, 10) ), doomb_random_velocity(5) );
 				doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (random(-10, 10), random(-10, 10), random(-10, 10) ), doomb_random_velocity(5) );
 				doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (random(-10, 10), random(-10, 10), random(-10, 10) ), doomb_random_velocity(5) );
-				doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (random(-10, 10), random(-10, 10), random(-10, 10) ), doomb_random_velocity(5) );
 				doomb_for_khorne("doomb_non_interactive_blood", "blood_hit", (0, 0, 30) );
 			}
 		stop;
