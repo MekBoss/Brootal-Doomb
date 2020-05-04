@@ -21,12 +21,12 @@ default
 	
 	-ismonster
 	-countkill
-	-solid
+	+solid
 	+NOTELEPORT;
 	+MOVEWITHSECTOR;
 	+DONTSPLASH;
-	+NOBLOCKMONST;
-	+THRUACTORS;
+	//+NOBLOCKMONST;
+	//+THRUACTORS;
 	+FLOORCLIP;
 	+FORCEXYBILLBOARD;
 	+SHOOTABLE;

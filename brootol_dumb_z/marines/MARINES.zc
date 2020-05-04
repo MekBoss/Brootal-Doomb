@@ -9,13 +9,10 @@ CLASS doomb_Marine_Rifle : doomb_marine_base
 	States
 	{
 	Spawn:
-		tnt1 a 0
+		PLAY a 1
 		{
 			if(is_guarding() )
 				setstatelabel("see_guard");
-		}
-		TNT1 A 0 
-		{
 			A_Look();
 			doomb_set_leader();
 		}

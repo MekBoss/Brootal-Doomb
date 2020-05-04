@@ -56,14 +56,13 @@ CLASS doomb_shotgun_guy : doomb_monster_base
 	States
 	{
 		Spawn:
-			TNT1 A 0 nodelay
+			SPOS B 1 nodelay
 			{
 				ammo_amount = 8;
 			}
-			SPOS B 1;
 		Stand:
 			SHID ABABABABAB 10 A_Look;
-			Loop;
+		Loop;
 			
 		
 		Avoid: 

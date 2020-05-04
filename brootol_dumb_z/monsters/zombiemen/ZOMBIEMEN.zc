@@ -58,7 +58,7 @@ Default {
 States
 {
 	Spawn:
-		TNT1 A 0 nodelay {ammo_amount = 20;}
+		PSSS A 0 nodelay {ammo_amount = 20;}
 	Stand:
 		PSSS ABABABABAB 10 A_Look;
 	Loop;

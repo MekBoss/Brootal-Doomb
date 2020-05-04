@@ -150,7 +150,7 @@ protected void doomb_marine_chase(statelabel melee_state, statelabel missile_sta
 
 		if(!target)
 		{
-			a_cleartarget();
+			//a_cleartarget();
 			A_Chase(null, missile_state);
 			A_Recoil(-1);
 

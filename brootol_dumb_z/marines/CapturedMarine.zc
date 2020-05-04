@@ -36,9 +36,9 @@ CLASS CapturedMarine: doomb_marine_base Replaces Blursphere
 	States
 	{
 		Spawn:
+			TNT1 A 1;
 			TNT1 A 0 A_Stop;
 			MARN A 0 {if(deathmatch) setstatelabel("dm");}
-			TNT1 A 1;
 		Goto Spawn1;
 		
 		DM:

@@ -57,7 +57,7 @@ Default
 States
 {
 	Spawn:
-		TNT1 A 0 A_JumpIfInTargetInventory("ChainguyguyContinue", 1, "MissileContinue");
+		MPOS A 0 A_JumpIfInTargetInventory("ChainguyguyContinue", 1, "MissileContinue");
 	STAND:
 		MPOS B 10 A_Look;
 	Loop;

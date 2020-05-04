@@ -344,16 +344,17 @@ States
 					a.translation = translation;
 			}
 
-			if(pos.z <= floorz)
+			if(pos.z <= floorz || vel == (0, 0, 0))
 			{
 				setstatelabel("death");
 				return;
 			}
-			
-			else if (vel == (0, 0, 0))
+			/*
+			else if ()
 			{
 				//doomb_sticky_guro(SGT_BLOOD);
 			}
+			*/
 		}
 	loop;
 

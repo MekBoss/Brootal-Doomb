@@ -32,13 +32,11 @@ default
 	speed 8;
 	fastspeed 6;
 	Obituary "%o has been sodomized by a Spectre.";
-
 }
 
 States
 {
     Spawn:
-		TNT1 A 0;
 	Spawned:
 		SPEC A 10 BRIGHT A_Look;
 	Loop;

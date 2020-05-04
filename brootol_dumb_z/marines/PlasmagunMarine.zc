@@ -16,13 +16,10 @@ States
 {
 		
 	Spawn:
-		tnt1 a 0
+		PLA6 A 1 
 		{
 			if(is_guarding() )
 				setstatelabel("guard_see");
-		}
-		PLA6 A 1 
-		{
 			A_Look();
 			doomb_set_leader();
 		}

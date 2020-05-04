@@ -13,15 +13,12 @@ override int doomb_get_aditional_death_sprite()
 States
 {
 	Spawn:
-		tnt1 a 0
-		{
-			if(is_guarding() )
-				setstatelabel("guard_look");
-		}
 		PLA3 A 1
 		{
 			A_Look();
 			doomb_set_leader();
+			if(is_guarding() )
+				setstatelabel("guard_look");
 		}
 	See:
 		tnt1 a 0
@@ -39,6 +36,7 @@ States
 	shotgun_on_guard:
 		PLA3 HE 8
 		{
+			vel = (0, 0, 0);
 			a_look();
 			if(doomb_sqrd_distance_to_leader() > 300 * 300)
 				setstatelabel("see");

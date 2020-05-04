@@ -15,15 +15,12 @@ override int doomb_get_aditional_death_sprite()
 	{
 			
 		Spawn:
-			tnt1 a 0
+			PLA7 A 1
 			{
 				if(is_guarding() )
 					setstatelabel("guard_see");
-			}
-			PLA7 A 1
-			{
-			A_Look();
-			doomb_set_leader();
+				A_Look();
+				doomb_set_leader();
 			}
 		See:
 			tnt1 a 0

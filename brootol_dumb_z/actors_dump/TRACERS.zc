@@ -76,6 +76,7 @@ CLASS doomb_model_boolet : doomb_boolet_base
 //players bullets
 CLASS MinigunTracer: doomb_model_boolet { 
 	Default {
+		speed 100;
 		seesound "weapons/minigunfire";
 		damagetype "mini_gun";
 	}
