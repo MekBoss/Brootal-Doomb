@@ -278,7 +278,7 @@ override double GetDeathHeight()
 
 //how much time monster seeek it target before forgeting
 protected int memory_timer;
-const max_memory = 30;
+const max_memory = 300;
 protected void doomb_monster_memory(statelabel idle_state = "idle")
 {
 	memory_timer++;
@@ -515,8 +515,11 @@ protected doomb_body_base doomb_severed_limb(class<doomb_body_base> it = null, s
 /////////////////////////////////////////////////////////////////////////////////
 protected playerinfo fatalizer;
 protected actor fatality_camera, marine_fatalizer;
+
 //set camera for player and also handle marines fatality
-protected void doomb_monster_fatality_camera(actor to_who)
+//passive means who is fatalizer
+//false caleer (monster) true target (player most of a times)
+protected void doomb_monster_fatality_camera(actor to_who, bool passive = true)
 {
 	if(to_who && to_who.player)
 	{
