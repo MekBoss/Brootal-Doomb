@@ -96,7 +96,7 @@ States
 		{
 			A_FaceTarget();
 			A_PlaySound("CHGNSHOT", 1);
-			A_SpawnProjectile("MarineStrongTracer", 32, 0, random(-8, 8), CMF_OFFSETPITCH, frandom(-3, 3) );
+			doomb_shoot_boolet((10, 13), "minigun", 32, 0, random(-6, 6), CMF_OFFSETPITCH, frandom(-3, 3) );
 			A_SpawnItem ("RifleCaseSpawn", 0, 30,0);
 		}
 		tnt1 a 0 a_monsterrefire(200, "see");
@@ -172,7 +172,7 @@ States
 		PL42 F 1 BRIGHT
 		{
 			A_PlaySound("CHGNSHOT", 1);
-			A_SpawnProjectile("MarineStrongTracer", 32, 0, random(-8, 8), CMF_OFFSETPITCH, frandom(-3, 3) );
+			doomb_shoot_boolet((10, 13), "minigun", 32, 0, random(-6, 6), CMF_OFFSETPITCH, frandom(-3, 3) );
 			A_SpawnItem ("RifleCaseSpawn", 0, 30,0);
 		}
 		tnt1 a 0 a_monsterrefire(200, "guard_see");

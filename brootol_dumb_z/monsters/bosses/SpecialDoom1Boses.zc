@@ -1,5 +1,5 @@
 
-CLASS CyberdemonBoss: doomb_monster_base
+CLASS CyberdemonBoss : doomb_cyberdemon
 { 
 	Default {
 		damagefactor "Explosive_Impact", 1.1;
@@ -192,7 +192,8 @@ CLASS CyberdemonBoss: doomb_monster_base
 
 
 
-CLASS SuperMastermind : doomb_monster_base { 
+CLASS SuperMastermind : doomb_mind
+{ 
 	Default {
 		damagefactor "HKFT", 0.05;
 		damagefactor "Explosive_Impact", 1.5;
@@ -201,7 +202,7 @@ CLASS SuperMastermind : doomb_monster_base {
 		Obituary "%o was destroyed by a Mastermind.";
 		+NOICEDEATH;
 		
-		Height 144 + 100;
+		Height 244;
 		doomb_monster_base.head_starting_position 150;
 		doomb_monster_base.headshot_multiplier 1.5;
 
@@ -274,7 +275,7 @@ CLASS SuperMastermind : doomb_monster_base {
 			TNT1 AAAAAAAAAAAAAAAAA 0;
 			TNT1 A 0 A_JumpIfCloser(200, "StopFiring");
 			SPID G 2 A_FaceTarget;
-			SPID H 2 BRIGHT A_SpawnProjectile("SuperMastermindTracer", 124, 0, random(-7, 7), 1, random(-4, 2));
+			SPID H 2 BRIGHT doomb_shoot_boolet((25, 30), "explosive_impact", 124, 0, random(-7, 7), 1, random(-4, 2));
 			TNT1 A 0 A_SpawnItem ("MasterMindCaseSpawn", 0, 60,0);
 			SPID G 0 A_SpidRefire;
 		Goto see;

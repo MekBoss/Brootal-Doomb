@@ -125,6 +125,7 @@ visual_sfx show_some_effect(actor caller = null, statelabel effect_state = null,
 
 	approve_state(mikle_bay, effect_state);
 
+	//FIXME actors call state functions automaticallly after changing state
 	visual_sfx(mikle_bay).doomb_set_appearance_global(size, translucency, speed);
 
 	return mikle_bay;

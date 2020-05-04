@@ -43,7 +43,7 @@ enum sfx_fields_flags
 
 //called when need change something from outside of actor
 //no else cases because it handled aditionaly by next function
-void doomb_set_appearance_global(vector2 sc = (double.nan, double.nan), double alph = double.nan, vector3 vel_v = (0, 0, 0) )
+void doomb_set_appearance_global(vector2 sc = (double.nan, double.nan), double alph = double.nan, vector3 vel_v = (10, 0, 0) )
 {
     if(sc == sc)
     {
@@ -64,14 +64,16 @@ void doomb_set_appearance_global(vector2 sc = (double.nan, double.nan), double a
     }
 
     vel = vel_v;
-    
 }
 
 //called from actor itself, change fields if it wasnt changed from outside
-private void doomb_set_appearance(vector2 sc = (1, 1), double a = 1, double speed_scale = 1)
+private void doomb_set_appearance(vector2 sc = (1, 1), double new_alpha = 1, double speed_scale = 1)
 {
     show_something = true;
-    if( !(changed_fields &= CF_SCALE) )
+
+    vel *= speed_scale;
+
+	if( !(changed_fields &= CF_SCALE) )
     {
         if(sc.y == 0)
             scale = (sc.x, sc.x);
@@ -82,11 +84,10 @@ private void doomb_set_appearance(vector2 sc = (1, 1), double a = 1, double spee
     if( !(changed_fields &= CF_ALPHA) )
     {
         do
-            a_fadeto(a, 0.01, false);
-        while(alpha > a)
+            a_fadeto(new_alpha, 0.01, false);
+        while(alpha > new_alpha)
     }
 
-    vel *= speed_scale;
 }
 
 default

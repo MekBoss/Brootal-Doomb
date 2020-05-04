@@ -69,7 +69,7 @@ States
 		P2W2 A 1
 		{
 			A_AlertMonsters();
-			a_fireprojectile("Tracer", random(-4,4), 0, -6, -2, 0, random(-2,2));
+			a_fireprojectile("doomb_model_boolet", random(-4,4), 0, -6, -2, 0, random(-2,2));
 			{invoker.doomb_show_effect("GunFireSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );}
 			A_PlaySound("weapons/rifle", 1);//Play gun fire sound
 		}
@@ -99,7 +99,7 @@ States
 		P2W1 A 1
 		{
 			A_AlertMonsters();
-			a_fireprojectile("Tracer", random(-4,4), 0, 6, -2, 0, random(-2,2));
+			a_fireprojectile("doomb_model_boolet", random(-4,4), 0, 6, -2, 0, random(-2,2));
 			{invoker.doomb_show_effect("GunFireSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );}
 			A_PlaySound("weapons/rifle", 1);//Play gun fire sound
 		}

@@ -187,11 +187,10 @@ Default
     PainChance "Kick", 255;
     damagefactor "Leg", 0.0;
     damagefactor "Shotgun", 0.0;
-    damagefactor "Cutless", 0.0;
+    damagefactor "mini_gun", 0.0;
     damagefactor "SSG", 0.0;
     damagefactor "Trample", 0.0;
     damagefactor "bullet", 0.0;
-    damagefactor "cutless", 0.0;
     damagefactor "shotgun", 0.0;
     damagefactor "ssg", 0.0;
     damagefactor "Blood", 0.0;
@@ -207,12 +206,10 @@ Default
     
     Monster;
     +FLOORCLIP;
-    -NORADIUSDMG;
     +QUICKTORETALIATE;
     +NOBLOCKMONST;
-    +DONTHARMCLASS;
     +THRUSPECIES;
-    +FIXMAPTHINGPOS;
+    +MTHRUSPECIES;
     +LOOKALLAROUND;
     +PUSHABLE;
     +SLIDESONWALLS;
@@ -221,16 +218,15 @@ Default
     -COUNTKILL;
     +DONTSPLASH;
     +FIXMAPTHINGPOS;
-    +NORADIUSDMG;
     +USESPECIAL;
-    +MTHRUSPECIES;
     +DONTHARMCLASS;
 	+friendly
 	+MISSILEMORE
 	+MISSILEEVENMORE
-    
+    +DOHARMSPECIES
+	
 	doomb_marine_base.spare_ammo "";
-    Species "Marines";
+    Species "Marine";
     Translation "112:127=117:127";
     BloodType "Brutal_Blood", "SawBlood";
     AttackSound "none";
@@ -353,7 +349,7 @@ states
 		XPL1 E -1;
 	Stop;
 		
-	Death.CutLess:
+	Death.mini_gun:
 		TNT1 A 0;
 		TNT1 A 0 {busespecial = false;}
 		TNT1 A 0 {bfriendly = false;}

@@ -1,9 +1,7 @@
 //Tracing projectiles goes here
-
-CLASS Tracer: doomb_boolet_base
+//What is "tracing projectiles"?
+CLASS doomb_model_boolet : doomb_boolet_base
 {
-
-
 	Default
 	{
 		Projectile;
@@ -11,23 +9,45 @@ CLASS Tracer: doomb_boolet_base
 		+FORCEXYBILLBOARD;
 		+DONTSPLASH;
 		+NOEXTREMEDEATH;
-		+MISSILE;
 		-DONTSPLASH;
+		+BLOODSPLATTER;
+		+THRUGHOST;
 
-		damage 0;
+		damagefunction ( doomb_boolet_damage() );
 		radius 2;
 		height 2;
-		speed 100;
+		speed 60;
 		renderstyle "Add";
 		alpha 0.9;
 		scale 0.15;
 		Decal "BulletDecalNew1";
-		
 	}
+
+	private int lower_damage_bound, upper_damage_bound;
+
+	void doomb_set_boolet_damage(int i, int j)
+	{
+		lower_damage_bound = i;
+		upper_damage_bound = j;
+	}
+
+	private int doomb_boolet_damage()
+	{
+		return random(lower_damage_bound, upper_damage_bound);
+	}
+
 	states
 	{
 		Spawn:
-			TRAC A 1 BRIGHT nodelay {vel *= frandom(0.8, 1.4);}
+			TRAC A 1 BRIGHT nodelay
+			{
+				if(target is 'doomb_mind')
+				{
+					scale = (0.2, 0.2);
+				}
+				vel *= frandom(0.8, 1.4);
+				bmissile = true;
+			}
 		spawn_mini_loop:
 			TRAC A 1 BRIGHT;
 		Loop;
@@ -37,161 +57,26 @@ CLASS Tracer: doomb_boolet_base
 			{
 				if(!blockingmobj)
 					spawn("RicoChet", pos);
+				
+				if(target is 'doomb_mind')
+				{
+					A_Explode (2, 120, fulldamagedistance: 120);
+					doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");
+					doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
+					Radius_Quake (4, 24, 0, 15, 0);
+					doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (0.9, 0.9) );
+					A_SpawnItem("WhiteShockwaveSmall");
+					A_PlaySound("FAREXPL");
+				}
 			}
 		Stop;
 	}
 }
 
-CLASS MinigunTracer: Tracer { 
+//players bullets
+CLASS MinigunTracer: doomb_model_boolet { 
 	Default {
 		seesound "weapons/minigunfire";
-		damagetype "Cutless";
-	}
-}
-
-
-
-CLASS MonsterTracer: Tracer
-{
-	Default {
-		+BLOODSPLATTER;
-		+THRUGHOST;
-		speed 60;
-		damagefunction (random(9,12));
-		DamageType "Bullet";
-	}
-}
-
-
-
-CLASS ShotgunguyTracer: Tracer { 
-	Default {
-		+BLOODSPLATTER;
-		+THRUGHOST;
-		+MISSILE;
-		speed 60;
-		damagefunction (random(9,14));
-		DamageType "Shotgun";
-	}
-}
-
-CLASS ZombieManTracer: MonsterTracer { 
-	Default {
-		damagefunction (random(6,9));
-	}
-}
-
-
-CLASS MonsterMinigunTracer: MonsterTracer { 
-	Default {
-		+BLOODSPLATTER;
-		+THRUGHOST;
-		speed 60;
-		damagefunction (6);
-		seesound "CHGNSHOT";
-		damagetype "Cutless";
-	}
-}
-
-
-CLASS MeatShieldTracer: Tracer { 
-	Default {
-		+BLOODSPLATTER;
-		+THRUACTORS;
-		damagefunction (random(20,25));
-	}
-}
-
-
-CLASS MarineTracer: Tracer { 
-	Default {
-		+BLOODSPLATTER;
-		+THRUGHOST;
-		-GHOST;
-		-THRUGHOST;
-		+THRUSPECIES;
-		+MTHRUSPECIES;
-		damagefunction (random(8,10));
-	}
-}
-
-CLASS MarineStrongTracer: MarineTracer { 
-	Default {
-		damagefunction (random(12,13));
-	}
-}
-
-
-CLASS MarineShotgunTracer: MarineTracer { 
-	Default {
-		damagefunction (random(10,12));
-		damagetype "Shotgun";
-	}
-}
-
-
-
-//check it
-CLASS Taunter: MonsterTracer { 
-	Default {
-		-BLOODSPLATTER;
-		+THRUGHOST;
-		+DONTSPLASH;
-		radius 16;
-		height 16;
-		damagefunction (random(1,2));
-		DamageType "Taunt";
-		Decal "None";
-		-ACTIVATEIMPACT;
-		-ACTIVATEPCROSS;
-	}
-}
-
-
-
-
-
-CLASS MastermindTracer: Tracer { 
-	Default {
-		+BLOODSPLATTER;
-		+THRUGHOST;
-		damagefunction (random(5,7));
-		scale .2;
-		RenderStyle "Add";
-		Alpha 0.9;
-		damagetype "Explosive_Impact";
-		Decal "Scorch";
-		Obituary "$OB_SPIDER";
-	}
-	States
-	{
-		
-		Spawn:
-			tnt1 a 0 nodelay {vel *= frandom(0.8, 1.2);}
-			tnt1 a 0 a_playsound("SSHFIRE", CHAN_AUTO, 1);
-
-		mini:
-			TRAC A 1;
-		Loop;
-
-		Death:
-			tnt1 A 1
-			{
-				A_Explode (2, 120, 0);
-				doomb_flare_base.doomb_attach_flare(self, "NewfagExplosionFlare");
-				doomb_show_effect("ExplosionParticle2", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ) );
-				Radius_Quake (4, 24, 0, 15, 0);
-				doomb_show_effect("ExplosionFlames", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (0.9, 0.9) );
-				A_SpawnItem("WhiteShockwaveSmall");
-				A_PlaySound("FAREXPL");
-			}
-		Stop;
-	}
-}
-
-CLASS SuperMastermindTracer: MastermindTracer { 
-	Default {
-		damagefunction (random(25,30));
-		Height 24;
+		damagetype "mini_gun";
 	}
 }

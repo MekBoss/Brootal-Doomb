@@ -819,8 +819,8 @@ CLASS DeadHangBNoBrain: doomb_body_base
 		Spawn:
 			HDB2 A 1
 			{
-				if(random(0, 20) >= 20 )
-					doomb_for_khorne("doomb_non_interactive_blood", "blood_droplet", (0, 0, 15 ), doomb_random_velocity(5) );
+				if(random(0, 30) >= 30 )
+					doomb_for_khorne("doomb_non_interactive_blood", "blood_droplet", (0, 0, 15 ), doomb_random_velocity(2) );
 			}
 		loop;
 			

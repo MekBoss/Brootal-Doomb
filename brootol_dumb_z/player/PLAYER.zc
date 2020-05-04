@@ -36,7 +36,7 @@ Default {
 	damagefactor "Shotgun", 0.5;
 	damagefactor "SSG", 5.0;
 	damagefactor "Bullet", 0.5;
-	damagefactor "Cutless", 0.33;
+	damagefactor "mini_gun", 0.33;
 	damagefactor "Trample", 8.0;
 	damagefactor "Kick", 3.0;
 	damagefactor "Fatality", 5.0;
@@ -347,7 +347,7 @@ Goto StandStill;
 	Pain.MonsterMinigunBullet:
 	Pain.Shotgun:
 	Pain.SSG:
-	Pain.CutLess:
+	Pain.mini_gun:
 		//Scripts 611 to 616 are responsible for making the bullet damage effect on screen
 		tnt1 A 0 A_PlaySound("PAIN1", 2);
 		tnt1 A 0 ACS_Execute(random(611, 616), 0, 0, 0, 0);
@@ -405,7 +405,7 @@ Goto StandStill;
 		tnt1 A -1;
 		Stop;
 		
-	Death.CutLess:
+	Death.mini_gun:
 		tnt1 A 0 A_Takeinventory("Kicking",1);
 		tnt1 A 0 doomb_init_fatality_camera();//Start Camera
 		tnt1 A 0 A_Scream;

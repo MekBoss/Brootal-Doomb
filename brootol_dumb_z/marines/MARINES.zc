@@ -90,7 +90,7 @@ CLASS doomb_Marine_Rifle : doomb_marine_base
 		{
 			A_FaceTarget();
 			A_PlaySound("weapons/rifle");
-			A_SpawnProjectile("MarineTracer", 40, 0, 0, 0);
+			doomb_shoot_boolet((8, 10), "", 40);
 			A_SpawnItem ("RifleCaseSpawn", 0, 30,0);
 		}
 		tnt1 a 0 A_CPosREfire;
@@ -112,7 +112,7 @@ CLASS doomb_Marine_Rifle : doomb_marine_base
 		MARN B 2 BRIGHT
 		{
 			A_PlaySound("weapons/rifle");
-			A_SpawnProjectile("MarineTracer", 42, 0, 0, 0);
+			doomb_shoot_boolet((8, 10), "", 42);
 			A_SpawnItem ("RifleCaseSpawn", 0, 30,0);
 		}
 	Goto missile2;
@@ -134,7 +134,7 @@ CLASS doomb_Marine_Rifle : doomb_marine_base
 			A_FaceTarget();
 			A_Recoil(5);
 			A_PlaySound("weapons/rifle");
-			A_SpawnProjectile("MarineTracer", 42, 0, 0, 0);
+			doomb_shoot_boolet((8, 10), "", 42);
 			A_SpawnItem ("RifleCaseSpawn", 0, 30,0);
 		}
 		tnt1 a 0 a_jump(140, "Retreat");
@@ -199,7 +199,7 @@ CLASS doomb_Marine_Rifle : doomb_marine_base
 		{
 			A_FaceTarget();
 			A_PlaySound("weapons/rifle");
-			A_SpawnProjectile("MarineTracer", 40, 0, 0, 0);
+			doomb_shoot_boolet((8, 10), "", 42);
 			A_SpawnItem ("RifleCaseSpawn", 0, 30,0);
 		}
 		tnt1 a 0 a_monsterrefire(200, "see_guard");

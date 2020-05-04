@@ -123,8 +123,8 @@ CLASS Hectebus : doomb_fatso
 			TNT1 A 0 A_SpawnProjectile ("JuggernautBody1", 0);
 			BS1B A 2 A_Recoil(-2);
 			TNT1 A 0 A_SpawnProjectile ("JuggernautBody2", 0);
-			TNT1 A 0 A_SpawnProjectile("MonsterMinigunTracer", 72, 42, random(-8, 8), 0);
-			TNT1 A 0 A_SpawnProjectile("MonsterMinigunTracer", 72, -42, random(-8, 8), 0);
+			TNT1 A 0 doomb_shoot_boolet((6, 6), 'mini_gun', 72, 42, random(-8, 8), 0);
+			TNT1 A 0 doomb_shoot_boolet((6, 6), 'mini_gun', 72, -42, random(-8, 8), 0);
 			TNT1 A 0 A_SpawnProjectile("RifleCaseSpawn", 72, 42, 0, 0);
 			TNT1 A 0 A_SpawnProjectile("RifleCaseSpawn", 72, -42, 180, 0);
 			TNT1 A 0 A_SpawnItem("TreadsDamage",65);
@@ -134,8 +134,8 @@ CLASS Hectebus : doomb_fatso
 			BS1B A 2 A_Recoil(-2);
 			
 			TNT1 A 0 A_SpawnProjectile ("JuggernautBody2", 0);
-			TNT1 A 0 A_SpawnProjectile("MonsterMinigunTracer", 72, 42, random(-8, 8), 0);
-			TNT1 A 0 A_SpawnProjectile("MonsterMinigunTracer", 72, -42, random(-8, 8), 0);
+			TNT1 A 0 doomb_shoot_boolet((6, 6), 'mini_gun', 72, 42, random(-8, 8), 0);
+			TNT1 A 0 doomb_shoot_boolet((6, 6), 'mini_gun', 72, -42, random(-8, 8), 0);
 			TNT1 A 0 A_SpawnProjectile("RifleCaseSpawn", 72, 42, 0, 0);
 			TNT1 A 0 A_SpawnProjectile("RifleCaseSpawn", 72, -42, 180, 0);
 			TNT1 A 0 A_SpawnItem("TreadsDamage",65);

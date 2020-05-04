@@ -231,7 +231,7 @@ CLASS doomb_knight : doomb_monster_base
 			TNT1 A 0 doomb_severed_limb("KnightXDeath", "spawn", (0, 0, 20) );
 		Stop;
 			
-		Death.CutLess:
+		Death.mini_gun:
 			TNT1 A 0 A_Jump(192, "Death.Arm");
 		Death.Crush:
 		Death.Cut:

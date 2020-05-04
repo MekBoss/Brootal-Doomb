@@ -131,7 +131,7 @@ States
 	Stop;
 		
 	Death.Shotgun:
-	Death.Cutless:
+	Death.mini_gun:
 	Death.Cut:
 	Death.Saw:
 		TNT1 A 0 A_JumpIfCloser(400, "BrutalDeath");

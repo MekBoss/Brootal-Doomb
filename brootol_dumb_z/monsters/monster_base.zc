@@ -597,12 +597,15 @@ protected vector3 doomb_random_velocity(double factor = 1, bool trully = false)
 }
 
 
-protected actor doomb_shoot_boolet(double spawnheight, double xy_offset, double additional_angle, int projectile_flags, double additional_pitch)
+protected actor doomb_shoot_boolet(vector2 damage_range = (0, 0), name damage_type = '', double spawnheight = 32, double xy_offset = 0, double additional_angle = 0, int projectile_flags = 0, double additional_pitch = 0)
 {
-	actor a = A_SpawnProjectile ("MonsterMinigunTracer", spawnheight, xy_offset, additional_angle, projectile_flags, additional_pitch);
-	if(a)
+	actor a = A_SpawnProjectile ("doomb_model_boolet", spawnheight, xy_offset, additional_angle, projectile_flags, additional_pitch);
+	if(a && damage_range != (0, 0) )
 	{
-		//a.
+		a.damagetype = damage_type;
+		doomb_model_boolet(a).doomb_set_boolet_damage(int(damage_range.x), int(damage_range.y) );
+
+		return a;
 	}
 
 	return null;
@@ -617,8 +620,8 @@ protected actor doomb_shoot_boolet(double spawnheight, double xy_offset, double 
 |= for turn on
 &= ~"flag name" for turn off
 &= for comparing
-
 */
+
 class doomb_monster_spawner : eventhandler
 {
 

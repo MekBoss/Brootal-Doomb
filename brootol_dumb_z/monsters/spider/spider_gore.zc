@@ -126,7 +126,7 @@ CLASS DeadSpider: CurbstompedMarine {
 		Stop;
 
 		Death.Cut:
-		Death.Cutless:
+		Death.mini_gun:
 		Death:
 			TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		Stop;

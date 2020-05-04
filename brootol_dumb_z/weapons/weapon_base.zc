@@ -266,10 +266,7 @@ states
 			self.player.mo.setstatelabel("SayOneLiner");
         }
 		TNT1 A 10;
-		FUCK F 1;
-		TNT1 A 0 BRIGHT a_fireprojectile("Taunter", 0, 0, -1, 0);
-		TNT1 A 0 BRIGHT a_fireprojectile("Taunter", -9, 0, -1, 0);
-		TNT1 A 0 BRIGHT a_fireprojectile("Taunter", 9, 0, -1, 0);
+		FUCK F 1;//FIXME dont trigger enemies
 		FUCK G 1 A_PlaySound("FUCK", 2);
 		FUCK HI 1 A_AlertMonsters;
 		FUCK IHGF 1;
