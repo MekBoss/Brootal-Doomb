@@ -150,6 +150,9 @@ protected void doomb_marine_chase(statelabel melee_state, statelabel missile_sta
 
 		if(!target)
 		{
+			if(!leader)
+				doomb_set_leader();
+
 			//a_cleartarget();
 			A_Chase(null, missile_state);
 			A_Recoil(-1);
@@ -205,6 +208,7 @@ Default
     damagefactor "HelperMarineFatallity", 0.0;
     
     Monster;
+	-solid
     +FLOORCLIP;
     +QUICKTORETALIATE;
     +NOBLOCKMONST;
