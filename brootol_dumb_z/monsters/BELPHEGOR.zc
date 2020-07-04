@@ -9,9 +9,6 @@ CLASS Belphegor : doomb_monster_base {
 		PainChance "Kick", 255;
 
 		Health 2000;
-		damagefactor "Blood", 0.0;
-		damagefactor "BlueBlood", 0.0;
-		damagefactor "GreenBlood", 0.0;
 		BloodType "Brutal_Blood";
 		damagefactor "Explosive_Impact", 1.7;
 		Obituary "%o was no match for the great Belphegor.";
@@ -83,11 +80,11 @@ CLASS Belphegor : doomb_monster_base {
 			
 		Death.Headshot:
 			TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ), BCF_GREEN);
-		TNT1 A 0 doomb_severed_limb("eye", "spawn", (0, 0, 50), doomb_random_velocity(5) );
-		TNT1 A 0 doomb_severed_limb("head_piece", "spawn", (0, 0, 50), doomb_random_velocity(5) );
-		TNT1 A 0 doomb_severed_limb("jaw", "spawn", (0, 0, 50), doomb_random_velocity(5) );
-		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", "spawn", (0, 0, 50), doomb_random_velocity(5) );
-		TNT1 A 0 doomb_severed_limb("Teeth", "spawn", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("eye", "spawn", (0, 0, 50), doomb_random_velocity(7) );
+		TNT1 A 0 doomb_severed_limb("head_piece", "spawn", (0, 0, 50), doomb_random_velocity(7) );
+		TNT1 A 0 doomb_severed_limb("jaw", "spawn", (0, 0, 50), doomb_random_velocity(7) );
+		TNT1 A 0 doomb_severed_limb("SmallBrainPiece", "spawn", (0, 0, 50), doomb_random_velocity(7) );
+		TNT1 A 0 doomb_severed_limb("Teeth", "spawn", (0, 0, 50), doomb_random_velocity(7) );
 			TNT1 A 0 A_bossdeath;
 			TNT1 A 0 A_NoBlocking;
 			BOS3 MNOPQR 8;

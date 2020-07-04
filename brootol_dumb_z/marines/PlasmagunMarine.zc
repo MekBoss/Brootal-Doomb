@@ -20,6 +20,7 @@ States
 		{
 			if(is_guarding() )
 				setstatelabel("guard_see");
+
 			A_Look();
 			doomb_set_leader();
 		}
@@ -39,7 +40,7 @@ States
 
 		
 	plasma_on_guard:
-		PLA6 H 1 a_stop;
+		PLA6 H 1 a_stop();
 		PLA6 HEHEHE 8
 		{
 			a_look();

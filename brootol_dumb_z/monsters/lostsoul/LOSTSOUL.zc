@@ -17,9 +17,6 @@ CLASS doomb_lost_soul : doomb_monster_base
 		damagefactor "Fire", 0;
 		Monster;
 		-NOBLOOD;
-		damagefactor "Blood", 0.0;
-		damagefactor "BlueBlood", 0.0;
-		damagefactor "GreenBlood", 0.0;
 		damagefactor "Fatality", 5.0;
 
 		RenderStyle "Normal";

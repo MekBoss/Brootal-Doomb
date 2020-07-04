@@ -165,7 +165,7 @@ States
 		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		tnt1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, height/2) );
-		TNT1 A 0 doomb_severed_limb("XDeathChainArm", "spawn", (0, 0, 40), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("XDeathChainArm", "spawn", (0, 0, 40), doomb_random_velocity(7) );
 	Stop;
 }
 
@@ -236,7 +236,7 @@ States
 		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		tnt1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 AAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, height/2) );
-		TNT1 AA 0 doomb_severed_limb ("XDeathChainArm", 'spawn', (0, 0, 40), doomb_random_velocity(5) );
+		TNT1 AA 0 doomb_severed_limb ("XDeathChainArm", 'spawn', (0, 0, 40), doomb_random_velocity(7) );
 	Stop;
 }
 
@@ -259,9 +259,6 @@ Default
 	Radius 16;
 	Height 50;
 	Health 300;
-	damagefactor "Blood", 0.0;
-	damagefactor "BlueBlood", 0.0;
-	damagefactor "GreenBlood", 0.0;
 	PainSound "grunt/pain";
 	Mass 999999;
 	-SOLID;
@@ -310,15 +307,15 @@ States
 
 	//BrutalizedCommando3	
 	just_torso:
-		TNT1 A 0 doomb_severed_limb("eye", "spawn", (0, 0, 50), doomb_random_velocity(5) );
-		TNT1 A 0 doomb_severed_limb("head_piece_dark", "spawn", (0, 0, 50), doomb_random_velocity(5) );
-		TNT1 A 0 doomb_severed_limb("jaw", "spawn", (0, 0, 50), doomb_random_velocity(5) );
-		TNT1 AAAAAA 0 doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 50), doomb_random_velocity(5) );
-		TNT1 AAAAAAAAA 0 doomb_severed_limb("SmallBrainPiece", "spawn", (0, 0, 50), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_severed_limb("eye", "spawn", (0, 0, 50), doomb_random_velocity(7) );
+		TNT1 A 0 doomb_severed_limb("head_piece_dark", "spawn", (0, 0, 50), doomb_random_velocity(7) );
+		TNT1 A 0 doomb_severed_limb("jaw", "spawn", (0, 0, 50), doomb_random_velocity(7) );
+		TNT1 AAAAAA 0 doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 50), doomb_random_velocity(7) );
+		TNT1 AAAAAAAAA 0 doomb_severed_limb("SmallBrainPiece", "spawn", (0, 0, 50), doomb_random_velocity(7) );
 		tnt1 a 0 doomb_spray_decal("BrutalBloodSuper", times: 5);
 		TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 		CPOD P 5;
-		CPOD QQQQQQQQQQ 10 doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 50), doomb_random_velocity(5) );
+		CPOD QQQQQQQQQQ 10 doomb_for_khorne("brutal_Blood", "spawn", (0, 0, 50), doomb_random_velocity(7) );
 		CPOD R 5;
 		TNT1 A 0 doomb_severed_limb("BrutalizedDeadChaingunGuy", limb_ignore_cvar: true);
 	Stop;
@@ -354,7 +351,7 @@ CLASS Gib_ChainLeg: LimbBase
 		Death.Kick:
 		Death.punch:
 			LEG3 A 1 A_FaceTarget;
-			TNT1 A 0 doomb_severed_limb("XDeathChainLeg", "spawn", (0, 0, 5), doomb_random_velocity(5) );
+			TNT1 A 0 doomb_severed_limb("XDeathChainLeg", "spawn", (0, 0, 5), doomb_random_velocity(7) );
 		Stop;
 	}
 	
@@ -387,7 +384,7 @@ CLASS Gib_ChainARm: LimbBase
 		Death.Kick:
 		Death.punch:
 			HND3 A 1 A_FaceTarget;
-			TNT1 A 0 doomb_severed_limb("XDeathChainArm", "spawn", (0, 0, 3), doomb_random_velocity(5), limb_ignore_cvar: true);
+			TNT1 A 0 doomb_severed_limb("XDeathChainArm", "spawn", (0, 0, 3), doomb_random_velocity(7), limb_ignore_cvar: true);
 		Stop;
 	}
 	
@@ -538,12 +535,6 @@ Default
 	-SOLID;
 	+SHOOTABLE;
 	Scale 1.0;
-	damagefactor "Blood", 0.0;
-	damagefactor "GreenBlood", 0.0;
-	damagefactor "BlueBlood", 0.0;
-	damagefactor "Taunt", 0.0;
-	
-	damagefactor "Taunt", 0.0;
 }
 
 States

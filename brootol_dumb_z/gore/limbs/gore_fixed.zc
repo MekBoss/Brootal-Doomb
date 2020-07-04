@@ -4,7 +4,7 @@ CLASS head_pieceGreenBig: doomb_body_piece_base { //White skinned piece 1
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			BR7B ABCD 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
+			BR7B ABCD 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(7) );
 			Loop;
 	}
 }
@@ -13,7 +13,7 @@ CLASS BrainsSergeantHeadPiece: doomb_body_piece_base { //White skinned piece 1
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			BR7B EFGH 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
+			BR7B EFGH 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(7) );
 		Loop;
 	}
 }
@@ -22,7 +22,7 @@ CLASS head_pieceGreen: doomb_body_piece_base { //White skinned piece 1
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			BR7B IJKL 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
+			BR7B IJKL 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(7) );
 		Loop;
 		
 		Death:
@@ -63,7 +63,7 @@ CLASS head_pieceBlonde: doomb_body_piece_base { //White skinned piece 1
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			BR8B IJKL 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
+			BR8B IJKL 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(7) );
 		Loop;
 	}
 }
@@ -74,7 +74,7 @@ CLASS head_pieceBlondeBig: doomb_body_piece_base { //White skinned piece 1
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			BR8B ABCD 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
+			BR8B ABCD 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(7) );
 		Loop;
 	}
 }
@@ -87,7 +87,7 @@ CLASS BrainsImpHeadPiece: doomb_body_piece_base { //White skinned piece 1
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			BR7N E 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
+			BR7N E 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(7) );
 		Loop;
 	}
 }
@@ -106,7 +106,7 @@ CLASS PinkyJaw: doomb_body_piece_base {
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			PDG1 ABCDEFGHI 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
+			PDG1 ABCDEFGHI 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(7) );
 		Loop;
 	}
 }
@@ -118,7 +118,7 @@ CLASS HellKnightHeadPiece: doomb_body_piece_base {
 	{
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
-			HKHE IJKL 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
+			HKHE IJKL 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(7) );
 		Loop;
 	}
 }

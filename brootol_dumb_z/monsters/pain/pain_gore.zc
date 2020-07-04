@@ -12,12 +12,10 @@ CLASS PEPart1 : doomb_body_base {
 		+NOTELEPORT;
 		+MOVEWITHSECTOR;
 		+CLIENTSIDEONLY;
-		+RIPPER;
 		+BLOODLESSIMPACT;
 		+DOOMBOUNCE;
 		+SKYEXPLODE;
 		BounceFactor 0.5;
-		damagetype "Blood";
 		SeeSound "misc/xdeath4";
 		DeathSound "misc/xdeath1";
 		
@@ -56,12 +54,10 @@ CLASS PEPart2 : doomb_body_base {
 		+NOTELEPORT;
 		+MOVEWITHSECTOR;
 		+CLIENTSIDEONLY;
-		+RIPPER;
 		+BLOODLESSIMPACT;
 		+DOOMBOUNCE;
 		+SKYEXPLODE;
 		BounceFactor 0.5;
-		damagetype "Blood";
 		SeeSound "misc/xdeath4";
 		DeathSound "misc/xdeath1";
 		
@@ -103,14 +99,12 @@ CLASS XDeathPainElementalNew1 : doomb_body_base {
 		+NOTELEPORT;
 		+MOVEWITHSECTOR;
 		+CLIENTSIDEONLY;
-		+RIPPER;
 		+BLOODLESSIMPACT;
 		-DONTSPLASH;
 		+THRUGHOST;
 		+THRUACTORS;
 		+FLOORCLIP;
 		+dontsplash
-		damagetype "Blood";
 		Mass 1;
 		
 		

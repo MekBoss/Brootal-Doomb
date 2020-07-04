@@ -40,9 +40,6 @@ Default {
 	ActiveSound "vile/active";
 	MeleeSound "vile/stop";
 	Obituary "%o was exploded by an Arch-Vile.";
-	damagefactor "Blood", 0.0;
-	damagefactor "BlueBlood", 0.0;
-	damagefactor "GreenBlood", 0.0;
 	species 'arch';
 }
 States
@@ -166,7 +163,7 @@ States
 	Death.Plasma2:
 		TNT1 A 0 A_XScream;
 		TNT1 A 0 A_NoBlocking;
-		TNT1 AAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+		TNT1 AAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
 		TNT1 A 0 doomb_spawn_burned_flesh;
 		EXPL AAAAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 		CARB MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM 10 doomb_show_effect("AltSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (1.5, 0) );
@@ -177,7 +174,7 @@ States
 		TNT1 A 0 A_Scream;
 		TNT1 A 0 A_NoBlocking;
 		TNT1 A 0 A_Playsound("props/redfire");
-		TNT1 AAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+		TNT1 AAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
 		TNT1 A 0 doomb_spawn_burned_flesh;
 		CARB MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM 2 doomb_show_effect("FlameTrails", velocity: (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ) );
 		CARB MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM 10 doomb_show_effect("AltSmoke", (0, 0, 15), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (1.5, 0) );

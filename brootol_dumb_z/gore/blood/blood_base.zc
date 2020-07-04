@@ -44,6 +44,19 @@ bool is_active() const
 	return active;
 }
 
+protected state spawn_state, wait_state;
+
+override void postbeginplay()
+{
+	super.postbeginplay();
+	spawn_state = findstate("spawn");
+	wait_state = findstate("wait_in_beaker");
+}
+
+state doomb_get_spawn_state() const
+{
+	return spawn_state;
+}
 
 
 Default
@@ -71,7 +84,7 @@ protected void doomb_spawn_big_blood(int spawn_height = 0)
     {
 		for(uint i = 0; i < 2 * doomb_blood_multiplier; i++)
 		{
-			actor a = doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ) + (0, 0, spawn_height), doomb_random_velocity(5) );
+			actor a = doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ) + (0, 0, spawn_height), doomb_random_velocity(7) );
 		}
 	}
 }

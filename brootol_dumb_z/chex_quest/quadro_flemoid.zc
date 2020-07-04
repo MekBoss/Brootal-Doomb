@@ -50,9 +50,7 @@ CLASS Quadrumpus : doomb_chex_slime {
 			TNT1 AAAAAA 0 A_SpawnItem("Green_Blood", 0, 40);
 			TNT1 AAAA 0
 			{
-				actor a = doomb_severed_limb("Intestine", "spawn", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
-				if(a)
-					a.a_settranslation("red_to_green");
+				actor a = doomb_severed_limb("Intestine", "spawn", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ), BCF_GREEN);
 			}
 			TNT1 AAAAA 0 A_SpawnProjectile ("FlemoidGib1", 10, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AAAAA 0 A_SpawnProjectile ("FlemoidGib2", 20, 0, random (0, 360), 2, random (30, 90));
@@ -62,9 +60,7 @@ CLASS Quadrumpus : doomb_chex_slime {
 			TNT1 A 0 A_SpawnProjectile ("FlemoidEyes2", 40, 0, random (0, 360), 2, random (30, 90));
 			TNT1 AAAA 0
 			{
-				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 5 ) );
-				if(a)
-					a.a_settranslation("red_to_green");
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 5 ), color: BCF_GREEN);
 			}
 		Stop;
 
@@ -77,9 +73,7 @@ CLASS Quadrumpus : doomb_chex_slime {
 			TNT1 AAAAAA 0 A_SpawnItem("Green_Blood", 0, 40);
 			TNT1 AAAA 0
 			{
-				actor a = doomb_severed_limb("Intestine", "spawn", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ) );
-				if(a)
-					a.a_settranslation("red_to_green");
+				actor a = doomb_severed_limb("Intestine", "spawn", (0, 0, 32), (frandom(-10, 10), frandom(-10, 10), frandom(0, 10) ), BCF_GREEN);
 			}
 			TNT1 AAAAAA 0 A_SpawnProjectile ("FlemoidGib1", 10, 0, random (150, 210), 2, random (30, 90));
 			TNT1 AAAAAA 0 A_SpawnProjectile ("FlemoidGib2", 20, 0, random (150, 210), 2, random (30, 90));
@@ -89,9 +83,7 @@ CLASS Quadrumpus : doomb_chex_slime {
 			TNT1 A 0 A_SpawnProjectile ("FlemoidEyes2", 40, 0, random (150, 210), 2, random (30, 90));
 			TNT1 AAAA 0
 			{
-				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 5 ) );
-				if(a)
-					a.a_settranslation("red_to_green");
+				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 5 ), color: BCF_GREEN);
 			}
 		Stop;
 

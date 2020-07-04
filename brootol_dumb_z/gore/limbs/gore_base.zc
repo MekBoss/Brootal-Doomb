@@ -12,6 +12,19 @@
 //all base classes for body related actors
 class doomb_body_base : doomb_monster_base abstract
 {
+protected state spawn_state;
+
+override void postbeginplay()
+{
+	super.postbeginplay();
+	spawn_state = findstate("spawn");
+}
+
+state doomb_get_spawn_state() const
+{
+	return spawn_state;
+}
+
 default
 {
 	radius 5;
@@ -64,11 +77,11 @@ protected void doomb_blood_dying()
 {
 	if(waterlevel < 1)
 	{
-		doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
-		doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+		doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
+		doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
+		doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
 		doomb_for_khorne("doomb_non_interactive_blood", "blood_hit", (0, 0, 30) );
-		doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+		doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
 	}
 }
 
@@ -113,7 +126,7 @@ States
 	Stop;
 	
 	Death.Desintegrate:
-		TNT1 A 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+		TNT1 A 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
 		TNT1 AAAA 0
 		{
 			actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 35 ) );
@@ -127,7 +140,12 @@ States
 }
 
 CLASS LimbBase: doomb_body_base
-{ 
+{
+default
+{
+	-solid
+}
+
 States
 {
 	Spawn:
@@ -135,7 +153,7 @@ States
 	Loop;
 	
 	Death:
-		TNT1 AAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(5) );
+		TNT1 AAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(7) );
 		TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 		XDT3 BCDEFGH 3;
 	Death.Crush:

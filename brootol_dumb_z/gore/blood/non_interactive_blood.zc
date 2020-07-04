@@ -9,6 +9,32 @@ default
     +rollsprite
     +rollcenter
 }
+private array<state> blood_type;
+
+override void postbeginplay()
+{
+    super.postbeginplay();
+    blood_type.clear();
+    blood_type.push(findstate('blood_mist') );
+    blood_type.push(findstate('blood_droplet') );
+    blood_type.push(findstate('blood_impact_splash') );
+    blood_type.push(findstate('blood_hit') );
+    blood_type.push(findstate('red_blood_trail') );
+}
+
+enum blood_type_noninteractive
+{
+    BTN_BLOOD_MIST = 1,
+    BTN_BLOOD_DROPLET = 2,
+    BTN_BLOOD_IMPACT_SPLASH,
+    BTN_BLOOD_HIT,
+    BTN_red_blood_trail
+};
+
+void set_state(blood_type_noninteractive t = BTN_BLOOD_MIST)
+{
+    setstate(blood_type[t - 1]);
+}
 
 states
 {
@@ -25,7 +51,7 @@ states
             A_FadeOut(0.01, false);
 
             if(alpha <= 0)
-                setstatelabel("wait_in_beaker");
+                setstate(wait_state);
         }
     wait;
 

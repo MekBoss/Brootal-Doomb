@@ -471,7 +471,7 @@ void set_blood_throne(eventhandler e)
         blood_throne = e;
 }
 
-protected actor doomb_for_khorne(class<doomb_blood> it = null, statelabel st = 'spawn', vector3 off = (0, 0, 1), vector3 vel_dir = (0, 0, 0) )
+protected actor doomb_for_khorne(class<doomb_blood> it = null, statelabel st = 'spawn', vector3 off = (0, 0, 1), vector3 vel_dir = (0, 0, 0), blood_color_flags color = BCF_RED)
 {
 	if(blood_throne && it && doomb_blood_spawner && waterlevel < 1)
 	{

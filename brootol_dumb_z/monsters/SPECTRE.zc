@@ -11,10 +11,6 @@ default
     damagefactor "SSG", 5.0;
 	PainChance "Kick", 255;
 	Monster;
-	damagefactor "Blood", 0.0 ;
-	damagefactor "BlueBlood", 0.0;
-	damagefactor "GreenBlood", 0.0;
-	damagefactor "SSG", 5.0;
 	+FLOORCLIP ;
 	SeeSound "demon/sight";
 	AttackSound "demon/melee";

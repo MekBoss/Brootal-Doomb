@@ -15,9 +15,6 @@ CLASS Hectebus : doomb_fatso
 		ActiveSound "juggernaut/roam";
 		SeeSound "juggernaut/see";
 		
-		damagefactor "Blood", 0.0;
-		damagefactor "BlueBlood", 0.0;
-		damagefactor "GreenBlood", 0.0;
 		BloodType "Brutal_Blood";
 		damagefactor "Explosive_Impact", 1.3;
 		Obituary "%o was destroyed by the Juggernaut";

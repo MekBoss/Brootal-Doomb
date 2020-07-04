@@ -28,8 +28,6 @@ Default {
 	damagefactor "Taunt", 0.0;
 	
 	//FIXME most defenitelly sometyhing nasty
-	damagefactor "Blood", 0.5;
-	damagefactor "BlueBlood", 0.5;
 	damagefactor "GreenBlood", 0.5;
 
 

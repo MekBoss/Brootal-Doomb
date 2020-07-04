@@ -36,9 +36,6 @@ CLASS half_burned_tree: doomb_decoration_base
 		Height 56;
 		Health 200;
 
-		damagefactor "Blood", 0.0;
-		damagefactor "BlueBlood", 0.0;
-		damagefactor "GreenBlood", 0.0;
 		damagefactor "Explosive_Impact" , 10.0;
 		damagefactor "Plasma", 10.0;
 		damagefactor "Fire", 5.0;
@@ -109,12 +106,9 @@ CLASS Big_Tree: doomb_decoration_base
 
 		BloodType "TreeBlood";
 		PainChance "Blood", 255;
-		damagefactor "BlueBlood", 0.0;
-		damagefactor "GreenBlood", 0.0;
 		damagefactor "Plasma", 10.0;
 		damagefactor "Explosive_Impact", 10.0;
 		damagefactor "Fire", 5.0;
-		damagefactor "Blood", 10.0;
 
 		+DONTTHRUST
 		+SOLID;

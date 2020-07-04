@@ -87,7 +87,6 @@ CLASS XJunk1 : ACTOR {
 		+THRUGHOST;
 		+THRUACTORS;
 		+FLOORCLIP;
-		damagetype "Blood";
 		Mass 1;
 		
 		

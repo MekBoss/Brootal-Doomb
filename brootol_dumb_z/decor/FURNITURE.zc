@@ -40,10 +40,6 @@ CLASS DecorativeSkullA : ACTOR {
 		+SOLID;
 		+MOVEWITHSECTOR;
 		+NOBLOOD;
-		damagefactor "Blood", 0.0;
-		damagefactor "BlueBlood", 0.0;
-		damagefactor "GreenBlood", 0.0;
-		damagefactor "Taunt", 0.0;
 		
 	}
 	States

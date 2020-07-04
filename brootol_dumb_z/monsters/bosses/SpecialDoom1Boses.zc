@@ -30,9 +30,6 @@ CLASS CyberdemonBoss : doomb_cyberdemon
 		PainChance "Taunt", 255;
 		DropItem "DemonStrengthRune", 25;
 		BloodType "CyberDemon_Blood", "SawBlood", "SawBlood";
-		damagefactor "Blood", 0.0;
-		damagefactor "BlueBlood", 0.0;
-		damagefactor "GreenBlood", 0.0;
 	}
 	States
 	{

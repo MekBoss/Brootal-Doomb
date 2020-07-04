@@ -14,7 +14,7 @@ CLASS XDeathCyberdemonHead: XDeathArm1 {
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
-			XHE8 ABCDEFGH 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			XHE8 ABCDEFGH 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
 			Loop;
 		Death:
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
@@ -46,7 +46,7 @@ CLASS CyberdemonHead: LimbBase {
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			
 			TNT1 AAAAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash");
-			TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
 			TNT1 AAA 0 A_SpawnProjectile ("head_piece_dark", 10, 0, random (0, 360), 2, random (0, 160));
 			TNT1 AAA 0 A_SpawnProjectile ("jaw_big", 10, 0, random (0, 360), 2, random (0, 160));
 			TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
@@ -81,7 +81,7 @@ CLASS XDeathCyberdemonTorso: XDeathArm1 {
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
-			CYGT ABCDEFGH 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			CYGT ABCDEFGH 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
 			Loop;
 		Death:
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
@@ -115,7 +115,7 @@ CLASS CyberdemonTorso: LimbBase {
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			
 			TNT1 AAAAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash");
-			TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
 			TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 A_Stop;
 			TNT1 I 10;
@@ -147,7 +147,7 @@ CLASS XDeathCyberdemonPiece: XDeathArm1 {
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
-			CYGP ABCDEFGH 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			CYGP ABCDEFGH 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
 			Loop;
 		Death:
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
@@ -181,7 +181,7 @@ CLASS CyberdemonPiece: LimbBase {
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			
 			TNT1 AAAAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash");
-			TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
 			TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 A_Stop;
 			TNT1 I 10;
@@ -215,7 +215,7 @@ CLASS XDeathCyberdemonARm: XDeathArm1 {
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 			TNT1 A 0 A_JumpIf(vel.z == 0, "Death");
-			CYGA ABCDEFGH 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			CYGA ABCDEFGH 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
 			Loop;
 		Death:
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
@@ -249,7 +249,7 @@ CLASS CyberdemonArm: LimbBase {
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			
 			TNT1 AAAAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash");
-			TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
 			TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 A_Stop;
 			TNT1 I 10;
@@ -316,7 +316,7 @@ CLASS CyberdemonGun: LimbBase {
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
 			
 			TNT1 AAAAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash");
-			TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(5) );
+			TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
 			TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 A_Stop;
 			TNT1 I 10;

@@ -33,9 +33,6 @@ Default
 	damagefactor "cut", 0.7;
 	damagefactor "saw", 0.7;
 	damagefactor "Explosive_Impact", 2.0;
-	damagefactor "Blood", 0.0;
-	damagefactor "BlueBlood", 0.0;
-	damagefactor "GreenBlood", 0.0;
 	damagetype "Melee";
 
 	Translation "192:207=176:191";
@@ -95,7 +92,8 @@ States
 		MPOS F 1 BRIGHT
 		{
 			doomb_shoot_boolet((6, 6), 'mini_gun', 38, 0, random(-9, 9), 1, random(-2, 2));
-			A_PlaySOund("DISTFRRIFLE", CHAN_AUTO, 1);
+			A_PlaySound("CHGNSHOT", CHAN_BODY, 1);
+			A_PlaySound("DISTFRRIFLE", CHAN_AUTO, 1);
 
 			{doomb_flare_base.doomb_attach_flare(self, "lens_flare_orange", (0, 0, 34) );}
 			A_SpawnItem ("RifleCaseSpawn", 0, 30,0);

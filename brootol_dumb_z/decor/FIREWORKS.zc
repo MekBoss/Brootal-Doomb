@@ -1,7 +1,7 @@
 CLASS doomb_explosive_barrel : doomb_decoration_base
 { 
-Default {
-	damagefactor "Trample", 0.0;
+Default
+{
 	damagefactor "Kick", 0.1;
 	damagefactor "Melee", 0.1;
 	damagefactor "punch", 0.1;
@@ -9,9 +9,6 @@ Default {
 	damagefactor "Explosive_Impact", 0.4;
 	damagefactor "Fire", 3.5;
 	damagefactor "BHFTOnBarrel", 500.0;
-	damagefactor "Blood", 0.0;
-	damagefactor "BlueBlood", 0.0;
-	damagefactor "GreenBlood", 0.0  ;
 	
 	Health 20;
 	Radius 10;

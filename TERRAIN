@@ -539,12 +539,14 @@ floor TLITE6_5 tile
 floor TLITE6_6 tile
 floor TLITE6_6 tile
 
-floor BRICK22 rock
+/*
 floor STONE2 rock
-floor REDWALL rock
 floor CEMENTWA rock
 floor CEMENTBL rock
 floor CEMENTRE rock
+
+floor BRICK22 rock
+floor REDWALL rock
 floor CEMENT9 rock
 floor CAUTION3 rock
 floor A-MOULD rock
@@ -581,4 +583,5 @@ floor WOOD006 wood
 floor WOODVERT wood
 floor WOOD1 wood
 floor DNBLDG03 wood
+*/
 endif

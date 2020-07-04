@@ -9,7 +9,6 @@ CLASS Underblood1 : doomb_blood {
 		damage 0;
 		Renderstyle "Translucent";
 		Alpha 0.2;
-		DamageType "Blood";
 		Decal "BrutalBloodSplat";
 		+MISSILE;
 		+CLIENTSIDEONLY;
