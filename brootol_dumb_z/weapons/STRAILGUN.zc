@@ -62,7 +62,6 @@ CLASS RailGun : doomb_weapon_base {
 			TNT1 A 0 A_Raise;
 		Wait;
 		Fire:
-			TNT1 A 0;
 			TNT1 A 0 A_Takeinventory("Zoomed",1);
 			TNT1 A 0 A_ZoomFactor(1.0);
 			TNT1 A 0 A_JumpIfInventory("RailgunAmmo",1,2);
@@ -82,7 +81,6 @@ CLASS RailGun : doomb_weapon_base {
 			Goto Ready+4;
 			
 		AltFire:
-			TNT1 A 0;
 			TNT1 A 0 A_JumpIfInventory("Zoomed",1,5);
 			TNT1 A 0 A_Giveinventory("Zoomed",1);
 			TNT1 A 0 A_ZoomFactor(5.0);
@@ -92,7 +90,7 @@ CLASS RailGun : doomb_weapon_base {
 			RAIL CB 2;
 			TNT1 A 0 A_Takeinventory("Zoomed",1);
 			TNT1 A 0 A_ZoomFactor(1.0);
-			Goto Ready+4;
+		Goto Ready+4;
 			
 			
 		Reload:
@@ -148,9 +146,9 @@ CLASS RailGunPuff2: doomb_boolet_base {
 	{
 		Spawn:
 			TNT1 A 1;
-			Loop;
+		Loop;
+
 		Death:
-			TNT1 A 0;
 			TNT1 AAAA 0 doomb_show_effect("green_particle", velocity:(frandom(-1, 1), frandom(-1, 1), frandom(-1, 1) ) );
 			TNT1 AAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.5, 0), 0.1 );
 			TNT1 ABCDE 2 BRIGHT {doomb_flare_base.doomb_attach_flare(self, "BlueFlare");}

@@ -36,7 +36,6 @@ CLASS PEPart1 : doomb_body_base {
 		Stop;
 
 		Splash:
-			TNT1 A 0;
 		Stop;
 	}
 }
@@ -82,8 +81,7 @@ CLASS PEPart2 : doomb_body_base {
 		Stop;
 
 		Splash:
-			TNT1 A 0;
-			Stop;
+		Stop;
 	}
 }
 

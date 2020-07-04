@@ -55,12 +55,11 @@ CLASS Chain_saw : doomb_weapon_base
 			wait;
 			
 		Deselect:
-			TNT1 A 0;
 			TNT1 A 0 A_Takeinventory("HasCutingWeapon",1);
 			TNT1 A 0 A_Stopsound(CHAN_WEAPON );
 			TNT1 A 0 A_Lower;
 			SAWN A 1 A_Lower;
-			goto deselect+1;
+		goto deselect+1;
 			
 		Steady:
 			TNT1 A 1;
@@ -240,8 +239,6 @@ CLASS Chain_saw : doomb_weapon_base
 			
 			
 		AltFire:
-			TNT1 A 0;
-			TNT1 A 0;
 			TNT1 A 0 A_Giveinventory("HasCutingWeapon",1);
 			TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"AltFireRed");
 			TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"AltFireGreen");
@@ -271,7 +268,6 @@ CLASS Chain_saw : doomb_weapon_base
 			goto ready+35;
 			
 		AltFire2:
-			TNT1 A 0;
 			TNT1 A 0 A_JumpIfInventory("PowerBloodOnVisor",1,"AltFire2Red");
 			TNT1 A 0 A_JumpIfInventory("PowerGreenBloodOnVisor",1,"AltFire2Green");
 			TNT1 A 0 A_JumpIfInventory("PowerBlueBloodOnVisor",1,"AltFire2Blue");
@@ -303,7 +299,6 @@ CLASS Chain_saw : doomb_weapon_base
 			
 			
 		AltFireRed:
-			TNT1 A 0;
 			TNT1 A 0 A_playsound("weapons/chainsaw/loop",chan_Weapon);
 			//TNT1 A 0 A_PlaySound("DSSAWHIT", 3)
 			TNT1 A 0 A_JumpIfInventory("SawFireSeq2", 1, 15);
@@ -372,7 +367,6 @@ CLASS Chain_saw : doomb_weapon_base
 			
 			
 		AltFire2Red:
-			TNT1 A 0;
 			CSR2 ABCDDEEEF 1;
 			TNT1 A 0 A_PlaySound("weapons/chainsaw/draw", 4);
 			CSR2 GHI 1 A_JumpIfCloser(119, "AltContinue2Red");
@@ -400,7 +394,6 @@ CLASS Chain_saw : doomb_weapon_base
 			
 			
 		AltFireBlue:
-			TNT1 A 0;
 			TNT1 A 0 A_playsound("weapons/chainsaw/loop",chan_Weapon);
 			//TNT1 A 0 A_PlaySound("DSSAWHIT", 3)
 			TNT1 A 0 A_JumpIfInventory("SawFireSeq2", 1, 15);
@@ -468,7 +461,6 @@ CLASS Chain_saw : doomb_weapon_base
 			
 			
 		AltFire2Blue:
-			TNT1 A 0;
 			CSB2 ABCDDEEEF 1;
 			TNT1 A 0 A_PlaySound("weapons/chainsaw/draw", 4);
 			CSB2 GHI 1 A_JumpIfCloser(119, "AltContinue2Blue");
@@ -495,7 +487,6 @@ CLASS Chain_saw : doomb_weapon_base
 			goto ready+35;
 			
 		AltFireGreen:
-			TNT1 A 0;
 			TNT1 A 0 A_playsound("weapons/chainsaw/loop",chan_Weapon);
 			//TNT1 A 0 A_PlaySound("DSSAWHIT", 3)
 			TNT1 A 0 A_JumpIfInventory("SawFireSeq2", 1, 15);
@@ -563,7 +554,6 @@ CLASS Chain_saw : doomb_weapon_base
 			
 			
 		AltFire2Green:
-			TNT1 A 0;
 			CSG2 ABCDDEEEF 1;
 			TNT1 A 0 A_PlaySound("weapons/chainsaw/draw", 4);
 			CSG2 GHI 1 A_JumpIfCloser(119, "AltContinue2Green");

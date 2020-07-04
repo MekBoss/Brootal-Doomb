@@ -62,8 +62,8 @@ CLASS Flemoid2 : doomb_chex_slime
 			{
 				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 5 ), color: BCF_GREEN);
 			}
-			TNT1 A 10;
-			Stop;
+		Stop;
+
 		Death.Shotgun:
 		Death.SSG:
 			FLE2 G 1;
@@ -85,10 +85,9 @@ CLASS Flemoid2 : doomb_chex_slime
 			{
 				actor a = doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash", (0, 0, 5 ), color: BCF_GREEN);
 			}
-			TNT1 A 10;
-			Stop;
+		Stop;
+
 		Raise:
-			TNT1 A 0;
-			Goto See;
+		Goto See;
 	}
 }

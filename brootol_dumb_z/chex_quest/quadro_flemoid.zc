@@ -88,7 +88,6 @@ CLASS Quadrumpus : doomb_chex_slime {
 		Stop;
 
 		Raise:
-			TNT1 A 0;
 		Goto See;
 	}
 }

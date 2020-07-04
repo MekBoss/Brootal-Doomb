@@ -87,8 +87,7 @@ CLASS ImpaledHead: HeadOnAStick
 	States
 	{
 		Spawn:
-			TNT1 A 0;
-			POL4 I -1
+			POL4 I -1 nodelay
 			{
 				frame += random(0, 3);
 			}

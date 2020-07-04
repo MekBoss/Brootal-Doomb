@@ -104,31 +104,26 @@ CLASS CyberdemonTorso: LimbBase {
 	States
 	{
 		Spawn:
-			TNT1 A 0;
-			CYGT B 1;
 			CYGT B -1;
-			Loop;
+		Loop;
 			
 		Death:
 		Death.Trample:
 		Crush:
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
-			
 			TNT1 AAAAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash");
 			TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
 			TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 A_Stop;
-			TNT1 I 10;
 			TNT1 I -1;
-			Stop;
+		Stop;
 			
 		Death.Explosive_Impact:
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 ThrustThingZ(0,30,0,1);
 			CYGT ABCDEFGH 3;
 			XHE8 B 0 A_SpawnItem("CyberdemonTorso");
-			Stop;
-			
+		Stop;
 	}
 	
 }
@@ -170,31 +165,26 @@ CLASS CyberdemonPiece: LimbBase {
 	States
 	{
 		Spawn:
-			TNT1 A 0;
-			CYGP E 1;
 			CYGP E -1;
-			Loop;
+		Loop;
 			
 		Death:
 		Death.Trample:
 		Crush:
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
-			
 			TNT1 AAAAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash");
 			TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
 			TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 A_Stop;
-			TNT1 I 10;
 			TNT1 I -1;
-			Stop;
+		Stop;
 			
 		Death.Explosive_Impact:
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 ThrustThingZ(0,30,0,1);
 			CYGP ABCDEFGH 3;
 			CYGP B 0 A_SpawnItem("CyberdemonPiece");
-			Stop;
-			
+		Stop;
 	}
 	
 }
@@ -238,8 +228,6 @@ CLASS CyberdemonArm: LimbBase {
 	States
 	{
 		Spawn:
-			TNT1 A 0;
-			CYGA C 1;
 			CYGA C -1;
 			Loop;
 			
@@ -247,21 +235,19 @@ CLASS CyberdemonArm: LimbBase {
 		Death.Trample:
 		Crush:
 			TNT1 A 0 A_PlaySound("misc/xdeath4");
-			
 			TNT1 AAAAAAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "blood_impact_splash");
 			TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
 			TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 A_Stop;
-			TNT1 I 10;
 			TNT1 I -1;
-			Stop;
+		Stop;
 			
 		Death.Explosive_Impact:
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 ThrustThingZ(0,30,0,1);
 			CYGA ABCDEFGH 3;
 			CYGA B 0 A_SpawnItem("CyberdemonArm");
-			Stop;
+		Stop;
 			
 	}
 	
@@ -305,10 +291,8 @@ CLASS CyberdemonGun: LimbBase {
 	States
 	{
 		Spawn:
-			TNT1 A 0;
-			CYGG E 1;
 			CYGG E -1;
-			Loop;
+		Loop;
 			
 		Death:
 		Death.Trample:
@@ -319,17 +303,15 @@ CLASS CyberdemonGun: LimbBase {
 			TNT1 AAAAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), doomb_random_velocity(7) );
 			TNT1 A 0 doomb_spawn_entrails( (0, 0, random(30, 35) ) );
 			TNT1 A 0 A_Stop;
-			TNT1 I 10;
 			TNT1 I -1;
-			Stop;
+		Stop;
 			
 		Death.Explosive_Impact:
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 ThrustThingZ(0,30,0,1);
 			CYGG ABCDEFGH 3;
 			CYGG B 0 A_SpawnItem("CyberdemonGun");
-			Stop;
-			
+		Stop;
 	}
 	
 }

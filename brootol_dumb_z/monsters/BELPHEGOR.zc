@@ -135,16 +135,16 @@ CLASS Belphegor : doomb_monster_base {
 		Goto See;
 			
 		Pain.Taunt:
-			TNT1 A 0;
-			Goto Missile;
+		Goto Missile;
+
 		Death.Taunt:
 			TNT1 A 0 A_noblocking();
 			TNT1 A 0 A_SpawnItem("Belphegor");
-			Stop;
+		Stop;
+
 		Death.Eat:
 			TNT1 A 0 A_GiveToTarget("EatMe",1);
-			Goto Death+3;
-			Stop;
+		Goto Death+3;
 	}
 } 
 
@@ -182,7 +182,6 @@ CLASS DeadBelphegor : doomb_body_base {
 
 		Death.Plasma: Death.Plasma2:
 		Death.Fire:
-			TNT1 A 0;
 			TNT1 A 0 A_Scream;
 			TNT1 A 0 A_NoBlocking;
 			EXPL AAAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );

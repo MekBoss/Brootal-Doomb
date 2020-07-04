@@ -23,8 +23,7 @@ CLASS PentagramSpawner : ACTOR
 	States
 	{
 		Spawn:
-			TNT1 A 0;
-			PNTG AAAAA 1 A_FadeIn(0.2, false);
+			PNTG AAAAA 1 nodelay A_FadeIn(0.2, false);
 			PNTG B 300;
 			PNTG BBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBBB 1 A_FadeOut(0.02);
 			Stop;

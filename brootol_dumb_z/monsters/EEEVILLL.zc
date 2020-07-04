@@ -54,9 +54,7 @@ CLASS doomb_evil_marine : doomb_monster_base
 		PLAY A 5 A_Look;
 		Loop;
 	See:
-		TNT1 A 0;
 		TNT1 A 0 A_PlaySound("doomb_evil_marinesight", 2);
-		Goto ChasePlayer;
 	ChasePlayer:
 		PLAY AAAABBBBCCCCDDDD 2
 		{
@@ -82,10 +80,9 @@ CLASS doomb_evil_marine : doomb_monster_base
 		PLAY F 3 BRIGHT A_SpawnProjectile("EnemyPlasmaBall",35,0,0,0);
 		PLAY E 6 A_Facetarget;
 		TNT1 A 0 {if(target && target.health <= 0) A_PlaySound("EVMRLAUG");}
-		Goto ChasePlayer;
+	Goto ChasePlayer;
 		
 	Missile_evasion:
-		TNT1 A 0;
 		MARN A 3 A_FaceTarget;
 		TNT1 A 0
 		{
@@ -147,9 +144,8 @@ CLASS doomb_evil_marine : doomb_monster_base
 		
 		PLAY I 10 A_NoBlocking;
 		PLAY J 10;
-		TNT1 A 0 ;
 		PLAY KLM 10;
-			TNT1 A 0 doomb_spawn_bloodpool();
+		TNT1 A 0 doomb_spawn_bloodpool();
 		PLAY N -1;
 		Stop;
 		
@@ -161,11 +157,10 @@ CLASS doomb_evil_marine : doomb_monster_base
 		TNT1 A 0 doomb_much_blood();
 		XPL1 A 10 A_XScream;
 		XPL1 B 20 A_NoBlocking;
-		TNT1 A 0 ;
 		XPL1 CDE 10;
-			TNT1 A 0 doomb_spawn_bloodpool();
+		TNT1 A 0 doomb_spawn_bloodpool();
 		XPL1 E -1;
-		Stop;
+	Stop;
 		
 	Death.Cut:
 	Death.Saw:
@@ -184,12 +179,10 @@ CLASS doomb_evil_marine : doomb_monster_base
 		
 	Death.Slime:
 		TNT1 A 0 A_PlaySound("BIGSCREA");
-		TNT1 A 0 ;
 		PMET AABBCCDDEEFFGGHHIIIII 10 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
 		PMET IIIIIIIIIIJJJJJJJJJJJJJJJJJJJJJJKKKKKKKKKKKKKKKKKKKKKKKKKKLLLLLLLLLLLLLLL 3 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A -1;
-		Stop;
+	Stop;
 		
 	Death.mini_gun:
 		TNT1 A 0 A_Jump (128, 3);
@@ -200,7 +193,6 @@ CLASS doomb_evil_marine : doomb_monster_base
 		TNT1 A 0 A_SpawnProjectile ("XDeathHalfMarine", 50, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 doomb_much_blood();
 		XPL2 A 10 A_XScream;
-		TNT1 A 0 ;
 		TNT1 A 0 doomb_much_blood();
 		XPL2 B 20 A_NoBlocking;
 		TNT1 A 0 doomb_much_blood();
@@ -227,7 +219,6 @@ CLASS doomb_evil_marine : doomb_monster_base
 		PPOD A 0 A_SpawnItemEx("BasicMarineGib1", 0, 0, 0, 0, 0, 0, 0, SXF_TRANSFERTRANSLATION);
 		MHEA A 7 A_XScream;
 		MHEA B 7 A_NoBlocking;
-		TNT1 A 0 ;
 		MHEA CD 7;
 		MHEA E -1;
 	Stop;
@@ -256,11 +247,10 @@ CLASS doomb_evil_marine : doomb_monster_base
 		TNT1 A 0 A_SpawnProjectile ("XDeathArm1", 32, 0, random (170, 190), 2, random (0, 40));
 		TNT1 A 0 A_XScream;
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 ;
 		PLAY OPQRSTU 8;
-			TNT1 A 0 doomb_spawn_bloodpool();
+		TNT1 A 0 doomb_spawn_bloodpool();
 		PLAY U -1;
-		Stop;
+	Stop;
 		
 	Death.Rape:
 		TNT1 AAAAAAAAAAAAAA 0 doomb_much_blood();
@@ -275,19 +265,15 @@ CLASS doomb_evil_marine : doomb_monster_base
 	Stop;
 		
 	Death.plasma:
-		TNT1 A 0;
 		TNT1 A 0 A_XScream;
 		TNT1 A 0 A_NoBlocking;
-		TNT1 A 0 ;
 		TNT1 AAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		TNT1 A 0 A_SpawnProjectile ("XDeathBurnedArm", 32, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeathBurnedLeg", 32, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 A_SpawnProjectile ("XDeathBurnedSkull", 32, 0, random (0, 360), 2, random (0, 160));
 		TNT1 A 0 doomb_spawn_burned_flesh;
 		EXPL AAAAAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 32), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
-		TNT1 A 1;
-		TNT1 A -1;
-		Stop;
+	Stop;
 		
 		
 	Death.Fire:
@@ -295,7 +281,6 @@ CLASS doomb_evil_marine : doomb_monster_base
 		PBUR A 1;
 		PBUR A 1 A_Scream;
 		PBUR A 1 A_NoBlocking;
-		TNT1 A 0 ;
 		PBUR AAAABBBBCCCC 2 doomb_show_effect("FlameTrails", (0, 0, 32), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (0.3, 0) );
 		PBUR DDDDEEEE 2 doomb_show_effect("FlameTrails", (0, 0, 16), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (0.3, 0) );
 		PBUR EEEEE 4 doomb_show_effect("FlameTrails", (0, 0, 8), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 0.5) ), (0.3, 0) );
@@ -307,7 +292,6 @@ CLASS doomb_evil_marine : doomb_monster_base
 		TNT1 A 0 A_PlaySound("BIGSCREA");
 		BURN W 6 A_Scream;
 		BURN X 6 A_NoBlocking;
-		TNT1 A 0 ;
 		BUR2 ABCD 6 BRIGHT doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
 		BURN FGHIJKLMNOPQRSTUV 6 BRIGHT doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
 		BURN VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV 6 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (0.3,0), 0.3 );
@@ -342,17 +326,13 @@ CLASS doomb_evil_marine : doomb_monster_base
 	Death.RVFT:
 		TNT1 A 1 A_PlayerScream;
 		TNT1 A 1 A_NoBlocking;
-		TNT1 A 0 ;
 		TNT1 A 0 A_GiveToTarget("Curbstomp_Marine",1);
-		TNT1 A -1;
-		Stop;
+	Stop;
 		
 	Death.FatalityMarine:
 		TNT1 A 1 A_PlayerScream;
 		TNT1 A 1 A_NoBlocking;
-		TNT1 A 0 ;
 		TNT1 A 0 A_GiveToTarget("Fatality_Marine",1);
-		TNT1 A -1;
 	Stop;
 }
 

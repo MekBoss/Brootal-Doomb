@@ -4,8 +4,7 @@ CLASS ChexShotgunReplacer  : ACTOR Replaces LargeZorcher
 	States
 	{
 		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_SpawnItem("Shotgun");
+			TNT1 A 0 nodelay A_SpawnItem("Shotgun");
 			Stop;
 			
 	}
@@ -15,19 +14,16 @@ CLASS ChexMinigunReplacer : ACTOR Replaces RapidZorcher {
 	States
 	{
 		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_SpawnItem("Chaingun");
-			Stop;
-			
+			TNT1 A 0 nodelay A_SpawnItem("Chaingun");
+		Stop;
 	}
-	
 }
+
 CLASS ChexPlasmagunReplacer  : ACTOR Replaces PhasingZorcher{ 
 	States
 	{
 		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_SpawnItem("PlasmaRifle");
+			TNT1 A 0 nodelay A_SpawnItem("PlasmaRifle");
 			Stop;
 			
 	}
@@ -37,8 +33,7 @@ CLASS ChexRocketReplacer  : ACTOR Replaces ZorchPropulsor{
 	States
 	{
 		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_SpawnItem("RocketLauncher");
+			TNT1 A 0 nodelay A_SpawnItem("RocketLauncher");
 			Stop;
 			
 	}
@@ -48,8 +43,7 @@ CLASS ChexBFGReplacer : ACTOR Replaces LAZDevice {
 	States
 	{
 		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 A_SpawnItem("BFG9000");
+			TNT1 A 0 nodelay A_SpawnItem("BFG9000");
 			Stop;
 			
 	}

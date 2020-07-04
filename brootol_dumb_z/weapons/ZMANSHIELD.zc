@@ -25,7 +25,6 @@ CLASS ZMANShield : Rifle {
 			TNT1 A 0 A_Raise;
 			Wait;
 		Fire:
-			TNT1 A 0;
 			TNT1 A 0 A_JumpIfInventory("MeatshieldGunAmmo", 1, 1);
 			Goto AltFire;
 			TNT1 A 0 A_AlertMonsters;
@@ -59,7 +58,6 @@ CLASS ZMANShield : Rifle {
 			8876 A -1;
 			Stop;
 		Destroy:
-			TNT1 A 0;
 			TNT1 A 0 A_SpawnItem("MeatDeath");
 			TNT1 A 0 A_TakeInventory("GoSpecial",1);
 			ZSHG DEFGHII 5;

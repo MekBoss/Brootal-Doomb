@@ -17,7 +17,6 @@ CLASS SawBlood : doomb_blood Replaces AxeBlood {
 	states
 	{
 		Spawn:
-			TNT1 A 0;
 			TNT1 A 1 A_Look;
 		See:
 			TNT1 A 0 Radius_Quake (4, 4, 0, 2, 0);

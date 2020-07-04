@@ -168,7 +168,6 @@ Default {
 States
 {
 	Spawn:
-		TNT1 A 0;
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 		HND8 ABCDEFGH 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 	Loop;
@@ -264,7 +263,6 @@ Default {
 States
 {
 	Spawn:
-		TNT1 A 0;
 		TNT1 A 0 A_JumpIf(waterlevel > 1, "Death");
 		HND4 ABCDEFGH 4 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 	Loop;

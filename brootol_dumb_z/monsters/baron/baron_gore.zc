@@ -130,8 +130,7 @@ Default
 States
 {
 	Spawn:
-		TNT1 A 0;
-		TNT1 A 0 A_PlaySound ("PSXDPN");
+		TNT1 A 0 nodelay A_PlaySound("PSXDPN");
 		KSA8 BC 6;
 		TNT1 A 0 doomb_blood_dying();
 		tnt1 a 0 a_jump(200, "spawn");

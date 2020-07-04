@@ -24,14 +24,13 @@ CLASS WoodParticle : actor {
 	states
 	{
 		Spawn:
-			TNT1 A 0;
 			WOOD ABCD 2;
-			loop;
+		loop;
+
 		Death:
-			TNT1 A 0;
 			WOOD B 300;
 			WOOD BBBBB 1 A_FadeOut(0.2);
-			Stop;
+		Stop;
 	}
 }
 
@@ -60,7 +59,6 @@ CLASS WoodParticleTIny: WoodParticle {
 	states
 	{
 		Death:
-			TNT1 A 0;
 			WOOD B 100;
 			WOOD BBBBB 1 A_FadeOut(0.2);
 			Stop;

@@ -50,7 +50,6 @@ CLASS ArmlessDemon : doomb_pinky
 		Goto See;
 			
 		Pain.Taunt:
-			TNT1 A 0;
 		Goto See;
 			
 		Death.Shotgun:
@@ -137,7 +136,6 @@ States
 			
 	Death.Plasma:
 	Death.Plasma2:
-		TNT1 A 0;
 		TNT1 AAA 0 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, random(20, 30) ), (frandom(-5, 5), frandom(-5, 5), frandom(0, 5) ) );
 		EXPL AAA 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
 		CARB JJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJJ 10 doomb_show_effect("AltSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(0.5, 1) ), (1.5, 0) );
@@ -658,10 +656,8 @@ States
 	Stop;
 	
 	Death.plasma:
-		TNT1 A 0;
 		TNT1 A 0 doomb_spawn_burned_flesh();
 		EXPL A 0 doomb_show_effect("ExplosionSmoke", (0, 0, 0), (frandom(-0.5, 0.5), frandom(-0.5, 0.5), frandom(-0.5, 1) ) );
-		TNT1 A 0;
 	Stop;
 	
 	Death.punch:

@@ -467,7 +467,6 @@ States
 	
 	
 	Pain.Taunt:
-		TNT1 A 0;
 	Goto Missile;
 	
 	Crush:

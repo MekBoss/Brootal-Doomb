@@ -89,7 +89,6 @@ CLASS BigFireBallWithGravity: BigFireBall {
 	States
 	{
 		Death:
-			TNT1 A 0;
 			TNT1 A 0 A_Explode (90, 150);
 			Goto burning_loop;
 	}
@@ -152,8 +151,6 @@ CLASS HellishMissileLauncher : Weapon {
 			Loop;
 			
 		Fire:
-			TNT1 A 0;
-			
 			TNT1 A 0 A_JumpIfTargetInLOS("OpenFire", 0, 0, 12000);
 			RVCG J 1;
 			Goto Ready+1;

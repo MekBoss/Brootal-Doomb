@@ -361,7 +361,6 @@ CLASS doomb_half_burned_body : doomb_body_base {
 	States
 	{
 		Spawn:
-			TNT1 A 0;
 			GIBD SSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSSS 6 light("BIGREDTORCH")
 			{
 				A_Explode(3,30, damagetype:"fire");
@@ -453,24 +452,18 @@ CLASS doomb_living_stick : doomb_body_base
 	States
 	{
 		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 doomb_spawn_bloodpool();
+			TNT1 A 0 nodelay doomb_spawn_bloodpool();
 		Stand:
 			POL6 A 6;
 			POL6 B 8;
-			POL6 A 6;
-			POL6 B 8;
-			POL6 A 6;
-			POL6 B 8;
-			POL6 A 6;
-			POL6 B 8;
-			Loop;
+		Loop;
+
 		Death:
 			TNT1 A 0 A_NoBlocking;
 			TNT1 A 0 A_Scream;
 			TNT1 A 0 A_SpawnProjectile ("ZombieXDeath", 0, 0, random (0, 360), 2, - random (0, 160));
 			CAPT N -1;
-			Stop;
+		Stop;
 	}
 }
 
@@ -1025,10 +1018,9 @@ CLASS RealGibs2 : doomb_body_base
 	States
 	{
 		Spawn:
-			TNT1 A 0;
-			TNT1 A 0 doomb_spawn_bloodpool();
+			TNT1 A 0 nodelay doomb_spawn_bloodpool();
 			POL5 A -1;
-			Stop;
+		Stop;
 	}
 }
 

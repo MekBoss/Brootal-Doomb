@@ -386,8 +386,7 @@ Default {
 States
 {
 	Spawn:
-		TNT1 A 0;
-		TNT1 A 0
+		TNT1 A 0 nodelay
 		{
 			if(random(0, 10) < 2)
 				a_die("no_suffer");

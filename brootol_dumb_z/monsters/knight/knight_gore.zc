@@ -123,7 +123,6 @@ CLASS HellKnightHead: LimbBase {
 		Goto Spawn;
 			
 		Death.Explosive_Impact:
-			TNT1 A 0;
 			TNT1 A 0 ThrustThingZ(0,50,0,1);
 			HKHE ABCDEFGH 3;
 			HKHE H 0 doomb_severed_limb("HellKnightHead");
@@ -589,7 +588,6 @@ CLASS DyingHellKnight : doomb_body_base
 			TNT1 A 0 doomb_severed_limb("CrushedRemains");
 			TNT1 A 1 A_XScream;
 			TNT1 A 1 A_NoBlocking;
-			TNT1 A -1;
-			Stop;
+		Stop;
 	}
 }

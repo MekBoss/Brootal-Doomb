@@ -251,15 +251,15 @@ CLASS XSpiderMastermindCuttedBrain : doomb_body_base
 		Spawn:
 			TNT1 A 0 A_JumpIf(waterlevel > 1, "Splash");
 			SPIP ABCDEFGH 3 doomb_for_khorne("doomb_non_interactive_blood", "red_blood_trail", (0, 0, 0 ), doomb_random_velocity(7) );
-			Loop;
+		Loop;
+
 		Death:
 			TNT1 A 0 doomb_spawn_bloodpool(BPS_SMALL);
-			SPIP I 1;
 			SPIP I -1;
-			Stop;
+		Stop;
+
 		Splash:
-			TNT1 A 0;
-			Stop;
+		Stop;
 	}
 }
 

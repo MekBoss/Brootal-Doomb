@@ -144,12 +144,10 @@ States
 		
 	Punch://melee punch
 		PLA1 H 1;
-		tnt1 A 0 ;
 		tnt1 A 0 A_JumpIfInventory("GotMeatShield", 1, "MeatShieldChecker");
 		tnt1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
 		PLA1 H 1;
 		PLA1 E 4;
-		tnt1 A 0 ;
 		tnt1 A 0 A_JumpIfInventory("GotMeatShield", 1, "MeatShieldChecker");
 		tnt1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialChecker");
 	Goto StandStill;
@@ -165,7 +163,6 @@ States
 		Goto StandStill;
 		
 	FistTaunt:
-		tnt1 A 0;
 		tnt1 A 0 A_PlaySound("MTAUN", 2);
 		Goto StandStill;
 		
@@ -225,7 +222,6 @@ States
 		
 	FistsMove:
 		tnt1 A 0 doomb_destroy_fatality_camera();
-		tnt1 A 0 ;
 		tnt1 A 0 A_JumpIfInventory("GoSpecial", 1, "SpecialCheckerMoving");
 		tnt1 A 0 A_JumpIfInventory("GotMeatShield", 1, "MeatShieldChecker");
 		PLA1 ABCD 5;
@@ -989,8 +985,7 @@ States
 
 {
 Spawn:
-	tnt1 A 0;
-	tnt1 A 0 A_GiveInventory("ComeEatMeDemon");
+	tnt1 A 0 nodelay A_GiveInventory("ComeEatMeDemon");
 	tnt1 A 0 doomb_spawn_bloodpool();
 	XPL1 EEE 6 ;
 	XPL1 E -1;
