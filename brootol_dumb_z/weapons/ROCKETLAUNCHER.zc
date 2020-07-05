@@ -120,6 +120,12 @@ Default
 States
 {
 	Spawn:
+		tnt1 a 0 nodelay
+		{
+			if(vel == (0, 0, 0))
+				setstatelabel("death");
+		}
+	spawn_loop:
 		MISL A 1 Bright
 		{
 			doomb_handle_light_def("one", "ROCKETLIGHT");
